@@ -1,24 +1,56 @@
 <template>
 
-  <h1>main 페이지</h1>
+  <h1>메인 대시보드</h1>
   <nav>
-    <h1>네브바 메뉴입니다.</h1>
+    <h1>네브바 메뉴</h1>
   </nav>
-  <OrdeerManagement/>
+  <!-- 주문관리 컴포넌트 -->
+  <OrdeerManagement :orderData="orderData" :completedNum="completedNum" :newOrder="newOrder" :cancelOrder="cancelOrder" />
 
-
+  <!-- 메뉴현황 컴포넌트 -->
   <Menu/>
 
 </template>
 <script>
 import OrdeerManagement from './components/OrderManagement.vue'
 import Menu from './components/Menu.vue'
+import orderData from './assets/orderData.js'
 
 export default {
+  data(){
+    return{
+      orderData,
+      completedNum : 0,
+      newOrder : 0,
+      cancelOrder : 0,
+    }
+  },
   components: {
     OrdeerManagement: OrdeerManagement,
     Menu: Menu
-  }
+  },
+  methods: {
+     //완료된 주문의 수를 확인하는 메소드
+    //          completedOrder(){
+    //              var count;
+    //         for(var i = 0; i<orderData.length; i++){
+    //             if(orderData.isCompleted == true ){
+    //                   count ++
+    //                  console.log(count)
+    //          }
+    //          return this.completedNum = count;
+    //      }
+    // }
+  },
+  created(){
+
+  },
+  mounted(){
+  },
+  watch: {
+
+  },
+ 
 }
 </script>
 
