@@ -9,6 +9,9 @@
           <router-link to="/menumanagement">메뉴관리</router-link>
         </li>
         <li>
+          <router-link to="/salesmanagement">매출관리</router-link>
+        </li>
+        <li>
           <router-link to="/ordermanagement">주문관리</router-link>
         </li>
         <li>
@@ -32,8 +35,7 @@
 
 </template>
 <script>
-// import orderData from './assets/orderData.js'
-// import Main from './view/Main.vue'
+
 
 
 export default {

@@ -5,6 +5,7 @@ import OrderManagement from '../view/OrderManagement.vue'
 import StaffManagement from '../view/StaffManagement.vue'
 import OperationManagement from '../view/OperationManagement.vue'
 import DiscountCode from '../view/DiscountCode.vue'
+import SalesManagement from '../view/SalesManagement.vue'
 
 
 
@@ -17,6 +18,10 @@ const routes = [
   {
     path: '/menumanagement',
     component: MenuManagement
+  },
+  {
+    path: '/salesmanagement',
+    component: SalesManagement
   },
   {
     path: '/ordermanagement',
