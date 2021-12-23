@@ -1,4 +1,5 @@
 <template>
+    <img />
     <h4>딩동커피 </h4>
 </template>
 

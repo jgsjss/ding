@@ -8,13 +8,17 @@
   <OrdeerManagement :orderData="orderData" :completedNum="completedNum" :newOrder="newOrder" :cancelOrder="cancelOrder" />
 
   <!-- 메뉴현황 컴포넌트 -->
-  <Menu/>
+  <Menu />
+
+  <!-- 나의정보 컴포넌트 -->
+  <MyInfo />
 
 </template>
 <script>
 import OrdeerManagement from './components/OrderManagement.vue'
 import Menu from './components/Menu.vue'
 import orderData from './assets/orderData.js'
+import MyInfo from './components/MyInfo'
 
 export default {
   data(){
@@ -26,8 +30,9 @@ export default {
     }
   },
   components: {
-    OrdeerManagement: OrdeerManagement,
-    Menu: Menu
+    MyInfo,
+    OrdeerManagement,
+    Menu,
   },
   methods: {
      //완료된 주문의 수를 확인하는 메소드
@@ -50,7 +55,7 @@ export default {
   watch: {
 
   },
- 
+
 }
 </script>
 

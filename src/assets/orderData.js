@@ -5,7 +5,7 @@ export default
             menu : 'capuccino',
             isCompleted : true,
             isCanceled : false,
-
+            isHidden : false,
 
         },
 
@@ -14,6 +14,7 @@ export default
             menu : 'capuccino',
             isCompleted : true,
             isCanceled : false,
+            isHidden : false,
         },
 
         {
@@ -21,7 +22,7 @@ export default
             menu : 'capuccino',
             isCompleted : true,
             isCanceled : false,
-
+            isHidden : false,
         },
 
         {
@@ -29,7 +30,7 @@ export default
             menu : 'capuccino',
             isCompleted : true,
             isCanceled : false,
-
+            isHidden : false,
         },
 
         {
@@ -37,7 +38,7 @@ export default
             menu : 'capuccino',
             isCompleted : false,
             isCanceled : false,
-
+            isHidden : false,
         },
 
         {
@@ -45,7 +46,7 @@ export default
             menu : 'capuccino',
             isCompleted : false,
             isCanceled : false,
-
+            isHidden : false,
         },
 
 ]
