@@ -12,15 +12,15 @@
       </div>
       <div class="order_box">
         <h5>완료주문</h5>
-        <div>{{comNum}}</div>
+        <div>{{ $store.state.completedNum }}</div>
       </div>
       <div class="order_box">
         <h5>신규주문</h5>
-        <div>{{newOrder}}</div>
+        <div>{{ $store.state.newOrderNum }}</div>
       </div>
       <div class="order_box">
         <h5>취소주문</h5>
-        <div>{{cancelOrder}}</div>
+        <div>{{ $store.state.cancelOrder }}</div>
       </div>
     </div>
   </div>
@@ -28,23 +28,14 @@
 </template>
 
 <script>
-import orderData from '../assets/orderData';
 export default {
-  props:{
-    orderData : Object,
-    completedNum : Number,
-    newOrder : Number,
-    cancelOrder : Number,
-  },
+
   data(){
     return{
-      comNum : this.completedNum,
     }
   },
   watch:{
-    completedNum(){
-      this.comNum = this.completedNum
-    }
+
   },
   methods:{
 
@@ -54,9 +45,7 @@ export default {
   },
 
 }
-
 </script>
-
 <style>
 .container {
   width:100%;

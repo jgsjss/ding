@@ -8,9 +8,7 @@ import DiscountCode from '../view/DiscountCode.vue'
 import SalesManagement from '../view/SalesManagement.vue'
 
 
-
 const routes = [
-
   {
     path: '/main',
     component: Main

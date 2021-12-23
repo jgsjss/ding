@@ -13,9 +13,6 @@
   <!-- 로그인 정보 컴포넌트 -->
   <MyInfo />
 
-
-
-
 </template>
 <script>
 import Menu from '@/components/Menu.vue'
