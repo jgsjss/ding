@@ -1,51 +1,51 @@
 <template>
+  <div>
+    <nav>
+      <ul>
+      <li>
+        <router-link to="/main">Logo(메인페이지 이동)</router-link>
+      </li>
+        <li>
+          <router-link to="/menumanagement">메뉴관리</router-link>
+        </li>
+        <li>
+          <router-link to="/ordermanagement">주문관리</router-link>
+        </li>
+        <li>
+          <router-link to="/staffmanagement">직원관리</router-link>
+        </li>
+        <li>
+          <router-link to="/operationmanagement">운영관리</router-link>
+        </li>
+        <li>
+          <router-link to="/discountcode">할인코드</router-link>
+        </li>
+      </ul>
+    </nav>
+    <div>
+        <h4>App.vue 화면</h4>
+    </div>
+  </div>
+  <router-view> </router-view>
 
-  <h1>메인 대시보드</h1>
-  <nav>
-    <h1>네브바 메뉴</h1>
-  </nav>
-  <!-- 주문관리 컴포넌트 -->
-  <OrdeerManagement :orderData="orderData" :completedNum="completedNum" :newOrder="newOrder" :cancelOrder="cancelOrder" />
 
-  <!-- 메뉴현황 컴포넌트 -->
-  <Menu />
-
-  <!-- 나의정보 컴포넌트 -->
-  <MyInfo />
 
 </template>
 <script>
-import OrdeerManagement from './components/OrderManagement.vue'
-import Menu from './components/Menu.vue'
-import orderData from './assets/orderData.js'
-import MyInfo from './components/MyInfo'
+// import orderData from './assets/orderData.js'
+// import Main from './view/Main.vue'
+
 
 export default {
   data(){
     return{
-      orderData,
-      completedNum : 0,
-      newOrder : 0,
-      cancelOrder : 0,
+
     }
   },
   components: {
-    MyInfo,
-    OrdeerManagement,
-    Menu,
   },
   methods: {
-     //완료된 주문의 수를 확인하는 메소드
-    //          completedOrder(){
-    //              var count;
-    //         for(var i = 0; i<orderData.length; i++){
-    //             if(orderData.isCompleted == true ){
-    //                   count ++
-    //                  console.log(count)
-    //          }
-    //          return this.completedNum = count;
-    //      }
-    // }
+
   },
   created(){
 

@@ -48,5 +48,47 @@ export default
             isCanceled : false,
             isHidden : false,
         },
+        {
+            orderNo : 7,
+            menu : 'capuccino',
+            isCompleted : false,
+            isCanceled : false,
+            isHidden : false,
+        },
+        {
+            orderNo : 8,
+            menu : 'capuccino',
+            isCompleted : false,
+            isCanceled : false,
+            isHidden : false,
+        },
+        {
+            orderNo : 9,
+            menu : 'capuccino',
+            isCompleted : false,
+            isCanceled : false,
+            isHidden : false,
+        },
+        {
+            orderNo : 10,
+            menu : 'capuccino',
+            isCompleted : false,
+            isCanceled : false,
+            isHidden : false,
+        },
+        {
+            orderNo : 11,
+            menu : 'capuccino',
+            isCompleted : false,
+            isCanceled : false,
+            isHidden : false,
+        },
+        {
+            orderNo : 12,
+            menu : 'capuccino',
+            isCompleted : false,
+            isCanceled : false,
+            isHidden : false,
+        },
 
 ]
