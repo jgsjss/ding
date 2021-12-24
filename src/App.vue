@@ -1,33 +1,39 @@
 <template>
-  <div>
-    <nav>
-      <ul>
-      <li>
-        <router-link to="/main">Logo(메인페이지 이동)</router-link>
+  <!-- 메뉴모달 컴포넌트 -->
+  <MenuModal />
+
+  <!-- 좌측 네브바 메뉴 -->
+  <div class="container">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <i class="xi-cloud-o"></i>
+        <router-link to="/main"><p class="nav-link active" aria-current="page">로고</p></router-link>
       </li>
-        <li>
-          <router-link to="/menumanagement">메뉴관리</router-link>
-        </li>
-        <li>
-          <router-link to="/salesmanagement">매출관리</router-link>
-        </li>
-        <li>
-          <router-link to="/ordermanagement">주문관리</router-link>
-        </li>
-        <li>
-          <router-link to="/staffmanagement">직원관리</router-link>
-        </li>
-        <li>
-          <router-link to="/operationmanagement">운영관리</router-link>
-        </li>
-        <li>
-          <router-link to="/discountcode">할인코드</router-link>
-        </li>
-      </ul>
-    </nav>
-    <div>
-        <h4>App.vue 화면</h4>
-    </div>
+      <li class="nav-item">
+        <i class="xi-cloud-o"></i>
+        <router-link to="/menumanagement"><p class="nav-link">메뉴관리</p></router-link>
+      </li>
+      <li class="nav-item">
+        <i class="xi-cloud-o"></i>
+        <router-link to="/ordermanagement"><p class="nav-link">매출관리</p></router-link>
+      </li>
+      <li class="nav-item">
+        <i class="xi-cloud-o"></i>
+        <router-link to="/staffmanagement"><p class="nav-link">직원관리</p></router-link>
+      </li>
+      <li class="nav-item">
+        <i class="xi-cloud-o"></i>
+        <router-link to="/operationmanagement"><p class="nav-link">운영관리</p></router-link>
+      </li>
+      <li class="nav-item">
+        <i class="xi-cloud-o"></i>
+        <router-link to="/discountcode"><p class="nav-link">할인코드</p></router-link>
+      </li>
+      <li class="nav-item">
+        <i class="xi-cloud-o"></i>
+        <a class="nav-link" href="">img</a>
+      </li>
+    </ul>
   </div>
   <router-view> </router-view>
 
@@ -35,7 +41,7 @@
 
 </template>
 <script>
-
+import MenuModal from './components/MenuModal.vue'
 
 
 export default {
@@ -45,6 +51,7 @@ export default {
     }
   },
   components: {
+    MenuModal
   },
   methods: {
 
@@ -61,25 +68,31 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<style scoped>
+.container {
+  max-width:768px;
+  padding:30px 15px;
+}
+.flex-column {
+  float:left;
+  background:#dcd4e3;
+}
+.nav-item {
   text-align: center;
-  color: #2c3e50;
+  padding:15px 0;
 }
-
-#nav {
-  padding: 30px;
+.nav-item > .xi-cloud-o {
+  border:1px dashed #c6a6e2;
+  border-radius: 100%;
+  padding:5px;
+  color:#fff;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.nav-link {
+  color:#997fb5;
+  text-decoration: none;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.nav-link:hover {
+  color:#997fb5;
+  text-decoration: none;
 }
 </style>

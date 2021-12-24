@@ -6,9 +6,19 @@ import StaffManagement from '../view/StaffManagement.vue'
 import OperationManagement from '../view/OperationManagement.vue'
 import DiscountCode from '../view/DiscountCode.vue'
 import SalesManagement from '../view/SalesManagement.vue'
+import Login from '../view/Login.vue'
+import SignUp from '../view/SignUp.vue'
 
 
 const routes = [
+  {
+    path: '/',
+    component: Login,
+  },
+  {
+    path:'/signup',
+    component: SignUp,
+  },
   {
     path: '/main',
     component: Main

@@ -5,12 +5,15 @@ import shopData from '@/assets/shopData'
 
 export default createStore({
   state: {
+    //=======================Main.vue 화면 내부 데이터 ========================
     //-------------메뉴관리 데이터------
     menuData,
     //품절메뉴 개수
     soldOutNum : 2,
     //숨김메뉴 개수
     hiddenNum : 1,
+    //품절,숨김 메뉴 모달창 상태변경
+    MenuCheckModal : false,
     //-------------주문관리 데이터------
     orderData,
     //완료주문 개수
@@ -23,17 +26,26 @@ export default createStore({
     shopData,
     //영업중인 가게 수
     openShopNum : 3,
+
+    //=======================MenuManagement.vue 화면 내부 데이터 ========================
+    //
+    menuTab : 0,
+
+
+
   },
   mutations: {
-    completedOrder(state){
-      for(var i = 0; i<state.orderData.length; i++){
-        if(state.orderData[i].isCompleted == true){
-          state.completedNum--;
-        }else{
-          state.completedNum++;
-        }
-      }
-    }
+
+    //메뉴관리 품절,숨김메뉴 모달창 상태변경 함수
+    openMenuModal(state){
+      state.MenuCheckModal = true
+    },
+    closeMenuModal(state){
+      state.MenuCheckModal = false
+    },
+
+
+
   },
   actions: {
 

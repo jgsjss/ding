@@ -1,32 +1,35 @@
 <template>
+
   <div class="container">
     <div class="box">
-      <h4 class="order_text">메뉴현황</h4>
-      <button class="btn btn-default" type="submit">품절해제</button>
+      <p class="order_text">메뉴현황</p>
+      <button class="btn btn-default" type="submit" @click="$store.commit('openMenuModal')">품절해제</button>
       <a href="#"><i class="xi-angle-right-min"></i></a>
     </div>
     <div class="order_container">
       <div class="order_box">
-        <h5>전체메뉴</h5>
-        <div>{{}}</div>
+        <p>전체메뉴</p>
+        <div>{{ $store.state.menuData.length }}</div>
       </div>
       <div class="order_box">
-        <h5>품절메뉴</h5>
-        <div>{{}}</div>
+        <p  >품절메뉴</p>
+        <div>{{ $store.state.soldOutNum }}</div>
       </div>
       <div class="order_box">
-        <h5>정상운영</h5>
-        <div>{{}}</div>
+        <p>정상운영</p>
+        <div>{{ $store.state.openShopNum }}</div>
       </div>
       <div class="order_box">
-        <h5>숨김메뉴</h5>
-        <div>{{}}</div>
+        <p>숨김메뉴</p>
+        <div>{{ $store.state.hiddenNum }}</div>
       </div>
     </div>
   </div>
 
 </template>
 <script>
+
+
 
 </script>
 
