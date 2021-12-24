@@ -15,7 +15,11 @@
       </li>
       <li class="nav-item">
         <i class="xi-cloud-o"></i>
-        <router-link to="/ordermanagement"><p class="nav-link">매출관리</p></router-link>
+        <router-link to="/salesmanagement"><p class="nav-link">매출관리</p></router-link>
+      </li>
+      <li class="nav-item">
+        <i class="xi-cloud-o"></i>
+        <router-link to="/ordermanagement"><p class="nav-link">주문관리</p></router-link>
       </li>
       <li class="nav-item">
         <i class="xi-cloud-o"></i>

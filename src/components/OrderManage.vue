@@ -8,11 +8,11 @@
     <div class="order_container">
       <div class="order_box">
         <p class="order_name">총주문수</p>
-        <div>{{  $store.state.orderData.length  }}</div>
+        <div>{{ $store.state.orderData.length  }}</div>
       </div>
       <div class="order_box">
         <p class="order_name">완료주문</p>
-        <div @click="$store.commit('completedOrder')">{{ completedNum }}</div>
+        <div>{{ $store.state.completedNum }}</div>
       </div>
       <div class="order_box">
         <p class="order_name">신규주문</p>
