@@ -1,8 +1,8 @@
 <template>
-
   <!-- 메인페이지  메뉴현황 품절해제버튼 모달창-->
   <div class="black-bg" v-if="$store.state.MenuCheckModal == true">
     <div class="white-bg">
+      <!-- 버튼클릭시 모달닫기 -->
       <div><p>품절해제</p>  <a @click="$store.commit('closeMenuModal')">X</a>
       </div>
      <div><button>전체</button><button>메뉴</button><button>옵션목록</button> <span><button>품절해제</button></span></div>
@@ -41,6 +41,7 @@
   width: 100%; height:100%;
   background: rgba(0,0,0,0.5);
   position: fixed; padding: 20px;
+  z-index: 9999;
 }
 .white-bg {
   width: 100%; background: white;

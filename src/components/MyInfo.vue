@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <p class="info_img">img</p>
-    <h4 class="info_text">딩동커피 </h4>
+    <p class="info_text">딩동커피 </p>
     <div class="wrap">
       <div class="wrap1">
         <div class="info_left">매장코드</div>
@@ -35,14 +35,13 @@
 </template>
 
 <script>
-
 </script>
 <style>
-.container {
+  .container {
   width:100%;
   margin:0 auto;
 }
-.info_img {
+  .info_img {
   width:70px;
   height:70px;
   border:1px solid #997fb5;
@@ -50,55 +49,66 @@
   line-height:4;
   margin:0 auto;
 }
-.info_text {
+  .info_text {
   padding:30px 0;
 }
-.wrap{
+  .wrap{
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.wrap1{
+  .wrap1{
   float: left;
 }
-.wrap1 .info_left{
+  .wrap1 .info_left{
   margin: 10px;
   text-align: left;
   color:#b29ec7;
 }
 
-.wrap2{
+  .wrap2{
   float: left;
   position: relative;
   right: 0px;}
 
-.wrap2 .info_right{
-  text-align: end;
+  .wrap2 .info_right{
+    text-align: end;
   margin: 10px;
   color:#997fb5;
   font-weight:500;
 }
-.info_order_text {
+  .info_order_text {
   position:relative;
   padding:20px 0;
 }
-.info_order_text:after {
+  .info_order_text:after {
   position:absolute;
   display: block;
   content: '';
   width:100%;
   height:1px;
-  background:#fff;
+  background:#997fb5;
   top:10%;
   left:0;
 }
-.logout-btn {
+  .logout-btn {
   width:100%;
-  border:1px solid #fff;
+  border:1px solid #997fb5;
   background:transparent;
-  color:#fff;
+  color:#997fb5;
   height:50px;
   margin:15px 0;
+}
+
+  /* media query */
+  @media ( min-width : 768px) {
+
+}
+  @media ( min-width : 992px) {
+
+}
+  @media ( min-width : 1200px) {
+
 }
 </style>
