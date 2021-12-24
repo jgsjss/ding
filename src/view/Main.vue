@@ -1,5 +1,15 @@
 <template>
   <div class="container">
+    <div class="main_call">
+      <div class="main_right">
+        <button class="main-btn" type="submit">
+          <span class="condition">매장상태</span>
+          <span class="condition">: 영업중{{}}</span>
+        </button>
+        <i class="xi-bell-o"></i>
+      </div>
+
+    </div>
     <div class="component">
       <!-- 주문관리 컴포넌트 -->
       <OrderManage  />
@@ -12,6 +22,7 @@
       <!-- 로그인 정보 컴포넌트 -->
       <MyInfo />
     </div>
+
   </div>
 
 
@@ -80,6 +91,27 @@ export default {
     border-radius: 5px;
     padding:15px;
   }
+}
+.main_call {
+  width:100%;
+  padding-bottom: 15px;
+}
+.main_right {
+  text-align: right;
+  padding:0 100px;
+}
+.main-btn {
+  margin:0 auto;
+  padding:5px;
+  width:150px;
+  border-radius: 15px;
+  border:1px solid #997fb5;
+  background:#fff;
+  color:#997fb5;
+}
+.xi-bell-o {
+  color:#997fb5;
+  font-size:20px;
 }
 
 </style>
