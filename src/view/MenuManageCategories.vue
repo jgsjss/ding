@@ -1,6 +1,6 @@
 <template>
-<!-- 메뉴관리 페이지의 카테고리편집 게시판 페이지 -->
-   <form >
+<!-- 메뉴관리 페이지의 메뉴편집 게시판 페이지 -->
+        <form >
           <label><input type="checkbox"> 정상</label>
           <label><input type="checkbox"> 숨김</label>
           <input type="search" name="categoriSearch" placeholder="search">

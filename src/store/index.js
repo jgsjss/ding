@@ -36,16 +36,6 @@ export default createStore({
   },
   mutations: {
 
-    // //메뉴관리 품절,숨김메뉴 모달창 상태변경 함수
-    // openMenuModal(state){
-    //   state.MenuCheckModal = true
-    // },
-    // closeMenuModal(state){
-    //   state.MenuCheckModal = false
-    // },
-
-
-
   },
   actions: {
 

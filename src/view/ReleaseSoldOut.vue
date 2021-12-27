@@ -46,9 +46,28 @@ export default {
         }
     },
     props:{
-        menuData : Object,
-        soldOutNum : Number,
-        hiddenNum : Number,
+    //주문관리 데이터 프롭스 ---
+    orderData : Object,
+    //완료주문 개수
+    completedNum : Number,
+     //신규주문 개수
+    newOrderNum : Number,
+    //취소주문 개수
+    cancelOrder : Number,
+
+
+    //메뉴관리 데이터 프롭스 ---
+    menuData : Object,
+     //품절메뉴 개수
+    soldOutNum : Number,
+    //숨김메뉴 개수
+    hiddenNum : Number,
+
+
+    //운영관리 데이터 프롭스 ---
+    shopData : Object,
+    //영업중인 가게 수
+    openShopNum : Number,
     },
     methods: {
          nextPage () {
@@ -58,7 +77,7 @@ export default {
       this.pageNum -= 1;
         }
     },
-    //ajax로 서버에서 받아온 list정보를 페이징 처리하는 부분. 현재 받아올 서버 및 데이터가 없어서 주석처리함.
+    // ajax로 서버에서 받아온 list정보를 페이징 처리하는 부분. 현재 받아올 서버 및 데이터가 없어서 주석처리함.
     // computed: {
     //     pageCount () {
     //   let listLeng = this.listArray.length,

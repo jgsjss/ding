@@ -1,6 +1,13 @@
 <template>
 <!-- 메뉴관리 페이지의 메뉴편집 게시판 페이지 -->
-  <p>메뉴편집 게시판입니다.</p>
+        <form >
+          <label><input type="checkbox"> 정상</label>
+          <label><input type="checkbox"> 숨김</label>
+          <label><input type="checkbox"> 품절</label>
+          <input type="search" name="categoriSearch" placeholder="search">
+          <input type="submit">
+          <button>순서변경</button><button>편집</button><button>+메뉴 추가</button>
+        </form>
 
 
 </template>

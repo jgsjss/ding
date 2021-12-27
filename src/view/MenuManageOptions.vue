@@ -1,6 +1,14 @@
 <template>
 <!-- 옵션 편집 게시판 페이지 -->
-    <p>옵션편집 게시판 페이지입니다.</p>
+    <form >
+          <label><input type="checkbox"> 정상</label>
+          <label><input type="checkbox"> 숨김</label>
+          <input type="search" name="categoriSearch" placeholder="search">
+          <input type="submit">
+          <button>순서변경</button><button>편집</button><button>+옵션 추가</button>
+    </form>
+
+
 </template>
 <script>
 export default {
