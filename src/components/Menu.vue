@@ -3,8 +3,9 @@
   <div class="container">
     <div class="box">
       <p class="order_text">메뉴현황</p>
-      <!-- 품절해제 버튼 누르면 App.vue에 menuModal 오픈되는 커스텀이벤트 -->
-      <button class="btn" type="submit" @click="changeMenuTrue">품절해제</button>
+      <!-- 품절해제 버튼 누르면 App.vue에 menuModal 오픈되는 커스텀이벤트
+       @click="changeMenuTrue" -->
+      <router-link to="releaseSoldout"><button class="btn" type="submit">품절해제</button></router-link>
       <a href="#"><i class="xi-angle-right-min"></i></a>
     </div>
     <div class="order_container">
@@ -33,7 +34,7 @@
   export default {
     data(){
       return {
-        menumodal : true,
+        // menumodal : true,
       }
     },
     props:{
@@ -52,9 +53,9 @@
     },
     methods: {
       //품절해제 클릭시 아래 메소드로 이벤트 발사
-      changeMenuTrue(){
-        this.emitter.emit("openMenuModal", this.menumodal)
-      }
+      // changeMenuTrue(){
+      //   this.emitter.emit("openMenuModal", this.menumodal)
+      // }
   },
   }
 

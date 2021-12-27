@@ -1,9 +1,9 @@
 <template>
   <!-- 품절해제모달 html -->
-  <div class="black-bg" v-if="MenuCheckModal == true">
-    <div class="white-bg">
+  <!-- <div class="black-bg" v-if="MenuCheckModal == true">
+    <div class="white-bg"> -->
       <!-- 버튼클릭시 모달닫기 -->
-      <div><p>품절해제</p>  <a @click="MenuCheckModal = false">X</a>
+      <!-- <div><p>품절해제</p>  <a @click="MenuCheckModal = false">X</a>
       </div>
      <div><button>전체</button><button>메뉴</button><button>옵션목록</button> <span><button>품절해제</button></span></div>
       <div class="container">
@@ -30,7 +30,7 @@
         </table>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 
@@ -72,7 +72,7 @@
     </ul>
   </div>
   <router-view :orderData="orderData" :completedNum="completedNum" :newOrderNum="newOrderNum" :cancelOrder="cancelOrder"
-   :menuData="menuData" :soldOutNum="soldOutNum" :hiddenNum="hiddenNum" :MenuCheckModal="MenuCheckModal"
+   :menuData="menuData" :soldOutNum="soldOutNum" :hiddenNum="hiddenNum"
    :shopData="shopData" :openShopNum="openShopNum" > </router-view>
 
 
@@ -83,7 +83,7 @@
 import orderData from './assets/orderData.js'
 import menuData from './assets/menuData.js'
 import shopData from './assets/shopData'
-
+import axios from 'axios'
 
 export default {
   data(){
@@ -91,12 +91,21 @@ export default {
       //=======================Main.vue 화면 내부 데이터 ========================
     //-------------메뉴관리 데이터------
     menuData,
+
     //품절메뉴 개수
     soldOutNum : 2,
+
     //숨김메뉴 개수
     hiddenNum : 1,
+
+
+
+    //품절해제 게시판 페이징처리 변수
+    pageArray: [],
+
     //품절,숨김 메뉴 모달창 상태변경
-    MenuCheckModal : false,
+    // MenuCheckModal : false,
+
     //-------------주문관리 데이터------
     orderData,
     //완료주문 개수
@@ -122,14 +131,22 @@ export default {
   methods: {
 
   },
-  created(){
-
+  created () {
+    axios.get('http://sample.bmaster.kro.kr/contacts')
+    .then(response => {
+      console.log(response);
+      this.pageArray = response.data.contacts;
+    })
+    .catch(err => {
+      console.log(err);
+    });
   },
   mounted(){
-    this.emitter.on("openMenuModal", (a) =>{
-      this.MenuCheckModal = a;
-      console.log(a)
-    })
+    //menu 컴포넌트 커스텀이벤트 수신 코드
+    // this.emitter.on("openMenuModal", (a) =>{
+    //   this.MenuCheckModal = a;
+    //   console.log(a)
+    // })
   },
   watch: {
 

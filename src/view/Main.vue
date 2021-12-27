@@ -12,12 +12,12 @@
     </div>
     <div class="component">
       <!-- 주문관리 컴포넌트 -->
-      <OrderManage :orderData ="orderData" :completedNum="completedNum" 
+      <OrderManage :orderData ="orderData" :completedNum="completedNum"
       :newOrderNum="newOrderNum" :cancelOrder="cancelOrder" />
     </div>
     <div class="component">
       <!-- 메뉴현황 컴포넌트 -->
-      <Menu :menuData="menuData" :soldOutNum="soldOutNum" :hiddenNum="hiddenNum" :shopData="shopData" :openShopNum="openShopNum" :MenuCheckModal="MenuCheckModal" />
+      <Menu :menuData="menuData" :soldOutNum="soldOutNum" :hiddenNum="hiddenNum" :shopData="shopData" :openShopNum="openShopNum"  />
     </div>
     <div class="component">
       <!-- 로그인 정보 컴포넌트 -->
@@ -44,7 +44,7 @@ export default {
     newOrderNum : Number,
     //취소주문 개수
     cancelOrder : Number,
-    
+
 
     //메뉴관리 데이터 프롭스 ---
     menuData : Object,
@@ -52,8 +52,7 @@ export default {
     soldOutNum : Number,
     //숨김메뉴 개수
     hiddenNum : Number,
-    //메뉴모달체크 
-    MenuCheckModal : Boolean,
+
 
     //운영관리 데이터 프롭스 ---
     shopData : Object,

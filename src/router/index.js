@@ -8,6 +8,7 @@ import DiscountCode from '../view/DiscountCode.vue'
 import SalesManagement from '../view/SalesManagement.vue'
 import Login from '../view/Login.vue'
 import SignUp from '../view/SignUp.vue'
+import ReleaseSoldOut from '../view/ReleaseSoldOut.vue'
 
 
 const routes = [
@@ -46,7 +47,11 @@ const routes = [
   {
     path: '/discountcode',
     component: DiscountCode
-  }
+  },
+  {
+    path:'/releaseSoldout',
+    component: ReleaseSoldOut,
+  },
 ]
 
 const router = createRouter({

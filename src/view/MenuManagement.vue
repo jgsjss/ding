@@ -1,7 +1,7 @@
 <template>
-    <div><a>카테고리편집</a>  <a>메뉴편집</a>   <a>옵션편집</a></div>
+    <div><a @click="menuTab=0">카테고리편집</a> | <a @click="menuTab=1" >메뉴편집</a>  | <a @click="menuTab=3">옵션편집</a></div>
     <!-- 카테고리편집 탭 -->
-      <div v-if="$store.state.menuTab == 0">
+      <div v-if="menuTab == 0">
         <form >
           <label><input type="checkbox"> 정상</label>
           <label><input type="checkbox"> 숨김</label>
@@ -9,6 +9,7 @@
           <button>순서변경</button><button>편집</button><button>+카테고리추가</button>
           <input type="submit">
         </form>
+        <div class="container1">
         <table class="table">
           <thead>
           <tr>
@@ -29,17 +30,32 @@
           </tr>
           </tbody>
         </table>
+        </div>
       </div>
 
-  <!--  -->
-  <div v-if="$store.state.menuTab == 1">
+  <!-- 메뉴편집 탭  -->
+  <div v-if="menuTab == 1">
+
+  </div>
+
+  <!-- 옵션편집 탭 -->
+  <div v-if="menuTab == 2">
+
   </div>
 
 
 </template>
 <script>
   export default {
+    data(){
+      return {
+        //메뉴관리 페이지의 탭 부분
+        menuTab : 0,
+      }
+    },
+    props:{
 
+    },
     components : {
     },
 
@@ -47,5 +63,9 @@
 
 </script>
 <style>
+.container1{
+    width: 1000px;
+    margin: 0 auto;
+}
 
 </style>
