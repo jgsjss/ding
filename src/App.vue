@@ -1,6 +1,38 @@
 <template>
-  <!-- 메뉴모달 컴포넌트 -->
-  <MenuModal />
+  <!-- 품절해제모달 html -->
+  <div class="black-bg" v-if="MenuCheckModal == true">
+    <div class="white-bg">
+      <!-- 버튼클릭시 모달닫기 -->
+      <div><p>품절해제</p>  <a @click="MenuCheckModal = false">X</a>
+      </div>
+     <div><button>전체</button><button>메뉴</button><button>옵션목록</button> <span><button>품절해제</button></span></div>
+      <div class="container">
+        <p class="mb-5">포스팅 게시판</p>
+        <table class="table">
+          <thead>
+          <tr>
+            <th><input type="checkbox" id="all-check"> </th>
+            <th scope="col">구분</th>
+            <th scope="col">메뉴/옵션목록</th>
+            <th scope="col">가격</th>
+            <th scope="col">메뉴상태</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(a, i) in menuData" :key="i">
+            <th scope="row"><input type="checkbox"></th>
+            <td>{{ menuData[i].categories1 }}</td>
+            <td>{{ menuData[i].name }}</td>
+            <td>{{ menuData[i].price }} </td>
+            <td>{{ menuData[i].isSoldOut }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
 
   <!-- 좌측 네브바 메뉴 -->
   <div class="container">
@@ -39,23 +71,53 @@
       </li>
     </ul>
   </div>
-  <router-view> </router-view>
+  <router-view :orderData="orderData" :completedNum="completedNum" :newOrderNum="newOrderNum" :cancelOrder="cancelOrder"
+   :menuData="menuData" :soldOutNum="soldOutNum" :hiddenNum="hiddenNum" :MenuCheckModal="MenuCheckModal"
+   :shopData="shopData" :openShopNum="openShopNum" > </router-view>
 
 
 
 </template>
 <script>
-import MenuModal from './components/MenuModal.vue'
+// import MenuModal from './components/MenuModal.vue'
+import orderData from './assets/orderData.js'
+import menuData from './assets/menuData.js'
+import shopData from './assets/shopData'
 
 
 export default {
   data(){
     return{
+      //=======================Main.vue 화면 내부 데이터 ========================
+    //-------------메뉴관리 데이터------
+    menuData,
+    //품절메뉴 개수
+    soldOutNum : 2,
+    //숨김메뉴 개수
+    hiddenNum : 1,
+    //품절,숨김 메뉴 모달창 상태변경
+    MenuCheckModal : false,
+    //-------------주문관리 데이터------
+    orderData,
+    //완료주문 개수
+    completedNum : 3,
+    //신규주문 개수
+    newOrderNum : 2,
+    //취소주문 개수
+    cancelOrder : 1,
+    //-------------운영관리 데이터------
+    shopData,
+    //영업중인 가게 수
+    openShopNum : 3,
+
+    //=======================MenuManagement.vue 화면 내부 데이터 ========================
+    //
+    menuTab : 0,
 
     }
   },
   components: {
-    MenuModal
+
   },
   methods: {
 
@@ -64,6 +126,10 @@ export default {
 
   },
   mounted(){
+    this.emitter.on("openMenuModal", (a) =>{
+      this.MenuCheckModal = a;
+      console.log(a)
+    })
   },
   watch: {
 
@@ -195,6 +261,16 @@ ul {list-style:none;}
     text-decoration: none;
   }
 }
-
+.black-bg {
+  width: 100%; height:100%;
+  background: rgba(0,0,0,0.5);
+  position: fixed; padding: 20px;
+  z-index: 9999;
+}
+.white-bg {
+  width: 100%; background: white;
+  border-radius: 8px;
+  padding: 20px;
+}
 
 </style>

@@ -8,19 +8,19 @@
     <div class="order_container">
       <div class="order_box">
         <p class="order_name">총주문수</p>
-        <div>{{ $store.state.orderData.length  }}</div>
+        <div>{{ orderData.length }}</div>
       </div>
       <div class="order_box">
         <p class="order_name">완료주문</p>
-        <div>{{ $store.state.completedNum }}</div>
+        <div>{{ completedNum  }}</div>
       </div>
       <div class="order_box">
         <p class="order_name">신규주문</p>
-        <div>{{ $store.state.newOrderNum }}</div>
+        <div>{{ newOrderNum  }}</div>
       </div>
       <div class="order_box">
         <p class="order_name">취소주문</p>
-        <div>{{ $store.state.cancelOrder }}</div>
+        <div>{{ cancelOrder }}</div>
       </div>
     </div>
   </div>
@@ -30,9 +30,17 @@
 <script>
 export default {
 
-  data(){
-    return{
-    }
+  props:{
+  //주문관리 데이터 프롭스 ---
+    orderData : Object,
+    //완료주문 개수
+    completedNum : Number,
+     //신규주문 개수
+    newOrderNum : Number,
+    //취소주문 개수
+    cancelOrder : Number,
+
+
   },
   watch:{
 

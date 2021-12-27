@@ -3,9 +3,9 @@
   <div class="black-bg" v-if="$store.state.MenuCheckModal == true">
     <div class="white-bg">
       <!-- 버튼클릭시 모달닫기 -->
-      <div><p>품절해제</p>  <a @click="$store.commit('closeMenuModal')">X</a>
+      <div><p>품절해제</p>  <a >X</a>
       </div>
-     <div><button>전체</button><button>메뉴</button><button>옵션목록</button> <span><button>품절해제</button></span></div>
+     <div><button>전체</button><button>메뉴</button><button>옵션목록</button> <span><button >품절해제</button></span></div>
       <div class="container">
         <p class="mb-5">포스팅 게시판</p>
         <table class="table">
@@ -21,9 +21,9 @@
           <tbody>
           <tr v-for="(a, i) in $store.state.menuData" :key="i">
             <th scope="row"><input type="checkbox"></th>
-            <td>{{ $store.state.menuData[i].categories1 }}</td>
-            <td>{{ $store.state.menuData[i].name  }}</td>
-            <td> {{ $store.state.menuData[i].price }} </td>
+            <td>{{  }}</td>
+            <td>{{  }}</td>
+            <td>{{  }} </td>
             <td>{{  }}</td>
           </tr>
           </tbody>

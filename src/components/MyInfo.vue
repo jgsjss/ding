@@ -35,6 +35,14 @@
 </template>
 
 <script>
+  export default {
+    props : {
+       //운영관리 데이터 프롭스 ---
+    shopData : Object,
+    //영업중인 가게 수
+    openShopNum : Number,
+    }
+  }
 </script>
 <style>
   .container {
