@@ -9,6 +9,9 @@ import SalesManagement from '../view/SalesManagement.vue'
 import Login from '../view/Login.vue'
 import SignUp from '../view/SignUp.vue'
 import ReleaseSoldOut from '../view/ReleaseSoldOut.vue'
+import MenuManageCategories from '../view/MenuManageCategories.vue'
+import MenuManageMenus from '../view/MenuManageMenus.vue'
+import MenuManageOptions from '../view/MenuManageOptions.vue'
 
 
 const routes = [
@@ -26,7 +29,22 @@ const routes = [
   },
   {
     path: '/menumanagement',
-    component: MenuManagement
+    component: MenuManagement,
+    //중첩되는 자식 라우트 경로
+    children: [
+      {
+      path: '/menumanagement/categories',
+      component: MenuManageCategories
+    },
+    {
+      path: '/menumanagement/menus',
+      component: MenuManageMenus,
+    },
+    {
+      path: '/menumanagement/options',
+      component: MenuManageOptions,
+    },
+  ]
   },
   {
     path: '/salesmanagement',

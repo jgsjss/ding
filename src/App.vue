@@ -43,7 +43,7 @@
       </li>
       <li class="nav-item">
         <i class="xi-cloud-o"></i>
-        <router-link to="/menumanagement"><p class="nav-link">메뉴관리</p></router-link>
+        <router-link to="/menumanagement/categories"><p class="nav-link">메뉴관리</p></router-link>
       </li>
       <li class="nav-item">
         <i class="xi-cloud-o"></i>
