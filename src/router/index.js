@@ -7,7 +7,9 @@ import OperationManagement from '../view/OperationManagement.vue'
 import DiscountCode from '../view/DiscountCode.vue'
 import SalesManagement from '../view/SalesManagement.vue'
 import Login from '../view/Login.vue'
-import SignUp from '../view/SignUp.vue'
+import SignUp1 from '../view/SignUp1.vue'
+import SignUp2 from '../view/SignUp2.vue'
+import SignUp3 from '../view/SignUp3.vue'
 import ReleaseSoldOut from '../view/ReleaseSoldOut.vue'
 import MenuManageCategories from '../view/MenuManageCategories.vue'
 import MenuManageMenus from '../view/MenuManageMenus.vue'
@@ -20,8 +22,16 @@ const routes = [
     component: Login,
   },
   {
-    path:'/signup',
-    component: SignUp,
+    path:'/signup1',
+    component: SignUp1,
+  },
+  {
+    path:'/signup2',
+    component: SignUp2,
+  },
+  {
+    path:'/signup3',
+    component: SignUp3,
   },
   {
     path: '/main',

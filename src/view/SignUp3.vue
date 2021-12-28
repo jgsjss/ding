@@ -1,71 +1,29 @@
 <template>
 
-  <div class="container_fluid">
-    <h1 class="member_text">
-      회원가입
-    </h1>
+  <div class="container">
     <!-- wrapper -->
     <div id="wrapper">
       <p class="border_text">
-        STEP2. 로그인/사업자정보 입력
+        STEP3. 관리자정보 입력
       </p>
       <!-- content-->
       <div id="content">
-
-        <!-- ID -->
-        <div>
-          <h3 class="join_title">
-            <label for="id">아이디</label>
-          </h3>
-          <span class="box int_id">
-                            <input type="text" id="id" class="int" maxlength="20">
-                            <span class="step_url"></span>
-                        </span>
-          <span class="error_next_box"></span>
-        </div>
-
-        <!-- PW1 -->
-        <div>
-          <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
-          <span class="box int_pass">
-                            <input type="text" id="pswd1" class="int" maxlength="20" placeholder="8~16자의 영문/숫자를 조합">
-                            <span id="alertTxt">사용불가</span>
-            <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
-                        </span>
-          <span class="error_next_box"></span>
-        </div>
-
-        <!-- PW2 -->
-        <div>
-          <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
-          <span class="box int_pass_check">
-                            <input type="text" id="pswd2" class="int" maxlength="20">
-            <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
-                        </span>
-          <span class="error_next_box"></span>
-        </div>
-
-        <!-- business number -->
-        <div>
-          <h3 class="join_title"><label for="input_file">사업자 등록번호</label></h3>
-          <span class="box int_name">
-                        <label class="input-file-button" for="input-file">파일첨부
-                        </label>
-                        <input type="file" id="input-file" style="display:none"/>
-                      </span>
-          <span class="error_next_box"></span>
-        </div>
+        <p class="inner_box_text">
+          (브랜드)와 소통할 관리자 정보를 적어주세요.<br>
+          해당 정보로 정보 전달 및 소통이 이루어지니 정확하게 입력해주세요!
+        </p>
         <!--name-->
         <div>
-          <h3 class="join_title"><label for="name">대표자 이름</label></h3>
+          <h3 class="join_title"><label for="name"></label></h3>
           <span class="box int_name">
-                            <input type="text" id="name" class="int" maxlength="20">
+                            <input type="text" id="name" class="int" maxlength="20" placeholder="관리자 이름">
                         </span>
           <span class="error_next_box"></span>
         </div>
+
         <!--number-->
         <div>
-          <h3 class="join_title"><label for="number">대표자 번호</label></h3>
+          <h3 class="join_title"><label for="number">관리자 번호</label></h3>
           <div id="num_wrap">
             <!-- BIRTH_MM -->
             <div id="num_first">
@@ -89,65 +47,45 @@
 
             <!-- BIRTH_DD -->
             <div id="num_dd">
-                                <span class="box">
-                                    <input type="text" id="dd" class="int" maxlength="4" v-model="thirdNum">
-                                </span>
+                                    <span class="box">
+                                        <input type="text" id="dd" class="int" maxlength="4" v-model="thirdNum">
+                                    </span>
             </div>
+            <span class="error_next_box"></span>
           </div>
-          <span class="error_next_box"></span>
+          <!-- email_address -->
+          <div id="email">
+                                <span class="box">
+                                    <select id="email" class="sel">
+                                        <option>선택</option>
+                                        <option value="naver.com">naver.com</option>
+                                        <option value="hanmail.net">hanmail.net</option>
+                                        <option value="gmail.com">gmail.com</option>
+                                        <option value="nate.com">nate.com</option>
+                                        <option value="직접입력">직접입력</option>
+                                    </select>
+                                </span>
+          </div>
+
+
+
+
+
+          <!-- JOIN BTN-->
+          <div class="btn_area">
+            <button type="button" id="btnJoin">
+              <span>가입하기</span>
+            </button>
+          </div>
+
+
+
         </div>
-        <!--shop name-->
-        <div>
-          <h3 class="join_title"><label for="name">매장 이름</label></h3>
-          <span class="box int_name">
-                            <input type="text" id="name" class="int" maxlength="20">
-                        </span>
-          <span class="error_next_box"></span>
-        </div>
-        <!-- shop number -->
-        <div>
-          <h3 class="join_title"><label for="phoneNo">매장 대표번호</label></h3>
-          <span class="box int_mobile">
-                            <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
-                        </span>
-          <span class="error_next_box"></span>
-        </div>
-        <!--shop address-->
-        <div>
-          <h3 class="join_title"><label for="name">매장 주소</label></h3>
-          <span class="box int_mobile">
-                        <input type="text" id="address" ref="address" class="int"  maxlength="20" placeholder="매장 주소">
-                        <button type="submit" class="addr_btn" @click="execDaumPostcode()" value="우편번호 찾기">주소검색</button>
-                        </span>
-          <span class="box int_mobile">
-                        <input type="text" id="detailAddress" class="int" maxlength="20" placeholder="매장 상세주소">
-                        </span>
-          <span class="box int_mobile">
-                        <input type="text" class="int" v-model="postcode" placeholder="우편번호">
-                        </span>
-          <span class="box int_mobile">
-                        <input type="text" class="int" id="extraAddress" ref="extraAddress" placeholder="참고항목">
-                        </span>
-        </div>
-
-
-
-
-        <!-- JOIN BTN-->
-        <div class="btn_area">
-          <button type="button" id="btnJoin">
-            <span>다음</span>
-          </button>
-        </div>
-
-
+        <!-- content-->
 
       </div>
-      <!-- content-->
-
     </div>
   </div>
-
 
 
 </template>

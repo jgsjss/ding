@@ -40,7 +40,7 @@
           <span>로그인</span>
         </button>
       </div>
-      <p class="login_text"><a href="#!" class="member"><router-link to="/signup">회원가입&nbsp;</router-link></a>후 딩동오더를 이용해 보세요!</p>
+      <p class="login_text"><a href="#!" class="member"><router-link to="/signup1">회원가입&nbsp;</router-link></a>후 딩동오더를 이용해 보세요!</p>
     </div>
     <p class="login_bottom">
       아이디/비밀번호 분실 시 (브랜드)로 직접 연락해주세요!
