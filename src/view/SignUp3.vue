@@ -1,9 +1,8 @@
 <template>
-
-  <div class="container">
+  <div class="container_fluid">
     <!-- wrapper -->
     <div id="wrapper">
-      <p class="border_text">
+      <p class="border_text3">
         STEP3. 관리자정보 입력
       </p>
       <!-- content-->
@@ -14,7 +13,7 @@
         </p>
         <!--name-->
         <div>
-          <h3 class="join_title"><label for="name"></label></h3>
+          <h3 class="join_title"><label for="name">관리자 이름</label></h3>
           <span class="box int_name">
                             <input type="text" id="name" class="int" maxlength="20" placeholder="관리자 이름">
                         </span>
@@ -55,27 +54,39 @@
           </div>
           <!-- email_address -->
           <div id="email">
-                                <span class="box">
-                                    <select id="email" class="sel">
-                                        <option>선택</option>
-                                        <option value="naver.com">naver.com</option>
-                                        <option value="hanmail.net">hanmail.net</option>
-                                        <option value="gmail.com">gmail.com</option>
-                                        <option value="nate.com">nate.com</option>
-                                        <option value="직접입력">직접입력</option>
-                                    </select>
-                                </span>
+            <h3 class="join_title"><label for="email">관리자 메일주소</label></h3>
+              <div id="email_wrap">
+            
+            <!-- sub_mail -->
+            <div id="sub_email">
+              <span class="box">
+                <input type="text" id="sub_email" class="int" maxlength="20" v-model="sub_email" placeholder="이메일을 입력해주세요">
+              </span>
+            </div>
+              <span class="middle_mail">@</span>
+                <span class="box">
+                  <select id="email" class="sel">
+                    <option>선택</option>
+                    <option value="naver.com">naver.com</option>
+                    <option value="hanmail.net">hanmail.net</option>
+                    <option value="gmail.com">gmail.com</option>
+                    <option value="nate.com">nate.com</option>
+                    <option value="직접입력">직접입력</option>
+                  </select>
+                </span>
+
+
+            </div>
           </div>
 
 
 
-
-
-          <!-- JOIN BTN-->
           <div class="btn_area">
+            <router-link to="/signup2">
             <button type="button" id="btnJoin">
               <span>가입하기</span>
             </button>
+            </router-link>
           </div>
 
 
@@ -213,17 +224,17 @@ h3 {
   font-size: 14px;
   font-weight: 700;
 }
-.border_text {
+.border_text3 {
   padding:10px 0;
   font-size:18px;
   color:#997fb5;
   font-weight: 700;
 }
-.border_text::after {
+.border_text3::after {
   display: block;
   content: '';
   background:#997fb5;
-  width:60%;
+  width:100%;
   height:5px;
 }
 .box {
@@ -246,7 +257,13 @@ h3 {
   background: #fff;
   font-size: 15px;
 }
-
+.inner_box_text {
+    width: 90%;
+    font-size: 14px;
+    text-align: left;
+    color:#997fb5;
+    font-weight: 500;
+}
 input {
   font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
@@ -283,31 +300,29 @@ input {
   cursor: pointer;
 }
 
-#bir_wrap {
+#email_wrap {
   display: table;
   width: 100%;
 }
 
-#bir_yy {
+#email {
   display: table-cell;
   width: 147px;
 
 }
 
-#bir_mm {
+#sub_email {
   display: table-cell;
-  width: 147px;
+  width: 260px;
   vertical-align: middle;
 }
 
-#bir_dd {
-  display: table-cell;
-  width: 147px;
+.middle_mail {
+  display:table-cell;
+  padding:0 10px;
 }
 
-#bir_mm, #bir_dd {
-  padding-left: 10px;
-}
+
 
 select {
   width: 100%;
@@ -386,17 +401,5 @@ select {
   font-weight: 400;
   font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
-#address {
-  position:relative;
-}
-.addr_btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #997fb5;
-  border: 1px solid #997fb5;
-  color: #fff;
-  width: 100px;
-  height: 30px;
-}
+
 </style>
