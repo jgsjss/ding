@@ -18,6 +18,7 @@
             <th scope="col">숨김</th> |
           </tr>
           </thead>
+
           <tbody>
           <tr >
             <th scope="row"></th>

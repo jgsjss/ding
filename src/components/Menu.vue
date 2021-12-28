@@ -11,19 +11,19 @@
     <div class="order_container">
       <div class="order_box">
         <p class="order_name">전체메뉴</p>
-        <div>{{ menuData.length }}</div>
+        <div>{{ $store.state.menuData.length}}</div>
       </div>
       <div class="order_box">
         <p class="order_name">품절메뉴</p>
-        <div>{{ soldOutNum }}</div>
+        <div>{{ $store.state.soldOutNum }}</div>
       </div>
       <div class="order_box">
         <p class="order_name">정상운영</p>
-        <div>{{ openShopNum }}</div>
+        <div>{{ $store.state.openShopNum }}</div>
       </div>
       <div class="order_box">
         <p class="order_name">숨김메뉴</p>
-        <div>{{ hiddenNum }}</div>
+        <div>{{ $store.state.hiddenNum }}</div>
       </div>
     </div>
   </div>
@@ -38,18 +38,18 @@
       }
     },
     props:{
-      //메뉴관리 데이터 프롭스 ---
-    menuData : Object,
-     //품절메뉴 개수
-    soldOutNum : Number,
-    //숨김메뉴 개수
-    hiddenNum : Number,
-    //품절해제 모달 체크
-    MenuCheckModal : Boolean,
-     //운영관리 데이터 프롭스 ---
-    shopData : Object,
-    //영업중인 가게 수
-    openShopNum : Number,
+    //   //메뉴관리 데이터 프롭스 ---
+    // menuData : Object,
+    //  //품절메뉴 개수
+    // soldOutNum : Number,
+    // //숨김메뉴 개수
+    // hiddenNum : Number,
+    // //품절해제 모달 체크
+    // MenuCheckModal : Boolean,
+    //  //운영관리 데이터 프롭스 ---
+    // shopData : Object,
+    // //영업중인 가게 수
+    // openShopNum : Number,
     },
     methods: {
       //품절해제 클릭시 아래 메소드로 이벤트 발사

@@ -8,7 +8,29 @@
           <input type="submit">
           <button>순서변경</button><button>편집</button><button>+메뉴 추가</button>
         </form>
+  <div class="container1">
+    <table class="table">
+      <thead>
+      <tr>
+        <th> 메뉴명 </th> |
+        <th scope="col">가격</th> |
+        <th scope="col">카테고리</th> |
+        <th scope="col">연결옵션</th> |
+        <th scope="col">숨김/품절</th>
+      </tr>
+      </thead>
 
+      <tbody>
+      <tr >
+        <th scope="row"></th>
+        <td>{{ }}</td>
+        <td>{{ }}</td>
+        <td>{{ }} </td>
+        <td>{{ }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 
 </template>
 

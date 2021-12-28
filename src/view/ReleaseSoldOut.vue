@@ -16,12 +16,12 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(a, i) in menuData" :key="i">
+          <tr v-for="(a, i) in $store.state.menuData" :key="i">
             <th scope="row"><input type="checkbox"></th>
-            <td>{{ menuData[i].categories1 }}</td>
-            <td>{{ menuData[i].name }}</td>
-            <td>{{ menuData[i].price }} </td>
-            <td>{{ menuData[i].isSoldOut +','+  menuData[i].isHidden }}</td>
+            <td>{{ $store.state.menuData[i].categories1 }}</td>
+            <td>{{ $store.state.menuData[i].name }}</td>
+            <td>{{ $store.state.menuData[i].price }} </td>
+            <td>{{ $store.state.menuData[i].isSoldOut +','+  $store.state.menuData[i].isHidden }}</td>
           </tr>
           </tbody>
         </table>
@@ -46,28 +46,28 @@ export default {
         }
     },
     props:{
-    //주문관리 데이터 프롭스 ---
-    orderData : Object,
-    //완료주문 개수
-    completedNum : Number,
-     //신규주문 개수
-    newOrderNum : Number,
-    //취소주문 개수
-    cancelOrder : Number,
-
-
-    //메뉴관리 데이터 프롭스 ---
-    menuData : Object,
-     //품절메뉴 개수
-    soldOutNum : Number,
-    //숨김메뉴 개수
-    hiddenNum : Number,
-
-
-    //운영관리 데이터 프롭스 ---
-    shopData : Object,
-    //영업중인 가게 수
-    openShopNum : Number,
+    // //주문관리 데이터 프롭스 ---
+    // orderData : Object,
+    // //완료주문 개수
+    // completedNum : Number,
+    //  //신규주문 개수
+    // newOrderNum : Number,
+    // //취소주문 개수
+    // cancelOrder : Number,
+    //
+    //
+    // //메뉴관리 데이터 프롭스 ---
+    // menuData : Object,
+    //  //품절메뉴 개수
+    // soldOutNum : Number,
+    // //숨김메뉴 개수
+    // hiddenNum : Number,
+    //
+    //
+    // //운영관리 데이터 프롭스 ---
+    // shopData : Object,
+    // //영업중인 가게 수
+    // openShopNum : Number,
     },
     methods: {
          nextPage () {

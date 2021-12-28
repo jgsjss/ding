@@ -1,9 +1,11 @@
 import { createStore } from 'vuex'
 import orderData from '../assets/orderData.js'
 import menuData from '../assets/menuData.js'
-import shopData from '@/assets/shopData'
+import shopData from '../assets/shopData'
 
 export default createStore({
+
+
   state: {
     //=======================Main.vue 화면 내부 데이터 ========================
     //-------------메뉴관리 데이터------
