@@ -6,7 +6,7 @@
     </h1>
     <!-- wrapper -->
     <div id="wrapper">
-      <p class="border_text">
+      <p class="border_text2">
         STEP2. 로그인/사업자정보 입력
       </p>
       <!-- content-->
@@ -275,13 +275,13 @@ h3 {
   font-size: 14px;
   font-weight: 700;
 }
-.border_text {
+.border_text2 {
   padding:10px 0;
   font-size:18px;
   color:#997fb5;
   font-weight: 700;
 }
-.border_text::after {
+.border_text2::after {
   display: block;
   content: '';
   background:#997fb5;
