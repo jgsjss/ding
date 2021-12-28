@@ -35,14 +35,14 @@ export default createStore({
 
 
 
-  },
-  mutations: {
+    mutations: {
 
-  },
-  actions: {
+    },
+    actions: {
 
+    },
+    modules: {
   },
-  modules: {
 
   }
 })

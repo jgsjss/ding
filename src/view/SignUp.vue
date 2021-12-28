@@ -6,7 +6,9 @@
     </h1>
     <!-- wrapper -->
     <div id="wrapper">
-
+      <p class="border_text">
+        STEP2. 로그인/사업자정보 입력
+      </p>
       <!-- content-->
       <div id="content">
 
@@ -114,7 +116,7 @@
         <div>
           <h3 class="join_title"><label for="name">매장 주소</label></h3>
           <span class="box int_mobile">
-                        <input type="text" id="address" class="int"  maxlength="20" placeholder="매장 주소">
+                        <input type="text" id="address" ref="address" class="int"  maxlength="20" placeholder="매장 주소">
                         <button type="submit" class="addr_btn" @click="execDaumPostcode()" value="우편번호 찾기">주소검색</button>
                         </span>
           <span class="box int_mobile">
@@ -124,19 +126,25 @@
                         <input type="text" class="int" v-model="postcode" placeholder="우편번호">
                         </span>
           <span class="box int_mobile">
-                        <input type="text" class="int" id="extraAddress" placeholder="참고항목">
+                        <input type="text" class="int" id="extraAddress" ref="extraAddress" placeholder="참고항목">
                         </span>
         </div>
+
+
+
 
         <!-- JOIN BTN-->
         <div class="btn_area">
           <button type="button" id="btnJoin">
-            <span>가입하기</span>
+            <span>다음</span>
           </button>
         </div>
 
+
+
       </div>
       <!-- content-->
+
     </div>
   </div>
 
@@ -144,7 +152,6 @@
 
 </template>
 <script>
-
 export default {
   data () {
     return {
@@ -213,14 +220,18 @@ export default {
             this.extraAddress = "";
           }
           // 우편번호를 입력한다.
+          console.log(data.extraAddress)
           console.log(data.zonecode)
-          console.log(data.address)
           this.postcode = data.zonecode;
           this.address = data.address;
+          this.extraAddress = data.extraAddress;
           // 우편번호와 주소 정보를 해당 필드에 넣는다.
+          // $refs.address = data.address;
+          // console(data.address)
           //  this.$refs('postcode').value = data.zonecode;
           // this.$refs('address').value = data.addr;
           this.value = this.address;
+          console.log(data.address)
           // 커서를 상세주소 필드로 이동한다.
           //  this.$refs("detailAddress").focus();
 
@@ -234,10 +245,13 @@ export default {
       }).open();
     },
   },
-  mounted() {
-    // this.$refs('address').value = data.addr;
-    // console.log(data.address)
-  },
+//     mounted() {
+//   this.$nextTick(function () {
+//     // 전체 화면내용이 렌더링된 후에 아래의 코드가 실행됩니다.
+//     $refs('address').value = data.addr;
+//   })
+// }
+
 };
 </script>
 
@@ -261,8 +275,19 @@ h3 {
   font-size: 14px;
   font-weight: 700;
 }
-
-
+.border_text {
+  padding:10px 0;
+  font-size:18px;
+  color:#997fb5;
+  font-weight: 700;
+}
+.border_text::after {
+  display: block;
+  content: '';
+  background:#997fb5;
+  width:60%;
+  height:5px;
+}
 .box {
   display: block;
   width: 100%;

@@ -12,16 +12,15 @@
     </div>
     <div class="component">
       <!-- 주문관리 컴포넌트 -->
-      <OrderManage :orderData ="orderData" :completedNum="completedNum"
-      :newOrderNum="newOrderNum" :cancelOrder="cancelOrder" />
+      <OrderManage  />
     </div>
     <div class="component">
       <!-- 메뉴현황 컴포넌트 -->
-      <Menu :menuData="menuData" :soldOutNum="soldOutNum" :hiddenNum="hiddenNum" :shopData="shopData" :openShopNum="openShopNum"  />
+      <Menu />
     </div>
     <div class="component">
       <!-- 로그인 정보 컴포넌트 -->
-      <MyInfo :shopData="shopData" :openShopNum="openShopNum" />
+      <MyInfo  />
     </div>
 
   </div>
