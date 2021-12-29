@@ -1,4 +1,5 @@
 <template>
+<Navbar />
   <div class="container">
     <div class="main_call">
       <div class="main_right">
@@ -31,6 +32,7 @@
 import Menu from '@/components/Menu.vue'
 import MyInfo from '@/components/MyInfo'
 import OrderManage from '@/components/OrderManage.vue'
+import Navbar from '@/components/Navbar.vue'
 
 export default {
 
@@ -64,6 +66,7 @@ export default {
     Menu,
     MyInfo,
     OrderManage,
+    Navbar,
   }
 }
 

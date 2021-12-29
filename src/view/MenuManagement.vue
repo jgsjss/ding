@@ -1,4 +1,5 @@
 <template>
+<Navbar />
     <div><router-link to="/menumanagement/categories"><a>카테고리편집</a></router-link> |
     <router-link to="/menumanagement/menus"><a >메뉴편집</a> </router-link> |
     <router-link to="/menumanagement/options"> <a>옵션편집</a></router-link></div>
@@ -49,6 +50,8 @@
 
 </template>
 <script>
+import Navbar from '@/components/Navbar.vue'
+
   export default {
     data(){
       return {
@@ -83,6 +86,7 @@
 
     },
     components : {
+      Navbar
     },
 
   }

@@ -1,41 +1,5 @@
 <template>
-  <!-- 품절해제모달 html -->
-  <!-- <div class="black-bg" v-if="MenuCheckModal == true">
-    <div class="white-bg"> -->
-      <!-- 버튼클릭시 모달닫기 -->
-      <!-- <div><p>품절해제</p>  <a @click="MenuCheckModal = false">X</a>
-      </div>
-     <div><button>전체</button><button>메뉴</button><button>옵션목록</button> <span><button>품절해제</button></span></div>
-      <div class="container">
-        <p class="mb-5">포스팅 게시판</p>
-        <table class="table">
-          <thead>
-          <tr>
-            <th><input type="checkbox" id="all-check"> </th>
-            <th scope="col">구분</th>
-            <th scope="col">메뉴/옵션목록</th>
-            <th scope="col">가격</th>
-            <th scope="col">메뉴상태</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr v-for="(a, i) in menuData" :key="i">
-            <th scope="row"><input type="checkbox"></th>
-            <td>{{ menuData[i].categories1 }}</td>
-            <td>{{ menuData[i].name }}</td>
-            <td>{{ menuData[i].price }} </td>
-            <td>{{ menuData[i].isSoldOut }}</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div> -->
-
-
-
-  <!-- 좌측 네브바 메뉴 -->
-  <!-- <div class="container">
+  <div class="container">
     <ul class="nav flex-column">
       <li class="nav-item">
         <i class="xi-cloud-o"></i>
@@ -70,56 +34,15 @@
         <a class="nav-link" href="">img</a>
       </li>
     </ul>
-  </div> -->
-  <router-view > </router-view>
-
-
-
+  </div>
 </template>
+
 <script>
-// import MenuModal from './components/MenuModal.vue'
-
-import axios from 'axios'
-
-
-
-//   this.$props.
 export default {
-  data(){
-    return{
-
-
-    }
-  },
-  components: {
-
-  },
-  methods: {
-
-  },
-  created () {
-    axios.get('http://sample.bmaster.kro.kr/contacts')
-    .then(response => {
-      console.log(response);
-      this.pageArray = response.data.contacts;
-    })
-    .catch(err => {
-      console.log(err);
-    });
-  },
-  mounted(){
-    //menu 컴포넌트 커스텀이벤트 수신 코드
-    // this.emitter.on("openMenuModal", (a) =>{
-    //   this.MenuCheckModal = a;
-    //   console.log(a)
-    // })
-  },
-  watch: {
-
-  },
 
 }
 </script>
+
 
 <style scoped>
 ul {list-style:none;}
@@ -255,5 +178,4 @@ ul {list-style:none;}
   border-radius: 8px;
   padding: 20px;
 }
-
 </style>

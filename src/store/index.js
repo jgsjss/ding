@@ -2,7 +2,6 @@ import { createStore } from 'vuex'
 import orderData from '../assets/orderData.js'
 import menuData from '../assets/menuData.js'
 import shopData from '../assets/shopData'
-import axios from 'node_modules/axios/index.js'
 
 export default createStore({
 
@@ -55,7 +54,7 @@ export default createStore({
 
     },
     computed :{
-       
+
     },
     modules: {
   },

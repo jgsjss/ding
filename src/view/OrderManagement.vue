@@ -1,5 +1,5 @@
 <template>
-
+  <Navbar />
   <div>
     <h1>주문관리 페이지 입니다.</h1>
 
@@ -9,7 +9,13 @@
 
 </template>
 <script>
+import Navbar from '@/components/Navbar.vue'
 
+export default {
+  components : {
+    Navbar,
+  }
+}
 
 </script>
 <style>
