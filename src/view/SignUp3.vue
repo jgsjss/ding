@@ -56,7 +56,7 @@
           <div id="email">
             <h3 class="join_title"><label for="email">관리자 메일주소</label></h3>
               <div id="email_wrap">
-            
+
             <!-- sub_mail -->
             <div id="sub_email">
               <span class="box">
@@ -84,7 +84,7 @@
           <div class="btn_area">
             <router-link to="/signup2">
             <button type="button" id="btnJoin">
-              <span>가입하기</span>
+              <span><router-link to="/signup4">가입하기</router-link></span>
             </button>
             </router-link>
           </div>

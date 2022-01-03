@@ -14,7 +14,7 @@ import ReleaseSoldOut from '../view/ReleaseSoldOut.vue'
 import MenuManageCategories from '../view/MenuManageCategories.vue'
 import MenuManageMenus from '../view/MenuManageMenus.vue'
 import MenuManageOptions from '../view/MenuManageOptions.vue'
-
+import SignUp4 from '../view/SignUp4.vue'
 
 const routes = [
   {
@@ -32,6 +32,10 @@ const routes = [
   {
     path:'/signup3',
     component: SignUp3,
+  },
+  {
+    path:'/signup4',
+    component: SignUp4,
   },
   {
     path: '/main',

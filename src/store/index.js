@@ -3,6 +3,27 @@ import orderData from '../assets/orderData.js'
 import menuData from '../assets/menuData.js'
 import shopData from '../assets/shopData'
 
+let soldNum=0;
+let hidNum=0;
+for(let i=0; i<menuData.length; i++){
+  if(menuData[i].isHidden == true){
+    hidNum++;
+  } else if(menuData[i].isSoldOut == true){
+    soldNum++;
+  }
+}
+
+let compleNum = 0;
+let cancelNum = 0;
+for(let i=0; i<orderData.length; i++){
+  if(orderData[i].isCompleted==true){
+    compleNum++;
+  }else if(orderData[i].isCanceled){
+    cancelNum++;
+  }
+}
+
+
 export default createStore({
 
 
@@ -11,19 +32,19 @@ export default createStore({
     //-------------메뉴관리 데이터------
     menuData,
     //품절메뉴 개수
-    soldOutNum : 2,
+    soldOutNum : soldNum,
     //숨김메뉴 개수
-    hiddenNum : 1,
+    hiddenNum : hidNum,
     //품절,숨김 메뉴 모달창 상태변경
     MenuCheckModal : false,
     //-------------주문관리 데이터------
     orderData,
     //완료주문 개수
-    completedNum : 3,
+    completedNum : compleNum,
     //신규주문 개수
     newOrderNum : 2,
     //취소주문 개수
-    cancelOrder : 1,
+    cancelOrder : cancelNum,
     //-------------운영관리 데이터------
     shopData,
     //영업중인 가게 수
