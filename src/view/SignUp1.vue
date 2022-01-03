@@ -18,25 +18,25 @@
                 <input type="checkbox" v-model="selected" :value="agree[0]" @change='updateCheckall()'>
                     <span class="checkmark"></span>
             </label>
-          </div>          
+          </div>
           <div class="terms_box">
             <label class="login_check_wrap">이용약관
                 <input type="checkbox" v-model="selected" :value="agree[1]" @change='updateCheckall()'>
                     <span class="checkmark"></span>
             </label>
-          </div>          
+          </div>
           <div class="terms_box">
             <label class="login_check_wrap">개인정보 처리방침
                 <input type="checkbox" v-model="selected" :value="agree[2]" @change='updateCheckall()'>
                     <span class="checkmark"></span>
             </label>
-          </div>          
+          </div>
           <div class="terms_box">
             <label class="login_check_wrap">광고성 정보 마케팅 동의
                 <input type="checkbox" v-model="selected" :value="agree[3]" @change='updateCheckall()'>
                     <span class="checkmark"></span>
             </label>
-          </div>          
+          </div>
         </div>
 
 
@@ -49,7 +49,7 @@
               <span>이전</span>
             </button>
             </router-link>
-        <!--next-->         
+        <!--next-->
               <router-link to="/signup2">
             <button type="button" id="term_btnJoin2">
               <span>다음</span>
@@ -57,7 +57,7 @@
             </router-link>
 
         </div>
-    </div> 
+    </div>
 
         <!-- content-->
 
@@ -84,7 +84,7 @@ export default {
             this.selected = [];
             if (!this.allSelected) {
                 for (let i in this.agree) {
-                    this.selected.push(this.options[i]);
+                    this.selected.push(this.agree[i]);
                 }
             }
         },
@@ -97,7 +97,7 @@ export default {
         }
   },
   watch: {
-     
+
   }
 };
 </script>
