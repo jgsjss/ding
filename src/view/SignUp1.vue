@@ -7,63 +7,62 @@
       </p>
       <!-- content-->
       <div id="content">
-          <div class="terms_box1">
-            <label class="login_check_wrap"><span class="terms_text">딩동오더 이용약관, 개인정보 처리방침 광고성 정보 수신(선택)에 모두 동의합니다.</span>
-                <input type="checkbox" v-model="allSelected" @change="selectAll" >
-                    <span class="checkmark"></span>
-            </label>
-          </div>
-          <div class="terms_box">
-            <label class="login_check_wrap">14세 이상
-                <input type="checkbox" v-model="selected" :value="agree[0]" @change='updateCheckall()'>
-                    <span class="checkmark"></span>
-            </label>
-          </div>
-          <div class="terms_box">
-            <label class="login_check_wrap">이용약관
-                <input type="checkbox" v-model="selected" :value="agree[1]" @change='updateCheckall()'>
-                    <span class="checkmark"></span>
-            </label>
-          </div>
-          <div class="terms_box">
-            <label class="login_check_wrap">개인정보 처리방침
-                <input type="checkbox" v-model="selected" :value="agree[2]" @change='updateCheckall()'>
-                    <span class="checkmark"></span>
-            </label>
-          </div>
-          <div class="terms_box">
-            <label class="login_check_wrap">광고성 정보 마케팅 동의
-                <input type="checkbox" v-model="selected" :value="agree[3]" @change='updateCheckall()'>
-                    <span class="checkmark"></span>
-            </label>
-          </div>
+        <div class="terms_box1">
+          <label class="login_check_wrap"><span class="terms_text">딩동오더 이용약관, 개인정보 처리방침 광고성 정보 수신(선택)에 모두 동의합니다.</span>
+            <input type="checkbox" v-model="allSelected" @click="allSelect">
+            <span class="checkmark"></span>
+          </label>
         </div>
+        <div class="terms_box">
+          <label class="login_check_wrap">14세 이상
+            <input type="checkbox" v-model="selected" :value="agree[0]" @change='updateCheckall()'>
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="terms_box">
+          <label class="login_check_wrap">이용약관
+            <input type="checkbox" v-model="selected" :value="agree[1]" @change='updateCheckall()'>
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="terms_box">
+          <label class="login_check_wrap">개인정보 처리방침
+            <input type="checkbox" v-model="selected" :value="agree[2]" @change='updateCheckall()'>
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        <div class="terms_box">
+          <label class="login_check_wrap">광고성 정보 마케팅 동의
+            <input type="checkbox" v-model="selected" :value="agree[3]" @change='updateCheckall()'>
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
 
 
-        <!--prev-->
-        <div class="term_wrap">
+      <!--prev-->
+      <div class="term_wrap">
         <div class="term_box">
 
-              <router-link to="/Login">
+          <router-link to="/Login">
             <button type="button" id="term_btnJoin1">
               <span>이전</span>
             </button>
-            </router-link>
-        <!--next-->
-              <router-link to="/signup2">
+          </router-link>
+          <!--next-->
+          <router-link to="/signup2">
             <button type="button" id="term_btnJoin2">
               <span>다음</span>
             </button>
-            </router-link>
+          </router-link>
 
         </div>
-    </div>
-
-        <!-- content-->
-
       </div>
-    </div>
 
+      <!-- content-->
+
+    </div>
+  </div>
 
 
 </template>
@@ -73,74 +72,86 @@
 export default {
   data () {
     return {
-      agree: ["14세이상", "이용약관", "개인정보", "마케팅"],
+      agree: ['14세이상', '이용약관', '개인정보', '마케팅'],
       allSelected: false,
       selected: [],
 
     }
   },
   methods: {
-    select() {
-            this.selected = [];
-            if (!this.allSelected) {
-                for (let i in this.agree) {
-                    this.selected.push(this.agree[i]);
-                }
-            }
-        },
-        updateCheckall: function(){
-              if(this.agree.length == this.selected.length){
-                 this.allSelected = true;
-              }else{
-                 this.allSelected = false;
-              }
-        }
-  },
-  watch: {
+    select () {
 
-  }
-};
+      this.selected = []
+      if (!this.allSelected) {
+        for (let i in this.agree) {
+          this.selected.push(this.agree[i])
+        }
+      }
+    },
+    updateCheckall: function () {
+      if (this.agree.length == this.selected.length) {
+        this.allSelected = true
+      } else {
+        this.allSelected = false
+      }
+    }
+  },
+  computed: {
+    allSelect () {
+      this.selected = [...this.agree]
+      // console.log(this.selected)
+    }
+  },
+  watch: {}
+}
 </script>
 
 
 <style>
 #content {
-    height:400px;
+  height: 400px;
 }
+
 .border_text1 {
-  padding:10px 0;
-  font-size:18px;
-  color:#997fb5;
+  padding: 10px 0;
+  font-size: 18px;
+  color: #997fb5;
   font-weight: 700;
 }
+
 .border_text1::after {
   display: block;
   content: '';
-  background:#997fb5;
-  width:30%;
-  height:5px;
+  background: #997fb5;
+  width: 30%;
+  height: 5px;
 }
+
 /* check */
 .term_wrap {
-    padding:30px 0;
+  padding: 30px 0;
 }
+
 .terms_box1 {
-    width: 100%;
-    height: 100px;
-    border: 1px solid #997fb5;
-    padding: 25px 30px;
-    margin: 30px 0;
-    font-size:14px;
-    color:#997fb5;
+  width: 100%;
+  height: 100px;
+  border: 1px solid #997fb5;
+  padding: 25px 30px;
+  margin: 30px 0;
+  font-size: 14px;
+  color: #997fb5;
 }
+
 .terms_text {
-    text-decoration: underline;
+  text-decoration: underline;
 }
+
 .terms_box {
-    width:100%;
-    padding:10px 30px;
-    font-size:14px;
+  width: 100%;
+  padding: 10px 30px;
+  font-size: 14px;
 }
+
 /* Check*/
 .login_check_wrap {
   display: block;
@@ -153,7 +164,7 @@ export default {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  color:#997fb5;
+  color: #997fb5;
 }
 
 /* Hide the browser's default checkbox */
@@ -173,7 +184,7 @@ export default {
   height: 25px;
   width: 25px;
   background-color: #fff;
-  border:1px solid #997fb5;
+  border: 1px solid #997fb5;
   border-radius: 100%;
 }
 
@@ -214,38 +225,40 @@ export default {
 
 /* 버튼 */
 .term_box {
-    width:100%;
-    display:table;
+  width: 100%;
+  display: table;
 }
+
 .term_box > a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 #term_btnJoin1 {
-    display: table-cell;
-    width: 220px;
-    padding: 20px 15px;
-    border: 0;
-    cursor: pointer;
-    color: #fff;
-    background-color: #dcd4e3;
-    font-size: 20px;
-    margin: 0 10px;
-    font-weight: 400;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
+  display: table-cell;
+  width: 220px;
+  padding: 20px 15px;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  background-color: #dcd4e3;
+  font-size: 20px;
+  margin: 0 10px;
+  font-weight: 400;
+  font-family: Dotum, '돋움', Helvetica, sans-serif;
 }
+
 #term_btnJoin2 {
-    display: table-cell;
-    width: 220px;
-    padding: 20px 15px;
-    border: 0;
-    cursor: pointer;
-    color: #fff;
-    background-color: #997fb5;
-    font-size: 20px;
-    margin: 0 10px;
-    font-weight: 400;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
+  display: table-cell;
+  width: 220px;
+  padding: 20px 15px;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  background-color: #997fb5;
+  font-size: 20px;
+  margin: 0 10px;
+  font-weight: 400;
+  font-family: Dotum, '돋움', Helvetica, sans-serif;
 }
 
 </style>
