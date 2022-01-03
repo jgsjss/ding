@@ -385,7 +385,6 @@ select {
 }
 
 /* 버튼 */
-
 .btn_area {
   margin: 30px 0 91px;
 }

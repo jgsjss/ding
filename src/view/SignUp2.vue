@@ -18,8 +18,8 @@
             <label for="id">아이디</label>
           </h3>
           <span class="box int_id">
-                            <input type="text" id="id" class="int" maxlength="20">
-                            <span class="step_url"></span>
+                            <input v-model="signup.id" type="text" id="id" class="int" maxlength="20">
+                            <span class="step_url" v-if="!idValid">유효하지 않은 아이디 입니다.</span>
                         </span>
           <span class="error_next_box"></span>
         </div>
@@ -28,8 +28,8 @@
         <div>
           <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
           <span class="box int_pass">
-                            <input type="text" id="pswd1" class="int" maxlength="20" placeholder="8~16자의 영문/숫자를 조합">
-                            <span id="alertTxt">사용불가</span>
+                            <input v-model="signup.password" type="password" id="pswd1" class="int" maxlength="16" @blur="passwordValid" placeholder="8~16자의 영문/숫자를 조합">
+                            <span id="alertTxt" v-if="!passwordValidFlag">유효하지 않은 비밀번호 입니다.</span>
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
           <span class="error_next_box"></span>
@@ -39,7 +39,8 @@
         <div>
           <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
           <span class="box int_pass_check">
-                            <input type="text" id="pswd2" class="int" maxlength="20">
+                            <input v-model="passwordCheck" type="password" id="pswd2" class="int" @blur="passwordCheckValid" maxlength="16">
+                            <span id="alertTxt" v-if="!passwordCheckFlag">비밀번호가 동일하지 않습니다.</span>
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
                         </span>
           <span class="error_next_box"></span>
@@ -59,9 +60,9 @@
         <div>
           <h3 class="join_title"><label for="name">대표자 이름</label></h3>
           <span class="box int_name">
-                            <input type="text" id="name" class="int" maxlength="20">
+                            <input type="text" v-model="signup.name" id="name" class="int" maxlength="20" placeholder="이름을 입력해주세요.">
                         </span>
-          <span class="error_next_box"></span>
+          <span class="error_next_box" v-if="checkFlag && !signup.name">이름을 입력하세요</span>
         </div>
         <!--number-->
         <div>
@@ -165,6 +166,19 @@ export default {
       postcode: "",
       address: "",
       extraAddress: "",
+      signup: {
+        id: null,
+        password: null,
+        pwhint:'',
+        pwhintans: null
+      },
+      passwordCheck: '',
+      passwordValidFlag: true
+    }
+  },
+  computed: {
+    idValid() {
+      return /^[A-Za-z0-9]+$/.test(this.signup.id)
     }
   },
   watch: {
@@ -184,6 +198,23 @@ export default {
     }
   },
   methods: {
+    //비밀번호 재확인
+    passwordCheckValid() {
+      if(this.signup.password === this.passwordCheck) {
+        this.passwordCheckFlag = true
+      } else {
+        this.passwordCheckFlag = false
+      }
+    },
+    //비밀번호 확인
+    passwordValid () { 
+      if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$/.test(this.signup.password)) {
+      this.passwordValidFlag = true 
+      } else {
+        this.passwordValidFlag = false 
+      } 
+    },
+    //daum map api
     execDaumPostcode() {
       new window.daum.Postcode({
         oncomplete: (data) => {
@@ -257,6 +288,7 @@ export default {
 
 
 <style>
+a {text-decoration: none;}
 .input-file-button {
   padding: 3px 30px;
   background-color:#997fb5;
@@ -326,12 +358,11 @@ input {
 }
 
 .step_url {
-  /*@naver.com*/
   position: absolute;
   top: 16px;
   right: 13px;
   font-size: 15px;
-  color: #8e8e8e;
+  color: red;
 }
 
 .pswdImg {
@@ -419,20 +450,18 @@ select {
   margin-top: 9px;
   font-size: 12px;
   color: red;
-  display: none;
 }
 
 #alertTxt {
   position: absolute;
   top: 19px;
-  right: 38px;
+  right: 10px;
   font-size: 12px;
   color: red;
-  display: none;
+
 }
 
 /* 버튼 */
-
 .btn_area {
   margin: 30px 0 91px;
 }

@@ -63,6 +63,7 @@ export default {
 .container_fluid {
   width:500px;
   margin:0 auto;
+  padding:50px 0;
 }
 /* 입력폼 */
 .login_wrap {
