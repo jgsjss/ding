@@ -10,11 +10,11 @@ import Login from '../view/Login.vue'
 import SignUp1 from '../view/SignUp1.vue'
 import SignUp2 from '../view/SignUp2.vue'
 import SignUp3 from '../view/SignUp3.vue'
+import SignUp4 from '../view/SignUp4.vue'
 import ReleaseSoldOut from '../view/ReleaseSoldOut.vue'
 import MenuManageCategories from '../view/MenuManageCategories.vue'
 import MenuManageMenus from '../view/MenuManageMenus.vue'
 import MenuManageOptions from '../view/MenuManageOptions.vue'
-import SignUp4 from '../view/SignUp4.vue'
 
 const routes = [
   {
