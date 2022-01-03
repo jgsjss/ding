@@ -9,31 +9,31 @@
       <div id="content">
           <div class="terms_box1">
             <label class="login_check_wrap"><span class="terms_text">딩동오더 이용약관, 개인정보 처리방침 광고성 정보 수신(선택)에 모두 동의합니다.</span>
-                <input type="checkbox" v-model="checked">
+                <input type="checkbox" v-model="allSelected" @change="selectAll" >
                     <span class="checkmark"></span>
             </label>
           </div>
           <div class="terms_box">
             <label class="login_check_wrap">14세 이상
-                <input type="checkbox" v-model="checked">
+                <input type="checkbox" v-model="selected" :value="agree[0]" @change='updateCheckall()'>
                     <span class="checkmark"></span>
             </label>
           </div>          
           <div class="terms_box">
             <label class="login_check_wrap">이용약관
-                <input type="checkbox" v-model="checked">
+                <input type="checkbox" v-model="selected" :value="agree[1]" @change='updateCheckall()'>
                     <span class="checkmark"></span>
             </label>
           </div>          
           <div class="terms_box">
             <label class="login_check_wrap">개인정보 처리방침
-                <input type="checkbox" v-model="checked">
+                <input type="checkbox" v-model="selected" :value="agree[2]" @change='updateCheckall()'>
                     <span class="checkmark"></span>
             </label>
           </div>          
           <div class="terms_box">
             <label class="login_check_wrap">광고성 정보 마케팅 동의
-                <input type="checkbox" v-model="checked">
+                <input type="checkbox" v-model="selected" :value="agree[3]" @change='updateCheckall()'>
                     <span class="checkmark"></span>
             </label>
           </div>          
@@ -68,17 +68,37 @@
 
 </template>
 <script>
+
+
 export default {
   data () {
     return {
+      agree: ["14세이상", "이용약관", "개인정보", "마케팅"],
+      allSelected: false,
+      selected: [],
 
     }
   },
   methods: {
-
+    select() {
+            this.selected = [];
+            if (!this.allSelected) {
+                for (let i in this.agree) {
+                    this.selected.push(this.options[i]);
+                }
+            }
+        },
+        updateCheckall: function(){
+              if(this.agree.length == this.selected.length){
+                 this.allSelected = true;
+              }else{
+                 this.allSelected = false;
+              }
+        }
   },
-
-
+  watch: {
+     
+  }
 };
 </script>
 
