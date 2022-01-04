@@ -133,7 +133,7 @@
   background:#ddd;
   position:absolute;
   top:5%;
-  right:-6px;
+  right:5px;
 }
 
 .xi-angle-right-min {

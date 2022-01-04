@@ -125,7 +125,7 @@ export default {
 ul {list-style:none;}
 .container {
   width:100%;
-  padding:30px 15px;
+  padding:10px 15px;
 }
 .nav {
   float:left;

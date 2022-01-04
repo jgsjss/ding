@@ -2,7 +2,7 @@
   <div class="container">
     <div class="box_wrap">
       <p class="order_text">주문관리</p>
-      <button class="btn" type="submit">New</button>
+      <router-link to="/OrderManagement"><button class="btn" type="submit">New</button></router-link>
       <a href="#"><i class="xi-angle-right-min"></i></a>
     </div>
     <div class="order_container">
@@ -56,7 +56,7 @@ export default {
 <style>
 .container {
   width:100%;
-  margin:0
+  margin:0 auto;
 }
 .box_wrap {
     width: 100%;
