@@ -63,7 +63,7 @@ export default {
     margin:15px 0 0 0;
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-evenly;
 }
 .order_text {
   font-size:20px;
