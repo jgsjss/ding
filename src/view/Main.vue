@@ -7,7 +7,7 @@
           <span class="condition">매장상태</span>
           <span class="condition">: 영업중{{}}</span>
         </button>
-        <i class="xi-bell-o"></i>
+        <i class="xi-bell"></i>
       </div>
 
     </div>
@@ -127,7 +127,7 @@ export default {
 }
 .main_right {
   text-align: right;
-  padding:0 100px;
+  padding:0 30px;
 }
 .main-btn {
   margin:0 auto;
@@ -138,7 +138,7 @@ export default {
   background:#fff;
   color:#997fb5;
 }
-.xi-bell-o {
+.xi-bell {
   color:#997fb5;
   font-size:20px;
 }

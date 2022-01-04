@@ -280,25 +280,6 @@ input {
   padding-right: 40px;
 }
 
-.step_url {
-  /*@naver.com*/
-  position: absolute;
-  top: 16px;
-  right: 13px;
-  font-size: 15px;
-  color: #8e8e8e;
-}
-
-.pswdImg {
-  width: 18px;
-  height: 20px;
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  right: 16px;
-  margin-top: -10px;
-  cursor: pointer;
-}
 
 #email_wrap {
   display: table;
@@ -374,16 +355,6 @@ select {
   color: red;
   display: none;
 }
-
-#alertTxt {
-  position: absolute;
-  top: 19px;
-  right: 38px;
-  font-size: 12px;
-  color: red;
-  display: none;
-}
-
 /* 버튼 */
 .btn_area {
   margin: 30px 0 91px;

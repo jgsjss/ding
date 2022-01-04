@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="box">
+    <div class="box_wrap">
       <p class="order_text">주문관리</p>
       <button class="btn" type="submit">New</button>
       <a href="#"><i class="xi-angle-right-min"></i></a>
@@ -24,7 +24,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -59,20 +58,27 @@ export default {
   width:100%;
   margin:0
 }
-.box {
-  width:100%;
+.box_wrap {
+    width: 100%;
+    margin:15px 0 0 0;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
 }
 .order_text {
-  font-size:24px;
+  font-size:20px;
 }
-/* .box:after {
-    position:absolute;
-    top:0;
-    right:0;
-    font-family:'xeicon';
+/* .box_wrap:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-family: 'xeicon';
     display: block;
-    content:"\e93f";
-    clear:both;
+    content: "\e93f";
+    clear: both;
+    border: 1px solid #997fb5;
+    border-radius: 50%;
+    padding: 1px;
 } */
 
 .btn {
@@ -89,15 +95,14 @@ export default {
 .order_container {
   display:grid;
   grid-template-columns: 1fr 1fr;
-
-  padding:30px 0;
+  padding:15px 0;
 }
 .order_box {
   padding:15px 0;
   text-align: center;
   position:relative;
 }
-.order_box:nth-child(even):after {
+/* .order_box:nth-child(even):after {
   display: block;
   content: '';
   clear:both;
@@ -118,102 +123,19 @@ export default {
   position:absolute;
   top:5%;
   right:20%;
-}
+} */
 
 .xi-angle-right-min {
   border:1px dashed #997fb5;
   border-radius: 100%;
   color:#997fb5;
   line-height: 1.2;
-  font-size: 12px;
+  font-size: 14px;
 }
 .btn {
   padding:0;
 }
 
-/* media query */
-@media ( min-width : 768px) {
-  .container {
-    width:100%;
-    margin:0
-  }
-  .box {
-    width:100%;
-  }
-  .order_text {
-    font-size:16px;
-  }
-  /* .box:after {
-      position:absolute;
-      top:0;
-      right:0;
-      font-family:'xeicon';
-      display: block;
-      content:"\e93f";
-      clear:both;
-  } */
 
-  .btn {
-    width:120px;
-    height:30px;
-    border-radius: 30px;
-    border:1px solid #997fb5;
-    color:#f5f3f7;
-    background:#997fb5;
-  }
-  .btn-default:hover {
-    color:#997fb5;
-  }
-  .order_container {
-    display:grid;
-    grid-template-columns: 1fr 1fr;
 
-    padding:30px 0;
-  }
-  .order_box {
-    padding:15px 0;
-    text-align: center;
-    position:relative;
-  }
-  .order_box:nth-child(even):after {
-    display: block;
-    content: '';
-    clear:both;
-    width:1px;
-    height:100%;
-    background:#ddd;
-    position:absolute;
-    top:5%;
-    left:0;
-  }
-  .order_box:nth-child(3n+4):before {
-    display: block;
-    content: '';
-    clear:both;
-    width:150px;
-    height:1px;
-    background:#ddd;
-    position:absolute;
-    top:5%;
-    right:-6px;
-  }
-
-  .xi-angle-right-min {
-    border:1px dashed #997fb5;
-    border-radius: 100%;
-    color:#997fb5;
-    line-height: 1.2;
-    font-size: 12px;
-  }
-  .btn {
-    padding:0;
-  }
-
-}
-@media ( min-width : 992px) {
-
-}
-@media ( min-width : 1200px) {
-
-}
 </style>

@@ -128,8 +128,8 @@ input {
   position: absolute;
   top: 16px;
   right: 13px;
-  font-size: 15px;
-  color: #8e8e8e;
+  font-size: 14px;
+  color: red;
 }
 .pswd_box {
   padding-bottom:30px;
@@ -260,7 +260,6 @@ select {
   margin-top: 9px;
   font-size: 12px;
   color: red;
-  display: none;
 }
 
 #alertTxt {
@@ -269,7 +268,6 @@ select {
   right: 38px;
   font-size: 12px;
   color: red;
-  display: none;
 }
 
 /* 버튼 */

@@ -28,7 +28,7 @@
         <div>
           <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
           <span class="box int_pass">
-                            <input v-model="signup.password" type="password" id="pswd1" class="int" maxlength="16" @blur="passwordValid" placeholder="8~16자의 영문/숫자를 조합">
+                            <input v-model="signup.password" type="text" id="pswd1" class="int" maxlength="16" @blur="passwordValid" placeholder="8~16자의 영문/숫자를 조합">
                             <span id="alertTxt" v-if="!passwordValidFlag">유효하지 않은 비밀번호 입니다.</span>
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
@@ -39,7 +39,7 @@
         <div>
           <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
           <span class="box int_pass_check">
-                            <input v-model="passwordCheck" type="password" id="pswd2" class="int" @blur="passwordCheckValid" maxlength="16">
+                            <input v-model="passwordCheck" type="text" id="pswd2" class="int" @blur="passwordCheckValid" maxlength="16">
                             <span id="alertTxt" v-if="!passwordCheckFlag">비밀번호가 동일하지 않습니다.</span>
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
                         </span>
@@ -52,7 +52,8 @@
           <span class="box int_name">
                         <label class="input-file-button" for="input-file">파일첨부
                         </label>
-                        <input type="file" id="input-file" style="display:none"/>
+                        <input type="file" id="input-file"/>
+                        <span id="alertTxt" v-if="!passwordCheckFlag">사업자 등록증 : {{}}</span>
                       </span>
           <span class="error_next_box"></span>
         </div>
@@ -109,7 +110,7 @@
         <div>
           <h3 class="join_title"><label for="phoneNo">매장 대표번호</label></h3>
           <span class="box int_mobile">
-                            <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
+                            <input type="tel" id="mobile" class="int" maxlength="11" placeholder="'-'을 제외한 연락처 번호를 입력해주세요." v-model="middleNum">
                         </span>
           <span class="error_next_box"></span>
         </div>
@@ -162,15 +163,15 @@ export default {
       secondNum: '',
       //휴대폰번호 끝 4자리
       thirdNum: '',
+      //휴대폰번호 11자리
+      middleNum: '',
       //주소 api
       postcode: "",
       address: "",
       extraAddress: "",
       signup: {
         id: null,
-        password: null,
-        pwhint:'',
-        pwhintans: null
+        password: null
       },
       passwordCheck: '',
       passwordValidFlag: true
@@ -179,7 +180,10 @@ export default {
   computed: {
     idValid() {
       return /^[A-Za-z0-9]+$/.test(this.signup.id)
-    }
+    },
+    passwordValid() {
+      return /^[A-Za-z0-9]+$/.test(this.signup.password)
+    },
   },
   watch: {
     //중간자리 숫자만 입력가능
@@ -195,6 +199,12 @@ export default {
         alert('숫자만 입력 가능합니다.');
         this.thirdNum = '';
       }
+    },
+    middleNum(a){
+      if(isNaN(a) == true){
+        alert('숫자만 입력 가능합니다.');
+        this.middleNum = '';
+      }
     }
   },
   methods: {
@@ -208,7 +218,8 @@ export default {
     },
     //비밀번호 확인
     passwordValid () { 
-      if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,16}$/.test(this.signup.password)) {
+      if ((/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(this.signup.password))) {
+        console.log(data.passwordValid)
       this.passwordValidFlag = true 
       } else {
         this.passwordValidFlag = false 
@@ -261,8 +272,9 @@ export default {
           // console(data.address)
           //  this.$refs('postcode').value = data.zonecode;
           // this.$refs('address').value = data.addr;
-          this.value = this.address;
-          console.log(data.address)
+          // this.value = this.address;
+          // console.log(data.address)
+
           // 커서를 상세주소 필드로 이동한다.
           //  this.$refs("detailAddress").focus();
 
@@ -361,7 +373,7 @@ input {
   position: absolute;
   top: 16px;
   right: 13px;
-  font-size: 15px;
+  font-size: 14px;
   color: red;
 }
 
@@ -458,6 +470,7 @@ select {
   right: 10px;
   font-size: 12px;
   color: red;
+  display: none;
 
 }
 
@@ -489,5 +502,11 @@ select {
   color: #fff;
   width: 100px;
   height: 30px;
+}
+.input-file-button {
+  display: none;
+}
+#input-file {
+  width: 100%;
 }
 </style>

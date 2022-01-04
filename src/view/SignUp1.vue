@@ -80,7 +80,6 @@ export default {
   },
   methods: {
     select () {
-
       this.selected = []
       if (!this.allSelected) {
         for (let i in this.agree) {
@@ -102,7 +101,9 @@ export default {
       // console.log(this.selected)
     }
   },
-  watch: {}
+  watch: {
+    
+  }
 }
 </script>
 

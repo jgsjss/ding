@@ -1,7 +1,7 @@
 <template>
 
   <div class="container">
-    <div class="box">
+    <div class="box_wrap">
       <p class="order_text">메뉴현황</p>
       <!-- 품절해제 버튼 누르면 App.vue에 menuModal 오픈되는 커스텀이벤트
        @click="changeMenuTrue" -->
@@ -63,24 +63,29 @@
 
 </script>
 
-<style scope>
+<style>
 .container {
   width:100%;
   text-align:center;
 }
-.box {
-  display:flex;
-  justify-content: space-around;
-  align-items: center;
+.box_wrap {
+    width: 100%;
+    margin:15px 0 0 0;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
 }
-/* .box:after {
-    position:absolute;
-    top:0;
-    right:0;
-    font-family:'xeicon';
+/* .box_wrap:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-family: 'xeicon';
     display: block;
-    content:"\e93f";
-    clear:both;
+    content: "\e93f";
+    clear: both;
+    border: 1px solid #997fb5;
+    border-radius: 50%;
+    padding: 1px;
 } */
 .order_text {
   font-size:16px;
@@ -89,9 +94,11 @@
   width:100%;
   height:30px;
   border-radius: 30px;
+  margin:0 15px;
   border:1px solid #997fb5;
   color:#f5f3f7;
   background:#997fb5;
+  font-size:14px;
 }
 .btn-default:hover {
   color:#fff;
@@ -99,7 +106,7 @@
 .order_container {
   display:grid;
   grid-template-columns: 1fr 1fr;
-  padding:30px 0;
+  padding:15px 0;
 }
 .order_box {
   padding:15px 0;
@@ -121,12 +128,12 @@
   display: block;
   content: '';
   clear:both;
-  width:400px;
+  width:300px;
   height:1px;
   background:#ddd;
   position:absolute;
   top:5%;
-  right:20%;
+  right:-6px;
 }
 
 .xi-angle-right-min {
@@ -135,234 +142,7 @@
   color:#997fb5;
   padding:5px;
   line-height: 1.3;
-  font-size: 20px;
-}
-/* media query */
-@media ( max-width : 768px) {
-  .container {
-    width:100%;
-    text-align:center;
-  }
-  .box {
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-  }
-  /* .box:after {
-      position:absolute;
-      top:0;
-      right:0;
-      font-family:'xeicon';
-      display: block;
-      content:"\e93f";
-      clear:both;
-  } */
-  .order_text {
-    font-size:16px;
-  }
-  .btn {
-    width:100%;
-    height:30px;
-    border-radius: 30px;
-    border:1px solid #997fb5;
-    color:#f5f3f7;
-    background:#997fb5;
-  }
-  .btn-default:hover {
-    color:#fff;
-  }
-  .order_container {
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    padding:30px 0;
-  }
-  .order_box {
-    padding:15px 0;
-    text-align: center;
-    position:relative;
-  }
-  .order_box:nth-child(even):after {
-    display: block;
-    content: '';
-    clear:both;
-    width:1px;
-    height:100%;
-    background:#ddd;
-    position:absolute;
-    top:5%;
-    left:0;
-  }
-  .order_box:nth-child(3n+4):before {
-    display: block;
-    content: '';
-    clear:both;
-    width:400px;
-    height:1px;
-    background:#ddd;
-    position:absolute;
-    top:5%;
-    right:20%;
-  }
-
-  .xi-angle-right-min {
-    border:1px dashed #997fb5;
-    border-radius: 100%;
-    color:#997fb5;
-    padding:5px;
-    line-height: 1.3;
-    font-size: 20px;
-  }
-}
-@media (max-width : 992px) {
-  .container {
-    width:100%;
-    text-align:center;
-  }
-  .box {
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  /* .box:after {
-      position:absolute;
-      top:0;
-      right:0;
-      font-family:'xeicon';
-      display: block;
-      content:"\e93f";
-      clear:both;
-  } */
-  .order_text {
-    font-size:16px;
-  }
-  .btn {
-    width:120px;
-    height:30px;
-    border-radius: 30px;
-    border:1px solid #997fb5;
-    color:#f5f3f7;
-    background:#997fb5;
-  }
-  .btn-default:hover {
-    color:#fff;
-  }
-  .order_container {
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    padding:30px 0;
-  }
-  .order_box {
-    padding:15px 0;
-    text-align: center;
-    position:relative;
-  }
-  .order_box:nth-child(even):after {
-    display: block;
-    content: '';
-    clear:both;
-    width:1px;
-    height:100%;
-    background:#ddd;
-    position:absolute;
-    top:5%;
-    left:0;
-  }
-  .order_box:nth-child(3n+4):before {
-    display: block;
-    content: '';
-    clear:both;
-    width:400px;
-    height:1px;
-    background:#ddd;
-    position:absolute;
-    top:5%;
-    right:20%;
-  }
-
-  .xi-angle-right-min {
-    border:1px dashed #997fb5;
-    border-radius: 100%;
-    color:#997fb5;
-    padding:5px;
-    line-height: 1.3;
-    font-size: 20px;
-  }
-}
-@media ( min-width : 1200px) {
-  .container {
-    width:100%;
-    text-align:center;
-  }
-  .box {
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  /* .box:after {
-      position:absolute;
-      top:0;
-      right:0;
-      font-family:'xeicon';
-      display: block;
-      content:"\e93f";
-      clear:both;
-  } */
-  .order_text {
-    font-size:16px;
-  }
-  .btn {
-    width:120px;
-    height:30px;
-    border-radius: 30px;
-    border:1px solid #997fb5;
-    color:#f5f3f7;
-    background:#997fb5;
-  }
-  .btn-default:hover {
-    color:#fff;
-  }
-  .order_container {
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    padding:30px 0;
-  }
-  .order_box {
-    padding:15px 0;
-    text-align: center;
-    position:relative;
-  }
-  .order_box:nth-child(even):after {
-    display: block;
-    content: '';
-    clear:both;
-    width:1px;
-    height:100%;
-    background:#ddd;
-    position:absolute;
-    top:5%;
-    left:0;
-  }
-  .order_box:nth-child(3n+4):before {
-    display: block;
-    content: '';
-    clear:both;
-    width:400px;
-    height:1px;
-    background:#ddd;
-    position:absolute;
-    top:5%;
-    right:20%;
-  }
-
-  .xi-angle-right-min {
-    border:1px dashed #997fb5;
-    border-radius: 100%;
-    color:#997fb5;
-    padding:5px;
-    line-height: 1.3;
-    font-size: 20px;
-  }
+  font-size: 14px;
 }
 
 
