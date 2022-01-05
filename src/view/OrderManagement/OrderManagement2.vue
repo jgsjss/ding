@@ -1,5 +1,11 @@
 <template>
     <OrderManagement />
+    <template>
+<div>
+    
+</div>
+<!--주문관리중 완료주문 페이지-->
+</template>
 </template>
 
 <script>

@@ -78,7 +78,7 @@ export default {
 }
 .component {
   float:left;
-  width:26%;
+  width:25%;
   margin:0 15px;
   background:#f5f3f7;
   color:#997fb5;
