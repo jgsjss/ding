@@ -1,18 +1,40 @@
 <template>
-  <Navbar />
-
-
-
-
+  <div class="list_wrap">
+    <i class="xi-list-square list"></i>
+    <i class="xi-apps list"></i>
+    <select id="order_select" class="list">
+      <option value="최신순">최신순</option>
+      <option value="과거순">과거순</option>
+    </select>
+  </div>
+  <div class="order_wrapper" v-for="(orderData, i) in $store.state.orderData" :key="i">
+    <div class="order_left">
+      <span class="order_num">{{123}}</span>
+      <div>
+        <span class="order_type">{{}}매장</span>
+        <span class="order_time">{{}}13:00</span>
+      </div>
+    </div>
+    <div class="order_middle" >
+      <span>{{orderData.menu}}</span>
+      <span>{{}}진짜 진한 바닐라 리얼딥 1 / 진짜 진한 돌체 리얼딥 1</span>
+      <span>{{}}요청사항</span>
+      <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
+    </div>
+    <div class="order_right">
+      <router-link to="/OrderManage" class="order_right_inner"><span>주문표 인쇄</span></router-link>
+      <router-link to="/OrderManage" class="order_right_inner"><span>준비중</span></router-link>
+    </div>
+  </div>
 
 
 </template>
 <script>
-import Navbar from '@/components/Navbar.vue'
+
 
 export default {
   components : {
-    Navbar,
+
   }
 }
 

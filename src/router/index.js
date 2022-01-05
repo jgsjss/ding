@@ -5,6 +5,8 @@ import MenuManagement from '../view/MenuManagement.vue'
 import OrderManagement from '../view/OrderManagement.vue'
 import OrderManagement1 from '../view/OrderManagement1.vue'
 import OrderManagement2 from '../view/OrderManagement2.vue'
+import OrderManagement3 from '../view/OrderManagement3'
+
 import StaffManagement from '../view/StaffManagement.vue'
 import OperationManagement from '../view/OperationManagement.vue'
 import DiscountCode from '../view/DiscountCode.vue'
@@ -18,6 +20,7 @@ import ReleaseSoldOut from '../view/ReleaseSoldOut.vue'
 import MenuManageCategories from '../view/MenuManageCategories.vue'
 import MenuManageMenus from '../view/MenuManageMenus.vue'
 import MenuManageOptions from '../view/MenuManageOptions.vue'
+import OrderManagement4 from '../view/OrderManagement4'
 
 const routes = [
   {
@@ -73,13 +76,21 @@ const routes = [
     //중첩되는 자식 라우트 경로
     children: [
       {
-      path: '/ordermanagement/1',
-      component: OrderManagement1
-    },
-    {
-      path: '/ordermanagement/2',
-      component: OrderManagement2,
-    },
+        path: '/ordermanagement/1',
+        component: OrderManagement1
+      },
+      {
+        path: '/ordermanagement/2',
+       component: OrderManagement2
+      },
+      {
+        path: '/ordermanagement/3',
+        component: OrderManagement3
+      },
+      {
+        path: '/ordermanagement/3',
+        component: OrderManagement4
+      },
   ]
   },
   {
