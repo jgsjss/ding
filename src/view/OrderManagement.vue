@@ -13,9 +13,9 @@
       </div>
       <div class="component_bar">
         <router-link to="/OrderManagement"><span class="component_name">신규주문{{}}</span></router-link>
-        <router-link to="/OrderManagement1"><span class="component_name">준비중{{}}</span></router-link>
-        <router-link to="/OrderManagement2"><span class="component_name">완료주문{{}}</span></router-link>
-        <router-link to="/OrderManagement3"><span class="component_name">주문내역</span></router-link>
+        <router-link to="/OrderManagementNew"><span class="component_name">준비중{{}}</span></router-link>
+        <router-link to="/OrderManagementOk"><span class="component_name">완료주문{{}}</span></router-link>
+        <router-link to="/OrderManagementList"><span class="component_name">주문내역</span></router-link>
       </div>
       <div class="list_wrap">
         <i class="xi-list-square list"></i>

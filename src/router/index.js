@@ -2,7 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Main from '../view/Main.vue'
 import MenuManagement from '../view/MenuManagement.vue'
 import OrderManagement from '../view/OrderManagement.vue'
-import StaffManagement from '../view/StaffManagement.vue'
+import OrderManagementNew from '../view/OrderManagementNew.vue'
+import OrderManagementOk from '../view/OrderManagementOk.vue'
+import OrderManagementList from '../view/OrderManagementList.vue'
 import OperationManagement from '../view/OperationManagement.vue'
 import DiscountCode from '../view/DiscountCode.vue'
 import SalesManagement from '../view/SalesManagement.vue'
@@ -66,7 +68,22 @@ const routes = [
   },
   {
     path: '/ordermanagement',
-    component: OrderManagement
+    component: OrderManagement,
+    //중첩되는 자식 라우트 경로
+    children: [
+      {
+      path: '/ordermanagement/new',
+      component: OrderManagementNew
+    },
+    {
+      path: '/ordermanagement/ok',
+      component: OrderManagementOk,
+    },
+    {
+      path: '/ordermanagement/list',
+      component: OrderManagementList,
+    },
+  ]  
   },
   {
     path: '/staffmanagement',
