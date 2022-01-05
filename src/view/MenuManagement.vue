@@ -3,9 +3,7 @@
     <div><router-link to="/menumanagement/categories"><a>카테고리편집</a></router-link> |
     <router-link to="/menumanagement/menus"><a >메뉴편집</a> </router-link> |
     <router-link to="/menumanagement/options"> <a>옵션편집</a></router-link></div>
-    <router-view :orderData="orderData" :completedNum="completedNum" :newOrderNum="newOrderNum" :cancelOrder="cancelOrder"
-    :shopData="shopData" :openShopNum="openShopNum"
-    :menuData="menuData" :soldOutNum="soldOutNum" :hiddenNum="hiddenNum" ></router-view>
+    <router-view  ></router-view>
 
     <!-- 카테고리편집 탭 -->
       <!-- <div v-if="menuTab == 0">

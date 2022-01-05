@@ -1,15 +1,15 @@
 <template>
-    <OrderManagement />
-    <template>
-<div>
-    
-</div>
-<!--주문관리중 완료주문 페이지-->
-</template>
+   <div>
+
+   </div>
+
 </template>
 
+<!--주문관리중 완료주문 페이지-->
+
+
 <script>
-import OrderManagement1 from '@/components/OrderManagement/OrderManagement1.vue'
+import Navbar from '../components/Navbar'
 
 export default {
   components : {

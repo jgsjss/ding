@@ -1,67 +1,8 @@
 <template>
   <Navbar />
-  <div class="ordermanage_container">
-    <div class="main_wrap">
-    <h2 class="main_text">주문관리</h2>
-      <div class="main_right">
-        <button class="main-btn" type="submit">
-          <span class="condition">매장상태</span>
-          <span class="condition">: 영업중{{}}</span>
-        </button>
-        <i class="xi-bell"></i>
-      </div>
-      </div>
-      <div class="component_bar">
-        <router-link to="/OrderManagement"><span class="component_name">신규주문{{}}</span></router-link>
-        <router-link to="/OrderManagement1"><span class="component_name">준비중{{}}</span></router-link>
-        <router-link to="/OrderManagement2"><span class="component_name">완료주문{{}}</span></router-link>
-        <router-link to="/OrderManagement3"><span class="component_name">주문내역</span></router-link>
-      </div>
-      <div class="list_wrap">
-        <i class="xi-list-square list"></i>
-        <i class="xi-apps list"></i>
-        <button type="text" class="new_btn">최신순</button>
-      </div>
-      <div class="order_wrapper">
-      <div class="order_left">
-        <span class="order_num">{{123}}</span>
-        <div>
-        <span class="order_type">{{}}매장</span>
-        <span class="order_time">{{}}13:00</span>
-        </div>
-      </div>        
-        <div class="order_middle">
-          <span>{{}}[메뉴10개] 진짜 진한 바닐라 리얼딥 외 9개</span>
-          <span>{{}}진짜 진한 바닐라 리얼딥 1 / 진짜 진한 돌체 리얼딥 1</span>
-          <span>{{}}요청사항</span>
-          <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
-        </div>
-        <div class="order_right">
-          <router-link to="/OrderManage" class="order_right_inner"><span>주문표 인쇄</span></router-link>
-          <router-link to="/OrderManage" class="order_right_inner"><span>준비중</span></router-link>
-        </div>
-      </div>
-      <!--반복문으로 변경예정-->
-      <div class="order_wrapper">
-      <div class="order_left">
-        <span class="order_num">{{126}}</span>
-        <div>
-        <span class="order_type">{{}}포장</span>
-        <span class="order_time">{{}}13:05</span>
-        </div>
-      </div>        
-        <div class="order_middle">
-          <span>{{}}[메뉴1개] 진짜 진한 모카 리얼딥 외 1개</span>
-          <span>{{}}진짜 진한 모카 리얼딥 1 </span>
-          <span>{{}}요청사항</span>
-          <span>{{}}모카 라떼는 샷 진하게 해주세요 !</span>
-        </div>
-        <div class="order_right">
-          <router-link to="/OrderManage" class="order_right_inner"><span>주문표 인쇄</span></router-link>
-          <router-link to="/OrderManage" class="order_right_inner"><span>준비중</span></router-link>
-        </div>
-      </div>      
-  </div>
+
+
+
 
 
 
@@ -179,7 +120,7 @@ export default {
   background:#ddd;
 }
 .order_left {
-  display:flex;    
+  display:flex;
   flex-direction: column;
   align-items: center;
   width:20%;
@@ -187,7 +128,7 @@ export default {
 }
 .order_left > div {
   display:flex;
-  flex-direction: row;  
+  flex-direction: row;
 }
 .order_num {
     border: 1px solid #997fb5;
