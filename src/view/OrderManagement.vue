@@ -20,7 +20,10 @@
       <div class="list_wrap">
         <i class="xi-list-square list"></i>
         <i class="xi-apps list"></i>
-        <button type="text" class="new_btn">최신순</button>
+          <select id="order_select" class="list">
+            <option value="최신순">최신순</option>
+            <option value="과거순">과거순</option>
+          </select>        
       </div>
       <div class="order_wrapper" v-for="(orderData, i) in $store.state.orderData" :key="i">
       <div class="order_left">
@@ -42,7 +45,7 @@
         </div>
       </div>
       <!--반복문으로 변경예정-->
-      <div class="order_wrapper">
+      <!-- <div class="order_wrapper">
       <div class="order_left">
         <span class="order_num">{{126}}</span>
         <div>
@@ -60,7 +63,7 @@
           <router-link to="/OrderManage" class="order_right_inner"><span>주문표 인쇄</span></router-link>
           <router-link to="/OrderManage" class="order_right_inner"><span>준비중</span></router-link>
         </div>
-      </div>
+      </div> -->
   </div>
 
 
@@ -121,11 +124,13 @@ export default {
   background:#997fb5;
 } */
 .list_wrap {
-    width: 100%;
-    text-align: right;
     margin: 0 auto;
     padding: 0 30px;
-    position:relative;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
 }
 .list_wrap:after {
   position: absolute;
@@ -151,6 +156,14 @@ export default {
   font-size:24px;
   padding:0 10px;
   color:#997fb5;
+}
+#order_select {
+  width:60px;
+  border:1px solid #997fb5;
+  background:none;
+  text-align: center;
+  font-size:14px;
+  border-radius: 15px;
 }
 .new_btn {
   background:#fff;
