@@ -46,17 +46,7 @@
           <span class="error_next_box"></span>
         </div>
 
-        <!-- business number -->
-        <div>
-          <h3 class="join_title"><label for="input_file">사업자 등록번호</label></h3>
-          <span class="box int_name">
-                        <label class="input-file-button" for="input-file">파일첨부
-                        </label>
-                        <input type="file" id="input-file"/>
-                        <span id="alertTxt" v-if="!passwordCheckFlag">사업자 등록증 : {{}}</span>
-                      </span>
-          <span class="error_next_box"></span>
-        </div>
+
         <!--name-->
         <div>
           <h3 class="join_title"><label for="name">대표자 이름</label></h3>
@@ -503,10 +493,5 @@ select {
   width: 100px;
   height: 30px;
 }
-.input-file-button {
-  display: none;
-}
-#input-file {
-  width: 100%;
-}
+
 </style>

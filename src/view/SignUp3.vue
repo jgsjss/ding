@@ -74,11 +74,19 @@
                     <option value="직접입력">직접입력</option>
                   </select>
                 </span>
-
-
             </div>
           </div>
-
+        <!-- business number -->
+        <div>
+          <h3 class="join_title"><label for="input_file">사업자 등록번호</label></h3>
+          <span class="box int_name">
+                        <label class="input-file-button" for="input-file">파일첨부
+                        </label>
+                        <input type="file" id="input-file"/>
+                        <span id="alertTxt" v-if="!passwordCheckFlag">사업자 등록증 : {{}}</span>
+                      </span>
+          <span class="error_next_box"></span>
+        </div>
 
 
           <div class="btn_area">
@@ -370,6 +378,12 @@ select {
   font-size: 20px;
   font-weight: 400;
   font-family: Dotum,'돋움',Helvetica,sans-serif;
+}
+.input-file-button {
+  display: none;
+}
+#input-file {
+  width: 100%;
 }
 
 </style>

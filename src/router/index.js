@@ -4,8 +4,9 @@ import Main from '../view/Main.vue'
 import MenuManagement from '../view/MenuManagement.vue'
 import OrderManagement from '../view/OrderManagement.vue'
 import OrderManagement1 from '../view/OrderManagement1.vue'
+import OrderManagement1_2 from '../view/OrderManagement1_2.vue'
 import OrderManagement2 from '../view/OrderManagement2.vue'
-import OrderManagement3 from '../view/OrderManagement3'
+import OrderManagement3 from '../view/OrderManagement3.vue'
 
 import StaffManagement from '../view/StaffManagement.vue'
 import OperationManagement from '../view/OperationManagement.vue'
@@ -77,7 +78,7 @@ const routes = [
     children: [
       {
         path: '/ordermanagement/1',
-        component: OrderManagement1
+        component: OrderManagement1,
       },
       {
         path: '/ordermanagement/2',
@@ -88,9 +89,13 @@ const routes = [
         component: OrderManagement3
       },
       {
-        path: '/ordermanagement/3',
-        component: OrderManagement4
+        path: '/ordermanagement/1_2',
+        component: OrderManagement1_2
       },
+      // {
+      //   path: '/ordermanagement/4',
+      //   component: OrderManagement4
+      // },
   ]
   },
   {
