@@ -25,11 +25,11 @@ const routes = [
   },
   {
     path:'/signup1',
-    component: SignUp1,
+    component: SignUp1
   },
   {
     path:'/signup2',
-    component: SignUp2,
+    component: SignUp2,name:'rtest'
   },
   {
     path:'/signup3',
@@ -79,7 +79,7 @@ const routes = [
   //     path: '/ordermanagement/2',
   //     component: OrderManagement2,
   //   },
-  // ]    
+  // ]
   },
   {
     path: '/staffmanagement',

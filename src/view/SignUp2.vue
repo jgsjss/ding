@@ -14,6 +14,9 @@
 
         <!-- ID -->
         <div>
+          <button type="button" @click="parentParam">
+            테스트버튼
+          </button>
           <h3 class="join_title">
             <label for="id">아이디</label>
           </h3>
@@ -174,7 +177,10 @@ export default {
         password: null
       },
       passwordCheck: '',
-      passwordValidFlag: true
+      passwordValidFlag: true,
+      // ===================================================
+      selected:this.$route.params.val
+      // ===================================================
     }
   },
   computed: {
@@ -206,8 +212,18 @@ export default {
         this.middleNum = '';
       }
     }
+  },created () {
+    // ===================================================
+      console.log(this.selected)
+
+    // ===================================================
   },
   methods: {
+    // ===================================================
+    parentParam(){
+      console.log(this.selected)
+    },
+    // ===================================================
     //비밀번호 재확인
     passwordCheckValid() {
       if(this.signup.password === this.passwordCheck) {
@@ -217,13 +233,13 @@ export default {
       }
     },
     //비밀번호 확인
-    passwordValid () { 
+    passwordValid () {
       if ((/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(this.signup.password))) {
         console.log(data.passwordValid)
-      this.passwordValidFlag = true 
+      this.passwordValidFlag = true
       } else {
-        this.passwordValidFlag = false 
-      } 
+        this.passwordValidFlag = false
+      }
     },
     //daum map api
     execDaumPostcode() {
