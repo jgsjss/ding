@@ -12,60 +12,60 @@
       <!-- content-->
       <div id="content">
         <form
-        id="app"
-        @submit="checkForm"
-        action="https://vuejs.org/"
-        method="post"
-      >
-        <!-- ID -->
-        <div>
-          <h3 class="join_title">
-            <label for="id">아이디</label>
-          </h3>
-          <span class="box int_id">
-                            <input v-model="signup.id" type="text" id="id" class="int" maxlength="20">
+            id="app"
+            @submit="checkForm"
+            action="https://vuejs.org/"
+            method="post"
+        >
+          <!-- ID -->
+          <div>
+            <h3 class="join_title">
+              <label for="id">아이디</label>
+            </h3>
+            <span class="box int_id">
+                            <input v-model="input.signup.id" type="text" id="id" class="int" maxlength="20">
                             <span class="step_url" v-if="!idValid">유효하지 않은 아이디 입니다.</span>
                         </span>
-          <span class="error_next_box"></span>
-        </div>
+            <span class="error_next_box"></span>
+          </div>
 
-        <!-- PW1 -->
-        <div>
-          <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
-          <span class="box int_pass">
-                            <input v-model="signup.password" type="text" id="pswd1" class="int" maxlength="16" @blur="passwordValid" placeholder="8~16자의 영문/숫자를 조합">
+          <!-- PW1 -->
+          <div>
+            <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+            <span class="box int_pass">
+                            <input v-model="input.signup.password" type="text" id="pswd1" class="int" maxlength="16" @blur="passwordValid" placeholder="8~16자의 영문/숫자를 조합">
                             <span id="alertTxt" v-if="!passwordValidFlag">유효하지 않은 비밀번호 입니다.</span>
-            <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
+              <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
-          <span class="error_next_box"></span>
-        </div>
+            <span class="error_next_box"></span>
+          </div>
 
-        <!-- PW2 -->
-        <div>
-          <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
-          <span class="box int_pass_check">
+          <!-- PW2 -->
+          <div>
+            <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
+            <span class="box int_pass_check">
                             <input v-model="passwordCheck" type="text" id="pswd2" class="int" @blur="passwordCheckValid" maxlength="16">
                             <span id="alertTxt" v-if="!passwordCheckFlag">비밀번호가 동일하지 않습니다.</span>
-            <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
+              <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
                         </span>
-          <span class="error_next_box"></span>
-        </div>
+            <span class="error_next_box"></span>
+          </div>
 
 
-        <!--name-->
-        <div>
-          <h3 class="join_title"><label for="name">대표자 이름</label></h3>
-          <span class="box int_name">
-                            <input type="text" v-model="signup.name" id="name" class="int" maxlength="20" placeholder="이름을 입력해주세요.">
+          <!--name-->
+          <div>
+            <h3 class="join_title"><label for="name">대표자 이름</label></h3>
+            <span class="box int_name">
+                            <input type="text" v-model="input.signup.name" id="name" class="int" maxlength="20" placeholder="이름을 입력해주세요.">
                         </span>
-          <span class="error_next_box" v-if="checkFlag && !signup.name">이름을 입력하세요</span>
-        </div>
-        <!--number-->
-        <div>
-          <h3 class="join_title"><label for="number">대표자 번호</label></h3>
-          <div id="num_wrap">
-            <!-- BIRTH_MM -->
-            <div id="num_first">
+            <span class="error_next_box" v-if="checkFlag && !input.signup.name">이름을 입력하세요</span>
+          </div>
+          <!--number-->
+          <div>
+            <h3 class="join_title"><label for="number">대표자 번호</label></h3>
+            <div id="num_wrap">
+              <!-- BIRTH_MM -->
+              <div id="num_first">
                                 <span class="box">
                                     <select id="number" class="sel">
                                         <option>선택</option>
@@ -76,69 +76,68 @@
                                         <option value="019">019</option>
                                     </select>
                                 </span>
-            </div>
-            <!-- BIRTH_YY -->
-            <div id="num_second">
+              </div>
+              <!-- BIRTH_YY -->
+              <div id="num_second">
                                 <span class="box">
                                     <input type="text" id="second" class="int" maxlength="4" v-model="secondNum">
                                 </span>
-            </div>
+              </div>
 
-            <!-- BIRTH_DD -->
-            <div id="num_dd">
+              <!-- BIRTH_DD -->
+              <div id="num_dd">
                                 <span class="box">
                                     <input type="text" id="dd" class="int" maxlength="4" v-model="thirdNum">
                                 </span>
+              </div>
             </div>
+            <span class="error_next_box"></span>
           </div>
-          <span class="error_next_box"></span>
-        </div>
-        <!--shop name-->
-        <div>
-          <h3 class="join_title"><label for="name">매장 이름</label></h3>
-          <span class="box int_name">
+          <!--shop name-->
+          <div>
+            <h3 class="join_title"><label for="name">매장 이름</label></h3>
+            <span class="box int_name">
                             <input type="text" id="name" class="int" maxlength="20">
                         </span>
-          <span class="error_next_box"></span>
-        </div>
-        <!-- shop number -->
-        <div>
-          <h3 class="join_title"><label for="phoneNo">매장 대표번호</label></h3>
-          <span class="box int_mobile">
+            <span class="error_next_box"></span>
+          </div>
+          <!-- shop number -->
+          <div>
+            <h3 class="join_title"><label for="phoneNo">매장 대표번호</label></h3>
+            <span class="box int_mobile">
                             <input type="tel" id="mobile" class="int" maxlength="11" placeholder="'-'을 제외한 연락처 번호를 입력해주세요." v-model="middleNum">
                         </span>
-          <span class="error_next_box"></span>
-        </div>
-        <!--shop address-->
-        <div>
-          <h3 class="join_title"><label for="name">매장 주소</label></h3>
-          <span class="box int_mobile">
+            <span class="error_next_box"></span>
+          </div>
+          <!--shop address-->
+          <div>
+            <h3 class="join_title"><label for="name">매장 주소</label></h3>
+            <span class="box int_mobile">
                         <input type="text" id="address" ref="address" class="int"  maxlength="20" placeholder="매장 주소">
                         <button type="submit" class="addr_btn" @click="execDaumPostcode()" value="우편번호 찾기">주소검색</button>
                         </span>
-          <span class="box int_mobile">
+            <span class="box int_mobile">
                         <input type="text" id="detailAddress" class="int" maxlength="20" placeholder="매장 상세주소">
                         </span>
-          <span class="box int_mobile">
+            <span class="box int_mobile">
                         <input type="text" class="int" v-model="postcode" placeholder="우편번호">
                         </span>
-          <span class="box int_mobile">
+            <span class="box int_mobile">
                         <input type="text" class="int" id="extraAddress" ref="extraAddress" placeholder="참고항목">
                         </span>
-        </div>
+          </div>
+
+          <!-- JOIN BTN-->
+          <div class="btn_area">
+            <router-link to="/signup3">
+              <button type="button" id="btnJoin">
+                <span>다음</span>
+              </button>
+            </router-link>
+          </div>
 
 
-
-
-        <!-- JOIN BTN-->
-        <div class="btn_area">
-          <button type="button" id="btnJoin">
-            <span><router-link to="/signup3">다음</router-link></span>
-          </button>
-        </div>
-
-
-    </form>
+        </form>
       </div>
       <!-- content-->
 
@@ -149,46 +148,47 @@
 
 </template>
 <script>
+
 export default {
+
   data () {
     return {
-      mobileNo: '',
-      number: '',
-      //휴대폰번호 중간 4자리
-      secondNum: '',
-      //휴대폰번호 끝 4자리
-      thirdNum: '',
-      //휴대폰번호 11자리
-      middleNum: '',
-      //주소 api
-      postcode: "",
-      address: "",
-      extraAddress: "",
-      signup: {
-        id: null,
-        password: null
+      input: {
+        mobileNo: '',
+        number: '',
+        //휴대폰번호 중간 4자리
+        secondNum: '',
+        //휴대폰번호 끝 4자리
+        thirdNum: '',
+        //휴대폰번호 11자리
+        middleNum: '',
+        //주소 api
+        postcode: '',
+        address: '',
+        extraAddress: '',
+        signup: { id: null,password: null }
       },
       passwordCheck: '',
       passwordValidFlag: true,
-      selected:this.$route.params.val
+      selected:this.$route.params.val,
+
+      //회원정보 입력받은 값을 담을 스테이트
+
     }
   },
   computed: {
     idValid() {
-      return /^[A-Za-z0-9]+$/.test(this.signup.id)
+      return /^[A-Za-z0-9]+$/.test(this.input.signup.id)
     },
     passwordValid() {
-      return /^[A-Za-z0-9]+$/.test(this.signup.password)
+      return /^[A-Za-z0-9]+$/.test(this.input.signup.password)
     },
   },
-
   created () {
-  // ===================================================
-  console.log(this.selected)
-    console.log(this.$session.get('k'))
-
-  // ===================================================
-},
+    // ===================================================
+    console.log(this.selected)
+    // ===================================================
+  },
   watch: {
     //중간자리 숫자만 입력가능
     secondNum(a){
@@ -212,9 +212,11 @@ export default {
     }
   },
   methods: {
+
+
     //비밀번호 재확인
     passwordCheckValid() {
-      if(this.signup.password === this.passwordCheck) {
+      if(this.input.signup.password === this.passwordCheck) {
         this.passwordCheckFlag = true
       } else {
         this.passwordCheckFlag = false
@@ -222,9 +224,9 @@ export default {
     },
     //비밀번호 확인
     passwordValid () {
-      if ((/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(this.signup.password))) {
+      if ((/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(this.input.signup.password))) {
         console.log(data.passwordValid)
-      this.passwordValidFlag = true
+        this.passwordValidFlag = true
       } else {
         this.passwordValidFlag = false
       }
@@ -291,13 +293,16 @@ export default {
         },
       }).open();
     },
+    //다음 클릭시 입력한 회원정보를 userInfo에 담고 라우터 param 넘기는 메소드
+    // sendUserInfo(){
+    //
+    //   router.push({
+    //     name: 'routerParam2',
+    //     parmas: {val: this.userInfo}
+    //   })
+    // }
   },
-//     mounted() {
-//   this.$nextTick(function () {
-//     // 전체 화면내용이 렌더링된 후에 아래의 코드가 실행됩니다.
-//     $refs('address').value = data.addr;
-//   })
-// }
+
 
 };
 </script>

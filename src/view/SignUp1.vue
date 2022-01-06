@@ -68,16 +68,15 @@
 </template>
 <script>
 
-import router from '../router'
-import session from 'vue-session'
 
+import router from '../router'
 
 export default {
   data () {
     return {
       agree: ['14세이상', '이용약관', '개인정보', '마케팅'],
       allSelected: false,
-      selected: []
+      selected: [],
 
     }
   },
@@ -88,10 +87,8 @@ export default {
         params: { val: this.selected }
         // params: { val: "값 넘어옴" }
       })
-    },
-    saveSession(){
-      this.$session.set('k','v')
-    },
+    }
+    ,
 
     select () {
       this.selected = []

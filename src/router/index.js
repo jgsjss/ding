@@ -34,15 +34,18 @@ const routes = [
   },
   {
     path:'/signup2',
-    component: SignUp2,name:"routeParam1"
+    component: SignUp2,
+    name:"routeParam1"
   },
   {
     path:'/signup3',
     component: SignUp3,
+    name:"routeParam2"
   },
   {
     path:'/signup4',
     component: SignUp4,
+    name:"routeParam3"
   },
   {
     path: '/main',

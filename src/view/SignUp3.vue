@@ -8,30 +8,30 @@
       <!-- content-->
       <div id="content">
         <form
-          id="app"
-          @submit="checkForm"
-          action="https://vuejs.org/"
-          method="post"
+            id="app"
+            @submit="checkForm"
+            action="https://vuejs.org/"
+            method="post"
         >
-        <p class="inner_box_text">
-          (브랜드)와 소통할 관리자 정보를 적어주세요.<br>
-          해당 정보로 정보 전달 및 소통이 이루어지니 정확하게 입력해주세요!
-        </p>
-        <!--name-->
-        <div>
-          <h3 class="join_title"><label for="name">관리자 이름</label></h3>
-          <span class="box int_name">
+          <p class="inner_box_text">
+            (브랜드)와 소통할 관리자 정보를 적어주세요.<br>
+            해당 정보로 정보 전달 및 소통이 이루어지니 정확하게 입력해주세요!
+          </p>
+          <!--name-->
+          <div>
+            <h3 class="join_title"><label for="name">관리자 이름</label></h3>
+            <span class="box int_name">
                             <input type="text" id="name" class="int" maxlength="20" placeholder="관리자 이름">
                         </span>
-          <span class="error_next_box"></span>
-        </div>
+            <span class="error_next_box"></span>
+          </div>
 
-        <!--number-->
-        <div>
-          <h3 class="join_title"><label for="number">관리자 번호</label></h3>
-          <div id="num_wrap">
-            <!-- BIRTH_MM -->
-            <div id="num_first">
+          <!--number-->
+          <div>
+            <h3 class="join_title"><label for="number">관리자 번호</label></h3>
+            <div id="num_wrap">
+              <!-- BIRTH_MM -->
+              <div id="num_first">
                                 <span class="box">
                                     <select id="number" class="sel">
                                         <option>선택</option>
@@ -42,34 +42,34 @@
                                         <option value="019">019</option>
                                     </select>
                                 </span>
-            </div>
-            <!-- BIRTH_YY -->
-            <div id="num_second">
+              </div>
+              <!-- BIRTH_YY -->
+              <div id="num_second">
                                 <span class="box">
                                     <input type="text" id="second" class="int" maxlength="4" v-model="secondNum">
                                 </span>
-            </div>
+              </div>
 
-            <!-- BIRTH_DD -->
-            <div id="num_dd">
+              <!-- BIRTH_DD -->
+              <div id="num_dd">
                                     <span class="box">
                                         <input type="text" id="dd" class="int" maxlength="4" v-model="thirdNum">
                                     </span>
+              </div>
+              <span class="error_next_box"></span>
             </div>
-            <span class="error_next_box"></span>
-          </div>
-          <!-- email_address -->
-          <div id="email">
-            <h3 class="join_title"><label for="email">관리자 메일주소</label></h3>
+            <!-- email_address -->
+            <div id="email">
+              <h3 class="join_title"><label for="email">관리자 메일주소</label></h3>
               <div id="email_wrap">
 
-            <!-- sub_mail -->
-            <div id="sub_email">
+                <!-- sub_mail -->
+                <div id="sub_email">
               <span class="box">
                 <input type="text" id="sub_email" class="int" maxlength="20" v-model="sub_email" placeholder="이메일을 입력해주세요">
               </span>
-            </div>
-              <span class="middle_mail">@</span>
+                </div>
+                <span class="middle_mail">@</span>
                 <span class="box">
                   <select id="email" class="sel">
                     <option>선택</option>
@@ -80,33 +80,33 @@
                     <option value="직접입력">직접입력</option>
                   </select>
                 </span>
+              </div>
             </div>
-          </div>
-        <!-- business number -->
-        <div>
-          <h3 class="join_title"><label for="input_file">사업자 등록번호</label></h3>
-          <span class="box int_name">
+            <!-- business number -->
+            <div>
+              <h3 class="join_title"><label for="input_file">사업자 등록증</label></h3>
+              <span class="box int_name">
                         <label class="input-file-button" for="input-file">파일첨부
                         </label>
-                        <input type="file" id="input-file"/>
+                        <input  type="file" id="input-file" ref="bizImage" @change="onInputImage()" />
                         <span id="alertTxt" v-if="!passwordCheckFlag">사업자 등록증 : {{}}</span>
                       </span>
-          <span class="error_next_box"></span>
-        </div>
+              <span class="error_next_box"></span>
+            </div>
 
 
-          <div class="btn_area">
-            <router-link to="/signup2">
-            <button type="button" id="btnJoin">
-              <span><router-link to="/signup4">가입하기</router-link></span>
-            </button>
-            </router-link>
+            <div class="btn_area">
+              <router-link to="/signup4">
+                <button type="button" id="btnJoin" @click="">
+                  <span>가입하기</span>
+                </button>
+              </router-link>
+            </div>
+
+
+
           </div>
-
-
-
-        </div>
-        <!-- content-->
+          <!-- content-->
         </form>
       </div>
     </div>
@@ -115,39 +115,64 @@
 
 </template>
 <script>
+import router from '../router'
+
 export default {
   data () {
     return {
-      mobileNo: '',
-      number: '',
-      //휴대폰번호 중간 4자리
-      secondNum: '',
-      //휴대폰번호 끝 4자리
-      thirdNum: '',
-      //주소 api
-      postcode: "",
-      address: "",
-      extraAddress: "",
+      input: {
+        mobileNo: '',
+        number: '',
+        //휴대폰번호 중간 4자리
+        secondNum: '',
+        //휴대폰번호 끝 4자리
+        thirdNum: '',
+        //주소 api
+        postcode: "",
+        address: "",
+        extraAddress: "",
+        image: '',
+      },
     }
   },
-  watch: {
-    //중간자리 숫자만 입력가능
-    secondNum(a){
-      if(isNaN(a) == true){
-        alert('숫자만 입력 가능합니다.');
-        this.secondNum = '';
+  watch:
+      {
+        //중간자리 숫자만 입력가능
+        secondNum(a)
+        {
+          if (isNaN(a) == true) {
+            alert('숫자만 입력 가능합니다.');
+            this.secondNum = '';
+          }
+        }
+        ,
+        //끝자리 숫자만 입력가능
+        thirdNum(a)
+        {
+          if (isNaN(a) == true) {
+            alert('숫자만 입력 가능합니다.');
+            this.thirdNum = '';
+          }
+        }
       }
-    },
-    //끝자리 숫자만 입력가능
-    thirdNum(a){
-      if(isNaN(a) == true){
-        alert('숫자만 입력 가능합니다.');
-        this.thirdNum = '';
-      }
-    }
-  },
+  ,
   methods: {
-    execDaumPostcode() {
+    //이미지 업로드
+    onInputImage()
+    {
+      this.input.image = this.$refs.bizImage.files
+      console.log("this.input.image")
+    }
+    ,
+    sendRouteParam() {
+      router.push({
+        name: 'routeParam1',
+        params: { val: this.input }
+        // params: { val: "값 넘어옴" }
+      })
+    },
+    execDaumPostcode()
+    {
       new window.daum.Postcode({
         oncomplete: (data) => {
           if (this.extraAddress !== "") {
@@ -206,8 +231,10 @@ export default {
           }
         },
       }).open();
-    },
-  },
+    }
+    ,
+  }
+  ,
 //     mounted() {
 //   this.$nextTick(function () {
 //     // 전체 화면내용이 렌더링된 후에 아래의 코드가 실행됩니다.
@@ -272,11 +299,11 @@ h3 {
   font-size: 15px;
 }
 .inner_box_text {
-    width: 90%;
-    font-size: 14px;
-    text-align: left;
-    color:#997fb5;
-    font-weight: 500;
+  width: 90%;
+  font-size: 14px;
+  text-align: left;
+  color:#997fb5;
+  font-weight: 500;
 }
 input {
   font-family: Dotum,'돋움',Helvetica,sans-serif;
