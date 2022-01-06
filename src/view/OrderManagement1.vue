@@ -53,13 +53,13 @@ export default {
   align-content: center;
   align-items: center;
   justify-content: space-around;
-  padding:30px 0;
+  padding:20px 0 30px 0;
   position:relative;
 }
 .order_wrapper:after {
   position:absolute;
   bottom:0;
-  left:-25px;
+  left:0;
   display: block;
   content: '';
   width:100%;
@@ -69,7 +69,7 @@ export default {
 .order_left {
   display:flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   width:20%;
   padding:0 30px;
 }

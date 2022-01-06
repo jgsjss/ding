@@ -12,7 +12,7 @@
       </div>
       </div>
       <div class="component_bar">
-        <router-link to="/OrderManagement/1"><span class="component_name">신규주문{{}}</span></router-link>
+        <router-link to="/OrderManagement/1"><span class="component_name first">신규주문{{}}</span></router-link>
         <router-link to="/OrderManagement/2"><span class="component_name">준비중{{}}</span></router-link>
         <router-link to="/OrderManagement/3"><span class="component_name">완료주문{{}}</span></router-link>
 <!--        <router-link to="/OrderManagement3"><span class="component_name">주문내역</span></router-link>-->
@@ -39,7 +39,7 @@ import Navbar from '@/components/Navbar.vue'
 export default {
   components : {
     Navbar,
-  }
+  },
 }
 
 </script>
@@ -52,39 +52,32 @@ export default {
   display:flex;
   justify-content: space-between;
   align-items: center;
+  padding:30px 30px
 }
 .main_text {
   color:#997fb5;
+  font-size:36px;
 }
 .component_bar {
   padding:30px 0;
   margin:0 auto;
   position:relative;
 }
-.component_bar:after {
-  display: block;
-  content: '';
-  position: absolute;
-  top: 60px;
-  right: 0;
-  width: 1200px;
-  height: 1px;
-  background: #ddd;
-}
 .component_name {
   margin:0 30px;
   color:#997fb5;
   position:relative;
 }
-/* .component_name::before {
+/* .first::after {
   position:absolute;
-  bottom:0;
+  bottom:-10px;
   left:0;
   display: block;
   content: '';
-  width: 50px;
+  width:100%;
   height:5px;
   background:#997fb5;
+  z-index:1
 } */
 .list_wrap {
     margin: 0 auto;
@@ -95,9 +88,19 @@ export default {
     justify-content: flex-end;
     align-items: center;
 }
+.list_wrap:before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 43px;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+}
 .list_wrap:after {
   position: absolute;
-  bottom: 5px;
+  top: 5px;
   left: 0;
   display: block;
   content: '';

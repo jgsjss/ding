@@ -2,10 +2,10 @@ export default
     [
         {
             orderNo : 1,
-            menu : 'capuccino',
+            menu : 'mochacino',
             isCompleted : true,
             isCanceled : false,
-
+            categories : '메뉴',
         },
 
         {
@@ -13,29 +13,32 @@ export default
             menu : 'capuccino',
             isCompleted : true,
             isCanceled : false,
+            categories : '메뉴',
         },
 
         {
             orderNo :3,
+            menu : 'chocolatte',
+            isCompleted : true,
+            isCanceled : false,
+            categories : '메뉴',
+        },
+
+        {
+            orderNo : 4,
             menu : 'capuccino',
             isCompleted : true,
             isCanceled : false,
+            categories : '메뉴',
         },
-        //
-        // {
-        //     orderNo : 4,
-        //     menu : 'capuccino',
-        //     isCompleted : true,
-        //     isCanceled : false,
-        // },
-        //
+
         // {
         //     orderNo : 5,
         //     menu : 'capuccino',
         //     isCompleted : false,
         //     isCanceled : false,
         // },
-        //
+
         // {
         //     orderNo : 6,
         //     menu : 'capuccino',
