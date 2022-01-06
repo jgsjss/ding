@@ -130,7 +130,7 @@
           <!-- JOIN BTN-->
           <div class="btn_area">
             <router-link to="/signup3">
-              <button type="button" id="btnJoin">
+              <button type="button" id="btnJoin" @click="sendRouteParam2">
                 <span>다음</span>
               </button>
             </router-link>
@@ -149,11 +149,13 @@
 </template>
 <script>
 
+import router from '../router'
+
 export default {
 
   data () {
     return {
-      input: {
+      inputs: {
         mobileNo: '',
         number: '',
         //휴대폰번호 중간 4자리
@@ -178,10 +180,10 @@ export default {
   },
   computed: {
     idValid() {
-      return /^[A-Za-z0-9]+$/.test(this.input.signup.id)
+      return /^[A-Za-z0-9]+$/.test(this.inputs.signup.id)
     },
     passwordValid() {
-      return /^[A-Za-z0-9]+$/.test(this.input.signup.password)
+      return /^[A-Za-z0-9]+$/.test(this.inputs.signup.password)
     },
   },
   created () {
@@ -212,7 +214,17 @@ export default {
     }
   },
   methods: {
-
+    sendRouteParam2(){
+      router.push({
+        name: 'routeParam1',
+        params: { val: this.selected }
+        // params: { val: "값 넘어옴" }
+      })
+          inputs
+          passwordCheck
+          passwordValidFlag
+          selected
+    },
 
     //비밀번호 재확인
     passwordCheckValid() {

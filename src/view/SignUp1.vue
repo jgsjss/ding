@@ -51,11 +51,11 @@
           </router-link>
           <!--next-->
           <router-link to="/signup2">
-            <button type="button" id="term_btnJoin2" @click="sendRouteParam">
+            <button type="button" id="term_btnJoin2" @click="sendRouteParam1">
               <span>다음</span>
             </button>
           </router-link>
-
+<button type="button" @click="$hi">테스트</button>
         </div>
       </div>
 
@@ -70,7 +70,7 @@
 
 
 import router from '../router'
-
+import mixins from '../mixins'
 export default {
   data () {
     return {
@@ -81,7 +81,8 @@ export default {
     }
   },
   methods: {
-    sendRouteParam() {
+
+    sendRouteParam1() {
       router.push({
         name: 'routeParam1',
         params: { val: this.selected }
