@@ -1,6 +1,6 @@
 <template>
    <div>
-    <p>준비중 페이지 입니다.</p>
+    <p>완료주문 페이지 입니다.</p>
    </div>
 
 </template>
