@@ -185,6 +185,7 @@ export default {
   created () {
   // ===================================================
   console.log(this.selected)
+    console.log(this.$session.get('k'))
 
   // ===================================================
 },
