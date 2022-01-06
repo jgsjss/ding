@@ -7,6 +7,12 @@
       </p>
       <!-- content-->
       <div id="content">
+        <form
+          id="app"
+          @submit="checkForm"
+          action="https://vuejs.org/"
+          method="post"
+        >
         <p class="inner_box_text">
           (브랜드)와 소통할 관리자 정보를 적어주세요.<br>
           해당 정보로 정보 전달 및 소통이 이루어지니 정확하게 입력해주세요!
@@ -101,7 +107,7 @@
 
         </div>
         <!-- content-->
-
+        </form>
       </div>
     </div>
   </div>

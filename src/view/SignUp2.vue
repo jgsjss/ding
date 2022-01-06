@@ -11,7 +11,12 @@
       </p>
       <!-- content-->
       <div id="content">
-
+        <form
+        id="app"
+        @submit="checkForm"
+        action="https://vuejs.org/"
+        method="post"
+      >
         <!-- ID -->
         <div>
           <h3 class="join_title">
@@ -133,7 +138,7 @@
         </div>
 
 
-
+    </form>
       </div>
       <!-- content-->
 
