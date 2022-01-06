@@ -1,6 +1,6 @@
 <template>
 <Navbar />
-  <div class="main_container">
+  <div class="container">
     <div class="main_call">
       <div class="main_right">
         <button class="main-btn" type="submit">
@@ -72,13 +72,13 @@ export default {
 
 </script>
 <style>
-.main_container {
+.container {
   width:100%;
   height:100%;
 }
 .component {
   float:left;
-  width:28%;
+  width:25%;
   margin:0 15px;
   background:#f5f3f7;
   color:#997fb5;

@@ -16,22 +16,44 @@
             <span class="order1-2_type">{{}}매장</span>
             <span class="order1-2_time">{{}}13:00</span>
         </div>    
-          <div class="order1-2_middle">
-            <span>[{{orderData.categories}} 1개]</span>
-            <span>[{{orderData.menu}}]</span>
+          <div class="order1-2_middle" >
+            <span>{{orderData.menu}}</span>
             <!-- <span>{{}}진짜 진한 바닐라 리얼딥 1 / 진짜 진한 돌체 리얼딥 1</span> -->
             <span>{{}}요청사항</span>
             <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
           </div>   
             <div class="order1-2_right">
-              <router-link to="/OrderManage" class="order1-2_right_inner1"><button type="text" class="order1-2_btn1"><span>주문표 인쇄</span></button></router-link>
-              <router-link to="/OrderManage" class="order1-2_right_inner2"><button type="text" class="order1-2_btn2"><span>준비중</span></button></router-link>
+              <router-link to="/OrderManage" class="order1-2_right_inner1"><span>주문표 인쇄</span></router-link>
+              <router-link to="/OrderManage" class="order1-2_right_inner2"><span>준비중</span></router-link>
             </div>                   
       </li>
     </ul>
   </div>
   </div>
-
+  <!--test-->
+  <div>
+  <div class="order1-2_wrapper" v-for="(orderData, i) in $store.state.orderData" :key="i">
+    <ul>
+      <li class="order1-2_list">
+        <div class="order1-2_left">
+          <span class="order1-2_num">{{123}}</span>
+            <span class="order1-2_type">{{}}매장</span>
+            <span class="order1-2_time">{{}}13:00</span>
+        </div>    
+          <div class="order1-2_middle" >
+            <span>{{orderData.menu}}</span>
+            <!-- <span>{{}}진짜 진한 바닐라 리얼딥 1 / 진짜 진한 돌체 리얼딥 1</span> -->
+            <span>{{}}* 요청사항 *</span>
+            <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
+          </div>   
+            <div class="order1-2_right">
+              <router-link to="/OrderManage" class="order1-2_right_inner1"><span>주문표 인쇄</span></router-link>
+              <router-link to="/OrderManage" class="order1-2_right_inner2"><span>준비중</span></router-link>
+            </div>                   
+      </li>
+    </ul>
+  </div>
+  </div>
       <div class="btn-cover">
         <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
           <i class="xi-angle-left"></i>
@@ -170,23 +192,18 @@ export default {
   margin: 0 auto;
   text-align: center;
 }
-.order1-2_btn1 {
+.order1-2_right_inner1 {
   border:1px solid #997fb5;
-  background:white;
-  color:#997fb5;
-  width:100px;
-  height: 70px;
+  padding:25px 15px;
+  color:#997fb5
 }
 .order1-2_right_inner2 {
+  background: #997fb5;
+  color:white;
+  padding:25px 15px;
   margin:0 15px;
 }
-.order1-2_btn2 {
-  border:1px solid #997fb5;
-  background:#997fb5;
-  width:70px;
-  height: 70px;
-  color:#fff;
-}
+
 .btn-cover {
   float: left;
   width: 100%;
