@@ -6,7 +6,7 @@ export default [
         isHidden : false,
         categories1 : '메뉴',
         categories2 : '콜드브루',
-        number: '[]',
+        number: '12345',
         wating: '매장',
     },
     {
@@ -16,7 +16,7 @@ export default [
         isHidden : false,
         categories1 : '메뉴',
         categories2 : '콜드브루',
-        number: '[]',
+        number: '12345',
         wating: '매장',
     },
     {
@@ -26,7 +26,7 @@ export default [
         isHidden : false,
         categories1 : '메뉴',
         categories2 : '콜드브루',
-        number: '[]',
+        number: '12345',
         wating: '매장',
     },
     {
@@ -36,7 +36,7 @@ export default [
         isHidden : false,
         categories1 : '메뉴',
         categories2 : '콜드브루',
-        number: '[]',
+        number: '12345',
         wating: '매장',
     },
     {
@@ -46,7 +46,7 @@ export default [
         isHidden : false,
         categories1 : '메뉴',
         categories2 : '콜드브루',
-        number: '[]',
+        number: '12345',
         wating: '매장',
     },
     {
@@ -56,7 +56,7 @@ export default [
         isHidden : true,
         categories1 : '메뉴',
         categories2 : '콜드브루',
-        number: '[]',
+        number: '12345',
         wating: '매장',
     },
     {
@@ -66,7 +66,7 @@ export default [
         isHidden: false,
         categories1 : '메뉴',
         categories2 : '콜드브루',
-        number: '[]',
+        number: '12345',
         wating: '매장',
     },
 ]

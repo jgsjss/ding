@@ -6,7 +6,7 @@
           <thead class="category_head">
           <tr class="category_title">
             <th><input type="checkbox" id="all-check"> </th>
-            <th scope="col" class="category_col">주문</th>
+            <th scope="col" class="category_col">주문일시</th>
             <th scope="col" class="category_col">대기번호</th>
             <th scope="col" class="category_col">구분</th>
             <th scope="col" class="category_col">내용</th>
@@ -18,10 +18,9 @@
           <tr v-for="(a, i) in $store.state.menuData" :key="i">
             <th scope="row"><input type="checkbox"></th>
             <td>{{ $store.state.menuData[i].categories1 }}</td>
+            <td>{{$store.state.menuData[i].number }}</td>
+            <td>{{ $store.state.menuData[i].wating }}</td>
             <td>{{ $store.state.menuData[i].name }}</td>
-            <td>{{포장}}</td>
-            <td>{{ $store.state.menuData[i].name }}</td>
-            <td>{{ $store.state.menuData[i].price }} </td>
             <td>{{ $store.state.menuData[i].price }} </td>
             <td>{{ $store.state.menuData[i].isSoldOut +','+  $store.state.menuData[i].isHidden }}</td>
           </tr>
