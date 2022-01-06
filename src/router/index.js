@@ -6,7 +6,9 @@ import OrderManagement from '../view/OrderManagement.vue'
 import OrderManagement1 from '../view/OrderManagement1.vue'
 import OrderManagement1_2 from '../view/OrderManagement1_2.vue'
 import OrderManagement2 from '../view/OrderManagement2.vue'
+import OrderManagement2_2 from '../view/OrderManagement2_2.vue'
 import OrderManagement3 from '../view/OrderManagement3.vue'
+import OrderManagement4 from '../view/OrderManagement4.vue'
 
 import StaffManagement from '../view/StaffManagement.vue'
 import OperationManagement from '../view/OperationManagement.vue'
@@ -21,7 +23,6 @@ import ReleaseSoldOut from '../view/ReleaseSoldOut.vue'
 import MenuManageCategories from '../view/MenuManageCategories.vue'
 import MenuManageMenus from '../view/MenuManageMenus.vue'
 import MenuManageOptions from '../view/MenuManageOptions.vue'
-import OrderManagement4 from '../view/OrderManagement4'
 
 const routes = [
   {
@@ -92,8 +93,16 @@ const routes = [
         component: OrderManagement3
       },
       {
+        path: '/ordermanagement/4',
+        component: OrderManagement4
+      },
+      {
         path: '/ordermanagement/1_2',
         component: OrderManagement1_2
+      },
+      {
+        path: '/ordermanagement/2_2',
+        component: OrderManagement2_2
       },
       // {
       //   path: '/ordermanagement/4',

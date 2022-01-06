@@ -91,7 +91,7 @@ export default {
 }
 .main_right {
   text-align: right;
-  padding:0 30px;
+  padding:30px 30px;
 }
 .main-btn {
   margin:0 auto;

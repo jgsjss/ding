@@ -15,7 +15,7 @@
         <router-link to="/OrderManagement/1"><span class="component_name first">신규주문{{}}</span></router-link>
         <router-link to="/OrderManagement/2"><span class="component_name">준비중{{}}</span></router-link>
         <router-link to="/OrderManagement/3"><span class="component_name">완료주문{{}}</span></router-link>
-<!--        <router-link to="/OrderManagement3"><span class="component_name">주문내역</span></router-link>-->
+       <router-link to="/OrderManagement/4"><span class="component_name">주문내역</span></router-link>
         <router-view> </router-view>
       </div>
         <!-- <div class="list_wrap">
@@ -124,7 +124,7 @@ export default {
   color:#997fb5;
 }
 #order_select {
-  width:60px;
+  width:70px;
   border:1px solid #997fb5;
   background:none;
   text-align: center;
