@@ -164,7 +164,8 @@ export default {
         password: null
       },
       passwordCheck: '',
-      passwordValidFlag: true
+      passwordValidFlag: true,
+      selected:this.$route.params.val
     }
   },
   computed: {
@@ -175,6 +176,13 @@ export default {
       return /^[A-Za-z0-9]+$/.test(this.signup.password)
     },
   },
+
+  created () {
+  // ===================================================
+  console.log(this.selected)
+
+  // ===================================================
+},
   watch: {
     //중간자리 숫자만 입력가능
     secondNum(a){
@@ -207,13 +215,13 @@ export default {
       }
     },
     //비밀번호 확인
-    passwordValid () { 
+    passwordValid () {
       if ((/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(this.signup.password))) {
         console.log(data.passwordValid)
-      this.passwordValidFlag = true 
+      this.passwordValidFlag = true
       } else {
-        this.passwordValidFlag = false 
-      } 
+        this.passwordValidFlag = false
+      }
     },
     //daum map api
     execDaumPostcode() {

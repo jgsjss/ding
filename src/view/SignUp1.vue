@@ -51,7 +51,7 @@
           </router-link>
           <!--next-->
           <router-link to="/signup2">
-            <button type="button" id="term_btnJoin2">
+            <button type="button" id="term_btnJoin2" @click="sendRouteParam">
               <span>다음</span>
             </button>
           </router-link>
@@ -69,6 +69,8 @@
 <script>
 
 
+import router from '../router'
+
 export default {
   data () {
     return {
@@ -79,6 +81,15 @@ export default {
     }
   },
   methods: {
+    sendRouteParam() {
+      router.push({
+        name: 'routeParam1',
+        params: { val: this.selected }
+        // params: { val: "값 넘어옴" }
+      })
+    }
+,
+
     select () {
       this.selected = []
       if (!this.allSelected) {
@@ -102,7 +113,7 @@ export default {
     }
   },
   watch: {
-    
+
   }
 }
 </script>

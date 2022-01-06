@@ -34,7 +34,7 @@ const routes = [
   },
   {
     path:'/signup2',
-    component: SignUp2,
+    component: SignUp2,name:"routeParam1"
   },
   {
     path:'/signup3',
