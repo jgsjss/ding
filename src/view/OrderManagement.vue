@@ -18,14 +18,14 @@
 <!--        <router-link to="/OrderManagement3"><span class="component_name">주문내역</span></router-link>-->
         <router-view> </router-view>
       </div>
-        <div class="list_wrap">
+        <!-- <div class="list_wrap">
           <router-link to="/OrderManagement/1"><i class="xi-list-square list"></i></router-link>
           <router-link to="/OrderManagement/1_2"><i class="xi-apps list"></i></router-link>
             <select id="order_select" class="list">
               <option value="최신순">최신순</option>
               <option value="과거순">과거순</option>
             </select>
-        </div>
+        </div> -->
 
 
   </div>
@@ -98,11 +98,11 @@ export default {
 .list_wrap:after {
   position: absolute;
   bottom: 5px;
-  right: 0;
+  left: 0;
   display: block;
   content: '';
   background: #ddd;
-  width: 1200px;
+  width: 100%;
   height: 1px;
 }
 /* .list_wrap::before {

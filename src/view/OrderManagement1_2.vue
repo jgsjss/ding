@@ -7,201 +7,220 @@
         <option value="과거순">과거순</option>
       </select>
   </div>
-  <div class="order_wrapper" v-for="(orderData, i) in $store.state.orderData" :key="i">
-    <div class="order_left">
-      <span class="order_num">{{123}}</span>
-      <div>
-        <span class="order_type">{{}}매장</span>
-        <span class="order_time">{{}}13:00</span>
-      </div>
-    </div>
-    <div class="order_middle" >
-      <span>{{orderData.menu}}</span>
-      <span>{{}}진짜 진한 바닐라 리얼딥 1 / 진짜 진한 돌체 리얼딥 1</span>
-      <span>{{}}요청사항</span>
-      <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
-    </div>
-    <div class="order_right">
-      <router-link to="/OrderManage" class="order_right_inner"><span>주문표 인쇄</span></router-link>
-      <router-link to="/OrderManage" class="order_right_inner"><span>준비중</span></router-link>
-    </div>
+  <div>
+  <div class="order1-2_wrapper" v-for="(orderData, i) in $store.state.orderData" :key="i">
+    <ul>
+      <li class="order1-2_list">
+        <div class="order1-2_left">
+          <span class="order1-2_num">{{123}}</span>
+            <span class="order1-2_type">{{}}매장</span>
+            <span class="order1-2_time">{{}}13:00</span>
+        </div>    
+          <div class="order1-2_middle" >
+            <span>{{orderData.menu}}</span>
+            <!-- <span>{{}}진짜 진한 바닐라 리얼딥 1 / 진짜 진한 돌체 리얼딥 1</span> -->
+            <span>{{}}요청사항</span>
+            <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
+          </div>   
+            <div class="order1-2_right">
+              <router-link to="/OrderManage" class="order1-2_right_inner1"><span>주문표 인쇄</span></router-link>
+              <router-link to="/OrderManage" class="order1-2_right_inner2"><span>준비중</span></router-link>
+            </div>                   
+      </li>
+    </ul>
   </div>
-
-
+  </div>
+  <!--test-->
+  <div>
+  <div class="order1-2_wrapper" v-for="(orderData, i) in $store.state.orderData" :key="i">
+    <ul>
+      <li class="order1-2_list">
+        <div class="order1-2_left">
+          <span class="order1-2_num">{{123}}</span>
+            <span class="order1-2_type">{{}}매장</span>
+            <span class="order1-2_time">{{}}13:00</span>
+        </div>    
+          <div class="order1-2_middle" >
+            <span>{{orderData.menu}}</span>
+            <!-- <span>{{}}진짜 진한 바닐라 리얼딥 1 / 진짜 진한 돌체 리얼딥 1</span> -->
+            <span>{{}}* 요청사항 *</span>
+            <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
+          </div>   
+            <div class="order1-2_right">
+              <router-link to="/OrderManage" class="order1-2_right_inner1"><span>주문표 인쇄</span></router-link>
+              <router-link to="/OrderManage" class="order1-2_right_inner2"><span>준비중</span></router-link>
+            </div>                   
+      </li>
+    </ul>
+  </div>
+  </div>
+      <div class="btn-cover">
+        <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
+          <i class="xi-angle-left"></i>
+        </button>
+        <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} </span>
+        <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
+          <i class="xi-angle-right"></i>
+        </button>
+    </div>    
 </template>
+
+
 <script>
-
-
+import axios from 'axios'
 export default {
-  components : {
+    data(){
+        return{
+            pageNum: 0
+        }
+    },
+    props:{
+    // //주문관리 데이터 프롭스 ---
+    // orderData : Object,
+    // //완료주문 개수
+    // completedNum : Number,
+    //  //신규주문 개수
+    // newOrderNum : Number,
+    // //취소주문 개수
+    // cancelOrder : Number,
+    //
+    //
+    // //메뉴관리 데이터 프롭스 ---
+    // menuData : Object,
+    //  //품절메뉴 개수
+    // soldOutNum : Number,
+    // //숨김메뉴 개수
+    // hiddenNum : Number,
+    //
+    //
+    // //운영관리 데이터 프롭스 ---
+    // shopData : Object,
+    // //영업중인 가게 수
+    // openShopNum : Number,
+    },
+    methods: {
+         nextPage () {
+      this.pageNum += 1;
+    },
+    prevPage () {
+      this.pageNum -= 1;
+        }
+    },
+    // ajax로 서버에서 받아온 list정보를 페이징 처리하는 부분. 현재 받아올 서버 및 데이터가 없어서 주석처리함.
+    // computed: {
+    //     pageCount () {
+    //   let listLeng = this.listArray.length,
+    //       listSize = this.pageSize,
+    //       page = Math.floor(listLeng / listSize);
+    //   if (listLeng % listSize > 0) page += 1;
 
-  }
+    //   /*
+    //   아니면 page = Math.floor((listLeng - 1) / listSize) + 1;
+    //   이런식으로 if 문 없이 고칠 수도 있다!
+    //   */
+    //   return page;
+    // },
+    // paginatedData () {
+    //   const start = this.pageNum * this.pageSize,
+    //         end = start + this.pageSize;
+    //   return this.listArray.slice(start, end);
+    // }
+    // }
+
+}
+</script>
+
+<style>
+.order1-2_wrapper {
+  display: block;
+}
+.order1-2_wrapper > ul {
+  list-style: none;
+}
+.order1-2_list {
+  float: left;
+  width: 250px;
+  padding: 15px 20px;
+  border: 1px solid #997fb5;
+  border-radius: 15px;
+  margin: 15px 15px;
+}
+.order1-2_left {
+  float: left;
+  width: 312px;
+  display: flex;
+  align-items: center;
+}
+.order1-2_num {
+  color:#997fb5;
+  font-size:24px;
+}
+.order1-2_type {
+  margin:0 10px;
+  padding:3px 10px;
+  border:1px solid #997fb5;
+  background:#997fb5;
+  color:white;
+  font-size:14px;
+  border-radius:15px;
+}
+.order1-2_time {
+  font-size:14px;
+  color:#997fb5
+}
+.order1-2_middle {
+  display: inline-grid;
+}
+.order1-2_middle > span:first-child {
+  font-size:14px;
+  padding:5px 0 0 0 ;
+}
+.order1-2_middle > span:nth-child(2) {
+  font-size:14px;
+  color:#997fb5;
+  font-weight: 500;
+  padding:5px 0;
+}
+.order1-2_middle > span:last-child {
+  font-size:14px;
+  color:#997fb5;
+  font-weight: 500;
+  padding-bottom:20px;
+}
+.order1-2_right {
+  padding: 15px 0;
+  margin: 0 auto;
+  text-align: center;
+}
+.order1-2_right_inner1 {
+  border:1px solid #997fb5;
+  padding:25px 15px;
+  color:#997fb5
+}
+.order1-2_right_inner2 {
+  background: #997fb5;
+  color:white;
+  padding:25px 15px;
+  margin:0 15px;
 }
 
-</script>
-<style>
-/*.ordermanage_container {*/
-/*  width:100%;*/
-/*  margin:0 auto;*/
-/*}*/
-/*.main_wrap {*/
-/*  display:flex;*/
-/*  justify-content: space-between;*/
-/*  align-items: center;*/
-/*}*/
-/*.main_text {*/
-/*  color:#997fb5;*/
-/*}*/
-/*.component_bar {*/
-/*  padding:30px 0;*/
-/*  width:1200px;*/
-/*  margin:0 auto;*/
-/*  position:relative;*/
-/*}*/
-/*.component_bar:after {*/
-/*  display: block;*/
-/*  content: '';*/
-/*  position:absolute;*/
-/*  bottom:10px;*/
-/*  left:9%;*/
-/*  width:100%;*/
-/*  height:1px;*/
-/*  background:#ddd;*/
-/*}*/
-/*.component_name {*/
-/*  margin:0 30px;*/
-/*  color:#997fb5;*/
-/*  position:relative;*/
-/*}*/
-/*!* .component_name::before {*/
-/*  position:absolute;*/
-/*  bottom:0;*/
-/*  left:0;*/
-/*  display: block;*/
-/*  content: '';*/
-/*  width: 50px;*/
-/*  height:5px;*/
-/*  background:#997fb5;*/
-/*} *!*/
-/*.list_wrap {*/
-/*    width: 100%;*/
-/*    text-align: right;*/
-/*    margin: 0 auto;*/
-/*    padding: 0 30px;*/
-/*    position:relative;*/
-/*}*/
-/*.list_wrap:after {*/
-/*  position: absolute;*/
-/*  bottom: -10px;*/
-/*  right: 3px;*/
-/*  display: block;*/
-/*  content: '';*/
-/*  background: #ddd;*/
-/*  width: 1200px;*/
-/*  height: 1px;*/
-/*}*/
-/*!* .list_wrap::before {*/
-/*  display: block;*/
-/*  content: '';*/
-/*  position:absolute;*/
-/*  bottom:10px;*/
-/*  left:9%;*/
-/*  width:100%;*/
-/*  height:1px;*/
-/*  background:#ddd;*/
-/*} *!*/
-/*.list {*/
-/*  font-size:24px;*/
-/*  padding:0 10px;*/
-/*  color:#997fb5;*/
-/*}*/
-/*.new_btn {*/
-/*  background:#fff;*/
-/*  border:1px solid #997fb5;*/
-/*  color:#997fb5;*/
-/*  padding:5px 10px;*/
-/*  border-radius: 20px;*/
-/*}*/
-/*.order_wrapper {*/
-/*  display: flex;*/
-/*  flex-direction: row;*/
-/*  align-content: center;*/
-/*  align-items: center;*/
-/*  justify-content: space-around;*/
-/*  padding:30px 0;*/
-/*  position:relative;*/
-/*}*/
-/*.order_wrapper:after {*/
-/*  position:absolute;*/
-/*  bottom:0;*/
-/*  left:-25px;*/
-/*  display: block;*/
-/*  content: '';*/
-/*  width:100%;*/
-/*  height:1px;*/
-/*  background:#ddd;*/
-/*}*/
-/*.order_left {*/
-/*  display:flex;*/
-/*  flex-direction: column;*/
-/*  align-items: center;*/
-/*  width:20%;*/
-/*  padding:0 30px;*/
-/*}*/
-/*.order_left > div {*/
-/*  display:flex;*/
-/*  flex-direction: row;*/
-/*}*/
-/*.order_num {*/
-/*    border: 1px solid #997fb5;*/
-/*    font-size: 30px;*/
-/*    color: #997fb5;*/
-/*    border-radius: 50%;*/
-/*    width: 90px;*/
-/*    height: 90px;*/
-/*    line-height: 2.9;*/
-/*    text-align: center;*/
-/*    margin:15px 0;*/
-/*}*/
-/*.order_type {*/
-/*    border: 1px solid #997fb5;*/
-/*    background: #997fb5;*/
-/*    border-radius: 15px;*/
-/*    color: #fff;*/
-/*    width: 50px;*/
-/*    height: 30px;*/
-/*    text-align: center;*/
-/*    line-height: 1.8;*/
-/*    flex-direction: row;*/
-/*}*/
-/*.order_time {*/
-/*  padding: 0 10px;*/
-/*  line-height: 1.8;*/
-/*  color:#997fb5;*/
-/*}*/
-/*.order_middle {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  width: 30%;*/
-/*  font-size:14px;*/
-/*}*/
-/*.order_middle > span:nth-child(2) {*/
-/*  color:#997fb5;*/
-/*}*/
-/*.order_middle > span:last-child {*/
-/*  color:#997fb5;*/
-/*  font-weight: 500;*/
-/*}*/
-/*.order_right > .order_right_inner {*/
-/*  border: 1px solid #997fb5;*/
-/*  color: #997fb5;*/
-/*  padding: 40px;*/
-/*  margin: 0 15px;*/
-/*}*/
-/*.order_right > .order_right_inner:nth-child(2) {*/
-/*  border:1px solid #997fb5;*/
-/*  background:#997fb5;*/
-/*  color:#fff;*/
-/*}*/
+.btn-cover {
+  float: left;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 30px 0;
+}
+.page-btn {
+  background:#997fb5;
+  border:1px solid #997fb5;
+  color:#fff;
+  margin:0 15px;
+}
+.page-count {
+  background:#997fb5;
+  color:#fff;
+  padding:5px 15px
+}
 </style>
 
