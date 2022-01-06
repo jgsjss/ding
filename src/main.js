@@ -9,7 +9,7 @@ import VueSession from 'vue-session'
 const emitter = mitt()
 const app = createApp(App)
 app.config.globalProperties.emitter = emitter
-app.use(VueSession)
-app.use(axios)
+// app.use(VueSession)
+// app.use(axios)
 
 app.use(store).use(router).mount('#app')
