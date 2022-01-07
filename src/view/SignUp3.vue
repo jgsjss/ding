@@ -53,7 +53,7 @@
           <span class="box int_name">
                             <input type="text" id="name3" class="int" maxlength="20" placeholder="이름을 입력해주세요.">
                         </span>
-          <span class="error_next_box">이름을 입력하세요</span>
+          <!-- <span class="error_next_box">이름을 입력하세요</span> -->
         </div>
         <!--number-->
         <div>

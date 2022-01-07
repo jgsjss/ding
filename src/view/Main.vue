@@ -1,6 +1,6 @@
 <template>
 <Navbar />
-  <div class="container">
+  <div class="main_container">
     <div class="main_call">
       <div class="main_right">
         <button class="main-btn" type="submit">
@@ -33,9 +33,7 @@ import Menu from '@/components/Menu.vue'
 import MyInfo from '@/components/MyInfo'
 import OrderManage from '@/components/OrderManage.vue'
 import Navbar from '@/components/Navbar.vue'
-
 export default {
-
   props: {
     //주문관리 데이터 프롭스 ---
     orderData : Object,
@@ -45,23 +43,17 @@ export default {
     newOrderNum : Number,
     //취소주문 개수
     cancelOrder : Number,
-
-
     //메뉴관리 데이터 프롭스 ---
     menuData : Object,
      //품절메뉴 개수
     soldOutNum : Number,
     //숨김메뉴 개수
     hiddenNum : Number,
-
-
     //운영관리 데이터 프롭스 ---
     shopData : Object,
     //영업중인 가게 수
     openShopNum : Number,
-
   },
-
   components:{
     Menu,
     MyInfo,
@@ -69,16 +61,15 @@ export default {
     Navbar,
   }
 }
-
 </script>
 <style>
-.container {
+.main_container {
   width:100%;
   height:100%;
 }
 .component {
   float:left;
-  width:25%;
+  width:28%;
   margin:0 15px;
   background:#f5f3f7;
   color:#997fb5;
@@ -91,7 +82,7 @@ export default {
 }
 .main_right {
   text-align: right;
-  padding:0 30px;
+  padding:30px 30px;
 }
 .main-btn {
   margin:0 auto;
@@ -106,8 +97,4 @@ export default {
   color:#997fb5;
   font-size:20px;
 }
-
-
-
-
 </style>

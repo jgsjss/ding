@@ -100,7 +100,6 @@ export default {
     //       listSize = this.pageSize,
     //       page = Math.floor(listLeng / listSize);
     //   if (listLeng % listSize > 0) page += 1;
-
     //   /*
     //   아니면 page = Math.floor((listLeng - 1) / listSize) + 1;
     //   이런식으로 if 문 없이 고칠 수도 있다!
@@ -113,7 +112,6 @@ export default {
     //   return this.listArray.slice(start, end);
     // }
     // }
-
 }
 </script>
 

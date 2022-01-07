@@ -56,7 +56,7 @@
                             <input type="text" id="name2" className="int" maxLength="20"
                                    placeholder="이름을 입력해주세요.">
                         </span>
-          <span className="error_next_box">이름을 입력하세요</span>
+          <!-- <span className="error_next_box">이름을 입력하세요</span> -->
         </div>
         <!--number-->
         <div>

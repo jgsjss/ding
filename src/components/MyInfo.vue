@@ -29,7 +29,7 @@
           <div class="info_right">naver@naver.com{{}}</div>
         </div>
       </div>
-      <button type="button" class="logout-btn">로그아웃</button>
+      <router-link to="@view/Login" class="myinfo_logout"><button type="button" class="logout-btn">로그아웃</button></router-link>
     </div>
   </div>
 </template>
@@ -74,12 +74,10 @@
   text-align: left;
   color:#b29ec7;
 }
-
   .wrap2{
   float: left;
   position: relative;
   right: 0px;}
-
   .wrap2 .info_right{
     text-align: end;
   margin: 10px;
@@ -108,15 +106,11 @@
   height:50px;
   margin:15px 0;
 }
-
   /* media query */
   @media ( min-width : 768px) {
-
 }
   @media ( min-width : 992px) {
-
 }
   @media ( min-width : 1200px) {
-
 }
 </style>

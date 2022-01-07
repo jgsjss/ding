@@ -5,7 +5,12 @@
     </h1>
     <!-- wrapper -->
     <div class="login_wrap">
-
+      <form
+        id="app"
+        @submit="checkForm"
+        action="https://vuejs.org/"
+        method="post"
+      >
       <!-- ID -->
       <div>
         <h3 class="join_title">
@@ -41,6 +46,7 @@
         </button>
       </div>
       <p class="login_text"><a href="#!" class="member"><router-link to="/signup1">회원가입&nbsp;</router-link></a>후 딩동오더를 이용해 보세요!</p>
+      </form>
     </div>
     <p class="login_bottom">
       아이디/비밀번호 분실 시 (브랜드)로 직접 연락해주세요!
@@ -55,9 +61,7 @@
 <script>
 import $ from 'jquery';
 export default {
-
 }
-
 </script>
 <style>
 .container_fluid {
@@ -69,11 +73,9 @@ export default {
 .login_wrap {
   padding-bottom:100px;
 }
-
 input:focus {
   outline: none;
 }
-
 .member_text {
   color:#997fb5;
   text-align: center;
@@ -84,8 +86,6 @@ input:focus {
   font-size: 14px;
   font-weight: 700;
 }
-
-
 .box {
   display: block;
   width: 100%;
@@ -96,7 +96,6 @@ input:focus {
   background: #fff;
   position: relative;
 }
-
 .int {
   display: block;
   position: relative;
@@ -106,23 +105,18 @@ input:focus {
   background: #fff;
   font-size: 15px;
 }
-
 input {
   font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
-
 .box.int_id {
   padding-right: 110px;
 }
-
 .box.int_pass {
   padding-right: 40px;
 }
-
 .box.int_pass_check {
   padding-right: 40px;
 }
-
 .step_url {
   /*@naver.com*/
   position: absolute;
@@ -158,7 +152,6 @@ input {
   user-select: none;
   color:#997fb5;
 }
-
 /* Hide the browser's default checkbox */
 .login_check_wrap input {
   position: absolute;
@@ -167,7 +160,6 @@ input {
   height: 0;
   width: 0;
 }
-
 /* Create a custom checkbox */
 .checkmark {
   position: absolute;
@@ -179,29 +171,24 @@ input {
   border:1px solid #997fb5;
   border-radius: 100%;
 }
-
 /* On mouse-over, add a grey background color */
 .login_check_wrap:hover input ~ .checkmark {
   background-color: #f2f2f2;
 }
-
 /* When the checkbox is checked, add a blue background */
 .login_check_wrap input:checked ~ .checkmark {
   background-color: #997fb5;
 }
-
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
-
 /* Show the checkmark when checked */
 .login_check_wrap input:checked ~ .checkmark:after {
   display: block;
 }
-
 /* Style the checkmark/indicator */
 .login_check_wrap .checkmark:after {
   left: 9px;
@@ -218,28 +205,22 @@ input {
   display: table;
   width: 100%;
 }
-
 #bir_yy {
   display: table-cell;
   width: 147px;
-
 }
-
 #bir_mm {
   display: table-cell;
   width: 147px;
   vertical-align: middle;
 }
-
 #bir_dd {
   display: table-cell;
   width: 147px;
 }
-
 #bir_mm, #bir_dd {
   padding-left: 10px;
 }
-
 select {
   width: 100%;
   height: 29px;
@@ -253,15 +234,12 @@ select {
   cursor: default;
   font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
-
 /* 에러메세지 */
-
 .error_next_box {
   margin-top: 9px;
   font-size: 12px;
   color: red;
 }
-
 #alertTxt {
   position: absolute;
   top: 19px;
@@ -269,13 +247,10 @@ select {
   font-size: 12px;
   color: red;
 }
-
 /* 버튼 */
-
 .btn_area {
   margin: 30px 0 30px;
 }
-
 #btnJoin {
   width: 100%;
   padding: 21px 0 17px;
@@ -287,7 +262,6 @@ select {
   font-weight: 400;
   font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
-
 .login_text {
   margin: 0 auto;
   text-align: center;
