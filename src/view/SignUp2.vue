@@ -18,19 +18,19 @@
             <label htmlFor="id">아이디</label>
           </h3>
           <span className="box int_id">
-                            <input v-model="signup.id" type="text" id="id" className="int" maxLength="20">
-                            <span className="step_url" v-if="!idValid">유효하지 않은 아이디 입니다.</span>
+                            <input type="text" id="id2" className="int" maxLength="20">
+                            <span className="step_url">유효하지 않은 아이디 입니다.</span>
                         </span>
           <span className="error_next_box"></span>
         </div>
 
         <!-- PW1 -->
         <div>
-          <h3 className="join_title"><label htmlFor="pswd1">비밀번호</label></h3>
+          <h3 className="join_title"><label>비밀번호</label></h3>
           <span className="box int_pass">
-                            <input v-model="signup.password" type="text" id="pswd1" className="int" maxLength="16"
-                                   @blur="passwordValid" placeholder="8~16자의 영문/숫자를 조합">
-                            <span v-if="!passwordValidFlag">유효하지 않은 비밀번호 입니다.</span>
+                            <input  type="text" id="pswd2-1" className="int" maxLength="16"
+                                   placeholder="8~16자의 영문/숫자를 조합">
+                            <span>유효하지 않은 비밀번호 입니다.</span>
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
           <span className="error_next_box"></span>
@@ -38,11 +38,11 @@
 
         <!-- PW2 -->
         <div>
-          <h3 className="join_title"><label htmlFor="pswd2">비밀번호 재확인</label></h3>
+          <h3 className="join_title"><label>비밀번호 재확인</label></h3>
           <span className="box int_pass_check">
-                            <input v-model="passwordCheck" type="text" id="pswd2" className="int"
-                                   @blur="passwordCheckValid" maxlength="16">
-                            <span v-if="!passwordCheckFlag">비밀번호가 동일하지 않습니다.</span>
+                            <input type="text" id="pswd2-2" className="int"
+                                   maxlength="16">
+                            <span >비밀번호가 동일하지 않습니다.</span>
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
                         </span>
           <span className="error_next_box"></span>
@@ -51,16 +51,16 @@
 
         <!--name-->
         <div>
-          <h3 className="join_title"><label htmlFor="name">대표자 이름</label></h3>
+          <h3 className="join_title"><label>대표자 이름</label></h3>
           <span className="box int_name">
-                            <input type="text" v-model="signup.name" id="name" className="int" maxLength="20"
+                            <input type="text" id="name2" className="int" maxLength="20"
                                    placeholder="이름을 입력해주세요.">
                         </span>
           <span className="error_next_box" v-if="checkFlag && !signup.name">이름을 입력하세요</span>
         </div>
         <!--number-->
         <div>
-          <h3 className="join_title"><label htmlFor="number">대표자 번호</label></h3>
+          <h3 className="join_title"><label>대표자 번호</label></h3>
           <div id="num_wrap">
             <!-- BIRTH_MM -->
             <div id="num_first">
@@ -78,14 +78,14 @@
             <!-- BIRTH_YY -->
             <div id="num_second">
                                 <span className="box">
-                                    <input type="text" id="second" className="int" maxLength="4" v-model="secondNum">
+                                    <input type="text" id="second2" className="int" maxLength="4" v-model="secondNum">
                                 </span>
             </div>
 
             <!-- BIRTH_DD -->
             <div id="num_dd">
                                 <span className="box">
-                                    <input type="text" id="dd" className="int" maxLength="4" v-model="thirdNum">
+                                    <input type="text" id="dd2" className="int" maxLength="4" v-model="thirdNum">
                                 </span>
             </div>
           </div>
@@ -93,38 +93,38 @@
         </div>
         <!--shop name-->
         <div>
-          <h3 className="join_title"><label htmlFor="name">매장 이름</label></h3>
+          <h3 className="join_title"><label>매장 이름</label></h3>
           <span className="box int_name">
-                            <input type="text" id="name" className="int" maxLength="20">
+                            <input type="text" id="name2" className="int" maxLength="20">
                         </span>
           <span className="error_next_box"></span>
         </div>
         <!-- shop number -->
         <div>
-          <h3 className="join_title"><label htmlFor="phoneNo">매장 대표번호</label></h3>
+          <h3 className="join_title"><label>매장 대표번호</label></h3>
           <span className="box int_mobile">
-                            <input type="tel" id="mobile" className="int" maxLength="11"
+                            <input type="tel" id="mobile2" className="int" maxLength="11"
                                    placeholder="'-'을 제외한 연락처 번호를 입력해주세요." v-model="middleNum">
                         </span>
           <span className="error_next_box"></span>
         </div>
         <!--shop address-->
         <div>
-          <h3 className="join_title"><label htmlFor="name">매장 주소</label></h3>
+          <h3 className="join_title"><label>매장 주소</label></h3>
           <span className="box int_mobile">
-                        <input type="text" id="address" ref="address" className="int" maxLength="20"
+                        <input type="text" id="address2" ref="address" className="int" maxLength="20"
                                placeholder="매장 주소">
                         <button type="submit" className="addr_btn" @click="execDaumPostcode()"
                                 value="우편번호 찾기">주소검색</button>
                         </span>
           <span className="box int_mobile">
-                        <input type="text" id="detailAddress" className="int" maxLength="20" placeholder="매장 상세주소">
+                        <input type="text" id="detailAddress2" className="int" maxLength="20" placeholder="매장 상세주소">
                         </span>
           <span className="box int_mobile">
                         <input type="text" className="int" v-model="postcode" placeholder="우편번호">
                         </span>
           <span className="box int_mobile">
-                        <input type="text" className="int" id="extraAddress" ref="extraAddress" placeholder="참고항목">
+                        <input type="text" className="int" id="extraAddress2" ref="extraAddress" placeholder="참고항목">
                         </span>
         </div>
 

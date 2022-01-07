@@ -18,18 +18,18 @@
             <label for="id">아이디</label>
           </h3>
           <span class="box int_id">
-                            <input v-model="signup.id" type="text" id="id" class="int" maxlength="20">
-                            <span class="step_url" v-if="!idValid">유효하지 않은 아이디 입니다.</span>
+                            <input type="text" id="id3" class="int" maxlength="20">
+                            <span class="step_url" >유효하지 않은 아이디 입니다.</span>
                         </span>
           <span class="error_next_box"></span>
         </div>
 
         <!-- PW1 -->
         <div>
-          <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+          <h3 class="join_title"><label for="pswd3-1">비밀번호</label></h3>
           <span class="box int_pass">
-                            <input v-model="signup.password" type="text" id="pswd1" class="int" maxlength="16" @blur="passwordValid" placeholder="8~16자의 영문/숫자를 조합">
-                            <span v-if="!passwordValidFlag">유효하지 않은 비밀번호 입니다.</span>
+                            <input type="text" id="pswd3-1" class="int" maxlength="16" placeholder="8~16자의 영문/숫자를 조합">
+                            <span>유효하지 않은 비밀번호 입니다.</span>
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
           <span class="error_next_box"></span>
@@ -37,10 +37,10 @@
 
         <!-- PW2 -->
         <div>
-          <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
+          <h3 class="join_title"><label>비밀번호 재확인</label></h3>
           <span class="box int_pass_check">
-                            <input v-model="passwordCheck" type="text" id="pswd2" class="int" @blur="passwordCheckValid" maxlength="16">
-                            <span v-if="!passwordCheckFlag">비밀번호가 동일하지 않습니다.</span>
+                            <input type="text" id="pswd3-2" class="int" maxlength="16">
+                            <span>비밀번호가 동일하지 않습니다.</span>
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
                         </span>
           <span class="error_next_box"></span>
@@ -49,20 +49,20 @@
 
         <!--name-->
         <div>
-          <h3 class="join_title"><label for="name">대표자 이름</label></h3>
+          <h3 class="join_title"><label>대표자 이름</label></h3>
           <span class="box int_name">
-                            <input type="text" v-model="signup.name" id="name" class="int" maxlength="20" placeholder="이름을 입력해주세요.">
+                            <input type="text" id="name3" class="int" maxlength="20" placeholder="이름을 입력해주세요.">
                         </span>
-          <span class="error_next_box" v-if="checkFlag && !signup.name">이름을 입력하세요</span>
+          <span class="error_next_box">이름을 입력하세요</span>
         </div>
         <!--number-->
         <div>
-          <h3 class="join_title"><label for="number">대표자 번호</label></h3>
+          <h3 class="join_title"><label>대표자 번호</label></h3>
           <div id="num_wrap">
             <!-- BIRTH_MM -->
             <div id="num_first">
                                 <span class="box">
-                                    <select id="number" class="sel">
+                                    <select id="number3" class="sel">
                                         <option>선택</option>
                                         <option value="010">010</option>
                                         <option value="011">011</option>
@@ -75,14 +75,14 @@
             <!-- BIRTH_YY -->
             <div id="num_second">
                                 <span class="box">
-                                    <input type="text" id="second" class="int" maxlength="4" v-model="secondNum">
+                                    <input type="text" id="second3" class="int" maxlength="4" v-model="secondNum">
                                 </span>
             </div>
 
             <!-- BIRTH_DD -->
             <div id="num_dd">
                                 <span class="box">
-                                    <input type="text" id="dd" class="int" maxlength="4" v-model="thirdNum">
+                                    <input type="text" id="dd3" class="int" maxlength="4" v-model="thirdNum">
                                 </span>
             </div>
           </div>
@@ -98,7 +98,7 @@
         </div>
         <!-- shop number -->
         <div>
-          <h3 class="join_title"><label for="phoneNo">매장 대표번호</label></h3>
+          <h3 class="join_title"><label>매장 대표번호</label></h3>
           <span class="box int_mobile">
                             <input type="tel" id="mobile" class="int" maxlength="11" placeholder="'-'을 제외한 연락처 번호를 입력해주세요." v-model="middleNum">
                         </span>
