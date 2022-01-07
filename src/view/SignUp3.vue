@@ -1,68 +1,38 @@
 <template>
-
-  <div class="signup2 container_fluid">
-    <h1 class="member_text">
-      회원가입
-    </h1>
+  <div class="container_fluid">
     <!-- wrapper -->
     <div id="wrapper">
-      <p class="border_text2">
-        STEP2. 로그인/사업자정보 입력
+      <p class="border_text3">
+        STEP3. 관리자정보 입력
       </p>
       <!-- content-->
       <div id="content">
-
-        <!-- ID -->
-        <div>
-          <h3 class="join_title">
-            <label for="id">아이디</label>
-          </h3>
-          <span class="box int_id">
-                            <input type="text" id="id3" class="int" maxlength="20">
-                            <!-- <span class="step_url" >유효하지 않은 아이디 입니다.</span> -->
+        <form
+            id="app"
+            @submit="checkForm"
+            action="https://vuejs.org/"
+            method="post"
+        >
+          <p class="inner_box_text">
+            (브랜드)와 소통할 관리자 정보를 적어주세요.<br>
+            해당 정보로 정보 전달 및 소통이 이루어지니 정확하게 입력해주세요!
+          </p>
+          <!--name-->
+          <div>
+            <h3 class="join_title"><label>관리자 이름</label></h3>
+            <span class="box int_name">
+                            <input type="text" id="name3" class="int" maxlength="20" placeholder="관리자 이름">
                         </span>
-          <span class="error_next_box"></span>
-        </div>
+          </div>
 
-        <!-- PW1 -->
-        <div>
-          <h3 class="join_title"><label for="pswd3-1">비밀번호</label></h3>
-          <span class="box int_pass">
-                            <input type="text" id="pswd3-1" class="int" maxlength="16" placeholder="8~16자의 영문/숫자를 조합">
-                            <!-- <span>유효하지 않은 비밀번호 입니다.</span> -->
-            <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
-                        </span>
-          <span class="error_next_box"></span>
-        </div>
-
-        <!-- PW2 -->
-        <div>
-          <h3 class="join_title"><label>비밀번호 재확인</label></h3>
-          <span class="box int_pass_check">
-                            <input type="text" id="pswd3-2" class="int" maxlength="16">
-                            <!-- <span>비밀번호가 동일하지 않습니다.</span> -->
-            <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
-                        </span>
-          <span class="error_next_box"></span>
-        </div>
-
-
-        <!--name-->
-        <div>
-          <h3 class="join_title"><label>대표자 이름</label></h3>
-          <span class="box int_name">
-                            <input type="text" id="name3" class="int" maxlength="20" placeholder="이름을 입력해주세요.">
-                        </span>
-          <!-- <span class="error_next_box">이름을 입력하세요</span> -->
-        </div>
-        <!--number-->
-        <div>
-          <h3 class="join_title"><label>대표자 번호</label></h3>
-          <div id="num_wrap">
-            <!-- BIRTH_MM -->
-            <div id="num_first">
+          <!--number-->
+          <div>
+            <h3 class="join_title"><label>관리자 번호</label></h3>
+            <div id="num_wrap">
+              <!-- BIRTH_MM -->
+              <div id="num_first">
                                 <span class="box">
-                                    <select id="number3" class="sel">
+                                    <select id="number" class="sel">
                                         <option>선택</option>
                                         <option value="010">010</option>
                                         <option value="011">011</option>
@@ -71,152 +41,136 @@
                                         <option value="019">019</option>
                                     </select>
                                 </span>
-            </div>
-            <!-- BIRTH_YY -->
-            <div id="num_second">
+              </div>
+              <!-- BIRTH_YY -->
+              <div id="num_second">
                                 <span class="box">
-                                    <input type="text" id="second3" class="int" maxlength="4" v-model="secondNum">
+                                    <input type="text" id="second" class="int" maxlength="4">
                                 </span>
+              </div>
+
+              <!-- BIRTH_DD -->
+              <div id="num_dd">
+                                    <span class="box">
+                                        <input type="text" id="dd" class="int" maxlength="4">
+                                    </span>
+              </div>
+              <span class="error_next_box"></span>
+            </div>
+            <!-- email_address -->
+            <div id="email">
+              <h3 class="join_title"><label for="email">관리자 메일주소</label></h3>
+              <div id="email_wrap">
+
+                <!-- sub_mail -->
+                <div id="sub_email">
+              <span class="box">
+                <input type="text" id="sub_email" class="int" maxlength="20" placeholder="이메일을 입력해주세요">
+              </span>
+                </div>
+                <span class="middle_mail">@</span>
+                <span class="box">
+                  <select id="email" class="sel">
+                    <option>선택</option>
+                    <option value="naver.com">naver.com</option>
+                    <option value="hanmail.net">hanmail.net</option>
+                    <option value="gmail.com">gmail.com</option>
+                    <option value="nate.com">nate.com</option>
+                    <option value="직접입력">직접입력</option>
+                  </select>
+                </span>
+              </div>
+            </div>
+            <!-- business number -->
+            <div>
+              <h3 class="join_title"><label for="input_file">사업자 등록증</label></h3>
+              <span class="box int_name">
+                        <label class="input-file-button" for="input-file">파일첨부
+                        </label>
+                        <input  type="file" id="input-file" ref="bizImage" @change="onInputImage()" />
+                        <!-- <span>사업자 등록증 : {{}}</span> -->
+                      </span>
+              <span class="error_next_box"></span>
             </div>
 
-            <!-- BIRTH_DD -->
-            <div id="num_dd">
-                                <span class="box">
-                                    <input type="text" id="dd3" class="int" maxlength="4" v-model="thirdNum">
-                                </span>
+
+            <div class="btn_area">
+              <router-link to="/signup4">
+                <button type="button" id="btnJoin">
+                  <span>가입하기</span>
+                </button>
+              </router-link>
             </div>
+
+
+
           </div>
-          <span class="error_next_box"></span>
-        </div>
-        <!--shop name-->
-        <div>
-          <h3 class="join_title"><label for="name">매장 이름</label></h3>
-          <span class="box int_name">
-                            <input type="text" id="name" class="int" maxlength="20">
-                        </span>
-          <span class="error_next_box"></span>
-        </div>
-        <!-- shop number -->
-        <div>
-          <h3 class="join_title"><label>매장 대표번호</label></h3>
-          <span class="box int_mobile">
-                            <input type="tel" id="mobile" class="int" maxlength="11" placeholder="'-'을 제외한 연락처 번호를 입력해주세요." v-model="middleNum">
-                        </span>
-          <span class="error_next_box"></span>
-        </div>
-        <!--shop address-->
-        <div>
-          <h3 class="join_title"><label for="name">매장 주소</label></h3>
-          <span class="box int_mobile">
-                        <input type="text" id="address" ref="address" class="int"  maxlength="20" placeholder="매장 주소">
-                        <button type="submit" class="addr_btn" @click="execDaumPostcode()" value="우편번호 찾기">주소검색</button>
-                        </span>
-          <span class="box int_mobile">
-                        <input type="text" id="detailAddress" class="int" maxlength="20" placeholder="매장 상세주소">
-                        </span>
-          <span class="box int_mobile">
-                        <input type="text" class="int" v-model="postcode" placeholder="우편번호">
-                        </span>
-          <span class="box int_mobile">
-                        <input type="text" class="int" id="extraAddress" ref="extraAddress" placeholder="참고항목">
-                        </span>
-        </div>
-
-
-
-
-        <!-- JOIN BTN-->
-        <div class="btn_area">
-          <button type="button" id="btnJoin">
-            <span><router-link to="/signup3">다음</router-link></span>
-          </button>
-        </div>
-
-
-
+          <!-- content-->
+        </form>
       </div>
-      <!-- content-->
-
     </div>
   </div>
 
 
-
 </template>
 <script>
+import router from '../router'
 export default {
   data () {
     return {
-      mobileNo: '',
-      number: '',
-      //휴대폰번호 중간 4자리
-      secondNum: '',
-      //휴대폰번호 끝 4자리
-      thirdNum: '',
-      //휴대폰번호 11자리
-      middleNum: '',
-      //주소 api
-      postcode: "",
-      address: "",
-      extraAddress: "",
-      signup: {
-        id: null,
-        password: null
+      input: {
+        mobileNo: '',
+        // number: '',
+        // //휴대폰번호 중간 4자리
+        // secondNum: '',
+        // //휴대폰번호 끝 4자리
+        // thirdNum: '',
+        //주소 api
+        postcode: "",
+        address: "",
+        extraAddress: "",
+        image: '',
       },
-      passwordCheck: '',
-      passwordValidFlag: true
     }
   },
-  computed: {
-    idValid() {
-      return /^[A-Za-z0-9]+$/.test(this.signup.id)
-    },
-    // passwordValid() {
-    //   return /^[A-Za-z0-9]+$/.test(this.signup.password)
-    // },
-  },
-  watch: {
-    //중간자리 숫자만 입력가능
-    secondNum(a){
-      if(isNaN(a) == true){
-        alert('숫자만 입력 가능합니다.');
-        this.secondNum = '';
-      }
-    },
-    //끝자리 숫자만 입력가능
-    thirdNum(a){
-      if(isNaN(a) == true){
-        alert('숫자만 입력 가능합니다.');
-        this.thirdNum = '';
-      }
-    },
-    middleNum(a){
-      if(isNaN(a) == true){
-        alert('숫자만 입력 가능합니다.');
-        this.middleNum = '';
-      }
-    }
-  },
+  // watch:
+  //     {
+  //       //중간자리 숫자만 입력가능
+  //       secondNum(a)
+  //       {
+  //         if (isNaN(a) == true) {
+  //           alert('숫자만 입력 가능합니다.');
+  //           this.secondNum = '';
+  //         }
+  //       }
+  //       ,
+  //       //끝자리 숫자만 입력가능
+  //       thirdNum(a)
+  //       {
+  //         if (isNaN(a) == true) {
+  //           alert('숫자만 입력 가능합니다.');
+  //           this.thirdNum = '';
+  //         }
+  //       }
+  //     },
+  
   methods: {
-    //비밀번호 재확인
-    // passwordCheckValid() {
-    //   if(this.signup.password === this.passwordCheck) {
-    //     this.passwordCheckFlag = true
-    //   } else {
-    //     this.passwordCheckFlag = false
-    //   }
-    // },
-    //비밀번호 확인
-    // passwordValid () {
-    //   if ((/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(this.signup.password))) {
-    //     console.log(data.passwordValid)
-    //     this.passwordValidFlag = true
-    //   } else {
-    //     this.passwordValidFlag = false
-    //   }
-    // },
-    //daum map api
-    execDaumPostcode() {
+    //이미지 업로드
+    onInputImage()
+    {
+      this.input.image = this.$refs.bizImage.files
+      console.log("this.input.image")
+    }
+    ,
+    sendRouteParam() {
+      router.push({
+        name: 'routeParam1',
+        params: { val: this.input }
+        // params: { val: "값 넘어옴" }
+      })
+    },
+    execDaumPostcode()
+    {
       new window.daum.Postcode({
         oncomplete: (data) => {
           if (this.extraAddress !== "") {
@@ -229,7 +183,6 @@ export default {
             // 사용자가 지번 주소를 선택했을 경우(J)
             this.address = data.jibunAddress;
           }
-
           // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
           if (data.userSelectedType === "R") {
             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
@@ -262,12 +215,10 @@ export default {
           // console(data.address)
           //  this.$refs('postcode').value = data.zonecode;
           // this.$refs('address').value = data.addr;
-          // this.value = this.address;
-          // console.log(data.address)
-
+          this.value = this.address;
+          console.log(data.address)
           // 커서를 상세주소 필드로 이동한다.
           //  this.$refs("detailAddress").focus();
-
           // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
           if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
             this.address = data.roadAddress
@@ -276,21 +227,21 @@ export default {
           }
         },
       }).open();
-    },
-  },
+    }
+    ,
+  }
+  ,
 //     mounted() {
 //   this.$nextTick(function () {
 //     // 전체 화면내용이 렌더링된 후에 아래의 코드가 실행됩니다.
 //     $refs('address').value = data.addr;
 //   })
 // }
-
 };
 </script>
 
 
 <style>
-a {text-decoration: none;}
 .input-file-button {
   padding: 3px 30px;
   background-color:#997fb5;
@@ -302,24 +253,22 @@ a {text-decoration: none;}
 input:focus {
   outline: none;
 }
-
-
 h3 {
   margin: 19px 0 8px;
   font-size: 14px;
   font-weight: 700;
 }
-.border_text2 {
+.border_text3 {
   padding:10px 0;
   font-size:18px;
   color:#997fb5;
   font-weight: 700;
 }
-.border_text2::after {
+.border_text3::after {
   display: block;
   content: '';
   background:#997fb5;
-  width:60%;
+  width:100%;
   height:5px;
 }
 .box {
@@ -332,7 +281,6 @@ h3 {
   background: #fff;
   position: relative;
 }
-
 .int {
   display: block;
   position: relative;
@@ -342,68 +290,42 @@ h3 {
   background: #fff;
   font-size: 15px;
 }
-
+.inner_box_text {
+  width: 90%;
+  font-size: 14px;
+  text-align: left;
+  color:#997fb5;
+  font-weight: 500;
+}
 input {
   font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
-
 .box.int_id {
   padding-right: 110px;
 }
-
 .box.int_pass {
   padding-right: 40px;
 }
-
 .box.int_pass_check {
   padding-right: 40px;
 }
-
-.step_url {
-  position: absolute;
-  top: 16px;
-  right: 13px;
-  font-size: 14px;
-  color: red;
-}
-
-/* .pswdImg {
-  width: 18px;
-  height: 20px;
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  right: 16px;
-  margin-top: -10px;
-  cursor: pointer;
-} */
-
-#bir_wrap {
+#email_wrap {
   display: table;
   width: 100%;
 }
-
-#bir_yy {
+#email {
   display: table-cell;
   width: 147px;
-
 }
-
-#bir_mm {
+#sub_email {
   display: table-cell;
-  width: 147px;
+  width: 260px;
   vertical-align: middle;
 }
-
-#bir_dd {
-  display: table-cell;
-  width: 147px;
+.middle_mail {
+  display:table-cell;
+  padding:0 10px;
 }
-
-#bir_mm, #bir_dd {
-  padding-left: 10px;
-}
-
 select {
   width: 100%;
   height: 29px;
@@ -418,57 +340,37 @@ select {
   font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
 /* number */
-
 #num_wrap {
   display: table;
   width: 100%;
 }
-
 #num_second {
   display: table-cell;
   width: 147px;
-
 }
-
 #num_first {
   display: table-cell;
   width: 147px;
   vertical-align: middle;
 }
-
 #num_dd {
   display: table-cell;
   width: 147px;
 }
-
 #num_second, #num_dd {
   padding-left: 10px;
 }
-
-
 /* 에러메세지 */
-
 .error_next_box {
   margin-top: 9px;
   font-size: 12px;
   color: red;
-}
-
-/* #alertTxt {
-  position: absolute;
-  top: 19px;
-  right: 10px;
-  font-size: 12px;
-  color: red;
   display: none;
-
-} */
-
+}
 /* 버튼 */
 .btn_area {
   margin: 30px 0 91px;
 }
-
 #btnJoin {
   width: 100%;
   padding: 21px 0 17px;
@@ -480,18 +382,10 @@ select {
   font-weight: 400;
   font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
-#address {
-  position:relative;
+.input-file-button {
+  display: none;
 }
-.addr_btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #997fb5;
-  border: 1px solid #997fb5;
-  color: #fff;
-  width: 100px;
-  height: 30px;
+#input-file {
+  width: 100%;
 }
-
 </style>
