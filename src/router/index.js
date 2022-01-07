@@ -32,6 +32,10 @@ const routes = [
     component: Main,
   },
   {
+    path: '/login',
+    component: Login
+  },
+  {
     path:'/signup1',
     component: SignUp1,
   },
