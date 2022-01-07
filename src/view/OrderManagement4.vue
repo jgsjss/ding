@@ -1,11 +1,16 @@
 <template>
+  <div class="list_wrap">
+      <select id="order_select" class="list">
+        <option value="최신순">최신순</option>
+        <option value="과거순">과거순</option>
+      </select>
+  </div>
 <!-- 품절해제 페이지, 라우팅 path = /releasesoldout -->
 
       <div class="ordermeno_container">
         <table class="order_table">
           <thead class="category_head">
           <tr class="category_title">
-            <th><input type="checkbox" id="all-check"> </th>
             <th scope="col" class="category_col">주문일시</th>
             <th scope="col" class="category_col">대기번호</th>
             <th scope="col" class="category_col">구분</th>
@@ -16,13 +21,12 @@
           </thead>
           <tbody>
           <tr v-for="(a, i) in $store.state.menuData" :key="i">
-            <th scope="row"><input type="checkbox"></th>
-            <td>{{ $store.state.menuData[i].categories1 }}</td>
+            <td>{{ $store.state.menuData[i].date }}</td>
             <td>{{$store.state.menuData[i].number }}</td>
             <td>{{ $store.state.menuData[i].wating }}</td>
             <td>{{ $store.state.menuData[i].name }}</td>
             <td>{{ $store.state.menuData[i].price }} </td>
-            <td>{{ $store.state.menuData[i].isSoldOut +','+  $store.state.menuData[i].isHidden }}</td>
+            <td>{{ $store.state.menuData[i].isSoldOut }}</td>
           </tr>
           </tbody>
         </table>
@@ -145,6 +149,7 @@ export default {
 .category_title {
   background:#c2b4cd;
   color:#fff;
+  text-align: center;
 }
 .category_col {
   font-weight: 500;
@@ -163,6 +168,7 @@ export default {
 }
 tbody {
   color:#997fb5;
+  text-align: center;
 }
 .page-btn {
   background:#997fb5;
