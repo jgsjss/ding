@@ -19,7 +19,7 @@
           </h3>
           <span className="box int_id">
                             <input type="text" id="id2" className="int" maxLength="20">
-                            <span className="step_url">유효하지 않은 아이디 입니다.</span>
+                            <!-- <span className="step_url">유효하지 않은 아이디 입니다.</span> -->
                         </span>
           <span className="error_next_box"></span>
         </div>
@@ -30,7 +30,7 @@
           <span className="box int_pass">
                             <input  type="text" id="pswd2-1" className="int" maxLength="16"
                                    placeholder="8~16자의 영문/숫자를 조합">
-                            <span>유효하지 않은 비밀번호 입니다.</span>
+                            <!-- <span>유효하지 않은 비밀번호 입니다.</span> -->
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
           <span className="error_next_box"></span>
@@ -42,7 +42,7 @@
           <span className="box int_pass_check">
                             <input type="text" id="pswd2-2" className="int"
                                    maxlength="16">
-                            <span >비밀번호가 동일하지 않습니다.</span>
+                            <!-- <span >비밀번호가 동일하지 않습니다.</span> -->
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
                         </span>
           <span className="error_next_box"></span>
@@ -56,7 +56,7 @@
                             <input type="text" id="name2" className="int" maxLength="20"
                                    placeholder="이름을 입력해주세요.">
                         </span>
-          <span className="error_next_box" v-if="checkFlag && !signup.name">이름을 입력하세요</span>
+          <span className="error_next_box">이름을 입력하세요</span>
         </div>
         <!--number-->
         <div>

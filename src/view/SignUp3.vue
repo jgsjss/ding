@@ -1,6 +1,6 @@
 <template>
 
-  <div class="container_fluid">
+  <div class="signup2 container_fluid">
     <h1 class="member_text">
       회원가입
     </h1>
@@ -19,7 +19,7 @@
           </h3>
           <span class="box int_id">
                             <input type="text" id="id3" class="int" maxlength="20">
-                            <span class="step_url" >유효하지 않은 아이디 입니다.</span>
+                            <!-- <span class="step_url" >유효하지 않은 아이디 입니다.</span> -->
                         </span>
           <span class="error_next_box"></span>
         </div>
@@ -29,7 +29,7 @@
           <h3 class="join_title"><label for="pswd3-1">비밀번호</label></h3>
           <span class="box int_pass">
                             <input type="text" id="pswd3-1" class="int" maxlength="16" placeholder="8~16자의 영문/숫자를 조합">
-                            <span>유효하지 않은 비밀번호 입니다.</span>
+                            <!-- <span>유효하지 않은 비밀번호 입니다.</span> -->
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
           <span class="error_next_box"></span>
@@ -40,7 +40,7 @@
           <h3 class="join_title"><label>비밀번호 재확인</label></h3>
           <span class="box int_pass_check">
                             <input type="text" id="pswd3-2" class="int" maxlength="16">
-                            <span>비밀번호가 동일하지 않습니다.</span>
+                            <!-- <span>비밀번호가 동일하지 않습니다.</span> -->
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
                         </span>
           <span class="error_next_box"></span>
