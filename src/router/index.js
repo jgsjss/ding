@@ -21,6 +21,7 @@ import MenuManageCategories from '../view/MenuManageCategories.vue'
 import MenuManageMenus from '../view/MenuManageMenus.vue'
 import MenuManageOptions from '../view/MenuManageOptions.vue'
 import OrderManagement4 from '../view/OrderManagement4'
+import test1 from '../view/test1'
 
 const routes = [
   {
@@ -116,6 +117,11 @@ const routes = [
     path:'/releaseSoldout',
     component: ReleaseSoldOut,
   },
+
+  {
+    path: '/test1',
+    component: test1
+  }
 ]
 
 const router = createRouter({
