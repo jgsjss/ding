@@ -146,7 +146,9 @@
 
 </template>
 <script>
+import vm from 'vm';
 export default {
+
   data () {
     return {
       mobileNo: '',
@@ -200,6 +202,7 @@ export default {
     }
   },
   methods: {
+    
     //비밀번호 재확인 (test용으로 넣은거라 주석처리함)
     // passwordCheckValid () {
     //   if (this.signup.password === this.passwordCheck) {
