@@ -12,8 +12,8 @@ export default {
         console.log(e)
       })).data
     },
-    $hi:()=>  {
-      console.log('hi')
+    $hi:async ()=>  {
+      await console.log('hi')
     }
   }
 }
