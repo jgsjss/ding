@@ -1,8 +1,19 @@
+import axios from 'axios'
 
 export default {
-  methods:{
-    $hi(){
-      console.log("hi")
+  methods: {
+
+    async $api (url, data) {
+      return (await axios({
+        method: 'post',
+        url,
+        data
+      }).catch(e => {
+        console.log(e)
+      })).data
+    },
+    $hi:()=>  {
+      console.log('hi')
     }
   }
 }

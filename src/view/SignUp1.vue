@@ -55,7 +55,7 @@
               <span>다음</span>
             </button>
           </router-link>
-
+<button type="button" @click="this.$hi">테스트</button>
         </div>
       </div>
 
@@ -77,6 +77,7 @@ export default {
     }
   },
   methods: {
+
     select () {
       this.selected = []
       if (!this.allSelected) {
