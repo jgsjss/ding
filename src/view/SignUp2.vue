@@ -30,7 +30,7 @@
           <span className="box int_pass">
                             <input v-model="signup.password" type="text" id="pswd1" className="int" maxLength="16"
                                    @blur="passwordValid" placeholder="8~16자의 영문/숫자를 조합">
-                            <span id="alertTxt" v-if="!passwordValidFlag">유효하지 않은 비밀번호 입니다.</span>
+                            <span v-if="!passwordValidFlag">유효하지 않은 비밀번호 입니다.</span>
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
           <span className="error_next_box"></span>
@@ -42,7 +42,7 @@
           <span className="box int_pass_check">
                             <input v-model="passwordCheck" type="text" id="pswd2" className="int"
                                    @blur="passwordCheckValid" maxlength="16">
-                            <span id="alertTxt" v-if="!passwordCheckFlag">비밀번호가 동일하지 않습니다.</span>
+                            <span v-if="!passwordCheckFlag">비밀번호가 동일하지 않습니다.</span>
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
                         </span>
           <span className="error_next_box"></span>
@@ -165,17 +165,17 @@ export default {
         id: null,
         password: null
       },
-      passwordCheck: '',
-      passwordValidFlag: true
+      // passwordCheck: '',
+      // passwordValidFlag: true
     }
   },
   computed: {
     idValid () {
       return /^[A-Za-z0-9]+$/.test(this.signup.id)
     },
-    passwordValid () {
-      return /^[A-Za-z0-9]+$/.test(this.signup.password)
-    },
+    // passwordValid () {
+    //   return /^[A-Za-z0-9]+$/.test(this.signup.password)
+    // },
   },
   watch: {
     //중간자리 숫자만 입력가능
@@ -200,23 +200,23 @@ export default {
     }
   },
   methods: {
-    //비밀번호 재확인
-    passwordCheckValid () {
-      if (this.signup.password === this.passwordCheck) {
-        this.passwordCheckFlag = true
-      } else {
-        this.passwordCheckFlag = false
-      }
-    },
+    //비밀번호 재확인 (test용으로 넣은거라 주석처리함)
+    // passwordCheckValid () {
+    //   if (this.signup.password === this.passwordCheck) {
+    //     this.passwordCheckFlag = true
+    //   } else {
+    //     this.passwordCheckFlag = false
+    //   }
+    // },
     //비밀번호 확인
-    passwordValid () {
-      if ((/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(this.signup.password))) {
-        console.log(data.passwordValid)
-        this.passwordValidFlag = true
-      } else {
-        this.passwordValidFlag = false
-      }
-    },
+    // passwordValid () {
+    //   if ((/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(this.signup.password))) {
+    //     console.log(data.passwordValid)
+    //     this.passwordValidFlag = true
+    //   } else {
+    //     this.passwordValidFlag = false
+    //   }
+    // },
     //daum map api
     execDaumPostcode () {
       new window.daum.Postcode({
