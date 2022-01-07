@@ -15,12 +15,13 @@
         <span class="order_time">{{}}13:00</span>
       </div>
     </div>
-    <div class="order_middle" >
-      <span>{{orderData.menu}}</span>
-      <span>{{}}진짜 진한 바닐라 리얼딥 1 / 진짜 진한 돌체 리얼딥 1</span>
-      <span>{{}}요청사항</span>
-      <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
-    </div>
+          <div class="order_middle">
+            <span>[메뉴{{orderData.categories}}1개]</span>
+            <span>[{{orderData.menu}}]</span>
+            <!-- <span>{{}}진짜 진한 바닐라 리얼딥 1 / 진짜 진한 돌체 리얼딥 1</span> -->
+            <span>{{}}요청사항</span>
+            <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
+          </div>   
     <div class="order_right">
       <router-link to="/OrderManage" class="order_right_inner"><span>주문표 인쇄</span></router-link>
       <router-link to="/OrderManage" class="order_right_inner"><span>준비중</span></router-link>

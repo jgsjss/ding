@@ -154,6 +154,16 @@ export default {
 .category_col {
   font-weight: 500;
 }
+.category_col:first-child::after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 30%;
+  left:25%;
+  width: 1px;
+  height: 15px;
+  background: #fff;
+}
 .category_col:nth-child(2):after {
   display:none;
 }
