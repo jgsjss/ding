@@ -4,11 +4,8 @@ import Main from '../view/Main.vue'
 import MenuManagement from '../view/MenuManagement.vue'
 import OrderManagement from '../view/OrderManagement.vue'
 import OrderManagement1 from '../view/OrderManagement1.vue'
-import OrderManagement1_2 from '../view/OrderManagement1_2.vue'
 import OrderManagement2 from '../view/OrderManagement2.vue'
-import OrderManagement2_2 from '../view/OrderManagement2_2.vue'
-import OrderManagement3 from '../view/OrderManagement3.vue'
-import OrderManagement4 from '../view/OrderManagement4.vue'
+import OrderManagement3 from '../view/OrderManagement3'
 
 import StaffManagement from '../view/StaffManagement.vue'
 import OperationManagement from '../view/OperationManagement.vue'
@@ -23,6 +20,7 @@ import ReleaseSoldOut from '../view/ReleaseSoldOut.vue'
 import MenuManageCategories from '../view/MenuManageCategories.vue'
 import MenuManageMenus from '../view/MenuManageMenus.vue'
 import MenuManageOptions from '../view/MenuManageOptions.vue'
+import OrderManagement4 from '../view/OrderManagement4'
 
 const routes = [
   {
@@ -30,23 +28,27 @@ const routes = [
     component: Main,
   },
   {
+    path:'/login',
+    component: Login,
+  },
+  {
     path:'/signup1',
     component: SignUp1,
   },
   {
     path:'/signup2',
+    name: 'signup2',
     component: SignUp2,
-    name:"routeParam1"
   },
   {
     path:'/signup3',
+    name: 'signup3',
     component: SignUp3,
-    name:"routeParam2"
   },
   {
     path:'/signup4',
+    name: 'signup4',
     component: SignUp4,
-    name:"routeParam3"
   },
   {
     path: '/main',
@@ -82,7 +84,7 @@ const routes = [
     children: [
       {
         path: '/ordermanagement/1',
-        component: OrderManagement1,
+        component: OrderManagement1
       },
       {
         path: '/ordermanagement/2',
@@ -93,21 +95,9 @@ const routes = [
         component: OrderManagement3
       },
       {
-        path: '/ordermanagement/4',
+        path: '/ordermanagement/3',
         component: OrderManagement4
       },
-      {
-        path: '/ordermanagement/1_2',
-        component: OrderManagement1_2
-      },
-      {
-        path: '/ordermanagement/2_2',
-        component: OrderManagement2_2
-      },
-      // {
-      //   path: '/ordermanagement/4',
-      //   component: OrderManagement4
-      // },
   ]
   },
   {

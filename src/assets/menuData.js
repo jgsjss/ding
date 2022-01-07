@@ -5,9 +5,7 @@ export default [
         isSoldOut : false,
         isHidden : false,
         categories1 : '메뉴',
-        categories2 : '콜드브루',
-        number: '12345',
-        wating: '매장',
+        categories2 : '콜드브루'
     },
     {
         name :  '진짜 생초코 크레이프',
@@ -15,9 +13,7 @@ export default [
         isSoldOut : false,
         isHidden : false,
         categories1 : '메뉴',
-        categories2 : '콜드브루',
-        number: '12345',
-        wating: '매장',
+        categories2 : '콜드브루'
     },
     {
         name : '코코넛 라떼',
@@ -25,9 +21,7 @@ export default [
         isSoldOut : false,
         isHidden : false,
         categories1 : '메뉴',
-        categories2 : '콜드브루',
-        number: '12345',
-        wating: '매장',
+        categories2 : '콜드브루'
     },
     {
         name : '코코넛 콜드브루',
@@ -35,9 +29,7 @@ export default [
         isSoldOut : true,
         isHidden : false,
         categories1 : '메뉴',
-        categories2 : '콜드브루',
-        number: '12345',
-        wating: '매장',
+        categories2 : '콜드브루'
     },
     {
         name : '진짜 리얼 자두 에이드',
@@ -45,9 +37,7 @@ export default [
         isSoldOut : true,
         isHidden : false,
         categories1 : '메뉴',
-        categories2 : '콜드브루',
-        number: '12345',
-        wating: '매장',
+        categories2 : '콜드브루'
     },
     {
         name : '히비스커스',
@@ -55,9 +45,7 @@ export default [
         isSoldOut : false,
         isHidden : true,
         categories1 : '메뉴',
-        categories2 : '콜드브루',
-        number: '12345',
-        wating: '매장',
+        categories2 : '콜드브루'
     },
     {
         name : '진짜 딩동 커피',
@@ -65,8 +53,6 @@ export default [
         isSoldOut: true,
         isHidden: false,
         categories1 : '메뉴',
-        categories2 : '콜드브루',
-        number: '12345',
-        wating: '매장',
+        categories2 : '콜드브루'
     },
 ]

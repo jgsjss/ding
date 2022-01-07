@@ -51,15 +51,13 @@
           </router-link>
           <!--next-->
           <router-link to="/signup2">
-            <button type="button" id="term_btnJoin2" @click="sendRouteParam1">
+            <button type="button" id="term_btnJoin2">
               <span>다음</span>
             </button>
           </router-link>
-<button type="button" @click="$hi">테스트</button>
+
         </div>
       </div>
-
-      <!-- content-->
 
     </div>
   </div>
@@ -69,8 +67,6 @@
 <script>
 
 
-import router from '../router'
-import mixins from '../mixins'
 export default {
   data () {
     return {
@@ -81,16 +77,6 @@ export default {
     }
   },
   methods: {
-
-    sendRouteParam1() {
-      router.push({
-        name: 'routeParam1',
-        params: { val: this.selected }
-        // params: { val: "값 넘어옴" }
-      })
-    }
-    ,
-
     select () {
       this.selected = []
       if (!this.allSelected) {

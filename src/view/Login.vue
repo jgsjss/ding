@@ -5,12 +5,7 @@
     </h1>
     <!-- wrapper -->
     <div class="login_wrap">
-      <form
-        id="app"
-        @submit="checkForm"
-        action="https://vuejs.org/"
-        method="post"
-      >
+
       <!-- ID -->
       <div>
         <h3 class="join_title">
@@ -46,7 +41,6 @@
         </button>
       </div>
       <p class="login_text"><a href="#!" class="member"><router-link to="/signup1">회원가입&nbsp;</router-link></a>후 딩동오더를 이용해 보세요!</p>
-      </form>
     </div>
     <p class="login_bottom">
       아이디/비밀번호 분실 시 (브랜드)로 직접 연락해주세요!
