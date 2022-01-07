@@ -16,8 +16,8 @@
       </div>
     </div>
     <div class="order_middle" >
-      <span>{{orderData.menu}}</span>
-      <span>{{}}진짜 진한 바닐라 리얼딥 1 / 진짜 진한 돌체 리얼딥 1</span>
+      <span>[메뉴{{orderData.categories}}1개]</span>
+      <span>{{ $store.state.menuData[i].name }}</span>
       <span>{{}}요청사항</span>
       <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
     </div>

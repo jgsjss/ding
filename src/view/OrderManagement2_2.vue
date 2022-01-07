@@ -17,7 +17,7 @@
             <span class="order2-2_time">{{}}13:00</span>
         </div>    
           <div class="order2-2_middle">
-            <span>[{{orderData.categories}}1개]</span>
+            <span>[메뉴{{orderData.categories}}1개]</span>
             <span>[{{orderData.menu}}]</span>
             <!-- <span>{{}}진짜 진한 바닐라 리얼딥 1 / 진짜 진한 돌체 리얼딥 1</span> -->
             <span>{{}}요청사항</span>
