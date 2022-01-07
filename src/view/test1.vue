@@ -1,14 +1,49 @@
-<template>
-  <h1>test</h1>
-  <form action="/upload" method="post" enctype="multipart/form-data">
-    <input type="file" name="image"/>
-    <input type="text" name="title"/>
-    <button type="submit">업로드</button>
+<!--<template>-->
+<!--  <h1>test</h1>-->
 
-  </form>
+<!--    <input type="file" name="image" @change="uploadImage()" accept="image/*" multiple="multiple"/>-->
+<!--    <input type="text" name="title"/>-->
+<!--    <button type="submit">업로드</button>-->
+
+
+<!--</template>-->
+<template>
+  <div class="w-32 h-32 border-2 border-dotted border-blue-500">
+    <div v-if="images"
+         class="w-full h-full flex items-center">
+      <img :src="images" alt="image">
+    </div>
+      <input ref="image" id="input"
+             type="file" name="image" accept="image/*" multiple="multiple"
+             class="hidden"
+             @change="uploadImage()">
+  </div>
 </template>
 
 <script>
+import axios from 'axios'
+
+
+  export default {
+    data: ()=>({
+      images: ''
+    }),
+    methods: {
+      uploadImage() {
+        let form = new FormData()
+        let image = this.$refs['image'].files[0]
+
+        form.append('image', image)
+
+        axios.post('/upload', form, {
+          header: { 'Content-Type': 'multipart/form-data' }
+        }).then( ({data}) => {
+          this.images = data
+        })
+            .catch( err => console.log(err))
+      },
+    }
+}
 
 </script>
 
