@@ -18,7 +18,7 @@
             <label htmlFor="id">아이디</label>
           </h3>
           <span className="box int_id">
-                            <input type="text" id="id2" className="int" maxLength="20">
+                            <input type="text" id="id2" className="int" maxLength="20" v-model="inputs.userId">
                             <!-- <span className="step_url">유효하지 않은 아이디 입니다.</span> -->
                         </span>
           <span className="error_next_box"></span>
@@ -29,7 +29,7 @@
           <h3 className="join_title"><label>비밀번호</label></h3>
           <span className="box int_pass">
                             <input  type="text" id="pswd2-1" className="int" maxLength="16"
-                                   placeholder="8~16자의 영문/숫자를 조합">
+                                   placeholder="8~16자의 영문/숫자를 조합" v-model="inputs.userPw">
                             <!-- <span>유효하지 않은 비밀번호 입니다.</span> -->
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
@@ -65,7 +65,7 @@
             <!-- BIRTH_MM -->
             <div id="num_first">
                                 <span className="box">
-                                    <select id="number" className="sel">
+                                    <select id="number" className="sel" v-model="inputs.firstNum">
                                         <option>선택</option>
                                         <option value="010">010</option>
                                         <option value="011">011</option>
@@ -78,14 +78,14 @@
             <!-- BIRTH_YY -->
             <div id="num_second">
                                 <span className="box">
-                                    <input type="text" id="second2" className="int" maxLength="4" v-model="secondNum">
+                                    <input type="text" id="second2" className="int" maxLength="4" v-model="inputs.secondNum">
                                 </span>
             </div>
 
             <!-- BIRTH_DD -->
             <div id="num_dd">
                                 <span className="box">
-                                    <input type="text" id="dd2" className="int" maxLength="4" v-model="thirdNum">
+                                    <input type="text" id="dd2" className="int" maxLength="4" v-model="inputs.thirdNum">
                                 </span>
             </div>
           </div>
@@ -104,7 +104,7 @@
           <h3 className="join_title"><label>매장 대표번호</label></h3>
           <span className="box int_mobile">
                             <input type="tel" id="mobile2" className="int" maxLength="11"
-                                   placeholder="'-'을 제외한 연락처 번호를 입력해주세요." v-model="middleNum">
+                                   placeholder="'-'을 제외한 연락처 번호를 입력해주세요." v-model="inputs.mobileNo">
                         </span>
           <span className="error_next_box"></span>
         </div>
@@ -121,7 +121,7 @@
                         <input type="text" id="detailAddress2" className="int" maxLength="20" placeholder="매장 상세주소">
                         </span>
           <span className="box int_mobile">
-                        <input type="text" className="int" v-model="postcode" placeholder="우편번호">
+                        <input type="text" className="int" v-model="inputs.postcode" placeholder="우편번호">
                         </span>
           <span className="box int_mobile">
                         <input type="text" className="int" id="extraAddress2" ref="extraAddress" placeholder="참고항목">
@@ -130,10 +130,11 @@
 
 
         <!-- JOIN BTN-->
-        <div className="btn_area">
+        <div className="btn_area"><span><router-link to="/signup3">
           <button type="button" id="btnJoin">
-            <span><router-link to="/signup3">다음</router-link></span>
+            다음
           </button>
+          </router-link></span>
         </div>
 
 
@@ -151,8 +152,15 @@ export default {
 
   data () {
     return {
+   inputs: {
+     //회원 아이디
+      userId: '',
+     //회원 비밀번호
+      userPw: '',
+     //매장대표번호
       mobileNo: '',
-      number: '',
+     //휴대폰번호 맨앞자리
+      firstNum: '',
       //휴대폰번호 중간 4자리
       secondNum: '',
       //휴대폰번호 끝 4자리
@@ -166,6 +174,7 @@ export default {
       signup: {
         id: null,
         password: null
+       }
       },
       // passwordCheck: '',
       // passwordValidFlag: true
@@ -199,10 +208,11 @@ export default {
         alert('숫자만 입력 가능합니다.');
         this.middleNum = '';
       }
-    }
+    },
+
   },
   methods: {
-    
+
     //비밀번호 재확인 (test용으로 넣은거라 주석처리함)
     // passwordCheckValid () {
     //   if (this.signup.password === this.passwordCheck) {
