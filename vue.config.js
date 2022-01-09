@@ -1,24 +1,22 @@
-const target = 'http://localhost:5000'
+const target = "http://localhost:5000";
 
 module.exports = {
   devServer: {
     port: 8080,
     proxy: {
-      '^/api': {
+      "^/api": {
         target,
-        changeOrigin: true
+        changeOrigin: true,
       },
-      '^/upload': {
+      "^/upload": {
         target,
-        changeOrigin: true
+        changeOrigin: true,
       },
-      '^/download': {
+      "^/download": {
         target,
-        changeOrigin: true
-      }
-
-    }
+        changeOrigin: true,
+      },
+    },
   },
-  lintOnSave: false
-
-}
+  lintOnSave: false,
+};

@@ -35,10 +35,11 @@ import axios from 'axios'
 
         form.append('image', image)
 
-        axios.post('/upload', form, {
+        axios.post('/api/upload', form, {
           header: { 'Content-Type': 'multipart/form-data' }
         }).then( ({data}) => {
           this.images = data
+          console.log(data)
         })
             .catch( err => console.log(err))
       },
