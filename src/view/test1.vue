@@ -16,7 +16,8 @@
       <input ref="image" id="input"
              type="file" name="image" accept="image/*" multiple="multiple"
              class="hidden"
-             @change="uploadImage()">
+             >
+             <button @click="uploadImage()">사업자등록증 전송</button>
   </div>
 </template>
 

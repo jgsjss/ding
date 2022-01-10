@@ -87,7 +87,11 @@
               <span class="box int_name">
                         <label class="input-file-button" for="input-file">파일첨부
                         </label>
-                        <input  type="file" id="input-file" ref="bizImage" @change="onInputImage()" />
+                        <img :src="images" alt="image">
+                       <input ref="image" id="input"
+             type="file" name="image" accept="image/*" multiple="multiple"
+             class="hidden"
+             >
                         <!-- <span>사업자 등록증 : {{}}</span> -->
                       </span>
               <span class="error_next_box"></span>
@@ -96,7 +100,7 @@
 
             <div class="btn_area">
               <router-link to="/signup4">
-                <button type="button" id="btnJoin">
+                <button type="button" id="btnJoin" @click="uploadImage()">
                   <span>가입하기</span>
                 </button>
               </router-link>
@@ -115,22 +119,19 @@
 </template>
 <script>
 import router from '../router'
+import axios from 'axios'
+
 export default {
   data () {
     return {
       input: {
         mobileNo: '',
-        // number: '',
-        // //휴대폰번호 중간 4자리
-        // secondNum: '',
-        // //휴대폰번호 끝 4자리
-        // thirdNum: '',
         //주소 api
         postcode: "",
         address: "",
         extraAddress: "",
-        image: '',
       },
+      images: '',
     }
   },
   // watch:
@@ -156,12 +157,20 @@ export default {
   
   methods: {
     //이미지 업로드
-    onInputImage()
-    {
-      this.input.image = this.$refs.bizImage.files
-      console.log("this.input.image")
-    }
-    ,
+   uploadImage() {
+        let form = new FormData()
+        let image = this.$refs['image'].files[0]
+
+        form.append('image', image)
+
+        axios.post('/api/upload', form, {
+          header: { 'Content-Type': 'multipart/form-data' }
+        }).then( ({data}) => {
+          this.images = data
+          console.log(data)
+        })
+            .catch( err => console.log(err))
+      },
     sendRouteParam() {
       router.push({
         name: 'routeParam1',
