@@ -58,13 +58,11 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <div class="nav-wrap">
         <i class="xi-cloud-o"></i>
         <div class="btn-group dropend nav-info-btn">
           <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             img
           </button>
-          </div>
           <ul class="dropdown-menu">
             <router-link to="../components/MyInfo" class="nav-link"><li><a class="dropdown-item" href="#">정보수정</a></li></router-link>
             <router-link to="/login" class="nav-link"><li><a class="dropdown-item" href="#">로그아웃</a></li></router-link>

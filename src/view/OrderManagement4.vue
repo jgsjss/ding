@@ -115,7 +115,7 @@ export default {
   padding: 30px 0;
 }
 .order_table {
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
 }
 .btn_wrap {
