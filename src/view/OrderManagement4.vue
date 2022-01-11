@@ -7,7 +7,7 @@
   </div>
   <!-- 품절해제 페이지, 라우팅 path = /releasesoldout -->
 
-  <div class="ordermeno_container">
+  <div class="ordermenu_container">
     <table class="order_table">
       <thead class="category_head">
         <tr class="category_title">
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 export default {
   data() {
     return {
@@ -109,7 +109,7 @@ export default {
 </script>
 
 <style>
-.ordermeno_container {
+.ordermenu_container {
   width: 100%;
   margin: 0 auto;
   padding: 30px 0;

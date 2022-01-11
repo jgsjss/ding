@@ -137,6 +137,17 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  position:relative;
+}
+.pay_container > div:after {
+  position:absolute;
+  top:-15px;
+  left:0;
+  display: block;
+  content: '';
+  width:100%;
+  height:1px;
+  background:#ddd;
 }
 .complete_box1,
 .complete_box2,
@@ -176,7 +187,7 @@ export default {
   align-items: center;
   padding: 10px 30px;
   justify-content: space-between;
-  border-top:1px solid #997fb5;
+  border-top:1px solid #ddd;
 }
 .complete_left:nth-child(2){
   border-top:none;
