@@ -156,7 +156,7 @@ export default {
   display: inline-block;
   border: 1px solid #997fb5;
   border-radius: 5px;
-  margin: 0 15px;
+  margin: 0 30px;
 }
 .complete_box1 {
   border:none;
@@ -328,4 +328,3 @@ export default {
   display: none;
 }
 </style>
-

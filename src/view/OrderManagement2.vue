@@ -26,15 +26,43 @@
       <router-link to="/OrderManage" class="order_right_inner"><span>메뉴완료</span></router-link>
     </div>
   </div>
+      <div class="order-btn-cover">
+      <button :disabled="pageNum === 0" @click="prevPage" class="order-page-btn">
+        <i class="xi-angle-left"></i>
+      </button>
+      <span class="order-page-count">{{ pageNum + 1 }} / {{ pageCount }} </span>
+      <button
+        :disabled="pageNum >= pageCount - 1"
+        @click="nextPage"
+        class="order-page-btn"
+      >
+        <i class="xi-angle-right"></i>
+      </button>
+    </div>
 
 
 </template>
+
 <script>
 export default {
   components : {
-  }
+  },
+   data() {
+    return {
+      pageNum: 0,
+    };
+  },
+  methods: {
+      nextPage() {
+        this.pageNum += 1;
+      },
+      prevPage() {
+        this.pageNum -= 1;
+      },
+    },
 }
 </script>
+
 <style>
 .new_btn {
   background:#fff;
@@ -123,5 +151,21 @@ export default {
   border:1px solid #997fb5;
   background:#997fb5;
   color:#fff;
+}
+/* bottom new page btn */
+.order-btn-cover {
+  text-align: center;
+  padding:30px 0;
+}
+.order-page-btn {
+  background: #997fb5;
+  border: 1px solid #997fb5;
+  color: #fff;
+  margin: 0 15px;
+}
+.order-page-count {
+  background: #997fb5;
+  color: #fff;
+  padding: 5px 15px;
 }
 </style>

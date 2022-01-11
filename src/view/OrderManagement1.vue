@@ -27,13 +27,39 @@
       <router-link to="/OrderManage" class="order_right_inner"><span>준비중</span></router-link>
     </div>
   </div>
+      <div class="new-btn-cover">
+      <button :disabled="pageNum === 0" @click="prevPage" class="new-page-btn">
+        <i class="xi-angle-left"></i>
+      </button>
+      <span class="new-page-count">{{ pageNum + 1 }} / {{ pageCount }} </span>
+      <button
+        :disabled="pageNum >= pageCount - 1"
+        @click="nextPage"
+        class="new-page-btn"
+      >
+        <i class="xi-angle-right"></i>
+      </button>
+    </div>
 
 
 </template>
 <script>
 export default {
   components : {
-  }
+  },
+   data() {
+    return {
+      pageNum: 0,
+    };
+  },
+  methods: {
+      nextPage() {
+        this.pageNum += 1;
+      },
+      prevPage() {
+        this.pageNum -= 1;
+      },
+    },
 }
 </script>
 <style>
@@ -124,5 +150,21 @@ export default {
   border:1px solid #997fb5;
   background:#997fb5;
   color:#fff;
+}
+/* bottom new page btn */
+.new-btn-cover {
+  text-align: center;
+  padding:30px 0;
+}
+.new-page-btn {
+  background: #997fb5;
+  border: 1px solid #997fb5;
+  color: #fff;
+  margin: 0 15px;
+}
+.new-page-count {
+  background: #997fb5;
+  color: #fff;
+  padding: 5px 15px;
 }
 </style>
