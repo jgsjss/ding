@@ -64,12 +64,13 @@ export default {
 </script>
 <style>
 .main_container {
-  width:100%;
-  height:100%;
+  width: 85%;
+  margin: 0 auto;
+  float: left;
 }
 .component {
   float:left;
-  width:28%;
+  width:31%;
   margin:0 15px;
   background:#f5f3f7;
   color:#997fb5;
