@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 import orderData from '../assets/orderData.js'
 import menuData from '../assets/menuData.js'
 import shopData from '../assets/shopData.js'
-// import paymentData from '../assets/paymentData.js'
+import paymentData from '../assets/paymentData.js'
 
 let soldNum=0;
 let hidNum=0;
@@ -50,7 +50,8 @@ export default createStore({
     shopData,
     //영업중인 가게 수
     openShopNum : 3,
-
+    //----------결제내역 데이터----------
+    paymentData,
     //=======================MenuManagement.vue 화면 내부 데이터 ========================
     //
     menuTab : 0,
