@@ -1,19 +1,30 @@
-import axios from 'axios'
+import axios from 'axios';
+import router from './router';
 
 export default {
   methods: {
+    $sendRouteParam() {
+      console.log(router.route.toString());
 
-    async $api (url, data) {
-      return (await axios({
-        method: 'post',
-        url,
-        data
-      }).catch(e => {
-        console.log(e)
-      })).data
+      // router.push({
+      //   name: name,
+      //   params: data,
+      // });
     },
-    $hi:async ()=>  {
-      await console.log('hi')
-    }
-  }
-}
+
+    async $api(url, data) {
+      return (
+        await axios({
+          method: 'post',
+          url,
+          data,
+        }).catch((e) => {
+          console.log(e);
+        })
+      ).data;
+    },
+    $hi: async () => {
+      await console.log('hi');
+    },
+  },
+};

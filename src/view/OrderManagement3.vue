@@ -22,18 +22,18 @@
           <div class="order_small_flex1">
             <span>{{}}[메뉴5개]</span>
             <span class="complete_type">{{}}[매장]</span>
-          </div>            
+          </div>
           <div class="order_small_flex2">
             <span>{{}}아이스 아메리카노</span>
             <span class="complete_time">{{}}2022.01.11 12:55</span>
           </div>
-           
+
           </div>
           <div class="num_box">
             <span class="complete_num">{{ 123 }}</span>
-          </div>           
+          </div>
         </div>
-          
+
       </div>
       <!--데이터 설정했으나 데이터 화면에안뜸-->
       <div class="complete_box2">
@@ -48,12 +48,12 @@
               <div class="payment_left">비고</div>
             </div>
           <div class="pay_wrap2">
-            <div class="payment_right">{{ $store.state.paymentData.cardNum }}</div>
-            <div class="payment_right">{{ $store.state.paymentData.approveNum }}</div>
-            <div class="payment_right">{{ $store.state.paymentData.cardType }}</div>
-            <div class="payment_right">{{ $store.state.paymentData.installMent }}</div>
-            <div class="payment_right">{{ $store.state.paymentData.dealDate }}</div>
-            <div class="payment_right">{{ $store.state.paymentData.cardNote }}</div>
+            <div class="payment_right">{{ $store.state.paymentData[0].cardNum }}</div>
+            <div class="payment_right">{{ $store.state.paymentData[0].approveNum }}</div>
+            <div class="payment_right">{{ $store.state.paymentData[0].cardType }}</div>
+            <div class="payment_right">{{ $store.state.paymentData[0].installMent }}</div>
+            <div class="payment_right">{{ $store.state.paymentData[0].dealDate }}</div>
+            <div class="payment_right">{{ $store.state.paymentData[0].cardNote }}</div>
           </div>
         </div>
       </div>
@@ -69,10 +69,10 @@
               <div class="order_submenu_list">{{}}- 휘핑 : 에스프레소 휘핑</div>
           </div>
           <div class="order_menulist_right">
-            <div class="order_price_list">{{}}9,500원</div>           
-            <div class="order_price_list">{{}}8,500원</div>           
-            <div class="order_price_list">{{}}500원</div>         
-            <div class="order_price_list">{{}}800원</div>         
+            <div class="order_price_list">{{}}9,500원</div>
+            <div class="order_price_list">{{}}8,500원</div>
+            <div class="order_price_list">{{}}500원</div>
+            <div class="order_price_list">{{}}800원</div>
           </div>
           </div>
       </div>
@@ -190,7 +190,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 30px 15px;  
+  padding: 30px 15px;
 }
 .order_menulist_left {
   float: left;

@@ -100,7 +100,7 @@ export default {
   created () {
     axios.get('http://sample.bmaster.kro.kr/contacts')
     .then(response => {
-      console.log(response);
+
       this.pageArray = response.data.contacts;
     })
     .catch(err => {
