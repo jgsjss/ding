@@ -50,7 +50,7 @@
             </button>
           </router-link>
           <!--next-->
-          <router-link to="/signup2"  @click="$sendRouteParam('signup2', selected)">
+          <router-link to="/signup2" >
             <button type="button" id="term_btnJoin2">
               <span>다음</span>
             </button>
@@ -104,11 +104,8 @@ export default {
 
   },
   mounted () {
-  },
-  created () {
-    this.$sendRouteParam();
+    this.$test()
   }
-
 }
 </script>
 
