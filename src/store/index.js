@@ -1,7 +1,8 @@
 import { createStore } from 'vuex'
 import orderData from '../assets/orderData.js'
 import menuData from '../assets/menuData.js'
-import shopData from '../assets/shopData'
+import shopData from '../assets/shopData.js'
+// import paymentData from '../assets/paymentData.js'
 
 let soldNum=0;
 let hidNum=0;

@@ -77,9 +77,10 @@
   .wrap2{
   float: left;
   position: relative;
-  right: 0px;}
+  right: 0px;
+  }
   .wrap2 .info_right{
-    text-align: end;
+  text-align: end;
   margin: 10px;
   color:#997fb5;
   font-weight:500;
