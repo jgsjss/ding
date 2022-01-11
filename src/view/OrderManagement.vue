@@ -61,6 +61,7 @@ export default {
   padding:30px 0;
   margin:0 auto;
   position:relative;
+  width: 82%;
 }
 .component_name {
   margin:0 30px;

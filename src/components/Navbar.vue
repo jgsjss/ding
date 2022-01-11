@@ -1,5 +1,5 @@
 <template>
-  <div class="nav_ontainer">
+  <div class="nav_container">
     <ul class="nav flex-column">
       <li class="nav-item">
         <i class="xi-cloud-o"></i>
@@ -113,8 +113,5 @@ ul {list-style:none;}
 .nav-link:hover {
   color:#997fb5;
   text-decoration: none;
-}
-.nav-info-btn {
-
 }
 </style>
