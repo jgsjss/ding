@@ -55,7 +55,7 @@
               <span>다음</span>
             </button>
           </router-link>
-<button type="button" @click="this.$hi">테스트</button>
+<button type="button" @click="$hi">테스트</button>
         </div>
       </div>
 
