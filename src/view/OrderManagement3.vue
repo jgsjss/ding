@@ -32,7 +32,15 @@
             <span class="complete_num">{{ 123 }}</span>
           </div>
         </div>
-
+         <div class="order_btn-cover">
+      <button :disabled="orderpageNum === 0" @click="prevPage" class="order_page-btn">
+        <i class="xi-angle-left"></i>
+      </button>
+      <span class="page-count">{{ orderpageNum + 1 }} / {{ pageCount }} </span>
+      <button :disabled="orderpageNum >= pageCount - 1" @click="nextPage" class="order_page-btn">
+        <i class="xi-angle-right"></i>
+      </button>
+    </div>
       </div>
       <!--데이터 설정했으나 데이터 화면에안뜸-->
       <div class="complete_box2">
@@ -79,15 +87,44 @@
           <div class="com_order_total">총 결제금액</div>
           <div class="com_total_price">{{ $store.state.priceData[0].total }}</div>
           </div>
-          
-      </div>
+         <div class="menulist_btn-cover">
+          <button type="text" class="order_receipt_btn">주문표 인쇄</button>
+          <button :disabled="menulistpageNum === 0" @click="prevPage2" class="menulist_page-btn">
+            <i class="xi-angle-up"></i>
+          </button>
+          <span class="menulist_page-count">{{ menulistpageNum + 1 }} / {{ pageCount }} </span>
+          <button :disabled="menulistpageNum >= pageCount - 1" @click="nextPage1" class="menulist_page-btn">
+            <i class="xi-angle-down"></i>
+          </button>
+    </div>
+      </div>   
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  components: {},
+  data() {
+    return {
+      orderpageNum : 0,
+      menulistpageNum : 0,
+    };
+  },
+  methods: {
+    nextPage() {
+      this.orderpageNum += 1;
+    },
+    prevPage() {
+      this.orderpageNum -= 1;
+    },
+    //주문내역 영수증 버튼
+    nextPage1() {
+      this.menulistpageNum += 1;
+    },
+    prevPage2() {
+      this.menulistpageNum -= 1;
+    },
+  },
 };
 </script>
 
@@ -105,7 +142,6 @@ export default {
 .complete_box2,
 .complete_box3 {
   width: 33%;
-  height:60vh;
   display: inline-block;
   border: 1px solid #997fb5;
   border-radius: 5px;
@@ -138,8 +174,15 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0 30px;
+  padding: 10px 30px;
   justify-content: space-between;
+  border-top:1px solid #997fb5;
+}
+.complete_left:nth-child(2){
+  border-top:none;
+}
+.complete_left:hover {
+  background:#dcd4e3
 }
 .complete_num {
   border: 1px solid #997fb5;
@@ -200,7 +243,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 30px 15px;
+  padding: 15px 15px;
 }
 .order_menulist_left {
   float: left;
@@ -228,6 +271,50 @@ export default {
 }
 .com_total_price {
   padding:15px 15px
+}
+
+/* page_btn */
+.order_btn-cover {
+  text-align: center;
+  padding:30px 0;
+}
+.order_page-btn {
+  background: #997fb5;
+  border: 1px solid #997fb5;
+  color: #fff;
+  margin: 0 15px;
+}
+.order_page-count {
+  background: #997fb5;
+  color: #fff;
+  padding: 5px 15px;
+}
+.menulist_btn_wrap {
+  margin:0 auto;
+}
+.order_receipt_btn {
+  width:50.01%;
+  height:50px;
+  background:white;
+  border:1px solid #997fb5;
+  border-bottom:none;
+  border-left:none;
+  color: #997fb5;
+}
+.menulist_page-btn {
+  width:25%;
+  height:50px;
+  background:white;
+  border:1px solid #997fb5;
+  border-bottom:none;
+  border-right:none;
+  color:#997fb5;
+}
+.menulist_page-btn:first-child {
+  border-left:none
+}
+.menulist_page-count {
+  display: none;
 }
 </style>
 
