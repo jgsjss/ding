@@ -3,6 +3,8 @@ import orderData from '../assets/orderData.js'
 import menuData from '../assets/menuData.js'
 import shopData from '../assets/shopData.js'
 import paymentData from '../assets/paymentData.js'
+import priceData from '../assets/priceData.js'
+import menuCostomData from '../assets/menuCostomData.js'
 
 let soldNum=0;
 let hidNum=0;
@@ -52,6 +54,10 @@ export default createStore({
     openShopNum : 3,
     //----------결제내역 데이터----------
     paymentData,
+    //----------가격 데이터-------------
+    priceData,
+    //----------커스텀 옵션 데이터-------------
+    menuCostomData,
     //=======================MenuManagement.vue 화면 내부 데이터 ========================
     //
     menuTab : 0,

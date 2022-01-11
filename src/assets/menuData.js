@@ -8,7 +8,7 @@ export default [
         categories2 : '콜드브루',
         number: '15',
         wating: '매장',
-        date: '2022.01.03 13:01',
+        date: '2022.01.03 13:01:',
     },
     {
         name :  '진짜 생초코 크레이프',

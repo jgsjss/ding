@@ -4,7 +4,7 @@ export default [
             approveNum : '0012345' , //승인번호
             cardType : '현대카드', //카드종류
             installMent : '일시불', //할부개월
-            dealDate : '2022/01/10/16:35', //거래일시
+            dealDate : '2022/01/10/16:35:03', //거래일시
             cardNote : '', //비고
         },
         // {

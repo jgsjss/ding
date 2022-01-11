@@ -16,16 +16,15 @@
             </select>
           </span>
         </div>
-        <div class="complete_left">
-          <!-- <span>{{ $store.state.menuData[i].name }}</span> -->
+        <div class="complete_left" v-for="(orderData, i) in $store.state.orderData" :key="i">
           <div class="order_small_list">
           <div class="order_small_flex1">
-            <span>{{}}[메뉴5개]</span>
-            <span class="complete_type">{{}}[매장]</span>
+            <span>[{{ $store.state.menuData[i].categories1 }}5개]</span>
+            <span class="complete_type">[{{ $store.state.menuData[i].wating }}]</span>
           </div>
           <div class="order_small_flex2">
-            <span>{{}}아이스 아메리카노</span>
-            <span class="complete_time">{{}}2022.01.11 12:55</span>
+            <span>{{ $store.state.menuData[i].name }}</span>
+            <span class="complete_time">{{ $store.state.menuData[i].date }}</span>
           </div>
 
           </div>
@@ -63,18 +62,24 @@
         <div class="com_title">주문내역</div>
         <div class="order_menulist_wrap">
           <div class="order_menulist_left">
-            {{}}바닐라라떼 x1
-              <div class="order_submenu_list">{{}}- 기본(iced)</div>
-              <div class="order_submenu_list">{{}}- 시럽 : 바닐라 추가</div>
-              <div class="order_submenu_list">{{}}- 휘핑 : 에스프레소 휘핑</div>
+            {{ $store.state.menuData[3].name }}
+              <div class="order_submenu_list">{{ $store.state.menuCostomData[0].basic1 }}</div>
+              <div class="order_submenu_list">{{ $store.state.menuCostomData[0].syrup1 }}</div>
+              <div class="order_submenu_list">{{ $store.state.menuCostomData[0].cream2 }}</div>
           </div>
           <div class="order_menulist_right">
-            <div class="order_price_list">{{}}9,500원</div>
-            <div class="order_price_list">{{}}8,500원</div>
-            <div class="order_price_list">{{}}500원</div>
-            <div class="order_price_list">{{}}800원</div>
+            <div class="order_price_list">{{ $store.state.priceData[0].menuprice1 }}</div>
+            <div class="order_price_list">{{ $store.state.priceData[0].option }}</div>
+            <div class="order_price_list">{{ $store.state.priceData[0].costom3 }}</div>
+            <div class="order_price_list">{{ $store.state.priceData[0].costom2 }}</div>
           </div>
           </div>
+          <div class="wjfcnltjs">***********************************************************</div>
+          <div class="total_price">
+          <div class="com_order_total">총 결제금액</div>
+          <div class="com_total_price">{{ $store.state.priceData[0].total }}</div>
+          </div>
+          
       </div>
     </div>
   </div>
@@ -100,6 +105,7 @@ export default {
 .complete_box2,
 .complete_box3 {
   width: 33%;
+  height:60vh;
   display: inline-block;
   border: 1px solid #997fb5;
   border-radius: 5px;
@@ -115,6 +121,9 @@ export default {
   display:flex;
   flex-direction: column;
   padding:15px 0;
+}
+.order_small_flex2>span:first-child {
+  color:#997fb5;
 }
 .form_box {
   display: flex;
@@ -147,6 +156,7 @@ export default {
 }
 .complete_time {
   padding-top:10px;
+  color:#a7a7a7;
 }
 
 .com_title {
@@ -181,7 +191,7 @@ export default {
 }
 .payment_right {
   text-align: end;
-  color: #333;
+  color: #747474;
   font-weight: 500;
   line-height: 2;
 }
@@ -198,6 +208,26 @@ export default {
 .order_menulist_right {
   float: left;
   text-align: end;
+}
+.order_submenu_list {
+  padding:0 20px;
+  text-align: left;
+}
+.wjfcnltjs {
+  padding:0 15px
+}
+.total_price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.com_order_total {
+  font-size: 18px;
+  padding: 15px 15px;
+}
+.com_total_price {
+  padding:15px 15px
 }
 </style>
 
