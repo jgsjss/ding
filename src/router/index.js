@@ -1,30 +1,29 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 // import Total from '../view/**'
-import Main from '../view/Main.vue'
-import MenuManagement from '../view/MenuManagement.vue'
-import OrderManagement from '../view/OrderManagement.vue'
-import OrderManagement1 from '../view/OrderManagement1.vue'
-import OrderManagement1_2 from '../view/OrderManagement1_2.vue'
-import OrderManagement2 from '../view/OrderManagement2.vue'
-import OrderManagement2_2 from '../view/OrderManagement2_2.vue'
-import OrderManagement3 from '../view/OrderManagement3.vue'
-import OrderManagement4 from '../view/OrderManagement4.vue'
+import Main from '../view/Main.vue';
+import MenuManagement from '../view/MenuManagement.vue';
+import OrderManagement from '../view/OrderManagement.vue';
+import OrderManagement1 from '../view/OrderManagement1.vue';
+import OrderManagement1_2 from '../view/OrderManagement1_2.vue';
+import OrderManagement2 from '../view/OrderManagement2.vue';
+import OrderManagement2_2 from '../view/OrderManagement2_2.vue';
+import OrderManagement3 from '../view/OrderManagement3.vue';
+import OrderManagement4 from '../view/OrderManagement4.vue';
 
-import StaffManagement from '../view/StaffManagement.vue'
-import OperationManagement from '../view/OperationManagement.vue'
-import DiscountCode from '../view/DiscountCode.vue'
-import SalesManagement from '../view/SalesManagement.vue'
-import Login from '../view/Login.vue'
-import SignUp1 from '../view/SignUp1.vue'
-import SignUp2 from '../view/SignUp2.vue'
-import SignUp3 from '../view/SignUp3.vue'
-import SignUp4 from '../view/SignUp4.vue'
-import ReleaseSoldOut from '../view/ReleaseSoldOut.vue'
-import MenuManageCategories from '../view/MenuManageCategories.vue'
-import MenuManageMenus from '../view/MenuManageMenus.vue'
-import MenuManageOptions from '../view/MenuManageOptions.vue'
-import test1 from '../view/test1'
-
+import StaffManagement from '../view/StaffManagement.vue';
+import OperationManagement from '../view/OperationManagement.vue';
+import DiscountCode from '../view/DiscountCode.vue';
+import SalesManagement from '../view/SalesManagement.vue';
+import Login from '../view/Login.vue';
+import SignUp1 from '../view/SignUp1.vue';
+import SignUp2 from '../view/SignUp2.vue';
+import SignUp3 from '../view/SignUp3.vue';
+import SignUp4 from '../view/SignUp4.vue';
+import ReleaseSoldOut from '../view/ReleaseSoldOut.vue';
+import MenuManageCategories from '../view/MenuManageCategories.vue';
+import MenuManageMenus from '../view/MenuManageMenus.vue';
+import MenuManageOptions from '../view/MenuManageOptions.vue';
+import test1 from '../view/test1';
 
 const routes = [
   {
@@ -33,30 +32,30 @@ const routes = [
   },
   {
     path: '/login',
-    component: Login
+    component: Login,
   },
   {
-    path:'/signup1',
+    path: '/signup1',
     component: SignUp1,
   },
   {
-    path:'/signup2',
+    path: '/signup2',
     component: SignUp2,
-    name:"routeParam1"
+    name: 'routeParam1',
   },
   {
-    path:'/signup3',
+    path: '/signup3',
     component: SignUp3,
-    name:"routeParam2"
+    name: 'routeParam2',
   },
   {
-    path:'/signup4',
+    path: '/signup4',
     component: SignUp4,
-    name:"routeParam3"
+    name: 'routeParam3',
   },
   {
     path: '/main',
-    component: Main
+    component: Main,
   },
   {
     path: '/menumanagement',
@@ -64,22 +63,22 @@ const routes = [
     //중첩되는 자식 라우트 경로
     children: [
       {
-      path: '/menumanagement/categories',
-      component: MenuManageCategories
-    },
-    {
-      path: '/menumanagement/menus',
-      component: MenuManageMenus,
-    },
-    {
-      path: '/menumanagement/options',
-      component: MenuManageOptions,
-    },
-  ]
+        path: '/menumanagement/categories',
+        component: MenuManageCategories,
+      },
+      {
+        path: '/menumanagement/menus',
+        component: MenuManageMenus,
+      },
+      {
+        path: '/menumanagement/options',
+        component: MenuManageOptions,
+      },
+    ],
   },
   {
     path: '/salesmanagement',
-    component: SalesManagement
+    component: SalesManagement,
   },
   {
     path: '/ordermanagement',
@@ -92,51 +91,51 @@ const routes = [
       },
       {
         path: '/ordermanagement/2',
-       component: OrderManagement2
+        component: OrderManagement2,
       },
       {
         path: '/ordermanagement/3',
-        component: OrderManagement3
+        component: OrderManagement3,
       },
       {
         path: '/ordermanagement/4',
-        component: OrderManagement4
+        component: OrderManagement4,
       },
       {
         path: '/ordermanagement/1_2',
-        component: OrderManagement1_2
+        component: OrderManagement1_2,
       },
       {
         path: '/ordermanagement/2_2',
-        component: OrderManagement2_2
+        component: OrderManagement2_2,
       },
       // {
       //   path: '/ordermanagement/4',
       //   component: OrderManagement4
       // },
-  ]
+    ],
   },
   {
     path: '/staffmanagement',
-    component: StaffManagement
+    component: StaffManagement,
   },
   {
     path: '/operationmanagement',
-    component: OperationManagement
+    component: OperationManagement,
   },
   {
     path: '/discountcode',
-    component: DiscountCode
+    component: DiscountCode,
   },
   {
-    path:'/releaseSoldout',
+    path: '/releaseSoldout',
     component: ReleaseSoldOut,
   },
   {
-    path:'/test1',
-    component: test1
-  }
-]
+    path: '/test1',
+    component: test1,
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
