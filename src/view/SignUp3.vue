@@ -42,14 +42,14 @@
                                     </select>
                                 </span>
               </div>
-              <!-- BIRTH_YY -->
+              <!-- num_YY -->
               <div id="num_second">
                                 <span class="box">
                                     <input type="text" id="second" class="int" maxlength="4">
                                 </span>
               </div>
 
-              <!-- BIRTH_DD -->
+              <!-- num_DD -->
               <div id="num_dd">
                                     <span class="box">
                                         <input type="text" id="dd" class="int" maxlength="4">
@@ -96,8 +96,29 @@
                       </span>
               <span class="error_next_box"></span>
             </div>
-
-
+            <h3 class="join_title"><label>사업자 번호</label></h3>
+            <div id="shopnum_wrap">
+              <!-- shop_num one -->
+              <div id="shop_one">
+                                <span class="box">
+                                    <input type="text" id="shop_one" class="int" maxlength="3" title="사업자처음3자리">
+                                </span>
+              </div>
+              
+              <!-- shop_num two-->
+              <div id="shop_two">
+                                <span class="box">
+                                    <input type="text" id="shop_two" class="int" maxlength="2" title="사업자중간2자리">
+                                </span>
+              </div>
+              
+              <!-- shop_num three-->
+              <div id="shop_three">
+                                <span class="box">
+                                    <input type="text" id="shop_three" class="int" maxlength="5" title="사업자마지막5자리">
+                                </span>
+              </div>        
+            </div>      
             <div class="btn_area">
               <router-link to="/signup4">
                 <button type="button" id="btnJoin" @click="uploadImage()">
@@ -375,6 +396,27 @@ select {
   font-size: 12px;
   color: red;
   display: none;
+}
+/* 사업자 번호 */
+#shopnum_wrap {
+  display: table;
+  width: 100%;
+}
+#shop_one {
+  display: table-cell;
+  width: 127px;
+}
+#shop_two {
+  display: table-cell;
+  width: 117px;
+  vertical-align: middle;
+}
+#num_three {
+  display: table-cell;
+  width: 147px;
+}
+#shop_two, #shop_three {
+  padding-left: 10px;
 }
 /* 버튼 */
 .btn_area {
