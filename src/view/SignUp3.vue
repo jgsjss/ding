@@ -2,27 +2,32 @@
   <div class="container_fluid">
     <!-- wrapper -->
     <div id="wrapper">
-      <p class="border_text3">
-        STEP3. 관리자정보 입력
-      </p>
+      <p class="border_text3">STEP3. 관리자정보 입력</p>
       <!-- content-->
       <div id="content">
         <form
-            id="app"
-            @submit="checkForm"
-            action="https://vuejs.org/"
-            method="post"
+          id="app"
+          @submit="checkForm"
+          action="https://vuejs.org/"
+          method="post"
         >
           <p class="inner_box_text">
-            (브랜드)와 소통할 관리자 정보를 적어주세요.<br>
+            (브랜드)와 소통할 관리자 정보를 적어주세요.<br />
             해당 정보로 정보 전달 및 소통이 이루어지니 정확하게 입력해주세요!
           </p>
           <!--name-->
           <div>
             <h3 class="join_title"><label>관리자 이름</label></h3>
             <span class="box int_name">
-                            <input type="text" id="name3" class="int" maxlength="20" placeholder="관리자 이름">
-                        </span>
+              <input
+                type="text"
+                id="name3"
+                v-model="inputs.manageName"
+                class="int"
+                maxlength="20"
+                placeholder="관리자 이름"
+              />
+            </span>
           </div>
 
           <!--number-->
@@ -31,42 +36,49 @@
             <div id="num_wrap">
               <!-- BIRTH_MM -->
               <div id="num_first">
-                                <span class="box">
-                                    <select id="number" class="sel">
-                                        <option>선택</option>
-                                        <option value="010">010</option>
-                                        <option value="011">011</option>
-                                        <option value="016">016</option>
-                                        <option value="017">017</option>
-                                        <option value="019">019</option>
-                                    </select>
-                                </span>
+                <span class="box">
+                  <select id="number" class="sel" v-model="inputs.firstNum">
+                    <option>선택</option>
+                    <option value="010">010</option>
+                    <option value="011">011</option>
+                    <option value="016">016</option>
+                    <option value="017">017</option>
+                    <option value="019">019</option>
+                  </select>
+                </span>
               </div>
               <!-- BIRTH_YY -->
               <div id="num_second">
-                                <span class="box">
-                                    <input type="text" id="second" class="int" maxlength="4">
-                                </span>
+                <span class="box">
+                  <input type="text" id="second" class="int" maxlength="4" v-model="inputs.secondNum" />
+                </span>
               </div>
 
               <!-- BIRTH_DD -->
               <div id="num_dd">
-                                    <span class="box">
-                                        <input type="text" id="dd" class="int" maxlength="4">
-                                    </span>
+                <span class="box">
+                  <input type="text" id="dd" class="int" maxlength="4" v-model="inputs.thirdNum" />
+                </span>
               </div>
               <span class="error_next_box"></span>
             </div>
             <!-- email_address -->
             <div id="email">
-              <h3 class="join_title"><label for="email">관리자 메일주소</label></h3>
+              <h3 class="join_title">
+                <label for="email">관리자 메일주소</label>
+              </h3>
               <div id="email_wrap">
-
                 <!-- sub_mail -->
                 <div id="sub_email">
-              <span class="box">
-                <input type="text" id="sub_email" class="int" maxlength="20" placeholder="이메일을 입력해주세요">
-              </span>
+                  <span class="box">
+                    <input
+                      type="text"
+                      id="sub_email"
+                      class="int"
+                      maxlength="20"
+                      placeholder="이메일을 입력해주세요"
+                    />
+                  </span>
                 </div>
                 <span class="middle_mail">@</span>
                 <span class="box">
@@ -81,83 +93,168 @@
                 </span>
               </div>
             </div>
+            <h3 class="join_title"><label>사업자 번호</label></h3>
+            <div id="shopnum_wrap">
+              <!-- shop_num one -->
+              <div id="shop_one">
+                <span class="box">
+                  <input
+                    type="text"
+                    id="shop_one"
+                    class="int"
+                    maxlength="3"
+                    title="사업자처음3자리"
+                    v-model="inputs.bizNum1"
+                  />
+                </span>
+              </div>
+
+              <!-- shop_num two-->
+              <div id="shop_two">
+                <span class="box">
+                  <input
+                    type="text"
+                    id="shop_two"
+                    class="int"
+                    maxlength="2"
+                    title="사업자중간2자리"
+                    v-model="inputs.bizNum2"
+                  />
+                </span>
+              </div>
+
+              <!-- shop_num three-->
+              <div id="shop_three">
+                <span class="box">
+                  <input
+                    type="text"
+                    id="shop_three"
+                    class="int"
+                    maxlength="5"
+                    title="사업자마지막5자리"
+                    v-model="inputs.bizNum3"
+                  />
+                </span>
+              </div>
+            </div>
             <!-- business number -->
             <div>
-              <h3 class="join_title"><label for="input_file">사업자 등록증</label></h3>
+              <h3 class="join_title">
+                <label for="input_file">사업자 등록증</label>
+              </h3>
               <span class="box int_name">
-                        <label class="input-file-button" for="input-file">파일첨부
-                        </label>
-                        <img :src="images" alt="image">
-                       <input ref="image" id="input"
-             type="file" name="image" accept="image/*" multiple="multiple"
-             class="hidden">
-                        <!-- <span>사업자 등록증 : {{}}</span> -->
-                      </span>
+                <label class="input-file-button" for="input-file"
+                  >파일첨부
+                </label>
+                <img :src="images" alt="image" />
+                <input
+                  ref="image"
+                  id="input"
+                  type="file"
+                  name="image"
+                  accept="image/jpg image/png image/jpeg"
+                  class="hidden"
+                />
+                <!-- <span>사업자 등록증 : {{}}</span> -->
+              </span>
               <span class="error_next_box"></span>
+              <button type="button" id="btnJoin" @click="uploadImage">
+                <span>사진보내기</span>
+              </button>
             </div>
-
 
             <div class="btn_area">
               <router-link to="/signup4">
-                <button type="button" id="btnJoin" @click="uploadImage()">
+                <button type="button" id="btnJoin" @click="uploadImage">
                   <span>가입하기</span>
                 </button>
               </router-link>
             </div>
-
-
-
           </div>
           <!-- content-->
         </form>
       </div>
     </div>
   </div>
-
-
 </template>
 <script>
-import router from '../router'
-import axios from 'axios'
-
+import router from "../router";
+import axios from "axios";
 export default {
-  data () {
+  data() {
     return {
-      input: {
-        mobileNo: '',
+      inputs: {
+        //관리자 이름
+        manageName:"",
+        //관리자 번호 첫번째
+        firstNum:"",
+        //관리자 번호 두번째
+        secondNum:"",
+        //관리자 번호 세번째
+        thirdNum:"",
+        mobileNo: this.firstNum+this.secondNum+this.thirdNum,
         //주소 api
         postcode: "",
         address: "",
         extraAddress: "",
+        bizNum1:"",
+        bizNum2:"",
+        bizNum3:"",
+        sumBizNum:this.bizNum1+this.bizNum2+this.bizNum3
       },
-      images: '',
-    }
+
+      images: "",
+    };
   },
+  // watch:
+  //     {
+  //       //중간자리 숫자만 입력가능
+  //       secondNum(a)
+  //       {
+  //         if (isNaN(a) == true) {
+  //           alert('숫자만 입력 가능합니다.');
+  //           this.secondNum = '';
+  //         }
+  //       }
+  //       ,
+  //       //끝자리 숫자만 입력가능
+  //       thirdNum(a)
+  //       {
+  //         if (isNaN(a) == true) {
+  //           alert('숫자만 입력 가능합니다.');
+  //           this.thirdNum = '';
+  //         }
+  //       }
+  //     },
   methods: {
     //이미지 업로드
-   uploadImage() {
-        let form = new FormData()
-        let image = this.$refs['image'].files[0]
-
-        form.append('image', image)
-
-        axios.post('/api/upload', form, {
-          header: { 'Content-Type': 'multipart/form-data' }
-        }).then( ({data}) => {
-          this.images = data
-          console.log(data)
+    uploadImage: function () {
+      const biz = this.bizNum;
+      let form = new FormData();
+      let image = this.$refs["image"].files[0];
+      form.append("image", image);
+      // form.append('biznum',this.bizNum)
+      axios
+        .post("/api/upload", form, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            biznum: biz,
+          },
         })
-            .catch( err => console.log(err))
-      },
+        .then(({ data }) => {
+          this.images = data;
+          console.log(data);
+        })
+        .catch((err) => console.log(err));
+    },
     sendRouteParam() {
       router.push({
-        name: 'routeParam1',
-        params: { val: this.input }
+        name: "routeParam1",
+        params: { val: this.input },
         // params: { val: "값 넘어옴" }
-      })
+      });
     },
-    execDaumPostcode()
-    {
+    execDaumPostcode() {
       new window.daum.Postcode({
         oncomplete: (data) => {
           if (this.extraAddress !== "") {
@@ -180,9 +277,9 @@ export default {
             // 건물명이 있고, 공동주택일 경우 추가한다.
             if (data.buildingName !== "" && data.apartment === "Y") {
               this.extraAddress +=
-                  this.extraAddress !== ""
-                      ? `, ${data.buildingName}`
-                      : data.buildingName;
+                this.extraAddress !== ""
+                  ? `, ${data.buildingName}`
+                  : data.buildingName;
             }
             // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
             if (this.extraAddress !== "") {
@@ -192,8 +289,8 @@ export default {
             this.extraAddress = "";
           }
           // 우편번호를 입력한다.
-          console.log(data.extraAddress)
-          console.log(data.zonecode)
+          console.log(data.extraAddress);
+          console.log(data.zonecode);
           this.postcode = data.zonecode;
           this.address = data.address;
           this.extraAddress = data.extraAddress;
@@ -203,22 +300,27 @@ export default {
           //  this.$refs('postcode').value = data.zonecode;
           // this.$refs('address').value = data.addr;
           this.value = this.address;
-          console.log(data.address)
+          console.log(data.address);
           // 커서를 상세주소 필드로 이동한다.
           //  this.$refs("detailAddress").focus();
           // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-          if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-            this.address = data.roadAddress
-          } else { // 사용자가 지번 주소를 선택했을 경우(J)
-            this.address = data.jibunAddress
+          if (data.userSelectedType === "R") {
+            // 사용자가 도로명 주소를 선택했을 경우
+            this.address = data.roadAddress;
+          } else {
+            // 사용자가 지번 주소를 선택했을 경우(J)
+            this.address = data.jibunAddress;
           }
         },
       }).open();
-    }
-    ,
-  }
-  ,
-
+    },
+  },
+  //     mounted() {
+  //   this.$nextTick(function () {
+  //     // 전체 화면내용이 렌더링된 후에 아래의 코드가 실행됩니다.
+  //     $refs('address').value = data.addr;
+  //   })
+  // }
 };
 </script>
 
@@ -226,11 +328,11 @@ export default {
 <style>
 .input-file-button {
   padding: 3px 30px;
-  background-color:#997fb5;
+  background-color: #997fb5;
   border-radius: 4px;
   color: white;
   cursor: pointer;
-  float:right;
+  float: right;
 }
 input:focus {
   outline: none;
@@ -241,17 +343,17 @@ h3 {
   font-weight: 700;
 }
 .border_text3 {
-  padding:10px 0;
-  font-size:18px;
-  color:#997fb5;
+  padding: 10px 0;
+  font-size: 18px;
+  color: #997fb5;
   font-weight: 700;
 }
 .border_text3::after {
   display: block;
-  content: '';
-  background:#997fb5;
-  width:100%;
-  height:5px;
+  content: "";
+  background: #997fb5;
+  width: 100%;
+  height: 5px;
 }
 .box {
   display: block;
@@ -276,11 +378,11 @@ h3 {
   width: 90%;
   font-size: 14px;
   text-align: left;
-  color:#997fb5;
+  color: #997fb5;
   font-weight: 500;
 }
 input {
-  font-family: Dotum,'돋움',Helvetica,sans-serif;
+  font-family: Dotum, "돋움", Helvetica, sans-serif;
 }
 .box.int_id {
   padding-right: 110px;
@@ -305,21 +407,23 @@ input {
   vertical-align: middle;
 }
 .middle_mail {
-  display:table-cell;
-  padding:0 10px;
+  display: table-cell;
+  padding: 0 10px;
 }
 select {
   width: 100%;
   height: 29px;
   font-size: 15px;
-  background: #fff url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 100% 50% no-repeat;
+  background: #fff
+    url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 100% 50%
+    no-repeat;
   background-size: 20px 8px;
   -webkit-appearance: none;
   display: inline-block;
   text-align: start;
   border: none;
   cursor: default;
-  font-family: Dotum,'돋움',Helvetica,sans-serif;
+  font-family: Dotum, "돋움", Helvetica, sans-serif;
 }
 /* number */
 #num_wrap {
@@ -339,7 +443,8 @@ select {
   display: table-cell;
   width: 147px;
 }
-#num_second, #num_dd {
+#num_second,
+#num_dd {
   padding-left: 10px;
 }
 /* 에러메세지 */
@@ -348,6 +453,28 @@ select {
   font-size: 12px;
   color: red;
   display: none;
+}
+/* 사업자 번호 */
+#shopnum_wrap {
+  display: table;
+  width: 100%;
+}
+#shop_one {
+  display: table-cell;
+  width: 127px;
+}
+#shop_two {
+  display: table-cell;
+  width: 117px;
+  vertical-align: middle;
+}
+#shop_three {
+  display: table-cell;
+  width: 147px;
+}
+#shop_two,
+#shop_three {
+  padding-left: 10px;
 }
 /* 버튼 */
 .btn_area {
@@ -362,7 +489,7 @@ select {
   background-color: #997fb5;
   font-size: 20px;
   font-weight: 400;
-  font-family: Dotum,'돋움',Helvetica,sans-serif;
+  font-family: Dotum, "돋움", Helvetica, sans-serif;
 }
 .input-file-button {
   display: none;
