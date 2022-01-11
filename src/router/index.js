@@ -41,17 +41,17 @@ const routes = [
   {
     path: '/signup2',
     component: SignUp2,
-    name: 'routeParam1',
+    name: 'routeParam2',
   },
   {
     path: '/signup3',
     component: SignUp3,
-    name: 'routeParam2',
+    name: 'routeParam3',
   },
   {
     path: '/signup4',
     component: SignUp4,
-    name: 'routeParam3',
+    name: 'routeParam4',
   },
   {
     path: '/main',
@@ -139,7 +139,7 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

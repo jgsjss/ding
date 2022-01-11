@@ -17,9 +17,6 @@ export default {
             allRoute[index].name = nameChange;
           }
         });
-        // console.log(myMap.get('/main'))
-        // console.log(myIndex)
-        // console.log(allRoute)
       }
       asd('/main', 'hi');
       console.log(allRoute);

@@ -50,12 +50,12 @@
             </button>
           </router-link>
           <!--next-->
-          <router-link to="/signup2" >
-            <button type="button" id="term_btnJoin2">
+          <router-link to="/signup2">
+            <button type="button" @click="sendRouteParam" id="term_btnJoin2">
               <span>다음</span>
             </button>
           </router-link>
-<button type="button" @click="$hi">테스트</button>
+          <button type="button" @click="$hi">테스트</button>
         </div>
       </div>
 
@@ -65,7 +65,7 @@
 
 </template>
 <script>
-
+import router from '../router'
 
 export default {
   data () {
@@ -77,7 +77,12 @@ export default {
     }
   },
   methods: {
-
+    sendRouteParam () {
+      router.push({
+        name: 'routeParam2',
+        params: { agree: this.selected }
+      })
+    },
     select () {
       this.selected = []
       if (!this.allSelected) {
@@ -92,7 +97,7 @@ export default {
       } else {
         this.allSelected = false
       }
-    }
+    },
   },
   computed: {
     allSelect () {
@@ -100,11 +105,9 @@ export default {
       // console.log(this.selected)
     }
   },
-  watch: {
-
-  },
+  watch: {},
   mounted () {
-    this.$test()
+    // this.$test()
   }
 }
 </script>

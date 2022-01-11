@@ -17,7 +17,7 @@
         <router-link to="/OrderManagement/3"><span class="component_name">완료주문{{}}</span></router-link>
        <router-link to="/OrderManagement/4"><span class="component_name">주문내역</span></router-link>
       </div>
-    <router-view> </router-view>
+    
         <!-- <div class="list_wrap">
           <router-link to="/OrderManagement/1"><i class="xi-list-square list"></i></router-link>
           <router-link to="/OrderManagement/1_2"><i class="xi-apps list"></i></router-link>
@@ -29,6 +29,7 @@
 
 
   </div>
+  <router-view> </router-view>
 
 
 

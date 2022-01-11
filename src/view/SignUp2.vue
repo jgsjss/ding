@@ -176,9 +176,11 @@ export default {
         password: null
        }
       },
-      // passwordCheck: '',
-      // passwordValidFlag: true
+      selected: this.$route.params.agree,
     }
+  },
+  created () {
+    console.log(this.selected)
   },
   computed: {
     idValid () {
