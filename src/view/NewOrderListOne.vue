@@ -1,5 +1,4 @@
 <template>
-  <p>신규주문 1</p>
   <div class="list_wrap">
     <router-link to="/ordermanagement/neworderlistone"><i class="xi-list-square list"></i></router-link>
     <router-link to="/ordermanagement/neworderlisttwo"><i class="xi-apps list"></i></router-link>

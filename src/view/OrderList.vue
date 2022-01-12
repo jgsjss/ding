@@ -1,5 +1,4 @@
 <template>
-  <p>주문내역</p>
   <div class="list_wrap">
     <select id="order_select" class="list">
       <option value="최신순">최신순</option>

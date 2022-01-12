@@ -1,5 +1,4 @@
 <template>
-  <p>완료주문</p>
   <div class="pay_container">
     <div>
       <div class="complete_box1">

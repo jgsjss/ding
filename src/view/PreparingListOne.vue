@@ -1,5 +1,4 @@
 <template>
-  <p>준비중2</p>
   <div class="list_wrap">
     <router-link to="/ordermanagement/preparinglistone"><i class="xi-list-square list"></i></router-link>
     <router-link to="/ordermanagement/preparinglisttwo"><i class="xi-apps list"></i></router-link>

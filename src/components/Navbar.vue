@@ -26,7 +26,7 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/ordermanagement/neworderlistone" class="nav-link">
+        <router-link to="/ordermanagement/1" class="nav-link">
           <div class="nav-wrap">
             <i class="xi-cloud-o"></i>
             <p class="nav-link">주문관리</p>
@@ -64,7 +64,7 @@
             img
           </button>
           <ul class="dropdown-menu">
-            <router-link to="../components/MyInfo" class="nav-link"><li><a class="dropdown-item" href="#">정보수정</a></li></router-link>
+            <router-link to="../components/myinfo" class="nav-link"><li><a class="dropdown-item" href="#">정보수정</a></li></router-link>
             <router-link to="/login" class="nav-link"><li><a class="dropdown-item" href="#">로그아웃</a></li></router-link>
           </ul>
         </div>
