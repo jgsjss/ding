@@ -39,7 +39,6 @@
         </div>
       </div>
 
-
       <!--prev-->
       <div class="term_wrap">
         <div class="term_box">

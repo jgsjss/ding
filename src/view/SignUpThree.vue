@@ -193,39 +193,15 @@ export default {
         //관리자 번호 세번째
         thirdNum:"",
         mobileNo: this.firstNum+this.secondNum+this.thirdNum,
-        //주소 api
-        postcode: "",
-        address: "",
-        extraAddress: "",
         bizNum1:"",
         bizNum2:"",
         bizNum3:"",
         sumBizNum:this.bizNum1+this.bizNum2+this.bizNum3
       },
-
+      memberInfo: this.$route.params.signup2Info,
       images: "",
     };
   },
-  // watch:
-  //     {
-  //       //중간자리 숫자만 입력가능
-  //       secondNum(a)
-  //       {
-  //         if (isNaN(a) == true) {
-  //           alert('숫자만 입력 가능합니다.');
-  //           this.secondNum = '';
-  //         }
-  //       }
-  //       ,
-  //       //끝자리 숫자만 입력가능
-  //       thirdNum(a)
-  //       {
-  //         if (isNaN(a) == true) {
-  //           alert('숫자만 입력 가능합니다.');
-  //           this.thirdNum = '';
-  //         }
-  //       }
-  //     },
   methods: {
     //이미지 업로드
     uploadImage: function () {
@@ -316,7 +292,7 @@ export default {
     },
   },
       mounted() {
-
+      console.log(this.memberInfo)
   }
 };
 </script>
