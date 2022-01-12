@@ -54,7 +54,7 @@
           <h3 className="join_title"><label>대표자 이름</label></h3>
           <span className="box int_name">
                             <input type="text" id="name2" className="int" maxLength="20"
-                                   placeholder="이름을 입력해주세요.">
+                                   v-model="inputs.userName" placeholder="이름을 입력해주세요.">
                         </span>
           <!-- <span className="error_next_box">이름을 입력하세요</span> -->
         </div>
@@ -86,7 +86,8 @@
             <!-- BIRTH_DD -->
             <div id="num_dd">
                                 <span className="box">
-                                    <input @change="phoneNumConcat()" type="text" id="dd2" className="int" maxLength="4" v-model="inputs.thirdNum">
+                                    <input @change="phoneNumConcat()" type="text" id="dd2" className="int" maxLength="4"
+                                           v-model="inputs.thirdNum">
                                 </span>
             </div>
           </div>
@@ -160,23 +161,27 @@ export default {
     return {
       inputs: [
         //회원 아이디
-        { userId: '' ,
-        //회원 비밀번호
-         userPw: '' ,
-        //매장이름
-         shopName: '' ,
-        //매장대표번호
-         representNum: '' ,
-        //휴대폰번호 11자리
-         mobileNo: '' ,
-        //주소 우편번호
-         postcode: '' ,
-        //매장 주소
-         address: '' ,
-        //매장 상세주소
-         extraAddress: '' ,
-        //참고항목
-         etc: '' },
+        {
+          userId: '',
+          //회원 비밀번호
+          userPw: '',
+          //사업자대표 이름
+          userName: '',
+          //매장이름
+          shopName: '',
+          //매장대표번호
+          representNum: '',
+          //휴대폰번호 11자리
+          mobileNo: '',
+          //주소 우편번호
+          postcode: '',
+          //매장 주소
+          address: '',
+          //매장 상세주소
+          extraAddress: '',
+          //참고항목
+          etc: ''
+        },
       ],
       //휴대폰번호 맨앞자리
       firstNum: '',
@@ -230,9 +235,10 @@ export default {
       console.log(this.inputs)
     },
     //휴대폰번호 입력받고 합치기
-    phoneNumConcat(){
-      let phoneNum = '';
+    phoneNumConcat () {
+      let phoneNum = ''
       this.inputs.mobileNo = phoneNum.concat(this.firstNum, this.secondNum, this.thirdNum)
+      console.log(this.inputs.mobileNo)
     },
     sendRouteParam () {
       router.push({
