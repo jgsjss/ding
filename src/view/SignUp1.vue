@@ -91,7 +91,7 @@ export default {
         }
       }
     },
-    updateCheckall: function () {
+    updateCheckall: ()=> {
       if (this.agree.length == this.selected.length) {
         this.allSelected = true
       } else {
@@ -100,7 +100,7 @@ export default {
     },
   },
   computed: {
-    allSelect () {
+    allSelect:()=> {
       this.selected = [...this.agree]
       console.log(this.selected)
     }
