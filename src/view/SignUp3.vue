@@ -315,12 +315,9 @@ export default {
       }).open();
     },
   },
-  //     mounted() {
-  //   this.$nextTick(function () {
-  //     // 전체 화면내용이 렌더링된 후에 아래의 코드가 실행됩니다.
-  //     $refs('address').value = data.addr;
-  //   })
-  // }
+      mounted() {
+
+  }
 };
 </script>
 

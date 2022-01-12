@@ -26,7 +26,7 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/ordermanagement/1" class="nav-link">
+        <router-link to="/ordermanagement/neworderlistone" class="nav-link">
           <div class="nav-wrap">
             <i class="xi-cloud-o"></i>
             <p class="nav-link">주문관리</p>

@@ -102,7 +102,7 @@ export default {
   computed: {
     allSelect () {
       this.selected = [...this.agree]
-      // console.log(this.selected)
+      console.log(this.selected)
     }
   },
   watch: {},

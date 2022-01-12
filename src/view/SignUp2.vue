@@ -148,34 +148,35 @@
 </template>
 <script>
 import vm from 'vm';
+import router from '../router'
 export default {
 
   data () {
     return {
-   inputs: {
+   inputs: [{
      //회원 아이디
-      userId: '',
-     //회원 비밀번호
-      userPw: '',
-     //매장대표번호
-      mobileNo: '',
-     //휴대폰번호 맨앞자리
-      firstNum: '',
-      //휴대폰번호 중간 4자리
-      secondNum: '',
-      //휴대폰번호 끝 4자리
-      thirdNum: '',
-      //휴대폰번호 11자리
-      middleNum: '',
-      //주소 api
-      postcode: "",
-      address: "",
-      extraAddress: "",
-      signup: {
+      userId: ''},
+     {//회원 비밀번호
+      userPw: ''},
+     {//매장대표번호
+      mobileNo: ''},
+     {//휴대폰번호 맨앞자리
+      firstNum: ''},
+     {//휴대폰번호 중간 4자리
+      secondNum: ''},
+     {//휴대폰번호 끝 4자리
+      thirdNum: ''},
+     {//휴대폰번호 11자리
+      middleNum: ''},
+     { //주소 api
+      postcode: ""},
+     {address: ""},
+     {extraAddress: ""},
+     {signup: {
         id: null,
         password: null
        }
-      },
+      }],
       selected: this.$route.params.agree,
     }
   },
@@ -215,23 +216,13 @@ export default {
   },
   methods: {
 
-    //비밀번호 재확인 (test용으로 넣은거라 주석처리함)
-    // passwordCheckValid () {
-    //   if (this.signup.password === this.passwordCheck) {
-    //     this.passwordCheckFlag = true
-    //   } else {
-    //     this.passwordCheckFlag = false
-    //   }
-    // },
-    //비밀번호 확인
-    // passwordValid () {
-    //   if ((/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(this.signup.password))) {
-    //     console.log(data.passwordValid)
-    //     this.passwordValidFlag = true
-    //   } else {
-    //     this.passwordValidFlag = false
-    //   }
-    // },
+    sendRouteParam () {
+      router.push({
+        name: 'routeParam3',
+        params: { memberInfo: this.inputs }
+      })
+    },
+
     //daum map api
     execDaumPostcode () {
       new window.daum.Postcode({
@@ -298,7 +289,6 @@ export default {
     mounted() {
 
   },
-
 
 };
 </script>
