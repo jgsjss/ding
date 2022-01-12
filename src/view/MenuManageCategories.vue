@@ -1,5 +1,6 @@
 <template>
 <!-- 메뉴관리 페이지의 메뉴편집 게시판 페이지 -->
+<div class="container">
         <form >
           <label><input type="checkbox"> 정상</label>
           <label><input type="checkbox"> 숨김</label>
@@ -30,6 +31,7 @@
           </tbody>
         </table>
         </div>
+        </div>
 </template>
 
 <script>
@@ -39,6 +41,7 @@ export default {
 </script>
 
 <style>
+
 .container1{
     width: 1000px;
     margin: 0 auto;

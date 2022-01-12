@@ -1,8 +1,10 @@
 <template>
 <Navbar />
-    <div><router-link to="/menumanagement/categories"><a>카테고리편집</a></router-link> |
+    <div class="menu_container">
+      <router-link to="/menumanagement/categories"><a>카테고리편집</a></router-link> |
     <router-link to="/menumanagement/menus"><a >메뉴편집</a> </router-link> |
-    <router-link to="/menumanagement/options"> <a>옵션편집</a></router-link></div>
+    <router-link to="/menumanagement/options"> <a>옵션편집</a></router-link>
+    </div>
     <router-view  ></router-view>
 
     <!-- 카테고리편집 탭 -->
@@ -91,9 +93,10 @@ import Navbar from '@/components/Navbar.vue'
 
 </script>
 <style>
-.container1{
-    width: 1000px;
-    margin: 0 auto;
+.menu_container {
+  width: 85%;
+  margin:0 auto;
+  padding: 0 30px;
 }
 
 </style>

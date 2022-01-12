@@ -63,39 +63,5 @@ export default {
 }
 </script>
 <style>
-.main_container {
-  width: 85%;
-  margin: 0 auto;
-  float: left;
-}
-.component {
-  float:left;
-  width:31%;
-  margin:0 15px;
-  background:#f5f3f7;
-  color:#997fb5;
-  border-radius: 5px;
-  padding:15px;
-}
-.main_call {
-  width:100%;
-  padding-bottom: 15px;
-}
-.main_right {
-  text-align: right;
-  padding:30px 30px;
-}
-.main-btn {
-  margin:0 auto;
-  padding:5px;
-  width:150px;
-  border-radius: 15px;
-  border:1px solid #997fb5;
-  background:#fff;
-  color:#997fb5;
-}
-.xi-bell {
-  color:#997fb5;
-  font-size:20px;
-}
+@import '../assets/css/Main.css';
 </style>
