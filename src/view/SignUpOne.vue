@@ -55,7 +55,7 @@
               <span>다음</span>
             </button>
           </router-link>
-          <button type="button" @click="$hi">테스트</button>
+<!--          <button type="button" @click="$hi">테스트</button>-->
         </div>
       </div>
 
@@ -73,7 +73,7 @@ export default {
       agree: ['14세이상', '이용약관', '개인정보', '마케팅'],
       allSelected: false,
       selected: [],
-
+      noneSelected: [],
     }
   },
   methods: {
@@ -100,9 +100,12 @@ export default {
     },
   },
   computed: {
-    allSelect() {
-      this.selected = [...this.agree]
-      console.log(this.selected)
+    allSelect: function() {
+      if(!this.allSelected) {
+        this.selected = [...this.agree]
+      } else{
+        this.selected = [...this.noneSelected]
+      }
     }
   },
   watch: {
