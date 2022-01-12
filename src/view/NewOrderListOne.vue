@@ -1,7 +1,8 @@
 <template>
+  <p>신규주문 1</p>
   <div class="list_wrap">
-    <router-link to="/OrderManagement/2"><i class="xi-list-square list"></i></router-link>
-    <router-link to="/OrderManagement/2_2"><i class="xi-apps list"></i></router-link>
+    <router-link to="/ordermanagement/neworderlistone"><i class="xi-list-square list"></i></router-link>
+    <router-link to="/ordermanagement/neworderlisttwo"><i class="xi-apps list"></i></router-link>
       <select id="order_select" class="list">
         <option value="최신순">최신순</option>
         <option value="과거순">과거순</option>
@@ -15,26 +16,27 @@
         <span class="order_time">{{}}13:00</span>
       </div>
     </div>
-    <div class="order_middle" >
-      <span>[메뉴{{orderData.categories}}1개]</span>
-      <span>{{ $store.state.menuData[i].name }}</span>
-      <span>{{}}요청사항</span>
-      <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
-    </div>
+          <div class="order_middle">
+            <span>[메뉴{{orderData.categories}}1개]</span>
+            <span>[{{orderData.menu}}]</span>
+            <!-- <span>{{}}진짜 진한 바닐라 리얼딥 1 / 진짜 진한 돌체 리얼딥 1</span> -->
+            <span>{{}}요청사항</span>
+            <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
+          </div>
     <div class="order_right">
       <router-link to="/OrderManage" class="order_right_inner"><span>주문표 인쇄</span></router-link>
-      <router-link to="/OrderManage" class="order_right_inner"><span>메뉴완료</span></router-link>
+      <router-link to="/OrderManage" class="order_right_inner"><span>준비중</span></router-link>
     </div>
   </div>
-      <div class="order-btn-cover">
-      <button :disabled="pageNum === 0" @click="prevPage" class="order-page-btn">
+      <div class="new-btn-cover">
+      <button :disabled="pageNum === 0" @click="prevPage" class="new-page-btn">
         <i class="xi-angle-left"></i>
       </button>
-      <span class="order-page-count">{{ pageNum + 1 }} / {{ pageCount }} </span>
+      <span class="new-page-count">{{ pageNum + 1 }} / {{ pageCount }} </span>
       <button
         :disabled="pageNum >= pageCount - 1"
         @click="nextPage"
-        class="order-page-btn"
+        class="new-page-btn"
       >
         <i class="xi-angle-right"></i>
       </button>
@@ -42,7 +44,6 @@
 
 
 </template>
-
 <script>
 export default {
   components : {
@@ -62,7 +63,6 @@ export default {
     },
 }
 </script>
-
 <style>
 .new_btn {
   background:#fff;
@@ -153,17 +153,17 @@ export default {
   color:#fff;
 }
 /* bottom new page btn */
-.order-btn-cover {
+.new-btn-cover {
   text-align: center;
   padding:30px 0;
 }
-.order-page-btn {
+.new-page-btn {
   background: #997fb5;
   border: 1px solid #997fb5;
   color: #fff;
   margin: 0 15px;
 }
-.order-page-count {
+.new-page-count {
   background: #997fb5;
   color: #fff;
   padding: 5px 15px;

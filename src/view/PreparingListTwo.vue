@@ -1,32 +1,33 @@
 <template>
+  <p>준비중 2_2</p>
   <div class="list_wrap">
-    <router-link to="/OrderManagement/1"><i class="xi-list-square list"></i></router-link>
-    <router-link to="/OrderManagement/1_2"><i class="xi-apps list"></i></router-link>
+    <router-link to="/ordermanagement/preparinglistone"><i class="xi-list-square list"></i></router-link>
+    <router-link to="/ordermanagement/preparinglisttwo"><i class="xi-apps list"></i></router-link>
       <select id="order_select" class="list">
         <option value="최신순">최신순</option>
         <option value="과거순">과거순</option>
       </select>
   </div>
   <div>
-  <div class="order1-2_wrapper" v-for="(orderData, i) in $store.state.orderData" :key="i">
+  <div class="order2-2_wrapper" v-for="(orderData, i) in $store.state.orderData" :key="i">
     <ul>
-      <li class="order1-2_list">
-        <div class="order1-2_left">
-          <span class="order1-2_num">{{123}}</span>
-            <span class="order1-2_type">{{}}매장</span>
-            <span class="order1-2_time">{{}}13:00</span>
-        </div>    
-          <div class="order1-2_middle">
+      <li class="order2-2_list">
+        <div class="order2-2_left">
+          <span class="order2-2_num">{{123}}</span>
+            <span class="order2-2_type">{{}}매장</span>
+            <span class="order2-2_time">{{}}13:00</span>
+        </div>
+          <div class="order2-2_middle">
             <span>[메뉴{{orderData.categories}}1개]</span>
             <span>[{{orderData.menu}}]</span>
             <!-- <span>{{}}진짜 진한 바닐라 리얼딥 1 / 진짜 진한 돌체 리얼딥 1</span> -->
             <span>{{}}요청사항</span>
             <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
-          </div>   
-            <div class="order1-2_right">
-              <router-link to="/OrderManage" class="order1-2_right_inner1"><button type="text" class="order1-2_btn1"><span>주문표 인쇄</span></button></router-link>
-              <router-link to="/OrderManage" class="order1-2_right_inner2"><button type="text" class="order1-2_btn2"><span>준비중</span></button></router-link>
-            </div>                   
+          </div>
+            <div class="order2-2_right">
+              <router-link to="/OrderManage" class="order2-2_right_inner1"><button type="text" class="order2-2_btn1"><span>주문표 인쇄</span></button></router-link>
+              <router-link to="/OrderManage" class="order2-2_right_inner2"><button type="text" class="order2-2_btn2"><span>준비 완료</span></button></router-link>
+            </div>
       </li>
     </ul>
   </div>
@@ -40,7 +41,7 @@
         <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
           <i class="xi-angle-right"></i>
         </button>
-    </div>    
+    </div>
 </template>
 
 
@@ -107,13 +108,13 @@ export default {
 </script>
 
 <style>
-.order1-2_wrapper {
+.order2-2_wrapper {
   display: block;
 }
-.order1-2_wrapper > ul {
+.order2-2_wrapper > ul {
   list-style: none;
 }
-.order1-2_list {
+.order2-2_list {
   float: left;
   width: 250px;
   padding: 15px 20px;
@@ -121,17 +122,17 @@ export default {
   border-radius: 15px;
   margin: 15px 15px;
 }
-.order1-2_left {
+.order2-2_left {
   float: left;
   width: 312px;
   display: flex;
   align-items: center;
 }
-.order1-2_num {
+.order2-2_num {
   color:#997fb5;
   font-size:24px;
 }
-.order1-2_type {
+.order2-2_type {
   margin:0 10px;
   padding:3px 10px;
   border:1px solid #997fb5;
@@ -140,50 +141,51 @@ export default {
   font-size:14px;
   border-radius:15px;
 }
-.order1-2_time {
+.order2-2_time {
   font-size:14px;
   color:#997fb5
 }
-.order1-2_middle {
+.order2-2_middle {
   display: inline-grid;
 }
-.order1-2_middle > span:first-child {
+.order2-2_middle > span:first-child {
   font-size:14px;
   padding:5px 0 0 0 ;
 }
-.order1-2_middle > span:nth-child(2) {
+.order2-2_middle > span:nth-child(2) {
   font-size:14px;
   color:#997fb5;
   font-weight: 500;
   padding:5px 0;
 }
-.order1-2_middle > span:last-child {
+.order2-2_middle > span:last-child {
   font-size:14px;
   color:#997fb5;
   font-weight: 500;
   padding-bottom:20px;
 }
-.order1-2_right {
+.order2-2_right {
   padding: 15px 0;
   margin: 0 auto;
   text-align: center;
 }
-.order1-2_btn1 {
+.order2-2_btn1 {
   border:1px solid #997fb5;
   background:white;
   color:#997fb5;
-  width:100px;
+  width:90px;
   height: 70px;
 }
-.order1-2_right_inner2 {
+.order2-2_right_inner2 {
   margin:0 15px;
 }
-.order1-2_btn2 {
-  border:1px solid #997fb5;
-  background:#997fb5;
-  width:70px;
-  height: 70px;
-  color:#fff;
+.order2-2_btn2 {
+    border: 1px solid #997fb5;
+    background: #997fb5;
+    width: 77px;
+    height: 70px;
+    color: #fff;
+    word-break: keep-all;
 }
 .btn-cover {
   float: left;

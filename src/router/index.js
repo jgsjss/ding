@@ -3,12 +3,12 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Main from '../view/Main.vue';
 import MenuManagement from '../view/MenuManagement.vue';
 import OrderManagement from '../view/OrderManagement.vue';
-import OrderManagement1 from '../view/OrderManagement1.vue';
-import OrderManagement1_2 from '../view/OrderManagement1_2.vue';
-import OrderManagement2 from '../view/OrderManagement2.vue';
-import OrderManagement2_2 from '../view/OrderManagement2_2.vue';
-import OrderManagement3 from '../view/OrderManagement3.vue';
-import OrderManagement4 from '../view/OrderManagement4.vue';
+import NewOrderListOne from '../view/NewOrderListOne.vue';
+import NewOrderListTwo from '../view/NewOrderListTwo.vue';
+import PreparingListOne from '../view/PreparingListOne.vue';
+import PreparingListTwo from '../view/PreparingListTwo.vue';
+import CompletedOrder from '../view/CompletedOrder.vue';
+import OrderList from '../view/OrderList.vue';
 
 import StaffManagement from '../view/StaffManagement.vue';
 import OperationManagement from '../view/OperationManagement.vue';
@@ -86,29 +86,30 @@ const routes = [
     //중첩되는 자식 라우트 경로
     children: [
       {
-        path: '/ordermanagement/1',
-        component: OrderManagement1,
+        path: '/ordermanagement/neworderlistone',
+        component: NewOrderListOne,
       },
       {
-        path: '/ordermanagement/2',
-        component: OrderManagement2,
+        path: '/ordermanagement/neworderlisttwo',
+        component: NewOrderListTwo,
       },
       {
-        path: '/ordermanagement/3',
-        component: OrderManagement3,
+        path: '/ordermanagement/preparinglistone',
+        component: PreparingListOne,
       },
       {
-        path: '/ordermanagement/4',
-        component: OrderManagement4,
+        path: '/ordermanagement/preparinglisttwo',
+        component: PreparingListTwo,
       },
       {
-        path: '/ordermanagement/1_2',
-        component: OrderManagement1_2,
+        path: '/ordermanagement/completedorder',
+        component: CompletedOrder,
       },
       {
-        path: '/ordermanagement/2_2',
-        component: OrderManagement2_2,
+        path: '/ordermanagement/orderlist',
+        component: OrderList,
       },
+
       // {
       //   path: '/ordermanagement/4',
       //   component: OrderManagement4

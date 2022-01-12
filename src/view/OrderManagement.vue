@@ -1,5 +1,6 @@
 <template>
   <Navbar />
+  <p>주문관리 아들</p>
   <div class="ordermanage_container">
     <div class="main_wrap">
     <h2 class="main_text">주문관리</h2>
@@ -12,12 +13,12 @@
       </div>
       </div>
       <div class="component_bar">
-        <router-link to="/OrderManagement/1"><span class="component_name first">신규주문{{}}</span></router-link>
-        <router-link to="/OrderManagement/2"><span class="component_name">준비중{{}}</span></router-link>
-        <router-link to="/OrderManagement/3"><span class="component_name">완료주문{{}}</span></router-link>
-       <router-link to="/OrderManagement/4"><span class="component_name">주문내역</span></router-link>
+        <router-link to="/ordermanagement/neworderlistone"><span class="component_name first">신규주문{{}}</span></router-link>
+        <router-link to="/ordermanagement/preparinglistone"><span class="component_name">준비중{{}}</span></router-link>
+        <router-link to="/ordermanagement/completedorder"><span class="component_name">완료주문{{}}</span></router-link>
+       <router-link to="/ordermanagement/orderlist"><span class="component_name">주문내역</span></router-link>
       </div>
-    
+
         <!-- <div class="list_wrap">
           <router-link to="/OrderManagement/1"><i class="xi-list-square list"></i></router-link>
           <router-link to="/OrderManagement/1_2"><i class="xi-apps list"></i></router-link>
