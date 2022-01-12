@@ -15,10 +15,10 @@ import OperationManagement from '../view/OperationManagement.vue';
 import DiscountCode from '../view/DiscountCode.vue';
 import SalesManagement from '../view/SalesManagement.vue';
 import Login from '../view/Login.vue';
-import SignUp1 from '../view/SignUp1.vue';
-import SignUp2 from '../view/SignUp2.vue';
-import SignUp3 from '../view/SignUp3.vue';
-import SignUp4 from '../view/SignUp4.vue';
+import SignUpOne from '../view/SignUpOne.vue';
+import SignUp2two from '../view/SignUpTwo.vue';
+import SignUpThree from '../view/SignUpThree.vue';
+import SignUpFour from '../view/SignUpFour.vue';
 import ReleaseSoldOut from '../view/ReleaseSoldOut.vue';
 import MenuManageCategories from '../view/MenuManageCategories.vue';
 import MenuManageMenus from '../view/MenuManageMenus.vue';
@@ -35,23 +35,23 @@ const routes = [
     component: Login,
   },
   {
-    path: '/signup1',
-    component: SignUp1,
+    path: '/signUpOne',
+    component: SignUpOne,
   },
   {
-    path: '/signup2',
-    component: SignUp2,
-    name: 'routeParam2',
+    path: '/signuptwo',
+    component: SignUp2two,
+    name: 'signup2',
   },
   {
-    path: '/signup3',
-    component: SignUp3,
-    name: 'routeParam3',
+    path: '/signupthree',
+    component: SignUpThree,
+    name: 'signup3',
   },
   {
-    path: '/signup4',
-    component: SignUp4,
-    name: 'routeParam4',
+    path: '/signupfour',
+    component: SignUpFour,
+    name: 'signup4',
   },
   {
     path: '/main',

@@ -50,7 +50,7 @@
             </button>
           </router-link>
           <!--next-->
-          <router-link to="/signup2">
+          <router-link to="/signuptwo">
             <button type="button" @click="sendRouteParam" id="term_btnJoin2">
               <span>다음</span>
             </button>
@@ -79,7 +79,7 @@ export default {
   methods: {
     sendRouteParam () {
       router.push({
-        name: 'routeParam2',
+        name: 'signup2',
         params: { agree: this.selected }
       })
     },
@@ -100,12 +100,14 @@ export default {
     },
   },
   computed: {
-    allSelect () {
+    allSelect() {
       this.selected = [...this.agree]
       console.log(this.selected)
     }
   },
-  watch: {},
+  watch: {
+
+  },
   mounted () {
     // this.$test()
   }

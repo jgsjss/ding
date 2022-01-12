@@ -130,7 +130,7 @@
 
 
         <!-- JOIN BTN-->
-        <div className="btn_area"><span><router-link to="/signup3">
+        <div className="btn_area"><span><router-link to="/signupthree">
           <button type="button" id="btnJoin">
             다음
           </button>
@@ -218,7 +218,7 @@ export default {
 
     sendRouteParam () {
       router.push({
-        name: 'routeParam3',
+        name: 'signup3',
         params: { memberInfo: this.inputs }
       })
     },

@@ -164,7 +164,7 @@
             </div>
 
             <div class="btn_area">
-              <router-link to="/signup4">
+              <router-link to="/signupfour">
                 <button type="button" id="btnJoin" @click="uploadImage">
                   <span>가입하기</span>
                 </button>
@@ -249,7 +249,7 @@ export default {
     },
     sendRouteParam() {
       router.push({
-        name: "routeParam1",
+        name: "signup4",
         params: { val: this.input },
         // params: { val: "값 넘어옴" }
       });
