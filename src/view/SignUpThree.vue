@@ -199,7 +199,10 @@ export default {
         sumBizNum:this.bizNum1+this.bizNum2+this.bizNum3
       },
       memberInfo: this.$route.params.signup2Info,
+      memberAgree: this.$route.params.signup1Agree,
       images: "",
+
+
     };
   },
   methods: {
@@ -210,7 +213,7 @@ export default {
       let image = this.$refs["image"].files[0];
       form.append("image", image);
       // form.append('biznum',this.bizNum)
-      axios
+      axios 
         .post("/api/upload", form, {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -223,15 +226,11 @@ export default {
         })
         .catch((err) => console.log(err));
     },
-    sendRouteParam() {
-      router.push({
-        name: "signup4",
-        params: { val: this.input },
-      });
-    },
+
   },
       created() {
       console.log(this.memberInfo)
+      console.log(this.memberAgree)
   }
 };
 </script>

@@ -243,7 +243,7 @@ export default {
     sendRouteParam () {
       router.push({
         name: 'signup3',
-        params: { signup2Info: this.inputs }
+        params: { signup2Info: this.inputs , signup1Agree: this.selected }
       })
     },
 
