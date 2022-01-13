@@ -230,6 +230,7 @@ export default {
       created() {
       console.log(this.memberInfo)
       console.log(this.memberAgree)
+      console.log(this.$route.params.signup2Info.userId)
   }
 };
 </script>
