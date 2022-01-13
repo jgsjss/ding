@@ -230,7 +230,8 @@ export default {
       created() {
       console.log(this.memberInfo)
       console.log(this.memberAgree)
-      console.log(this.$route.params.signup2Info.userId)
+      console.log(this.$route.params.signup2Info)
+      console.log(this.$route.params.signup1Agree)
   }
 };
 </script>
