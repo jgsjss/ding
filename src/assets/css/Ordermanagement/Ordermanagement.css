@@ -43,7 +43,7 @@
       justify-content: flex-end;
       align-items: center;
   }
-  .list_wrap:before {
+  /* .list_wrap:before {
     display: block;
     content: '';
     position: absolute;
@@ -62,7 +62,7 @@
     background: #ddd;
     width: 100%;
     height: 1px;
-  }
+  } */
   /* .list_wrap::before {
     display: block;
     content: '';
