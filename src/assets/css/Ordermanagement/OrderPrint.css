@@ -1,0 +1,133 @@
+.pay_container {
+    width: 100%;
+    height:100vh;
+    margin: 0 auto;
+  }
+  .pay_container > div {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position:relative;
+  }
+  /* .pay_container > div:after {
+    position:absolute;
+    top:-15px;
+    left:0;
+    display: block;
+    content: '';
+    width:100%;
+    height:1px;
+    background:#ddd;
+  } */
+  .print_text {
+      padding:30px;
+      color:#997fb5;
+  }
+
+  .orderprint_box1,
+  .orderprint_box2 {
+    width: 50%;
+    height:80vh;
+    display: inline-block;
+    border: 1px solid #997fb5;
+    border-radius: 5px;
+    margin: 0 50px;
+  }
+
+  
+  .print_title {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+    padding: 15px 15px;
+  }
+  .print_request {
+    text-align: left;
+    margin: 0 15px;
+    padding: 15px 0;
+  }
+  
+  .print_wrap {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 30px 15px;
+  }
+  .print_wrap1, .print_wrap2 {
+    float: left;
+  }
+  .print_order_left {
+    text-align: left;
+    color: #333;
+    line-height: 2;
+  }
+  .print_order_right {
+    text-align: end;
+    color: #747474;
+    font-weight: 500;
+    line-height: 2;
+  }
+  .print_menulist_wrap {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 15px 15px;
+  }
+  .print_menulist_left {
+    float: left;
+  }
+  .print_menulist_right {
+    float: left;
+    text-align: end;
+  }
+  .print_submenu_list {
+    padding:0 20px;
+    text-align: left;
+  }
+  .print_total_price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .print_order_total {
+    font-size: 18px;
+    padding: 15px 15px;
+  }
+  .print_total_price {
+    padding:15px 15px
+  }
+  
+  /* page_btn */
+  .print_page-btn {
+    background: #997fb5;
+    border: 1px solid #997fb5;
+    border-bottom:none;
+    color: #fff;
+    margin: 0 15px;
+  }
+  .print_receipt_btn {
+    width:45.6%;
+    height:45px;
+    background:white;
+    border:1px solid #997fb5;
+    border-bottom:none;
+    border-left:none;
+    color: #997fb5;
+  }
+  .print_page-btn {
+    width:25%;
+    height:45px;
+    background:white;
+    border:1px solid #997fb5;
+    border-bottom:none;
+    color:#997fb5;
+  }
+  .print_page-btn:first-child {
+    border-left:none
+  }
+  .print_page-count {
+    display: none;
+  }
