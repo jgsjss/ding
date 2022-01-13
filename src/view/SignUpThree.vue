@@ -146,7 +146,6 @@
                 <label class="input-file-button" for="input-file"
                   >파일첨부
                 </label>
-                <img :src="images" alt="image" />
                 <input
                   ref="image"
                   id="input"
@@ -213,7 +212,7 @@ export default {
       let image = this.$refs["image"].files[0];
       form.append("image", image);
       // form.append('biznum',this.bizNum)
-      axios 
+      axios
         .post("/api/upload", form, {
           headers: {
             "Content-Type": "multipart/form-data",

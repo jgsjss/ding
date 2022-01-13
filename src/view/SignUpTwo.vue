@@ -159,7 +159,7 @@ export default {
 
   data () {
     return {
-      inputs: [
+      inputs:
         //회원 아이디
         {
           userId: '',
@@ -181,8 +181,8 @@ export default {
           extraAddress: '',
           //참고항목
           etc: ''
-        },
-      ],
+        }
+      ,
       //휴대폰번호 맨앞자리
       firstNum: '',
       //휴대폰번호 중간 4자리
@@ -193,41 +193,7 @@ export default {
       selected: this.$route.params.agree,
     }
   },
-  created () {
-    console.log(this.selected)
-    // console.log(this.inputs)
-  },
-  computed: {
-    idValid () {
-      return /^[A-Za-z0-9]+$/.test(this.signup.id)
-    },
-    // passwordValid () {
-    //   return /^[A-Za-z0-9]+$/.test(this.signup.password)
-    // },
-  },
-  watch: {
-    //중간자리 숫자만 입력가능
-    secondNum (a) {
-      if (isNaN(a) == true) {
-        alert('숫자만 입력 가능합니다.')
-        this.secondNum = ''
-      }
-    },
-    //끝자리 숫자만 입력가능
-    thirdNum (a) {
-      if (isNaN(a) == true) {
-        alert('숫자만 입력 가능합니다.')
-        this.thirdNum = ''
-      }
-    },
-    middleNum (a) {
-      if (isNaN(a) == true) {
-        alert('숫자만 입력 가능합니다.')
-        this.middleNum = ''
-      }
-    },
 
-  },
   methods: {
     //inputs 값 테스트용
     test () {
@@ -309,6 +275,41 @@ export default {
         },
       }).open()
     },
+  },
+  created () {
+    console.log(this.selected)
+    // console.log(this.inputs)
+  },
+  computed: {
+    idValid () {
+      return /^[A-Za-z0-9]+$/.test(this.signup.id)
+    },
+    // passwordValid () {
+    //   return /^[A-Za-z0-9]+$/.test(this.signup.password)
+    // },
+  },
+  watch: {
+    //중간자리 숫자만 입력가능
+    secondNum (a) {
+      if (isNaN(a) == true) {
+        alert('숫자만 입력 가능합니다.')
+        this.secondNum = ''
+      }
+    },
+    //끝자리 숫자만 입력가능
+    thirdNum (a) {
+      if (isNaN(a) == true) {
+        alert('숫자만 입력 가능합니다.')
+        this.thirdNum = ''
+      }
+    },
+    middleNum (a) {
+      if (isNaN(a) == true) {
+        alert('숫자만 입력 가능합니다.')
+        this.middleNum = ''
+      }
+    },
+
   },
 
 }
