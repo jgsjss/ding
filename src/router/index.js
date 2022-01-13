@@ -24,8 +24,13 @@ import MenuManageCategories from '../view/MenuManageCategories.vue';
 import MenuManageMenus from '../view/MenuManageMenus.vue';
 import MenuManageOptions from '../view/MenuManageOptions.vue';
 import test1 from '../view/test1';
+import PageNotFound from '../view/page404';
 
 const routes = [
+  // {
+  //   path: '*',
+  //   component: PageNotFound,
+  // },
   {
     path: '/',
     component: Main,
@@ -137,6 +142,12 @@ const routes = [
     component: test1,
   },
 ];
+// routes.beforeEach(function (to, from, next) {
+//   if(localStorage.guest) { // 그냥 로그인 된 상태인지 아닌지 여부
+//     next('/');
+//   }	else {
+//     next(); //페이지 전환 이루어 짐.
+//   }
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
