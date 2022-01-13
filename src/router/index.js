@@ -27,10 +27,10 @@ import test1 from '../view/test1';
 import PageNotFound from '../view/page404';
 
 const routes = [
-  // {
-  //   path: '*',
-  //   component: PageNotFound,
-  // },
+  {
+    path: '/:pathMatch(.*)*',
+    component: PageNotFound,
+  },
   {
     path: '/',
     component: Main,
