@@ -188,7 +188,8 @@
     display:block;
 }
 .accordion-button:not(.collapsed) {
-    color:#997fb5
+    color:#997fb5;
+    font-size:20px;
 }
 .form-check-input:checked {
     background-color: #997fb5;
