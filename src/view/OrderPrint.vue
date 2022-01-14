@@ -1,5 +1,5 @@
 <template>
-  <div class="pay_container">
+  <div class="print_container">
       <div class="print_header_wrap">
       <h4 class="print_text">
           상세주문내역
@@ -31,8 +31,36 @@
             <div class="print_order_right">{{ $store.state.paymentData[0].cardNote }}</div>
             <!--주문취소 버튼-->
             <div class="cancel_wrap d-grid gap-2">
-                <button type="button" class="cancel_btn btn-lg">주문취소</button>
+                <button type="button" 
+                class="cancel_btn btn-lg" 
+                data-bs-toggle="modal" 
+                data-bs-target="#ordercancel" 
+                data-bs-whatever="@mdo">주문취소</button>
             </div>
+            <!--주문취소 모달-->
+            <div class="modal fade" id="ordercancel" tabindex="-1" aria-labelledby="ordercancelLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ordercancelLabel">주문취소</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="p-3"> - 주문취소 사유를 선택해 주세요.</div>
+                <div class="modal-body">
+                    <form>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="cancel_modal_btn btn-lg">고객요청</button>
+                    </div>
+                    <div class="d-grid gap-2 mt-2">
+                        <button type="button" class="cancel_modal_btn btn-lg">가게사정</button>
+                    </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+
+
           </div>
         </div>
       </div>
@@ -64,11 +92,11 @@
           <router-link to="/OrderPrint"><button type="text" class="print_receipt_btn" onclick="window.print()"
           >주문표 인쇄</button></router-link>
           <button :disabled="menulistpageNum === 0" @click="prevPage2" class="print_page-btn">
-            <i class="xi-angle-up"></i>
+            <i class="xi-angle-up print_btn_icon"></i>
           </button>
           <span class="print_page-count">{{ menulistpageNum + 1 }} / {{ pageCount }} </span>
           <button :disabled="menulistpageNum >= pageCount - 1" @click="nextPage1" class="print_page-btn">
-            <i class="xi-angle-down"></i>
+            <i class="xi-angle-down print_btn_icon"></i>
           </button>
     </div>
       </div>
@@ -83,7 +111,8 @@ export default {
    method: {
      print() {
        Printjs({
-         printable: "orderprint_box2", //Id to print content 
+         printable: "orderprint_box2", 
+         css : '../src/assets/css/OrderPrint.css',
          type: "HTML"
       });
     }
