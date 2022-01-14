@@ -27,13 +27,15 @@
   .orderprint_box1,
   .orderprint_box2 {
     width: 50%;
-    height:80vh;
+    height:500px;
     display: inline-block;
     border: 1px solid #997fb5;
     border-radius: 5px;
     margin: 0 50px;
   }
-
+  .orderprint_box1 {
+      position:relative;
+  }
   
   .print_title {
     font-size: 16px;
@@ -99,27 +101,47 @@
   .print_total_price {
     padding:15px 15px
   }
-  
-  /* page_btn */
+    /* order cancel btn */
+    .cancel_wrap {
+        position:absolute;
+        bottom:0;
+        left:0;
+        margin:0 auto;
+        width:100%;
+        text-align: center;
+        padding:15px 30px;
+    }  
+    .cancel_btn {
+        background:#dcd4e3;
+        color:#997fb5;
+        border:none;
+    }
+  /* ordersheet print btn */
+  .print_btn-cover {
+    text-align: center;
+    padding-top:30px;
+  }
   .print_page-btn {
     background: #997fb5;
     border: 1px solid #997fb5;
     border-bottom:none;
+    border-right:none;
     color: #fff;
-    margin: 0 15px;
   }
   .print_receipt_btn {
-    width:45.6%;
-    height:45px;
+    width:50%;
+    height:58px;
     background:white;
     border:1px solid #997fb5;
     border-bottom:none;
     border-left:none;
+    border-right:none;
     color: #997fb5;
   }
+
   .print_page-btn {
     width:25%;
-    height:45px;
+    height:58px;
     background:white;
     border:1px solid #997fb5;
     border-bottom:none;

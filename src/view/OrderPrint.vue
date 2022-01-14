@@ -24,6 +24,10 @@
             <div class="print_order_right">{{ $store.state.paymentData[0].installMent }}</div>
             <div class="print_order_right">{{ $store.state.paymentData[0].dealDate }}</div>
             <div class="print_order_right">{{ $store.state.paymentData[0].cardNote }}</div>
+            <!--주문취소 버튼-->
+            <div class="cancel_wrap d-grid gap-2">
+                <button type="button" class="cancel_btn btn-lg">주문취소</button>
+            </div>
           </div>
         </div>
       </div>
@@ -50,15 +54,15 @@
           <div class="print_order_total">총 결제금액</div>
           <div class="print_total_price">{{ $store.state.priceData[0].total }}</div>
           </div>
-
         <!--///영수증 인쇄 옆 버튼-->
          <div class="print_btn-cover">
-          <router-link to="/OrderPrint"><button type="text" class="print_receipt_btn">주문표 인쇄</button></router-link>
+          <router-link to="/OrderPrint"><button type="text" class="print_receipt_btn" 
+          >주문표 인쇄</button></router-link>
           <button :disabled="menulistpageNum === 0" @click="prevPage2" class="print_page-btn">
             <i class="xi-angle-up"></i>
           </button>
           <span class="print_page-count">{{ menulistpageNum + 1 }} / {{ pageCount }} </span>
-          <button :disabled="menulistpageNum >= pageCount - 1" @click="nextPage1" class="menulist_page-btn">
+          <button :disabled="menulistpageNum >= pageCount - 1" @click="nextPage1" class="print_page-btn">
             <i class="xi-angle-down"></i>
           </button>
     </div>
@@ -68,7 +72,10 @@
 </template>
 
 <script>
-export default {};
+
+export default {
+
+};
 </script>
 
 <style>
