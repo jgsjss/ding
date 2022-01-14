@@ -25,15 +25,25 @@ import MenuManageMenus from '../view/MenuManageMenus.vue';
 import MenuManageOptions from '../view/MenuManageOptions.vue';
 import test1 from '../view/test1';
 import PageNotFound from '../view/page404';
+import login from '../view/Login';
+import page404 from '../view/page404';
+
+// const msg = true;
+// const methods = {
+//   allcatch: () => {
+//     routes.push({
+//       name: 'main',
+//       params: { msg: true },
+//     });
+//   },
+// };
 
 const routes = [
   {
-    path: '/:pathMatch(.*)*',
-    component: PageNotFound,
-  },
-  {
     path: '/',
     component: Main,
+    name: 'main',
+    params: { page404: false },
   },
   {
     path: '/login',
@@ -42,21 +52,25 @@ const routes = [
   {
     path: '/signUpOne',
     component: SignUpOne,
+    props: true,
   },
   {
-    path: '/signuptwo',
+    path: '/signuptwo:id',
     component: SignUp2two,
     name: 'signup2',
+    props: true,
   },
   {
     path: '/signupthree',
     component: SignUpThree,
     name: 'signup3',
+    props: true,
   },
   {
     path: '/signupfour',
     component: SignUpFour,
     name: 'signup4',
+    props: true,
   },
   {
     path: '/main',
@@ -141,7 +155,29 @@ const routes = [
     path: '/test1',
     component: test1,
   },
+  {
+    // to: '/main',
+    path: '/:pathMatch(.*)*',
+    // beforeRouteLeave: (to, from, next) => {
+    //   console.log(to);
+    //   console.log(from);
+    //   console.log(this.params);
+    //   next();
+    // },
+    // redirect: '/ ',
+    // page404: true,
+    component: Main,
+    // props: () =>
+    //   this.$router.push({
+    //     query: routes.query.page404,
+    //   }),
+    // props: (routes) => ({ query: routes.query.page404 }),
+    // params: {
+    //   page404: true,
+    // },
+  },
 ];
+
 // routes.beforeEach(function (to, from, next) {
 //   if(localStorage.guest) { // 그냥 로그인 된 상태인지 아닌지 여부
 //     next('/');
