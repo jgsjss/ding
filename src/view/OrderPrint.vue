@@ -1,8 +1,13 @@
 <template>
   <div class="pay_container">
+      <div class="print_header_wrap">
       <h4 class="print_text">
           상세주문내역
       </h4>
+        
+            <span class="xi-close" @click="$router.go(-1)"></span>  
+        
+        </div>
     <div>
 
       <!--//결제내역//-->
@@ -56,7 +61,7 @@
           </div>
         <!--///영수증 인쇄 옆 버튼-->
          <div class="print_btn-cover">
-          <router-link to="/OrderPrint"><button type="text" class="print_receipt_btn" 
+          <router-link to="/OrderPrint"><button type="text" class="print_receipt_btn" onclick="window.print()"
           >주문표 인쇄</button></router-link>
           <button :disabled="menulistpageNum === 0" @click="prevPage2" class="print_page-btn">
             <i class="xi-angle-up"></i>
@@ -72,10 +77,18 @@
 </template>
 
 <script>
+import * as Printjs from "print-js"; 
 
 export default {
-
-};
+   method: {
+     print() {
+       Printjs({
+         printable: "orderprint_box2", //Id to print content 
+         type: "HTML"
+      });
+    }
+   }
+ };
 </script>
 
 <style>
