@@ -7,6 +7,7 @@ import mitt from 'mitt'
 import mixins from './mixins'
 
 
+
 const emitter = mitt();
 const app = createApp(App)
 app.config.globalProperties.emitter = emitter;

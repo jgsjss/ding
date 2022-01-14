@@ -9,6 +9,7 @@ import PreparingListOne from '../view/PreparingListOne.vue';
 import PreparingListTwo from '../view/PreparingListTwo.vue';
 import CompletedOrder from '../view/CompletedOrder.vue';
 import OrderList from '../view/OrderList.vue';
+import OrderPrint from '../view/OrderPrint.vue';
 
 import StaffManagement from '../view/StaffManagement.vue';
 import OperationManagement from '../view/OperationManagement.vue';
@@ -128,12 +129,16 @@ const routes = [
         path: '/ordermanagement/orderlist',
         component: OrderList,
       },
-
       // {
       //   path: '/ordermanagement/4',
       //   component: OrderManagement4
       // },
     ],
+  },
+  //-------주문표 인쇄--orderprint---------
+  {
+    path: '/orderprint',
+    component: OrderPrint,
   },
   {
     path: '/staffmanagement',

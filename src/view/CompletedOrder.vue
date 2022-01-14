@@ -42,7 +42,7 @@
       </button>
     </div>
       </div>
-      <!--데이터 설정했으나 데이터 화면에안뜸-->
+      <!--//결제내역//-->
       <div class="complete_box2">
         <div class="com_title">결제내역</div>
           <div class="pay_wrap">
@@ -88,7 +88,7 @@
           <div class="com_total_price">{{ $store.state.priceData[0].total }}</div>
           </div>
          <div class="menulist_btn-cover">
-          <button type="text" class="order_receipt_btn">주문표 인쇄</button>
+          <router-link to="/OrderPrint"><button type="text" class="order_receipt_btn">주문표 인쇄</button></router-link>
           <button :disabled="menulistpageNum === 0" @click="prevPage2" class="menulist_page-btn">
             <i class="xi-angle-up"></i>
           </button>
