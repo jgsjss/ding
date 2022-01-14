@@ -45,22 +45,51 @@
                     <h5 class="modal-title" id="ordercancelLabel">주문취소</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="p-3"> - 주문취소 사유를 선택해 주세요.</div>
+                <div class="modal-sub-title p-3"> - 주문취소 사유를 선택해 주세요.</div>
                 <div class="modal-body">
                     <form>
                     <div class="d-grid gap-2">
                         <button type="button" class="cancel_modal_btn btn-lg">고객요청</button>
                     </div>
-                    <div class="d-grid gap-2 mt-2">
-                        <button type="button" class="cancel_modal_btn btn-lg">가게사정</button>
+            <div class="accordion-item d-grid gap-2 mt-2">
+                <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed cancel_modal_btn btn-lg" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    가게사정
+                </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <!--가게사정 라디오 박스-->
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        재료소진
+                    </label>
                     </div>
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        시즌메뉴
+                    </label>
+                    </div>
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        브레이크타임
+                    </label>
+                    </div>
+                </div>
+                </div>
+            </div>
                     </form>
+                <div class="cancel_btn_wrap mt-3">
+                <button type="button" class="cancelmodal_btn btn-lg">취소</button>
+                <button type="button" class="cancelmodal_btn btn-lg">확인</button>
+                </div>                    
                 </div>
                 </div>
             </div>
             </div>
-
-
           </div>
         </div>
       </div>
@@ -108,6 +137,11 @@
 import * as Printjs from "print-js"; 
 
 export default {
+    data() {
+        return {
+            modal: false,
+        }
+    },
    method: {
      print() {
        Printjs({
@@ -115,7 +149,13 @@ export default {
          css : '../src/assets/css/OrderPrint.css',
          type: "HTML"
       });
-    }
+    },
+    openModal() {
+      this.modal = true
+    },
+    closeModal() {
+      this.modal = false
+    },
    }
  };
 </script>
