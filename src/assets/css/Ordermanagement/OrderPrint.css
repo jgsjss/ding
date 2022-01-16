@@ -173,6 +173,9 @@
 .modal-title, .modal-sub-title {
     color:#997fb5;
 }
+.modal-content {
+  border:none;
+}
 /* modal footer box */
 .cancel_btn_wrap {
     text-align: center;
