@@ -1,4 +1,6 @@
 <template>
+  <h1><a href="/signupone">회원가입 페이지</a> </h1>
+  <h1><a href="/main">메인 페이지</a> </h1>
 
     <router-view > </router-view>
 
