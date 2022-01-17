@@ -65,7 +65,7 @@
             <!-- BIRTH_MM -->
             <div id="num_first">
                                 <span className="box">
-                                    <select id="number" className="sel" v-model="inputs.firstNum">
+                                    <select id="number" className="sel" v-model="firstNum">
                                         <option>선택</option>
                                         <option value="010">010</option>
                                         <option value="011">011</option>
@@ -79,7 +79,7 @@
             <div id="num_second">
                                 <span className="box">
                                     <input type="text" id="second2" className="int" maxLength="4"
-                                           v-model="inputs.secondNum">
+                                           v-model="secondNum">
                                 </span>
             </div>
 
@@ -87,7 +87,7 @@
             <div id="num_dd">
                                 <span className="box">
                                     <input @change="phoneNumConcat()" type="text" id="dd2" className="int" maxLength="4"
-                                           v-model="inputs.thirdNum">
+                                           v-model="thirdNum">
                                 </span>
             </div>
           </div>
@@ -274,24 +274,20 @@ export default {
   watch: {
     //중간자리 숫자만 입력가능
     secondNum (a) {
+
       if (isNaN(a) == true) {
         alert('숫자만 입력 가능합니다.')
         this.secondNum = ''
       }
     },
-    //끝자리 숫자만 입력가능
     thirdNum (a) {
+
       if (isNaN(a) == true) {
         alert('숫자만 입력 가능합니다.')
         this.thirdNum = ''
       }
-    },
-    middleNum (a) {
-      if (isNaN(a) == true) {
-        alert('숫자만 입력 가능합니다.')
-        this.middleNum = ''
-      }
-    },
+    }
+
 
   },
 

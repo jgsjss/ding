@@ -49,8 +49,8 @@
             </button>
           </router-link>
           <!--next-->
-          <router-link to="/signuptwo">
-            <button type="button" @click="sendRouteParam" id="term_btnJoin2">
+          <router-link to="/signuptwo" >
+            <button type="button" v-if="nextBtn==true" @click="sendRouteParam" id="term_btnJoin2">
               <span>다음</span>
             </button>
           </router-link>
@@ -73,6 +73,8 @@ export default {
       allSelected: false,
       selected: [],
       noneSelected: [],
+      nextBtn: false,
+
     }
   },
   methods: {
@@ -82,14 +84,6 @@ export default {
         params: { agree: this.selected }
       })
     },
-    select () {
-      this.selected = []
-      if (!this.allSelected) {
-        for (let i in this.agree) {
-          this.selected.push(this.agree[i])
-        }
-      }
-    },
     updateCheckall: function () {
       if (this.agree.length == this.selected.length) {
         this.allSelected = true
@@ -97,21 +91,36 @@ export default {
         this.allSelected = false
       }
     },
+    agreeCheck(){
+      if(this.selected.length == 4) {
+
+      }else if(this.selected.length <= 3){
+        this.nextBtn = false;
+      }
+    },
+
   },
   computed: {
     allSelect: function() {
       if(!this.allSelected) {
-        this.selected = [...this.agree]
+        this.selected = [...this.agree];
+
       } else{
-        this.selected = [...this.noneSelected]
+        this.selected = [...this.noneSelected];
       }
     }
   },
   watch: {
-
+    selected(a){
+      if(a.length == 4){
+        this.nextBtn = true;
+      }else{
+        this.nextBtn = false;
+      }
+    }
   },
   mounted () {
-    // this.$test()
+
   }
 }
 </script>
