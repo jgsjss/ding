@@ -8,7 +8,6 @@
       <form
         id="app"
         @submit="checkForm"
-        action="https://vuejs.org/"
         method="post"
       >
       <!-- ID -->

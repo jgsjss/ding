@@ -56,7 +56,7 @@ const routes = [
     props: true,
   },
   {
-    path: '/signuptwo:id',
+    path: '/signuptwo',
     component: SignUp2two,
     name: 'signup2',
     props: true,

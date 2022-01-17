@@ -77,6 +77,7 @@ export default {
     // this.page404 = true
     this.page404 = this.$route.params
     console.log("params",this.$route.params.pathMatch)
+    console.log("route",this.$router.getRoutes())
     console.log(this.page404)
     if (this.$route.params.pathMatch != null) {
       console.log('잘못된 접근')
