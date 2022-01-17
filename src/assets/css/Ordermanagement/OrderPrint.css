@@ -37,7 +37,7 @@
   .orderprint_box1,
   .orderprint_box2 {
     width: 50%;
-    height:500px;
+    height:400px;
     display: inline-block;
     background:#f5f3f7;
     border-radius: 5px;
@@ -46,7 +46,9 @@
   .orderprint_box1 {
       position:relative;
   }
-  
+  .orderprint_box2 {
+    overflow:scroll
+  }
   .print_title {
     font-size: 16px;
     font-weight: 500;

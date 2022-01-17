@@ -83,36 +83,19 @@
             </div>
                     </form>
                 <div class="cancel_btn_wrap mt-3">
-                <button type="button" class="cancelmodal_btn btn-lg">취소</button>
-                <button type="button" class="cancelmodal_btn btn-lg">확인</button>
+                <button type="button" class="cancelmodal_btn btn-lg" data-bs-dismiss="modal">취소</button>
+                <button type="button" class="cancelmodal_btn btn-lg" data-bs-toggle="modal">확인</button>
                 </div>                    
                 </div>
                 </div>
             </div>
             </div>
             <!--/////주문취소 모달 끝/////-->
-            <!--/////취소 확인 모달창/////-->
-            <!-- <div class="modal" tabindex="-1">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <p>Modal body text goes here.</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!--/////취소 확인 모달창/////-->
+
           </div>
         </div>
       </div>
+
       <div class="orderprint_box2">
         <div class="print_title">요청사항</div>
         <p class="print_request">얼음많이주세요!{{}}</p>
@@ -144,7 +127,7 @@
             <i class="xi-angle-up print_btn_icon"></i>
           </button>
           <span class="print_page-count">{{ menulistpageNum + 1 }} / {{ pageCount }} </span>
-          <button :disabled="menulistpageNum >= pageCount - 1" @click="nextPage1" class="print_page-btn">
+          <button :disabled="menulistpageNum >= pageCount - 1" @click="nextPage2, scrollToBottom" class="print_page-btn">
             <i class="xi-angle-down print_btn_icon"></i>
           </button>
     </div>
@@ -152,14 +135,14 @@
     </div>
   </div>
 </template>
-
 <script>
 import * as Printjs from "print-js"; 
 
 export default {
     data() {
+      
         return {
-          showModal: false,
+
         }
     },
    method: {
@@ -170,13 +153,18 @@ export default {
          type: "HTML"
       });
     },
-    openModal() {
-      this.modal = true
-    },
-    closeModal() {
-      this.modal = false
-    },
-   }
+   },
+      nextPage2() {
+        this.pageNum += 1;
+      },
+      prevPage2() {
+        this.pageNum -= 1;
+      },
+   
+    mounted () {
+      window.scrollTo(10, 0)
+    }
+
  };
 </script>
 

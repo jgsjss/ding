@@ -5,6 +5,7 @@ import shopData from '../assets/shopData.js'
 import paymentData from '../assets/paymentData.js'
 import priceData from '../assets/priceData.js'
 import menuCostomData from '../assets/menuCostomData.js'
+import StaffData from '../assets/StaffData.js'
 
 let soldNum=0;
 let hidNum=0;
@@ -58,6 +59,8 @@ export default createStore({
     priceData,
     //----------커스텀 옵션 데이터-------------
     menuCostomData,
+    //----------스태프 관리 데이터-------------
+    StaffData,
     //=======================MenuManagement.vue 화면 내부 데이터 ========================
     //
     menuTab : 0,
