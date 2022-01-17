@@ -41,7 +41,7 @@
 
       <!-- JOIN BTN  @click.prevent 설정시 위의 input에서 엔터를 누를 때 해당 버튼 이벤트 발생을 방지한다. -->
       <div class="btn_area">
-        <button type="submit" id="btnJoin" @click.prevent="doLogin">
+        <button type="submit" id="btnJoin" @click.prevent="doSignin">
           <span>로그인</span>
         </button>
       </div>
@@ -69,7 +69,7 @@ export default {
     }
   },
   methods: {
-    doLogin(){
+    doSignin(){
       if(this.memberId == ""){
         alert('아이디를 입력하세요.');
         this.$refs.memberIdInput.focus();
