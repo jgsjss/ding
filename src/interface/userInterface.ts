@@ -1,3 +1,5 @@
+import userDTO from '../DTO/userDTO';
+
 export interface Iperson {
   userNum: null;
   userId: string;
@@ -14,6 +16,8 @@ export interface Iperson {
   userDate: string;
   inProcess: string;
   userType: number;
+
+  printDTO(userVO: Iperson): string;
 
   // const signUp = (user: Iperson): Promise<Iperson> => {
   //   return new Promise((resolve, reject) => {

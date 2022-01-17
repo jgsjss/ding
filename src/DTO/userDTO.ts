@@ -1,6 +1,6 @@
 import { Iperson } from '../interface/userInterface';
 
-class User implements Iperson {
+export class UserDTO implements Iperson {
   private _bizAddr1: string;
   private _bizAddr2: string;
   private _bizNum: string;
@@ -30,7 +30,6 @@ class User implements Iperson {
     userDate: string,
     userId: string,
     userName: string,
-    userNum: null,
     userPw: string,
     userType: number
   ) {
@@ -46,7 +45,6 @@ class User implements Iperson {
     this._userDate = userDate;
     this._userId = userId;
     this._userName = userName;
-    this._userNum = userNum;
     this._userPw = userPw;
     this._userType = userType;
   }
@@ -147,14 +145,6 @@ class User implements Iperson {
     this._userName = value;
   }
 
-  get userNum(): null {
-    return this._userNum;
-  }
-
-  set userNum(value: null) {
-    this._userNum = value;
-  }
-
   get userPw(): string {
     return this._userPw;
   }
@@ -171,3 +161,5 @@ class User implements Iperson {
     this._userType = value;
   }
 }
+
+exports.default = UserDTO;
