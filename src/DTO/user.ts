@@ -1,127 +1,157 @@
 import { Iperson } from '../interface/userInterface';
 
 class User implements Iperson {
-  bizAddr1: string;
-  bizAddr2: string;
-  bizNum: string;
-  bizZip: string;
-  inProcess: string;
-  mgEmail: string;
-  mgName: string;
-  mgPhNum: string;
-  phNum: string;
-  userDate: string;
-  userId: string;
-  userName: string;
-  userNum: null;
-  userPw: string;
-  userType: number;
+  private _bizAddr1: string;
+  private _bizAddr2: string;
+  private _bizNum: string;
+  private _bizZip: string;
+  private _inProcess: string;
+  private _mgEmail: string;
+  private _mgName: string;
+  private _mgPhNum: string;
+  private _phNum: string;
+  private _userDate: string;
+  private _userId: string;
+  private _userName: string;
+  private _userNum: null;
+  private _userPw: string;
+  private _userType: number;
 
   constructor() {
-    this.bizAddr1 = '';
-    this.bizAddr2 = '';
-    this.bizNum = '';
-    this.bizZip = '';
-    this.inProcess = '';
-    this.mgEmail = '';
-    this.mgName = '';
-    this.mgPhNum = '';
-    this.phNum = '';
-    this.userDate = '';
-    this.userId = '';
-    this.userName = '';
-    this.userNum = null;
-    this.userPw = '';
-    this.userType = 0;
+    this._bizAddr1 = '';
+    this._bizAddr2 = '';
+    this._bizNum = '';
+    this._bizZip = '';
+    this._inProcess = '';
+    this._mgEmail = '';
+    this._mgName = '';
+    this._mgPhNum = '';
+    this._phNum = '';
+    this._userDate = '';
+    this._userId = '';
+    this._userName = '';
+    this._userNum = null;
+    this._userPw = '';
+    this._userType = 0;
   }
 
-  getBizAddr1(): string {
-    return '';
+  get bizAddr1(): string {
+    return this._bizAddr1;
   }
 
-  getBizAddr2(): string {
-    return '';
+  set bizAddr1(value: string) {
+    this._bizAddr1 = value;
   }
 
-  getBizNum(): string {
-    return '';
+  get bizAddr2(): string {
+    return this._bizAddr2;
   }
 
-  getBizZip(): string {
-    return '';
+  set bizAddr2(value: string) {
+    this._bizAddr2 = value;
   }
 
-  getInProcess(): string {
-    return '';
+  get bizNum(): string {
+    return this._bizNum;
   }
 
-  getMgEmail(): string {
-    return '';
+  set bizNum(value: string) {
+    this._bizNum = value;
   }
 
-  getMgName(): string {
-    return '';
+  get bizZip(): string {
+    return this._bizZip;
   }
 
-  getMgPhNum(): string {
-    return '';
+  set bizZip(value: string) {
+    this._bizZip = value;
   }
 
-  getPhNum(): string {
-    return '';
+  get inProcess(): string {
+    return this._inProcess;
   }
 
-  getUserDate(): string {
-    return '';
+  set inProcess(value: string) {
+    this._inProcess = value;
   }
 
-  getUserId(): string {
-    return '';
+  get mgEmail(): string {
+    return this._mgEmail;
   }
 
-  getUserName(): string {
-    return '';
+  set mgEmail(value: string) {
+    this._mgEmail = value;
   }
 
-  getUserNum(): null {
-    return null;
+  get mgName(): string {
+    return this._mgName;
   }
 
-  getUserPw(): string {
-    return '';
+  set mgName(value: string) {
+    this._mgName = value;
   }
 
-  getUserType(): number {
-    return 0;
+  get mgPhNum(): string {
+    return this._mgPhNum;
   }
 
-  setBizAddr1(bizAddr1: string): void {}
+  set mgPhNum(value: string) {
+    this._mgPhNum = value;
+  }
 
-  setBizAddr2(bizAddr2: string): void {}
+  get phNum(): string {
+    return this._phNum;
+  }
 
-  setBizNum(bizNum: string): void {}
+  set phNum(value: string) {
+    this._phNum = value;
+  }
 
-  setBizZip(bizZip: string): void {}
+  get userDate(): string {
+    return this._userDate;
+  }
 
-  setInProcess(inProcess: string): void {}
+  set userDate(value: string) {
+    this._userDate = value;
+  }
 
-  setMgEmail(mgEmail: string): void {}
+  get userId(): string {
+    return this._userId;
+  }
 
-  setMgName(mgName: string): void {}
+  set userId(value: string) {
+    this._userId = value;
+  }
 
-  setMgPhNum(mgPhNum: string): void {}
+  get userName(): string {
+    return this._userName;
+  }
 
-  setPhNum(phNum: string): void {}
+  set userName(value: string) {
+    this._userName = value;
+  }
 
-  setUserDate(userDate: string): void {}
+  get userNum(): null {
+    return this._userNum;
+  }
 
-  setUserId(userId: string): void {}
+  set userNum(value: null) {
+    this._userNum = value;
+  }
 
-  setUserName(userName: string): void {}
+  get userPw(): string {
+    return this._userPw;
+  }
 
-  setUserNum(userNum: null): void {}
+  set userPw(value: string) {
+    this._userPw = value;
+  }
 
-  setUserPw(userPw: string): void {}
+  get userType(): number {
+    return this._userType;
+  }
 
-  setUserType(userType: number): void {}
+  set userType(value: number) {
+    this._userType = value;
+  }
 }
