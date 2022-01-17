@@ -15,18 +15,16 @@ export interface Iperson {
   inProcess: string;
   userType: number;
 
-
-
-  const signUp = (user: Iperson): Promise<Iperson> => {
-    return new Promise((resolve, reject) => {
-      axios
-        .post("/api/user/signUp", user)
-        .then((res) => {
-          resolve(res.data);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
-  };
+  // const signUp = (user: Iperson): Promise<Iperson> => {
+  //   return new Promise((resolve, reject) => {
+  //     axios
+  //       .post("/api/user/signUp", user)
+  //       .then((res) => {
+  //         resolve(res.data);
+  //       })
+  //       .catch((err) => {
+  //         reject(err);
+  //       });
+  //   });
+  // };
 }

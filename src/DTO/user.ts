@@ -17,22 +17,38 @@ class User implements Iperson {
   private _userPw: string;
   private _userType: number;
 
-  constructor() {
-    this._bizAddr1 = '';
-    this._bizAddr2 = '';
-    this._bizNum = '';
-    this._bizZip = '';
-    this._inProcess = '';
-    this._mgEmail = '';
-    this._mgName = '';
-    this._mgPhNum = '';
-    this._phNum = '';
-    this._userDate = '';
-    this._userId = '';
-    this._userName = '';
-    this._userNum = null;
-    this._userPw = '';
-    this._userType = 0;
+  constructor(
+    bizAddr1: string,
+    bizAddr2: string,
+    bizNum: string,
+    bizZip: string,
+    inProcess: string,
+    mgEmail: string,
+    mgName: string,
+    mgPhNum: string,
+    phNum: string,
+    userDate: string,
+    userId: string,
+    userName: string,
+    userNum: null,
+    userPw: string,
+    userType: number
+  ) {
+    this._bizAddr1 = bizAddr1;
+    this._bizAddr2 = bizAddr2;
+    this._bizNum = bizNum;
+    this._bizZip = bizZip;
+    this._inProcess = inProcess;
+    this._mgEmail = mgEmail;
+    this._mgName = mgName;
+    this._mgPhNum = mgPhNum;
+    this._phNum = phNum;
+    this._userDate = userDate;
+    this._userId = userId;
+    this._userName = userName;
+    this._userNum = userNum;
+    this._userPw = userPw;
+    this._userType = userType;
   }
 
   get bizAddr1(): string {
