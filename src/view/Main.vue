@@ -75,6 +75,8 @@ export default {
     // console.log(this.$router.)
     // console.log(this.$route.query.msg)
     // this.page404 = true
+
+    //
     this.page404 = this.$route.params
     console.log("params",this.$route.params.pathMatch)
     console.log("route",this.$router.getRoutes())

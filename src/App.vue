@@ -28,14 +28,7 @@ export default {
 
   },
   created () {
-    axios.get('http://sample.bmaster.kro.kr/contacts')
-    .then(response => {
 
-      this.pageArray = response.data.contacts;
-    })
-    .catch(err => {
-      console.log(err);
-    });
   },
   mounted(){
     //menu 컴포넌트 커스텀이벤트 수신 코드

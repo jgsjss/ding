@@ -16,10 +16,10 @@ module.exports = {
         target,
         changeOrigin: true,
       },
-      '^/login': {
-        target,
-        changeOrigin: true,
-      }
+      // '^/login': {
+      //   target,
+      //   changeOrigin: true,
+      // }
     },
   },
   lintOnSave: false,
