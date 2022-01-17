@@ -1,23 +1,24 @@
-import { Iperson } from '../interface/userInterface';
+import { userInterface } from '../interface/userInterface';
 
-export class UserDTO implements Iperson {
-  private _bizAddr1: string;
-  private _bizAddr2: string;
-  private _bizNum: string;
-  private _bizZip: string;
-  private _inProcess: string;
-  private _mgEmail: string;
-  private _mgName: string;
-  private _mgPhNum: string;
-  private _phNum: string;
-  private _userDate: string;
-  private _userId: string;
-  private _userName: string;
-  private _userNum: null;
-  private _userPw: string;
-  private _userType: number;
+export default class UserDTO implements userInterface {
+  public _bizAddr1: string;
+  public _bizAddr2: string;
+  public _bizNum: string;
+  public _bizZip: string;
+  public _inProcess: string;
+  public _mgEmail: string;
+  public _mgName: string;
+  public _mgPhNum: string;
+  public _phNum: string;
+  public _userDate: string;
+  public _userId: string;
+  public _userName: string;
+  public _userNum: null;
+  public _userPw: string;
+  public _userType: number;
 
   constructor(
+    userNum: null,
     bizAddr1: string,
     bizAddr2: string,
     bizNum: string,
@@ -160,6 +161,16 @@ export class UserDTO implements Iperson {
   set userType(value: number) {
     this._userType = value;
   }
-}
 
-exports.default = UserDTO;
+  get userNum(): null {
+    return this._userNum;
+  }
+
+  set userNum(value: null) {
+    this._userNum = null;
+  }
+
+  printDTO(user: UserDTO): UserDTO {
+    return user;
+  }
+}
