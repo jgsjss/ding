@@ -9,11 +9,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-<form>
+<form id="staffadd" @submit.prevent="sendpost" method="post">
   <div class="row mb-3">
     <label for="inputEmail3" class="col-sm-2 col-form-label">이름</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3">
+      <input type="text" class="form-control" id="inputname" name="addname" v-model="addname">
+      <button>send</button>
     </div>
   </div>
   <div class="row mb-3">
@@ -168,8 +169,29 @@
 </template>
 
 <script>
+import router from "../router";
+import axios from "axios";
 export default {
-
+  data() {
+    return {
+      addname:'name'
+      
+    }
+    
+  },
+  methods: {
+    sendpost: function() {
+      axios.post('//jsonplaceholder.typicode.com/posts', {
+        userId: 1,
+        addname: this.addname
+      })
+      .then(function(res) {
+        console.log(res.data)
+    }, function() {
+      console.log('falied')
+    })
+  }
+  }
 }
 </script>
 
