@@ -21,7 +21,7 @@
   <hr />
   <div class="staff_wrapper">
     <div class="staff_top_box" v-for="(a, i) in $store.state.StaffData" :key="i">
-      <span class="staff_img">IMG</span>    
+      <span class="staff_img">IMG</span>
       <div class="staff_grid_wrap">
         <p>{{ $store.state.StaffData[i].rank }}({{ $store.state.StaffData[i].id }})</p>
         <p>{{ $store.state.StaffData[i].condition }}</p>

@@ -104,6 +104,13 @@
     height: 15px;
     background: #fff;
   }
+
+  .StaffCondition:focus {
+    color:#997fb5;
+  }
+  .StaffCondition:not(false) {
+    color:#ddd;
+  }
   .staff_authority {
       margin:0 auto;
       padding:15px 0;

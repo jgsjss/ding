@@ -74,7 +74,7 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-            <button type="button" class="btn btn-primary">등록</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">등록</button>
           </div>
     </div>
   </div>
@@ -158,7 +158,7 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-            <button type="button" class="btn btn-primary">저장</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">저장</button>
           </div>
     </div>
   </div>

@@ -2,9 +2,6 @@
 <Navbar />
 <StaffModal />
 
-
-
-
   <div class="staff_container">
     <div class="staff_wrap">
     <h2 class="staff_text">직원관리</h2>  
@@ -36,16 +33,16 @@
       <tbody>
         <tr v-for="(a, i) in $store.state.StaffData" :key="i" class="staff_board">
           <!--///////상태////////-->
-          <td><a href="#!" class="active = !active " aria-pressed="false">{{ $store.state.StaffData[i].condition }}</a></td>
+          <td><a href="#!" class="StaffCondition">{{ $store.state.StaffData[i].condition }}</a></td>
           <!--///////직급////////-->          
           <td>{{ $store.state.StaffData[i].rank }}</td>
           <!--///////상태///////-->
           <td>{{ $store.state.StaffData[i].id }}</td>
           <td class="staff_authority">
-            <button type="button" class="btn authority_active" data-bs-toggle="button" autocomplete="off" aria-pressed="true">주문관리</button>
-            <button type="button" class="btn authority_active" data-bs-toggle="button" autocomplete="off" aria-pressed="true">상태관리</button>
-            <button type="button" class="btn authority_active" data-bs-toggle="button" autocomplete="off" aria-pressed="true">메뉴편집</button>
-            <button type="button" class="btn authority_active" data-bs-toggle="button" autocomplete="off" aria-pressed="true">매출관리</button>
+            <button type="button" @click="authority" :class="{active: isActive}" class="btn authority" data-bs-toggle="button" autocomplete="off" aria-pressed="true">주문관리</button>
+            <button type="button" class="btn authority_" data-bs-toggle="button" autocomplete="off" aria-pressed="true">상태관리</button>
+            <button type="button" class="btn authority" data-bs-toggle="button" autocomplete="off" aria-pressed="true">메뉴편집</button>
+            <button type="button" class="btn authority" data-bs-toggle="button" autocomplete="off" aria-pressed="true">매출관리</button>
             <button type="button" class="btn authority" data-bs-toggle="button" autocomplete="off">직원관리</button>
             <button type="button" class="btn authority" data-bs-toggle="button" autocomplete="off">로그확인</button>
             <button type="button" class="btn authority" data-bs-toggle="button" autocomplete="off">할인코드</button>
@@ -82,6 +79,7 @@ export default {
   data() {
     return {
       pageNum: 0,
+      isActive: false,
     };
   },
   props: {
@@ -94,6 +92,9 @@ export default {
     prevPage() {
       this.pageNum -= 1;
     },
+    authority: function() {
+      this.isActive = !this.isActive;
+    }
   },
 
 };
