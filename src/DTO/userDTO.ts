@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { userInterface } from '../interface/userInterface';
 
 export default class UserDTO implements userInterface {
@@ -16,6 +17,41 @@ export default class UserDTO implements userInterface {
   public _userNum: null;
   public _userPw: string;
   public _userType: number;
+
+
+
+export class UserDTO implements Iperson {
+  //매장주소
+  private _bizAddr1: string;
+  //매장 상세주소
+  private _bizAddr2: string;
+  //사업자번호
+  private _bizNum: string;
+  //사업자등록증
+  private _bizZip: string;
+  //가입 심사중 통과여부
+  private _inProcess: string;
+  //관리자 메일주소
+  private _mgEmail: string;
+  //관리자 이름
+  private _mgName: string;
+  //관리자 번호
+  private _mgPhNum: string;
+  //매장 대표번호
+  private _phNum: string;
+  //회원가입 날짜
+  private _userDate: string;
+  //회원 아이디
+  private _userId: string;
+  //대표자 이름
+  private _userName: string;
+  //회원 번호(DB 인덱스값)
+  private _userNum: null;
+  //대표자 비밀번호
+  private _userPw: string;
+  // ?
+  private _userType: number;
+
 
   constructor(
     userNum: null,

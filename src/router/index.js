@@ -11,7 +11,8 @@ import CompletedOrder from '../view/CompletedOrder.vue';
 import OrderList from '../view/OrderList.vue';
 import OrderPrint from '../view/OrderPrint.vue';
 
-import StaffManagement from '../view/StaffManagement.vue';
+import StaffManagementOne from '../view/StaffManagementOne.vue';
+import StaffManagementTwo from '../view/StaffManagementTwo.vue';
 import OperationManagement from '../view/OperationManagement.vue';
 import DiscountCode from '../view/DiscountCode.vue';
 import SalesManagement from '../view/SalesManagement.vue';
@@ -140,9 +141,14 @@ const routes = [
     path: '/orderprint',
     component: OrderPrint,
   },
+  //----------직원관리------------
   {
-    path: '/staffmanagement',
-    component: StaffManagement,
+    path: '/staffmanagementone',
+    component: StaffManagementOne,
+  },
+  {
+    path: '/staffmanagementtwo',
+    component: StaffManagementTwo,
   },
   {
     path: '/operationmanagement',

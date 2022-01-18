@@ -154,6 +154,9 @@
 </template>
 <script>
 
+
+// import userDTO from '../DTO/userDTO'
+
 import router from '../router'
 import uservo from '../DTO/userVO'
 export default {
@@ -161,13 +164,16 @@ export default {
   data () {
     return {
       inputs:
-      //회원 아이디
+
           {
+            //회원 아이디
             userId: '',
             //회원 비밀번호
             userPw: '',
             //사업자대표 이름
             userName: '',
+            //사업자 휴대폰 번호
+
             //매장이름
             shopName: '',
             //매장대표번호

@@ -61,6 +61,8 @@ export default createStore({
     menuCostomData,
     //----------스태프 관리 데이터-------------
     StaffData,
+    //품절,숨김 메뉴 모달창 상태변경
+    StaffModal : false,
     //=======================MenuManagement.vue 화면 내부 데이터 ========================
     //
     menuTab : 0,
