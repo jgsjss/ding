@@ -17,8 +17,8 @@ export default class UserDTO implements userInterface {
   public _userNum: null;
   public _userPw: string;
   public _userType: number;
-=======
-import { Iperson } from '../interface/userInterface';
+
+
 
 export class UserDTO implements Iperson {
   //매장주소
@@ -51,7 +51,7 @@ export class UserDTO implements Iperson {
   private _userPw: string;
   // ?
   private _userType: number;
->>>>>>> Stashed changes
+
 
   constructor(
     userNum: null,

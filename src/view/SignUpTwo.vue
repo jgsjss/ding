@@ -153,12 +153,9 @@
 
 </template>
 <script>
-<<<<<<< Updated upstream
-=======
-import vm from 'vm'
-import router from '../router'
+
+
 // import userDTO from '../DTO/userDTO'
->>>>>>> Stashed changes
 
 import router from '../router'
 import uservo from '../DTO/userVO'
