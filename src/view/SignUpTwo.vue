@@ -142,6 +142,7 @@
           </router-link></span>
         </div>
         <button @click="test()">테스트</button>
+        <button @click="insertDTO()">테스트DTO</button>
 
       </div>
       <!-- content-->
@@ -152,9 +153,9 @@
 
 </template>
 <script>
-import vm from 'vm'
-import router from '../router'
 
+import router from '../router'
+import uservo from '../DTO/userVO'
 export default {
 
   data () {
@@ -195,6 +196,13 @@ export default {
   },
 
   methods: {
+    insertDTO(){
+
+      let user = new uservo()
+      user.userName = this.inputs.userName
+      user.userPw = this.inputs.userPw
+      console.log(user)
+    },
     //inputs 값 테스트용
     test () {
       console.log(this.selected)
