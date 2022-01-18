@@ -34,7 +34,7 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/staffmanagement" class="nav-link">
+        <router-link to="/staffmanagementone" class="nav-link">
           <div class="nav-wrap">
             <i class="xi-cloud-o"></i>
             <p class="nav-link">직원관리</p>
