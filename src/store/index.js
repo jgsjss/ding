@@ -7,6 +7,10 @@ import priceData from '../assets/priceData.js'
 import menuCostomData from '../assets/menuCostomData.js'
 import StaffData from '../assets/StaffData.js'
 
+//스토어 모듈 임포트
+import { signupStore } from './modules/signupStore'
+
+
 let soldNum=0;
 let hidNum=0;
 for(let i=0; i<menuData.length; i++){
@@ -26,11 +30,12 @@ for(let i=0; i<orderData.length; i++){
     cancelNum++;
   }
 }
-
-
 export default createStore({
 
+  modules:{
+    signupStore: signupStore,
 
+  },
   state: {
     //=======================Main.vue 화면 내부 데이터 ========================
     //-------------메뉴관리 데이터------
@@ -63,11 +68,6 @@ export default createStore({
     StaffData,
     //품절,숨김 메뉴 모달창 상태변경
     StaffModal : false,
-    //=======================MenuManagement.vue 화면 내부 데이터 ========================
-    //
-    menuTab : 0,
-
-
     //스테이트 변환, $store.commit('mutation 함수명') 으로 이벤트 핸들링
     mutations: {
 
@@ -90,8 +90,5 @@ export default createStore({
     computed :{
 
     },
-    modules: {
-  },
-
   }
 })

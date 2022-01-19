@@ -144,6 +144,7 @@
         <button @click="test()">테스트</button>
         <button @click="insertDTO()">테스트DTO</button>
 
+
       </div>
       <!-- content-->
 
@@ -153,18 +154,21 @@
 
 </template>
 <script>
-
-
-// import userDTO from '../DTO/userDTO'
-
 import router from '../router'
 import uservo from '../DTO/userVO'
 export default {
 
+  props:{
+    signupAgree: {
+      type: [Array, String],
+      default: function (){
+        return ['']
+      }
+    }
+  },
   data () {
     return {
       inputs:
-
           {
             //회원 아이디
             userId: '',
@@ -187,7 +191,8 @@ export default {
             //매장 상세주소
             extraAddress: '',
             //참고항목
-            etc: ''
+            etc: '',
+
           }
       ,
       //휴대폰번호 맨앞자리
@@ -197,7 +202,7 @@ export default {
       //휴대폰번호 끝 4자리
       thirdNum: '',
       //signupone 에서 넘어온 동의 파라미터
-      selected: this.$route.params.agree,
+      selected: this.$route.params.signupAgree,
     }
   },
 
@@ -211,8 +216,9 @@ export default {
     },
     //inputs 값 테스트용
     test () {
-      console.log(this.selected)
-      console.log(this.inputs)
+      console.log(this.signupAgree)
+      // console.log(this.selected)
+      // console.log(this.inputs)
     },
     //휴대폰번호 입력받고 합치기
     phoneNumConcat () {
@@ -224,8 +230,7 @@ export default {
       router.push({
         name: 'signup3',
         params: {
-          signup2Info: this.inputs,
-          signup1Agree: this.selected
+          signupTwoInfo: this.inputs,
         }
       })
     },
@@ -273,8 +278,8 @@ export default {
     },
   },
   created () {
-   console.log(this.selected)
-    console.log(this.$route.params.agree)
+   console.log(this.signupAgree)
+    console.log('크리에이트 : ',this.signupAgree)
     // console.log(this.inputs)
   },
   computed: {

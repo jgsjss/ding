@@ -18,7 +18,7 @@ import DiscountCode from '../view/DiscountCode.vue';
 import SalesManagement from '../view/SalesManagement.vue';
 import Login from '../view/Login.vue';
 import SignUpOne from '../view/SignUpOne.vue';
-import SignUp2two from '../view/SignUpTwo.vue';
+
 import SignUpThree from '../view/SignUpThree.vue';
 import SignUpFour from '../view/SignUpFour.vue';
 import ReleaseSoldOut from '../view/ReleaseSoldOut.vue';
@@ -58,7 +58,10 @@ const routes = [
   },
   {
     path: '/signuptwo',
-    component: SignUp2two,
+    // route level oode-spilitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../view/SignUpTwo'),
     name: 'signup2',
     props: true,
   },

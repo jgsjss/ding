@@ -174,6 +174,7 @@
         </form>
       </div>
     </div>
+<!--    <button @click="test">테스트</button>-->
   </div>
 </template>
 <script>
@@ -197,8 +198,8 @@ export default {
         bizNum3:"",
         sumBizNum:this.bizNum1+this.bizNum2+this.bizNum3
       },
+      //SignUpTwo 에서 파라미터로 넘어온 inputs
       memberInfo: this.$route.params.signup2Info,
-      memberAgree: this.$route.params.signup1Agree,
       images: "",
 
 
@@ -225,13 +226,13 @@ export default {
         })
         .catch((err) => console.log(err));
     },
-
+    test(){
+      console.log('SignUpTwo에서 넘어온 파라미터',this.memberInfo)
+    }
   },
       created() {
       console.log(this.memberInfo)
-      console.log(this.memberAgree)
       console.log(this.$route.params.signup2Info)
-      console.log(this.$route.params.signup1Agree)
   }
 };
 </script>

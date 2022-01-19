@@ -15,25 +15,25 @@
         </div>
         <div class="terms_box">
           <label class="login_check_wrap">14세 이상
-            <input type="checkbox" v-model="selected" :value="agree[0]" @change='updateCheckall()'>
+            <input type="checkbox" v-model="$store.modules.signupStore.state.selected" :value="agree[0]" @change='updateCheckall()'>
             <span class="checkmark"></span>
           </label>
         </div>
         <div class="terms_box">
           <label class="login_check_wrap">이용약관
-            <input type="checkbox" v-model="selected" :value="agree[1]" @change='updateCheckall()'>
+            <input type="checkbox" v-model="$store.modules.signupStore.state.selected" :value="agree[1]" @change='updateCheckall()'>
             <span class="checkmark"></span>
           </label>
         </div>
         <div class="terms_box">
           <label class="login_check_wrap">개인정보 처리방침
-            <input type="checkbox" v-model="selected" :value="agree[2]" @change='updateCheckall()'>
+            <input type="checkbox" v-model="$store.modules.signupStore.state.selected" :value="agree[2]" @change='updateCheckall()'>
             <span class="checkmark"></span>
           </label>
         </div>
         <div class="terms_box">
           <label class="login_check_wrap">광고성 정보 마케팅 동의
-            <input type="checkbox" v-model="selected" :value="agree[3]" @change='updateCheckall()'>
+            <input type="checkbox" v-model="$store.modules.signupStore.state.selected" :value="agree[3]" @change='updateCheckall()'>
             <span class="checkmark"></span>
           </label>
         </div>
@@ -65,11 +65,14 @@
 </template>
 <script>
 import router from '../router'
+const signupStore = 'signupStore'
+
+
 
 export default {
   data () {
     return {
-      agree: ['14세이상', '이용약관', '개인정보', '마케팅'],
+      agree: ['a', 'b', 'c', 'd'],
       allSelected: false,
       selected: [],
       noneSelected: [],
@@ -80,7 +83,7 @@ export default {
     sendRouteParam () {
       router.push({
         name: 'signup2',
-        params: { agree: this.selected }
+        params: { signupAgree: this.selected }
       })
     },
     updateCheckall: function () {
