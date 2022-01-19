@@ -1,5 +1,4 @@
 <template>
-
   <div className="container_fluid">
     <h1 className="member_text">
       회원가입
@@ -11,7 +10,6 @@
       </p>
       <!-- content-->
       <div id="content">
-
         <!-- ID -->
         <div>
           <h3 className="join_title">
@@ -23,24 +21,22 @@
                         </span>
           <span className="error_next_box"></span>
         </div>
-
         <!-- PW1 -->
         <div>
           <h3 className="join_title"><label>비밀번호</label></h3>
           <span className="box int_pass">
-                            <input type="text" id="pswd2-1" className="int" maxLength="16"
+                            <input type="password" id="pswd2-1" className="int" maxLength="16"
                                    placeholder="8~16자의 영문/숫자를 조합" v-model="inputs.userPw">
             <!-- <span>유효하지 않은 비밀번호 입니다.</span> -->
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
           <span className="error_next_box"></span>
         </div>
-
         <!-- PW2 -->
         <div>
           <h3 className="join_title"><label>비밀번호 재확인</label></h3>
           <span className="box int_pass_check">
-                            <input type="text" id="pswd2-2" className="int"
+                            <input type="password" id="pswd2-2" className="int"
                                    maxlength="16">
             <!-- <span >비밀번호가 동일하지 않습니다.</span> -->
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
@@ -82,7 +78,6 @@
                                            v-model="secondNum">
                                 </span>
             </div>
-
             <!-- BIRTH_DD -->
             <div id="num_dd">
                                 <span className="box">

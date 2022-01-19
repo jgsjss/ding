@@ -15,25 +15,25 @@
         </div>
         <div class="terms_box">
           <label class="login_check_wrap">14세 이상
-            <input type="checkbox" v-model="$store.modules.signupStore.state.selected" :value="agree[0]" @change='updateCheckall()'>
+            <input type="checkbox" v-model="$store.state.signupone.selected" :value="agree[0]" @change='updateCheckall()'>
             <span class="checkmark"></span>
           </label>
         </div>
         <div class="terms_box">
           <label class="login_check_wrap">이용약관
-            <input type="checkbox" v-model="$store.modules.signupStore.state.selected" :value="agree[1]" @change='updateCheckall()'>
+            <input type="checkbox" v-model="$store.state.signupone.selected" :value="agree[1]" @change='updateCheckall()'>
             <span class="checkmark"></span>
           </label>
         </div>
         <div class="terms_box">
           <label class="login_check_wrap">개인정보 처리방침
-            <input type="checkbox" v-model="$store.modules.signupStore.state.selected" :value="agree[2]" @change='updateCheckall()'>
+            <input type="checkbox" v-model="$store.state.signupone.selected" :value="agree[2]" @change='updateCheckall()'>
             <span class="checkmark"></span>
           </label>
         </div>
         <div class="terms_box">
           <label class="login_check_wrap">광고성 정보 마케팅 동의
-            <input type="checkbox" v-model="$store.modules.signupStore.state.selected" :value="agree[3]" @change='updateCheckall()'>
+            <input type="checkbox" v-model="$store.state.signupone.selected" :value="agree[3]" @change='updateCheckall()'>
             <span class="checkmark"></span>
           </label>
         </div>
@@ -65,7 +65,6 @@
 </template>
 <script>
 import router from '../router'
-const signupStore = 'signupStore'
 
 
 
@@ -90,6 +89,7 @@ export default {
       if (this.agree.length == this.selected.length) {
         this.allSelected = true
         this.selected = [...this.agree]
+        this.$store.state.signupone.selected = [...this.agree]
       } else {
         this.allSelected = false
       }
@@ -98,10 +98,12 @@ export default {
   computed: {
     allSelect: function () {
       if (!this.allSelected) {
-        this.selected = [...this.agree]
+        this.$store.state.signupone.selected = [...this.agree];
+        this.selected = [...this.agree];
 
       } else {
-        this.selected = [...this.noneSelected]
+        this.$store.state.signupone.selected = [...this.noneSelected];
+        this.selected = [...this.noneSelected];
       }
     }
   },
