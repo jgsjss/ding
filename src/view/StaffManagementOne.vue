@@ -80,6 +80,7 @@ export default {
     return {
       pageNum: 0,
       isActive: false,
+      pageCount: 0,
     };
   },
   props: {
