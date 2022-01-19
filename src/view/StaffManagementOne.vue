@@ -36,7 +36,7 @@
           <td><a href="#!" class="StaffCondition">{{ $store.state.StaffData[i].condition }}</a></td>
           <!--///////직급////////-->          
           <td>{{ $store.state.StaffData[i].rank }}</td>
-          <!--///////상태///////-->
+          <!--///////아이디///////-->
           <td>{{ $store.state.StaffData[i].id }}</td>
           <td class="staff_authority">
             <button type="button" @click="authority" :class="{active: isActive}" class="btn authority" data-bs-toggle="button" autocomplete="off" aria-pressed="true">주문관리</button>
@@ -81,11 +81,12 @@ export default {
       pageNum: 0,
       isActive: false,
       pageCount: 0,
+      condition:false,
     };
   },
   props: {
-
   },
+
   methods: {
     nextPage() {
       this.pageNum += 1;
@@ -93,10 +94,14 @@ export default {
     prevPage() {
       this.pageNum -= 1;
     },
-    authority: function() {
+    toggleClass: function(event) {
       this.isActive = !this.isActive;
+      console.log('dd')
     }
   },
+  watch: {
+
+  }
 
 };
 </script>

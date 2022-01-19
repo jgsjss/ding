@@ -107,25 +107,25 @@
     <legend class="col-form-label col-sm-2 pt-0">권한설정</legend>
     <div class="col-sm-10">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" checked v-model="setchecked" :value="setcheck[4]" @change="SetCheck()">
+        <input class="form-check-input" type="checkbox" checked v-model="setchecked" :value="setcheck[0]" @change="SetCheck()">
         <label class="col-form-label" for="gridRadios1">
           메뉴편집
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" v-model="setchecked" :value="setcheck[4]" @change="SetCheck()">
+        <input class="form-check-input" type="checkbox" v-model="setchecked" :value="setcheck[1]" @change="SetCheck()">
         <label class="col-form-label" for="gridRadios2">
           매출관리
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" v-model="setchecked" :value="setcheck[4]" @change="SetCheck()">
+        <input class="form-check-input" type="checkbox" v-model="setchecked" :value="setcheck[2]" @change="SetCheck()">
         <label class="col-form-label" for="gridRadios2">
           직원관리
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" v-model="setchecked" :value="setcheck[4]" @change="SetCheck()">
+        <input class="form-check-input" type="checkbox" v-model="setchecked" :value="setcheck[3]" @change="SetCheck()">
         <label class="col-form-label" for="gridRadios2">
           로그확인
         </label>
@@ -134,12 +134,6 @@
         <input class="form-check-input" type="checkbox" v-model="setchecked" :value="setcheck[4]" @change="SetCheck()">
         <label class="col-form-label" for="gridRadios2">
           할인코드
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" v-model="setchecked" :value="setcheck[4]" @change="SetCheck()">
-        <label class="col-form-label" for="gridRadios2">
-          매출관리
         </label>
       </div>
     </div>
