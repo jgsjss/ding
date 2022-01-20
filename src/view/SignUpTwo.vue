@@ -43,8 +43,6 @@
                         </span>
           <span className="error_next_box"></span>
         </div>
-
-
         <!--name-->
         <div>
           <h3 className="join_title"><label>대표자 이름</label></h3>
@@ -92,7 +90,7 @@
         <div>
           <h3 className="join_title"><label>매장 이름</label></h3>
           <span className="box int_name">
-                            <input type="text" id="name2" className="int" maxLength="20" v-model="inputs.shopName">
+                            <input type="text" id="name3" className="int" maxLength="20" v-model="inputs.shopName">
                         </span>
           <span className="error_next_box"></span>
         </div>
@@ -127,8 +125,6 @@
                                placeholder="참고항목">
                         </span>
         </div>
-
-
         <!-- JOIN BTN-->
         <div className="btn_area"><span><router-link to="/signupthree">
           <button type="button" id="btnJoin">
@@ -138,21 +134,19 @@
         </div>
         <button @click="test()">테스트</button>
         <button @click="insertDTO()">테스트DTO</button>
-
-
       </div>
       <!-- content-->
-
     </div>
   </div>
-
 
 </template>
 <script>
 import router from '../router'
+//인스턴스화 시켜서 ORM Mapping 필요함.
 import uservo from '../DTO/userVO'
+import store from '../store/index.js'
+import axios from 'axios'
 export default {
-
   props:{
     signupAgree: {
       type: [Array, String],
@@ -187,7 +181,6 @@ export default {
             extraAddress: '',
             //참고항목
             etc: '',
-
           }
       ,
       //휴대폰번호 맨앞자리
@@ -196,14 +189,12 @@ export default {
       secondNum: '',
       //휴대폰번호 끝 4자리
       thirdNum: '',
-      //signupone 에서 넘어온 동의 파라미터
-      selected: this.$route.params.signupAgree,
+
     }
   },
 
   methods: {
     insertDTO(){
-
       let user = new uservo()
       user.userName = this.inputs.userName
       user.userPw = this.inputs.userPw
@@ -211,7 +202,7 @@ export default {
     },
     //inputs 값 테스트용
     test () {
-      console.log(this.signupAgree)
+      console.log(store.state.signupStore.selected)
       // console.log(this.selected)
       // console.log(this.inputs)
     },
@@ -228,8 +219,10 @@ export default {
           signupTwoInfo: this.inputs,
         }
       })
-    },
 
+
+
+    },
     //daum map api
     execDaumPostcode() {
       new window.daum.Postcode({
@@ -273,9 +266,12 @@ export default {
     },
   },
   created () {
-   console.log(this.signupAgree)
-    console.log('크리에이트 : ',this.signupAgree)
-    // console.log(this.inputs)
+
+
+  },
+  mounted () {
+    console.log('마운티드 signupStore에서 바로 불러온 값 : ', store.state.signupStore.selected)
+
   },
   computed: {
     idValid () {

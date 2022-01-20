@@ -15,25 +15,25 @@
         </div>
         <div class="terms_box">
           <label class="login_check_wrap">14세 이상
-            <input type="checkbox" v-model="$store.state.signupone.selected" :value="agree[0]" @change='updateCheckall()'>
+            <input type="checkbox" v-model="selected" :value="agree[0]" @change='updateCheckall()'>
             <span class="checkmark"></span>
           </label>
         </div>
         <div class="terms_box">
           <label class="login_check_wrap">이용약관
-            <input type="checkbox" v-model="$store.state.signupone.selected" :value="agree[1]" @change='updateCheckall()'>
+            <input type="checkbox" v-model="selected" :value="agree[1]" @change='updateCheckall()'>
             <span class="checkmark"></span>
           </label>
         </div>
         <div class="terms_box">
           <label class="login_check_wrap">개인정보 처리방침
-            <input type="checkbox" v-model="$store.state.signupone.selected" :value="agree[2]" @change='updateCheckall()'>
+            <input type="checkbox" v-model="selected" :value="agree[2]" @change='updateCheckall()'>
             <span class="checkmark"></span>
           </label>
         </div>
         <div class="terms_box">
           <label class="login_check_wrap">광고성 정보 마케팅 동의
-            <input type="checkbox" v-model="$store.state.signupone.selected" :value="agree[3]" @change='updateCheckall()'>
+            <input type="checkbox" v-model="selected" :value="agree[3]" @change='updateCheckall()'>
             <span class="checkmark"></span>
           </label>
         </div>
@@ -65,7 +65,7 @@
 </template>
 <script>
 import router from '../router'
-
+import store from '../store/index.js'
 
 
 export default {
@@ -80,16 +80,17 @@ export default {
   },
   methods: {
     sendRouteParam () {
-      router.push({
-        name: 'signup2',
-        params: { signupAgree: this.selected }
-      })
+      // router.push({
+      //   name: 'signup2',
+      //   params: { signupAgree: store.state.signupStore.selected }
+      // })
+      store.state.signupStore.selected = this.selected
+
     },
     updateCheckall: function () {
       if (this.agree.length == this.selected.length) {
         this.allSelected = true
         this.selected = [...this.agree]
-        this.$store.state.signupone.selected = [...this.agree]
       } else {
         this.allSelected = false
       }
@@ -98,14 +99,14 @@ export default {
   computed: {
     allSelect: function () {
       if (!this.allSelected) {
-        this.$store.state.signupone.selected = [...this.agree];
+        this.$store.state.signupStore.selected = [...this.agree];
         this.selected = [...this.agree];
 
       } else {
-        this.$store.state.signupone.selected = [...this.noneSelected];
+        this.$store.state.signupStore.selected = [...this.noneSelected];
         this.selected = [...this.noneSelected];
       }
-    }
+    },
   },
   watch: {
     selected (a) {
@@ -113,16 +114,11 @@ export default {
         this.nextBtn = true
       } else if (a.length == 3) {
         for (let i = 0; i < a.length; i++) {
-          if (a[i] === this.agree[3]) {
-            this.nextBtn = false
-          } else {
-            this.nextBtn = true
-          }
+          this.nextBtn = a[i] !== this.agree[3];
         }
       }else{
         this.nextBtn = false;
     }
-
     }
   },
   mounted () {
