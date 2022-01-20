@@ -22,10 +22,10 @@ export default {
       console.log(allRoute);
     },
 
-    async $api(url, data) {
+    async $api(url, method, data) {
       return (
         await axios({
-          method: 'post',
+          method: method,
           url,
           data,
         }).catch((e) => {

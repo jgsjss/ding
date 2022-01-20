@@ -16,7 +16,8 @@
             <label htmlFor="id">아이디</label>
           </h3>
           <span className="box int_id">
-                            <input type="text" id="id2" className="int" maxLength="20" v-model="userId">
+                            <input type="text" id="id2" className="int" maxLength="20" v-model="userId"
+                                   @change="isUser">
             <!-- <span className="step_url">유효하지 않은 아이디 입니다.</span> -->
                         </span>
           <span className="error_next_box"></span>
@@ -187,6 +188,19 @@ export default {
     }
   },
   methods: {
+    isUser () {
+      let data = { 'userid': this.userId }
+      axios.post('/api/isuser', 'post', data, {
+
+      }).then(res => {
+        if (res.data == 1) {
+          console.log('이미 존재하는 아이디입니다.')
+        } else {
+          console.log('사용 가능한 아이디입니다.')
+        }
+      })
+
+    },
     insertDTO () {
       let user = new uservo()
       user.userName = this.userName
@@ -205,7 +219,7 @@ export default {
       console.log(this.userPhNum)
     },
     sendParam () {
-          store.state.signupStore.userId = this.userId,
+      store.state.signupStore.userId = this.userId,
           store.state.signupStore.userName = this.userName,
           store.state.signupStore.userPw = this.userPw,
           store.state.signupStore.phNum = this.userPhNum,
