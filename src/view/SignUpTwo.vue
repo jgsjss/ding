@@ -189,10 +189,10 @@ export default {
   },
   methods: {
     isUser () {
-      let data = { 'userid': this.userId }
-      axios.post('/api/isuser', 'post', data, {
+      // let data = JSON.stringify({ 'userid': this.userId })
+      let userdata = `data:{ 'userid': this.userId }`
 
-      }).then(res => {
+      axios.post('/api/isuser', 'POST', userdata).then(res => {
         if (res.data == 1) {
           console.log('이미 존재하는 아이디입니다.')
         } else {
@@ -270,21 +270,26 @@ export default {
         },
       }).open()
     },
-  },
+  }
+  ,
   created () {
 
-  },
+  }
+  ,
   mounted () {
     console.log('마운티드 signupStore에서 바로 불러온 값 : ', store.state.signupStore.selected)
-  },
+  }
+  ,
   computed: {
     idValid () {
       return /^[A-Za-z0-9]+$/.test(this.id)
-    },
+    }
+    ,
     // passwordValid () {
     //   return /^[A-Za-z0-9]+$/.test(this.signup.password)
     // },
-  },
+  }
+  ,
   watch: {
     secondNum (a) {
       if (isNaN(a) == true || a == '') {
@@ -292,7 +297,8 @@ export default {
         this.secondNum = ''
         this.$refs.secondNum.focus()
       }
-    },
+    }
+    ,
     thirdNum (a) {
       if (isNaN(a) == true || a == '') {
         alert('숫자만 입력 가능합니다.')
@@ -300,7 +306,8 @@ export default {
         this.$refs.thirdNum.focus()
       }
     }
-  },
+  }
+  ,
 }
 </script>
 
