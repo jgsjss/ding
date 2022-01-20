@@ -6,13 +6,13 @@
       <!-- content-->
       <div id="content">
         <form
-          id="app"
-          @submit="checkForm"
-          action="https://vuejs.org/"
-          method="post"
+            id="app"
+            @submit="checkForm"
+            action="https://vuejs.org/"
+            method="post"
         >
           <p class="inner_box_text">
-            (브랜드)와 소통할 관리자 정보를 적어주세요.<br />
+            (브랜드)와 소통할 관리자 정보를 적어주세요.<br/>
             해당 정보로 정보 전달 및 소통이 이루어지니 정확하게 입력해주세요!
           </p>
           <!--name-->
@@ -20,16 +20,15 @@
             <h3 class="join_title"><label>관리자 이름</label></h3>
             <span class="box int_name">
               <input
-                type="text"
-                id="name3"
-                v-model="inputs.manageName"
-                class="int"
-                maxlength="20"
-                placeholder="관리자 이름"
+                  type="text"
+                  id="name3"
+                  v-model="manageName"
+                  class="int"
+                  maxlength="20"
+                  placeholder="관리자 이름"
               />
             </span>
           </div>
-
           <!--number-->
           <div>
             <h3 class="join_title"><label>관리자 번호</label></h3>
@@ -37,7 +36,7 @@
               <!-- BIRTH_MM -->
               <div id="num_first">
                 <span class="box">
-                  <select id="number" class="sel" v-model="inputs.firstNum">
+                  <select id="number" class="sel" v-model.trim="firstNum">
                     <option>선택</option>
                     <option value="010">010</option>
                     <option value="011">011</option>
@@ -50,14 +49,13 @@
               <!-- BIRTH_YY -->
               <div id="num_second">
                 <span class="box">
-                  <input type="text" id="second" class="int" maxlength="4" v-model="inputs.secondNum" />
+                  <input type="text" id="second" class="int" maxlength="4" v-model.trim="secondNum"/>
                 </span>
               </div>
-
               <!-- BIRTH_DD -->
               <div id="num_dd">
                 <span class="box">
-                  <input type="text" id="dd" class="int" maxlength="4" v-model="inputs.thirdNum" />
+                  <input type="text" @change="phoneNumConcat()" id="dd" class="int" maxlength="4" v-model.trim="thirdNum"/>
                 </span>
               </div>
               <span class="error_next_box"></span>
@@ -72,11 +70,11 @@
                 <div id="sub_email">
                   <span class="box">
                     <input
-                      type="text"
-                      id="sub_email"
-                      class="int"
-                      maxlength="20"
-                      placeholder="이메일을 입력해주세요"
+                        type="text"
+                        id="sub_email"
+                        class="int"
+                        maxlength="20"
+                        placeholder="이메일을 입력해주세요"
                     />
                   </span>
                 </div>
@@ -99,40 +97,38 @@
               <div id="shop_one">
                 <span class="box">
                   <input
-                    type="text"
-                    id="shop_one"
-                    class="int"
-                    maxlength="3"
-                    title="사업자처음3자리"
-                    v-model="inputs.bizNum1"
+                      type="text"
+                      id="shop_one"
+                      class="int"
+                      maxlength="3"
+                      title="사업자처음3자리"
+                      v-model="bizNum1"
                   />
                 </span>
               </div>
-
               <!-- shop_num two-->
               <div id="shop_two">
                 <span class="box">
                   <input
-                    type="text"
-                    id="shop_two"
-                    class="int"
-                    maxlength="2"
-                    title="사업자중간2자리"
-                    v-model="inputs.bizNum2"
+                      type="text"
+                      id="shop_two"
+                      class="int"
+                      maxlength="2"
+                      title="사업자중간2자리"
+                      v-model="bizNum2"
                   />
                 </span>
               </div>
-
               <!-- shop_num three-->
               <div id="shop_three">
                 <span class="box">
                   <input
-                    type="text"
-                    id="shop_three"
-                    class="int"
-                    maxlength="5"
-                    title="사업자마지막5자리"
-                    v-model="inputs.bizNum3"
+                      type="text"
+                      id="shop_three"
+                      class="int"
+                      maxlength="5"
+                      title="사업자마지막5자리"
+                      v-model="bizNum3"
                   />
                 </span>
               </div>
@@ -144,15 +140,15 @@
               </h3>
               <span class="box int_name">
                 <label class="input-file-button" for="input-file"
-                  >파일첨부
+                >파일첨부
                 </label>
                 <input
-                  ref="image"
-                  id="input"
-                  type="file"
-                  name="image"
-                  accept="image/jpg image/png image/jpeg"
-                  class="hidden"
+                    ref="image"
+                    id="input"
+                    type="file"
+                    name="image"
+                    accept="image/jpg image/png image/jpeg"
+                    class="hidden"
                 />
                 <!-- <span>사업자 등록증 : {{}}</span> -->
               </span>
@@ -174,67 +170,82 @@
         </form>
       </div>
     </div>
-<!--    <button @click="test">테스트</button>-->
   </div>
+  <button @click="test">테스트</button>
+
 </template>
 <script>
-import router from "../router";
-import axios from "axios";
+import router from '../router'
+import axios from 'axios'
+import store from '../store/index.js'
+
 export default {
-  data() {
+  data () {
     return {
-      inputs: {
-        //관리자 이름
-        manageName:"",
-        //관리자 번호 첫번째
-        firstNum:"",
-        //관리자 번호 두번째
-        secondNum:"",
-        //관리자 번호 세번째
-        thirdNum:"",
-        mobileNo: this.firstNum+this.secondNum+this.thirdNum,
-        bizNum1:"",
-        bizNum2:"",
-        bizNum3:"",
-        sumBizNum:this.bizNum1+this.bizNum2+this.bizNum3
-      },
-      //SignUpTwo 에서 파라미터로 넘어온 inputs
-      memberInfo: this.$route.params.signup2Info,
-      images: "",
 
+      //관리자 이름
+      manageName: '',
+      //관리자 번호 첫번째
+      firstNum: '',
+      //관리자 번호 두번째
+      secondNum: '',
+      //관리자 번호 세번째
+      thirdNum: '',
+      mgPhNum: '',
+      bizNum1: '',
+      bizNum2: '',
+      bizNum3: '',
 
-    };
+      images: '',
+
+    }
   },
   methods: {
     //이미지 업로드
     uploadImage: function () {
-      const biz = this.bizNum;
-      let form = new FormData();
-      let image = this.$refs["image"].files[0];
-      form.append("image", image);
+      const biz = this.bizNum
+      let form = new FormData()
+      let image = this.$refs['image'].files[0]
+      form.append('image', image)
       // form.append('biznum',this.bizNum)
       axios
-        .post("/api/upload", form, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            biznum: biz,
-          },
-        })
-        .then(({ data }) => {
-          this.images = data;
-          console.log(data);
-        })
-        .catch((err) => console.log(err));
+          .post('/api/upload', form, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              biznum: biz,
+            },
+          })
+          .then(({ data }) => {
+            this.images = data
+            console.log(data)
+          })
+          .catch((err) => console.log(err))
     },
-    test(){
-      console.log('SignUpTwo에서 넘어온 파라미터',this.memberInfo)
+    phoneNumConcat () {
+      let phoneNum = ''
+      this.mgPhNum = phoneNum.concat(this.firstNum, this.secondNum, this.thirdNum)
+      console.log(this.mgPhNum)
+    },
+    test () {
+      console.log('====SignUpThree 테스트버튼====')
+      console.log('SignUpTwo에서 넘어온 파라미터: ', store.state.signupStore.phNum)
+      console.log('SignUpTwo에서 넘어온 파라미터 전체: ', store.state.signupStore.userName)
+      }
+    },
+    mounted () {
+    console.log('사인업3에서 마운티드 : ', store.state.signupStore.selected)
+    console.log('사인업3에서 마운티드 : ', store.state.signupStore.userName)
+    console.log('사인업3에서 마운티드 : ', store.state.signupStore.userId)
+    console.log('사인업3에서 마운티드 : ', store.state.signupStore.userPw)
+    console.log('사인업3에서 마운티드 : ', store.state.signupStore.phNum)
+    console.log('사인업3에서 마운티드 : ', store.state.signupStore.shopName)
+    console.log('사인업3에서 마운티드 : ', store.state.signupStore.shopPhNum)
+    console.log('사인업3에서 마운티드 : ', store.state.signupStore.bizAddr1)
+    console.log('사인업3에서 마운티드 : ', store.state.signupStore.bizAddr2)
+    console.log('사인업3에서 마운티드 : ', store.state.signupStore.bizZip)
+    console.log('사인업3에서 마운티드 : ', store.state.signupStore.etc)
     }
-  },
-      created() {
-      console.log(this.memberInfo)
-      console.log(this.$route.params.signup2Info)
   }
-};
 </script>
 
 
