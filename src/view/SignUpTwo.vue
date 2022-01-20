@@ -17,7 +17,7 @@
           </h3>
           <span className="box int_id">
                             <input type="text" id="id2" className="int" maxLength="20" v-model="userId"
-                                   @change="isUser()">
+                                   @change="isUser(userId)">
             <!-- <span className="step_url">유효하지 않은 아이디 입니다.</span> -->
                         </span>
           <span className="error_next_box"></span>
@@ -191,11 +191,12 @@ export default {
     isUser () {
       // let data = JSON.stringify({ 'userid': this.userId })
       // let userdata = { 'userid': this.userId }
-      console.log(typeof this.userid)
+      console.log(typeof this.userId)
+      console.log(this.userId)
       axios({
         url: '/api/isuser',
         method: 'post',
-        data: { 'userid': this.userid }
+        data: { 'userid': this.userId }
       }).then(res => {
         if (res.data == 1) {
           console.log('아이디 존재')
