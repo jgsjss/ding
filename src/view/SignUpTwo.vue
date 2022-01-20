@@ -18,7 +18,8 @@
           <span className="box int_id">
                             <input type="text" id="id2" className="int" maxLength="20" v-model="userId"
                                    @change="isUser(userId)">
-            <!-- <span className="step_url">유효하지 않은 아이디 입니다.</span> -->
+             <span className="step_url" v-show="userCheck1">유효하지 않은 아이디 입니다.</span>
+             <span className="step_url" v-show="userCheck2">사용가능한 아이디 입니다.</span>
                         </span>
           <span className="error_next_box"></span>
         </div>
@@ -185,6 +186,8 @@ export default {
       secondNum: '',
       //휴대폰번호 끝 4자리
       thirdNum: '',
+      userCheck1:false,
+      userCheck2:false
     }
   },
   methods: {
@@ -200,8 +203,12 @@ export default {
       }).then(res => {
         if (res.data == 1) {
           console.log('아이디 존재')
+          this.userCheck1 = false
+          this.userCheck2 = true
         } else {
           console.log('아이디 없음')
+          this.userCheck1 = true
+          this.userCheck2 = false
         }
       })
     },
