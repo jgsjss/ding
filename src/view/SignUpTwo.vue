@@ -191,11 +191,11 @@ export default {
     isUser () {
       // let data = JSON.stringify({ 'userid': this.userId })
       // let userdata = { 'userid': this.userId }
-
+      console.log(typeof this.userid)
       axios({
         url: '/api/isuser',
         method: 'post',
-        data: { "userid": this.userid }
+        data: { 'userid': this.userid }
       }).then(res => {
         if (res.data == 1) {
           console.log('아이디 존재')
