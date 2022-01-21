@@ -186,17 +186,17 @@ export default {
       secondNum: '',
       //휴대폰번호 끝 4자리
       thirdNum: '',
-      userCheck1:false,
-      userCheck2:false
+      userCheck1: false,
+      userCheck2: false
     }
   },
   methods: {
-    isUser () {
+    async isUser () {
       // let data = JSON.stringify({ 'userid': this.userId })
       // let userdata = { 'userid': this.userId }
-      console.log(typeof this.userId)
-      console.log(this.userId)
-      axios({
+      // console.log(typeof this.userId)
+      // console.log(this.userId)
+      await axios({
         url: '/api/isuser',
         method: 'post',
         data: { 'userid': this.userId }
