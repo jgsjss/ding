@@ -79,6 +79,8 @@ export default {
     }
   },
   methods: {
+
+
     sendRouteParam () {
       // router.push({
       //   name: 'signup2',
