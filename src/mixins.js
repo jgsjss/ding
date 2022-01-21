@@ -22,6 +22,7 @@ export default {
       asd('/main', 'hi');
       console.log(allRoute);
     },
+    
 
     async $api(url, data) {
       return (

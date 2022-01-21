@@ -85,7 +85,7 @@ export default {
       //   params: { signupAgree: store.state.signupStore.selected }
       // })
       store.state.signupStore.selected = this.selected
-
+  
     },
     updateCheckall: function () {
       if (this.agree.length == this.selected.length) {

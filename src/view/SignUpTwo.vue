@@ -28,7 +28,7 @@
           <h3 className="join_title"><label>비밀번호</label></h3>
           <span className="box int_pass">
                             <input type="password" id="pswd2-1" className="int" maxLength="16"
-                                   placeholder="8~16자의 영문/숫자를 조합" v-model="userPw">
+                                   placeholder="8~16자의 영문/숫자를 조합" v-model="userPw1">
             <!-- <span>유효하지 않은 비밀번호 입니다.</span> -->
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
@@ -38,9 +38,10 @@
         <div>
           <h3 className="join_title"><label>비밀번호 재확인</label></h3>
           <span className="box int_pass_check">
-                            <input type="password" id="pswd2-2" className="int"
-                                   maxlength="16">
-            <!-- <span >비밀번호가 동일하지 않습니다.</span> -->
+                            <input type="password" id="pswd2-2" className="int" 
+                                   maxlength="16" v-model="userPw2" >
+            <span className="step_url" v-show="this.userPw1==this.userPw2">비밀번호가 동일</span>
+            <span className="step_url" v-show="this.userPw1!=this.userPw2">비밀번호가 동일하지 않습니다.</span>
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
                         </span>
           <span className="error_next_box"></span>
@@ -163,7 +164,8 @@ export default {
       //회원 아이디
       userId: '',
       //회원 비밀번호
-      userPw: '',
+      userPw1: '',
+      userPw2:"",
       //사업자대표 이름
       userName: '',
       //사업자 휴대폰 번호
@@ -187,7 +189,8 @@ export default {
       //휴대폰번호 끝 4자리
       thirdNum: '',
       userCheck1:false,
-      userCheck2:false
+      userCheck2:false,
+      userPwCheck:false,
     }
   },
   methods: {
@@ -211,6 +214,9 @@ export default {
           this.userCheck2 = false
         }
       })
+    },
+    checkPW () {
+    this.userPw1==this.userPw2?(console.log("동일")):(console.log("다름"))
     },
     insertDTO () {
       let user = new uservo()
@@ -292,6 +298,7 @@ export default {
   }
   ,
   computed: {
+  
     idValid () {
       return /^[A-Za-z0-9]+$/.test(this.id)
     }
