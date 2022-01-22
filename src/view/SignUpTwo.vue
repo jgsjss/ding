@@ -16,8 +16,10 @@
             <label htmlFor="id">아이디</label>
           </h3>
           <span className="box int_id">
-                            <input type="text" id="id2" className="int" maxLength="20" v-model="userId">
-            <!-- <span className="step_url">유효하지 않은 아이디 입니다.</span> -->
+                            <input type="text" id="id2" className="int" maxLength="20" v-model="userId"
+                                   @change="isUser(userId)">
+             <span className="step_url" v-show="userCheck1">유효하지 않은 아이디 입니다.</span>
+             <span className="step_url" v-show="userCheck2">사용가능한 아이디 입니다.</span>
                         </span>
           <span className="error_next_box"></span>
         </div>
@@ -26,7 +28,7 @@
           <h3 className="join_title"><label>비밀번호</label></h3>
           <span className="box int_pass">
                             <input type="password" id="pswd2-1" className="int" maxLength="16"
-                                   placeholder="8~16자의 영문/숫자를 조합" v-model="userPw">
+                                   placeholder="8~16자의 영문/숫자를 조합" v-model="userPw1">
             <!-- <span>유효하지 않은 비밀번호 입니다.</span> -->
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
@@ -36,9 +38,10 @@
         <div>
           <h3 className="join_title"><label>비밀번호 재확인</label></h3>
           <span className="box int_pass_check">
-                            <input type="password" id="pswd2-2" className="int"
-                                   maxlength="16">
-            <!-- <span >비밀번호가 동일하지 않습니다.</span> -->
+                            <input type="password" id="pswd2-2" className="int" 
+                                   maxlength="16" v-model="userPw2" >
+            <span className="step_url" v-show="this.userPw1==this.userPw2">비밀번호가 동일</span>
+            <span className="step_url" v-show="this.userPw1!=this.userPw2">비밀번호가 동일하지 않습니다.</span>
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
                         </span>
           <span className="error_next_box"></span>
@@ -161,7 +164,8 @@ export default {
       //회원 아이디
       userId: '',
       //회원 비밀번호
-      userPw: '',
+      userPw1: '',
+      userPw2:"",
       //사업자대표 이름
       userName: '',
       //사업자 휴대폰 번호
@@ -184,9 +188,36 @@ export default {
       secondNum: '',
       //휴대폰번호 끝 4자리
       thirdNum: '',
+      userCheck1:false,
+      userCheck2:false,
+      userPwCheck:false,
     }
   },
   methods: {
+    isUser () {
+      // let data = JSON.stringify({ 'userid': this.userId })
+      // let userdata = { 'userid': this.userId }
+      console.log(typeof this.userId)
+      console.log(this.userId)
+      axios({
+        url: '/api/isuser',
+        method: 'post',
+        data: { 'userid': this.userId }
+      }).then(res => {
+        if (res.data == 1) {
+          console.log('아이디 존재')
+          this.userCheck1 = false
+          this.userCheck2 = true
+        } else {
+          console.log('아이디 없음')
+          this.userCheck1 = true
+          this.userCheck2 = false
+        }
+      })
+    },
+    checkPW () {
+    this.userPw1==this.userPw2?(console.log("동일")):(console.log("다름"))
+    },
     insertDTO () {
       let user = new uservo()
       user.userName = this.userName
@@ -205,7 +236,7 @@ export default {
       console.log(this.userPhNum)
     },
     sendParam () {
-          store.state.signupStore.userId = this.userId,
+      store.state.signupStore.userId = this.userId,
           store.state.signupStore.userName = this.userName,
           store.state.signupStore.userPw = this.userPw,
           store.state.signupStore.phNum = this.userPhNum,
@@ -256,21 +287,27 @@ export default {
         },
       }).open()
     },
-  },
+  }
+  ,
   created () {
 
-  },
+  }
+  ,
   mounted () {
     console.log('마운티드 signupStore에서 바로 불러온 값 : ', store.state.signupStore.selected)
-  },
+  }
+  ,
   computed: {
+  
     idValid () {
       return /^[A-Za-z0-9]+$/.test(this.id)
-    },
+    }
+    ,
     // passwordValid () {
     //   return /^[A-Za-z0-9]+$/.test(this.signup.password)
     // },
-  },
+  }
+  ,
   watch: {
     secondNum (a) {
       if (isNaN(a) == true || a == '') {
@@ -278,7 +315,8 @@ export default {
         this.secondNum = ''
         this.$refs.secondNum.focus()
       }
-    },
+    }
+    ,
     thirdNum (a) {
       if (isNaN(a) == true || a == '') {
         alert('숫자만 입력 가능합니다.')
@@ -286,7 +324,8 @@ export default {
         this.$refs.thirdNum.focus()
       }
     }
-  },
+  }
+  ,
 }
 </script>
 

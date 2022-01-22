@@ -18,14 +18,19 @@ export default {
           }
         });
       }
+
       asd('/main', 'hi');
       console.log(allRoute);
     },
+    
 
     async $api(url, data) {
       return (
         await axios({
-          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
           url,
           data,
         }).catch((e) => {
@@ -33,6 +38,17 @@ export default {
         })
       ).data;
     },
+    // async $apiGET(url, data) {
+    //   return (
+    //     await axios({
+    //       methods: 'get',
+    //       url,
+    //       data,
+    //     }).catch((e) => {
+    //       console.log(e);
+    //     })
+    //   ).data;
+    // },
     $hi: async () => {
       await console.log('hi');
     },
