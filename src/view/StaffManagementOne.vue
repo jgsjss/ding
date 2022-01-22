@@ -17,7 +17,7 @@
   <div class="staff_list_wrap">
       <router-link to="/StaffManagementone"><i class="xi-list-square list"></i></router-link>
       <router-link to="/StaffManagementTwo"><i class="xi-apps list"></i></router-link>
-      <button type="button" class="staff_one_addbtn" data-bs-toggle="modal" data-bs-target="#addition" data-bs-whatever="@mdo">+ 직원추가</button>
+      <button type="button" class="staff_one_addbtn" data-bs-toggle="modal" data-bs-target="#addition" >+ 직원추가</button>
   </div>
   <hr />
     <table class="staff_table">

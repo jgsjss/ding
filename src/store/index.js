@@ -6,6 +6,7 @@ import paymentData from '../assets/paymentData.js'
 import priceData from '../assets/priceData.js'
 import menuCostomData from '../assets/menuCostomData.js'
 import StaffData from '../assets/StaffData.js'
+import OperationData from '../assets/OperationData.js'
 
 //스토어 모듈 임포트
 import { signupStore } from './modules/signupStore'
@@ -30,8 +31,10 @@ for(let i=0; i<orderData.length; i++){
     cancelNum++;
   }
 }
+import { computed } from "vue";
+import { useStore } from "vuex";
 export default createStore({
-
+  
   modules:{
     signupStore: signupStore,
 
@@ -66,11 +69,15 @@ export default createStore({
     menuCostomData,
     //----------스태프 관리 데이터-------------
     StaffData,
-    //품절,숨김 메뉴 모달창 상태변경
+    //직원관리 메뉴 모달창 상태변경
     StaffModal : false,
+    //운영관리 데이터
+    OperationData,
+    //운영관리 메뉴모달창 상태변경
+    OperationModal:false,
     //스테이트 변환, $store.commit('mutation 함수명') 으로 이벤트 핸들링
     mutations: {
-
+      
     },
     //ajax요청, 혹은 오래걸리는 작업 요청,  $store.dispatch('actions 함수명') 으로 이벤트 핸들링
     //actions를 통한 스테이트 변경이 필요할 시, mutations에서 함수를 작성해야한다
