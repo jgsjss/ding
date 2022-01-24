@@ -1,4 +1,4 @@
-const target = 'localhost:9999';
+const target = 'http://localhost:9999';
 
 module.exports = {
   devServer: {
@@ -21,6 +21,7 @@ module.exports = {
       //   changeOrigin: true,
       // }
     },
+    disableHostCheck: true,
   },
   lintOnSave: false,
 };

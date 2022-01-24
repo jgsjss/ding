@@ -201,7 +201,7 @@ export default {
       // let userdata = { 'userid': this.userId }
       console.log(typeof this.userId)
       console.log(this.userId)
-      if (id.length < 6) {
+      if (id.length < 3) {
         alert("아이디는 최소 6자리 이상입니다.")
         return false
       } else if (id.search(/\s/) !== -1) {
