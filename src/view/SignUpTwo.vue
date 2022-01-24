@@ -196,25 +196,36 @@ export default {
   },
   methods: {
     isUser () {
+      let id = document.getElementById('id2').value
       // let data = JSON.stringify({ 'userid': this.userId })
       // let userdata = { 'userid': this.userId }
       console.log(typeof this.userId)
       console.log(this.userId)
-      axios({
-        url: '/api/isuser',
-        method: 'post',
-        data: { 'userid': this.userId }
-      }).then(res => {
-        if (res.data == 1) {
-          console.log('아이디 존재')
-          this.userCheck1 = false
-          this.userCheck2 = true
-        } else {
-          console.log('아이디 없음')
-          this.userCheck1 = true
-          this.userCheck2 = false
-        }
-      })
+      if (id.length < 6) {
+        alert("아이디는 최소 6자리 이상입니다.")
+        return false
+      } else if (id.search(/\s/) !== -1) {
+        alert("아이디에 공백은 불가능합니다.")
+        return false
+      }else {
+        axios({
+          url: '/api/isuser',
+          method: 'post',
+          data: { 'userid': this.userId }
+        }).then(res => {
+          if (res.data == 1) {
+            console.log('아이디 존재')
+            this.userCheck1 = false
+            this.userCheck2 = true
+          } else {
+            console.log('아이디 없음')
+            this.userCheck1 = true
+            this.userCheck2 = false
+          }
+        })
+      }
+
+
     },
     checkPW () {
     this.userPw1==this.userPw2?(console.log("동일")):(console.log("다름"))
