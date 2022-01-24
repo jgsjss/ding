@@ -5,7 +5,8 @@
     <div class="oper_modal_container">
         <div class="oper_modal_wrapper">
         <div class="oper_modal_one">
-        <h4 class="oper_modal_text">영업시간</h4>            
+        <span class="oper_modal_text">영업시간</span>    
+        <i class="xi-close" @click="$router.go(-1)"></i>        
         <p> - 요일별 하나의 영업시간만 등록할 수 잇습니다.</p>
         <p> - 영업시간이 등록되지 않은 요일은 24시간 영업으로 보여집니다.</p>
         <p> - 정기휴무는 영업시간이 등록되어 있더라도 휴무로 보여집니다.</p>

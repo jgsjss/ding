@@ -1,5 +1,6 @@
 <template>
 <Navbar />
+<BreakTime />
 
   <div class="oper_container">
     <div class="oper_wrap">
@@ -37,7 +38,9 @@
       </div>
       <!--/////준비시간/////-->
       <div class="oper_box1">
-        <div class="oper_title">준비시간</div>
+        <div class="oper_btn_box">
+          <button type="button" class="oper_title_btn" data-bs-toggle="modal" data-bs-target="#breaktime">준비시간</button>
+        </div>
           <div class="preparation_text">(설정없음)</div>
       </div>
       <!--/////정기휴무/////-->
@@ -75,10 +78,12 @@
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue'
+import BreakTime from '../components/BreakTime.vue';
   export default {
 
   components:{
     Navbar,
+    BreakTime,
   },
 
 }
