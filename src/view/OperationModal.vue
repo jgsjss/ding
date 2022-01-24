@@ -75,51 +75,7 @@
             <button type="button" class="time_btntwo">닫기</button>
             </div>
         </div>
-        <div  class="oper_modal_three">
-            <form>
-                <button type="checkbox" class="Weekend_btn">월</button>
-                <button type="checkbox" class="Weekend_btn">화</button>
-                <button type="checkbox" class="Weekend_btn">수</button>
-                <button type="checkbox" class="Weekend_btn">목</button>
-                <button type="checkbox" class="Weekend_btn">금</button>
-                <button type="checkbox" class="Weekend_btn">토</button>
-                <button type="checkbox" class="Weekend_btn">일</button>
-                <div class="oper_switchtwo">
-                    <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                    <label class="form-check-label" for="flexSwitchCheckChecked">24시간</label>
-                    </div>                  
-                </div>
-                <!--//////시작시간//////-->
-                <div class="startime_wrap_two">
-                <div class="starttime_box_two">
-                    <label for="starttimetwo" class="starttimetwo">시작시간</label>  
-                        <select id="time" className="Stimetwo" @change="starttime">
-                            <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
 
-                                    </select>           
-                        <select id="time" className="Stimetwo" @change="starttime">
-                            <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
-                                    </select>  
-                </div>                    
-                <!--//////종료시간//////-->  
-                <div class="starttime_box_two">
-                    <label for="starttimetwo" class="starttimetwo">종료시간</label>  
-                        <select id="time" className="Stimetwo" @change="starttime">
-                            <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
-
-                                    </select>           
-                        <select id="time" className="Stimetwo" @change="starttime">
-                            <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
-                                    </select>  
-                </div>   
-                </div>                                                                          
-            </form>
-            <div class="time_btn_wrap_two">
-            <button type="button" class="time_btn_two">저장</button>
-            <button type="button" class="time_btn_ttwo">닫기</button>
-            </div>          
-        </div>
         </div>
         </div>
     </div>
