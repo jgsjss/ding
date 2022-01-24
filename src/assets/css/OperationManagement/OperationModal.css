@@ -1,0 +1,77 @@
+.oper_modal_container {
+    width: 100%;
+    margin:0 auto;
+}
+.oper_modal_wrapper {
+    display:flex;
+    justify-content: space-around;
+}
+.oper_modal_one > p {
+    font-size:14px;
+}
+.oper_modal_text {
+    padding:10px 0;
+    font-size:20px;
+    color:#997fb5;
+}
+.oper_timebtn {
+    display: block;
+    width:350px;
+    height:70px;
+    border-radius: 5px;
+    border:1px solid #997fb5;
+    background:white;
+    color:#333;
+    margin:15px auto;
+    padding:0 15px;
+}
+.xi-minus-circle-o {
+    float:right;
+    line-height:1.5;
+    color:#997fb5;
+}
+.btn_inner_text {
+    float:left
+}
+.oper_sub_btnbox {
+    display: flex;
+    flex-direction: column;
+}
+.opentime_addbtn {
+    width:350px;
+    height:40px;
+    margin:5px 0;
+    border:1px solid #997fb5;
+    border-radius:5px;
+    background:white;
+    color:#997fb5;
+    font-size: 14px;
+}
+.opentime_addbtntwo {
+    width:350px;
+    height:40px;
+    margin:5px 0;
+    border:1px solid #997fb5;
+    border-radius:5px;    
+    background:#997fb5;
+    color:white;
+    font-size: 14px;
+}
+/*  요일체크1 */
+.oper_sub_modal_wrap {
+    display:block;
+}
+.day_btn {
+    margin: 0 3px;
+    background: #997fb5;
+    color: white;
+    border: 1px solid #997fb5;
+}
+.day_btn:active {
+    background:white;
+    color:#997fb5;
+    border:1px solid #997fb5;
+}
+.form-check-label {
+    text-align:left;
+}

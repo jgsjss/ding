@@ -14,6 +14,7 @@ import OrderPrint from '../view/OrderPrint.vue';
 import StaffManagementOne from '../view/StaffManagementOne.vue';
 import StaffManagementTwo from '../view/StaffManagementTwo.vue';
 import OperationManagement from '../view/OperationManagement.vue';
+import OperationModal from '../view/OperationModal.vue';
 import DiscountCode from '../view/DiscountCode.vue';
 import SalesManagement from '../view/SalesManagement.vue';
 import Login from '../view/Login.vue';
@@ -156,6 +157,10 @@ const routes = [
   {
     path: '/operationmanagement',
     component: OperationManagement,
+  },
+  {
+    path: '/operationmodal',
+    component: OperationModal,
   },
   {
     path: '/discountcode',

@@ -1,6 +1,5 @@
 <template>
 <Navbar />
-<OperationModal />
 
   <div class="oper_container">
     <div class="oper_wrap">
@@ -18,7 +17,7 @@
       <div class="oper_all_wrap">
       <div class="oper_box1" v-for="(a, i) in $store.state.OperationData" :key="i">
         <div class="oper_btn_box">
-        <button type="button" class="oper_title_btn" data-bs-toggle="modal" data-bs-target="#OpeningModal" >영업시간</button>
+          <router-link to="/OperationModal"><button type="button" class="oper_title_btn" >영업시간</button></router-link>
         </div>
         <!--/////영업시간/////-->
           <div class="oper_wrapper">
@@ -76,12 +75,10 @@
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue'
-import OperationModal from '@/components/OperationModal.vue'
   export default {
 
   components:{
     Navbar,
-    OperationModal,
   },
 
 }

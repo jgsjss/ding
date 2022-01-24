@@ -73,8 +73,6 @@ export default createStore({
     StaffModal : false,
     //운영관리 데이터
     OperationData,
-    //운영관리 메뉴모달창 상태변경
-    OperationModal:false,
     //스테이트 변환, $store.commit('mutation 함수명') 으로 이벤트 핸들링
     mutations: {
       
