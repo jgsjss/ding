@@ -124,6 +124,7 @@
                 <span class="box">
                   <input
                       type="text"
+                      @change="bizNumConcat"
                       id="shop_three"
                       class="int"
                       maxlength="5"
@@ -186,15 +187,19 @@ export default {
       //관리자 이름
       manageName: '',
       //관리자 번호 첫번째
-      firstNum: '',
+      firstNum: '선택',
       //관리자 번호 두번째
       secondNum: '',
       //관리자 번호 세번째
       thirdNum: '',
+      //관리자번호 총합
       mgPhNum: '',
+      //사업자번호
       bizNum1: '',
       bizNum2: '',
       bizNum3: '',
+      //사업자번호 총합
+      bizNum: '',
 
       images: '',
 
@@ -222,9 +227,14 @@ export default {
           .catch((err) => console.log(err))
     },
     phoneNumConcat () {
-      let phoneNum = ''
+      let phoneNum = '';
       this.mgPhNum = phoneNum.concat(this.firstNum, this.secondNum, this.thirdNum)
       console.log(this.mgPhNum)
+    },
+    bizNumConcat(){
+      let sumBizNum ='';
+      this.bizNum = sumBizNum.concat(this.bizNum1, this.bizNum2, this.bizNum3)
+      console.log(this.bizNum)
     },
     test () {
       console.log('====SignUpThree 테스트버튼====')

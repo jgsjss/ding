@@ -38,7 +38,7 @@
         <div>
           <h3 className="join_title"><label>비밀번호 재확인</label></h3>
           <span className="box int_pass_check">
-                            <input type="password" id="pswd2-2" className="int" 
+                            <input type="password" id="pswd2-2" className="int"
                                    maxlength="16" v-model="userPw2" >
             <span className="step_url" v-show="this.userPw1==this.userPw2">비밀번호가 동일</span>
             <span className="step_url" v-show="this.userPw1!=this.userPw2">비밀번호가 동일하지 않습니다.</span>
@@ -183,11 +183,12 @@ export default {
       //참고항목
       etc: '',
       //휴대폰번호 맨앞자리
-      firstNum: '',
+      firstNum: '선택',
       //휴대폰번호 중간 4자리
       secondNum: '',
       //휴대폰번호 끝 4자리
       thirdNum: '',
+      //아이디 및 비밀번호 유효성 체크
       userCheck1:false,
       userCheck2:false,
       userPwCheck:false,
@@ -236,7 +237,7 @@ export default {
       console.log(this.userPhNum)
     },
     sendParam () {
-      store.state.signupStore.userId = this.userId,
+          store.state.signupStore.userId = this.userId,
           store.state.signupStore.userName = this.userName,
           store.state.signupStore.userPw = this.userPw,
           store.state.signupStore.phNum = this.userPhNum,
@@ -298,7 +299,7 @@ export default {
   }
   ,
   computed: {
-  
+
     idValid () {
       return /^[A-Za-z0-9]+$/.test(this.id)
     }
