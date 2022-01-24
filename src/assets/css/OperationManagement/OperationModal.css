@@ -62,6 +62,7 @@
     display:block;
 }
 .day_btn {
+    width: 35px;
     margin: 0 3px;
     background: #997fb5;
     color: white;
@@ -72,6 +73,39 @@
     color:#997fb5;
     border:1px solid #997fb5;
 }
+.form-check {
+    float:right;
+}
 .form-check-label {
     text-align:left;
+}
+.oper_switch {
+    padding:15px 0;
+}
+.starttime {
+    padding-right:30px;
+}
+.Stime {
+    width:90px;
+    border:1px solid #997fb5;
+    margin:0 5px;
+    padding:5px;
+    color:#997fb5;
+}
+.startime_wrap {
+    padding:30px 0;
+}
+.starttime_box {
+    padding:5px 0;
+}
+.time_btn_wrap {
+    text-align: center;
+    padding:15px 0;
+}
+.time_btn {
+    width:70px;
+    height: 40px;
+    background:#997fb5;
+    border:1px solid #997fb5;
+    color:white;
 }

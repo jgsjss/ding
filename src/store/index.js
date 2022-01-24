@@ -7,6 +7,7 @@ import priceData from '../assets/priceData.js'
 import menuCostomData from '../assets/menuCostomData.js'
 import StaffData from '../assets/StaffData.js'
 import OperationData from '../assets/OperationData.js'
+import timeData from '../assets/timeData.js'
 
 //스토어 모듈 임포트
 import { signupStore } from './modules/signupStore'
@@ -73,6 +74,8 @@ export default createStore({
     StaffModal : false,
     //운영관리 데이터
     OperationData,
+    //영업시간 데이터
+    timeData,
     //스테이트 변환, $store.commit('mutation 함수명') 으로 이벤트 핸들링
     mutations: {
       

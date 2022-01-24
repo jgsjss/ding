@@ -38,22 +38,41 @@
                 <button type="checkbox" class="day_btn">금</button>
                 <button type="checkbox" class="day_btn">토</button>
                 <button type="checkbox" class="day_btn">일</button>
-                <div>
+                <div class="oper_switch">
                     <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
                     <label class="form-check-label" for="flexSwitchCheckChecked">24시간</label>
                     </div>                  
                 </div>
-                    <label for="starttime">시작시간</label>  
-                        <select id="number" className="sel" v-model.trim="firstNum" ref="firstNum">
-                            <option>선택</option>
-                            <option value="00">00시</option>
-                            <option value="011">011</option>
-                            <option value="016">016</option>
-                            <option value="017">017</option>
-                            <option value="019">019</option>
+                <!--//////시작시간//////-->
+                <div class="startime_wrap">
+                <div class="starttime_box">
+                    <label for="starttime" class="starttime">시작시간</label>  
+                        <select id="time" className="Stime" @change="starttime">
+                            <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
+
                                     </select>           
+                        <select id="time" className="Stime" @change="starttime">
+                            <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
+                                    </select>  
+                </div>                    
+                <!--//////종료시간//////-->  
+                <div class="starttime_box">
+                    <label for="starttime" class="starttime">종료시간</label>  
+                        <select id="time" className="Stime" @change="starttime">
+                            <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
+
+                                    </select>           
+                        <select id="time" className="Stime" @change="starttime">
+                            <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
+                                    </select>  
+                </div>   
+                </div>                                                                          
             </form>
+            <div class="time_btn_wrap">
+            <button type="button" class="time_btn">저장</button>
+            <button type="button" class="time_btn">닫기</button>
+            </div>
         </div>
         <div  class="oper_modal_three">
             <form>
@@ -84,7 +103,8 @@ import Navbar from '@/components/Navbar.vue'
 export default {
     components: {
         Navbar,
-    }
+    },
+
 }
 </script>
 
