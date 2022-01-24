@@ -18,6 +18,9 @@
     position:relative;
     width: 80%;
   }
+  .component_bar > a {
+    text-decoration: none;
+  }
   .component_name {
     margin:0 30px;
     color:#997fb5;

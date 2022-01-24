@@ -82,7 +82,7 @@
             <div class="order_price_list">{{ $store.state.priceData[0].costom2 }}</div>
           </div>
           </div>
-          <div class="wjfcnltjs">***********************************************************</div>
+          <hr />
           <div class="total_price">
           <div class="com_order_total">총 결제금액</div>
           <div class="com_total_price">{{ $store.state.priceData[0].total }}</div>
