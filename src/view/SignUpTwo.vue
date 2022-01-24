@@ -40,7 +40,7 @@
           <span className="box int_pass_check">
                             <input type="password" id="pswd2-2" className="int"
                                    maxlength="16" v-model="userPw2" >
-            <span className="step_url" v-show="this.userPw1==this.userPw2">비밀번호가 동일</span>
+            <span className="step_url" v-show="this.userPw1==this.userPw2 && this.userPw1 != ''">비밀번호가 동일</span>
             <span className="step_url" v-show="this.userPw1!=this.userPw2">비밀번호가 동일하지 않습니다.</span>
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
                         </span>
@@ -224,11 +224,12 @@ export default {
           }
         })
       }
-
-
     },
     checkPW () {
-    this.userPw1==this.userPw2?(console.log("동일")):(console.log("다름"))
+
+      let number = this.userPw1
+
+
     },
     insertDTO () {
       let user = new uservo()
