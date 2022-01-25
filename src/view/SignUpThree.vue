@@ -208,12 +208,11 @@ export default {
   methods: {
     //이미지 업로드
     uploadImage: function () {
-      const biz = this.bizNum
+      let biz = this.bizNum
       let form = new FormData()
       let image = this.$refs['image'].files[0]
       form.append('image', image)
       // form.append('biznum',this.bizNum)
-
       axios
           .post('/api/upload', form, {
             headers: {
@@ -229,33 +228,19 @@ export default {
     },
     //sweetalert2 메소드드
     fire () {
+      this.bizNumConcat()
       this.$swal.fire({
-        title: '사업자번호를 확인해 주세요. 사업자 번호가 틀릴경우, 가입 심사가 지연됩니다.',
-        text: this.bizNum,
+        title: this.bizNum1+ '-' + this.bizNum2 + '-' + this.bizNum3,
+        text: '사업자번호를 확인해 주세요. 사업자 번호가 틀릴경우, 가입 심사가 지연됩니다.',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: '네, 맞습니다.'
+        confirmButtonText: '네, 맞습니다.',
+        cancelButtonText: '아니오. 틀립니다.'
       }).then((result) => {
         if (result.isConfirmed) {
-            const biz = this.bizNum
-            let form = new FormData()
-            let image = this.$refs['image'].files[0]
-            form.append('image', image)
-            // form.append('biznum',this.bizNum)
-            axios
-                .post('/api/upload', form, {
-                  headers: {
-                    'Content-Type': 'multipart/form-data',
-                    biznum: biz,
-                  },
-                })
-                .then(({ data }) => {
-                  this.images = data
-                  console.log(data)
-                })
-                .catch((err) => console.log(err))
+          this.uploadImage()
           this.$swal.fire(
               '성공!',
               '사업자등록증 전송이 완료되었습니다.',
@@ -263,7 +248,7 @@ export default {
           )
         }else if(result.dismiss){
           this.$swal.fire(
-              '사업자 번호를 정확하게 입력해 주세요.'
+              '사업자 번호를 다시 확인해 주세요.'
           )
         }
       })
