@@ -16,7 +16,6 @@ import StaffManagementTwo from '../view/StaffManagementTwo.vue';
 import OperationManagement from '../view/OperationManagement.vue';
 import OperationSetting from '../view/OperationSetting.vue';
 import LogCheck from '../view/LogCheck.vue';
-import OperationModal from '../view/OperationModal.vue';
 import DiscountCode from '../view/DiscountCode.vue';
 import SalesManagement from '../view/SalesManagement.vue';
 import Login from '../view/Login.vue';
@@ -173,10 +172,6 @@ const routes = [
             component: OperationSetting,
           },
         ]
-  },
-  {
-    path: '/operationmodal',
-    component: OperationModal,
   },
   {
     path: '/discountcode',

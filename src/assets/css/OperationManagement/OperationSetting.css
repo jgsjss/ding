@@ -1,0 +1,199 @@
+.oper_set_container {
+    width: 100%;
+    padding:50px 0;
+}
+.operset_text {
+    font-size:20px;
+}
+/* 영업시간 */
+.oper_modal_container {
+    width: 100%;
+    margin:0 auto;
+}
+.oper_modal_wrapper {
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.oper_modal_one > p {
+    font-size:14px;
+    line-height:0.7;
+}
+.oper_modal_text {
+    padding:15px 0;
+    font-size:20px;
+    color:#997fb5;
+}
+.oper_timebtn {
+    display: block;
+    width:350px;
+    height:50px;
+    border-radius: 5px;
+    border:1px solid #997fb5;
+    background:white;
+    color:#333;
+    margin:15px auto;
+    padding:0 15px;
+}
+
+.xi-minus-circle-o {
+    float:right;
+    line-height:1.5;
+    color:#997fb5;
+}
+.btn_inner_text {
+    float:left
+}
+.oper_sub_btnbox {
+    display: flex;
+    flex-direction: column;
+}
+.opentime_addbtn {
+    width:350px;
+    height:40px;
+    margin:5px 0;
+    border:1px solid #997fb5;
+    border-radius:5px;
+    background:white;
+    color:#997fb5;
+    font-size: 14px;
+}
+.opentime_addbtntwo {
+    width:350px;
+    height:40px;
+    margin:5px 0;
+    border:1px solid #997fb5;
+    border-radius:5px;    
+    background:#997fb5;
+    color:white;
+    font-size: 14px;
+}
+/*  요일체크1 */
+.oper_sub_modal_wrap {
+    display:block;
+}
+.oper_modal_two {
+    padding:30px;
+    border-radius: 3px;
+}
+.day_btn {
+    width: 35px;
+    margin: 0 3px;
+    background: #997fb5;
+    color: white;
+    border: 1px solid #997fb5;
+}
+.day_btn:active {
+    background:white;
+    color:#997fb5;
+    border:1px solid #997fb5;
+}
+.form-check {
+    float:right;
+}
+.form-check-label {
+    text-align:left;
+}
+.oper_switch {
+    padding:10px 5px;
+}
+.starttime {
+    padding-right:30px;
+}
+.Stime {
+    width:90px;
+    border:1px solid #997fb5;
+    margin-left:5px;
+    padding:5px;
+    color:#997fb5;
+}
+.startime_wrap {
+    padding:20px 0;
+}
+.starttime_box {
+    padding:10px 0;
+}
+.time_btn_wrap {
+    text-align: center;
+    padding:15px 0;
+}
+.time_btn {
+    width:125px;
+    height: 40px;
+    background:#997fb5;
+    border:1px solid #997fb5;
+    color:white;
+    margin:0 10px;
+}
+.time_btntwo {
+    width:125px;
+    height: 40px;
+    background:rgba(177, 176, 176, 0.5);
+    border:none;
+    color:#333;
+    margin:0 10px;
+}
+/* 주말시간 */
+.oper_modal_three {
+    margin-top:30px;
+    border:1px solid #ddd;
+    border-radius: 3px;
+    padding:30px;
+}
+.Weekend_btn {
+    width: 35px;
+    margin: 0 3px;
+    background: #997fb5;
+    color: white;
+    border: 1px solid #997fb5;
+}
+.Weekend_btn:active {
+    background:white;
+    color:#997fb5;
+    border:1px solid #997fb5;
+}
+.form-check {
+    float:right;
+}
+.form-check-label {
+    text-align:left;
+}
+.oper_switchtwo {
+    padding:15px 0;
+}
+.starttimetwo {
+    padding-right:30px;
+}
+.Stimetwo {
+    width:90px;
+    border:1px solid #997fb5;
+    margin:0 5px;
+    padding:5px;
+    color:#997fb5;
+}
+.startime_wrap_two {
+    padding:30px 0;
+}
+.starttime_box_two {
+    padding:5px 0;
+}
+.time_btn_wrap_two {
+    text-align: center;
+    padding:15px 0;
+}
+.time_btn_two {
+    width:125px;
+    height: 40px;
+    background:#997fb5;
+    border:1px solid #997fb5;
+    color:white;
+    margin:0 10px;
+}
+.time_btn_ttwo {
+    width:125px;
+    height: 40px;
+    background:rgba(177, 176, 176, 0.5);
+    border:none;
+    color:#333;
+    margin:0 10px;
+}
