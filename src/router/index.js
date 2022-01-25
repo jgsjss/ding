@@ -14,6 +14,8 @@ import OrderPrint from '../view/OrderPrint.vue';
 import StaffManagementOne from '../view/StaffManagementOne.vue';
 import StaffManagementTwo from '../view/StaffManagementTwo.vue';
 import OperationManagement from '../view/OperationManagement.vue';
+import OperationSetting from '../view/OperationSetting.vue';
+import LogCheck from '../view/LogCheck.vue';
 import OperationModal from '../view/OperationModal.vue';
 import DiscountCode from '../view/DiscountCode.vue';
 import SalesManagement from '../view/SalesManagement.vue';
@@ -154,9 +156,23 @@ const routes = [
     path: '/staffmanagementtwo',
     component: StaffManagementTwo,
   },
+  //---------운영관리-------------
   {
     path: '/operationmanagement',
     component: OperationManagement,
+        //중첩되는 자식 라우트 경로
+        children: [
+          //-----------로그확인------------
+          {
+            path: '/operationmanagement/LogCheck',
+            component: LogCheck,
+          },
+          //-----------가게설정-------------
+          {
+            path: '/operationmanagement/OperationSetting',
+            component: OperationSetting,
+          },
+        ]
   },
   {
     path: '/operationmodal',

@@ -4,7 +4,10 @@
 
   <div class="oper_container">
     <div class="oper_wrap">
-    <h2 class="oper_text">운영관리</h2>  
+      <div>
+      <h2 class="oper_text">운영관리</h2>
+        <router-link to="/OperationManagement/LogCheck"><button type="button" class="logcheck_btn">로그확인</button></router-link>
+      </div>
       <div class="oper_right">
         <button class="main-btn" type="submit">
           <span class="condition">매장상태</span>
@@ -14,7 +17,17 @@
       </div>   
       </div>  
       <!--/////가게상태/////-->
+      <div class="shop_condition">
       <p class="operation_text">◆가게상태</p>
+      <div>
+        <button type="button" class="oper_shop_btn">영업시간</button>
+        <button type="button" class="oper_shop_btn">준비시간</button>
+        <button type="button" class="oper_shop_btn">정기휴무</button>
+        <button type="button" class="oper_shop_btn">임시휴무</button>
+        <button type="button" class="oper_shop_btn">매장상태</button>
+        <i class="xi-help-o"></i>
+      </div>
+      </div>
       <div class="oper_all_wrap">
       <div class="oper_box1" v-for="(a, i) in $store.state.OperationData" :key="i">
         <div class="oper_btn_box">
@@ -74,16 +87,18 @@
 
 
 
-
+<OperationSetting />
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue'
 import BreakTime from '../components/BreakTime.vue';
+import OperationSetting from './OperationSetting.vue';
   export default {
 
   components:{
     Navbar,
     BreakTime,
+    OperationSetting,
   },
 
 }
