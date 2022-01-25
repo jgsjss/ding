@@ -28,7 +28,7 @@
           <h3 className="join_title"><label>비밀번호</label></h3>
           <span className="box int_pass">
                             <input type="password" id="pswd2-1" className="int" maxLength="16"
-                                   placeholder="8~16자의 영문/숫자를 조합" v-model="userPw1" ref="">
+                                   placeholder="8~16자의 영문/숫자를 조합" v-model="userPw1" ref="" @change="checkPW">
             <!-- <span>유효하지 않은 비밀번호 입니다.</span> -->
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
@@ -231,7 +231,8 @@ export default {
       }
     },
     checkPW () {
-      let pwd = document.getElementById('pswd2-1').value //eslint-disable-line no-unused-vars
+      // let pwd = document.getElementById('pswd2-1').value //eslint-disable-line no-unused-vars
+      
       console.log(typeof this.userPw1)
       console.log(this.userPw1)
       /*    if (password.length < 8) {
