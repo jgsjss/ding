@@ -33,6 +33,10 @@ export default {
               'Your file has been deleted.',
               'success'
           )
+        }else if(result.dismiss){
+          this.$swal.fire(
+              'asd'
+          )
         }
       })
     }
