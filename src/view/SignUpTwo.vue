@@ -18,8 +18,8 @@
           <span className="box int_id">
                             <input type="text" id="id2" className="int" maxLength="20" v-model="userId"
                                    @change="isUser(userId)">
-             <span className="step_url" v-show="userCheck1">유효하지 않은 아이디 입니다.</span>
-             <span className="step_url" v-show="userCheck2">사용가능한 아이디 입니다.</span>
+             <span className="step_url" v-show="userCheck1">사용가능한 아이디 입니다.</span>
+             <span className="step_url" v-show="userCheck2">유효하지 않은 아이디 입니다.</span>
                         </span>
           <span className="error_next_box"></span>
         </div>
@@ -163,7 +163,7 @@ export default {
     return {
       //회원 아이디
       userId: '',
-      
+
       //회원 비밀번호
       userPw1: '',
       userPw2:"",
@@ -211,7 +211,7 @@ export default {
       }else if (id.search(/[~!@#$%^&*()_+|<>?:{}]/) !== -1){
         alert("아이디에 특수문자 불가능합니다.")
         return false
-      
+
       }else {
         axios({
           url: '/api/isuser',
@@ -232,7 +232,7 @@ export default {
     },
     checkPW () {
       // let pwd = document.getElementById('pswd2-1').value //eslint-disable-line no-unused-vars
-      
+
       console.log(typeof this.userPw1)
       console.log(this.userPw1)
       /*    if (password.length < 8) {
@@ -332,7 +332,7 @@ export default {
     ,
      passwordValid () {
        return /^[A-Za-z0-9]+$/.test(this.signup.password)
-     }, 
+     },
   }
   ,
   watch: {

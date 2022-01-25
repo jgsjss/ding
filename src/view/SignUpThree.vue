@@ -154,14 +154,14 @@
                 <!-- <span>사업자 등록증 : {{}}</span> -->
               </span>
               <span class="error_next_box"></span>
-              <button type="button" id="btnJoin" @click="uploadImage">
+              <button type="button" id="btnJoin" @click="fire">
                 <span>사진보내기</span>
               </button>
             </div>
 
             <div class="btn_area">
               <router-link to="/signupfour">
-                <button type="button" id="btnJoin" @click="uploadImage">
+                <button type="button" id="btnJoin" @click="fire">
                   <span>가입하기</span>
                 </button>
               </router-link>
@@ -213,6 +213,7 @@ export default {
       let image = this.$refs['image'].files[0]
       form.append('image', image)
       // form.append('biznum',this.bizNum)
+
       axios
           .post('/api/upload', form, {
             headers: {
@@ -225,6 +226,47 @@ export default {
             console.log(data)
           })
           .catch((err) => console.log(err))
+    },
+    //sweetalert2 메소드드
+    fire () {
+      this.$swal.fire({
+        title: '사업자번호를 확인해 주세요. 사업자 번호가 틀릴경우, 가입 심사가 지연됩니다.',
+        text: this.bizNum,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '네, 맞습니다.'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            const biz = this.bizNum
+            let form = new FormData()
+            let image = this.$refs['image'].files[0]
+            form.append('image', image)
+            // form.append('biznum',this.bizNum)
+            axios
+                .post('/api/upload', form, {
+                  headers: {
+                    'Content-Type': 'multipart/form-data',
+                    biznum: biz,
+                  },
+                })
+                .then(({ data }) => {
+                  this.images = data
+                  console.log(data)
+                })
+                .catch((err) => console.log(err))
+          this.$swal.fire(
+              '성공!',
+              '사업자등록증 전송이 완료되었습니다.',
+              'success'
+          )
+        }else if(result.dismiss){
+          this.$swal.fire(
+              '사업자 번호를 정확하게 입력해 주세요.'
+          )
+        }
+      })
     },
     phoneNumConcat () {
       let phoneNum = '';
@@ -239,7 +281,7 @@ export default {
     test () {
       console.log('====SignUpThree 테스트버튼====')
       console.log('SignUpTwo에서 넘어온 파라미터: ', store.state.signupStore.phNum)
-      console.log('SignUpTwo에서 넘어온 파라미터 전체: ', store.state.signupStore.userName)
+      console.log('SignUpTwo에서 넘어온 파라미터 userName: ', store.state.signupStore.userName)
       }
     },
     mounted () {
