@@ -161,7 +161,7 @@
 
             <div class="btn_area">
               <router-link to="/signupfour">
-                <button type="button" id="btnJoin" @click="fire">
+                <button type="button" id="btnJoin">
                   <span>가입하기</span>
                 </button>
               </router-link>
