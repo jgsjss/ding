@@ -28,7 +28,7 @@
           <h3 className="join_title"><label>비밀번호</label></h3>
           <span className="box int_pass">
                             <input type="password" id="pswd2-1" className="int" maxLength="16"
-                                   placeholder="8~16자의 영문/숫자를 조합" v-model="userPw1">
+                                   placeholder="8~16자의 영문/숫자를 조합" v-model="userPw1" ref="">
             <!-- <span>유효하지 않은 비밀번호 입니다.</span> -->
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
@@ -163,6 +163,7 @@ export default {
     return {
       //회원 아이디
       userId: '',
+      
       //회원 비밀번호
       userPw1: '',
       userPw2:"",
@@ -201,12 +202,16 @@ export default {
       // let userdata = { 'userid': this.userId }
       console.log(typeof this.userId)
       console.log(this.userId)
-      if (id.length < 3) {
+      if (id.length < 6) {
         alert("아이디는 최소 6자리 이상입니다.")
         return false
       } else if (id.search(/\s/) !== -1) {
         alert("아이디에 공백은 불가능합니다.")
         return false
+      }else if (id.search(/[~!@#$%^&*()_+|<>?:{}]/) !== -1){
+        alert("아이디에 특수문자 불가능합니다.")
+        return false
+      
       }else {
         axios({
           url: '/api/isuser',
@@ -226,10 +231,18 @@ export default {
       }
     },
     checkPW () {
-
-      let number = this.userPw1
-
-
+      let pwd = document.getElementById('pswd2-1').value //eslint-disable-line no-unused-vars
+      console.log(typeof this.userPw1)
+      console.log(this.userPw1)
+      /*    if (password.length < 8) {
+        alert("비밀번호는 최소 8자리 이상입니다.")
+        return false
+      } else if (password.search(/\s/) !== -1) {
+        alert("아이디에 공백은 불가능합니다.")
+        return false
+      } else {
+        return false
+      } */
     },
     insertDTO () {
       let user = new uservo()
@@ -316,9 +329,9 @@ export default {
       return /^[A-Za-z0-9]+$/.test(this.id)
     }
     ,
-    // passwordValid () {
-    //   return /^[A-Za-z0-9]+$/.test(this.signup.password)
-    // },
+     passwordValid () {
+       return /^[A-Za-z0-9]+$/.test(this.signup.password)
+     }, 
   }
   ,
   watch: {
