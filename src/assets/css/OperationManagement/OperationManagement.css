@@ -50,6 +50,43 @@
   color:#997fb5;
   border:none;
   background:white;
+  padding-bottom:30px;
+}
+.shop_help {
+  font-size:14px;
+  text-align: right;
+  padding:10px 10px;
+  color: #997fb5;
+  position:relative;
+  border:1px solid #997fb5;
+  border-radius: 3px;
+}
+.shop_help:before {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 0 13px 20px 10.5px;
+	border-color: #997fb5 transparent;
+	display: block;
+	width: 0;
+	z-index: 0;
+	top: -20px;
+	right: -1px;
+}
+.shop_help:after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 0 13px 20px 10.5px;
+	border-color: #FFFFFF transparent;
+	display: block;
+	width: 0;
+	z-index: 1;
+	top: -18.5px; 
+	right: -1px; 
+}
+.shop_help > span {
+  display: block;
 }
 .shop_condition_icon {
   width:50%;

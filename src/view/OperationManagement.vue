@@ -19,12 +19,20 @@
       <div class="shop_condition">
       <p class="operation_text">◆가게상태</p>
       <div>
-        <button type="button" class="oper_shop_btn">영업시간</button>
-        <button type="button" class="oper_shop_btn">준비시간</button>
-        <button type="button" class="oper_shop_btn">정기휴무</button>
-        <button type="button" class="oper_shop_btn">임시휴무</button>
-        <button type="button" class="oper_shop_btn">매장상태</button>
-        <i class="xi-help-o"></i>
+        <button type="button" class="oper_shop_btn">정상설정</button>
+        <button type="button" class="oper_shop_btn">영업중</button>
+        <button type="button" class="oper_shop_btn">준비중</button>
+        <button type="button" class="oper_shop_btn">노출정지</button>
+        <button type="button" class="oper_shop_btn">딩동오더 정지</button>
+        <i class="xi-help-o" @click="show=!show"></i>
+          <div class="shop_help" v-show="show">
+            <span>- 매장상태를 임의로 변경 가능합니다.</span>
+            <span>- 변경하신 매장상태는 다음날이 되면 정상상태로 변경됩니다.</span>
+            <span>- 노출정지: 딩동오더에 가게가 나타나지 않습니다</span>
+            <span>- 딩동오더 정지: 카운터 주문만 가능합니다.</span>
+            <span>- 정상상태: 설정된 데이터에 맞게 운영되는 상태</span>
+          </div>
+
       </div>
       </div>
       <div class="oper_all_wrap">
@@ -93,11 +101,18 @@
 import Navbar from '@/components/Navbar.vue'
 import OperationSetting from './OperationSetting.vue';
   export default {
-
   components:{
     Navbar,
     OperationSetting,
   },
+  data() {
+    return {
+      show:false,
+    }
+  },
+  methods: {
+
+}
 
 }
 
