@@ -208,7 +208,7 @@ export default {
       } else if (id.search(/\s/) !== -1) {
         alert("아이디에 공백은 불가능합니다.")
         return false
-      }else if (id.search(/[~!@#$%^&*()_+|<>?:{}]/) !== -1){
+      }else if (id.search(/[~!@#$%^&*()_+|<>?:{}]/) !==-1){
         alert("아이디에 특수문자 불가능합니다.")
         return false
 
@@ -231,19 +231,22 @@ export default {
       }
     },
     checkPW () {
-      // let pwd = document.getElementById('pswd2-1').value //eslint-disable-line no-unused-vars
+      let pwd = document.getElementById('pswd2-1').value //eslint-disable-line no-unused-vars
 
       console.log(typeof this.userPw1)
       console.log(this.userPw1)
-      /*    if (password.length < 8) {
+        if (pwd.length < 8) {
         alert("비밀번호는 최소 8자리 이상입니다.")
         return false
-      } else if (password.search(/\s/) !== -1) {
-        alert("아이디에 공백은 불가능합니다.")
+      } else if (pwd.search(/\s/) !== -1) {
+        alert("비밀번호에 공백은 불가능합니다.")
         return false
-      } else {
+      } else if(pwd.search(/[a-zA-Z]/) || pwd.search(/[0-9]/) == -1 || pwd.search(/[~!@#$%^&*()_+|<>?:{}]/) !==-1 ){
+        alert("영문자와 숫자로만 조합이 가능합니다.")
         return false
-      } */
+      }else{
+        return false
+      } 
     },
     insertDTO () {
       let user = new uservo()
