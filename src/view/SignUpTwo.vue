@@ -17,7 +17,7 @@
           </h3>
           <span className="box int_id">
                             <input type="text" id="id2" className="int" maxLength="20" v-model="userId"
-                                   @change="isUser(userId)">
+                                   @change="isUser(userId)" @focus="checkFlag = false">
              <span className="step_url" v-show="userCheck1">사용가능한 아이디 입니다.</span>
              <span className="step_url" v-show="userCheck2">유효하지 않은 아이디 입니다.</span>
                         </span>
@@ -28,7 +28,7 @@
           <h3 className="join_title"><label>비밀번호</label></h3>
           <span className="box int_pass">
                             <input type="password" id="pswd2-1" className="int" maxLength="16"
-                                   placeholder="8~16자의 영문/숫자를 조합" v-model="userPw1" ref="" @change="checkPW">
+                                   placeholder="8~16자의 영문/숫자를 조합" v-model="userPw1" ref="" @change="checkPW" @focus="checkFlag = false">
             <!-- <span>유효하지 않은 비밀번호 입니다.</span> -->
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
                         </span>
@@ -39,7 +39,7 @@
           <h3 className="join_title"><label>비밀번호 재확인</label></h3>
           <span className="box int_pass_check">
                             <input type="password" id="pswd2-2" className="int"
-                                   maxlength="16" v-model="userPw2" >
+                                   maxlength="16" v-model="userPw2" @focus="checkFlag = false">
             <span className="step_url" v-show="this.userPw1==this.userPw2 && this.userPw1 != ''">비밀번호가 동일</span>
             <span className="step_url" v-show="this.userPw1!=this.userPw2">비밀번호가 동일하지 않습니다.</span>
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
@@ -51,7 +51,7 @@
           <h3 className="join_title"><label>대표자 이름</label></h3>
           <span className="box int_name">
                             <input type="text" id="name2" className="int" maxLength="20"
-                                   v-model="userName" placeholder="이름을 입력해주세요.">
+                                   v-model="userName" placeholder="이름을 입력해주세요." @focus="checkFlag = false">
                         </span>
           <!-- <span className="error_next_box">이름을 입력하세요</span> -->
         </div>
@@ -76,14 +76,14 @@
             <div id="num_second">
                                 <span className="box">
                                     <input type="text" id="second2" className="int" maxLength="4"
-                                           v-model.trim="secondNum" ref="secondNum">
+                                           v-model.trim="secondNum" ref="secondNum" @focus="checkFlag = false"> 
                                 </span>
             </div>
             <!-- BIRTH_DD -->
             <div id="num_dd">
                                 <span className="box">
                                     <input @change="phoneNumConcat()" type="text" id="dd2" className="int" maxLength="4"
-                                           v-model.trim="thirdNum" ref="thirdNum">
+                                           v-model.trim="thirdNum" ref="thirdNum" @focus="checkFlag = false">
                                 </span>
             </div>
           </div>
@@ -93,7 +93,7 @@
         <div>
           <h3 className="join_title"><label>매장 이름</label></h3>
           <span className="box int_name">
-                            <input type="text" id="name3" className="int" maxLength="20" v-model.trim="shopName">
+                            <input type="text" id="name3" className="int" maxLength="20" v-model.trim="shopName" @focus="checkFlag = false">
                         </span>
           <span className="error_next_box"></span>
         </div>
@@ -102,7 +102,7 @@
           <h3 className="join_title"><label>매장 대표번호</label></h3>
           <span className="box int_mobile">
                             <input type="tel" id="mobile2" className="int" maxLength="11"
-                                   placeholder="'-'을 제외한 연락처 번호를 입력해주세요." v-model.trim="shopPhNum">
+                                   placeholder="'-'을 제외한 연락처 번호를 입력해주세요." v-model.trim="shopPhNum" ref="shopPhNum" @focus="checkFlag = false">
                         </span>
           <span className="error_next_box"></span>
         </div>
@@ -112,16 +112,16 @@
           <span className="box int_mobile">
                         <input type="text" id="address2" ref="address" className="int" maxLength="20"
                                v-model.trim="address"
-                               placeholder="매장 주소">
+                               placeholder="매장 주소" @focus="checkFlag = false">
                         <button type="submit" className="addr_btn" @click="execDaumPostcode()"
                                 value="우편번호 찾기">주소검색</button>
                         </span>
           <span className="box int_mobile">
                         <input type="text" id="detailAddress2" className="int" maxLength="20"
-                               v-model.trim="extraAddress" placeholder="매장 상세주소">
+                               v-model.trim="extraAddress" placeholder="매장 상세주소" @focus="checkFlag = false">
                         </span>
           <span className="box int_mobile">
-                        <input type="text" className="int" v-model.trim="postcode" placeholder="우편번호">
+                        <input type="text" className="int" v-model.trim="postcode" placeholder="우편번호" @focus="checkFlag = false">
                         </span>
           <span className="box int_mobile">
                         <input type="text" className="int" id="extraAddress2" ref="extraAddress" v-model.trim="etc"
@@ -129,8 +129,8 @@
                         </span>
         </div>
         <!-- JOIN BTN-->
-        <div className="btn_area"><span><router-link to="/signupthree" @click="sendParam">
-          <button type="button" id="btnJoin">
+        <div className="btn_area" @click="goNextPage"><span><router-link to="/signupthree" @click="sendParam">
+          <button type="button" id="btnJoin" >
             다음
           </button>
           </router-link></span>
@@ -248,6 +248,32 @@ export default {
         return false
       } 
     },
+    isEmpty(data) {
+      if(data=="" || data == null || data == undefined) {
+        return true;
+      }else {
+        return false;
+      }
+    },
+    goNextPage () {
+      this.checkFlag = true;
+      alert("입력하세요")
+       if (!this.isEmpty(this.userId) &&
+           !this.isEmpty(this.userPw1) &&
+           !this.isEmpty(this.userPw2) &&
+           !this.isEmpty(this.userName) &&
+           !this.isEmpty(this.secondNum) &&
+           !this.isEmpty(this.thirdNum) &&
+           !this.isEmpty(this.shopName) &&
+           !this.isEmpty(this.shopPhNum) &&
+           !this.isEmpty(this.address) &&
+           !this.isEmpty(this.extraAddress) &&
+           !this.isEmpty(this.postcode)) {
+             return true
+      } else {
+        return false
+      }
+    },
     insertDTO () {
       let user = new uservo()
       user.userName = this.userName
@@ -345,15 +371,21 @@ export default {
         this.secondNum = ''
         this.$refs.secondNum.focus()
       }
-    }
-    ,
+    },
     thirdNum (a) {
       if (isNaN(a) == true || a == '') {
         alert('숫자만 입력 가능합니다.')
         this.thirdNum = ''
         this.$refs.thirdNum.focus()
       }
-    }
+    },
+    shopPhNum (a){
+      if(isNaN(a)==true || a==''){
+        alert('숫자만 입력 가능합니다.')
+        this.shopPhNum = ''
+        this.$refs.shopPhNum.focus()
+      }
+    },
   }
   ,
 }
