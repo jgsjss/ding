@@ -76,8 +76,6 @@ export default createStore({
     OperationData,
     //영업시간 데이터
     // timeData,
-    //-----------준비시간 모달창-------------
-    BreakTime: false,
     //스테이트 변환, $store.commit('mutation 함수명') 으로 이벤트 핸들링
     mutations: {
       

@@ -4,8 +4,12 @@
 }
 .operset_text {
     font-size:20px;
+    display:flex;
+    padding:0 15px;
 }
-/* 영업시간 */
+/*/////-------
+                영업시간
+-------/////*/
 .oper_modal_container {
     width: 100%;
     margin:0 auto;
@@ -195,5 +199,283 @@
     background:rgba(177, 176, 176, 0.5);
     border:none;
     color:#333;
+    margin:0 10px;
+}
+/*/////-------
+                준비시간
+-------/////*/
+
+#break_container {
+    width: 100%;
+    margin:0 auto;
+}
+.break_wrapper {
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.break_text {
+    padding:15px 0;
+    font-size:20px;
+    color:#997fb5;
+}
+.break_timebtn {
+    display: block;
+    width:350px;
+    height:50px;
+    border-radius: 5px;
+    border:1px solid #997fb5;
+    background:white;
+    color:#333;
+    margin:15px auto;
+    padding:0 15px;
+}
+
+.xi-minus-circle-o {
+    float:right;
+    line-height:1.5;
+    color:#997fb5;
+}
+.btn_inner_text {
+    float:left
+}
+.break_btnbox {
+    display: flex;
+    flex-direction: column;
+}
+/*  요일체크1 */
+.break__wrap {
+    display:block;
+}
+.break__two {
+    padding:30px;
+    border-radius: 3px;
+}
+.break_switch {
+    padding:10px 5px;
+}
+.form-check {
+    float:right;
+}
+.form-check-label {
+    text-align:left;
+}
+.breaktime {
+    padding-right:30px;
+}
+.Btime {
+    width:90px;
+    border:1px solid #997fb5;
+    margin-left:5px;
+    padding:5px;
+    color:#997fb5;
+}
+.breaktime_wrap {
+    padding:20px 0;
+}
+.breaktime_box {
+    padding:10px 0;
+}
+.break_time_btn_wrap {
+    text-align: center;
+    padding:15px 0;
+}
+.break_add_btn {
+    width:125px;
+    height: 40px;
+    background:#997fb5;
+    border:1px solid #997fb5;
+    color:white;
+    margin:0 10px;
+}
+.break_close_btn {
+    width:125px;
+    height: 40px;
+    background:rgba(177, 176, 176, 0.5);
+    border:none;
+    color:#333;
+    margin:0 10px;
+}
+/*/////-------
+                정기휴무
+-------/////*/
+
+.regular_container {
+    width: 100%;
+    margin:0 auto;
+}
+.regular_wrapper {
+    display:flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+.regular_text {
+    padding:15px 0;
+    font-size:20px;
+    color:#997fb5;
+}
+.regular_one > p {
+    font-size:14px;
+    line-height:0.7;
+}
+/*  요일체크1 */
+.regular_wrap {
+    display:block;
+}
+.regular_two {
+    padding:30px;
+    border-radius: 3px;
+}
+.regular_switch {
+    padding:10px 5px;
+}
+.form-check {
+    float:right;
+}
+.form-check-label {
+    text-align:left;
+}
+.Rday {
+    width:120px;
+    border:1px solid #997fb5;
+    margin-left:5px;
+    padding:5px;
+    color:#997fb5;
+}
+.regular_wrap {
+    padding:20px 0;
+}
+.regular_box {
+    padding:10px 0;
+    text-align: center;
+}
+.regular_btn_wrap {
+    text-align: center;
+    padding:15px 0;
+}
+.regular_add_btn {
+    width:125px;
+    height: 40px;
+    background:#997fb5;
+    border:1px solid #997fb5;
+    color:white;
+    margin:0 10px;
+}
+.regular_close_btn {
+    width:125px;
+    height: 40px;
+    background:rgba(177, 176, 176, 0.5);
+    border:none;
+    color:#333;
+    margin:0 10px;
+}
+/*/////-------
+                임시휴무
+-------/////*/
+
+.temporary_container {
+    width: 100%;
+    margin:0 auto;
+}
+.temporary_wrapper {
+    display:flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+}
+.temporary_text {
+    padding:15px 0;
+    font-size:20px;
+    color:#997fb5;
+}
+.temporary_one > p {
+    font-size:14px;
+    line-height:0.7;
+}
+.temporary_reason_text {
+    font-size:14px;
+}
+.temporary_form_box {
+    padding:5px 0;
+    font-size:14px;
+}
+.temporary_form_lebel {
+    padding:0 5px;
+}
+.temporary_form_text {
+    width:320px;
+    border:1px solid #c2c2c2;
+    border-radius:3px;
+    padding:5px;
+    font-size:14px;
+}
+/*  요일체크1 */
+.temporary_wrap {
+    display:block;
+}
+.temporary_two {
+    padding:30px;
+    border-radius: 3px;
+}
+.temporary_switch {
+    padding:10px 5px;
+}
+.form-check {
+    float:right;
+}
+.form-check-label {
+    text-align:left;
+}
+.Tday {
+    width:120px;
+    border:1px solid #997fb5;
+    margin-left:5px;
+    padding:5px;
+    color:#997fb5;
+}
+.temporary_wrap {
+    padding:20px 0;
+}
+.temporary_box {
+    padding:10px 0;
+    text-align: center;
+}
+.temporarytime {
+    padding-right:15px;
+}
+.Ttime {
+    width:135px;
+    border:1px solid #997fb5;
+    margin-left:5px;
+    padding:4px;
+    color:#997fb5;
+}
+.temporary_timebtn_box {
+    margin:15px 0;
+}
+.tbtn_inner_text {
+    float:left;
+    padding: 0 15px;
+    line-height: 2;
+}
+.temporary_timebtn {
+    width: 300px;
+    height:40px;
+    border:1px solid #997fb5;
+    border-radius: 3px;
+    background:none;
+    color:#997fb5;
+}
+
+.temporary_btn_wrap {
+    text-align: center;
+    padding:15px 0;
+}
+.temporary_add_btn {
+    width:100%;
+    height: 40px;
+    background:#997fb5;
+    border:1px solid #997fb5;
+    border-radius:5px;
+    color:white;
     margin:0 10px;
 }
