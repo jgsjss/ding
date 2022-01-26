@@ -167,12 +167,16 @@
               </router-link>
             </div>
           </div>
+              <div class="test_btn_box">
+                <button @click="test" class="test_btn">테스트</button>
+              </div>
           <!-- content-->
         </form>
       </div>
     </div>
+    
   </div>
-  <button @click="test">테스트</button>
+
 
 </template>
 <script>

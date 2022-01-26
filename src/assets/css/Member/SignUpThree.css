@@ -169,3 +169,10 @@
   #input-file {
     width: 100%;
   }
+  .test_btn_box {
+    text-align: center;
+  }
+  .test_btn {
+    width: 500px;
+    height: 50px;
+  }

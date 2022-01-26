@@ -278,13 +278,10 @@
             <div class="temporary_btn_wrap">
             <button type="button" class="temporary_add_btn">저장</button>
             </div>
-
         </div>
         </div>
-        
         </div>
     </div>
-
       </div>
   </div>
 </template>
