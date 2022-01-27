@@ -19,11 +19,11 @@
       <div class="shop_condition">
       <p class="operation_text">◆가게상태</p>
       <div>
-        <button type="button" class="oper_shop_btn">정상설정</button>
-        <button type="button" class="oper_shop_btn">영업중</button>
-        <button type="button" class="oper_shop_btn">준비중</button>
-        <button type="button" class="oper_shop_btn">노출정지</button>
-        <button type="button" class="oper_shop_btn">딩동오더 정지</button>
+        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">정상설정</button>
+        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">영업중</button>
+        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">준비중</button>
+        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">노출정지</button>
+        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">딩동오더 정지</button>
         <i class="xi-help-o" @click="show=!show"></i>
           <div class="shop_help" v-show="show">
             <span>- 매장상태를 임의로 변경 가능합니다.</span>
@@ -92,8 +92,25 @@
       </div>    
   </div>
 
-
-
+  <!--/////매장상태 모달창/////-->
+<!-- Modal -->
+<div class="modal fade" id="NoticeModal" tabindex="-1" aria-labelledby="NoticeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="NoticeModalLabel">매장상태 변경</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        적용하시겠습니까?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-primary">확인</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <OperationSetting :step = "step" />
 </template>
@@ -112,7 +129,9 @@ import OperationSetting from './OperationSetting.vue';
     }
   },
   methods: {
-
+    notice: function(evt) {
+      alert('상태를 변경하시겠습니까?')
+    },
     }
 }
 
