@@ -40,7 +40,7 @@
         <div class="oper_btn_box">
         </div>
         <!--/////영업시간/////-->
-        <div class="oper_title">영업시간</div>
+        <div class="oper_title" @click=" step = 0">영업시간</div>
           <div class="oper_wrapper">
             <div class="oper_wrap1">
               
@@ -60,13 +60,13 @@
       <!--/////준비시간/////-->
       <div class="oper_box1">
         <div class="oper_btn_box">
-        <div class="oper_title" @click="break_container">준비시간</div>
+        <div class="oper_title" @click=" step = 1">준비시간</div><!--클릭시 자식 데이터가 나옴-->
         </div>
           <div class="preparation_text">(설정없음)</div>
       </div>
       <!--/////정기휴무/////-->
       <div class="oper_box1" v-for="(a, i) in $store.state.OperationData" :key="i">
-        <div class="oper_title">정기휴무</div>
+        <div class="oper_title"  @click=" step = 2">정기휴무</div>
           <div class="oper_wrapper">
             <div class="oper_wrap2">
               <div class="oper_left">매월 첫째주</div>
@@ -80,7 +80,7 @@
       </div>      
       <!--/////임시휴무/////-->
       <div class="oper_box1" v-for="(a, i) in $store.state.OperationData" :key="i">
-        <div class="oper_title">임시휴무</div>
+        <div class="oper_title" @click=" step = 3">임시휴무</div>
           <div class="holiday">{{ $store.state.OperationData[i].date }}</div>
           <div class="holiday_text">개인사정으로 인해 쉽니다.</div>
       </div>      
@@ -95,7 +95,7 @@
 
 
 
-<OperationSetting />
+<OperationSetting :step = "step" />
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue'
@@ -108,13 +108,15 @@ import OperationSetting from './OperationSetting.vue';
   data() {
     return {
       show:false,
+      step: 0,
     }
   },
   methods: {
 
+    }
 }
 
-}
+
 
 
 </script>

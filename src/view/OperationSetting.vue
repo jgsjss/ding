@@ -5,7 +5,7 @@
       </h2>
       <div class="oper_set_wrap">
           <!--/////영업시간 고정/////-->
-    <div class="oper_modal_container">
+    <div class="oper_modal_container" v-if="step == 0">
         <div class="oper_modal_wrapper">
         <div class="oper_modal_one">
         <div class="oper_modal_text">영업시간</div>    
@@ -78,7 +78,7 @@
         </div>
     </div>
           <!--/////준비시간 평소에는 hidden/////-->          
-    <div id="break_container" v-if="isShow">
+    <div id="break_container" v-if="step == 1">
         <div class="break_wrapper">
         <div class="break_one">
         <div class="break_text">준비시간</div>
@@ -141,7 +141,7 @@
         </div>
     </div>
           <!--/////정기휴무 평소에는 hidden/////-->          
-    <div class="regular_container" v-if="isShow">
+    <div class="regular_container" v-if="step == 2">
         <div class="regular_wrapper">
         <div class="regular_one">
         <div class="regular_text">정기휴무</div>    
@@ -198,7 +198,7 @@
         </div>
     </div>    
           <!--/////임시휴무 평소에는 hidden/////-->          
-    <div class="temporary_container" v-if="isShow">
+    <div class="temporary_container" v-if="step == 3">
         <div class="temporary_wrapper">
         <div class="temporary_one">
         <div class="temporary_text">임시휴무</div>    
@@ -284,6 +284,10 @@
     </div>
       </div>
   </div>
+<!---->
+  <div>
+
+  </div>
 </template>
 
 <script>
@@ -304,7 +308,14 @@ export default {
         isShow: false,
         }
     },
+    props: {
+        step: Number,
+    },
+    methods: {
+        changeStat(step){
 
+        }
+    },
 }
 </script>
 
