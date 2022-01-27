@@ -14,16 +14,10 @@
         <p> - 정기휴무는 영업시간이 등록되어 있더라도 휴무로 보여집니다.</p>
         <div class="oper_modal_oper_box">
             <form>
-                <button type="button" class="oper_timebtn">
-                    <span class="btn_inner_text">평일</span>
-                    <i class="xi-minus-circle-o"></i>                    
-                    11시00분 ~ 01시00분(익일)
-                </button>
-                <button type="button" class="oper_timebtn">
-                    <span class="btn_inner_text">주말</span>
-                    <i class="xi-minus-circle-o"></i>
-                    24시간
-                </button>
+                <label for="input_day" class="input_day">평일</label>
+                <input type="text" class="oper_timebtn">
+                <label for="input_day" class="input_day">주말</label>
+                <input type="text" class="oper_timebtn">
             </form>
         </div>
         </div>
@@ -49,18 +43,17 @@
                     <label for="starttime" class="starttime">시작시간</label>  
                         <select id="time" className="Stime" @change="starttime">
                             <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
-
-                                    </select>           
+                        </select>           
                         <select id="time" className="Stime" @change="starttime">
                             <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
-                                    </select>  
+                        </select>  
                 </div>                    
+                
                 <!--//////종료시간//////-->  
                 <div class="starttime_box">
                     <label for="starttime" class="starttime">종료시간</label>  
                         <select id="time" className="Stime" @change="starttime">
                             <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
-
                                     </select>           
                         <select id="time" className="Stime" @change="starttime">
                             <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
@@ -284,16 +277,13 @@
     </div>
       </div>
   </div>
-<!---->
-  <div>
-
-  </div>
 </template>
 
 <script>
 export default {
     data() {
         return {
+            selected: [],
             name: 'day',
             type: 'select',
             options: [

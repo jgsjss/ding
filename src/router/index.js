@@ -188,11 +188,7 @@ const routes = [
     component: OperationManagement,
         //중첩되는 자식 라우트 경로
         children: [
-          //-----------로그확인------------
-          {
-            path: '/operationmanagement/LogCheck',
-            component: LogCheck,
-          },
+
           //-----------가게설정-------------
           {
             path: '/operationmanagement/OperationSetting',
@@ -200,6 +196,11 @@ const routes = [
           },
         ]
   },
+    //-----------로그확인------------
+  {
+    path: '/LogCheck',
+    component: LogCheck,
+  },  
   {
     path: '/discountcode',
     component: DiscountCode,

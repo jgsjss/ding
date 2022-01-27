@@ -5,7 +5,7 @@
     <div class="oper_wrap">
       <div>
       <h2 class="oper_text">운영관리</h2>
-        <router-link to="/OperationManagement/LogCheck"><button type="button" class="logcheck_btn">로그확인</button></router-link>
+        <router-link to="/LogCheck"><span class="logcheck_btn">로그확인</span></router-link>
       </div>
       <div class="oper_right">
         <button class="main-btn" type="submit">
