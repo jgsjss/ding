@@ -83,7 +83,7 @@
             <div id="num_dd">
                                 <span className="box">
                                     <input @change="phoneNumConcat()" type="text" id="dd2" className="int" maxLength="4"
-                                           v-model.trim="thirdNum" ref="thirdNum" @focus="checkFlag = false">
+                                           v-model.number="thirdNum" ref="thirdNum" @focus="checkFlag = false">
                                 </span>
             </div>
           </div>
@@ -164,10 +164,9 @@ export default {
     return {
       //회원 아이디
       userId: '',
-
       //회원 비밀번호
       userPw1: '',
-      userPw2:"",
+      userPw2: '',
       //사업자대표 이름
       userName: '',
       //사업자 휴대폰 번호
@@ -256,25 +255,25 @@ export default {
         return false;
       }
     },
-    // goNextPage () {
-    //   this.checkFlag = true;
-    //   alert("입력하세요")
-    //    if (!this.isEmpty(this.userId) &&
-    //        !this.isEmpty(this.userPw1) &&
-    //        !this.isEmpty(this.userPw2) &&
-    //        !this.isEmpty(this.userName) &&
-    //        !this.isEmpty(this.secondNum) &&
-    //        !this.isEmpty(this.thirdNum) &&
-    //        !this.isEmpty(this.shopName) &&
-    //        !this.isEmpty(this.shopPhNum) &&
-    //        !this.isEmpty(this.address) &&
-    //        !this.isEmpty(this.extraAddress) &&
-    //        !this.isEmpty(this.postcode)) {
-    //          return true
-    //   } else {
-    //     return false
-    //   }
-    // },
+    goNextPage () {
+      this.checkFlag = true;
+       if (!this.isEmpty(this.userId) &&
+           !this.isEmpty(this.userPw1) &&
+           !this.isEmpty(this.userPw2) &&
+           !this.isEmpty(this.userName) &&
+           !this.isEmpty(this.secondNum) &&
+           !this.isEmpty(this.thirdNum) &&
+           !this.isEmpty(this.shopName) &&
+           !this.isEmpty(this.shopPhNum) &&
+           !this.isEmpty(this.address) &&
+           !this.isEmpty(this.extraAddress) &&
+           !this.isEmpty(this.postcode)) {
+             return true
+      } else {
+         alert("입력하세요")
+         return false
+      }
+    },
     insertDTO () {
       let user = new uservo()
       user.userName = this.userName
@@ -296,7 +295,7 @@ export default {
     sendParam () {
           store.state.signupStore.userId = this.userId,
           store.state.signupStore.userName = this.userName,
-          store.state.signupStore.userPw = this.userPw,
+          store.state.signupStore.userPw = this.userPw1,
           store.state.signupStore.phNum = this.userPhNum,
           store.state.signupStore.shopName = this.shopName,
           store.state.signupStore.shopPhNum = this.shopPhNum,
@@ -367,27 +366,27 @@ export default {
   }
   ,
   watch: {
-    secondNum (a) {
-      if (isNaN(a) == true || a == '') {
-        alert('숫자만 입력 가능합니다.')
-        this.secondNum = ''
-        this.$refs.secondNum.focus()
-      }
-    },
-    thirdNum (a) {
-      if (isNaN(a) == true || a == '') {
-        alert('숫자만 입력 가능합니다.')
-        this.thirdNum = ''
-        this.$refs.thirdNum.focus()
-      }
-    },
-    shopPhNum (a){
-      if(isNaN(a)==true || a==''){
-        alert('숫자만 입력 가능합니다.')
-        this.shopPhNum = ''
-        this.$refs.shopPhNum.focus()
-      }
-    },
+  //   secondNum (a) {
+  //     if (isNaN(a) == true || a == '') {
+  //       alert('숫자만 입력 가능합니다.')
+  //       this.secondNum = ''
+  //       this.$refs.secondNum.focus()
+  //     }
+  //   },
+  //   thirdNum (a) {
+  //     if (isNaN(a) == true || a == '') {
+  //       alert('숫자만 입력 가능합니다.')
+  //       this.thirdNum = ''
+  //       this.$refs.thirdNum.focus()
+  //     }
+  //   },
+  //   shopPhNum (a){
+  //     if(isNaN(a)==true || a==''){
+  //       alert('숫자만 입력 가능합니다.')
+  //       this.shopPhNum = ''
+  //       this.$refs.shopPhNum.focus()
+  //     }
+  //   },
   }
   ,
 }

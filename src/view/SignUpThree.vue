@@ -55,7 +55,8 @@
               <!-- BIRTH_DD -->
               <div id="num_dd">
                 <span class="box">
-                  <input type="text" @change="phoneNumConcat()" id="dd" class="int" maxlength="4" v-model.trim="thirdNum"/>
+                  <input type="text" @change="phoneNumConcat()" id="dd" class="int" maxlength="4"
+                         v-model.trim="thirdNum"/>
                 </span>
               </div>
               <span class="error_next_box"></span>
@@ -151,7 +152,7 @@
                     accept="image/jpg image/png image/jpeg"
                     class="hidden"
                     @focus="fileCheck=false"
-                     />
+                />
 
                 <!-- <span>사업자 등록증 : {{}}</span> -->
               </span>
@@ -163,7 +164,7 @@
 
             <div class="btn_area">
               <router-link to="/signupfour">
-                <button type="button" id="btnJoin">
+                <button type="button" id="btnJoin" @click="signup">
                   <span>가입하기</span>
                 </button>
               </router-link>
@@ -175,10 +176,13 @@
           <button @click="test" class="test_btn">파라미터 콘솔 테스트</button>
         </div>
         <div class="test_btn_box">
-          <button  class="test_btn">테스트2</button>
+          <button class="test_btn">테스트2</button>
         </div>
         <div class="test_btn_box">
-          <button  class="test_btn">테스트3</button>
+          <button class="test_btn">테스트3</button>
+        </div>
+        <div class="test_btn_box">
+          <button class="test_btn" @click="signup">테스트3</button>
         </div>
       </div>
     </div>
@@ -237,29 +241,66 @@ export default {
           })
           .catch((err) => console.log(err))
     },
-      signup(){
-        axios.post('/signup').then(
-            this.$swal.fire({
-              title: '전송 완료!',
-              icon: 'success',
-              showConfirmButton: false,
-              timer: 1500
-            })
-        )
+    signup () {
+      axios({
+        method: 'post',
+        url: '/api/signup',
+        data: {
+          managename: this.manageName,
+          firstnum: this.firstNum,
+          secondnum: this.secondNum,
+          thirdnum: this.thirdNum,
+          mgphnum: this.mgPhNum,
+          biznum: this.bizNum,
+          images: this.images,
+          selected: store.state.signupStore.selected,
+          userName: store.state.signupStore.userName,
+          userId: store.state.signupStore.userId,
+          userPw: store.state.signupStore.userPw,
+          phNum: store.state.signupStore.phNum,
+          shopName: store.state.signupStore.shopName,
+          shopPhNum: store.state.signupStore.shopPhNum,
+          bizAddr1: store.state.signupStore.bizAddr1,
+          bizAddr2: store.state.signupStore.bizAddr2,
+          bizZip: store.state.signupStore.bizZip,
+          etc: store.state.signupStore.etc
+        }
+      }).then(res => {
+        console.log(res)
+        if (res.data == 1) {
+          this.$swal.fire({
+            icon: 'success',
+            title: '회원가입 신청이 완료되었습니다.',
+            text: '가입심사 완료 후 로그인 됩니다.',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        } else {
+          this.$swal.fire({
+            icon: 'warning',
+            title: '회원 가입 신청 오류!',
+            text: '입력하신 회원정보를 확인하세요.',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: '확인',
+          })
+          router.back()
+        }
 
-      },
+      }).catch((err) => {
+        console.log(err)
+      })
+    },
 
     //sweetalert2 메소드드
     fire () {
-      var fileCheck = document.getElementById("input").value;
-      if(!fileCheck){
-        alert("파일첨부해주세요")
-        return false;
+      var fileCheck = document.getElementById('input').value
+      if (!fileCheck) {
+        alert('파일첨부해주세요')
+        return false
       }
-
       this.bizNumConcat()
       this.$swal.fire({
-        title: this.bizNum1+ '-' + this.bizNum2 + '-' + this.bizNum3,
+        title: this.bizNum1 + '-' + this.bizNum2 + '-' + this.bizNum3,
         text: '사업자번호를 확인해 주세요. 사업자 번호가 틀릴경우, 가입 심사가 지연됩니다.',
         icon: 'warning',
         showCancelButton: true,
@@ -275,7 +316,7 @@ export default {
               '사업자등록증 전송이 완료되었습니다.',
               'success'
           )
-        }else if(result.dismiss){
+        } else if (result.dismiss) {
           this.$swal.fire(
               '사업자 번호를 다시 확인해 주세요.'
           )
@@ -283,12 +324,12 @@ export default {
       })
     },
     phoneNumConcat () {
-      let phoneNum = '';
+      let phoneNum = ''
       this.mgPhNum = phoneNum.concat(this.firstNum, this.secondNum, this.thirdNum)
       console.log(this.mgPhNum)
     },
-    bizNumConcat(){
-      let sumBizNum ='';
+    bizNumConcat () {
+      let sumBizNum = ''
       this.bizNum = sumBizNum.concat(this.bizNum1, this.bizNum2, this.bizNum3)
       console.log(this.bizNum)
     },
@@ -296,9 +337,9 @@ export default {
       console.log('====SignUpThree 테스트버튼====')
       console.log('SignUpTwo에서 넘어온 파라미터: ', store.state.signupStore.phNum)
       console.log('SignUpTwo에서 넘어온 파라미터 userName: ', store.state.signupStore.userName)
-      }
-    },
-    mounted () {
+    }
+  },
+  mounted () {
     console.log('사인업3에서 마운티드 : ', store.state.signupStore.selected)
     console.log('사인업3에서 마운티드 : ', store.state.signupStore.userName)
     console.log('사인업3에서 마운티드 : ', store.state.signupStore.userId)
@@ -310,8 +351,8 @@ export default {
     console.log('사인업3에서 마운티드 : ', store.state.signupStore.bizAddr2)
     console.log('사인업3에서 마운티드 : ', store.state.signupStore.bizZip)
     console.log('사인업3에서 마운티드 : ', store.state.signupStore.etc)
-    }
   }
+}
 </script>
 
 
