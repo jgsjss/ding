@@ -76,18 +76,18 @@
                         class="int"
                         maxlength="20"
                         placeholder="이메일을 입력해주세요"
+                        v-model="mgEmail1"
                     />
                   </span>
                 </div>
                 <span class="middle_mail">@</span>
                 <span class="box">
-                  <select id="email" class="sel">
+                  <select id="email" class="sel" v-model="mgEmail2" @change="emailConcat">
                     <option>선택</option>
                     <option value="naver.com">naver.com</option>
                     <option value="hanmail.net">hanmail.net</option>
                     <option value="gmail.com">gmail.com</option>
                     <option value="nate.com">nate.com</option>
-                    <option value="직접입력">직접입력</option>
                   </select>
                 </span>
               </div>
@@ -208,6 +208,12 @@ export default {
       thirdNum: '',
       //관리자번호 총합
       mgPhNum: '',
+      //관리자메일앞자리
+      mgEmail1: '',
+      //관리자메일 뒷자리
+      mgEmail2:'',
+      //메일 합 주소
+      mgEmail: '',
       //사업자번호
       bizNum1: '',
       bizNum2: '',
@@ -247,9 +253,7 @@ export default {
         url: '/api/signup',
         data: {
           managename: this.manageName,
-          firstnum: this.firstNum,
-          secondnum: this.secondNum,
-          thirdnum: this.thirdNum,
+          mgMail : this.mgEmail,
           mgphnum: this.mgPhNum,
           biznum: this.bizNum,
           images: this.images,
@@ -264,7 +268,8 @@ export default {
           bizAddr2: store.state.signupStore.bizAddr2,
           bizZip: store.state.signupStore.bizZip,
           etc: store.state.signupStore.etc
-        }
+        },
+
       }).then(res => {
         console.log(res)
         if (res.data == 1) {
@@ -332,6 +337,11 @@ export default {
       let sumBizNum = ''
       this.bizNum = sumBizNum.concat(this.bizNum1, this.bizNum2, this.bizNum3)
       console.log(this.bizNum)
+    },
+    emailConcat(){
+      let email = ''
+      this.mgEmail = email.concat(this.mgEmail1 + '@' + this.mgEmail2)
+      console.log(this.mgEmail)
     },
     test () {
       console.log('====SignUpThree 테스트버튼====')
