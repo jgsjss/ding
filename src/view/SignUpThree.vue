@@ -214,6 +214,7 @@ export default {
 
     }
   },
+
   methods: {
     //이미지 업로드
     uploadImage: function () {
@@ -236,17 +237,25 @@ export default {
           })
           .catch((err) => console.log(err))
     },
+      signup(){
+        axios.post('/signup').then(
+            this.$swal.fire({
+              title: '전송 완료!',
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 1500
+            })
+        )
 
+      },
 
     //sweetalert2 메소드드
     fire () {
-
       var fileCheck = document.getElementById("input").value;
       if(!fileCheck){
         alert("파일첨부해주세요")
         return false;
       }
-
 
       this.bizNumConcat()
       this.$swal.fire({

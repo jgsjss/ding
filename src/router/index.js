@@ -10,8 +10,6 @@ import PreparingListTwo from '../view/PreparingListTwo.vue';
 import CompletedOrder from '../view/CompletedOrder.vue';
 import OrderList from '../view/OrderList.vue';
 import OrderPrint from '../view/OrderPrint.vue';
-import mixins from '../mixins'
-
 import StaffManagementOne from '../view/StaffManagementOne.vue';
 import StaffManagementTwo from '../view/StaffManagementTwo.vue';
 import OperationManagement from '../view/OperationManagement.vue';
@@ -21,7 +19,7 @@ import DiscountCode from '../view/DiscountCode.vue';
 import SalesManagement from '../view/SalesManagement.vue';
 import Login from '../view/Login.vue';
 import SignUpOne from '../view/SignUpOne.vue';
-
+import SignUpTwo from '../view/SignUpTwo'
 import SignUpThree from '../view/SignUpThree.vue';
 import SignUpFour from '../view/SignUpFour.vue';
 import ReleaseSoldOut from '../view/ReleaseSoldOut.vue';
@@ -42,6 +40,27 @@ import page404 from '../view/page404';
 //     });
 //   },
 // };
+
+// let nullCheckSignUp2 =   ()=>{
+//   let check = false;
+//   console.log(SignUpTwo.props)
+
+
+
+  // if ( SignUpTwo.data().userId != null &&
+  //   SignUpTwo.data().userPw1 != null &&
+  //   SignUpTwo.data().userPw2 != null &&
+  //   SignUpTwo.data().phNum != null &&
+  //   SignUpTwo.data().userName != null &&
+  //   SignUpTwo.data().shopPhNum != null &&
+  //   SignUpTwo.data().bizAddr1 != null &&
+  //   SignUpTwo.data().bizAddr2 != null &&
+  //   SignUpTwo.data().bizZip != null )
+  // {
+  //
+  //   return nullCheckSignUp2 = true;
+  // }
+// }
 
 const routes = [
   {
@@ -64,7 +83,7 @@ const routes = [
     // route level oode-spilitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../view/SignUpTwo'),
+    component: SignUpTwo,
     name: 'signup2',
     props: true,
   },
@@ -73,14 +92,13 @@ const routes = [
     component: SignUpThree,
     name: 'signup3',
     props: true,
-    beforeEnter: ()=>{
-      let check = false
-      mixins.methods.$nullCheckSignUp2(check);
-      if(!check){
-        alert('정보를 정확하게 입력하세요.')
-        return '/signuptwo'
-      }
-    }
+    // beforeEnter: ()=>{
+    //   let check = false
+    //   if(!nullCheckSignUp2()){
+    //     alert('정보를 정확하게 입력하세요.')
+    //     return '/signuptwo'
+    //   }
+    // }
   },
   {
     path: '/signupfour',

@@ -76,7 +76,7 @@
             <div id="num_second">
                                 <span className="box">
                                     <input type="text" id="second2" className="int" maxLength="4"
-                                           v-model.trim="secondNum" ref="secondNum" @focus="checkFlag = false"> 
+                                           v-model.trim="secondNum" ref="secondNum" @focus="checkFlag = false">
                                 </span>
             </div>
             <!-- BIRTH_DD -->
@@ -131,7 +131,7 @@
         </div>
         <!-- JOIN BTN-->
         <div className="btn_area" @click="goNextPage"><span><router-link to="/signupthree" @click="sendParam">
-          <button type="button" id="btnJoin" >
+          <button type="button" id="btnJoin">
             다음
           </button>
           </router-link></span>
@@ -247,7 +247,7 @@ export default {
         return false
       }else{
         return false
-      } 
+      }
     },
     isEmpty(data) {
       if(data=="" || data == null || data == undefined) {
@@ -256,25 +256,25 @@ export default {
         return false;
       }
     },
-    goNextPage () {
-      this.checkFlag = true;
-      alert("입력하세요")
-       if (!this.isEmpty(this.userId) &&
-           !this.isEmpty(this.userPw1) &&
-           !this.isEmpty(this.userPw2) &&
-           !this.isEmpty(this.userName) &&
-           !this.isEmpty(this.secondNum) &&
-           !this.isEmpty(this.thirdNum) &&
-           !this.isEmpty(this.shopName) &&
-           !this.isEmpty(this.shopPhNum) &&
-           !this.isEmpty(this.address) &&
-           !this.isEmpty(this.extraAddress) &&
-           !this.isEmpty(this.postcode)) {
-             return true
-      } else {
-        return false
-      }
-    },
+    // goNextPage () {
+    //   this.checkFlag = true;
+    //   alert("입력하세요")
+    //    if (!this.isEmpty(this.userId) &&
+    //        !this.isEmpty(this.userPw1) &&
+    //        !this.isEmpty(this.userPw2) &&
+    //        !this.isEmpty(this.userName) &&
+    //        !this.isEmpty(this.secondNum) &&
+    //        !this.isEmpty(this.thirdNum) &&
+    //        !this.isEmpty(this.shopName) &&
+    //        !this.isEmpty(this.shopPhNum) &&
+    //        !this.isEmpty(this.address) &&
+    //        !this.isEmpty(this.extraAddress) &&
+    //        !this.isEmpty(this.postcode)) {
+    //          return true
+    //   } else {
+    //     return false
+    //   }
+    // },
     insertDTO () {
       let user = new uservo()
       user.userName = this.userName
@@ -282,6 +282,7 @@ export default {
       console.log(user)
     },
     test () {
+      this.$hi()
       console.log(store.state.signupStore.selected)
       // console.log(this.selected)
       // console.log()
