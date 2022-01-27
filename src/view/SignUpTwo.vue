@@ -102,7 +102,8 @@
           <h3 className="join_title"><label>매장 대표번호</label></h3>
           <span className="box int_mobile">
                             <input type="tel" id="mobile2" className="int" maxLength="11"
-                                   placeholder="'-'을 제외한 연락처 번호를 입력해주세요." v-model.trim="shopPhNum" ref="shopPhNum" @focus="checkFlag = false">
+                                   placeholder="'-'을 제외한 연락처 번호를 입력해주세요." v-model.trim="shopPhNum"
+                                    ref="shopPhNum" @focus="checkFlag = false">
                         </span>
           <span className="error_next_box"></span>
         </div>
