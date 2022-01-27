@@ -10,6 +10,7 @@ import PreparingListTwo from '../view/PreparingListTwo.vue';
 import CompletedOrder from '../view/CompletedOrder.vue';
 import OrderList from '../view/OrderList.vue';
 import OrderPrint from '../view/OrderPrint.vue';
+import mixins from '../mixins'
 
 import StaffManagementOne from '../view/StaffManagementOne.vue';
 import StaffManagementTwo from '../view/StaffManagementTwo.vue';
@@ -72,6 +73,14 @@ const routes = [
     component: SignUpThree,
     name: 'signup3',
     props: true,
+    beforeEnter: ()=>{
+      let check = false
+      mixins.methods.$nullCheckSignUp2(check);
+      if(!check){
+        alert('정보를 정확하게 입력하세요.')
+        return '/signuptwo'
+      }
+    }
   },
   {
     path: '/signupfour',

@@ -140,7 +140,7 @@
                 <label for="input_file">사업자 등록증</label>
               </h3>
               <span class="box int_name">
-                <label class="input-file-button" for="input-file" 
+                <label class="input-file-button" for="input-file"
                 >파일첨부
                 </label>
                 <input
@@ -152,7 +152,7 @@
                     class="hidden"
                     @focus="fileCheck=false"
                      />
-                   
+
                 <!-- <span>사업자 등록증 : {{}}</span> -->
               </span>
               <span class="error_next_box"></span>
@@ -171,10 +171,18 @@
           </div>
           <!-- content-->
         </form>
+        <div class="test_btn_box">
+          <button @click="test" class="test_btn">파라미터 콘솔 테스트</button>
+        </div>
+        <div class="test_btn_box">
+          <button  class="test_btn">테스트2</button>
+        </div>
+        <div class="test_btn_box">
+          <button  class="test_btn">테스트3</button>
+        </div>
       </div>
     </div>
   </div>
-  <button @click="test">테스트</button>
 
 </template>
 <script>
@@ -214,7 +222,7 @@ export default {
       let image = this.$refs['image'].files[0]
       form.append('image', image)
       // form.append('biznum',this.bizNum)
-      
+
       axios
           .post('/api/upload', form, {
             headers: {
@@ -229,17 +237,17 @@ export default {
           .catch((err) => console.log(err))
     },
 
-  
+
     //sweetalert2 메소드드
     fire () {
-      
+
       var fileCheck = document.getElementById("input").value;
       if(!fileCheck){
         alert("파일첨부해주세요")
         return false;
       }
-      
-      
+
+
       this.bizNumConcat()
       this.$swal.fire({
         title: this.bizNum1+ '-' + this.bizNum2 + '-' + this.bizNum3,

@@ -21,7 +21,7 @@ module.exports = {
       //   changeOrigin: true,
       // }
     },
-    disableHostCheck: true,
+    // disableHostCheck: true,
   },
   lintOnSave: false,
 };

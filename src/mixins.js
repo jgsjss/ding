@@ -2,10 +2,17 @@ import axios from 'axios';
 import router from './router';
 
 //라우터 전역변수
-let allRoute = router.getRoutes();
+// let allRoute = router.getRoutes();
 
 export default {
   methods: {
+    $nullCheckSignUp2(check){
+      let nullCheckSignUp2 = false;
+      if (this.$store.state.signupStore.state() != null){
+        nullCheckSignUp2 = true;
+        return check = nullCheckSignUp2
+      }
+    },
     $test() {
       function asd(targetPath, nameChange) {
         let myMap = new Map();
@@ -22,7 +29,7 @@ export default {
       asd('/main', 'hi');
       console.log(allRoute);
     },
-    
+
 
     async $api(url, data) {
       return (
