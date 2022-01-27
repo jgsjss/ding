@@ -238,6 +238,27 @@ export default {
           .catch((err) => console.log(err))
     },
       signup(){
+      let form=new FormData()
+      form.append('managename',this.manageName)
+      form.append('firstnum',this.firstNum)
+      form.append('secondnum',this.secondNum)
+      form.append('thirdnum',this.thirdNum)
+      form.append('mgphnum',this.mgPhNum)
+      form.append('biznum',this.bizNum)
+      form.append('images',this.images)
+        form.append('',store.state.signupStore.selected)
+        form.append('',store.state.signupStore.userName)
+        form.append('',store.state.signupStore.userId)
+        form.append('',store.state.signupStore.userPw)
+        form.append('',store.state.signupStore.phNum)
+        form.append('',store.state.signupStore.shopName)
+        form.append('',store.state.signupStore.shopPhNum)
+        form.append('',store.state.signupStore.bizAddr1)
+        form.append('',store.state.signupStore.bizAddr2)
+        form.append('',store.state.signupStore.bizZip)
+        form.append('',store.state.signupStore.etc)
+
+
         axios.post('/signup').then(
             this.$swal.fire({
               title: '전송 완료!',
