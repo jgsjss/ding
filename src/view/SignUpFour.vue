@@ -15,6 +15,8 @@
 <script>
 
 
+import store from '../store'
+
 export default {
   methods: {
     fire () {
@@ -40,6 +42,19 @@ export default {
         }
       })
     }
+  },
+  mounted () {
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.selected)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userName)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userId)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userPw)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.phNum)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.shopName)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.shopPhNum)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizAddr1)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizAddr2)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizZip)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.etc)
   }
 }
 </script>
