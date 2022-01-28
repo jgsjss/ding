@@ -211,7 +211,7 @@ export default {
       //관리자메일앞자리
       mgEmail1: '',
       //관리자메일 뒷자리
-      mgEmail2:'',
+      mgEmail2:'선택',
       //메일 합 주소
       mgEmail: '',
       //사업자번호
@@ -252,22 +252,38 @@ export default {
         method: 'post',
         url: '/api/signup',
         data: {
-          managename: this.manageName,
-          mgMail : this.mgEmail,
-          mgphnum: this.mgPhNum,
-          biznum: this.bizNum,
+          // managename: this.manageName,
+          // mgMail : this.mgEmail,
+          // mgphnum: this.mgPhNum,
+          // biznum: this.bizNum,
+          // images: this.images,
+          // selected: store.state.signupStore.selected,
+          // userName: store.state.signupStore.userName,
+          // userId: store.state.signupStore.userId,
+          // userPw: store.state.signupStore.userPw,
+          // phNum: store.state.signupStore.phNum,
+          // shopName: store.state.signupStore.shopName,
+          // shopPhNum: store.state.signupStore.shopPhNum,
+          // bizAddr1: store.state.signupStore.bizAddr1,
+          // bizAddr2: store.state.signupStore.bizAddr2,
+          // bizZip: store.state.signupStore.bizZip,
+          // etc: store.state.signupStore.etc
+          managename: '전광수',
+          mgMail : 'jgsjss@eetagroup.com',
+          mgphnum: '01011112222',
+          biznum: '1231212312',
           images: this.images,
-          selected: store.state.signupStore.selected,
-          userName: store.state.signupStore.userName,
-          userId: store.state.signupStore.userId,
-          userPw: store.state.signupStore.userPw,
-          phNum: store.state.signupStore.phNum,
-          shopName: store.state.signupStore.shopName,
-          shopPhNum: store.state.signupStore.shopPhNum,
-          bizAddr1: store.state.signupStore.bizAddr1,
-          bizAddr2: store.state.signupStore.bizAddr2,
-          bizZip: store.state.signupStore.bizZip,
-          etc: store.state.signupStore.etc
+          selected: 'a,b,c,d',
+          userName: '이호철',
+          userId: 'jk123',
+          userPw: 'qwe123123',
+          phNum: '01012341234',
+          shopName: 'eeta 센텀점',
+          shopPhNum: '07012341234',
+          bizAddr1: '부산광역시 해운대구 센텀대로 121',
+          bizAddr2: '센텀 T 타워, 14층',
+          bizZip: '12312',
+          etc: '1405호'
         },
 
       }).then(res => {
