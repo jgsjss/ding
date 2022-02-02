@@ -44,7 +44,7 @@
           <span>로그인</span>
         </button>
       </div>
-      <p class="login_text"><a href="#!" class="member"><router-link to="/signupOne">회원가입&nbsp;</router-link></a>후 딩동오더를 이용해 보세요!</p>
+      <p class="login_text"><a href="#!" class="member"><router-link to="./member/signupOne">회원가입&nbsp;</router-link></a>후 딩동오더를 이용해 보세요!</p>
       </form>
     </div>
     <p class="login_bottom">
@@ -87,5 +87,5 @@ export default {
 }
 </script>
 <style>
-@import '../assets/css/Member/Login.css';
+@import '../../assets/css/Member/Login.css';
 </style>

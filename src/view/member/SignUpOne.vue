@@ -43,13 +43,13 @@
       <div class="term_wrap">
         <div class="term_box">
 
-          <router-link to="/Login">
+          <router-link to="./member/Login">
             <button type="button" id="term_btnJoin1">
               <span>이전</span>
             </button>
           </router-link>
           <!--next-->
-          <router-link to="/signuptwo">
+          <router-link to="./member/signuptwo">
             <button type="button" v-if="nextBtn==true" @click="sendRouteParam" id="term_btnJoin2">
               <span>다음</span>
             </button>
@@ -64,8 +64,8 @@
 
 </template>
 <script>
-import router from '../router'
-import store from '../store/index.js'
+import router from '../../router'
+import store from '../../store/index.js'
 
 
 export default {
@@ -131,5 +131,5 @@ export default {
 
 
 <style>
-@import '../assets/css/Member/SignUpOne.css';
+@import '../../assets/css/Member/SignUpOne.css';
 </style>

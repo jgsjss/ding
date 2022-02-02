@@ -17,18 +17,18 @@ import OperationSetting from '../view/OperationSetting.vue';
 import LogCheck from '../view/LogCheck.vue';
 import DiscountCode from '../view/DiscountCode.vue';
 import SalesManagement from '../view/SalesManagement.vue';
-import Login from '../view/Login.vue';
-import SignUpOne from '../view/SignUpOne.vue';
-import SignUpTwo from '../view/SignUpTwo'
-import SignUpThree from '../view/SignUpThree.vue';
-import SignUpFour from '../view/SignUpFour.vue';
+/*------member------ */
+import Login from '../view/member/Login.vue';
+import SignUpOne from '../view/member/SignUpOne.vue';
+import SignUpTwo from '../view/member/SignUpTwo'
+import SignUpThree from '../view/member/SignUpThree.vue';
+import SignUpFour from '../view/member/SignUpFour.vue';
 import ReleaseSoldOut from '../view/ReleaseSoldOut.vue';
 import MenuManageCategories from '../view/MenuManageCategories.vue';
 import MenuManageMenus from '../view/MenuManageMenus.vue';
 import MenuManageOptions from '../view/MenuManageOptions.vue';
 import test1 from '../view/test1';
 import PageNotFound from '../view/page404';
-import login from '../view/Login';
 import page404 from '../view/page404';
 
 // const msg = true;

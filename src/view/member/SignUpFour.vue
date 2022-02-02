@@ -15,7 +15,7 @@
 <script>
 
 
-import store from '../store'
+import store from '../../store'
 
 export default {
   methods: {
@@ -60,5 +60,5 @@ export default {
 </script>
 
 <style>
-@import '../assets/css/Member/SignUpFour.css';
+@import '../../assets/css/Member/SignUpFour.css';
 </style>

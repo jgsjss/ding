@@ -18,10 +18,17 @@
         <button type="text" class="log_menu_btn" @click="detail = !detail">상세조회</button>
         <div class="log_hidden_date" v-show="detail">
           <datepicker 
+            v-model="picked"
+            :locale="locale"
+            :upperLimit="to"
+            :lowerLimit="from"
+            :clearable="false" />
+          &nbsp~&nbsp
+          <datepicker 
           v-model="selected"
           :locale="locale"
-          :upperLimit="to"
-          :lowerLimit="from" />
+          :lowerLimit="from"
+          :picker-options="endDateOptions"/>
           <button type="button" class="log_hidden_btn">조회</button>
         </div>
       </div>
@@ -64,10 +71,11 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ko">
 import Navbar from '@/components/Navbar.vue';
 import Datepicker from 'vue3-datepicker'
 import { ref } from 'vue'
+// import moment from 'moment'
 const picked = ref(new Date())
 // import axios from 'axios';
 export default {
@@ -75,14 +83,55 @@ export default {
     Navbar,
     Datepicker,
   },
+ name: 'DateCheck',
   data() {
     return {
-    detail:false,
+      detail:false,
+     startDate: '',
+     endDate: '',
+      startDateOptions: {
+        disabledDate: this.disabledStDate
+      },
+      endDateOptions: {
+        disabledDate: this.disabledEdDate
+      },
     }
+},
+//   created() {
+// this.startDate = moment().format('YYYYMMDD')
+// this.endDate = moment().add(-1, 'months').format('YYYYMMDD')
+// },
+// methods: {
+// disabledStDate(date) {
+//       date = moment(String(date)).format('YYYYMMDD')
+//     return date > moment().format('YYYYMMDD') || date < moment().add(-1, 'years').format('YYYYMMDD')
+//     },
+// disabledEdDate(date) {
+//       date = moment(String(date)).format('YYYYMMDD')
+//       return date > moment().format('YYYYMMDD') || date < this.searchData.startDate
+//     },
+//     changeDate(type) {
+//       if (type === 'start') {
+//        if (this.endDate === null || this.startDate > this.endDate) {
+//          this.endDate = this.startDate
+//         }
+//        if (moment(this.startDate).isBefore(moment(this.endDate).subtract(1, 'months').format('YYYYMMDD'))) {
+//           alert('검색 기간은 최대 1개월까지 선택 가능 합니다.')
+//         this.startDate = moment(this.endDate).subtract(1, 'months').format('YYYYMMDD')
+//         }
+//       } else if (type === 'end') {
+//        if (this.startDate === null) {
+//          this.startDate = this.endDate
+//         }
+//       if (moment(this.endDate).isAfter(moment(this.startDate).add(1, 'months').format('YYYYMMDD'))) {
+//           alert('검색 기간은 최대 1개월까지 선택 가능 합니다.')
+//          this.endDate = moment(this.startDate).add(1, 'months').format('YYYYMMDD')
+//         }
+//       }
+//   }
+//   }
+}
 
-  },
-
-};
 </script>
 
 <style>

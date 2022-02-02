@@ -130,7 +130,7 @@
                         </span>
         </div>
         <!-- JOIN BTN-->
-        <div className="btn_area" @click="goNextPage"><span><router-link to="/signupthree" @click="sendParam">
+        <div className="btn_area" @click="goNextPage"><span><router-link to="./member/signupthree" @click="sendParam">
           <button type="button" id="btnJoin">
             다음
           </button>
@@ -145,10 +145,10 @@
 
 </template>
 <script>
-import router from '../router'
+import router from '../../router'
 //인스턴스화 시켜서 ORM Mapping 필요함.
-import uservo from '../DTO/userVO'
-import store from '../store/index.js'
+import uservo from '../../DTO/userVO'
+import store from '../../store/index.js'
 import axios from 'axios'
 
 export default {
@@ -393,5 +393,5 @@ export default {
 </script>
 
 <style>
-@import '../assets/css/Member/SignUpTwo.css';
+@import '../../assets/css/Member/SignUpTwo.css';
 </style>

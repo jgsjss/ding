@@ -29,7 +29,7 @@
           <div class="info_right">naver@naver.com{{}}</div>
         </div>
       </div>
-      <router-link to="@view/Login" class="myinfo_logout"><button type="button" class="logout-btn">로그아웃</button></router-link>
+      <router-link to="@view/member/Login" class="myinfo_logout"><button type="button" class="logout-btn">로그아웃</button></router-link>
     </div>
   </div>
 </template>

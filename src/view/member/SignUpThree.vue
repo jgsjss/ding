@@ -163,7 +163,7 @@
             </div>
 
             <div class="btn_area">
-              <router-link to="/signupfour">
+              <router-link to="@/member/signupfour">
                 <button type="button" id="btnJoin" @click="signup">
                   <span>가입하기</span>
                 </button>
@@ -190,9 +190,9 @@
 
 </template>
 <script>
-import router from '../router'
+import router from '../../router'
 import axios from 'axios'
-import store from '../store/index.js'
+import store from '../../store/index.js'
 
 export default {
   data () {
@@ -381,5 +381,5 @@ export default {
 
 
 <style>
-@import '../assets/css/Member/SignUpThree.css';
+@import '../../assets/css/Member/SignUpThree.css';
 </style>
