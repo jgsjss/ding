@@ -268,9 +268,10 @@ export default {
            !this.isEmpty(this.address) &&
            !this.isEmpty(this.extraAddress) &&
            !this.isEmpty(this.postcode)) {
-             return true
+             return false
       } else {
          alert("입력하세요")
+         router.back();
          return false
       }
     },
@@ -293,6 +294,7 @@ export default {
       console.log(this.userPhNum)
     },
     sendParam () {
+
           store.state.signupStore.userId = this.userId,
           store.state.signupStore.userName = this.userName,
           store.state.signupStore.userPw = this.userPw1,
