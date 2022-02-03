@@ -45,5 +45,5 @@ export default {
 }
 </script>
 <style>
-@import '../assets/css/Ordermanagement/Ordermanagement.css';
+@import '../../assets/css/Ordermanagement/Ordermanagement.css';
 </style>

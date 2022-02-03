@@ -129,5 +129,5 @@ export default {
 </script>
 
 <style>
-@import '../assets/css/Ordermanagement/CompletedOrder.css';
+@import '../../assets/css/Ordermanagement/CompletedOrder.css';
 </style>

@@ -2,14 +2,15 @@ import { createRouter, createWebHistory } from 'vue-router';
 // import Total from '../view/**'
 import Main from '../view/Main.vue';
 import MenuManagement from '../view/MenuManagement.vue';
-import OrderManagement from '../view/OrderManagement.vue';
-import NewOrderListOne from '../view/NewOrderListOne.vue';
-import NewOrderListTwo from '../view/NewOrderListTwo.vue';
-import PreparingListOne from '../view/PreparingListOne.vue';
-import PreparingListTwo from '../view/PreparingListTwo.vue';
-import CompletedOrder from '../view/CompletedOrder.vue';
-import OrderList from '../view/OrderList.vue';
-import OrderPrint from '../view/OrderPrint.vue';
+/*------ordermanage------ */
+import OrderManagement from '../view/ordermanage/OrderManagement.vue';
+import NewOrderListOne from '../view/ordermanage/NewOrderListOne.vue';
+import NewOrderListTwo from '../view/ordermanage/NewOrderListTwo.vue';
+import PreparingListOne from '../view/ordermanage/PreparingListOne.vue';
+import PreparingListTwo from '../view/ordermanage/PreparingListTwo.vue';
+import CompletedOrder from '../view/ordermanage/CompletedOrder.vue';
+import OrderList from '../view/ordermanage/OrderList.vue';
+import OrderPrint from '../view/ordermanage/OrderPrint.vue';
 import StaffManagementOne from '../view/StaffManagementOne.vue';
 import StaffManagementTwo from '../view/StaffManagementTwo.vue';
 import OperationManagement from '../view/OperationManagement.vue';

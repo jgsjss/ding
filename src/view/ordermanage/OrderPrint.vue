@@ -121,7 +121,7 @@
           </div>
         <!--///영수증 인쇄 옆 버튼-->
          <div class="print_btn-cover">
-          <router-link to="/OrderPrint"><button type="text" class="print_receipt_btn" onclick="window.print()"
+          <router-link to="./member/OrderPrint"><button type="text" class="print_receipt_btn" onclick="window.print()"
           >주문표 인쇄</button></router-link>
           <button :disabled="menulistpageNum === 0" @click="prevPage2" class="print_page-btn">
             <i class="xi-angle-up print_btn_icon"></i>
@@ -169,5 +169,5 @@ export default {
 </script>
 
 <style>
-@import '../assets/css/Ordermanagement/OrderPrint.css';
+@import '../../assets/css/Ordermanagement/OrderPrint.css';
 </style>

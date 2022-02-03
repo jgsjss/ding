@@ -109,5 +109,5 @@ export default {
 </script>
 
 <style>
-@import '../assets/css/Ordermanagement/OrderList.css';
+@import '../../assets/css/Ordermanagement/OrderList.css';
 </style>

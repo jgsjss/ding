@@ -24,8 +24,8 @@
             <span>{{}}바닐라 라떼는 샷 연하게 해주세요 :)</span>
           </div>
             <div class="order1-2_right">
-              <router-link to="/OrderPrint" class="order1-2_right_inner1"><button type="text" class="order1-2_btn1"><span>주문표 인쇄</span></button></router-link>
-              <router-link to="/OrderPrint" class="order1-2_right_inner2"><button type="text" class="order1-2_btn2"><span>준비중</span></button></router-link>
+              <router-link to="./member/OrderPrint" class="order1-2_right_inner1"><button type="text" class="order1-2_btn1"><span>주문표 인쇄</span></button></router-link>
+              <router-link to="./member/OrderPrint" class="order1-2_right_inner2"><button type="text" class="order1-2_btn2"><span>준비중</span></button></router-link>
             </div>
       </li>
     </ul>
@@ -107,5 +107,5 @@ export default {
 </script>
 
 <style>
-@import '../assets/css/Ordermanagement/NewOrderListTwo.css';
+@import '../../assets/css/Ordermanagement/NewOrderListTwo.css';
 </style>
