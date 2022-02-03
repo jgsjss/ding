@@ -17,21 +17,7 @@
         <button type="text" class="log_menu_btn">3개월</button>
         <button type="text" class="log_menu_btn" @click="detail = !detail">상세조회</button>
         <div class="log_hidden_date" v-show="detail">
-          <datepicker 
-            v-model="picked"
-            dateFormat="yyyy-mm-dd"
-            :locale="ko-KO"
-            :upperLimit="to"
-            :lowerLimit="from"
-            :clearable="true" />
-          &nbsp~&nbsp
-          <datepicker 
-          v-model="picked"
-          dateFormat="yyyy-mm-dd"          
-          :locale="ko-KO"
-          :upperLimit="to"
-          :lowerLimit="from"
-          :picker-options="endDateOptions"/>
+          <!-- <Calendar /> -->
           <button type="button" class="log_hidden_btn">조회</button>
         </div>
       </div>
@@ -74,33 +60,19 @@
     </div>
   </div>
 </template>
-<script lang="ko">
+<script>
 import Navbar from '@/components/Navbar.vue';
-import Datepicker from 'vue3-datepicker';
-import { ko } from "date-fns/locale/ko";
-import { ref } from 'vue'
-// import moment from 'moment'
-const picked = ref(new Date())
-// import axios from 'axios';
+import Calendar from '@/view/Calendar.vue';
+
 export default {
   components: {
     Navbar,
-    Datepicker,
+    Calendar,
   },
- name: 'DateCheck',
+
   data() {
     return {
-      ko,
-      picked,
       detail:false,
-     startDate: '',
-     endDate: '',
-      startDateOptions: {
-        disabledDate: this.disabledStDate
-      },
-      endDateOptions: {
-        disabledDate: this.disabledEdDate
-      },
       pageNum: 0,
     }
 },

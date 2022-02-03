@@ -31,6 +31,7 @@ import MenuManageCategories from '../view/MenuManageCategories.vue';
 import MenuManageMenus from '../view/MenuManageMenus.vue';
 import MenuManageOptions from '../view/MenuManageOptions.vue';
 import test1 from '../view/test1';
+import Calendar from '../view/Calendar.vue'
 import PageNotFound from '../view/page404';
 import page404 from '../view/page404';
 
@@ -215,6 +216,10 @@ const routes = [
   {
     path: '/test1',
     component: test1,
+  },
+  {
+    path: '/calendar',
+    component: Calendar,
   },
   {
     // to: '/main',
