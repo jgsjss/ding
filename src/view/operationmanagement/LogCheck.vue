@@ -19,14 +19,17 @@
         <div class="log_hidden_date" v-show="detail">
           <datepicker 
             v-model="picked"
-            :locale="locale"
+            dateFormat="yyyy-mm-dd"
+            :locale="ko-KO"
             :upperLimit="to"
             :lowerLimit="from"
-            :clearable="false" />
+            :clearable="true" />
           &nbsp~&nbsp
           <datepicker 
-          v-model="selected"
-          :locale="locale"
+          v-model="picked"
+          dateFormat="yyyy-mm-dd"          
+          :locale="ko-KO"
+          :upperLimit="to"
           :lowerLimit="from"
           :picker-options="endDateOptions"/>
           <button type="button" class="log_hidden_btn">조회</button>
@@ -73,7 +76,8 @@
 </template>
 <script lang="ko">
 import Navbar from '@/components/Navbar.vue';
-import Datepicker from 'vue3-datepicker'
+import Datepicker from 'vue3-datepicker';
+import { ko } from "date-fns/locale/ko";
 import { ref } from 'vue'
 // import moment from 'moment'
 const picked = ref(new Date())
@@ -86,6 +90,8 @@ export default {
  name: 'DateCheck',
   data() {
     return {
+      ko,
+      picked,
       detail:false,
      startDate: '',
      endDate: '',
@@ -95,8 +101,18 @@ export default {
       endDateOptions: {
         disabledDate: this.disabledEdDate
       },
+      pageNum: 0,
     }
 },
+    methods: {
+      nextPage() {
+        this.pageNum += 1;
+      },
+      prevPage() {
+        this.pageNum -= 1;
+      }
+}
+
 //   created() {
 // this.startDate = moment().format('YYYYMMDD')
 // this.endDate = moment().add(-1, 'months').format('YYYYMMDD')

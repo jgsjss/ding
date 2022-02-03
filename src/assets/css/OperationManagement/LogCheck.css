@@ -10,6 +10,13 @@
   color: #997fb5;
   padding: 0 20px;
 }
+.menu_btn:last-child {
+  float: right;
+  background: #997fb5;
+  color: #fff;
+  border-radius: 5px;
+  line-height: 1.2;
+}
 .xi-close {
   color: #997fb5;
 }
@@ -96,6 +103,10 @@ tbody {
 }
 .v3dp__input_wrapper {
     border:none;
+}
+.v3dp__input_wrapper > input {
+  border:none;
+  padding: 5px;
 }
 .log_hidden_date {
     display: inherit;
