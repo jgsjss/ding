@@ -310,5 +310,5 @@ export default {
 </script>
 
 <style>
-@import '../assets/css/OperationManagement/OperationSetting.css';
+@import '../../assets/css/OperationManagement/OperationSetting.css';
 </style>

@@ -135,5 +135,5 @@ export default {
 </script>
 
 <style>
-@import '../assets/css/OperationManagement/LogCheck.css';
+@import '../../assets/css/OperationManagement/LogCheck.css';
 </style>

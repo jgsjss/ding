@@ -11,11 +11,13 @@ import PreparingListTwo from '../view/ordermanage/PreparingListTwo.vue';
 import CompletedOrder from '../view/ordermanage/CompletedOrder.vue';
 import OrderList from '../view/ordermanage/OrderList.vue';
 import OrderPrint from '../view/ordermanage/OrderPrint.vue';
-import StaffManagementOne from '../view/StaffManagementOne.vue';
-import StaffManagementTwo from '../view/StaffManagementTwo.vue';
-import OperationManagement from '../view/OperationManagement.vue';
-import OperationSetting from '../view/OperationSetting.vue';
-import LogCheck from '../view/LogCheck.vue';
+/*------staffmanagement------ */
+import StaffManagementOne from '../view/staffmanagement/StaffManagementOne.vue';
+import StaffManagementTwo from '../view/staffmanagement/StaffManagementTwo.vue';
+/*------operationmanagement------ */
+import OperationManagement from '../view/operationmanagement/OperationManagement.vue';
+import OperationSetting from '../view/operationmanagement/OperationSetting.vue';
+import LogCheck from '../view/operationmanagement/LogCheck.vue';
 import DiscountCode from '../view/DiscountCode.vue';
 import SalesManagement from '../view/SalesManagement.vue';
 /*------member------ */

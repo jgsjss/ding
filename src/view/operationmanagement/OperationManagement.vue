@@ -116,7 +116,7 @@
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue'
-import OperationSetting from './OperationSetting.vue';
+import OperationSetting from '../operationmanagement/OperationSetting.vue';
   export default {
   components:{
     Navbar,
@@ -140,5 +140,5 @@ import OperationSetting from './OperationSetting.vue';
 
 </script>
 <style>
-@import '../assets/css/OperationManagement/OperationManagement.css';
+@import '../../assets/css/OperationManagement/OperationManagement.css';
 </style>

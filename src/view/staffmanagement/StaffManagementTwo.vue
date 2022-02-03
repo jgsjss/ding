@@ -57,8 +57,8 @@
 </template>
 
 <script>
-import Navbar from '../components/Navbar.vue';
-import StaffModal from '../components/StaffModal.vue';
+import Navbar from '../../components/Navbar.vue';
+import StaffModal from '../../components/StaffModal.vue';
 // import axios from 'axios';
 export default {
   components: { 
@@ -87,5 +87,5 @@ export default {
 </script>
 
 <style>
-@import '../assets/css/StaffManagement/StaffManagementTwo.css';
+@import '../../assets/css/StaffManagement/StaffManagementTwo.css';
 </style>
