@@ -1,4 +1,4 @@
-const target = 'http://192.168.0.120:5000';
+const target = 'http://192.168.0.110:5000'
 
 module.exports = {
   devServer: {
@@ -16,12 +16,14 @@ module.exports = {
         target,
         changeOrigin: true,
       },
-      // '^/login': {
-      //   target,
-      //   changeOrigin: true,
-      // }
-    },
-    // disableHostCheck: true,
-  },
-  lintOnSave: false,
-};
+
+// '^/login': {
+//   target,
+//   changeOrigin: true,
+// }
+},
+// disableHostCheck: true,
+},
+lintOnSave: false,
+}
+

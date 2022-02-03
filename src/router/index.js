@@ -34,6 +34,22 @@ import test1 from '../view/test1';
 import Calendar from '../view/Calendar.vue'
 import PageNotFound from '../view/page404';
 import page404 from '../view/page404';
+import store from '../store'
+
+//인증메소드
+const Authentication = () => (to, from, next) => {
+  const isLogin = store.getters['loginStore/isLogin'];
+  if (!isLogin) {
+    next('/login?returnUrl=' + to.fullPath);
+  } else {
+    next();
+  }
+};
+
+// import PageNotFound from '../view/page404';
+// import page404 from '../view/page404';
+
+
 
 // const msg = true;
 // const methods = {
@@ -69,9 +85,10 @@ import page404 from '../view/page404';
 const routes = [
   {
     path: '/',
-    component: Main,
+    component: Login,
     name: 'main',
-    params: { page404: false },
+
+    // params: { page404: false },
   },
   {
     path: '/login',
@@ -112,7 +129,9 @@ const routes = [
   },
   {
     path: '/main',
+    name: Main,
     component: Main,
+    // beforeEnter: Authentication()
   },
   {
     path: '/menumanagement',
@@ -204,7 +223,7 @@ const routes = [
   {
     path: '/LogCheck',
     component: LogCheck,
-  },  
+  },
   {
     path: '/discountcode',
     component: DiscountCode,
@@ -255,6 +274,7 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
 
 
 export default router;

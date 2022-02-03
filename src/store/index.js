@@ -12,6 +12,7 @@ import timeData from '../assets/timeData.js'
 
 //스토어 모듈 임포트
 import { signupStore } from './modules/signupStore'
+import { loginStore } from './modules/loginStore'
 
 
 let soldNum=0;
@@ -33,13 +34,12 @@ for(let i=0; i<orderData.length; i++){
     cancelNum++;
   }
 }
-import { computed } from "vue";
-import { useStore } from "vuex";
+
 export default createStore({
-  
+
   modules:{
     signupStore: signupStore,
-
+    loginStore: loginStore,
   },
   state: {
     //=======================Main.vue 화면 내부 데이터 ========================
@@ -81,7 +81,7 @@ export default createStore({
     // timeData,
     //스테이트 변환, $store.commit('mutation 함수명') 으로 이벤트 핸들링
     mutations: {
-      
+
     },
     //ajax요청, 혹은 오래걸리는 작업 요청,  $store.dispatch('actions 함수명') 으로 이벤트 핸들링
     //actions를 통한 스테이트 변경이 필요할 시, mutations에서 함수를 작성해야한다

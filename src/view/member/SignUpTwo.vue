@@ -305,6 +305,7 @@ export default {
           store.state.signupStore.bizAddr2 = this.extraAddress,
           store.state.signupStore.bizZip = this.postcode,
           store.state.signupStore.etc = this.etc
+
     },
     //daum map api
     execDaumPostcode () {
@@ -363,7 +364,7 @@ export default {
     }
     ,
      passwordValid () {
-       return /^[A-Za-z0-9]+$/.test(this.signup.password)
+       return /^[A-Za-z0-9]+$/.test(this.signupStore.password)
      },
   }
   ,
