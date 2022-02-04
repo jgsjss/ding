@@ -12,14 +12,7 @@
         <p> - 요일별 하나의 영업시간만 등록할 수 잇습니다.</p>
         <p> - 영업시간이 등록되지 않은 요일은 24시간 영업으로 보여집니다.</p>
         <p> - 정기휴무는 영업시간이 등록되어 있더라도 휴무로 보여집니다.</p>
-        <div class="oper_modal_oper_box">
-            <form>
-                <label for="input_day" class="input_day">평일</label>
-                <input type="text" class="oper_timebtn">
-                <label for="input_day" class="input_day">주말</label>
-                <input type="text" class="oper_timebtn">
-            </form>
-        </div>
+
         </div>
         <div class="oper_sub_modal_wrap">
         <div class="oper_modal_two">
@@ -37,8 +30,16 @@
                     <label class="form-check-label" for="flexSwitchCheckChecked">24시간</label>
                     </div>                  
                 </div>
+            <div class="oper_modal_oper_box">
+                <form>
+                    <label for="input_day" class="input_day">평일 시작 및 종료시간</label>
+                    <Datepicker v-model="time" timePicker range />
+                    <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
+                    <Datepicker v-model="time" timePicker range />    
+                </form>
+            </div>
                 <!--//////시작시간//////-->
-                <div class="startime_wrap">
+                <!-- <div class="startime_wrap">
                 <div class="starttime_box">
                     <label for="starttime" class="starttime">시작시간</label>  
                         <select id="time" className="Stime" @change="starttime">
@@ -47,10 +48,9 @@
                         <select id="time" className="Stime" @change="starttime">
                             <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
                         </select>  
-                </div>                    
-                
+                </div>                -->
                 <!--//////종료시간//////-->  
-                <div class="starttime_box">
+                <!-- <div class="starttime_box">
                     <label for="starttime" class="starttime">종료시간</label>  
                         <select id="time" className="Stime" @change="starttime">
                             <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
@@ -59,7 +59,7 @@
                             <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
                                     </select>  
                 </div>   
-                </div>                                                                          
+                </div>                                                                           -->
             </form>
             <div class="time_btn_wrap">
             <button type="button" class="time_btn">저장</button>
@@ -73,63 +73,28 @@
           <!--/////준비시간 평소에는 hidden/////-->          
     <div id="break_container" v-if="step == 1">
         <div class="break_wrapper">
-        <div class="break_one">
-        <div class="break_text">준비시간</div>
-        <div class="break__box">
-            <form>
-                <button type="button" class="break_timebtn">
-                    <span class="btn_inner_text">평일</span>
-                    <i class="xi-minus-circle-o"></i>                    
-                    11시00분 ~ 01시00분(익일)
-                </button>
-                <button type="button" class="break_timebtn">
-                    <span class="btn_inner_text">주말</span>
-                    <i class="xi-minus-circle-o"></i>
-                    24시간
-                </button>
-            </form>
-        </div>
-        </div>
         <div class="break_wrap">
-        <div class="break_two">
-            <form>
+            <div class="break_text">준비시간</div>
+        <div class="break_one">
                 <div class="break_switch">
                     <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
                     <label class="form-check-label" for="flexSwitchCheckChecked">준비시간 설정</label>
                     </div>                  
                 </div>
-                <!--//////시작시간//////-->
-                <div class="breaktime_wrap">
-                <div class="breaktime_box">
-                    <label for="breaktime" class="breaktime">시작시간</label>  
-                        <select id="time" className="Btime" @change="starttime">
-                            <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
-
-                                    </select>           
-                        <select id="time" className="Btime" @change="starttime">
-                            <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
-                                    </select>  
-                </div>                    
-                <!--//////종료시간//////-->  
-                <div class="breaktime_box">
-                    <label for="breaktime" class="breaktime">종료시간</label>  
-                        <select id="time" className="Btime" @change="starttime">
-                            <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
-
-                                    </select>           
-                        <select id="time" className="Btime" @change="starttime">
-                            <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
-                                    </select>  
-                </div>   
-                </div>                                                                          
-            </form>
-            <div class="break_time_btn_wrap">
-            <button type="button" class="break_add_btn">저장</button>
-            <button type="button" class="break_close_btn">닫기</button>
-            </div>
+                <div class="break_box">
+                    <form>
+                        <label for="input_day" class="input_day">평일 시작 및 종료시간</label>
+                        <Datepicker v-model="time" timePicker range />
+                        <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
+                        <Datepicker v-model="time" timePicker range />    
+                    </form>
+                </div>
+                    <div class="break_time_btn_wrap">
+                    <button type="button" class="break_add_btn">저장</button>
+                    <button type="button" class="break_close_btn">닫기</button>
+                    </div>
         </div>
-
         </div>
         </div>
     </div>
@@ -229,7 +194,14 @@
                     <label class="form-check-label" for="flexSwitchCheckChecked">하루종일</label>
                     </div>                  
                 </div>
-                <div class="temporary_timebtn_box">
+                <div class="temporary_day_box">
+                <p>날짜 선택하기</p>
+                <Datepicker 
+                v-model="date" locale="ko" range multiCalendars autoApply weekStart="0" :enableTimePicker="false" :yearRange="[2022, 2040]" />
+                <p class="temporary_time_text">시작 및 종료시간</p>
+                <Datepicker v-model="time" timePicker range />
+                </div>                                    
+                <!-- <div class="temporary_timebtn_box">
                 <lebel class="tbtn_inner_text">시작</lebel>
                 <button type="button" class="temporary_timebtn">
                     <i class="xi-minus-circle-o"></i>                    
@@ -242,9 +214,9 @@
                     <i class="xi-minus-circle-o"></i>
                     2022년 01월 27일 (목)                    
                 </button>
-                </div>
+                </div> -->
                 <!--//////시작시간//////-->
-                <div class="temporary_wrap">
+                <!-- <div class="temporary_wrap">
                 <div class="temporary_box">
                     <label for="temporarytime" class="temporarytime">시작</label>  
                         <select id="time" className="Ttime" @change="temporarytime">
@@ -254,9 +226,9 @@
                         <select id="time" className="Ttime" @change="temporarytime">
                             <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
                                     </select>  
-                </div>                    
+                </div>                     -->
                 <!--//////종료시간//////-->  
-                <div class="temporary_box">
+                <!-- <div class="temporary_box">
                     <label for="temporarytime" class="temporarytime">종료</label>  
                         <select id="time" className="Ttime" @change="temporarytime">
                             <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
@@ -266,7 +238,7 @@
                             <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
                                     </select>  
                 </div>   
-                </div>                                                                          
+                </div>                                                                           -->
             </form>
             <div class="temporary_btn_wrap">
             <button type="button" class="temporary_add_btn">저장</button>
