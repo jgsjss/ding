@@ -8,6 +8,10 @@ module.exports = {
         target,
         changeOrigin: true,
       },
+      '^/member':{
+        target,
+        changeOrigin: true,
+      },
       '^/upload': {
         target,
         changeOrigin: true,

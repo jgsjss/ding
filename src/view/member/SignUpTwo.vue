@@ -19,7 +19,7 @@
                             <input type="text" id="id2" className="int" maxLength="20" v-model="userId"
                                    @change="isUser(userId)" @focus="checkFlag = false">
              <span className="step_url" v-show="userCheck1">사용가능한 아이디 입니다.</span>
-             <span className="step_url" v-show="userCheck2">유효하지 않은 아이디 입니다.</span>
+             <span className="step_url" v-show="userCheck2">이미 사용중인 아이디 입니다.</span>
                         </span>
           <span className="error_next_box"></span>
         </div>

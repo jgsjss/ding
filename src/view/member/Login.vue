@@ -69,7 +69,6 @@ export default {
   },
   methods: {
     doLogin(){
-
       if(this.userId == ""){
         alert('아이디를 입력하세요.');
         this.$refs.memberIdInput.focus();
@@ -79,7 +78,7 @@ export default {
         this.$refs.memberPasswordInput.focus();
         return;
       }
-      let userInfo = { id: this.userId, password : this.userPw };
+      let userInfo = { userid: this.userId, userpw : this.userPw };
       this.$store.dispatch("loginStore/doLogin", userInfo).then(()=>{
         const returnUrl = window.location.search.replace(/^\?returnUrl=/, "");
         this.$router.push(returnUrl);
