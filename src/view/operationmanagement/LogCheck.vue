@@ -17,14 +17,14 @@
         <button type="text" class="log_menu_btn">3개월</button>
         <button type="text" class="log_menu_btn" @click="detail = !detail">상세조회</button>
         <div class="log_hidden_date" v-show="detail">
-          <!-- <Calendar /> -->
+          <Calendar />
           <button type="button" class="log_hidden_btn">조회</button>
         </div>
       </div>
       <select class="menu_btn">
         품절해제
-        <option class="log_check_Box" :value="check">최신순</option>
-        <option class="log_check_Box" :value="check">과거순</option>
+        <option class="log_check_Box">최신순</option>
+        <option class="log_check_Box">과거순</option>
       </select>
     </div>
     <div class="log_wrapper">
