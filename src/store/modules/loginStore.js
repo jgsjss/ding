@@ -35,11 +35,11 @@ export const loginStore = {
       try {
         let res = await axios.post('/member/login', userInfo)
         if (res.data.success == true) {
-          console.log('로그인 성공')
           commit('setUserId', userInfo.userid)
           commit('setAccessToken', res.data.accessToken)
           axios.defaults.headers.common['Access-Token'] = res.data.accessToken
           result = true
+          console.log('로그인 성공')
         } else {
           console.log('로그인 실패')
           let err = new Error('Request failed with status code 401')

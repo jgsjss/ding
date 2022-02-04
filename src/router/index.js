@@ -287,19 +287,19 @@ const router = createRouter({
   routes,
 });
 
-//meta 체크 전역
-// router.beforeEach((to, from, next) => {
-//   if (to.matched.some(record => record.meta.requireLogin)) {
-//     const isLogin = store.getters['loginStore/isLogin'];
-//     if (!isLogin) {
-//       next('/login?returnUrl=' + to.fullPath);
-//      } else {
-//       next();
-//     }
-//   } else {
-//     next();
-//   }
-// });
+// meta 체크 전역
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requireLogin)) {
+    const isLogin = store.getters['loginStore/isLogin'];
+    if (!isLogin) {
+      next('/login?returnUrl=' + to.fullPath);
+     } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
 
 
 
