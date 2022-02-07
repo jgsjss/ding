@@ -318,21 +318,21 @@ const router = createRouter({
   routes,
 });
 
-// meta 체크 전역
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requireLogin)) {
-    const isLogin = store.getters['loginStore/isLogin'];
-    if (!isLogin) {
-      alert('로그인 후 이용 가능합니다.')
-      // next('/login?returnUrl=' + to.fullPath);
-      next('/login');
-     } else {
-      next();
-    }
-  } else {
-    next();
-  }
-});
+// // meta 체크 전역
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requireLogin)) {
+//     const isLogin = store.getters['loginStore/isLogin'];
+//     if (!isLogin) {
+//       alert('로그인 후 이용 가능합니다.')
+//       // next('/login?returnUrl=' + to.fullPath);
+//       next('/login');
+//      } else {
+//       next();
+//     }
+//   } else {
+//     next();
+//   }
+// });
 
 
 

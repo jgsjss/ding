@@ -53,7 +53,8 @@
     width: 50%;
     float:left;
     margin:0 15px;
-    border:1px solid #ddd;
+    border:1px solid #997fb5;
+    border-radius: 5px;
     padding:15px;
 }
 .sales_sort_btn_wrap {
@@ -79,6 +80,7 @@
   .sales_col {
     font-weight: 500;
     text-align: center;
+    font-size:14px;
   }
   .sales_col:nth-child(1):after {
     display:none;
@@ -92,11 +94,20 @@
       height: 15px;
       background: #fff;
   }
-  tbody {
-    color:#997fb5;
-  }
-
-
+  .sales_data {
+    text-decoration: none;
+    color:#997fb5
+    }
+    tbody {
+        color:#997fb5;
+    }
+    /* a */
+    a {
+        color:#997fb5;
+    }
+    a:hover {
+        color:#997fb5;
+    }
 
   .dp__input_icon_pad {
       border:none;

@@ -40,12 +40,12 @@
           </thead>
           <tbody>
           <tr v-for="(a, i) in $store.state.menuData" :key="i">
-            <td>{{ $store.state.SalesData[i].orderdata }}</td>
-            <td>{{ $store.state.SalesData[i].watingnum }}</td>
-            <td>{{ $store.state.SalesData[i].division }} </td>
-            <td>{{ $store.state.SalesData[i].content }}</td>
-            <td>{{ $store.state.SalesData[i].price }}</td>
-            <td>{{ $store.state.SalesData[i].etc }}</td>
+            <td class="sales_data"><router-link to="../ordermanage/orderprint">{{ $store.state.SalesData[i].orderdata }}</router-link></td>
+            <td class="sales_data">{{ $store.state.SalesData[i].watingnum }}</td>
+            <td class="sales_data">{{ $store.state.SalesData[i].division }} </td>
+            <td class="sales_data">{{ $store.state.SalesData[i].content }}</td>
+            <td class="sales_data">{{ $store.state.SalesData[i].price }}</td>
+            <td class="sales_data">{{ $store.state.SalesData[i].etc }}</td>
           </tr>
           </tbody>
         </table>
@@ -84,19 +84,16 @@ import { ref } from 'vue';
         this.pageNum -= 1;
       },
     },
-    // setup() {
-    //     const date = ref(new Date());
-    //     // In case of a range picker, you'll receive [Date, Date]
-    //     const format = (date) => {
-    //         const month = date.getMonth() + 1;
-
-    //         return `Selected date is ${month}`;
-    //     }
-    //         return {
-    //         date,
-    //         format,
-    //     }
-    // }
+    setup() {
+        const month = ref({ 
+            month: new Date().getMonth(),
+            year: new Date().getFullYear()
+        });
+        
+        return {
+            month,
+        }
+    }   
   }
 
 

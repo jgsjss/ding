@@ -1,27 +1,27 @@
-.dis_container {
+.sales_container {
     width:100%;
     margin:0 auto;
   }
-  .dis_wrap {
+  .sales_wrap {
     display:flex;
     justify-content: space-between;
     align-items: center;
     padding:15px 15px
   }
-  .dis_text {
+  .sales_text {
     color:#997fb5;
     font-size:36px;
   }
-  .dis_component_bar {
+  .sales_component_bar {
     padding:15px 0;
     margin:0 auto;
     position:relative;
     width: 80%;
   }
-  .dis_component_bar > a {
+  .sales_component_bar > a {
     text-decoration: none;
   }
-  .dis_component_name {
+  .sales_component_name {
     margin:0 30px;
     color:#997fb5;
     position:relative;
