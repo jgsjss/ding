@@ -18,7 +18,10 @@ import StaffManagementTwo from '../view/staffmanagement/StaffManagementTwo.vue';
 import OperationManagement from '../view/operationmanagement/OperationManagement.vue';
 import OperationSetting from '../view/operationmanagement/OperationSetting.vue';
 import LogCheck from '../view/operationmanagement/LogCheck.vue';
-import DiscountCode from '../view/DiscountCode.vue';
+/*———DiscountCode——— */
+import DiscountCode from '../view/DiscountCode/DiscountCode.vue';
+import DiscountCodeOne from '../view/DiscountCode/DiscountCodeOne.vue';
+import DiscountCodeTwo from '../view/DiscountCode/DiscountCodeTwo.vue';
 import SalesManagement from '../view/SalesManagement.vue';
 /*------member------ */
 import Login from '../view/member/Login.vue';
@@ -234,11 +237,24 @@ const routes = [
     component: LogCheck,
     meta: { requireLogin: true },
   },
-  {
-    path: '/discountcode',
-    component: DiscountCode,
-    meta: { requireLogin: true },
-  },
+    //-----------할인코드------------  
+    {
+      path: '/discountcode',
+      component: DiscountCode,
+      meta: { requireLogin: true },
+      children: [
+        {
+          path: '/discountcode/discountcodeone',
+          component: DiscountCodeOne,
+          meta: { requireLogin: true },        
+        },
+        {
+          path: '/discountcode/discountcodetwo',
+          component: DiscountCodeTwo,
+          meta: { requireLogin: true },        
+        },
+      ],
+    },
   {
     path: '/releaseSoldout',
     component: ReleaseSoldOut,
@@ -288,18 +304,19 @@ const router = createRouter({
 });
 
 // meta 체크 전역
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requireLogin)) {
-    const isLogin = store.getters['loginStore/isLogin'];
-    if (!isLogin) {
-      next('/login?returnUrl=' + to.fullPath);
-     } else {
-      next();
-    }
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requireLogin)) {
+//     const isLogin = store.getters['loginStore/isLogin'];
+//     if (!isLogin) {
+//       alert('로그인 후 이용 가능합니다.')
+//       next('/login?returnUrl=' + to.fullPath);
+//      } else {
+//       next();
+//     }
+//   } else {
+//     next();
+//   }
+// });
 
 
 

@@ -20,6 +20,8 @@ app.config.globalProperties.emitter = emitter;
 app.config.globalProperties.axios = axios;
 app.component('Datepicker', Datepicker);
 
+
+
 app.mixin(mixins)
 app.use(vuesweetalert2)
 // app.use(VueCookies);

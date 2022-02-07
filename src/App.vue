@@ -2,6 +2,7 @@
   <h1><router-link to="./member/signupone">회원가입 페이지</router-link> </h1>
   <h1><router-link to="./member/Login">로그인 페이지</router-link></h1>
   <h1><a href="/main">메인 페이지</a> </h1>
+  <button @click="loginCheck">로그인 체크 </button>
 
     <router-view > </router-view>
 
@@ -12,21 +13,27 @@
 // import MenuModal from './components/MenuModal.vue'
 
 import axios from 'axios'
-
+import store from './store'
 
 
 //   this.$props.
 export default {
   data(){
     return{
-
+      userId : store.state.loginStore.userid,
+      accessToken : store.state.loginStore.accessToken,
+      refreshToken : store.state.loginStore.refreshToken,
     }
   },
   components: {
 
   },
   methods: {
-
+      loginCheck(){
+        console.log(this.userId);
+        console.log(this.accessToken);
+        console.log(this.refreshToken);
+      }
   },
   created () {
 
@@ -37,6 +44,7 @@ export default {
     //   this.MenuCheckModal = a;
     //   console.log(a)
     // })
+
   },
   watch: {
 

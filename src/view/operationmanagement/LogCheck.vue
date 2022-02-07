@@ -21,17 +21,17 @@
           <button type="button" class="log_hidden_btn">조회</button>
         </div>
       </div>
-      <select class="menu_btn">
+      <select id="sorted" class="menu_btn">
         품절해제
-        <option class="log_check_Box">최신순</option>
-        <option class="log_check_Box">과거순</option>
+        <option class="log_check_Box" >최신순</option>
+        <option class="log_check_Box" >과거순</option>
       </select>
     </div>
     <div class="log_wrapper">
       <table class="table log_table">
         <thead class="log_head">
           <tr class="log_title">
-            <th><input type="checkbox" id="all-check" /></th>
+            <th></th>
             <th scope="col" class="log_col">시간</th>
             <th scope="col" class="log_col">아이디</th>
             <th scope="col" class="log_col">아이피</th>
@@ -40,10 +40,10 @@
         </thead>
         <tbody>
           <tr v-for="(a, i) in $store.state.LogCheckData" :key="i">
-            <th scope="row"><input type="checkbox" /></th>
-            <td>{{ $store.state.LogCheckData[i].time }}</td>
+            <th scope="row"></th>
+            <td class="col-2 ">{{ $store.state.LogCheckData[i].time }}</td>
             <td>{{ $store.state.LogCheckData[i].Id }}</td>
-            <td>{{ $store.state.LogCheckData[i].IP }}</td>
+            <td class="col-2">{{ $store.state.LogCheckData[i].IP }}</td>
             <td>{{ $store.state.LogCheckData[i].text }}</td>
           </tr>
         </tbody>
@@ -59,66 +59,43 @@
       </div>
     </div>
   </div>
+
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue';
 import Calendar from '@/view/Calendar.vue';
+import LogCheck from '../../assets/LogCheckData';
+
 
 export default {
   components: {
     Navbar,
     Calendar,
   },
-
   data() {
     return {
+      LogCheck: LogCheck,
       detail:false,
+      name: 'text',
       pageNum: 0,
+      selected: "date-asc"
     }
 },
+  computed: {
+  },
     methods: {
       nextPage() {
         this.pageNum += 1;
       },
       prevPage() {
         this.pageNum -= 1;
+      },
+      sortBtn() {
+        this.$emit("")
       }
+  },
 }
 
-//   created() {
-// this.startDate = moment().format('YYYYMMDD')
-// this.endDate = moment().add(-1, 'months').format('YYYYMMDD')
-// },
-// methods: {
-// disabledStDate(date) {
-//       date = moment(String(date)).format('YYYYMMDD')
-//     return date > moment().format('YYYYMMDD') || date < moment().add(-1, 'years').format('YYYYMMDD')
-//     },
-// disabledEdDate(date) {
-//       date = moment(String(date)).format('YYYYMMDD')
-//       return date > moment().format('YYYYMMDD') || date < this.searchData.startDate
-//     },
-//     changeDate(type) {
-//       if (type === 'start') {
-//        if (this.endDate === null || this.startDate > this.endDate) {
-//          this.endDate = this.startDate
-//         }
-//        if (moment(this.startDate).isBefore(moment(this.endDate).subtract(1, 'months').format('YYYYMMDD'))) {
-//           alert('검색 기간은 최대 1개월까지 선택 가능 합니다.')
-//         this.startDate = moment(this.endDate).subtract(1, 'months').format('YYYYMMDD')
-//         }
-//       } else if (type === 'end') {
-//        if (this.startDate === null) {
-//          this.startDate = this.endDate
-//         }
-//       if (moment(this.endDate).isAfter(moment(this.startDate).add(1, 'months').format('YYYYMMDD'))) {
-//           alert('검색 기간은 최대 1개월까지 선택 가능 합니다.')
-//          this.endDate = moment(this.startDate).add(1, 'months').format('YYYYMMDD')
-//         }
-//       }
-//   }
-//   }
-}
 
 </script>
 
