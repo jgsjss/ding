@@ -52,9 +52,6 @@
     </p>
     <!-- content-->
 
-
-
-
   </div>
 </template>
 <script>
@@ -80,8 +77,9 @@ export default {
       }
       let userInfo = { userid: this.userId, userpw : this.userPw };
       this.$store.dispatch("loginStore/doLogin", userInfo).then(()=>{
-        const returnUrl = window.location.search.replace(/^\?returnUrl=/, "");
-        this.$router.push(returnUrl);
+        // const returnUrl = window.location.search.replace(/^\?returnUrl=/, "");
+        // this.$router.push(returnUrl);
+        this.$router.push('/');
         console.log('1')
       }).catch((err)=>{
         this.errorMessage=err.response.data.errormessage;

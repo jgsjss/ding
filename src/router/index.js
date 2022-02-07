@@ -324,7 +324,8 @@ router.beforeEach((to, from, next) => {
     const isLogin = store.getters['loginStore/isLogin'];
     if (!isLogin) {
       alert('로그인 후 이용 가능합니다.')
-      next('/login?returnUrl=' + to.fullPath);
+      // next('/login?returnUrl=' + to.fullPath);
+      next('/login');
      } else {
       next();
     }
