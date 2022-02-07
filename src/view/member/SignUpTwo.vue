@@ -150,6 +150,7 @@ import router from '../../router'
 import uservo from '../../DTO/userVO'
 import store from '../../store/index.js'
 import axios from 'axios'
+import duam1 from '../../assets/postcode.v2.js'
 
 export default {
   props: {

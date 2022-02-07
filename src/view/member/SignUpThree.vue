@@ -283,7 +283,6 @@ export default {
           // bizZip: '12312',
           // etc: '1405호'
         },
-
       }).then(res => {
         console.log(res)
         if (res.data == 1) {
@@ -378,7 +377,6 @@ export default {
   }
 }
 </script>
-
 
 <style>
 @import '../../assets/css/Member/SignUpThree.css';

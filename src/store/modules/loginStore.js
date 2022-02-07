@@ -23,26 +23,26 @@ export const loginStore = {
     isLogin (state) {
       return state.refreshToken == '' ? false : true
     },
-    isAccessTokenExpire(state){
-      let expire=false;
-      // accessToken에서 .로 분리하여 payload 가져옴
-      let base64Payload = state.accessToken.splite('.')[1];
-      //URL과 호환되지 않는 문자를 base64표준문자로 교체
-      base64Payload = base64Payload.replace(/-/g, '+').replace(/_/g, '/');
-      //atob() 메소드로 복호화
-      base64Payload = atob(base64Payload);
-      //JSON 객체로 변환
-      var payloadObeject = JSON.parse(base64Payload);
-      //accessToken의 만료시간 확인
-      var currentDate = new Date().getTime() / 1000;
-      if(payloadObeject.exp <= currentDate) {
-        console.log('token expired');
-        expire = true;
-      }else {
-        console.log('token valid');
-      }
-      return expire;
-    }
+    // isAccessTokenExpire(state){
+    //   let expire=false;
+    //   // accessToken에서 .로 분리하여 payload 가져옴
+    //   let base64Payload = state.accessToken.splite('.')[1];
+    //   //URL과 호환되지 않는 문자를 base64표준문자로 교체
+    //   base64Payload = base64Payload.replace(/-/g, '+').replace(/_/g, '/');
+    //   //atob() 메소드로 복호화
+    //   base64Payload = atob(base64Payload);
+    //   //JSON 객체로 변환
+    //   var payloadObeject = JSON.parse(base64Payload);
+    //   //accessToken의 만료시간 확인
+    //   var currentDate = new Date().getTime() / 1000;
+    //   if(payloadObeject.exp <= currentDate) {
+    //     console.log('token expired');
+    //     expire = true;
+    //   }else {
+    //     console.log('token valid');
+    //   }
+    //   return expire;
+    // }
   },
   mutations: {
     //userId 설정
