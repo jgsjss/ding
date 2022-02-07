@@ -3,12 +3,7 @@
   <div class="month_wrap">
     <div class="month_left">
       <div class="month_left_wrap">
-        <i class="xi-angle-left xeicon"></i>
-          <h4 class="month_title">
-      02월
-        <i class="xi-calendar"></i>
-          </h4>
-        <i class="xi-angle-right xeicon"></i>
+          <Datepicker v-model="month" monthPicker modeHeight="120" locale="ko" />
       </div>
     <div class="month_list_wrap">
       <div class="m_list_wrap1">
@@ -70,15 +65,15 @@
 
 </template>
 <script>
-
+import { ref } from 'vue';
   export default {
   components:{
   },
   data() {
     return {
-      show:false,
-      step: 0,
-      pageNum: 0,
+        show:false,
+        step: 0,
+        pageNum: 0,
     }
   },
   methods: {
@@ -88,10 +83,21 @@
       prevPage() {
         this.pageNum -= 1;
       },
-
     },
-}
+    // setup() {
+    //     const date = ref(new Date());
+    //     // In case of a range picker, you'll receive [Date, Date]
+    //     const format = (date) => {
+    //         const month = date.getMonth() + 1;
 
+    //         return `Selected date is ${month}`;
+    //     }
+    //         return {
+    //         date,
+    //         format,
+    //     }
+    // }
+  }
 
 
 
