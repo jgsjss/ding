@@ -23,26 +23,26 @@ export const loginStore = {
     isLogin (state) {
       return state.refreshToken == '' ? false : true
     },
-    // isAccessTokenExpire(state){
-    //   let expire=false;
-    //   // accessToken에서 .로 분리하여 payload 가져옴
-    //   let base64Payload = state.accessToken.splite('.')[1];
-    //   //URL과 호환되지 않는 문자를 base64표준문자로 교체
-    //   base64Payload = base64Payload.replace(/-/g, '+').replace(/_/g, '/');
-    //   //atob() 메소드로 복호화
-    //   base64Payload = atob(base64Payload);
-    //   //JSON 객체로 변환
-    //   var payloadObeject = JSON.parse(base64Payload);
-    //   //accessToken의 만료시간 확인
-    //   var currentDate = new Date().getTime() / 1000;
-    //   if(payloadObeject.exp <= currentDate) {
-    //     console.log('token expired');
-    //     expire = true;
-    //   }else {
-    //     console.log('token valid');
-    //   }
-    //   return expire;
-    // }
+    isAccessTokenExpire(state){
+      let expire=false;
+      // accessToken에서 .로 분리하여 payload 가져옴
+      let base64Payload = state.accessToken.splite('.')[1];
+      //URL과 호환되지 않는 문자를 base64표준문자로 교체
+      base64Payload = base64Payload.replace(/-/g, '+').replace(/_/g, '/');
+      //atob() 메소드로 복호화
+      base64Payload = atob(base64Payload);
+      //JSON 객체로 변환
+      var payloadObeject = JSON.parse(base64Payload);
+      //accessToken의 만료시간 확인
+      var currentDate = new Date().getTime() / 1000;
+      if(payloadObeject.exp <= currentDate) {
+        console.log('token expired');
+        expire = true;
+      }else {
+        console.log('token valid');
+      }
+      return expire;
+    }
   },
   mutations: {
     //userId 설정
@@ -58,8 +58,28 @@ export const loginStore = {
       state.refreshToken = refreshToken;
     },
     reset (state) {
-      state.userid = ''
-      state.accessToken = ''
+      state.userid = '';
+      state.accessToken = '';
+      state.refreshToken = '';
+      localStorage.removeItem('login.userid')
+      localStorage.removeItem('login.accessToken')
+      localStorage.removeItem('login.refreshToken')
+    },
+    saveStateToStorage(state){
+      localStorage.setItem('login.userid', state.userid);
+      localStorage.setItem('login.accessToken', state.accessToken);
+      localStorage.setItem('login.refreshToken', state.refreshToken);
+    },
+    readStateFromStorage(state){
+      if(localStorage.getItem('login.userid') != null){
+        state.userid = localStorage.getItem('login.userid')
+      }
+      if(localStorage.getItem('login.accessToken') != null){
+        state.accessToken = localStorage.getItem('login.accessToken')
+      }
+      if(localStorage.getItem('login.refreshToken') != null){
+        state.refreshToken = localStorage.getItem('login.refreshToken')
+      }
     }
   },
   actions: {
@@ -72,13 +92,14 @@ export const loginStore = {
           commit('setUserId', userInfo.userid);
           commit('setAccessToken', res.data.accessToken);
           commit('setRefreshToken', res.data.refreshToken);
+          commit('saveStateToStorage');
           console
-          axios.defaults.headers.common['Access-Token'] = res.data.accessToken
-          result = true
-          console.log('로그인 성공')
+          axios.defaults.headers.common['Access-Token'] = res.data.accessToken;
+          result = true;
+          console.log('로그인 성공');
         } else {
-          console.log('로그인 실패')
-          let err = new Error('Request failed with status code 401')
+          console.log('로그인 실패');
+          let err = new Error('Request failed with status code 401');
           err.status = 401;
           err.response = {
             data: {
@@ -86,7 +107,7 @@ export const loginStore = {
               'errormessage': '로그인 실패'
             }
           }
-          resultErr = err
+          resultErr = err;
         }
       } catch (err) {
         console.log(err)
@@ -145,6 +166,9 @@ export const loginStore = {
         if(result) resolve();
         else reject(resultErr);
       })
+    },
+    doReadStateFromStorage({commit}){
+      commit('readStateFromStorage');
     },
     doLogout ({ commit }) {
       commit('reset')
