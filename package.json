@@ -20,6 +20,7 @@
     "v-calendar": "^3.0.0-alpha.7",
     "vue": "^3.0.0",
     "vue-cookie": "^1.1.4",
+    "vue-dataset": "^1.1.12",
     "vue-router": "^4.0.0-0",
     "vue-sweetalert2": "^5.0.2",
     "vue3-date-time-picker": "^2.5.0",

@@ -18,7 +18,10 @@ import StaffManagementTwo from '../view/staffmanagement/StaffManagementTwo.vue';
 import OperationManagement from '../view/operationmanagement/OperationManagement.vue';
 import OperationSetting from '../view/operationmanagement/OperationSetting.vue';
 import LogCheck from '../view/operationmanagement/LogCheck.vue';
-import DiscountCode from '../view/DiscountCode.vue';
+/*———DiscountCode——— */
+import DiscountCode from '../view/DiscountCode/DiscountCode.vue';
+import DiscountCodeOne from '../view/DiscountCode/DiscountCodeOne.vue';
+import DiscountCodeTwo from '../view/DiscountCode/DiscountCodeTwo.vue';
 import SalesManagement from '../view/SalesManagement.vue';
 /*------member------ */
 import Login from '../view/member/Login.vue';
@@ -234,11 +237,24 @@ const routes = [
     component: LogCheck,
     meta: { requireLogin: true },
   },
-  {
-    path: '/discountcode',
-    component: DiscountCode,
-    meta: { requireLogin: true },
-  },
+    //-----------할인코드------------  
+    {
+      path: '/discountcode',
+      component: DiscountCode,
+      meta: { requireLogin: true },
+      children: [
+        {
+          path: '/discountcode/discountcodeone',
+          component: DiscountCodeOne,
+          meta: { requireLogin: true },        
+        },
+        {
+          path: '/discountcode/discountcodetwo',
+          component: DiscountCodeTwo,
+          meta: { requireLogin: true },        
+        },
+      ],
+    },
   {
     path: '/releaseSoldout',
     component: ReleaseSoldOut,

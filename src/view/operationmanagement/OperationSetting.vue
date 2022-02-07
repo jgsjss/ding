@@ -252,6 +252,8 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
     data() {
         return {
@@ -278,6 +280,12 @@ export default {
 
         }
     },
+    setup() {
+        const date = ref(new Date());
+        return {
+          date,
+        }
+    }
 }
 </script>
 
