@@ -78,7 +78,6 @@ export default {
       detail:false,
       name: 'text',
       pageNum: 0,
-      selected: "date-asc"
     }
 },
   computed: {

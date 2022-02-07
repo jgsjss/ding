@@ -22,7 +22,10 @@ import LogCheck from '../view/operationmanagement/LogCheck.vue';
 import DiscountCode from '../view/DiscountCode/DiscountCode.vue';
 import DiscountCodeOne from '../view/DiscountCode/DiscountCodeOne.vue';
 import DiscountCodeTwo from '../view/DiscountCode/DiscountCodeTwo.vue';
-import SalesManagement from '../view/SalesManagement.vue';
+/*SalesManagement */
+import SalesManagement from '../view/SalesManagement/SalesManagement.vue';
+import SalesManagementOne from '../view/SalesManagement/SalesManagementOne.vue';
+import SalesManagementTwo from '../view/SalesManagement/SalesManagementTwo.vue';
 /*------member------ */
 import Login from '../view/member/Login.vue';
 import SignUpOne from '../view/member/SignUpOne.vue';
@@ -161,7 +164,19 @@ const routes = [
   {
     path: '/salesmanagement',
     component: SalesManagement,
-    meta: { requireLogin: true }
+    meta: { requireLogin: true },
+    children: [
+      {
+        path: '/salesmanagement/salesmanagementone',
+        component: SalesManagementOne,
+        meta: { requireLogin: true },        
+      },
+      {
+        path: '/salesmanagement/salesmanagementtwo',
+        component: SalesManagementTwo,
+        meta: { requireLogin: true },        
+      },
+    ]
   },
   {
     path: '/ordermanagement',
