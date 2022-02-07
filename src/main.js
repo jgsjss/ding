@@ -12,7 +12,7 @@ import "./assets/sweetalert2.min.css"
 import Datepicker from 'vue3-date-time-picker';
 import 'vue3-date-time-picker/dist/main.css'
 
-
+import xeicon from 'xeicon'
 
 const emitter = mitt();
 const app = createApp(App);
@@ -24,6 +24,7 @@ app.component('Datepicker', Datepicker);
 
 app.mixin(mixins)
 app.use(vuesweetalert2)
+app.use(xeicon)
 // app.use(VueCookies);
 
 

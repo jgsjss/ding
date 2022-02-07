@@ -17,6 +17,7 @@
 import axios from 'axios'
 import store from './store'
 import { mapState } from 'vuex';
+import xeicon from 'xeicon';
 
 //   this.$props.
 export default {
