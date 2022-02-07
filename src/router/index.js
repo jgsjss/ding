@@ -31,8 +31,25 @@ import MenuManageCategories from '../view/MenuManageCategories.vue';
 import MenuManageMenus from '../view/MenuManageMenus.vue';
 import MenuManageOptions from '../view/MenuManageOptions.vue';
 import test1 from '../view/test1';
+import Calendar from '../view/Calendar.vue'
 import PageNotFound from '../view/page404';
 import page404 from '../view/page404';
+import store from '../store'
+
+//인증메소드
+// const Authentication = () => (to, from, next) => {
+//   const isLogin = store.getters['loginStore/isLogin'];
+//   if (!isLogin) {
+//     next('/login?returnUrl=' + to.fullPath);
+//   } else {
+//     next();
+//   }
+// };
+
+// import PageNotFound from '../view/page404';
+// import page404 from '../view/page404';
+
+
 
 // const msg = true;
 // const methods = {
@@ -70,11 +87,14 @@ const routes = [
     path: '/',
     component: Main,
     name: 'main',
-    params: { page404: false },
+    meta: { requireLogin: true }
+
+    // params: { page404: false },
   },
   {
     path: '/login',
     component: Login,
+    name: Login,
   },
   {
     path: '/signUpOne',
@@ -111,11 +131,14 @@ const routes = [
   },
   {
     path: '/main',
+    name: Main,
     component: Main,
+    meta: { requireLogin: true }
   },
   {
     path: '/menumanagement',
     component: MenuManagement,
+    meta: { requireLogin: true },
     //중첩되는 자식 라우트 경로
     children: [
       {
@@ -135,10 +158,12 @@ const routes = [
   {
     path: '/salesmanagement',
     component: SalesManagement,
+    meta: { requireLogin: true }
   },
   {
     path: '/ordermanagement',
     component: OrderManagement,
+    meta: { requireLogin: true },
     //중첩되는 자식 라우트 경로
     children: [
       {
@@ -175,20 +200,24 @@ const routes = [
   {
     path: '/orderprint',
     component: OrderPrint,
+    meta: { requireLogin: true }
   },
   //----------직원관리------------
   {
     path: '/staffmanagementone',
     component: StaffManagementOne,
+    meta: { requireLogin: true },
   },
   {
     path: '/staffmanagementtwo',
     component: StaffManagementTwo,
+    meta: { requireLogin: true },
   },
   //---------운영관리-------------
   {
     path: '/operationmanagement',
     component: OperationManagement,
+    meta: { requireLogin: true },
         //중첩되는 자식 라우트 경로
         children: [
 
@@ -203,18 +232,25 @@ const routes = [
   {
     path: '/LogCheck',
     component: LogCheck,
-  },  
+    meta: { requireLogin: true },
+  },
   {
     path: '/discountcode',
     component: DiscountCode,
+    meta: { requireLogin: true },
   },
   {
     path: '/releaseSoldout',
     component: ReleaseSoldOut,
+    meta: { requireLogin: true },
   },
   {
     path: '/test1',
     component: test1,
+  },
+  {
+    path: '/calendar',
+    component: Calendar,
   },
   {
     // to: '/main',
@@ -250,6 +286,21 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+// meta 체크 전역
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requireLogin)) {
+    const isLogin = store.getters['loginStore/isLogin'];
+    if (!isLogin) {
+      next('/login?returnUrl=' + to.fullPath);
+     } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
+
 
 
 export default router;

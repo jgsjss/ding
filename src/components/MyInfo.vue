@@ -36,6 +36,14 @@
 
 <script>
   export default {
+    data(){
+      return {
+        shopCode : '',
+        shopName : '',
+        shopPhNum : '',
+        manager : '',
+      }
+    },
     props : {
        //운영관리 데이터 프롭스 ---
     shopData : Object,

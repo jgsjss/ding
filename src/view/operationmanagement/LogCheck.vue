@@ -17,25 +17,14 @@
         <button type="text" class="log_menu_btn">3개월</button>
         <button type="text" class="log_menu_btn" @click="detail = !detail">상세조회</button>
         <div class="log_hidden_date" v-show="detail">
-          <datepicker 
-            v-model="picked"
-            :locale="locale"
-            :upperLimit="to"
-            :lowerLimit="from"
-            :clearable="false" />
-          &nbsp~&nbsp
-          <datepicker 
-          v-model="selected"
-          :locale="locale"
-          :lowerLimit="from"
-          :picker-options="endDateOptions"/>
+          <Calendar />
           <button type="button" class="log_hidden_btn">조회</button>
         </div>
       </div>
       <select class="menu_btn">
         품절해제
-        <option class="log_check_Box" :value="check">최신순</option>
-        <option class="log_check_Box" :value="check">과거순</option>
+        <option class="log_check_Box">최신순</option>
+        <option class="log_check_Box">과거순</option>
       </select>
     </div>
     <div class="log_wrapper">
@@ -71,32 +60,31 @@
     </div>
   </div>
 </template>
-<script lang="ko">
+<script>
 import Navbar from '@/components/Navbar.vue';
-import Datepicker from 'vue3-datepicker'
-import { ref } from 'vue'
-// import moment from 'moment'
-const picked = ref(new Date())
-// import axios from 'axios';
+import Calendar from '@/view/Calendar.vue';
+
 export default {
   components: {
     Navbar,
-    Datepicker,
+    Calendar,
   },
- name: 'DateCheck',
+
   data() {
     return {
       detail:false,
-     startDate: '',
-     endDate: '',
-      startDateOptions: {
-        disabledDate: this.disabledStDate
-      },
-      endDateOptions: {
-        disabledDate: this.disabledEdDate
-      },
+      pageNum: 0,
     }
 },
+    methods: {
+      nextPage() {
+        this.pageNum += 1;
+      },
+      prevPage() {
+        this.pageNum -= 1;
+      }
+}
+
 //   created() {
 // this.startDate = moment().format('YYYYMMDD')
 // this.endDate = moment().add(-1, 'months').format('YYYYMMDD')

@@ -64,8 +64,8 @@
             img
           </button>
           <ul class="dropdown-menu">
-            <router-link to="../components/myinfo" class="nav-link"><li><a class="dropdown-item" href="#">정보수정</a></li></router-link>
-            <router-link to="/login" class="nav-link"><li><a class="dropdown-item" href="#">로그아웃</a></li></router-link>
+            <router-link to="./myinfo" class="nav-link"><li><a class="dropdown-item" href="#">정보수정</a></li></router-link>
+            <router-link to="./member/login" class="nav-link"><li><a class="dropdown-item" href="#">로그아웃</a></li></router-link>
           </ul>
         </div>
 

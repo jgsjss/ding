@@ -19,7 +19,7 @@
                             <input type="text" id="id2" className="int" maxLength="20" v-model="userId"
                                    @change="isUser(userId)" @focus="checkFlag = false">
              <span className="step_url" v-show="userCheck1">사용가능한 아이디 입니다.</span>
-             <span className="step_url" v-show="userCheck2">유효하지 않은 아이디 입니다.</span>
+             <span className="step_url" v-show="userCheck2">이미 사용중인 아이디 입니다.</span>
                         </span>
           <span className="error_next_box"></span>
         </div>
@@ -268,9 +268,10 @@ export default {
            !this.isEmpty(this.address) &&
            !this.isEmpty(this.extraAddress) &&
            !this.isEmpty(this.postcode)) {
-             return true
+             return false
       } else {
          alert("입력하세요")
+         router.back();
          return false
       }
     },
@@ -293,6 +294,7 @@ export default {
       console.log(this.userPhNum)
     },
     sendParam () {
+
           store.state.signupStore.userId = this.userId,
           store.state.signupStore.userName = this.userName,
           store.state.signupStore.userPw = this.userPw1,
@@ -303,6 +305,7 @@ export default {
           store.state.signupStore.bizAddr2 = this.extraAddress,
           store.state.signupStore.bizZip = this.postcode,
           store.state.signupStore.etc = this.etc
+
     },
     //daum map api
     execDaumPostcode () {
@@ -361,7 +364,7 @@ export default {
     }
     ,
      passwordValid () {
-       return /^[A-Za-z0-9]+$/.test(this.signup.password)
+       return /^[A-Za-z0-9]+$/.test(this.signupStore.password)
      },
   }
   ,
