@@ -288,18 +288,19 @@ const router = createRouter({
 });
 
 // meta 체크 전역
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requireLogin)) {
-    const isLogin = store.getters['loginStore/isLogin'];
-    if (!isLogin) {
-      next('/login?returnUrl=' + to.fullPath);
-     } else {
-      next();
-    }
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requireLogin)) {
+//     const isLogin = store.getters['loginStore/isLogin'];
+//     if (!isLogin) {
+//       alert('로그인 후 이용 가능합니다.')
+//       next('/login?returnUrl=' + to.fullPath);
+//      } else {
+//       next();
+//     }
+//   } else {
+//     next();
+//   }
+// });
 
 
 
