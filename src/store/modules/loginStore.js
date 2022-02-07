@@ -10,9 +10,18 @@ export const loginStore = {
     refreshToken: '',
   },
   getters: {
+    getId(state){
+      return state.userid
+    },
+    getAcToken(state){
+      return state.accessToken
+    },
+    getReToken(state){
+      return state.refreshToken
+    },
     //로그인 여부 확인 메소드
     isLogin (state) {
-      return state.accessToken == '' ? false : true
+      return state.refreshToken == '' ? false : true
     },
     isAccessTokenExpire(state){
       let expire=false;
@@ -63,6 +72,7 @@ export const loginStore = {
           commit('setUserId', userInfo.userid);
           commit('setAccessToken', res.data.accessToken);
           commit('setRefreshToken', res.data.refreshToken);
+          console
           axios.defaults.headers.common['Access-Token'] = res.data.accessToken
           result = true
           console.log('로그인 성공')

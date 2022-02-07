@@ -169,12 +169,12 @@ const routes = [
       {
         path: '/salesmanagement/salesmanagementone',
         component: SalesManagementOne,
-        meta: { requireLogin: true },        
+        meta: { requireLogin: true },
       },
       {
         path: '/salesmanagement/salesmanagementtwo',
         component: SalesManagementTwo,
-        meta: { requireLogin: true },        
+        meta: { requireLogin: true },
       },
     ]
   },
@@ -252,7 +252,7 @@ const routes = [
     component: LogCheck,
     meta: { requireLogin: true },
   },
-    //-----------할인코드------------  
+    //-----------할인코드------------
     {
       path: '/discountcode',
       component: DiscountCode,
@@ -261,12 +261,12 @@ const routes = [
         {
           path: '/discountcode/discountcodeone',
           component: DiscountCodeOne,
-          meta: { requireLogin: true },        
+          meta: { requireLogin: true },
         },
         {
           path: '/discountcode/discountcodetwo',
           component: DiscountCodeTwo,
-          meta: { requireLogin: true },        
+          meta: { requireLogin: true },
         },
       ],
     },
@@ -319,19 +319,19 @@ const router = createRouter({
 });
 
 // meta 체크 전역
-// router.beforeEach((to, from, next) => {
-//   if (to.matched.some(record => record.meta.requireLogin)) {
-//     const isLogin = store.getters['loginStore/isLogin'];
-//     if (!isLogin) {
-//       alert('로그인 후 이용 가능합니다.')
-//       next('/login?returnUrl=' + to.fullPath);
-//      } else {
-//       next();
-//     }
-//   } else {
-//     next();
-//   }
-// });
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requireLogin)) {
+    const isLogin = store.getters['loginStore/isLogin'];
+    if (!isLogin) {
+      alert('로그인 후 이용 가능합니다.')
+      next('/login?returnUrl=' + to.fullPath);
+     } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
 
 
 

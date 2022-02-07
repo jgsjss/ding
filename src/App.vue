@@ -2,7 +2,9 @@
   <h1><router-link to="./member/signupone">회원가입 페이지</router-link> </h1>
   <h1><router-link to="./member/Login">로그인 페이지</router-link></h1>
   <h1><a href="/main">메인 페이지</a> </h1>
-  <button @click="loginCheck">로그인 체크 </button>
+  <h1 >로그인 아이디 : {{ idCheck }} </h1>
+  <h1 >로그인 엑세스토큰 : {{acTokenCk}} </h1>
+  <h1 >로그인 리프레시토큰 : {{reTokenCk}} </h1>
 
     <router-view > </router-view>
 
@@ -14,26 +16,31 @@
 
 import axios from 'axios'
 import store from './store'
-
+import { mapState } from 'vuex';
 
 //   this.$props.
 export default {
   data(){
     return{
-      userId : store.state.loginStore.userid,
-      accessToken : store.state.loginStore.accessToken,
-      refreshToken : store.state.loginStore.refreshToken,
+
     }
   },
   components: {
 
   },
+  computed:{
+    idCheck(){
+      return store.getters['loginStore/getId']
+    },
+    acTokenCk(){
+      return store.getters['loginStore/getAcToken']
+    },
+    reTokenCk(){
+      return store.getters['loginStore/getReToken']
+    }
+  },
   methods: {
-      loginCheck(){
-        console.log(this.userId);
-        console.log(this.accessToken);
-        console.log(this.refreshToken);
-      }
+
   },
   created () {
 

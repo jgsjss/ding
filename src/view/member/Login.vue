@@ -82,6 +82,7 @@ export default {
       this.$store.dispatch("loginStore/doLogin", userInfo).then(()=>{
         const returnUrl = window.location.search.replace(/^\?returnUrl=/, "");
         this.$router.push(returnUrl);
+        console.log('1')
       }).catch((err)=>{
         this.errorMessage=err.response.data.errormessage;
       });
