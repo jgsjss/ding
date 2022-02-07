@@ -20,12 +20,9 @@
 
 import axios from 'axios'
 import store from './store'
-<<<<<<< Updated upstream
 import { mapState } from 'vuex';
 import xeicon from 'xeicon';
-=======
-import { mapState } from 'vuex'
->>>>>>> Stashed changes
+
 
 //   this.$props.
 export default {
