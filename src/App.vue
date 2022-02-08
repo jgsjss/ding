@@ -10,14 +10,11 @@
 <!--  <h1>로그인 아이디 : {{ idCheck }} </h1>-->
 <!--  <h1>로그인 엑세스토큰 : {{ acTokenCk }} </h1>-->
 <!--  <h1>로그인 리프레시토큰 : {{ reTokenCk }} </h1>-->
-
   <router-view></router-view>
-
 
 </template>
 <script>
 // import MenuModal from './components/MenuModal.vue'
-
 import axios from 'axios'
 import store from './store'
 import { mapState } from 'vuex';
