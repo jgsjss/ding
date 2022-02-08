@@ -12,6 +12,7 @@ import Datepicker from 'vue3-date-time-picker';
 import 'vue3-date-time-picker/dist/main.css'
 
 
+
 const emitter = mitt();
 const app = createApp(App);
 app.config.globalProperties.emitter = emitter;

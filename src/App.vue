@@ -21,8 +21,9 @@
 import axios from 'axios'
 import store from './store'
 import { mapState } from 'vuex';
-import xeicon from './assets/XEIcon-2.2.0/xeicon.min.css'
-
+import xeicon from './assets/XEIcon-2.2.0/xeicon.min.css';
+import bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import bundle from 'bootstrap/dist/js/bootstrap.bundle.js'
 
 //   this.$props.
 export default {

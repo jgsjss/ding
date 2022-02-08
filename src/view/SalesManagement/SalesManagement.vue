@@ -1,6 +1,5 @@
 <template>
 <Navbar />
-
   <div class="sales_container">
     <div class="sales_wrap">
       <h2 class="sales_text">매출관리</h2>
@@ -20,13 +19,9 @@
       <hr/>
   </div>
   <router-view> </router-view>
-
-
-
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue'
-
 
   export default {
   components:{
@@ -39,10 +34,8 @@ import Navbar from '@/components/Navbar.vue'
     }
   },
   methods: {
-
     }
 }
-
 </script>
 <style>
 @import '../../assets/css/SalesManagement/SalesManagement.css';
