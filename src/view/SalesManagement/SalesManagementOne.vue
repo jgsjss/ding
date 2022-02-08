@@ -14,7 +14,7 @@
 
           <div class="m_list_wrap2">
             <div class="month_text_right">{{ totalPrice }}원</div>
-            <div class="month_text_right">{{}}832건</div>
+            <div class="month_text_right">{{ totalOrder }}건</div>
             <div class="month_text_right"> {{}}1452개</div>
           </div>
         </div>
@@ -77,6 +77,7 @@ export default {
     return {
       pageNum: 0,
       totalPrice: 0,
+      totalOrder: 0,
     }
   },
   methods: {
@@ -86,22 +87,29 @@ export default {
     prevPage () {
       this.pageNum -= 1
     },
-    calcTotalPrice (object) {
 
+    calcTotalPrice (object) {
       let sum = 0
       _.forEach(_.map(object, 'price'), function (val, key) {
         sum += val
       })
       this.totalPrice = sum
-    }
-
+    },
+      
+      TotalMenuOrder (object) {
+        let sum = 0        
+        _.forEach(_.reduce(object, 'orderadata'), function(val, etc) {
+          sum += val
+        })
+        this.totalOrder = sum
+        console.log(object)
+      }
   },
   setup () {
     const month = ref({
       month: new Date().getMonth(),
       year: new Date().getFullYear()
     })
-
     return {
       month,
     }
@@ -110,10 +118,10 @@ export default {
     pageCount () {
       return Math.ceil(this.$store.state.SalesData.length / 10)
     },
-
   },
   created () {
     this.calcTotalPrice(this.$store.state.SalesData)
+    this.TotalMenuOrder(this.$store.state.SalesData)
   }
 
 }

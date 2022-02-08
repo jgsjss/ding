@@ -1,7 +1,7 @@
 export default [
   {
     orderdata: '02.07 14:27',
-    watingnum: '123',
+    watingnum: 123,
     division: '매장',
     content: '아메리카노 외 2개',
     price: 8500,
@@ -9,7 +9,7 @@ export default [
   },
   {
     orderdata: '02.07 15:17',
-    watingnum: '213',
+    watingnum: 124,
     division: '매장',
     content: '카페라떼 외 2개',
     price: 9300,
@@ -17,7 +17,7 @@ export default [
   },
   {
     orderdata: '02.07 14:27',
-    watingnum: '123',
+    watingnum: 125,
     division: '매장',
     content: '아메리카노 외 2개',
     price: 8500,
@@ -25,7 +25,7 @@ export default [
   },
   {
     orderdata: '02.07 14:27',
-    watingnum: '123',
+    watingnum: 224,
     division: '매장',
     content: '아메리카노 외 2개',
     price: 8500,
@@ -33,7 +33,7 @@ export default [
   },
   {
     orderdata: '02.07 14:27',
-    watingnum: '123',
+    watingnum: 232,
     division: '매장',
     content: '아메리카노 외 2개',
     price: 8500,
@@ -41,7 +41,7 @@ export default [
   },
   {
     orderdata: '02.07 14:27',
-    watingnum: '123',
+    watingnum: 532,
     division: '매장',
     content: '아메리카노 외 2개',
     price: 8500,
@@ -49,7 +49,7 @@ export default [
   },
   {
     orderdata: '02.07 14:27',
-    watingnum: '123',
+    watingnum: 664,
     division: '매장',
     content: '아메리카노 외 2개',
     price: 8500,
@@ -57,7 +57,7 @@ export default [
   },
   {
     orderdata: '02.07 14:27',
-    watingnum: '123',
+    watingnum: 453,
     division: '매장',
     content: '아메리카노 외 2개',
     price: 8500,
@@ -65,7 +65,7 @@ export default [
   },
   {
     orderdata: '02.07 14:27',
-    watingnum: '123',
+    watingnum: 643,
     division: '매장',
     content: '아메리카노 외 2개',
     price: 8500,
@@ -73,7 +73,7 @@ export default [
   },
   {
     orderdata: '02.17 14:27',
-    watingnum: '5533',
+    watingnum: 114,
     division: '매장',
     content: '카라멜마끼야또 외 2개',
     price: 10500,
