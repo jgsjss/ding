@@ -6,7 +6,7 @@
     <router-link to="./member/Login">로그인 페이지</router-link>
   </h1>
   <h1><a href="/main">메인 페이지</a></h1>
-  <h1><button @click="doLogOut">로그아웃</button></h1>
+  <h1 v-if="logCheck"><button @click="doLogOut">로그아웃</button></h1>
   <h1>로그인 아이디 : {{ idCheck }} </h1>
   <h1>로그인 엑세스토큰 : {{ acTokenCk }} </h1>
   <h1>로그인 리프레시토큰 : {{ reTokenCk }} </h1>
@@ -29,7 +29,7 @@ import bundle from 'bootstrap/dist/js/bootstrap.bundle.js'
 export default {
   data () {
     return {
-      
+      logCheck : false,
     }
   },
   components: {},
@@ -47,6 +47,8 @@ export default {
   methods: {
     doLogOut () {
       store.dispatch('loginStore/doLogout').then(() => {
+        alert('로그아웃 되었습니다.')
+        location.reload();
         console.log('로그아웃 성공')
 
       })
@@ -64,7 +66,15 @@ export default {
     store.dispatch('loginStore/doReadStateFromStorage')
 
   },
-  watch: {},
+  watch: {
+    reTokenCk(a){
+      if (a != ''){
+        this.logCheck = true;
+      } else{
+        this.logCheck = false;
+      }
+    }
+  },
 
 }
 </script>
