@@ -21,13 +21,15 @@
 import axios from 'axios'
 import store from './store'
 import { mapState } from 'vuex';
-import xeicon from 'xeicon';
+import xeicon from './assets/XEIcon-2.2.0/xeicon.min.css'
 
 
 //   this.$props.
 export default {
   data () {
-    return {}
+    return {
+      
+    }
   },
   components: {},
   computed: {

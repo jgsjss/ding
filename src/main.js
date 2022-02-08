@@ -7,13 +7,9 @@ import mitt from 'mitt'
 import mixins from './mixins'
 import vuesweetalert2 from 'vue-sweetalert2'
 import "./assets/sweetalert2.min.css"
-
 /*-----vue3-date-time-picker-----*/
 import Datepicker from 'vue3-date-time-picker';
 import 'vue3-date-time-picker/dist/main.css'
-
-
-import bootstrap from 'bootstrap';
 
 
 const emitter = mitt();
@@ -26,7 +22,6 @@ app.component('Datepicker', Datepicker);
 
 app.mixin(mixins)
 app.use(vuesweetalert2)
-app.use(bootstrap)
 // app.use(VueCookies);
 
 
