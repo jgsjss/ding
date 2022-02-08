@@ -13,7 +13,8 @@
       </div>
 
       <div class="m_list_wrap2">
-        <div class="month_text_right">{{price}}원</div>
+        <button type="button" @click="calcTotalPrice">calc</button>
+        <div class="month_text_right">{{totalPrice}}원</div>
         <div class="month_text_right">{{}}832건</div>
         <div class="month_text_right"> {{}}1452개</div>
       </div>
@@ -39,7 +40,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(a, i) in $store.state.menuData" :key="i">
+          <tr v-for="(a, i) in $store.state.SalesData" :key="i">
             <td class="sales_data"><router-link to="../ordermanage/orderprint">{{ $store.state.SalesData[i].orderdata }}</router-link></td>
             <td class="sales_data">{{ $store.state.SalesData[i].watingnum }}</td>
             <td class="sales_data">{{ $store.state.SalesData[i].division }} </td>
@@ -73,6 +74,7 @@ import { ref } from 'vue';
   data() {
     return {
         pageNum: 0,
+      totalPrice:0,
     }
   },
   methods: {
@@ -82,6 +84,16 @@ import { ref } from 'vue';
       prevPage() {
         this.pageNum -= 1;
       },
+      calcTotalPrice() {
+        let tempPrice = 0;
+        // for (let index = 1; index < this.$store.state.SalesData.length; index++) {
+        //   tempPrice += this.$store.state.SalesData.price[index];
+        // }
+        this.totalPrice=tempPrice
+        console.log(this.$store.state.SalesData.length)
+        console.log(this.$store.state.SalesData)
+        // console.log(tempPrice)
+      }
     },
     setup() {
         const month = ref({ 
@@ -93,6 +105,7 @@ import { ref } from 'vue';
             month,
         }
     }   
+
   }
 
 
