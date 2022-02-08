@@ -13,7 +13,7 @@
       </div>
 
       <div class="m_list_wrap2">
-        <div class="month_text_right">{{}}3,005,000원</div>
+        <div class="month_text_right">{{price}}원</div>
         <div class="month_text_right">{{}}832건</div>
         <div class="month_text_right"> {{}}1452개</div>
       </div>
@@ -66,13 +66,12 @@
 </template>
 <script>
 import { ref } from 'vue';
+
   export default {
   components:{
   },
   data() {
     return {
-        show:false,
-        step: 0,
         pageNum: 0,
     }
   },

@@ -40,7 +40,7 @@
           </thead>
           <tbody>
           <tr v-for="(a, i) in $store.state.menuData" :key="i">
-            <td>{{ $store.state.SalesData[i].orderdata }}</td>
+            <td class="sales_data"><router-link to="../ordermanage/orderprint">{{ $store.state.SalesData[i].orderdata }}</router-link></td>
             <td>{{ $store.state.SalesData[i].watingnum }}</td>
             <td>{{ $store.state.SalesData[i].division }} </td>
             <td>{{ $store.state.SalesData[i].content }}</td>
@@ -65,7 +65,7 @@
 
 </template>
 <script>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
   export default {
   components:{
@@ -86,15 +86,19 @@ import { ref } from 'vue';
       },
     },
     setup() {
-        const month = ref({ 
-            month: new Date().getMonth(),
-            year: new Date().getFullYear()
-        });
+        const date = ref();
+
+        // For demo purposes assign range from the current date
+        onMounted(() => {
+            const startDate = new Date();
+            const endDate = new Date(new Date().setDate(startDate.getDate() + 7));
+            date.value = [startDate, endDate];
+        })
         
         return {
-            month,
+            date,
         }
-    }    
+    }  
 }
 
 

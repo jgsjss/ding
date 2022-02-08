@@ -19,22 +19,8 @@
        <router-link to="/ordermanagement/orderlist"><span class="component_name">주문내역</span></router-link>
       </div>
       <hr />
-
-        <!-- <div class="list_wrap">
-          <router-link to="/OrderManagement/1"><i class="xi-list-square list"></i></router-link>
-          <router-link to="/OrderManagement/1_2"><i class="xi-apps list"></i></router-link>
-            <select id="order_select" class="list">
-              <option value="최신순">최신순</option>
-              <option value="과거순">과거순</option>
-            </select>
-        </div> -->
-
-
   </div>
   <router-view> </router-view>
-
-
-
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue'

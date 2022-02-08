@@ -29,7 +29,6 @@ import Navbar from '@/components/Navbar.vue'
   },
   data() {
     return {
-      show:false,
       step: 0,
     }
   },

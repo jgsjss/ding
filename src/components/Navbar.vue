@@ -68,7 +68,6 @@
             <router-link to="./member/login" class="nav-link"><li><a class="dropdown-item" href="#">로그아웃</a></li></router-link>
           </ul>
         </div>
-
       </li>
     </ul>
   </div>
