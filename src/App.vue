@@ -6,10 +6,10 @@
     <router-link to="./member/Login">로그인 페이지</router-link>
   </h1>
   <h1><a href="/main">메인 페이지</a></h1>
-  <h1 v-if="logCheck"><button @click="doLogOut">로그아웃</button></h1>
-  <h1>로그인 아이디 : {{ idCheck }} </h1>
-  <h1>로그인 엑세스토큰 : {{ acTokenCk }} </h1>
-  <h1>로그인 리프레시토큰 : {{ reTokenCk }} </h1>
+  <span v-if="logCheck" @click="doLogOut"><button class="btn btn-warning">로그아웃</button></span>
+<!--  <h1>로그인 아이디 : {{ idCheck }} </h1>-->
+<!--  <h1>로그인 엑세스토큰 : {{ acTokenCk }} </h1>-->
+<!--  <h1>로그인 리프레시토큰 : {{ reTokenCk }} </h1>-->
 
   <router-view></router-view>
 
@@ -47,10 +47,9 @@ export default {
   methods: {
     doLogOut () {
       store.dispatch('loginStore/doLogout').then(() => {
-        alert('로그아웃 되었습니다.')
+        // alert('로그아웃 되었습니다.')
         location.reload();
         console.log('로그아웃 성공')
-
       })
     }
   },
@@ -64,7 +63,6 @@ export default {
     //   console.log(a)
     // })
     store.dispatch('loginStore/doReadStateFromStorage')
-
   },
   watch: {
     reTokenCk(a){
