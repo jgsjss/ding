@@ -3,7 +3,7 @@
   <div class="month_wrap">
     <div class="month_left">
       <div class="month_left_wrap">
-          <Datepicker v-model="month" monthPicker modeHeight="120" modeWidth="50" locale="ko" />
+          <Datepicker v-model="date" range datePicker modeHeight="120" locale="ko" weekStart="0" :enableTimePicker="false" value="2022-02-08"/>
       </div>
     <div class="month_list_wrap">
       <div class="m_list_wrap1">
