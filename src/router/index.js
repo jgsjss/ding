@@ -1,47 +1,47 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from "vue-router";
 // import Total from '../view/**'
-import Main from '../view/Main.vue';
-import MenuManagement from '../view/MenuManagement.vue';
+import Main from "../view/Main.vue";
+import MenuManagement from "../view/MenuManagement.vue";
 /*------ordermanage------ */
-import OrderManagement from '../view/ordermanage/OrderManagement.vue';
-import NewOrderListOne from '../view/ordermanage/NewOrderListOne.vue';
-import NewOrderListTwo from '../view/ordermanage/NewOrderListTwo.vue';
-import PreparingListOne from '../view/ordermanage/PreparingListOne.vue';
-import PreparingListTwo from '../view/ordermanage/PreparingListTwo.vue';
-import CompletedOrder from '../view/ordermanage/CompletedOrder.vue';
-import OrderList from '../view/ordermanage/OrderList.vue';
-import OrderPrint from '../view/ordermanage/OrderPrint.vue';
+import OrderManagement from "../view/ordermanage/OrderManagement.vue";
+import NewOrderListOne from "../view/ordermanage/NewOrderListOne.vue";
+import NewOrderListTwo from "../view/ordermanage/NewOrderListTwo.vue";
+import PreparingListOne from "../view/ordermanage/PreparingListOne.vue";
+import PreparingListTwo from "../view/ordermanage/PreparingListTwo.vue";
+import CompletedOrder from "../view/ordermanage/CompletedOrder.vue";
+import OrderList from "../view/ordermanage/OrderList.vue";
+import OrderPrint from "../view/ordermanage/OrderPrint.vue";
 /*------staffmanagement------ */
-import StaffManagementOne from '../view/staffmanagement/StaffManagementOne.vue';
-import StaffManagementTwo from '../view/staffmanagement/StaffManagementTwo.vue';
+import StaffManagementOne from "../view/staffmanagement/StaffManagementOne.vue";
+import StaffManagementTwo from "../view/staffmanagement/StaffManagementTwo.vue";
 /*------operationmanagement------ */
-import OperationManagement from '../view/operationmanagement/OperationManagement.vue';
-import OperationSetting from '../view/operationmanagement/OperationSetting.vue';
-import LogCheck from '../view/operationmanagement/LogCheck.vue';
+import OperationManagement from "../view/operationmanagement/OperationManagement.vue";
+import OperationSetting from "../view/operationmanagement/OperationSetting.vue";
+import LogCheck from "../view/operationmanagement/LogCheck.vue";
 /*———DiscountCode——— */
-import DiscountCode from '../view/DiscountCode/DiscountCode.vue';
-import DiscountCodeOne from '../view/DiscountCode/DiscountCodeOne.vue';
-import DiscountCodeTwo from '../view/DiscountCode/DiscountCodeTwo.vue';
+import DiscountCode from "../view/DiscountCode/DiscountCode.vue";
+import DiscountCodeOne from "../view/DiscountCode/DiscountCodeOne.vue";
+import DiscountCodeTwo from "../view/DiscountCode/DiscountCodeTwo.vue";
 /*SalesManagement */
-import SalesManagement from '../view/SalesManagement/SalesManagement.vue';
-import SalesManagementOne from '../view/SalesManagement/SalesManagementOne.vue';
-import SalesManagementTwo from '../view/SalesManagement/SalesManagementTwo.vue';
+import SalesManagement from "../view/SalesManagement/SalesManagement.vue";
+import SalesManagementOne from "../view/SalesManagement/SalesManagementOne.vue";
+import SalesManagementTwo from "../view/SalesManagement/SalesManagementTwo.vue";
 /*------member------ */
-import Login from '../view/member/Login.vue';
-import SignUpOne from '../view/member/SignUpOne.vue';
-import SignUpTwo from '../view/member/SignUpTwo'
-import SignUpThree from '../view/member/SignUpThree.vue';
-import SignUpFour from '../view/member/SignUpFour.vue';
-import ReleaseSoldOut from '../view/ReleaseSoldOut.vue';
-import MenuManageCategories from '../view/MenuManageCategories.vue';
-import MenuManageMenus from '../view/MenuManageMenus.vue';
-import MenuManageOptions from '../view/MenuManageOptions.vue';
-import test1 from '../view/test1';
-import Calendar from '../view/Calendar.vue'
-import PageNotFound from '../view/page404';
-import page404 from '../view/page404';
-import store from '../store'
-
+import Login from "../view/member/Login.vue";
+import SignUpOne from "../view/member/SignUpOne.vue";
+import SignUpTwo from "../view/member/SignUpTwo";
+import SignUpThree from "../view/member/SignUpThree.vue";
+import SignUpFour from "../view/member/SignUpFour.vue";
+import ReleaseSoldOut from "../view/ReleaseSoldOut.vue";
+import MenuManageCategories from "../view/MenuManageCategories.vue";
+import MenuManageMenus from "../view/MenuManageMenus.vue";
+import MenuManageOptions from "../view/MenuManageOptions.vue";
+import test1 from "../view/test1";
+import Calendar from "../view/Calendar.vue";
+import PageNotFound from "../view/page404";
+import page404 from "../view/page404";
+import store from "../store";
+import chat from "../view/1";
 //인증메소드
 // const Authentication = () => (to, from, next) => {
 //   const isLogin = store.getters['loginStore/isLogin'];
@@ -54,8 +54,6 @@ import store from '../store'
 
 // import PageNotFound from '../view/page404';
 // import page404 from '../view/page404';
-
-
 
 // const msg = true;
 // const methods = {
@@ -71,55 +69,53 @@ import store from '../store'
 //   let check = false;
 //   console.log(SignUpTwo.props)
 
-
-
-  // if ( SignUpTwo.data().userId != null &&
-  //   SignUpTwo.data().userPw1 != null &&
-  //   SignUpTwo.data().userPw2 != null &&
-  //   SignUpTwo.data().phNum != null &&
-  //   SignUpTwo.data().userName != null &&
-  //   SignUpTwo.data().shopPhNum != null &&
-  //   SignUpTwo.data().bizAddr1 != null &&
-  //   SignUpTwo.data().bizAddr2 != null &&
-  //   SignUpTwo.data().bizZip != null )
-  // {
-  //
-  //   return nullCheckSignUp2 = true;
-  // }
+// if ( SignUpTwo.data().userId != null &&
+//   SignUpTwo.data().userPw1 != null &&
+//   SignUpTwo.data().userPw2 != null &&
+//   SignUpTwo.data().phNum != null &&
+//   SignUpTwo.data().userName != null &&
+//   SignUpTwo.data().shopPhNum != null &&
+//   SignUpTwo.data().bizAddr1 != null &&
+//   SignUpTwo.data().bizAddr2 != null &&
+//   SignUpTwo.data().bizZip != null )
+// {
+//
+//   return nullCheckSignUp2 = true;
+// }
 // }
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     component: Main,
-    name: 'main',
-    meta: { requireLogin: true }
+    name: "main",
+    meta: { requireLogin: true },
 
     // params: { page404: false },
   },
   {
-    path: '/login',
+    path: "/login",
     component: Login,
     name: Login,
   },
   {
-    path: '/signUpOne',
+    path: "/signUpOne",
     component: SignUpOne,
     props: true,
   },
   {
-    path: '/signuptwo',
+    path: "/signuptwo",
     // route level oode-spilitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: SignUpTwo,
-    name: 'signup2',
+    name: "signup2",
     props: true,
   },
   {
-    path: '/signupthree',
+    path: "/signupthree",
     component: SignUpThree,
-    name: 'signup3',
+    name: "signup3",
     props: true,
     // beforeEnter: ()=>{
     //   let check = false
@@ -130,82 +126,82 @@ const routes = [
     // }
   },
   {
-    path: '/signupfour',
+    path: "/signupfour",
     component: SignUpFour,
-    name: 'signup4',
+    name: "signup4",
     props: true,
   },
   {
-    path: '/main',
+    path: "/main",
     name: Main,
     component: Main,
-    meta: { requireLogin: true }
+    meta: { requireLogin: true },
   },
   {
-    path: '/menumanagement',
+    path: "/menumanagement",
     component: MenuManagement,
     meta: { requireLogin: true },
     //중첩되는 자식 라우트 경로
     children: [
       {
-        path: '/menumanagement/categories',
+        path: "/menumanagement/categories",
         component: MenuManageCategories,
       },
       {
-        path: '/menumanagement/menus',
+        path: "/menumanagement/menus",
         component: MenuManageMenus,
       },
       {
-        path: '/menumanagement/options',
+        path: "/menumanagement/options",
         component: MenuManageOptions,
       },
     ],
   },
   {
-    path: '/salesmanagement',
+    path: "/salesmanagement",
     component: SalesManagement,
     meta: { requireLogin: true },
     children: [
       {
-        path: '/salesmanagement/salesmanagementone',
+        path: "/salesmanagement/salesmanagementone",
         component: SalesManagementOne,
         meta: { requireLogin: true },
       },
       {
-        path: '/salesmanagement/salesmanagementtwo',
+        path: "/salesmanagement/salesmanagementtwo",
         component: SalesManagementTwo,
         meta: { requireLogin: true },
       },
-    ]
+    ],
   },
   {
-    path: '/ordermanagement',
+    path: "/ordermanagement",
     component: OrderManagement,
     meta: { requireLogin: true },
     //중첩되는 자식 라우트 경로
     children: [
       {
-        path: '/ordermanagement/neworderlistone',
+        path: "/ordermanagement/neworderlistone",
         component: NewOrderListOne,
       },
       {
-        path: '/ordermanagement/neworderlisttwo',
+        path: "/ordermanagement/neworderlisttwo",
         component: NewOrderListTwo,
       },
       {
-        path: '/ordermanagement/preparinglistone',
+        path: "/ordermanagement/preparinglistone",
         component: PreparingListOne,
       },
       {
-        path: '/ordermanagement/preparinglisttwo',
+        path: "/ordermanagement/preparinglisttwo",
         component: PreparingListTwo,
       },
       {
-        path: '/ordermanagement/completedorder',
+        path: "/ordermanagement/completedorder",
         component: CompletedOrder,
       },
       {
-        path: '/ordermanagement/orderlist',
+        path: "/ordermanagement/orderlist",
         component: OrderList,
       },
       // {
@@ -216,76 +212,75 @@ const routes = [
   },
   //-------주문표 인쇄--orderprint---------
   {
-    path: '/orderprint',
+    path: "/orderprint",
     component: OrderPrint,
-    meta: { requireLogin: true }
+    meta: { requireLogin: true },
   },
   //----------직원관리------------
   {
-    path: '/staffmanagementone',
+    path: "/staffmanagementone",
     component: StaffManagementOne,
     meta: { requireLogin: true },
   },
   {
-    path: '/staffmanagementtwo',
+    path: "/staffmanagementtwo",
     component: StaffManagementTwo,
     meta: { requireLogin: true },
   },
   //---------운영관리-------------
   {
-    path: '/operationmanagement',
+    path: "/operationmanagement",
     component: OperationManagement,
     meta: { requireLogin: true },
-        //중첩되는 자식 라우트 경로
-        children: [
-
-          //-----------가게설정-------------
-          {
-            path: '/operationmanagement/OperationSetting',
-            component: OperationSetting,
-          },
-        ]
+    //중첩되는 자식 라우트 경로
+    children: [
+      //-----------가게설정-------------
+      {
+        path: "/operationmanagement/OperationSetting",
+        component: OperationSetting,
+      },
+    ],
   },
-    //-----------로그확인------------
+  //-----------로그확인------------
   {
-    path: '/LogCheck',
+    path: "/LogCheck",
     component: LogCheck,
     meta: { requireLogin: true },
   },
-    //-----------할인코드------------
-    {
-      path: '/discountcode',
-      component: DiscountCode,
-      meta: { requireLogin: true },
-      children: [
-        {
-          path: '/discountcode/discountcodeone',
-          component: DiscountCodeOne,
-          meta: { requireLogin: true },
-        },
-        {
-          path: '/discountcode/discountcodetwo',
-          component: DiscountCodeTwo,
-          meta: { requireLogin: true },
-        },
-      ],
-    },
+  //-----------할인코드------------
   {
-    path: '/releaseSoldout',
+    path: "/discountcode",
+    component: DiscountCode,
+    meta: { requireLogin: true },
+    children: [
+      {
+        path: "/discountcode/discountcodeone",
+        component: DiscountCodeOne,
+        meta: { requireLogin: true },
+      },
+      {
+        path: "/discountcode/discountcodetwo",
+        component: DiscountCodeTwo,
+        meta: { requireLogin: true },
+      },
+    ],
+  },
+  {
+    path: "/releaseSoldout",
     component: ReleaseSoldOut,
     meta: { requireLogin: true },
   },
   {
-    path: '/test1',
+    path: "/test1",
     component: test1,
   },
   {
-    path: '/calendar',
+    path: "/calendar",
     component: Calendar,
   },
   {
     // to: '/main',
-    path: '/:pathMatch(.*)*',
+    path: "/:pathMatch(.*)*",
     // beforeRouteLeave: (to, from, next) => {
     //   console.log(to);
     //   console.log(from);
@@ -304,6 +299,10 @@ const routes = [
     //   page404: true,
     // },
   },
+  {
+    path: "/chat",
+    component: chat,
+  },
 ];
 
 // routes.beforeEach(function (to, from, next) {
@@ -320,20 +319,18 @@ const router = createRouter({
 
 // // meta 체크 전역
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requireLogin)) {
-    const isLogin = store.getters['loginStore/isLogin'];
+  if (to.matched.some((record) => record.meta.requireLogin)) {
+    const isLogin = store.getters["loginStore/isLogin"];
     if (!isLogin) {
-      alert('로그인 후 이용 가능합니다.')
+      alert("로그인 후 이용 가능합니다.");
       // next('/login?returnUrl=' + to.fullPath);
-      next('/login');
-     } else {
+      next("/login");
+    } else {
       next();
     }
   } else {
     next();
   }
 });
-
-
 
 export default router;
