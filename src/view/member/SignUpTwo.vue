@@ -76,14 +76,18 @@
             <div id="num_second">
                                 <span className="box">
                                     <input type="text" id="second2" className="int" maxLength="4"
-                                           v-model.trim="secondNum" ref="secondNum" @focus="checkFlag = false">
+                                           v-model.trim="secondNum" ref="secondNum" @focus="checkFlag = false"
+                                           oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
+                                           >
                                 </span>
             </div>
             <!-- BIRTH_DD -->
             <div id="num_dd">
                                 <span className="box">
                                     <input @change="phoneNumConcat()" type="text" id="dd2" className="int" maxLength="4"
-                                           v-model.number="thirdNum" ref="thirdNum" @focus="checkFlag = false">
+                                           v-model.number="thirdNum" ref="thirdNum" @focus="checkFlag = false"
+                                           oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
+                                           >
                                 </span>
             </div>
           </div>
