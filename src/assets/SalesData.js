@@ -79,4 +79,20 @@ export default [
     price: 10500,
     etc: '',
   },
+  {
+    orderdata: '02.27 14:27',
+    watingnum: 214,
+    division: '매장',
+    content: '카라멜마끼야또 외 2개',
+    price: 18500,
+    etc: '',
+  },
+  {
+    orderdata: '02.17 14:27',
+    watingnum: 1113114,
+    division: '매장',
+    content: '카라멜마끼야또 외 2개',
+    price: 12500,
+    etc: '',
+  },
 ];

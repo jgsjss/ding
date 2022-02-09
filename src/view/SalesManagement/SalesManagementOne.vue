@@ -96,14 +96,32 @@ export default {
       this.totalPrice = sum
     },
       
+      // TotalMenuOrder (object) {
+      //   let sum = 0        
+      //   _.forEach(_.reduce(object, 'orderadata'), function(val, etc) {
+      //     sum += val
+      //   })
+      //   this.totalOrder = sum
+      //   console.log(object)
+      // },
       TotalMenuOrder (object) {
-        let sum = 0        
-        _.forEach(_.reduce(object, 'orderadata'), function(val, etc) {
-          sum += val
+        let sum = 0
+        _.reduce(_.map(object, 'watingnum'),(acc, num) =>  {
+          return acc + num, 
+          console.log(acc)
         })
         this.totalOrder = sum
-        console.log(object)
+        console.log(sum)
+            
       }
+      // TotalMenuOrder () {
+      //   return this.$store.state.SalesData.reduce( (acc, item) => {
+      //     return acc + (item, 'watingnum')
+      //   }, 0)
+             
+      // } 
+
+
   },
   setup () {
     const month = ref({
