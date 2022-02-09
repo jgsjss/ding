@@ -110,14 +110,11 @@ export default {
     pageCount () {
       return Math.ceil(this.$store.state.SalesData.length / 10)
     },
-
   },
   created () {
     this.calcTotalPrice(this.$store.state.SalesData)
   }
-
 }
-
 
 </script>
 <style>
