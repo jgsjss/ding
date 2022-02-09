@@ -9,7 +9,7 @@
     <router-link to="/chat">test</router-link>
   </h5>
   <h1><a href="/main">메인 페이지</a></h1>
-  <span v-if="logCheck" @click="doLogOut"><button class="btn btn-warning">로그아웃</button></span>
+<!--  <span v-if="logCheck" @click="doLogOut"><button class="btn btn-warning">로그아웃</button></span>-->
 <!--  <h1>로그인 아이디 : {{ idCheck }} </h1>-->
 <!--  <h1>로그인 엑세스토큰 : {{ acTokenCk }} </h1>-->
 <!--  <h1>로그인 리프레시토큰 : {{ reTokenCk }} </h1>-->
@@ -29,29 +29,29 @@ import bundle from 'bootstrap/dist/js/bootstrap.bundle.js'
 export default {
   data () {
     return {
-      logCheck : false,
+      // logCheck : false,
     }
   },
   components: {},
   computed: {
-    idCheck () {
-      return store.getters['loginStore/getId']
-    },
-    acTokenCk () {
-      return store.getters['loginStore/getAcToken']
-    },
-    reTokenCk () {
-      return store.getters['loginStore/getReToken']
-    }
+    // idCheck () {
+    //   return store.getters['loginStore/getId']
+    // },
+    // acTokenCk () {
+    //   return store.getters['loginStore/getAcToken']
+    // },
+    // reTokenCk () {
+    //   return store.getters['loginStore/getReToken']
+    // }
   },
   methods: {
-    doLogOut () {
-      store.dispatch('loginStore/doLogout').then(() => {
-        // alert('로그아웃 되었습니다.')
-        location.reload();
-        console.log('로그아웃 성공')
-      })
-    }
+    // doLogOut () {
+    //   store.dispatch('loginStore/doLogout').then(() => {
+    //     // alert('로그아웃 되었습니다.')
+    //     location.reload();
+    //     console.log('로그아웃 성공')
+    //   })
+    // }
   },
   created () {
 
@@ -65,13 +65,13 @@ export default {
     store.dispatch('loginStore/doReadStateFromStorage')
   },
   watch: {
-    reTokenCk(a){
-      if (a != ''){
-        this.logCheck = true;
-      } else{
-        this.logCheck = false;
-      }
-    }
+    // reTokenCk(a){
+    //   if (a != ''){
+    //     this.logCheck = true;
+    //   } else{
+    //     this.logCheck = false;
+    //   }
+    // }
   },
 
 }

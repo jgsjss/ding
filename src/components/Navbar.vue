@@ -65,7 +65,7 @@
           </button>
           <ul class="dropdown-menu">
             <router-link to="./myinfo" class="nav-link"><li><a class="dropdown-item" href="#">정보수정</a></li></router-link>
-            <router-link to="./member/login" class="nav-link"><li><a class="dropdown-item" href="#">로그아웃</a></li></router-link>
+            <router-link to="" class="nav-link"><li><a class="dropdown-item" @click="doLogOut" href="#">로그아웃</a></li></router-link>
           </ul>
         </div>
       </li>
@@ -75,7 +75,18 @@
 </template>
 
 <script>
+import store from '../store'
+
 export default {
+  methods:{
+    doLogOut () {
+      store.dispatch('loginStore/doLogout').then(() => {
+        // alert('로그아웃 되었습니다.')
+        location.reload();
+        console.log('로그아웃 성공')
+      })
+    }
+  }
 }
 </script>
 

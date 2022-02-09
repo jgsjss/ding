@@ -12,9 +12,9 @@
 
       <div class="wrap2">
         <div class="info_right">dd{{}}</div>
-        <div class="info_right">dd{{}}</div>
-        <div class="info_right">dd{{}}</div>
-        <div class="info_right">dd{{}}</div>
+        <div class="info_right">{{getShopName}}</div>
+        <div class="info_right">{{getShopPhNum}}</div>
+        <div class="info_right">{{getMgName}}</div>
       </div>
     </div>
     <div class="info_order">
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import store from '../store/index.js'
   export default {
     data(){
       return {
@@ -49,7 +50,37 @@
     shopData : Object,
     //영업중인 가게 수
     openShopNum : Number,
-    }
+    },
+    methods:{
+
+    },
+    mounted () {
+      console.log(store.getters['loginStore/getShopName'])
+      console.log(store.getters['loginStore/getShopPhNum'])
+      console.log(store.getters['loginStore/getMgName'])
+    },
+    computed :{
+      getShopName(){
+        return store.getters['loginStore/getShopName'];
+      },
+      getShopPhNum(){
+        return store.getters['loginStore/getShopPhNum'];
+      },
+      getMgName(){
+        return store.getters['loginStore/getMgName'];
+      }
+    },
+    // watch: {
+    //   getShopName(a){
+    //     if(a != null) this.shopName = a;
+    //   },
+    //   getShopPhNum(a){
+    //     if(a != null) this.shopPhNum = a;
+    //   },
+    //   getMgname(a){
+    //     if(a != null) this.manager = a;
+    //   }
+    // }
   }
 </script>
 <style>

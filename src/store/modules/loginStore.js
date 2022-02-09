@@ -8,6 +8,9 @@ export const loginStore = {
     userid: '',
     accessToken: '',
     refreshToken: '',
+    shopName: '',
+    shopPhNum: '',
+    mgName: '',
   },
   getters: {
     getId(state){
@@ -18,6 +21,15 @@ export const loginStore = {
     },
     getReToken(state){
       return state.refreshToken
+    },
+    getShopName(state){
+      return state.shopName
+    },
+    getShopPhNum(state){
+      return state.shopPhNum
+    },
+    getMgName(state){
+      return state.mgName
     },
     //로그인 여부 확인 메소드
     isLogin (state) {
@@ -46,16 +58,26 @@ export const loginStore = {
   },
   mutations: {
     //userId 설정
-    setUserId (state, userid) {
-      state.userid = userid
+
+    setUserId (state, id) {
+      state.userid = id;
     },
     // accessToken 설정
-    setAccessToken (state, accessToken) {
-      state.accessToken = accessToken
+    setAccessToken (state, access) {
+      state.accessToken = access;
     },
     //refreshToken 설정
-    setRefreshToken(state, refreshToken) {
-      state.refreshToken = refreshToken;
+    setRefreshToken(state, refresh) {
+      state.refreshToken = refresh;
+    },
+    setShopName(state, sname){
+      state.shopName = sname;
+    },
+    setShopPhNum(state,spnum){
+      state.shopPhNum = spnum;
+    },
+    setMgName(state, mname){
+      state.mgName = mname
     },
     reset (state) {
       state.userid = '';
@@ -64,11 +86,18 @@ export const loginStore = {
       localStorage.removeItem('login.userid')
       localStorage.removeItem('login.accessToken')
       localStorage.removeItem('login.refreshToken')
+      localStorage.removeItem('login.shopName')
+      localStorage.removeItem('login.shopPhNum')
+      localStorage.removeItem('login.mgName')
+
     },
     saveStateToStorage(state){
       localStorage.setItem('login.userid', state.userid);
       localStorage.setItem('login.accessToken', state.accessToken);
       localStorage.setItem('login.refreshToken', state.refreshToken);
+      localStorage.setItem('login.shopName', state.shopName);
+      localStorage.setItem('login.shopPhNum', state.shopPhNum);
+      localStorage.setItem('login.mgName', state.mgName);
     },
     readStateFromStorage(state){
       if(localStorage.getItem('login.userid') != null){
@@ -79,6 +108,15 @@ export const loginStore = {
       }
       if(localStorage.getItem('login.refreshToken') != null){
         state.refreshToken = localStorage.getItem('login.refreshToken')
+      }
+      if(localStorage.getItem('login.shopName') != null){
+        state.shopName = localStorage.getItem('login.shopName')
+      }
+      if(localStorage.getItem('login.shopPhNum') != null){
+        state.shopPhNum = localStorage.getItem('login.shopPhNum')
+      }
+      if(localStorage.getItem('login.mgName') != null){
+        state.mgName = localStorage.getItem('login.mgName')
       }
     }
   },
@@ -92,8 +130,10 @@ export const loginStore = {
           commit('setUserId', userInfo.userid);
           commit('setAccessToken', res.data.accessToken);
           commit('setRefreshToken', res.data.refreshToken);
+          commit('setShopName', res.data.shopname);
+          commit('setShopPhNum', res.data.shopphnum);
+          commit('setMgName', res.data.mgname);
           commit('saveStateToStorage');
-          console
           axios.defaults.headers.common['Access-Token'] = res.data.accessToken;
           result = true;
           console.log('로그인 성공');
