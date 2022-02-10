@@ -32,8 +32,10 @@
                                    placeholder="8~16자의 영문/숫자를 조합" v-model="userPw1" ref="" @change="checkPW" @focus="checkFlag = false">
             <!-- <span>유효하지 않은 비밀번호 입니다.</span> -->
             <!-- <img src="" id="pswd1_img1" class="pswdImg"> -->
-                        </span>
+            <span class="error_next_box1" id="pw1Msg" style aria-live="assertive">필수 정보 입니다.</span>  
+                        </span>        
           <span className="error_next_box"></span>
+          
         </div>
         <!-- PW2 -->
         <div>
@@ -44,7 +46,9 @@
             <span className="step_url" v-show="this.userPw1==this.userPw2 && this.userPw1 != ''">비밀번호가 동일</span>
             <span className="step_url" v-show="this.userPw1!=this.userPw2">비밀번호가 동일하지 않습니다.</span>
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
+                        
                         </span>
+                        <span class="error_next_box1" id="pw2Msg" style aria-live="assertive">필수 정보 입니다.</span>
           <span className="error_next_box"></span>
         </div>
         <!--name-->
@@ -109,7 +113,7 @@
                             <input type="text" id="mobile2" className="int" maxLength="11"
                                    placeholder="'-'을 제외한 연락처 번호를 입력해주세요." v-model.trim="shopPhNum"
                                     ref="shopPhNum" @focus="checkFlag = false"
-                                    oninput="javascript: this.value = this.value.replace(/[^0-11]/g, '');"
+                                    oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                                            >
                         </span>
           <span className="error_next_box"></span>
@@ -206,7 +210,16 @@ export default {
     }
   },
   methods: {
-    
+    errorCh (){
+let pwd1 = document.getElementById('pswd2-2').value
+if ( pwd1 == "") {
+            document.getElementById("pw2Msg").style.display = 'block';
+            return false
+        }else if( pwd1 != ""){
+          document.getElementById("pw2Msg").style.display = 'none';
+          return false
+        }
+    },
 
 
     isUser () {
@@ -217,10 +230,10 @@ export default {
       console.log(this.userId)
        if ( id == "") {
             document.getElementById("idMsg").style.display = 'block';
-            return false;
+            return false
         }else if(id != ""){
           document.getElementById("idMsg").style.display = 'none';
-          return false;
+          return false
         }
       if (id.length < 6) {
         alert("아이디는 최소 6자리 이상입니다.")
@@ -252,9 +265,18 @@ export default {
     },
     checkPW () {
       let pwd = document.getElementById('pswd2-1').value //eslint-disable-line no-unused-vars
-
+      
       console.log(typeof this.userPw1)
       console.log(this.userPw1)
+      if ( pwd == "") {
+            document.getElementById("pw1Msg").style.display = 'block';
+            return false
+        }else if( pwd!= ""){
+          document.getElementById("pw1Msg").style.display = 'none';
+          return false
+        }
+        
+
         if (pwd.length < 8) {
         alert("비밀번호는 최소 8자리 이상입니다.")
         return false
