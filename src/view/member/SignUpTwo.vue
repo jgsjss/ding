@@ -20,6 +20,7 @@
                                    @change="isUser(userId)" @focus="checkFlag = false">
              <span className="step_url" v-show="userCheck1">사용가능한 아이디 입니다.</span>
              <span className="step_url" v-show="userCheck2">이미 사용중인 아이디 입니다.</span>
+             <span class="error_next_box1" id="idMsg" style aria-live="assertive">필수 정보 입니다.</span>
                         </span>
           <span className="error_next_box"></span>
         </div>
@@ -205,12 +206,22 @@ export default {
     }
   },
   methods: {
+    
+
+
     isUser () {
       let id = document.getElementById('id2').value
       // let data = JSON.stringify({ 'userid': this.userId })
       // let userdata = { 'userid': this.userId }
       console.log(typeof this.userId)
       console.log(this.userId)
+       if ( id == "") {
+            document.getElementById("idMsg").style.display = 'block';
+            return false;
+        }else if(id != ""){
+          document.getElementById("idMsg").style.display = 'none';
+          return false;
+        }
       if (id.length < 6) {
         alert("아이디는 최소 6자리 이상입니다.")
         return false
