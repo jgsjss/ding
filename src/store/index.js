@@ -17,6 +17,7 @@ import { signupStore } from './modules/signupStore'
 import { loginStore } from './modules/loginStore'
 
 
+
 let soldNum=0;
 let hidNum=0;
 for(let i=0; i<menuData.length; i++){

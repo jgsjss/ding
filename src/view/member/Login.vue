@@ -75,7 +75,7 @@ export default {
         this.$refs.memberPasswordInput.focus();
         return;
       }
-      let userInfo = { userid: this.userId, userpw : this.userPw };
+      let userInfo = { userid: this.userId, userpw : this.userPw , checked : this.checked};
       this.$store.dispatch("loginStore/doLogin", userInfo).then(()=>{
         // const returnUrl = window.location.search.replace(/^\?returnUrl=/, "");
         // this.$router.push(returnUrl);

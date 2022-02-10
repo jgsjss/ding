@@ -14,6 +14,7 @@ export const loginStore = {
     shopName: '',
     shopPhNum: '',
     mgName: '',
+    checked: null,
   },
   getters: {
     getId(state){
@@ -82,6 +83,9 @@ export const loginStore = {
     setMgName(state, mname){
       state.mgName = mname
     },
+    setChecked(state, ck){
+      state.checked = ck
+    },
     // 로컬스토리지 삭제 메소드
     // reset (state) {
     //   state.userid = '';
@@ -106,6 +110,7 @@ export const loginStore = {
       state.shopName ='';
       state.shopPhNum ='';
       state.mgName ='';
+
       // cookies.remove('login.userid');
       // cookies.remove('login.accessToken');
       // cookies.remove('login.refreshToken');
@@ -137,8 +142,14 @@ export const loginStore = {
       // cookies.set('login.shopName', state.shopName, 60*60*24);
       // cookies.set('login.shopPhNum', state.shopPhNum, 60*60*24);
       // cookies.set('login.mgName', state.mgName, 60*60*24);
-      cookies.set('login', JSON.stringify(state), 60*60*24*30);
-
+      if(state.checked) {
+        cookies.set('login', JSON.stringify(state), 365)
+      }else{
+        // let date = new Date();
+        // console.log(date.getDate(), "-", date.getHours() )
+        cookies.set('login', JSON.stringify(state))
+        // console.log(cookies.get('expiretime'))
+      }
     },
     // 로컬스토리지 리드 메소드
     // readStateFromStorage(state){
@@ -221,6 +232,7 @@ export const loginStore = {
           commit('setShopName', res.data.shopname);
           commit('setShopPhNum', res.data.shopphnum);
           commit('setMgName', res.data.mgname);
+          commit('setChecked', userInfo.checked);
           commit('saveStateToStorage');
           axios.defaults.headers.common['Access-Token'] = res.data.accessToken;
           result = true;
