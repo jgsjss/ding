@@ -96,32 +96,32 @@ export default {
       this.totalPrice = sum
     },
       
-      // TotalMenuOrder (object) {
-      //   let sum = 0        
-      //   _.forEach(_.reduce(object, 'orderadata'), function(val, etc) {
-      //     sum += val
-      //   })
-      //   this.totalOrder = sum
-      //   console.log(object)
-      // },
       TotalMenuOrder (object) {
         let sum = 0
-        _.reduce(_.map(object, 'watingnum'),(acc, num) =>  {
-          return acc + num, 
-          console.log(acc)
+        _.forEach(_.map(object, 'watingnum'), function(val, key) {
+          sum += val
         })
         this.totalOrder = sum
         console.log(sum)
             
       }
-      // TotalMenuOrder () {
-      //   return this.$store.state.SalesData.reduce( (acc, item) => {
-      //     return acc + (item, 'watingnum')
-      //   }, 0)
-             
-      // } 
+      //----------테스트-----------
+        // TotalMenuOrder(object) {
+        //   const arr = [];
 
+        //   const result = arr.reduce(function add(sum, currValue) {
+        //     return sum + currValue;
+        //   }, 0);
+        //   console.log(result)
+        //   this.totalOrder = result
 
+        // //   const arr = [object]
+        // //   let count = arr .reduce((cnt, element) => cnt + ('a' === element), 0)          
+        // //   console.log(arr)
+        // // this.totalOrder = count
+        // // console.log(count)
+
+        // }
   },
   setup () {
     const month = ref({
@@ -141,7 +141,9 @@ export default {
     this.calcTotalPrice(this.$store.state.SalesData)
     this.TotalMenuOrder(this.$store.state.SalesData)
   }
+
 }
+
 
 </script>
 <style>

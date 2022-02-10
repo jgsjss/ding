@@ -9,6 +9,7 @@ import StaffData from '../assets/StaffData.js'
 import OperationData from '../assets/OperationData.js'
 import LogCheckData from '../assets/LogCheckData.js'
 import SalesData from '../assets/SalesData.js'
+import CategoryData from '../assets/CategoryData.js'
 import timeData from '../assets/timeData.js'
 
 //스토어 모듈 임포트
@@ -80,6 +81,8 @@ export default createStore({
     LogCheckData,
     //매출관리-> 매출관리 데이터
     SalesData,
+    //메뉴카테고리편집 데이터
+    CategoryData,
     //영업시간 데이터
     // timeData,
     //스테이트 변환, $store.commit('mutation 함수명') 으로 이벤트 핸들링

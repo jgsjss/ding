@@ -1,0 +1,12 @@
+.menu_container {
+    width: 85%;
+    margin:0 auto;
+    padding: 0 30px;
+  }
+.menu_main_text {
+    color:#997fb5;
+    font-size:28px;
+}
+.menu_router_wrap {
+    padding:15px 0;
+}

@@ -86,13 +86,13 @@
     display:none;
   }
   .sales_col:after {
-      display: block;
-      content: '';
-      position: absolute;
-      top: 35%;
-      width: 1px;
-      height: 15px;
-      background: #fff;
+    display: block;
+    content: '';
+    position: absolute;
+    top: 35%;
+    width: 1px;
+    height: 15px;
+    background: #fff;
   }
   .sales_data {
     text-decoration: none;

@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 // import Total from '../view/**'
 import Main from "../view/Main.vue";
-import MenuManagement from "../view/MenuManagement.vue";
 /*------ordermanage------ */
 import OrderManagement from "../view/ordermanage/OrderManagement.vue";
 import NewOrderListOne from "../view/ordermanage/NewOrderListOne.vue";
@@ -33,9 +32,12 @@ import SignUpTwo from "../view/member/SignUpTwo";
 import SignUpThree from "../view/member/SignUpThree.vue";
 import SignUpFour from "../view/member/SignUpFour.vue";
 import ReleaseSoldOut from "../view/ReleaseSoldOut.vue";
-import MenuManageCategories from "../view/MenuManageCategories.vue";
-import MenuManageMenus from "../view/MenuManageMenus.vue";
-import MenuManageOptions from "../view/MenuManageOptions.vue";
+/*------MenuManagement------ */
+import MenuManagement from "../view/MenuManagement/MenuManagement.vue";
+import MenuManageCategories from "../view/MenuManagement/MenuManageCategories.vue";
+import MenuManageMenus from "../view/MenuManagement/MenuManageMenus.vue";
+import MenuManageOptions from "../view/MenuManagement/MenuManageOptions.vue";
+/*------etc------ */
 import test1 from "../view/test1";
 import Calendar from "../view/Calendar.vue";
 import PageNotFound from "../view/page404";
@@ -318,19 +320,19 @@ const router = createRouter({
 });
 
 // // meta 체크 전역
-router.beforeEach((to, from, next) => {
-  if (to.matched.some((record) => record.meta.requireLogin)) {
-    const isLogin = store.getters["loginStore/isLogin"];
-    if (!isLogin) {
-      alert("로그인 후 이용 가능합니다.");
-      // next('/login?returnUrl=' + to.fullPath);
-      next("/login");
-    } else {
-      next();
-    }
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some((record) => record.meta.requireLogin)) {
+//     const isLogin = store.getters["loginStore/isLogin"];
+//     if (!isLogin) {
+//       alert("로그인 후 이용 가능합니다.");
+//       // next('/login?returnUrl=' + to.fullPath);
+//       next("/login");
+//     } else {
+//       next();
+//     }
+//   } else {
+//     next();
+//   }
+// });
 
 export default router;
