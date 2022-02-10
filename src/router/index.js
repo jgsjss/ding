@@ -314,12 +314,10 @@ const routes = [
 //   }	else {
 //     next(); //페이지 전환 이루어 짐.
 //   }
-
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
-
 //  meta 체크 전역
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requireLogin)) {
@@ -335,5 +333,4 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-
 export default router;
