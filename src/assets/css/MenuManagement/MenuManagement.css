@@ -1,11 +1,15 @@
 .menu_container {
-    width: 85%;
     margin:0 auto;
-    padding: 0 30px;
   }
+  .menument_wrap {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:15px 15px
+  }  
 .menu_main_text {
     color:#997fb5;
-    font-size:28px;
+    font-size:36px;
 }
 .menu_router_wrap {
     padding:15px 0;

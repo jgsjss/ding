@@ -89,8 +89,6 @@ tbody {
     border:none;
     padding:5px;
 }
-.cate_connect_btn:last-child {
-}
-.active {
+.button:focus:not(:focus-visible) {
     background:#ddd;
 }

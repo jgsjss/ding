@@ -31,7 +31,7 @@
             <td class="cate_data">{{ $store.state.CategoryData[i].menunum }}</td>
             <td class="cate_data"><button type="button" class="cate_connect_btn">메뉴연결</button></td>
             <td class="cate_data">
-              <button type="button" class="cate_connect_btn" @click="activeBtn = '숨김(OFF)'" :class="{active: activeBtn === '숨김(OFF)'}">숨김(OFF)
+              <button type="button" class="cate_connect_btn" @click="active = !active">숨김(OFF)
                 </button>
             </td>
           </tr>
@@ -54,9 +54,23 @@
 export default {
   date() {
     return {
-      activeBtn:'',
+      pageNum: 0,      
+      active: false,
     }
-  }
+  },
+  methods: {
+    nextPage () {
+      this.pageNum += 1
+    },
+    prevPage () {
+      this.pageNum -= 1
+    },
+  },
+    computed: {
+    // pageCount () {
+    //   return Math.ceil(this.$store.state.CategoryData.length / 10)
+    // },
+  },
 }
 </script>
 

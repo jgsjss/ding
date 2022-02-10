@@ -1,13 +1,23 @@
 <template>
 <Navbar />
-    <div class="menu_container">
-      <h4 class="menu_main_text">메뉴관리</h4>
+    <div class="menu_container">    
+      <div class="menument_wrap">
+      <h2 class="menu_main_text">메뉴관리</h2>
+      <div class="sales_right">
+        <button class="main-btn" type="submit">
+          <span class="condition">매장상태</span>
+          <span class="condition">: 영업중{{}}</span>
+        </button>
+        <i class="xi-bell"></i>
+      </div>   
+      </div> 
       <div class="menu_router_wrap">
       <router-link to="/menumanagement/categories"><a>카테고리편집</a></router-link> |
     <router-link to="/menumanagement/menus"><a >메뉴편집</a> </router-link> |
     <router-link to="/menumanagement/options"> <a>옵션편집</a></router-link>
     </div>
     </div>
+    <hr />
     <router-view  ></router-view>
 
     <!-- 카테고리편집 탭 -->
