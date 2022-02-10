@@ -7,7 +7,11 @@
           <label class="cate_label"><input type="checkbox" class="cate_check"> 숨김</label>
           </div>
           <div class="category_right">
-          <input type="search" name="categoriSearch" placeholder="search" class="menu_search">
+          <input type="search" 
+          name="categoriSearch" 
+          placeholder="search" 
+          class="menu_search"
+          >
           <button class="cate_menu_btn">순서변경</button>
           <button class="cate_menu_btn">편집</button>
           <button class="cate_menu_btn">+카테고리추가</button>
@@ -24,14 +28,14 @@
             <th scope="col" class="cate_col">숨김</th>
           </tr>
           </thead>
-          <tbody>
-          <tr v-for="(a, i) in $store.state.CategoryData" :key="i">
+          <tbody :items="filtereditems">
+          <tr v-for="(a, i) in $store.state.CategoryData" :key="i" >
             <td class="cate_data">{{ $store.state.CategoryData[i].catename }}</td>
             <td class="cate_data">{{ $store.state.CategoryData[i].catemenu }}</td>
             <td class="cate_data">{{ $store.state.CategoryData[i].menunum }}</td>
             <td class="cate_data"><button type="button" class="cate_connect_btn">메뉴연결</button></td>
             <td class="cate_data">
-              <button type="button" class="cate_connect_btn" @click="active = !active">숨김(OFF)
+              <button type="button" class="cate_connect_btn">숨김(OFF)
                 </button>
             </td>
           </tr>
@@ -51,6 +55,9 @@
 </template>
 
 <script>
+// import { ref, computed } from 'vue';
+// import axios from 'axios';
+
 export default {
   date() {
     return {
@@ -70,6 +77,8 @@ export default {
     // pageCount () {
     //   return Math.ceil(this.$store.state.CategoryData.length / 10)
     // },
+  },
+  setup() {
   },
 }
 </script>

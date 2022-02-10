@@ -6,7 +6,7 @@
       <span class="log_main_text">로그확인</span>
       <!--x버튼 클릭시 OperationManagement 운영관리로 이동-->
       <router-link to="/OperationManagement">
-        <span class="xi-close"></span>
+        <span class="xi-close-thin"></span>
       </router-link>
     </div>
     <div class="log_btn_wrap">
@@ -21,7 +21,7 @@
           <button type="button" class="log_hidden_btn">조회</button>
         </div>
       </div>
-      <select id="sorted" class="menu_btn">
+      <select id="sorted" class="s_menu_btn">
         품절해제
         <option class="log_check_Box" >최신순</option>
         <option class="log_check_Box" >과거순</option>

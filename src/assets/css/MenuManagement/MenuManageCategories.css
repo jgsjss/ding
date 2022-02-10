@@ -78,6 +78,7 @@
     text-decoration: none;
     color:#997fb5;
     padding:5px 0;
+    border-bottom:1px solid #ddd;
 }
 tbody {
         color:#997fb5;
@@ -88,7 +89,4 @@ tbody {
     border-radius: 3px;
     border:none;
     padding:5px;
-}
-.button:focus:not(:focus-visible) {
-    background:#ddd;
 }

@@ -48,10 +48,11 @@
     display:flex;
     align-items: center;
 }
-.menu_btn {
-  width: 70px;
+.s_menu_btn {
   text-align: center;
-  margin: 0 15px;
+  margin: 0 10px;
+  width: 100px;
+  border:1px solid #997fb5;
 }
 .log_table {
   width: 85%;

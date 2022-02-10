@@ -18,7 +18,7 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/salesmanagement" class="nav-link">
+        <router-link to="/salesmanagement/SalesManagementOne" class="nav-link">
           <div class="nav-wrap">
             <i class="xi-cloud-o"></i>
             <p class="nav-link">매출관리</p>
