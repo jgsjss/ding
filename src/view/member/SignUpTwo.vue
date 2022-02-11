@@ -42,13 +42,13 @@
           <h3 className="join_title"><label>비밀번호 재확인</label></h3>
           <span className="box int_pass_check">
                             <input type="password" id="pswd2-2" className="int"
-                                   maxlength="16" v-model="userPw2" @focus="checkFlag = false">
+                                   maxlength="16" v-model="userPw2" @change="checkPW" @focus="checkFlag = false">
             <span className="step_url" v-show="this.userPw1==this.userPw2 && this.userPw1 != ''">비밀번호가 동일</span>
             <span className="step_url" v-show="this.userPw1!=this.userPw2">비밀번호가 동일하지 않습니다.</span>
             <!-- <img src="./img/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg"> -->
-                        
+                        <span class="error_next_box1" id="pw2Msg" style aria-live="assertive">필수 정보 입니다.</span> 
                         </span>
-                        <span class="error_next_box1" id="pw2Msg" style aria-live="assertive">필수 정보 입니다.</span>
+                        
           <span className="error_next_box"></span>
         </div>
         <!--name-->
@@ -56,7 +56,8 @@
           <h3 className="join_title"><label>대표자 이름</label></h3>
           <span className="box int_name">
                             <input type="text" id="name2" className="int" maxLength="20"
-                                   v-model="userName" placeholder="이름을 입력해주세요." @focus="checkFlag = false">
+                                   v-model="userName" @change="errorCh" placeholder="이름을 입력해주세요." @focus="checkFlag = false">
+                                   <span class="error_next_box1" id="name" style aria-live="assertive">필수 정보 입니다.</span>
                         </span>
           <!-- <span className="error_next_box">이름을 입력하세요</span> -->
         </div>
@@ -67,7 +68,7 @@
             <!-- BIRTH_MM -->
             <div id="num_first">
                                 <span className="box">
-                                    <select id="number" className="sel" v-model.trim="firstNum" ref="firstNum">
+                                    <select id="number" className="sel" @change="errorCh" v-model.trim="firstNum" ref="firstNum">
                                         <option>선택</option>
                                         <option value="010">010</option>
                                         <option value="011">011</option>
@@ -75,15 +76,17 @@
                                         <option value="017">017</option>
                                         <option value="019">019</option>
                                     </select>
+                                    <span class="error_next_box1" id="phNum" style aria-live="assertive">필수 정보 입니다.</span>
                                 </span>
             </div>
             <!-- BIRTH_YY -->
             <div id="num_second">
                                 <span className="box">
                                     <input type="text" id="second2" className="int" maxLength="4"
-                                           v-model.trim="secondNum" ref="secondNum" @focus="checkFlag = false"
+                                           v-model.trim="secondNum" ref="secondNum"  @focus="checkFlag = false"
                                            oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                                            >
+                                           
                                 </span>
             </div>
             <!-- BIRTH_DD -->
@@ -96,13 +99,15 @@
                                 </span>
             </div>
           </div>
+          
           <span className="error_next_box"></span>
         </div>
         <!--shop name-->
         <div>
           <h3 className="join_title"><label>매장 이름</label></h3>
           <span className="box int_name">
-                            <input type="text" id="name3" className="int" maxLength="20" v-model.trim="shopName" @focus="checkFlag = false">
+                            <input type="text" id="name3" className="int" @change="errorCh" maxLength="20" v-model.trim="shopName" @focus="checkFlag = false">
+                            <span class="error_next_box1" id="shname" style aria-live="assertive" >필수 정보 입니다.</span>
                         </span>
           <span className="error_next_box"></span>
         </div>
@@ -161,7 +166,7 @@ import router from '../../router'
 import uservo from '../../DTO/userVO'
 import store from '../../store/index.js'
 import axios from 'axios'
-// import duam1 from '../../assets/postcode.v2.js'
+import duam1 from '../../assets/postcode.v2.js'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
@@ -210,13 +215,31 @@ export default {
     }
   },
   methods: {
+    //null 체크해서 화면 보여주기
     errorCh (){
-let pwd1 = document.getElementById('pswd2-2').value
-if ( pwd1 == "") {
-            document.getElementById("pw2Msg").style.display = 'block';
+        let name = document.getElementById('name2').value
+        let secnum = document.getElementById('second2').value
+        let ofname = document.getElementById('name3').value 
+
+          if ( name == "") {
+            document.getElementById("name").style.display = 'block';
             return false
-        }else if( pwd1 != ""){
-          document.getElementById("pw2Msg").style.display = 'none';
+        }else if( name != ""){
+          document.getElementById("name").style.display = 'none';
+          return false
+        }
+        if ( secnum  == "") {
+            document.getElementById("phNum").style.display = 'block';
+            return false
+        }else if( secnum != ""){
+          document.getElementById("phNum").style.display = 'none';
+          return false
+        }
+        if ( ofname == "") {
+            document.getElementById("shname").style.display = 'block';
+            return false
+        }else if( ofname != ""){
+          document.getElementById("shname").style.display = 'none';
           return false
         }
     },
@@ -224,28 +247,28 @@ if ( pwd1 == "") {
 
     isUser () {
       let id = document.getElementById('id2').value
+      let idRegExp = /^[a-zA-z0-9]{4,12}$/;
+
       // let data = JSON.stringify({ 'userid': this.userId })
       // let userdata = { 'userid': this.userId }
       console.log(typeof this.userId)
       console.log(this.userId)
        if ( id == "") {
             document.getElementById("idMsg").style.display = 'block';
-            return false
         }else if(id != ""){
           document.getElementById("idMsg").style.display = 'none';
-          return false
         }
       if (id.length < 6) {
-        alert("아이디는 최소 6자리 이상입니다.")
-        return false
+        this.$swal("아이디는 최소 6자리 이상입니다.")
       } else if (id.search(/\s/) !== -1) {
-        alert("아이디에 공백은 불가능합니다.")
-        return false
+        this.$swal("아이디에 공백은 불가능합니다.")
       }else if (id.search(/[~!@#$%^&*()_+|<>?:{}]/) !==-1){
-        alert("아이디에 특수문자 불가능합니다.")
-        return false
-
-      }else {
+        this.$swal("아이디에 특수문자 불가능합니다.")
+      }
+        //else if(id.search(idRegExp) !== -1){
+        //this.$swal('아이디는 영문 대소문자와 숫자 4~12자리로 입력해야 합니다.')
+     // }
+      else {
         axios({
           url: '/api/isuser',
           method: 'post',
@@ -265,29 +288,27 @@ if ( pwd1 == "") {
     },
     checkPW () {
       let pwd = document.getElementById('pswd2-1').value //eslint-disable-line no-unused-vars
-      
+      let pwd1 = document.getElementById('pswd2-2').value
       console.log(typeof this.userPw1)
       console.log(this.userPw1)
       if ( pwd == "") {
             document.getElementById("pw1Msg").style.display = 'block';
-            return false
         }else if( pwd!= ""){
           document.getElementById("pw1Msg").style.display = 'none';
-          return false
         }
-        
+      if ( pwd1 == "") {
+            document.getElementById("pw2Msg").style.display = 'block';
+        }else if( pwd1 != ""){
+          document.getElementById("pw2Msg").style.display = 'none';
+        }
 
         if (pwd.length < 8) {
-        alert("비밀번호는 최소 8자리 이상입니다.")
-        return false
+          this.$swal("비밀번호는 최소 8자리 이상입니다.")
       } else if (pwd.search(/\s/) !== -1) {
-        alert("비밀번호에 공백은 불가능합니다.")
-        return false
+          this.$swal("비밀번호에 공백은 불가능합니다.")
       } else if(pwd.search(/[a-zA-Z]/) || pwd.search(/[0-9]/) == -1 || pwd.search(/[~!@#$%^&*()_+|<>?:{}]/) !==-1 ){
-        alert("영문자와 숫자로만 조합이 가능합니다.")
-        return false
+          this.$swal("영문자와 숫자로만 조합이 가능합니다.")
       }else{
-        return false
       }
     },
     isEmpty(data) {
@@ -312,7 +333,7 @@ if ( pwd1 == "") {
            !this.isEmpty(this.postcode)) {
              return false
       } else {
-         this.$swal("회원가입 필수정보를 입력하세요");
+         this.$swal("입력하세요");
          router.back();
          return false
       }
@@ -334,6 +355,16 @@ if ( pwd1 == "") {
       let phoneNum = ''
       this.userPhNum = phoneNum.concat(this.firstNum, this.secondNum, this.thirdNum)
       console.log(this.userPhNum)
+      //번호 null 체크 화면 보여주기
+       let secnum = document.getElementById('second2').value
+        let dd = document.getElementById('dd2').value 
+        if ( secnum  == "") {
+            document.getElementById("phNum").style.display = 'block';
+            return false
+        }else if( secnum != ""){
+          document.getElementById("phNum").style.display = 'none';
+          return false
+        }
     },
     sendParam () {
 
