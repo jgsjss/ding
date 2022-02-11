@@ -247,6 +247,8 @@ export default {
 
     isUser () {
       let id = document.getElementById('id2').value
+      let idRegExp = /^[a-zA-z0-9]{4,12}$/;
+
       // let data = JSON.stringify({ 'userid': this.userId })
       // let userdata = { 'userid': this.userId }
       console.log(typeof this.userId)
@@ -257,13 +259,16 @@ export default {
           document.getElementById("idMsg").style.display = 'none';
         }
       if (id.length < 6) {
-        alert("아이디는 최소 6자리 이상입니다.")
+        this.$swal("아이디는 최소 6자리 이상입니다.")
       } else if (id.search(/\s/) !== -1) {
-        alert("아이디에 공백은 불가능합니다.")
+        this.$swal("아이디에 공백은 불가능합니다.")
       }else if (id.search(/[~!@#$%^&*()_+|<>?:{}]/) !==-1){
-        alert("아이디에 특수문자 불가능합니다.")
-
-      }else {
+        this.$swal("아이디에 특수문자 불가능합니다.")
+      }
+        //else if(id.search(idRegExp) !== -1){
+        //this.$swal('아이디는 영문 대소문자와 숫자 4~12자리로 입력해야 합니다.')
+     // }
+      else {
         axios({
           url: '/api/isuser',
           method: 'post',
@@ -288,30 +293,22 @@ export default {
       console.log(this.userPw1)
       if ( pwd == "") {
             document.getElementById("pw1Msg").style.display = 'block';
-            return false
         }else if( pwd!= ""){
           document.getElementById("pw1Msg").style.display = 'none';
-          return false
         }
       if ( pwd1 == "") {
             document.getElementById("pw2Msg").style.display = 'block';
-            return false
         }else if( pwd1 != ""){
           document.getElementById("pw2Msg").style.display = 'none';
-          return false
         }
 
         if (pwd.length < 8) {
-        alert("비밀번호는 최소 8자리 이상입니다.")
-        return false
+          this.$swal("비밀번호는 최소 8자리 이상입니다.")
       } else if (pwd.search(/\s/) !== -1) {
-        alert("비밀번호에 공백은 불가능합니다.")
-        return false
+          this.$swal("비밀번호에 공백은 불가능합니다.")
       } else if(pwd.search(/[a-zA-Z]/) || pwd.search(/[0-9]/) == -1 || pwd.search(/[~!@#$%^&*()_+|<>?:{}]/) !==-1 ){
-        alert("영문자와 숫자로만 조합이 가능합니다.")
-        return false
+          this.$swal("영문자와 숫자로만 조합이 가능합니다.")
       }else{
-        return false
       }
     },
     isEmpty(data) {
@@ -361,7 +358,6 @@ export default {
       //번호 null 체크 화면 보여주기
        let secnum = document.getElementById('second2').value
         let dd = document.getElementById('dd2').value 
-
         if ( secnum  == "") {
             document.getElementById("phNum").style.display = 'block';
             return false
