@@ -1,7 +1,8 @@
 <template>
 <!-- 메뉴관리 페이지의 카테고리편집 게시판 페이지 -->
 <div class="cate_container">
-        <form class="category_wrap">
+        <form class="category_wrap" v-show="show">
+          <div class="hidden_wrapper">
           <div class="category_left">
           <label class="cate_label"><input type="checkbox" class="cate_check"> 정상</label>
           <label class="cate_label"><input type="checkbox" class="cate_check"> 숨김</label>
@@ -13,10 +14,28 @@
           class="menu_search"
           >
           <button class="cate_menu_btn">순서변경</button>
-          <button class="cate_menu_btn">편집</button>
+          <button class="cate_menu_btn" @click="show=!show">편집</button>
           <button class="cate_menu_btn">+카테고리추가</button>
           </div>
+          </div>
+
         </form>
+          <div class="hidden_wrapper02">
+            <div class="category_left02">
+          <label class="cate_label"><input type="checkbox" class="cate_check">전체선택</label>
+          <button type="button" class="hide_cate_btn">삭제</button>
+          <button type="button" class="hide_cate_btn">숨김</button>
+          <button type="button" class="hide_cate_btn">정상</button>
+            </div>
+            <div class="category_right02">
+            <select class="hidden_select">
+              <option class="hidden_btn" value="삭제">삭제</option>
+              <option class="hidden_btn" value="숨김">숨김</option>
+              <option class="hidden_btn" value="정상">정상</option>
+            </select>
+            <button type="button">저장</button>
+            </div>
+          </div>        
         <div class="category_list_wrap">
         <table class="cate_table">
           <thead class="category_thead">
@@ -28,7 +47,7 @@
             <th scope="col" class="cate_col">숨김</th>
           </tr>
           </thead>
-          <tbody :items="filtereditems">
+          <tbody>
           <tr v-for="(a, i) in $store.state.CategoryData" :key="i" >
             <td class="cate_data">{{ $store.state.CategoryData[i].catename }}</td>
             <td class="cate_data">{{ $store.state.CategoryData[i].catemenu }}</td>
@@ -63,6 +82,7 @@ export default {
     return {
       pageNum: 0,      
       active: false,
+      show:false,
     }
   },
   methods: {

@@ -21,10 +21,10 @@
       </div>
       <div class="month_right">
         <div class="sales_sort_btn_wrap">
-          <select class="sales_sort_btn">
+          <select class="sales_sort_btn" v-model="selected" v-on="sortSales">
             품절해제
-            <option class="log_check_Box">최신순</option>
-            <option class="log_check_Box">과거순</option>
+            <option class="log_check_Box" value="date-asc">최신순</option>
+            <option class="log_check_Box" value="date-desc">과거순</option>
           </select>
         </div>
         <table class="table">
@@ -78,6 +78,7 @@ export default {
       pageNum: 0,
       totalPrice: 0,
       totalOrder: 0,
+      // selected:'date-asc'
     }
   },
   methods: {
@@ -87,6 +88,10 @@ export default {
     prevPage () {
       this.pageNum -= 1
     },
+    // sortSales() {
+    //   this.$emit('sales_data', {value :this.selected});
+    //   console.log('')
+    // },
 
     calcTotalPrice (object) {
       let sum = 0

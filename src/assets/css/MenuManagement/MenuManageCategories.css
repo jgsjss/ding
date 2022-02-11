@@ -17,10 +17,23 @@
 .cate_check {
     border:#997fb5;
 }
+/*------hidden wrap02-------*/
+.hidden_wrapper02 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:15px 0;
+}
+.category_left02 {
+    color:#997fb5;
+}
 .menu_search {
     border:1px solid #997fb5;
     border-radius: 30px;
     padding:5px 15px;
+}
+.hidden_select {
+    width: 70px;
 }
 .cate_menu_btn {
     padding:5px;
