@@ -30,7 +30,7 @@
                             <input type="password" id="pswd1" class="int" maxlength="20" ref="memberPasswordInput" v-model.trim="userPw">
           <!-- <img src="../public/m_icon_pass.png" id="pswd1_img1" class="pswdImg"> -->
                         </span>
-        <span class="error_next_box"></span>
+        <span class="error_next_box" v-if="errUserInfo" >asdg</span>
       </div>
       <!--로그인 상태 유지-->
       <label class="login_check_wrap">로그인 상태 유지
@@ -62,6 +62,7 @@ export default {
       userId: '',
       userPw: '',
       checked: false,
+      errUserInfo: false,
     }
   },
   methods: {
@@ -82,6 +83,7 @@ export default {
         this.$router.push('/');
         console.log('1')
       }).catch((err)=>{
+        if(err) this.errUserInfo = true;
         this.errorMessage=err.response.data.errormessage;
       });
     },
