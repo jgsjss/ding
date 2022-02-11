@@ -253,20 +253,15 @@ export default {
       console.log(this.userId)
        if ( id == "") {
             document.getElementById("idMsg").style.display = 'block';
-            return false
         }else if(id != ""){
           document.getElementById("idMsg").style.display = 'none';
-          return false
         }
       if (id.length < 6) {
         alert("아이디는 최소 6자리 이상입니다.")
-        return false
       } else if (id.search(/\s/) !== -1) {
         alert("아이디에 공백은 불가능합니다.")
-        return false
       }else if (id.search(/[~!@#$%^&*()_+|<>?:{}]/) !==-1){
         alert("아이디에 특수문자 불가능합니다.")
-        return false
 
       }else {
         axios({
