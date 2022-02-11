@@ -17,23 +17,31 @@
 .cate_check {
     border:#997fb5;
 }
-/*------hidden wrap02-------*/
-.hidden_wrapper02 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding:15px 0;
-}
-.category_left02 {
+.cate_check_btn {
+    background:#fff;
+    color:#333;
+    font-size:14px;
+    border:1px solid #997fb5;
     color:#997fb5;
+    padding: 5px 15px;
+    border-radius:3px;
 }
+
 .menu_search {
     border:1px solid #997fb5;
     border-radius: 30px;
     padding:5px 15px;
 }
 .hidden_select {
-    width: 70px;
+    width:150px;
+    border:1px solid #997fb5;
+    color:#997fb5;
+    border-radius: 15px;
+    padding:0 10px;
+    margin:0 10px;
+}
+.hidden_btn {
+    color:#997fb5;
 }
 .cate_menu_btn {
     padding:5px;
@@ -44,13 +52,14 @@
     background:rgb(194, 193, 193);
     font-size:14px;
 }
-.cate_menu_btn:first-child {
-    background:none;
+.cate_menu_btn02 {
+    padding:5px;
+    margin:0 10px;
     border:none;
-}
-.cate_menu_btn:last-child {
-    background:#997fb5;
-    border:none;
+    border-radius: 3px;
+    color:white;
+    background:#c2b4cd;
+    font-size:14px;
 }
 .category_list_wrap {
     width: 100%;
@@ -102,4 +111,15 @@ tbody {
     border-radius: 3px;
     border:none;
     padding:5px;
+}
+.cate_add_wrap {
+    text-align: right;
+    padding:20px;
+}
+.cate_add_btn {
+    background:#997fb5;
+    color:white;
+    border:none;
+    border-radius: 3px;
+    padding:8px 10px
 }
