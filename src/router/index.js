@@ -44,6 +44,11 @@ import PageNotFound from "../view/page404";
 import page404 from "../view/page404";
 import store from "../store";
 import chat from "../view/1";
+
+// import 'sweetalert2/dist/sweetalert2.min.css';
+// import VueSweetalert2 from 'vue-sweetalert2';
+
+
 //인증메소드
 // const Authentication = () => (to, from, next) => {
 //   const isLogin = store.getters['loginStore/isLogin'];
@@ -323,7 +328,7 @@ const router = createRouter({
 //   if (to.matched.some((record) => record.meta.requireLogin)) {
 //     const isLogin = store.getters["loginStore/isLogin"];
 //     if (!isLogin) {
-//       alert("로그인 후 이용 가능합니다.");
+//       this.$swal("로그인 후 이용 가능합니다.");
 //       // next('/login?returnUrl=' + to.fullPath);
 //       next("/login");
 //     } else {

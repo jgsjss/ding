@@ -32,7 +32,7 @@
           </label>
         </div>
         <div class="terms_box">
-          <label class="login_check_wrap">광고성 정보 마케팅 동의
+          <label class="login_check_wrap">광고성 정보 마케팅 동의 (선택)
             <input type="checkbox" v-model="selected" :value="agree[3]" @change='updateCheckall()'>
             <span class="checkmark"></span>
           </label>

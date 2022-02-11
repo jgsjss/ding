@@ -161,7 +161,7 @@ import router from '../../router'
 import uservo from '../../DTO/userVO'
 import store from '../../store/index.js'
 import axios from 'axios'
-import duam1 from '../../assets/postcode.v2.js'
+// import duam1 from '../../assets/postcode.v2.js'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
@@ -312,7 +312,7 @@ if ( pwd1 == "") {
            !this.isEmpty(this.postcode)) {
              return false
       } else {
-         this.$swal("입력하세요");
+         this.$swal("회원가입 필수정보를 입력하세요");
          router.back();
          return false
       }

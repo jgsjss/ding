@@ -143,11 +143,11 @@ export const loginStore = {
       // cookies.set('login.shopPhNum', state.shopPhNum, 60*60*24);
       // cookies.set('login.mgName', state.mgName, 60*60*24);
       if(state.checked) {
-        cookies.set('login', JSON.stringify(state), 365)
+        cookies.set('login', JSON.stringify(state), 60*60*24*365)
       }else{
         // let date = new Date();
         // console.log(date.getDate(), "-", date.getHours() )
-        cookies.set('login', JSON.stringify(state))
+        cookies.set('login', JSON.stringify(state), 1)
         // console.log(cookies.get('expiretime'))
       }
     },
