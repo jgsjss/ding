@@ -30,7 +30,7 @@
                             <input type="password" id="pswd1" class="int" maxlength="20" ref="memberPasswordInput" v-model.trim="userPw">
           <!-- <img src="../public/m_icon_pass.png" id="pswd1_img1" class="pswdImg"> -->
                         </span>
-        <span class="error_next_box" v-if="errUserInfo" >asdg</span>
+        <span class="error_next_box" v-if="errUserInfo">아이디나 비밀번호가 일치하지 않습니다.</span>
       </div>
       <!--로그인 상태 유지-->
       <label class="login_check_wrap">로그인 상태 유지
@@ -47,7 +47,7 @@
       <p class="login_text"><a href="#!" class="member"><router-link to="./member/signupOne">회원가입&nbsp;</router-link></a>후 딩동오더를 이용해 보세요!</p>
       </form>
     </div>
-    <p class="login_bottom">
+    <p class="login_bottom" v-if="errUserInfo">
       아이디/비밀번호 분실 시 (브랜드)로 직접 연락해주세요!
     </p>
     <!-- content-->
