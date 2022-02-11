@@ -12,9 +12,9 @@
       </div>   
       </div> 
       <div class="menu_router_wrap">
-      <router-link to="/menumanagement/categories"><a>카테고리편집</a></router-link> |
-    <router-link to="/menumanagement/menus"><a >메뉴편집</a> </router-link> |
-    <router-link to="/menumanagement/options"> <a>옵션편집</a></router-link>
+      <router-link to="/menumanagement/categories"><span class="menu_router_name">카테고리편집</span></router-link> |
+    <router-link to="/menumanagement/menus"><span class="menu_router_name">메뉴편집</span> </router-link> |
+    <router-link to="/menumanagement/options"> <span class="menu_router_name">옵션편집</span></router-link>
     </div>
     </div>
     <hr />

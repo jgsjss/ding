@@ -39,14 +39,19 @@
           </thead>
           <tbody>
           <tr v-for="(a, i) in $store.state.CategoryData" :key="i">
-            <th  scope="row"><input type="checkbox"></th>
+            <th  scope="row" class="cate_check_box"><input type="checkbox"></th>
             <td class="cate_data">{{ $store.state.CategoryData[i].catename }}</td>
-            <td class="cate_data">{{ $store.state.CategoryData[i].catemenu }}</td>
+            <td class="cate_data col-7">{{ $store.state.CategoryData[i].catemenu }}</td>
             <td class="cate_data">{{ $store.state.CategoryData[i].menunum }}</td>
             <td class="cate_data"><button type="button" class="cate_connect_btn">메뉴연결</button></td>
             <td class="cate_data">
-              <button type="button" class="cate_connect_btn">숨김(OFF)
-                </button>
+              <select class="cate_condition">
+                <option class="cate_condition_text">상태설정</option>
+                <option class="cate_condition_text">숨김</option>
+                <option class="cate_condition_text">정상상태</option>
+              </select>
+              <!-- <button type="button" class="cate_connect_btn">숨김(OFF)
+                </button> -->
             </td>
           </tr>
           </tbody>

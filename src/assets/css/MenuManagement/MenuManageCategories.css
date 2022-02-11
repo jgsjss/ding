@@ -17,6 +17,9 @@
 .cate_check {
     border:#997fb5;
 }
+.cate_check_box {
+    padding:0 10px;
+}
 .cate_check_btn {
     background:#fff;
     color:#333;
@@ -83,6 +86,7 @@
     text-align: center;
     font-size:14px;
     padding:10px 0;
+    position:relative;
 }
 .cate_col:nth-child(1):after {
     display:none;
@@ -96,6 +100,7 @@
     height: 15px;
     background: #fff;
 }
+
 .cate_data {
     text-decoration: none;
     color:#997fb5;
@@ -112,6 +117,13 @@ tbody {
     border:none;
     padding:5px;
 }
+.cate_condition {
+    width:90px;
+    border:1px solid #997fb5;
+    color:#997fb5;
+    border-radius:5px;
+    padding: 0 5px;
+}
 .cate_add_wrap {
     text-align: right;
     padding:20px;
@@ -123,3 +135,4 @@ tbody {
     border-radius: 3px;
     padding:8px 10px
 }
+
