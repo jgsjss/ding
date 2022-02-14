@@ -130,7 +130,7 @@
           <span className="box int_mobile">
                         <input type="text" id="address2" ref="address" className="int" maxLength="20"
                                v-model.trim="address"
-                               placeholder="매장 주소" @focus="checkFlag = false">
+                               placeholder="매장 주소" @focus="checkFlag = false" @change="errorCh">
                         <button type="submit" className="addr_btn" @click="execDaumPostcode()"
                                 value="우편번호 찾기">주소검색</button>
                         </span>
@@ -139,11 +139,12 @@
                                v-model.trim="extraAddress" placeholder="매장 상세주소" @focus="checkFlag = false">
                         </span>
           <span className="box int_mobile">
-                        <input type="text" className="int" v-model.trim="postcode" placeholder="우편번호" @focus="checkFlag = false">
+                        <input type="text" className="int" v-model.trim="postcode" placeholder="우편번호" @change="errorCh" @focus="checkFlag = false">
                         </span>
           <span className="box int_mobile">
                         <input type="text" className="int" id="extraAddress2" ref="extraAddress" v-model.trim="etc"
                                placeholder="참고항목">
+                        <span class="error_next_box1" id="shaddresss" style aria-live="assertive" >필수 정보 입니다.</span>               
                         </span>
         </div>
         <!-- JOIN BTN-->
@@ -222,7 +223,15 @@ export default {
         let secnum = document.getElementById('second2').value
         let ofname = document.getElementById('name3').value 
         let ofnum = document.getElementById('mobile3').value 
+        let shadd = document.getElementById('address2').value 
 
+        if ( ofnum  == "") {
+            document.getElementById("shnum").style.display = 'block';
+            return false
+        }else if( ofnum != ""){
+          document.getElementById("shnum").style.display = 'none';
+          return false
+        }
         if ( ofname == "") {
             document.getElementById("shname").style.display = 'block';
             return false
@@ -237,13 +246,6 @@ export default {
           document.getElementById("name").style.display = 'none';
           return false
         }
-        if ( ofnum  == "") {
-            document.getElementById("shnum").style.display = 'block';
-            return false
-        }else if( ofnum != ""){
-          document.getElementById("shnum").style.display = 'none';
-          return false
-        }
         if ( secnum  == "") {
             document.getElementById("phNum").style.display = 'block';
             return false
@@ -251,7 +253,13 @@ export default {
           document.getElementById("phNum").style.display = 'none';
           return false
         }
-        
+        if ( shadd  == "") {
+            document.getElementById("shaddresss").style.display = 'block';
+            return false
+        }else if( shadd != ""){
+          document.getElementById("shaddresss").style.display = 'none';
+          return false
+        }
        
     },
 
