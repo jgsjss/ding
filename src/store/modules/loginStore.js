@@ -147,7 +147,7 @@ export const loginStore = {
       }else{
         // let date = new Date();
         // console.log(date.getDate(), "-", date.getHours() )
-        cookies.set('login', JSON.stringify(state), 1)
+        cookies.set('login', JSON.stringify(state), 60*60*24)
         // console.log(cookies.get('expiretime'))
       }
     },
