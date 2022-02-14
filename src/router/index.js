@@ -26,19 +26,24 @@ import SalesManagement from "../view/SalesManagement/SalesManagement.vue";
 import SalesManagementOne from "../view/SalesManagement/SalesManagementOne.vue";
 import SalesManagementTwo from "../view/SalesManagement/SalesManagementTwo.vue";
 /*------member------ */
-import Login from "../view/member/Login.vue";
-import SignUpOne from "../view/member/SignUpOne.vue";
-import SignUpTwo from "../view/member/SignUpTwo";
-import SignUpThree from "../view/member/SignUpThree.vue";
-import SignUpFour from "../view/member/SignUpFour.vue";
-import UpdateBizMember from "../view/member/UpdateBizMember";
+
+import Login from '../view/member/Login.vue'
+import SignUpOne from '../view/member/SignUpOne.vue'
+import SignUpTwo from '../view/member/SignUpTwo'
+import SignUpThree from '../view/member/SignUpThree.vue'
+import SignUpFour from '../view/member/SignUpFour.vue'
+import SignUpCancel from '../view/member/SignUpCancel'
+
 
 import ReleaseSoldOut from "../view/ReleaseSoldOut.vue";
 /*------MenuManagement------ */
-import MenuManagement from "../view/MenuManagement/MenuManagement.vue";
-import MenuManageCategories from "../view/MenuManagement/MenuManageCategories.vue";
-import MenuManageMenus from "../view/MenuManagement/MenuManageMenus.vue";
-import MenuManageOptions from "../view/MenuManagement/MenuManageOptions.vue";
+
+import MenuManagement from '../view/MenuManagement/MenuManagement.vue'
+import MenuManageCategories from '../view/MenuManagement/MenuManageCategories.vue'
+import MenuManageMenus from '../view/MenuManagement/MenuManageMenus.vue'
+import MenuManageOptions from '../view/MenuManagement/MenuManageOptions.vue'
+import MenuConnect from '../view/MenuManagement/MenuConnect.vue'
+
 /*------etc------ */
 import test1 from "../view/test1";
 import Calendar from "../view/Calendar.vue";
@@ -142,9 +147,11 @@ const routes = [
     props: true,
   },
   {
-    path: "/updatebizmember",
-    component: UpdateBizMember,
-    name: "updatebizmember",
+
+    path: '/signupcancel',
+    component: SignUpCancel,
+    name:'SignUpCancel',
+
     props: true,
   },
   {
@@ -170,6 +177,10 @@ const routes = [
       {
         path: "/menumanagement/options",
         component: MenuManageOptions,
+      },
+      {
+        path: '/menumanagement/MenuConnect',
+        component: MenuConnect,
       },
     ],
   },
