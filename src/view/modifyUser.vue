@@ -1,66 +1,58 @@
 <template>
-  <h1>dbshow페이지</h1>
+  <h1>사용자 정보 변경</h1>
   <table class="table table-bordered">
     <thead>
     <tr>
       <th scope="col">아이디</th>
       <th scope="col">패스워드</th>
       <th scope="col">이름</th>
+      <th scope="col">사업자 번호</th>
       <th scope="col">주소 1</th>
       <th scope="col">주소 2</th>
+      <th scope="col">우편 번호</th>
       <th scope="col">e-mail</th>
       <th scope="col">연락처</th>
       <th scope="col">가게이름</th>
+      <th scope="col">가게 연락처</th>
+      <th scope="col">가입일</th>
     </tr>
     </thead>
     <tbody>
+
     <tr v-for="user in resultset" :key="user">
-      <router-link
-          :to="`/modifyuser:${user.userid}`"
-      >
-        <td>{{ user.userid }}</td>
-      </router-link>
+      <td>{{ user.userid }}</td>
       <td>{{ user.pw }}</td>
       <td>{{ user.username }}</td>
       <td>{{ user.bizaddr1 }}</td>
       <td>{{ user.bizaddr2 }}</td>
+      <td>{{ user.bizzip }}</td>
       <td>{{ user.mgemail }}</td>
       <td>{{ user.phnum }}</td>
       <td>{{ user.shopname }}</td>
+      <td>{{ user.shopPhNum }}</td>
+      <td>{{ user.userdate }}</td>
     </tr>
     </tbody>
   </table>
-  <!--  <router-link to="/modifyuser">-->
-  <!--    <button type="button">정보변경</button>-->
-  <!--  </router-link>-->
-  <!--  <modifyuser v-bind="resultset"></modifyuser>-->
-  <router-view v-bind="resultset"></router-view>
+  <span>{{ userid }}</span>
+  <span>{{ resultset }}</span>
 </template>
 
 <script>
-import axios from 'axios'
-import modifyuser from './modifyUser'
-
 export default {
-  name: 'dbshow',
-  components: { modifyuser },
+  name: 'modifyUser'
+  ,
   data () {
     return {
-      resultset: []
+      // resultset: [],
+      user: [],
+      userid: this.$route.params,
     }
   },
-  created () {
-    axios.post('/member/db')
-        .then(response => {
-          this.resultset = response.data
-          console.log(this.resultset)
-        })
-  },
+  props: ['resultset']
 }
 </script>
 
 <style scoped>
-th {
-  text-align: center;
-}
+
 </style>

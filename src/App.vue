@@ -5,9 +5,9 @@
   <h1>
     <router-link to="./member/Login">로그인 페이지</router-link>
   </h1>
-  <h5>
+  <h1>
     <router-link to="/dbshow">dbshow</router-link>
-  </h5>
+  </h1>
   <h1><a href="/main">메인 페이지</a></h1>
 <!--  <span v-if="logCheck" @click="doLogOut"><button class="btn btn-warning">로그아웃</button></span>-->
 <!--  <h1>로그인 아이디 : {{ idCheck }} </h1>-->
