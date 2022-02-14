@@ -1,7 +1,7 @@
 <template>
   <h1>dbshow페이지</h1>
   <table>
-    <tr v-for="user in resultset" key="user" style="border: 1px solid">
+    <tr v-for="user in resultset"  :key="user" style="border: 1px solid">
       <td>{{ user.userid }}</td>
       <td>{{ user.pw }}</td>
       <td>{{ user.username }}</td>
