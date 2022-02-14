@@ -143,15 +143,19 @@ tbody {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 1rem;
+    padding: 10px 1rem;
     font-size:20px;
 }
 .category_add_input {
     border:1px solid #997fb5;
+    width: 350px;
 }
 .category_add_label {
     font-size:14px;
     margin:0 auto;
+}
+.category_add_label_wrap {
+    padding:10px 0;
 }
 .category_add_btn_wrap {
     text-align: center;
@@ -170,6 +174,7 @@ tbody {
     background:#997fb5;
     color:white;
     padding: 10px 15px;
+    margin:10px 0;
 }
 .category_menu_name {
     font-size:12px;

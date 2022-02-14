@@ -39,6 +39,7 @@ import MenuManagement from '../view/MenuManagement/MenuManagement.vue'
 import MenuManageCategories from '../view/MenuManagement/MenuManageCategories.vue'
 import MenuManageMenus from '../view/MenuManagement/MenuManageMenus.vue'
 import MenuManageOptions from '../view/MenuManagement/MenuManageOptions.vue'
+import MenuConnect from '../view/MenuManagement/MenuConnect.vue'
 /*------etc------ */
 import test1 from '../view/test1'
 import Calendar from '../view/Calendar.vue'
@@ -168,6 +169,10 @@ const routes = [
       {
         path: '/menumanagement/options',
         component: MenuManageOptions,
+      },
+      {
+        path: '/menumanagement/MenuConnect',
+        component: MenuConnect,
       },
     ],
   },
