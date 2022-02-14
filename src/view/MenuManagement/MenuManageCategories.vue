@@ -26,11 +26,11 @@
               <div class="offcanvas-body category_add_body01">
                 <div>
                   <form class="row">
-                    <label for="category_add_label">* 카테고리명
-                      <input type="text" class="category_add_input" placeholder="예) 딩동아메리카노">
+                    <label for="category_add_label" class="category_add_label">* 카테고리명
+                      <input type="text" class="category_add_input form-control" placeholder="예) 딩동아메리카노">
                     </label>
-                    <label for="category_add_label">설명
-                      <input type="text" class="category_add_input"
+                    <label for="category_add_label" class="category_add_label">설명
+                      <input type="text" class="category_add_input form-control"
                       placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 &#13;&#10;낸 아메리카노">
                     </label>            
                     <label class="category_add_label">
@@ -45,15 +45,15 @@
                 </div>
               </div><hr />
           <!--카테고리 상세-->              
-              <div class="offcanvas-body category_add_body01">
-                <h4 class="offcanvas-title category_add_title">카테고리 상세</h4>
+                <h4 class="offcanvas-title category_add_title">카테고리 상세</h4>          
+              <div class="offcanvas-body category_add_body02">
                 <div>
                   <form class="row">
-                    <label for="category_add_label">* 카테고리명
-                      <input type="text" class="category_add_input" placeholder="예) 딩동아메리카노">
+                    <label  for="category_add_label" class="category_add_label">* 카테고리명
+                      <input type="text" class="category_add_input form-control" placeholder="예) 딩동아메리카노">
                     </label>
-                    <label for="category_add_label">설명
-                      <input type="text" class="category_add_input"
+                    <label for="category_add_label" class="category_add_label">설명
+                      <input type="text" class="category_add_input form-control"
                       placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 &#13;&#10;낸 아메리카노">
                     </label>            
                     <label class="category_add_label">

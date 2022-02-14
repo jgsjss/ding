@@ -136,17 +136,27 @@ tbody {
     padding:8px 10px
 }
 .offcanvas-header {
+    
+}
+.offcanvas-body {
+    padding:0 1rem;
 }
 .category_add_body01 {
 }
 .category_add_title {
     color:#997fb5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
 }
 .category_add_input {
     border:1px solid #997fb5;
 }
 .category_add_label {
-    padding:15px 0;
+    padding:10px 0;
+    font-size:14px;
+    margin:0 auto;
 }
 .category_add_btn_wrap {
     text-align: center;
@@ -168,5 +178,6 @@ tbody {
 }
 .category_menu_name {
     font-size:12px;
+    word-break: keep-all;
 }
 
