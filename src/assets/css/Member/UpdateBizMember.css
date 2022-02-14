@@ -9,3 +9,16 @@
     color:#997fb5;
     font-size:18px;
 }
+.pws_info_btn_wrap {
+    padding:30px 0;
+    text-align: center;
+    
+}
+.pws_info_btn {
+    width:185px;
+    padding:10px;
+    background:#997fb5;
+    border:none;
+    color:white;
+    margin:0 15px;
+}

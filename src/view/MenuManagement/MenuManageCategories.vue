@@ -123,7 +123,6 @@
           </button>
         </div> -->
         </div>
-        <button class="btn btn-primary" type="button">Toggle right offcanvas</button>
 
 
         </div>

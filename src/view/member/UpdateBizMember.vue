@@ -41,6 +41,10 @@
           <span className="error_next_box"></span>
         </div>  
   </div>
+  <div class="pws_info_btn_wrap">
+  <button type="button" class="pws_info_btn">취소</button>
+  <button type="button" class="pws_info_btn">비밀번호 수정</button>
+  </div>
 </div>
 </template>
 
