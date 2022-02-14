@@ -18,10 +18,7 @@
           <button class="cate_menu_btn02" type="button" data-bs-toggle="offcanvas" data-bs-target="#categoryadd" aria-controls="categoryadd">+카테고리추가</button>
           <!--카테고리 추가,상세 오프캔버스-->
             <div class="offcanvas offcanvas-start" tabindex="-1" id="categoryadd" aria-labelledby="categoryaddLabel">
-              <div class="offcanvas-header">
-                <h4 class="offcanvas-title category_add_title" id="categoryaddLabel">카테고리 추가</h4>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-              </div>
+                <h4 class="category_add_title" id="categoryaddLabel">카테고리 추가</h4>
           <!--카테고리 추가-->              
               <div class="offcanvas-body category_add_body01">
                 <div>
@@ -31,7 +28,7 @@
                     </label>
                     <label for="category_add_label" class="category_add_label">설명
                       <input type="text" class="category_add_input form-control"
-                      placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 &#13;&#10;낸 아메리카노">
+                      placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">
                     </label>            
                     <label class="category_add_label">
                       카테고리공개
@@ -45,16 +42,16 @@
                 </div>
               </div><hr />
           <!--카테고리 상세-->              
-                <h4 class="offcanvas-title category_add_title">카테고리 상세</h4>          
-              <div class="offcanvas-body category_add_body02">
+                <h4 class="category_add_title">카테고리 상세</h4>          
+              <div class="offcanvas-body category_add_body01">
                 <div>
                   <form class="row">
-                    <label  for="category_add_label" class="category_add_label">* 카테고리명
+                    <label for="category_add_label" class="category_add_label">* 카테고리명
                       <input type="text" class="category_add_input form-control" placeholder="예) 딩동아메리카노">
                     </label>
                     <label for="category_add_label" class="category_add_label">설명
                       <input type="text" class="category_add_input form-control"
-                      placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 &#13;&#10;낸 아메리카노">
+                      placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">
                     </label>            
                     <label class="category_add_label">
                       연결메뉴(총 33개)

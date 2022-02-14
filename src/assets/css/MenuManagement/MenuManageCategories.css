@@ -135,26 +135,21 @@ tbody {
     border-radius: 3px;
     padding:8px 10px
 }
-.offcanvas-header {
-    
-}
 .offcanvas-body {
     padding:0 1rem;
-}
-.category_add_body01 {
 }
 .category_add_title {
     color:#997fb5;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1rem;
+    padding: 15px 1rem;
+    font-size:20px;
 }
 .category_add_input {
     border:1px solid #997fb5;
 }
 .category_add_label {
-    padding:10px 0;
     font-size:14px;
     margin:0 auto;
 }

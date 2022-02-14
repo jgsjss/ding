@@ -1,0 +1,11 @@
+.update_container {
+    width: 100%;
+}
+.update_wrap {
+    width: 400px;
+    margin:0 auto;
+}
+.update_title {
+    color:#997fb5;
+    font-size:18px;
+}
