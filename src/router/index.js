@@ -31,7 +31,7 @@ import SignUpOne from '../view/member/SignUpOne.vue'
 import SignUpTwo from '../view/member/SignUpTwo'
 import SignUpThree from '../view/member/SignUpThree.vue'
 import SignUpFour from '../view/member/SignUpFour.vue'
-import UpdateBizMember from '../view/member/UpdateBizMember'
+import SignUpCancel from '../view/member/SignUpCancel'
 
 import ReleaseSoldOut from '../view/ReleaseSoldOut.vue'
 /*------MenuManagement------ */
@@ -140,9 +140,9 @@ const routes = [
     props: true,
   },
   {
-    path: '/updatebizmember',
-    component: UpdateBizMember,
-    name:'updatebizmember',
+    path: '/signupcancel',
+    component: SignUpCancel,
+    name:'SignUpCancel',
     props: true,
   },
   {
