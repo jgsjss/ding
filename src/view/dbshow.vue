@@ -1,17 +1,33 @@
 <template>
   <h1>dbshow페이지</h1>
-  <table>
-    <tr v-for="user in resultset" key="user">
-      <td>{{ user.userid }}</td>
-      <td>{{ user.pw }}</td>
-      <td>{{ user.username }}</td>
-      <td>{{ user.bizaddr1 }}</td>
-      <td>{{ user.bizaddr2 }}</td>
-      <td>{{ user.mgemail }}</td>
-      <td>{{ user.phnum }}</td>
-      <td>{{ user.shopname }}</td>
-    </tr>
-  </table>
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th scope="col">아이디</th>
+            <th scope="col">패스워드</th>
+            <th scope="col">이름</th>
+            <th scope="col">도로명주소</th>
+            <th scope="col">(구)주소</th>
+            <th scope="col">건물명</th>
+            <th scope="col">e-mail</th>
+            <th scope="col">연락처</th>
+            <th scope="col">가게이름</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="user in resultset" :key="user">
+            <td>{{ user.userid }}</td>
+            <td>{{ user.pw }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.bizaddr1 }}</td>
+            <td>{{ user.bizaddr2 }}</td>
+            <td>{{ user.bizaddr2 }}</td>
+            <td>{{ user.mgemail }}</td>
+            <td>{{ user.phnum }}</td>
+            <td>{{ user.shopname }}</td>
+          </tr>
+          </tbody>
+        </table>
 </template>
 
 <script>
@@ -35,5 +51,7 @@ export default {
 </script>
 
 <style scoped>
-
+th {
+  text-align: center;
+}
 </style>
