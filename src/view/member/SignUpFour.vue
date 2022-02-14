@@ -7,8 +7,8 @@
       <p>심사는 최대 7일까지 걸릴 수 있습니다(완료시 문자/이메일 알림)</p>
       <p>문의사항이 있으시면 (브랜드 대표번호)로 연락주세요!</p>
     </div>
-    <div class="btn_box"><a href="#!">비밀번호/사업자정보 수정</a></div>
-    <div class="btn_box"><a href="#!">관리자정보 수정</a></div>
+    <div class="btn_box"><router-link to="/updatebizmember">비밀번호 수정</router-link>></div>
+    <div class="btn_box"><a href="#!">회원가입 신청 취소</a></div>
   </div>
 </template>
 
@@ -44,17 +44,17 @@ export default {
     }
   },
   mounted () {
-    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.selected)
-    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userName)
-    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userId)
-    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userPw)
-    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.phNum)
-    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.shopName)
-    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.shopPhNum)
-    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizAddr1)
-    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizAddr2)
-    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizZip)
-    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.etc)
+    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.selected)
+    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userName)
+    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userId)
+    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userPw)
+    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.phNum)
+    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.shopName)
+    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.shopPhNum)
+    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizAddr1)
+    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizAddr2)
+    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizZip)
+    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.etc)
   }
 }
 </script>
