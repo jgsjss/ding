@@ -1,3 +1,47 @@
 .connect_container {
     width:100%;
 }
+.connect_wrap {
+    display:flex;
+}
+.connect_left {
+    width:50%;
+}
+.connect_right {
+    width:50%;
+}
+.connect_title {
+    font-size:24px;
+    color:#997fb5;
+    padding:10px 0;
+    background:none;
+    border:none;
+}
+.connect_text {
+    font-size:14px;
+    color:#333;
+    line-height:0.7;
+}
+.xi-bars {
+    text-align: left;
+}
+.connect_add_btn_wrap {
+    text-align: center;
+    padding:15px 0;
+}
+.connect_add_btn {
+    width: 50%;
+    padding:15px;
+    background:#997fb5;
+    color:white;
+    border:none;
+}
+.connect_drag_text {
+    position:relative;
+}
+.connect_drag_text::before {
+    position:absolute;
+    display: block;
+    content: "\e91c";
+    height:1px;
+}
