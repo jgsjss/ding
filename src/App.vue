@@ -1,9 +1,9 @@
 <template>
   <h1>
-    <router-link to="./member/signupone">회원가입 페이지</router-link>
+    <router-link to="/signupone">회원가입 페이지</router-link>
   </h1>
   <h1>
-    <router-link to="./member/Login">로그인 페이지</router-link>
+    <router-link to="/Login">로그인 페이지</router-link>
   </h1>
   <h1>
     <router-link to="/dbshow">dbshow</router-link>

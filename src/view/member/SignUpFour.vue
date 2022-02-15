@@ -1,7 +1,6 @@
 <template>
   <div class="container_fluid">
-
-    <button type="button" @click="fire">얼러트 테스트</button>
+<!--    <button type="button" @click="fire">얼러트 테스트</button>-->
     <h4 class="shop_name">(가게이름) 가입 심사중 입니다 :)</h4>
     <div class="sub_text">
       <p>심사는 최대 7일까지 걸릴 수 있습니다(완료시 문자/이메일 알림)</p>
@@ -17,7 +16,6 @@
 
 import store from '../../store'
 import router from '../../router'
-
 
 export default {
   methods: {
@@ -43,17 +41,17 @@ export default {
     }
   },
   mounted () {
-    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.selected)
-    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userName)
-    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userId)
-    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userPw)
-    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.phNum)
-    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.shopName)
-    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.shopPhNum)
-    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizAddr1)
-    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizAddr2)
-    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizZip)
-    // console.log('사인업3에서 넘어옴 : ', store.state.signupStore.etc)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.selected)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userName)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userId)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.userPw)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.phNum)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.shopName)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.shopPhNum)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizAddr1)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizAddr2)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.bizZip)
+    console.log('사인업3에서 넘어옴 : ', store.state.signupStore.etc)
   }
 }
 </script>
