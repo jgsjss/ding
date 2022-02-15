@@ -7,13 +7,15 @@
         <div class="info_left">매장코드</div>
         <div class="info_left">매장명</div>
         <div class="info_left">매장번호</div>
-        <div class="info_left">관리자</div>
+        <div class="info_left">접속 계정</div>
+        <div class="info_left">직책</div>
       </div>
 
       <div class="wrap2">
-        <div class="info_right">dd{{}}</div>
+        <div class="info_right">수정 필요{{getShopNum}}</div>
         <div class="info_right">{{getShopName}}</div>
         <div class="info_right">{{getShopPhNum}}</div>
+        <div class="info_right">{{getUserId}}</div>
         <div class="info_right">{{getMgName}}</div>
       </div>
     </div>
@@ -68,7 +70,15 @@ import store from '../store/index.js'
       },
       getMgName(){
         return store.getters['loginStore/getMgName'];
-      }
+      },
+      getUserId: function () {
+        return this.$store.state.loginStore.userid
+      },
+      getShopNum: function () {
+        return this.$store.state.loginStore.shopNum
+      },
+
+
     },
     // watch: {
     //   getShopName(a){

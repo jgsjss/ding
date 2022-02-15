@@ -2,12 +2,14 @@
   <Navbar/>
   <div class="main_container">
     <div class="main_call">
+
       <div class="main_right">
         <button class="main-btn" type="submit">
           <span class="condition">매장상태</span>
           <span class="condition">: 영업중{{}}</span>
         </button>
         <i class="xi-bell"></i>
+        <span class="animate__tada">로그인</span>
       </div>
 
     </div>
@@ -34,6 +36,7 @@ import MyInfo from '@/components/MyInfo'
 import OrderManage from '@/components/OrderManage.vue'
 import Navbar from '@/components/Navbar.vue'
 import router from '../router'
+import 'animate.css'
 export default {
   props: {
 
@@ -90,7 +93,7 @@ export default {
     }
 
     // console.log("종료")
-  }
+  },
 }
 </script>
 <style>

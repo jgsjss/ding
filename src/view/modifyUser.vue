@@ -49,11 +49,17 @@ export default {
 
       user: [],
 
-      userid: this.$route.params,
+      userid: this.getUser
     }
   },
   // props: ['resultset']
-  props: ['test']
+  props: ['test'],
+  computed:{
+    getUser(){
+      return this.$route.params;
+    }
+  }
+
 }
 </script>
 

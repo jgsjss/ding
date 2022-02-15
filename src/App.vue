@@ -6,7 +6,7 @@
     <router-link to="./member/Login">로그인 페이지</router-link>
   </h1>
   <h1>
-    <router-link to="/dbshow">dbshow</router-link>
+    <router-link to="/dbshow" class="animate__tada">dbshow</router-link>
   </h1>
   <h1><a href="/main">메인 페이지</a></h1>
 <!--  <span v-if="logCheck" @click="doLogOut"><button class="btn btn-warning">로그아웃</button></span>-->
@@ -24,6 +24,11 @@ import { mapState } from 'vuex';
 import xeicon from './assets/XEIcon-2.2.0/xeicon.min.css';
 import bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import bundle from 'bootstrap/dist/js/bootstrap.bundle.js'
+
+// ==========animate=========
+import animate from 'animate.css';
+
+
 
 //   this.$props.
 export default {

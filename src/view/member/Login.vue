@@ -83,7 +83,7 @@ export default {
         this.$router.push('/');
         console.log('1')
       }).catch((err)=>{
-        if(err) this.errUserInfo = true;
+        if(err) {this.errUserInfo = true;}
         this.errorMessage=err.response.data.errormessage;
       });
     },
