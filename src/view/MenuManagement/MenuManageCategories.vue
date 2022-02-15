@@ -3,7 +3,12 @@
 <div class="cate_container">
         <form class="category_wrap">
           <div class="category_left">
-          <label class="cate_label"><input type="checkbox" class="cate_check"> 전체선택</label>
+          <label class="cate_label">
+            <input type="checkbox" 
+                    class="cate_check"                
+            >
+            전체선택
+            </label>
           <label class="cate_label"><button type="button" class="cate_check_btn"> 삭제</button></label>
           <label class="cate_label"><button type="button" class="cate_check_btn"> 정상</button></label>
           <label class="cate_label"><button type="button" class="cate_check_btn"> 숨김</button></label>
@@ -170,14 +175,14 @@ export default {
       this.allChecked = checked
 
     },
-        selected (e) {
-            for (let i in this.boardList) {
-                if(! this.boardList[i].selected) {
-                    this.allChecked = false;
-                    return;
-                } else {
-                    this.allChecked = true;
-                }
+    selected () {
+      for (let i in this.boardList) {
+        if(! this.boardList[i].selected) {
+          this.allChecked = false;
+            return;
+              } else {
+                this.allChecked = true;
+              }
             }
         },    
     getSelected() {

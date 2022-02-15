@@ -9,7 +9,7 @@
           <span class="condition">: 영업중{{}}</span>
         </button>
         <i class="xi-bell"></i>
-        <span class="animate__tada">로그인</span>
+        <p class="animated tada">로그인</p>
       </div>
 
     </div>
