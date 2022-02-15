@@ -26,7 +26,9 @@
                   class="int"
                   maxlength="20"
                   placeholder="관리자 이름"
+                  @change="errorCh"
               />
+              <span class="error_next_box1" id="manMsg" style aria-live="assertive">필수 정보 입니다.</span>
             </span>
           </div>
           <!--number-->
@@ -44,6 +46,7 @@
                     <option value="017">017</option>
                     <option value="019">019</option>
                   </select>
+                  <span class="error_next_box1" id="manPhMsg" style aria-live="assertive">필수 정보 입니다.</span>
                 </span>
               </div>
               <!-- BIRTH_YY -->
@@ -77,7 +80,9 @@
                         maxlength="20"
                         placeholder="이메일을 입력해주세요"
                         v-model="mgEmail1"
+                        @change="errorCh"
                     />
+                    <span class="error_next_box1" id="manEmMsg" style aria-live="assertive">필수 정보 입니다.</span>
                   </span>
                 </div>
                 <span class="middle_mail">@</span>
@@ -105,6 +110,7 @@
                       title="사업자처음3자리"
                       v-model="bizNum1"
                   />
+                  <span class="error_next_box1" id="manNumMsg" style aria-live="assertive">필수 정보 입니다.</span>
                 </span>
               </div>
               <!-- shop_num two-->
@@ -131,6 +137,7 @@
                       maxlength="5"
                       title="사업자마지막5자리"
                       v-model="bizNum3"
+                      
                   />
                 </span>
               </div>
@@ -251,6 +258,29 @@ export default {
           })
           .catch((err) => console.log(err))
     },
+    errorCh() {
+      let manId = document.getElementById('name3').value 
+      let manEm = document.getElementById('sub_email').value 
+      
+
+       if ( manEm == "") {
+            document.getElementById("manEmMsg").style.display = 'block';
+            return false
+        }else if( manEm != ""){
+          document.getElementById("manEmMsg").style.display = 'none';
+          return false
+        }  
+      if ( manId == "") {
+            document.getElementById("manMsg").style.display = 'block';
+            return false
+        }else if( manId != ""){
+          document.getElementById("manMsg").style.display = 'none';
+          return false
+        }
+       
+     
+    },
+
     signup () {
       axios({
         method: 'post',
@@ -334,11 +364,31 @@ export default {
       let phoneNum = ''
       this.mgPhNum = phoneNum.concat(this.firstNum, this.secondNum, this.thirdNum)
       console.log(this.mgPhNum)
+
+      let manPh = document.getElementById('dd').value 
+
+       if ( manPh == "") {
+            document.getElementById("manPhMsg").style.display = 'block';
+            return false
+        }else if( manPh != ""){
+          document.getElementById("manPhMsg").style.display = 'none';
+          return false
+        }
+
     },
     bizNumConcat () {
       let sumBizNum = ''
       this.bizNum = sumBizNum.concat(this.bizNum1, this.bizNum2, this.bizNum3)
       console.log(this.bizNum)
+
+      let manNum = document.getElementById('shop_three').value 
+       if ( manNum == "") {
+            document.getElementById("manNumMsg").style.display = 'block';
+            return false
+        }else if( manNum != ""){
+          document.getElementById("manNumMsg").style.display = 'none';
+          return false
+        }
     },
     emailConcat(){
       let email = ''

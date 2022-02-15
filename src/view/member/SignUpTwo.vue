@@ -221,7 +221,6 @@ export default {
     errorCh (){
         let name = document.getElementById('name2').value
         let secnum = document.getElementById('second2').value
-       
         let shadd = document.getElementById('address2').value 
 
         
