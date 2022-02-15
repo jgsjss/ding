@@ -106,7 +106,7 @@
         <div>
           <h3 className="join_title"><label>매장 이름</label></h3>
           <span className="box int_name">
-                            <input type="text" id="name3" className="int" @change="errorCh" maxLength="20" v-model.trim="shopName" @focus="checkFlag = false">
+                            <input type="text" id="name3" className="int" @change="errorSh" maxLength="20" v-model.trim="shopName" @focus="checkFlag = false">
                             <span class="error_next_box1" id="shname" style aria-live="assertive" >필수 정보 입니다.</span>
                         </span>
           <span className="error_next_box"></span>
@@ -117,7 +117,7 @@
           <span className="box int_mobile">
                             <input type="text" id="mobile2" className="int" maxLength="11"
                                    placeholder="'-'을 제외한 연락처 번호를 입력해주세요." v-model.trim="shopPhNum"
-                                    ref="shopPhNum" @focus="checkFlag = false" @change="errorCh"
+                                    ref="shopPhNum" @focus="checkFlag = false" @change="errorSh"
                                     oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                                            >
                             <span class="error_next_box1" id="shnum" style aria-live="assertive" >필수 정보 입니다.</span>               
@@ -144,7 +144,7 @@
           <span className="box int_mobile">
                         <input type="text" className="int" id="extraAddress2" ref="extraAddress" v-model.trim="etc"
                                placeholder="참고항목">
-                        <span class="error_next_box1" id="shaddresss" style aria-live="assertive" >필수 정보 입니다.</span>               
+                        <span class="error_next_box1" id="shaddress" style aria-live="assertive" >필수 정보 입니다.</span>               
                         </span>
         </div>
         <!-- JOIN BTN-->
@@ -221,24 +221,11 @@ export default {
     errorCh (){
         let name = document.getElementById('name2').value
         let secnum = document.getElementById('second2').value
-        let ofname = document.getElementById('name3').value 
-        let ofnum = document.getElementById('mobile3').value 
+       
         let shadd = document.getElementById('address2').value 
 
-        if ( ofnum  == "") {
-            document.getElementById("shnum").style.display = 'block';
-            return false
-        }else if( ofnum != ""){
-          document.getElementById("shnum").style.display = 'none';
-          return false
-        }
-        if ( ofname == "") {
-            document.getElementById("shname").style.display = 'block';
-            return false
-        }else if( ofname != ""){
-          document.getElementById("shname").style.display = 'none';
-          return false
-        }
+        
+        
           if ( name == "") {
             document.getElementById("name").style.display = 'block';
             return false
@@ -254,15 +241,34 @@ export default {
           return false
         }
         if ( shadd  == "") {
-            document.getElementById("shaddresss").style.display = 'block';
+            document.getElementById("shaddress").style.display = 'block';
             return false
         }else if( shadd != ""){
-          document.getElementById("shaddresss").style.display = 'none';
+          document.getElementById("shaddress").style.display = 'none';
           return false
         }
        
     },
 
+    errorSh(){
+          let ofname = document.getElementById('name3').value 
+        let ofnum = document.getElementById('mobile2').value 
+         if ( ofname == "") {
+            document.getElementById("shname").style.display = 'block';
+            return false
+        }else if( ofname != ""){
+          document.getElementById("shname").style.display = 'none';
+          return false
+        }
+
+        if ( ofnum  == "") {
+            document.getElementById("shnum").style.display = 'block';
+            return false
+        }else if( ofnum != ""){
+          document.getElementById("shnum").style.display = 'none';
+          return false
+        }
+       },
 
     isUser () {
       let id = document.getElementById('id2').value
