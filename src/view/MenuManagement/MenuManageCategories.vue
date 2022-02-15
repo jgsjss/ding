@@ -99,15 +99,16 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(a, i) in $store.state.CategoryData" :key="i.boardId">
+          <tr v-for="(a, i) in $store.state.CategoryData" :key="i">
             <td  scope="row" class="cate_check_box">
               <input type="checkbox" 
                     :id="'check_' + i.boardId"
-                    :value="i.boardId"
-                    v-model="i.selected"
-                    @change="selected($event)"
+                    :value="i"
+                    v-model="selected"
+                   @click="print"
               >
             </td>
+            <!-- <td>인덱스 {{a}}--{{i}}</td> -->
             <td class="cate_data">{{ $store.state.CategoryData[i].catename }}</td>
             <td class="cate_data col-7">{{ $store.state.CategoryData[i].catemenu }}</td>
             <td class="cate_data">{{ $store.state.CategoryData[i].menunum }}</td>
@@ -151,10 +152,14 @@ export default {
     return {
       pageNum: 0,      
       active: false,
-      allChecked:false
+      CategoryData:[],
+      allChecked:false,
     }
   },
   methods: {
+    print() {
+      console.log(this.selected)
+    },
     nextPage () {
       this.pageNum += 1
     },
@@ -163,15 +168,18 @@ export default {
     },
     checkedAll(checked) {
       this.allChecked = checked
-      for (let i in this.CategoryData) {
-        if(! this.CategoryData[i].selected) {
-          this.allChecked = false;
-          return;
-        } else {
-          this.allChecked = true;
-        }
-      }
+
     },
+        selected (e) {
+            for (let i in this.boardList) {
+                if(! this.boardList[i].selected) {
+                    this.allChecked = false;
+                    return;
+                } else {
+                    this.allChecked = true;
+                }
+            }
+        },    
     getSelected() {
       let boardIds = [];
       for (let i in this.CategoryData) {
