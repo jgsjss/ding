@@ -9,10 +9,11 @@
     <router-link to="/dbshow" class="animate__tada">dbshow</router-link>
   </h1>
   <h1><a href="/main">메인 페이지</a></h1>
-<!--  <span v-if="logCheck" @click="doLogOut"><button class="btn btn-warning">로그아웃</button></span>-->
-<!--  <h1>로그인 아이디 : {{ idCheck }} </h1>-->
-<!--  <h1>로그인 엑세스토큰 : {{ acTokenCk }} </h1>-->
-<!--  <h1>로그인 리프레시토큰 : {{ reTokenCk }} </h1>-->
+  <button @click="delPhoto('1111111111')">파일삭제 테스트</button>
+  <!--  <span v-if="logCheck" @click="doLogOut"><button class="btn btn-warning">로그아웃</button></span>-->
+  <!--  <h1>로그인 아이디 : {{ idCheck }} </h1>-->
+  <!--  <h1>로그인 엑세스토큰 : {{ acTokenCk }} </h1>-->
+  <!--  <h1>로그인 리프레시토큰 : {{ reTokenCk }} </h1>-->
   <router-view></router-view>
 
 </template>
@@ -20,21 +21,20 @@
 // import MenuModal from './components/MenuModal.vue'
 import axios from 'axios'
 import store from './store'
-import { mapState } from 'vuex';
-import xeicon from './assets/XEIcon-2.2.0/xeicon.min.css';
-import bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import { mapState } from 'vuex'
+import xeicon from './assets/XEIcon-2.2.0/xeicon.min.css'
+import bootstrap from 'bootstrap/dist/css/bootstrap.css'
 import bundle from 'bootstrap/dist/js/bootstrap.bundle.js'
 
 // ==========animate=========
-import animate from 'animate.css';
-
-
+import animate from 'animate.css'
 
 //   this.$props.
 export default {
   data () {
     return {
       // logCheck : false,
+
     }
   },
   components: {},
@@ -57,10 +57,23 @@ export default {
     //     console.log('로그아웃 성공')
     //   })
     // }
-  },
+
+    delPhoto (biznum) {
+      axios({
+        url: '/api/delPhoto',
+        method: 'post',
+        data: { 'biznum': biznum }
+      }).then(res => {
+        console.log(res.data)
+      })
+
+    }
+  }
+  ,
   created () {
 
   },
+
   mounted () {
     //menu 컴포넌트 커스텀이벤트 수신 코드
     // this.emitter.on("openMenuModal", (a) =>{
