@@ -84,7 +84,13 @@
         <table class="cate_table">
           <thead class="category_thead">
           <tr class="cate_title">
-            <th><input type="checkbox" id="all-check"></th>
+            <th scope="col">
+              <input type="checkbox" 
+                      id="all-check" 
+                      v-model="allChecked" 
+                      @click="checkedAll($event.target.checked)"
+              />
+            </th>
             <th scope="col" class="cate_col">카테고리명</th>
             <th scope="col" class="cate_col">연결 된 메뉴</th>
             <th scope="col" class="cate_col">연결메뉴 갯수</th>
@@ -93,8 +99,15 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(a, i) in $store.state.CategoryData" :key="i">
-            <th  scope="row" class="cate_check_box"><input type="checkbox"></th>
+          <tr v-for="(a, i) in $store.state.CategoryData" :key="i.boardId">
+            <td  scope="row" class="cate_check_box">
+              <input type="checkbox" 
+                    :id="'check_' + i.boardId"
+                    :value="i.boardId"
+                    v-model="i.selected"
+                    @change="selected($event)"
+              >
+            </td>
             <td class="cate_data">{{ $store.state.CategoryData[i].catename }}</td>
             <td class="cate_data col-7">{{ $store.state.CategoryData[i].catemenu }}</td>
             <td class="cate_data">{{ $store.state.CategoryData[i].menunum }}</td>
@@ -134,10 +147,11 @@
 // import axios from 'axios';
 
 export default {
-  date() {
+  data() {
     return {
       pageNum: 0,      
       active: false,
+      allChecked:false
     }
   },
   methods: {
@@ -147,7 +161,29 @@ export default {
     prevPage () {
       this.pageNum -= 1
     },
+    checkedAll(checked) {
+      this.allChecked = checked
+      for (let i in this.CategoryData) {
+        if(! this.CategoryData[i].selected) {
+          this.allChecked = false;
+          return;
+        } else {
+          this.allChecked = true;
+        }
+      }
+    },
+    getSelected() {
+      let boardIds = [];
+      for (let i in this.CategoryData) {
+        if(this.CategoryData[i].selected) {
+          boardIds.push(this.CategoryData[i].boardId);
+        }
+      }
+    }
   },
+  // mounted() {
+  //   this.getList();
+  // },
     computed: {
     // pageCount () {
     //   return Math.ceil(this.$store.state.CategoryData.length / 10)
