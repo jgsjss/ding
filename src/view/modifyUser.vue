@@ -35,7 +35,8 @@
     </tbody>
   </table>
   <span>{{ userid }}</span>
-  <span>{{ resultset }}</span>
+<!--  <span>{{ resultset }}</span>-->
+  <span>{{ test }}</span>
 </template>
 
 <script>
@@ -45,11 +46,14 @@ export default {
   data () {
     return {
       // resultset: [],
+
       user: [],
+
       userid: this.$route.params,
     }
   },
-  props: ['resultset']
+  // props: ['resultset']
+  props: ['test']
 }
 </script>
 

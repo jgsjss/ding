@@ -16,7 +16,7 @@
     <tbody>
     <tr v-for="user in resultset" :key="user">
       <router-link
-          :to="`/modifyuser:${user.userid}`"
+          :to="`/modifyuser${user.userid}`"
       >
         <td>{{ user.userid }}</td>
       </router-link>
@@ -33,8 +33,10 @@
   <!--  <router-link to="/modifyuser">-->
   <!--    <button type="button">정보변경</button>-->
   <!--  </router-link>-->
-  <!--  <modifyuser v-bind="resultset"></modifyuser>-->
-  <router-view v-bind="resultset"></router-view>
+<!--  <modifyuser v-bind="$props"></modifyuser>-->
+    <router-view
+        :test="test"
+    ></router-view>
 </template>
 
 <script>
@@ -46,6 +48,7 @@ export default {
   components: { modifyuser },
   data () {
     return {
+      test:"asd",
       resultset: []
     }
   },
