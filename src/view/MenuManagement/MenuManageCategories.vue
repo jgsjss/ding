@@ -147,7 +147,7 @@
 // import axios from 'axios';
 
 export default {
-  date() {
+  data() {
     return {
       pageNum: 0,      
       active: false,
@@ -172,16 +172,6 @@ export default {
         }
       }
     },
-    // selected(e) {
-    //   for (let i in this.CategoryData) {
-    //     if(! this.CategoryData[i].selected) {
-    //       this.allChecked = false;
-    //       return;
-    //     } else {
-    //       this.allChecked = true;
-    //     }
-    //   }
-    // },
     getSelected() {
       let boardIds = [];
       for (let i in this.CategoryData) {
