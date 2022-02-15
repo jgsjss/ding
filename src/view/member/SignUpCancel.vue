@@ -9,7 +9,7 @@
                             <input type="text" id="pswd2-1" className="int" maxLength="16"
                                    placeholder="가입신청시 아이디를 입력해 주세요." v-model="userid" ref="" @change="checkPW"
                                    @focus="checkFlag = false">
-            <span class="error_next_box1" id="pw1Msg" style aria-live="assertive">필수 정보 입니다.</span>
+<!--            <span class="error_next_box1" id="pw1Msg" style aria-live="assertive">필수 정보 입니다.</span>-->
                         </span>
         <span className="error_next_box"></span>
       </div>
@@ -21,13 +21,13 @@
                                    placeholder="가입신청시 비밀번호를 입력해 주세요." v-model="userpw" ref="" @change="checkPW"
                                    @focus="checkFlag = false">
 
-            <span class="error_next_box1" id="pw1Msg" style aria-live="assertive">필수 정보 입니다.</span>
+<!--            <span class="error_next_box1" id="pw1Msg" style aria-live="assertive">필수 정보 입니다.</span>-->
                         </span>
         <span className="error_next_box"></span>
       </div>
     </div>
     <div class="pws_info_btn_wrap">
-      <button type="button" class="pws_info_btn">돌아가기</button>
+      <button type="button" class="pws_info_btn" @click="returnPage">돌아가기</button>
       <button type="button" class="pws_info_btn" @click="deleteUser">가입 신청 취소</button>
     </div>
   </div>
@@ -70,6 +70,9 @@ export default {
           this.$swal('입력하신 아이디나 비밀번호가 틀립니다.')
         }
       })
+    },
+    returnPage(){
+      router.go(-1)
     }
   },
 }
