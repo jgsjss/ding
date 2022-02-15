@@ -4,14 +4,13 @@
     <div class="main_call">
 
       <div class="main_right">
-        <button class="main-btn" type="submit">
+        <button class="main-btn animate__flash" type="submit">
           <span class="condition">매장상태</span>
           <span class="condition">: 영업중{{}}</span>
         </button>
         <i class="xi-bell"></i>
         <p class="animated tada">로그인</p>
       </div>
-
     </div>
     <div class="component">
       <!-- 주문관리 컴포넌트 -->

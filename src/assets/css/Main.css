@@ -33,6 +33,13 @@
     color:#997fb5;
     font-size:20px;
   }
+  .animate__flash {
+    background:#dcd4e3;
+    border:none;
+    animation-duration:1s;
+    animation-iteration-count: infinite;
+  }
+
 
   .animated {
     -webkit-animation-duration: 1s;
@@ -48,8 +55,6 @@
     background:#997fb5;
     color:white;
   }
-  
-  
    
   
   @-webkit-keyframes tada {
