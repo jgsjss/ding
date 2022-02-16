@@ -52,14 +52,18 @@
               <!-- BIRTH_YY -->
               <div id="num_second">
                 <span class="box">
-                  <input type="text" id="second" class="int" maxlength="4" v-model.trim="secondNum"/>
+                  <input type="text" id="second" class="int" maxlength="4" v-model.trim="secondNum"
+                  oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
+                  />
                 </span>
               </div>
               <!-- BIRTH_DD -->
               <div id="num_dd">
                 <span class="box">
                   <input type="text" @change="phoneNumConcat()" id="dd" class="int" maxlength="4"
-                         v-model.trim="thirdNum"/>
+                         v-model.trim="thirdNum"
+                         oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
+                         />
                 </span>
               </div>
               <span class="error_next_box"></span>
@@ -80,7 +84,7 @@
                         maxlength="20"
                         placeholder="이메일을 입력해주세요"
                         v-model="mgEmail1"
-                        @change="errorCh"
+                        @change="errorCh1"
                     />
                     <span class="error_next_box1" id="manEmMsg" style aria-live="assertive">필수 정보 입니다.</span>
                   </span>
@@ -109,6 +113,7 @@
                       maxlength="3"
                       title="사업자처음3자리"
                       v-model="bizNum1"
+                      oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                   />
                   <span class="error_next_box1" id="manNumMsg" style aria-live="assertive">필수 정보 입니다.</span>
                 </span>
@@ -123,6 +128,7 @@
                       maxlength="2"
                       title="사업자중간2자리"
                       v-model="bizNum2"
+                      oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                   />
                 </span>
               </div>
@@ -137,7 +143,7 @@
                       maxlength="5"
                       title="사업자마지막5자리"
                       v-model="bizNum3"
-                      
+                      oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                   />
                 </span>
               </div>
@@ -270,16 +276,6 @@ export default {
     },
     errorCh() {
       let manId = document.getElementById('name3').value 
-      let manEm = document.getElementById('sub_email').value 
-      
-
-       if ( manEm == "") {
-            document.getElementById("manEmMsg").style.display = 'block';
-            return false
-        }else if( manEm != ""){
-          document.getElementById("manEmMsg").style.display = 'none';
-          return false
-        }  
       if ( manId == "") {
             document.getElementById("manMsg").style.display = 'block';
             return false
@@ -287,8 +283,18 @@ export default {
           document.getElementById("manMsg").style.display = 'none';
           return false
         }
-       
-     
+    },
+
+    errorCh1() {
+        let manEm = document.getElementById('sub_email').value 
+
+         if ( manEm == "") {
+            document.getElementById("manEmMsg").style.display = 'block';
+            return false
+        }else if( manEm != ""){
+          document.getElementById("manEmMsg").style.display = 'none';
+          return false
+        }  
     },
 
     signup () {
