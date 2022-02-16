@@ -156,7 +156,7 @@
                     id="input"
                     type="file"
                     name="image"
-                    accept="image/jpg image/png image/jpeg"
+                    accept=".png"
                     class="hidden"
                     @focus="fileCheck=false"
                 />
@@ -237,11 +237,21 @@ export default {
   },
 
   methods: {
+    // check(){
+    //   let fileVal = this.$refs['image'].value
+    //   fileVal = fileVal.slice(fileVal.indexOf(".") + 1).toLowerCase();
+    //   if(fileVal != png){
+    //     alert('확장자 png 파일만 첨부 가능합니다.')
+    //   }
+    // },
+
     //이미지 업로드
     uploadImage: function () {
       let biz = this.bizNum
       let form = new FormData()
       let image = this.$refs['image'].files[0]
+
+
       form.append('image', image)
       // form.append('biznum',this.bizNum)
 
@@ -331,8 +341,14 @@ export default {
     //sweetalert2 메소드드
     fire () {
       var fileCheck = document.getElementById('input').value
+      let fileVal = this.$refs['image'].value
+      fileVal = fileVal.slice(fileVal.indexOf(".") + 1).toLowerCase();
+      console.log(fileVal)
       if (!fileCheck) {
         alert('파일첨부해주세요')
+        return false
+      }else if(fileVal != 'png'){
+        alert('확장자 png 파일만 첨부 가능합니다.')
         return false
       }
       this.bizNumConcat()
