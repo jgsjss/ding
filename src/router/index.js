@@ -43,6 +43,8 @@ import MenuManageCategories from '../view/MenuManagement/MenuManageCategories.vu
 import MenuManageMenus from '../view/MenuManagement/MenuManageMenus.vue'
 import MenuManageOptions from '../view/MenuManagement/MenuManageOptions.vue'
 import MenuConnect from '../view/MenuManagement/MenuConnect.vue'
+import MenuConnecttwo from '../view/MenuManagement/MenuConnecttwo.vue'
+import MenuConnectthree from '../view/MenuManagement/MenuConnectthree.vue'
 
 /*------etc------ */
 import test1 from "../view/test1";
@@ -181,6 +183,14 @@ const routes = [
       {
         path: '/menumanagement/MenuConnect',
         component: MenuConnect,
+      },
+      {
+        path: '/menumanagement/MenuConnecttwo',
+        component: MenuConnecttwo,
+      },
+      {
+        path: '/menumanagement/MenuConnectthree',
+        component: MenuConnectthree,
       },
     ],
   },

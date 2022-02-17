@@ -117,7 +117,7 @@
             <td class="cate_data">{{ $store.state.CategoryData[i].catename }}</td>
             <td class="cate_data col-7">{{ $store.state.CategoryData[i].catemenu }}</td>
             <td class="cate_data">{{ $store.state.CategoryData[i].menunum }}</td>
-            <td class="cate_data"><button type="button" class="cate_connect_btn">메뉴연결</button></td>
+            <router-link to="/menumanagement/MenuConnecttwo"><td class="cate_data"><button type="button" class="cate_connect_btn">메뉴연결</button></td></router-link>
             <td class="cate_data">
               <select class="cate_condition">
                 <option class="cate_condition_text">상태설정</option>

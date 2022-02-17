@@ -1,0 +1,34 @@
+.menucon_container {
+    width: 70%;
+    margin:0 auto;
+}
+.menucon_title {
+    color:#997fb5;
+    padding:15px 0;
+}
+.menucon_text {
+    font-size:14px;
+    color:#333;
+    line-height:0.3
+}
+.menucon_btn_wrap {
+    display:flex;
+    justify-content: space-between;
+    border-bottom:1px solid #997fb5;
+}
+.menucon_btn {
+    background:white;
+    border:1px solid #997fb5;
+    color:#997fb5;
+    padding:5px 10px;
+    border-bottom:none;
+}
+.menucon_btn:nth-child(2) {
+    border-left:none;
+}
+.menucon_btn:nth-child(3) {
+    border-left:none;
+}
+.menucon_table_title {
+    text-align: center;
+}

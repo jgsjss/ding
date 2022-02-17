@@ -1,0 +1,62 @@
+<template>
+<!--카테고리 메뉴연결 싱글페이지-->
+  <div class="menucon_container">
+<h4 class="menucon_title">
+    카테고리 메뉴 연결
+</h4>
+<p class="menucon_text">- 순서변경버튼으로 카테고리에 연결된 메뉴 순서 변경이 가능합니다.</p>
+<p class="menucon_text">- 페이지를 이동해도 체크박스 설정은 유지됩니다.</p>
+<div class="menucon_btn_wrap">
+    <div class="menucon_btn_left">
+        <button type="button" class="menucon_btn">전체메뉴</button>
+        <button type="button" class="menucon_btn">연결가능메뉴</button>
+        <button type="button" class="menucon_btn">연결된메뉴</button>
+    </div>
+    <div class="menucon_btn_right">
+        <router-link to="/menumanagement/MenuConnect"><button type="button" class="menucon_btn">순서변경</button></router-link>
+    </div>
+</div>
+<div class="connect_table_wrap">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col" class="menucon_table_title">
+                </th>
+                <th scope="col" class="menucon_table_title col-7">메뉴명</th>
+                <th scope="col" class="menucon_table_title">가격</th>
+                <th scope="col" class="menucon_table_title">메뉴상태</th>
+                <th scope="col" class="menucon_table_title">메뉴연결</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(a, i) in $store.state.CategoryData" :key="i">
+                <td scope="row">
+                    <input type="checkbox">
+                </td>
+                <td>{{ $store.state.CategoryData[i].catemenu }}</td>
+                <td>{{ $store.state.CategoryData[i].price }}원</td>
+                <td>{{ $store.state.CategoryData[i].menucondition }}</td>
+                <router-link to="/menumanagement/MenuConnecttwo"><td class="cate_data"><button type="button" class="cate_connect_btn">메뉴연결</button></td></router-link>                
+            </tr>
+        </tbody>
+    </table>
+</div>
+  <MenuConnectthree />
+  </div>
+
+</template>
+
+<script>
+import MenuConnectthree from './MenuConnectthree.vue'
+export default {
+    data() {
+        return {
+            MenuConnectthree,
+        }
+    }
+}
+</script>
+
+<style>
+@import '../../assets/css/MenuManagement/MenuConnecttwo.css';
+</style>
