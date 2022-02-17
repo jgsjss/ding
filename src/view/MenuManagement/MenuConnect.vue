@@ -15,10 +15,7 @@
       <p class="connect_text">- 왼쪽의 아이콘을 잡고 드래그하여 순서변경이 가능합니다.</p>
       <p class="connect_text">- 오른쪽의 버튼으로 맨위, 맨아래 이동이 가능합니다.</p>
   </div>
-</div>      
-      <div>
-
-      </div>
+</div>
     <draggable class="dragArea list-group w-full" :list="list" @change="log">
       <div
         class="list-group-item bg-gray-300 m-1 p-3 rounded-md text-center connect_drag_text"

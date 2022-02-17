@@ -16,16 +16,27 @@
         <router-link to="/menumanagement/MenuConnect"><button type="button" class="menucon_btn">순서변경</button></router-link>
     </div>
 </div>
+<div class="menucon_search_wrap">
+    <div class="menucon_search_left_wrap">
+        <input type="checkbox">
+        <label for="menucon_label" class="menucon_label">전체선택</label>
+        <button type="button" class="menu_search_btn">연결</button>
+        <button type="button" class="menu_search_btn">해제</button>
+    </div>
+    <div class="menucon_search_right_wrap">
+        <input type="text" placeholder="search" class="menucon_search">
+    </div>
+</div>
 <div class="connect_table_wrap">
-    <table>
-        <thead>
-            <tr>
+    <table class="menucon_table">
+        <thead class="menucon_thead">
+            <tr class="menucon_table_title">
                 <th scope="col" class="menucon_table_title">
                 </th>
-                <th scope="col" class="menucon_table_title col-7">메뉴명</th>
-                <th scope="col" class="menucon_table_title">가격</th>
-                <th scope="col" class="menucon_table_title">메뉴상태</th>
-                <th scope="col" class="menucon_table_title">메뉴연결</th>
+                <th scope="col" class="menucon_table_title col-6">메뉴명</th>
+                <th scope="col" class="menucon_table_title col-2">가격</th>
+                <th scope="col" class="menucon_table_title col-2">메뉴상태</th>
+                <th scope="col" class="menucon_table_title col-2">메뉴연결</th>
             </tr>
         </thead>
         <tbody>
@@ -33,7 +44,7 @@
                 <td scope="row">
                     <input type="checkbox">
                 </td>
-                <td>{{ $store.state.CategoryData[i].catemenu }}</td>
+                <td>{{ $store.state.CategoryData[i].catename }}</td>
                 <td>{{ $store.state.CategoryData[i].price }}원</td>
                 <td>{{ $store.state.CategoryData[i].menucondition }}</td>
                 <router-link to="/menumanagement/MenuConnecttwo"><td class="cate_data"><button type="button" class="cate_connect_btn">메뉴연결</button></td></router-link>                
@@ -41,7 +52,8 @@
         </tbody>
     </table>
 </div>
-  <MenuConnectthree />
+  <MenuConnectthree/>
+  <router-view></router-view>
   </div>
 
 </template>
