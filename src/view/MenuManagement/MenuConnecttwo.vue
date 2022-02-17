@@ -18,7 +18,12 @@
 </div>
 <div class="menucon_search_wrap">
     <div class="menucon_search_left_wrap">
-        <input type="checkbox">
+        <input 
+            type="checkbox"
+            id="all-check" 
+            v-model="allChecked" 
+            @click="checkedAll($event.target.checked)"        
+        >
         <label for="menucon_label" class="menucon_label">전체선택</label>
         <button type="button" class="menu_search_btn">연결</button>
         <button type="button" class="menu_search_btn">해제</button>
@@ -31,8 +36,7 @@
     <table class="menucon_table">
         <thead class="menucon_thead">
             <tr class="menucon_table_title">
-                <th scope="col" class="menucon_table_title">
-                </th>
+                <th scope="col" class="menucon_table_title"></th>
                 <th scope="col" class="menucon_table_title col-6">메뉴명</th>
                 <th scope="col" class="menucon_table_title col-2">가격</th>
                 <th scope="col" class="menucon_table_title col-2">메뉴상태</th>
@@ -42,7 +46,13 @@
         <tbody>
             <tr v-for="(a, i) in $store.state.CategoryData" :key="i">
                 <td scope="row">
-                    <input type="checkbox">
+                    <input 
+                        type="checkbox"
+                        :id="'check_' + i.boardId"
+                        :value="i"
+                        v-model="selected"
+                        @click="print"
+                    >
                 </td>
                 <td>{{ $store.state.CategoryData[i].catename }}</td>
                 <td>{{ $store.state.CategoryData[i].price }}원</td>
@@ -65,10 +75,32 @@ export default {
     },
       data() {
       return {
+          CategoryData:[],
+          allChecked:false,
       }
     },
     methods: {
-
+        checkedAll(checked) {
+        this.allChecked = checked
+    },
+        selected () {
+      for (let i in this.boardList) {
+        if(! this.boardList[i].selected) {
+          this.allChecked = false;
+            return;
+              } else {
+                this.allChecked = true;
+              }
+            }
+        },    
+        getSelected() {
+        let boardIds = [];
+        for (let i in this.CategoryData) {
+            if(this.CategoryData[i].selected) {
+            boardIds.push(this.CategoryData[i].boardId);
+            }
+        }
+        }
     },
 }
 </script>

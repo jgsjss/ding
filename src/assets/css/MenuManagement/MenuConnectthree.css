@@ -1,4 +1,8 @@
-.connectmenu_container {
+.connectmenu_text_wrap {
+    display:flex;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: space-between;
 }
 .connectmenu_title {
     color:#997fb5;
@@ -13,4 +17,12 @@
     width:90%;
     margin:0 auto;
     padding:15px 0;
+}
+.menuconnect_drag_text {
+    font-size:14px;
+}
+.menuconnect_drag_text:before {
+    position:absolute;
+    display: block;
+    content: "\e960";
 }
