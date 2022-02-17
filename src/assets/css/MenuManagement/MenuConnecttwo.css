@@ -34,7 +34,7 @@
     display:flex;
     justify-content: space-between;
     align-items: center;
-    padding:10px;
+    padding:10px 5px;
 }
 .menucon_search_left_wrap {
     color:#997fb5;

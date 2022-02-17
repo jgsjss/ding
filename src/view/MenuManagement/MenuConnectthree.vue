@@ -1,20 +1,27 @@
 <template>
 <!--연결된 메뉴 순서변경 페이지-->
   <div class="connectmenu_container">
+      <div class="connectmenu_text_wrap">
       <h4 class="connectmenu_title">(카테고리명) &nbsp;연결된 메뉴 순서 변경</h4>
-      <p class="connectmenu_text">- 카테고리와 연결된 메뉴의 순서를 변경 할 수 있습니다.</p>
-      <p class="connectmenu_text">- 왼쪽의 아이콘을 잡고 드래그하여 순서변경이 가능합니다.</p>
-      <p class="connectmenu_text">- 오른쪽의 버튼으로 맨위, 맨아래 이동이 가능합니다.</p>
+      <i class="xi-close" @click="$router.go(-1)"></i>      
+      </div>
+
+        <p class="connectmenu_text">- 카테고리와 연결된 메뉴의 순서를 변경 할 수 있습니다.</p>
+        <p class="connectmenu_text">- 왼쪽의 아이콘을 잡고 드래그하여 순서변경이 가능합니다.</p>
+        <p class="connectmenu_text">- 오른쪽의 버튼으로 맨위, 맨아래 이동이 가능합니다.</p>
       <div class="connect_drag_wrap">
     <draggable class="dragArea list-group w-full" :list="list" @change="log">
       <div
-        class="list-group-item bg-gray-300 m-1 p-3 rounded-md text-center connect_drag_text"
+        class="list-group-item bg-gray-300 m-1 p-3 rounded-md text-center menuconnect_drag_text"
         v-for="element in list"
         :key="element.name"
       >
         {{ element.name }}
       </div>
     </draggable>
+    <div>
+        <button type="button">저장</button>
+    </div>
     </div>
   </div>
 </template>

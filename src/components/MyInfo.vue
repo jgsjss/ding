@@ -57,9 +57,9 @@ import store from '../store/index.js'
 
     },
     mounted () {
-      console.log(store.getters['loginStore/getShopName'])
-      console.log(store.getters['loginStore/getShopPhNum'])
-      console.log(store.getters['loginStore/getMgName'])
+      // console.log(store.getters['loginStore/getShopName'])
+      // console.log(store.getters['loginStore/getShopPhNum'])
+      // console.log(store.getters['loginStore/getMgName'])
     },
     computed :{
       getShopName(){

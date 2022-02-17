@@ -115,7 +115,7 @@
             </td>
             <!-- <td>인덱스 {{a}}--{{i}}</td> -->
             <td class="cate_data">{{ $store.state.CategoryData[i].catename }}</td>
-            <td class="cate_data col-7">{{ $store.state.CategoryData[i].catemenu }}</td>
+            <td class="cate_data col-7" title="마우스">{{ $store.state.CategoryData[i].catemenu }}</td>
             <td class="cate_data">{{ $store.state.CategoryData[i].menunum }}</td>
             <router-link to="/menumanagement/MenuConnecttwo"><td class="cate_data"><button type="button" class="cate_connect_btn">메뉴연결</button></td></router-link>
             <td class="cate_data">
@@ -152,13 +152,17 @@
 // import { ref, computed } from 'vue';
 // import axios from 'axios';
 
+import axios from 'axios'
+
 export default {
   data() {
     return {
       pageNum: 0,      
       active: false,
-      CategoryData:[],
+      cgData:[],
       allChecked:false,
+
+
     }
   },
   methods: {
@@ -187,13 +191,23 @@ export default {
         },    
     getSelected() {
       let boardIds = [];
-      for (let i in this.CategoryData) {
-        if(this.CategoryData[i].selected) {
-          boardIds.push(this.CategoryData[i].boardId);
+      for (let i in this.cgData) {
+        if(this.cgData[i].selected) {
+          boardIds.push(this.cgData[i].boardId);
         }
       }
-    }
+    },
+    getCategories () {
+      axios.post('/menu/categories').then(res => {
+        console.log(res)
+        this.cgData = res
+        console.log('cgData: ' , this.cgData)
+      }).catch((err) =>{
+        console.log(err)
+      })
+    },
   },
+
   // mounted() {
   //   this.getList();
   // },
@@ -202,7 +216,11 @@ export default {
     //   return Math.ceil(this.$store.state.CategoryData.length / 10)
     // },
   },
+  mounted () {
+    this.getCategories()
+  },
   setup() {
+
   },
 }
 </script>
