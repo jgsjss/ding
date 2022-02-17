@@ -9,7 +9,7 @@
     <router-link to="/dbshow" class="animate__tada">dbshow</router-link>
   </h1>
   <h1><a href="/main">메인 페이지</a></h1>
-  <button @click="delPhoto('1111111111')">파일삭제 테스트</button>
+  <button @click="getCategories">카테고리 테스트</button>
   <!--  <span v-if="logCheck" @click="doLogOut"><button class="btn btn-warning">로그아웃</button></span>-->
   <!--  <h1>로그인 아이디 : {{ idCheck }} </h1>-->
   <!--  <h1>로그인 엑세스토큰 : {{ acTokenCk }} </h1>-->
@@ -57,6 +57,18 @@ export default {
     //     console.log('로그아웃 성공')
     //   })
     // }
+    getCategories () {
+      axios({
+        url: '/menu/categories',
+        method: 'post',
+      }).then(res => {
+        console.log(res)
+        this.cgData = res
+        console.log('cgData: ' , this.cgData)
+      }).catch((err) =>{
+        console.log(err)
+      })
+    },
 
     delPhoto (biznum) {
       axios({
@@ -66,10 +78,8 @@ export default {
       }).then(res => {
         console.log(res.data)
       })
-
     }
-  }
-  ,
+  },
   created () {
 
   },

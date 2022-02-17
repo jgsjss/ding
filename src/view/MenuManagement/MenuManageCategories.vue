@@ -152,13 +152,17 @@
 // import { ref, computed } from 'vue';
 // import axios from 'axios';
 
+import axios from 'axios'
+
 export default {
   data() {
     return {
       pageNum: 0,      
       active: false,
-      CategoryData:[],
+      cgData:[],
       allChecked:false,
+
+
     }
   },
   methods: {
@@ -187,13 +191,23 @@ export default {
         },    
     getSelected() {
       let boardIds = [];
-      for (let i in this.CategoryData) {
-        if(this.CategoryData[i].selected) {
-          boardIds.push(this.CategoryData[i].boardId);
+      for (let i in this.cgData) {
+        if(this.cgData[i].selected) {
+          boardIds.push(this.cgData[i].boardId);
         }
       }
-    }
+    },
+    getCategories () {
+      axios.post('/menu/categories').then(res => {
+        console.log(res)
+        this.cgData = res
+        console.log('cgData: ' , this.cgData)
+      }).catch((err) =>{
+        console.log(err)
+      })
+    },
   },
+
   // mounted() {
   //   this.getList();
   // },
@@ -202,7 +216,11 @@ export default {
     //   return Math.ceil(this.$store.state.CategoryData.length / 10)
     // },
   },
+  mounted () {
+    this.getCategories()
+  },
   setup() {
+
   },
 }
 </script>

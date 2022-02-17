@@ -19,6 +19,9 @@ module.exports = {
       "^/download": {
         target,
         changeOrigin: true,
+      },  "^/menu": {
+        target,
+        changeOrigin: true,
       },
 
       // '^/login': {
