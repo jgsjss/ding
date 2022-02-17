@@ -26,3 +26,13 @@
     display: block;
     content: "\e960";
 }
+.menucon_cross_btn_wrap {
+    text-align: center;
+}
+.menucon_cross_btn {
+    border:none;
+    background:#dcd4e3;
+    color:#fff;
+    padding:10px;
+    width:480px;
+}

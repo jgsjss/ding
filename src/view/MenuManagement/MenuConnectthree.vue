@@ -2,7 +2,7 @@
 <!--연결된 메뉴 순서변경 페이지-->
   <div class="connectmenu_container">
       <div class="connectmenu_text_wrap">
-      <h4 class="connectmenu_title">(카테고리명) &nbsp;연결된 메뉴 순서 변경</h4>
+      <h4 class="connectmenu_title">({{}})프라푸치노 &nbsp;연결된 메뉴 순서 변경</h4>
       <i class="xi-close" @click="$router.go(-1)"></i>      
       </div>
 
@@ -19,8 +19,8 @@
         {{ element.name }}
       </div>
     </draggable>
-    <div>
-        <button type="button">저장</button>
+    <div class="menucon_cross_btn_wrap">
+        <button type="button" class="menucon_cross_btn">저장</button>
     </div>
     </div>
   </div>

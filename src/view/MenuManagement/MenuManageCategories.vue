@@ -161,6 +161,7 @@ export default {
       active: false,
       cgData:[],
       allChecked:false,
+      
 
 
     }
@@ -206,6 +207,9 @@ export default {
         console.log(err)
       })
     },
+        setup() {
+
+    }
   },
 
   // mounted() {
