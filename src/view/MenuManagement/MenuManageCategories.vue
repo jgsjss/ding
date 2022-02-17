@@ -214,7 +214,7 @@ export default {
       }
     },
     getCategories () {
-      axios.post('/apimenu/categories').then(res => {
+      axios.post('/menu/categories').then(res => {
         // console.log(res)
 
         this.cgData = res.data
