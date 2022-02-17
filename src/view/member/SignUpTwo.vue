@@ -367,7 +367,7 @@ export default {
            !this.isEmpty(this.postcode)) {
              return false
       } else {
-         this.$swal("입력하세요");
+         this.$swal("필수 정보들을 입력하세요");
          router.back();
          return false
       }
