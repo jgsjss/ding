@@ -160,19 +160,11 @@ export default {
     return {
       pageNum: 0,      
       active: false,
-<<<<<<< HEAD
-=======
+
       cgData:[],
       allChecked:false,
-      
-<<<<<<< Updated upstream
-=======
->>>>>>> 7242ab35abb7cb46a8b70a409a0024a7c7b415e4
->>>>>>> Stashed changes
 
-      cgData:{},
 
-      allChecked:false,
     }
   },
   methods: {
