@@ -19,7 +19,8 @@ module.exports = {
       "^/download": {
         target,
         changeOrigin: true,
-      },  "^/menu": {
+      },
+      "^/apimenu": {
         target,
         changeOrigin: true,
       },

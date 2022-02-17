@@ -57,18 +57,18 @@ export default {
     //     console.log('로그아웃 성공')
     //   })
     // }
-    getCategories () {
-      axios({
-        url: '/menu/categories',
-        method: 'post',
-      }).then(res => {
-        console.log(res)
-        this.cgData = res
-        console.log('cgData: ' , this.cgData)
-      }).catch((err) =>{
-        console.log(err)
-      })
-    },
+    // getCategories () {
+    //   axios({
+    //     url: '/menu/categories',
+    //     method: 'post',
+    //   }).then(res => {
+    //     console.log(res)
+    //     this.cgData = res
+    //     console.log('cgData: ' , this.cgData)
+    //   }).catch((err) =>{
+    //     console.log(err)
+    //   })
+    // },
 
     delPhoto (biznum) {
       axios({

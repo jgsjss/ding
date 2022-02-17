@@ -104,7 +104,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(a, i) in $store.state.CategoryData" :key="i">
+          <tr v-for="(a, i) in cgData" :key="i">
             <td  scope="row" class="cate_check_box">
               <input type="checkbox" 
                     :id="'check_' + i.boardId"
@@ -114,9 +114,9 @@
               >
             </td>
             <!-- <td>인덱스 {{a}}--{{i}}</td> -->
-            <td class="cate_data">{{ $store.state.CategoryData[i].catename }}</td>
-            <td class="cate_data col-7" title="마우스">{{ $store.state.CategoryData[i].catemenu }}</td>
-            <td class="cate_data">{{ $store.state.CategoryData[i].menunum }}</td>
+            <td class="cate_data">{{ cgData[i].pdcategory }}</td>
+            <td class="cate_data col-7" title="마우스">{{ cgData[i].pdname }}</td>
+            <td class="cate_data">{{ '이건...일단보류' }}</td>
             <router-link to="/menumanagement/MenuConnecttwo"><td class="cate_data"><button type="button" class="cate_connect_btn">메뉴연결</button></td></router-link>
             <td class="cate_data">
               <select class="cate_condition">
@@ -146,6 +146,7 @@
 
 
         </div>
+
 </template>
 
 <script>
@@ -159,11 +160,19 @@ export default {
     return {
       pageNum: 0,      
       active: false,
+<<<<<<< HEAD
+=======
       cgData:[],
       allChecked:false,
       
+<<<<<<< Updated upstream
+=======
+>>>>>>> 7242ab35abb7cb46a8b70a409a0024a7c7b415e4
+>>>>>>> Stashed changes
 
+      cgData:{},
 
+      allChecked:false,
     }
   },
   methods: {
@@ -199,9 +208,10 @@ export default {
       }
     },
     getCategories () {
-      axios.post('/menu/categories').then(res => {
+      axios.post('/apimenu/categories').then(res => {
         console.log(res)
-        this.cgData = res
+
+        this.cgData = res.data
         console.log('cgData: ' , this.cgData)
       }).catch((err) =>{
         console.log(err)
@@ -222,6 +232,7 @@ export default {
   },
   mounted () {
     this.getCategories()
+    // console.log(this.cgData)
   },
   setup() {
 
