@@ -31,7 +31,7 @@
           <div class="info_right">naver@naver.com{{}}</div>
         </div>
       </div>
-      <router-link to="@view/member/Login" class="myinfo_logout"><button type="button" class="logout-btn">로그아웃</button></router-link>
+      <button type="button" class="logout-btn" @click="doLogOut">로그아웃</button>
     </div>
   </div>
 </template>
@@ -54,7 +54,13 @@ import store from '../store/index.js'
     openShopNum : Number,
     },
     methods:{
-
+      doLogOut () {
+        store.dispatch('loginStore/doLogout').then(() => {
+          // alert('로그아웃 되었습니다.')
+          location.reload();
+          console.log('로그아웃 성공')
+        })
+      },
     },
     mounted () {
       // console.log(store.getters['loginStore/getShopName'])
