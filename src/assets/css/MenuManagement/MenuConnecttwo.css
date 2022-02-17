@@ -1,5 +1,7 @@
 .menucon_container {
-    width: 60%;
+    width: 50%;
+    float:left;
+    padding:0 30px;
 }
 .menucon_title {
     color:#997fb5;

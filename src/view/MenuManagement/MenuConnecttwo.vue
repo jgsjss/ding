@@ -52,20 +52,24 @@
         </tbody>
     </table>
 </div>
-  <MenuConnectthree/>
-  <router-view></router-view>
   </div>
-
+  <MenuConnectthree />
+  <router-view></router-view>
 </template>
 
 <script>
 import MenuConnectthree from './MenuConnectthree.vue'
 export default {
-    data() {
-        return {
-            MenuConnectthree,
-        }
-    }
+    components: {
+      MenuConnectthree,
+    },
+      data() {
+      return {
+      }
+    },
+    methods: {
+
+    },
 }
 </script>
 

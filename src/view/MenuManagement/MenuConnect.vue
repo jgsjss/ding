@@ -50,9 +50,10 @@
 <script>
   import { defineComponent } from 'vue'
   import { VueDraggableNext } from 'vue-draggable-next'
-  export default defineComponent({
+  export default {
     components: {
       draggable: VueDraggableNext,
+      
     },
     data() {
       return {
@@ -93,7 +94,7 @@
             };
     }
     },
-  })
+  }
 </script>
 
 <style>

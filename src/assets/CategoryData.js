@@ -81,6 +81,7 @@ export default [
         catename: '병음료',
         catemenu: '딸기 프라푸치노, 민트초코 프라푸치노, 더블 에스프레소 프라푸치노, 돌체 프라푸치노, 맛있는 프라푸치노',
         menunum: '14개',
+        menucondition: '숨김',
         price: '12,000',
     },
     {
