@@ -223,10 +223,10 @@ export default {
       })
     },
     menuCnt (obj) {
-      _.forEach(obj,function (v,k,copy) {
+      _.forEach(obj, function (v, k, copy) {
         // console.log("Asd",V)
         // console.log(K)
-        console.log("v",v)
+        console.log('v', v)
         // console.log("k",k)
         // console.log("copy",copy)
         // _.reduce(v,function (acc,v,k) {
@@ -238,16 +238,22 @@ export default {
         //
         //
         // },0)
-        _.find(v,function (obj) {
+
+        _.find(v, function (obj) {
           // console.log("v",v)
           // console.log("k",k)
           // console.log("copy",copy)
-          let cnt=(obj.pdname)
-          console.log("cnt",cnt)
+          let cnt = (obj.pdname)
+          console.log('cnt', cnt)
 
         })
       })
     },
+    cntPdname (obj, ctnum) {
+      let myctnumgroup = _.partition(obj, function (value, index, copy) {   return value.ctnum == ctnum  })
+      console.log(myctnumgroup)
+    },
+
     setup () {
 
     }
@@ -270,7 +276,8 @@ export default {
 
   },
   updated () {
-    this.menuCnt(this.cgData)
+    // this.menuCnt(this.cgData)
+    this.cntPdname(this.cgData, 1)
   }
 }
 </script>
