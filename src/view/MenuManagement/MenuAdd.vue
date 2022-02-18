@@ -16,8 +16,8 @@
         <label class="menuadd_label">* 설명
           <textarea type="text" class="menuadd_input" placeholder="예) 딩동커피만의 로스팅방식으로 만들어낸 아메리카노"></textarea>
         </label>
-        <label class="menuadd_label">이미지
-          <button type="button" class="menuadd_img_btn">이미지 추가</button>
+        <label class="menuadd_label"> 이미지
+          <button type="button" class="menuadd_img_btn">이미지추가</button>
         </label>
         <label class="menuadd_label">메뉴공개
           <input type="radio" class="menuadd_radio">공개
@@ -29,6 +29,7 @@
       <div class="menuadd_btn_wrap">
         <label class="menuadd_label">카테고리
           <button type="button" class="menuadd_edit_btn" data-bs-toggle="collapse" data-bs-target="#category_option" aria-expanded="false" aria-controls="category_option">카테고리설정</button>
+          <div class="category_option_bind">{{}}전체(기본카테고리)</div>
           <div class="collapse category_option_wrap" id="category_option">
             <div class="card card-body">
               <div class="category_option_add_wrap">
@@ -68,6 +69,7 @@
         </label>
         <label class="menuadd_label">옵션
           <button type="button" class="menuadd_edit_btn"  data-bs-toggle="collapse" data-bs-target="#option_edit" aria-expanded="false" aria-controls="option_edit">옵션설정</button>
+            <div class="category_option_bind">{{}}연결된 옵션 없음</div>          
           <div class="collapse  category_option_wrap" id="option_edit">
             <div class="card card-body">
               Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.

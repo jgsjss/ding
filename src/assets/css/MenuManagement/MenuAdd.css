@@ -32,7 +32,7 @@
     border:1px solid #997fb5;
     color:#997fb5;
     border-radius:10px;
-    background:none;
+    background:white;
     padding:5px 20px;
     margin:0 15px;
 }
@@ -50,10 +50,15 @@
     border-radius: 5px;
     padding:10px 30px;
     background: #997fb5;
-    width:500px
+    width:80%;
 }
 
 .category_option_wrap {
+    padding:10px 0;
+}
+.category_option_bind {
+    color:#dcd4ec;
+    font-size:14px;
     padding:10px 0;
 }
 .category_option_add_wrap {
