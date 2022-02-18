@@ -11,7 +11,7 @@
           <input type="text" class="menuadd_input" placeholder="예) 딩동아메리카노">
         </label>
         <label class="menuadd_label">* 가격
-          <input type="text" class="menuadd_input" placeholder="예) 딩동아메리카노">
+          <input type="text" class="menuadd_input">
         </label>
         <label class="menuadd_label">* 설명
           <textarea type="text" class="menuadd_input" placeholder="예) 딩동커피만의 로스팅방식으로 만들어낸 아메리카노"></textarea>
