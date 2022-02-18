@@ -1,6 +1,6 @@
 <template>
   <!-- 메뉴관리 페이지의 카테고리편집 게시판 페이지 -->
-  <div class="cate_container">
+  <div class="cate_container" >
     <form class="category_wrap">
       <div class="category_left">
         <label class="cate_label">
@@ -178,6 +178,7 @@ export default {
       cgData: [],
       allChecked: false,
 
+
     }
   },
   methods: {
@@ -215,9 +216,8 @@ export default {
     getCategories () {
       axios.post('/apimenu/categories').then(res => {
         // console.log(res)
-
         this.cgData = res.data
-        // console.log('cgData: ', this.cgData)
+        console.log('cgData: ', this.cgData)
       }).catch((err) => {
         console.log(err)
       })
@@ -235,8 +235,6 @@ export default {
         //   console.log("k",k)
         //   // console.log("i",i)
         //   let connectedMenuCnt=0
-        //
-        //
         // },0)
 
         _.find(v, function (obj) {
@@ -258,7 +256,6 @@ export default {
 
     }
   },
-
   // mounted() {
   //   this.getList();
   // },

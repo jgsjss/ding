@@ -1,4 +1,5 @@
 <template>
+  
   <h1>
     <router-link to="/signupone">회원가입 페이지</router-link>
   </h1>
