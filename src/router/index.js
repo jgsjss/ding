@@ -41,7 +41,7 @@ import ReleaseSoldOut from "../view/ReleaseSoldOut.vue";
 import MenuManagement from '../view/MenuManagement/MenuManagement.vue'
 import MenuManageCategories from '../view/MenuManagement/MenuManageCategories.vue'
 import MenuManageMenus from '../view/MenuManagement/MenuManageMenus.vue'
-import MenuEdit from '../view/MenuManagement/MenuEdit.vue'
+import MenuAdd from '../view/MenuManagement/MenuAdd.vue'
 import MenuManageOptions from '../view/MenuManagement/MenuManageOptions.vue'
 import MenuConnect from '../view/MenuManagement/MenuConnect.vue'
 import MenuConnecttwo from '../view/MenuManagement/MenuConnecttwo.vue'
@@ -178,8 +178,8 @@ const routes = [
         component: MenuManageMenus,
       },
       {
-        path: "/menumanagement/MenuEdit",
-        component: MenuEdit,
+        path: "/menumanagement/MenuAdd",
+        component: MenuAdd,
       },
       {
         path: "/menumanagement/options",
