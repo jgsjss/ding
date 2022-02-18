@@ -11,6 +11,9 @@
     font-size:24px;
     color:#997fb5;
 }
+.menuadd_close {
+    font-size:24px;
+}
 .menuadd_box_wrap {
     display:flex;
 }
@@ -28,13 +31,18 @@
 .menuadd_radio {
     padding:0 15px;
 }
+.menuadd_img_input {
+    text-align: center;
+    padding:15px 0;
+}
 .menuadd_img_btn {
-    border:1px solid #997fb5;
-    color:#997fb5;
-    border-radius:10px;
-    background:white;
-    padding:5px 20px;
-    margin:0 15px;
+    border: 1px solid #997fb5;
+    color: #997fb5;
+    border-radius: 10px;
+    background: white;
+    padding: 5px;
+    margin: 0 15px;
+    width: 300px;
 }
 .menuadd_btn_wrap {
     margin:0 auto;
