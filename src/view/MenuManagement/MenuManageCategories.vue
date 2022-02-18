@@ -161,7 +161,6 @@
 
 
   </div>
-
 </template>
 
 <script>
@@ -214,7 +213,7 @@ export default {
       }
     },
     getCategories () {
-      axios.post('/menu/categories').then(res => {
+      axios.post('/apimenu/categories').then(res => {
         // console.log(res)
 
         this.cgData = res.data
@@ -227,15 +226,26 @@ export default {
       _.forEach(obj,function (v,k,copy) {
         // console.log("Asd",V)
         // console.log(K)
-        // console.log("v",v)
+        console.log("v",v)
         // console.log("k",k)
         // console.log("copy",copy)
-        _.reduce(v,function (accum,v) {
-          console.log("v",v)
-          console.log("accum",accum)
+        // _.reduce(v,function (acc,v,k) {
+        //   console.log("v",v)
+        //   // console.log("acc",acc)
+        //   console.log("k",k)
+        //   // console.log("i",i)
+        //   let connectedMenuCnt=0
+        //
+        //
+        // },0)
+        _.find(v,function (obj) {
+          // console.log("v",v)
           // console.log("k",k)
-          // console.log("i",i)
-        },3)
+          // console.log("copy",copy)
+          let cnt=(obj.pdname)
+          console.log("cnt",cnt)
+
+        })
       })
     },
     setup () {
