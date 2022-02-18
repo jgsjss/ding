@@ -1,59 +1,59 @@
 <template>
   <!-- 메뉴관리 페이지의 카테고리편집 게시판 페이지 -->
-  <div class="cate_container">
-    <form class="category_wrap">
-      <div class="category_left">
-        <label class="cate_label">
+  <div class="menuedit_container">
+    <form class="menuedit_wrap">
+      <div class="menuedit_left">
+        <label class="menuedit_label">
           <input type="checkbox"
-                 class="cate_check"
+                 class="menuedit_check"
                    id="all-check"
                    v-model="allChecked"
                    @click="checkedAll($event.target.checked)"                 
           >
           전체선택
         </label>
-        <label class="cate_label">
-          <button type="button" class="cate_check_btn"> 삭제</button>
+        <label class="menuedit_label">
+          <button type="button" class="menuedit_check_btn"> 삭제</button>
         </label>
-        <label class="cate_label">
-          <button type="button" class="cate_check_btn"> 품절</button>
+        <label class="menuedit_label">
+          <button type="button" class="menuedit_check_btn"> 품절</button>
         </label>
-        <label class="cate_label">
-          <button type="button" class="cate_check_btn"> 숨김</button>
+        <label class="menuedit_label">
+          <button type="button" class="menuedit_check_btn"> 숨김</button>
         </label>
-        <label class="cate_label">
-          <button type="button" class="cate_check_btn"> 정상</button>
+        <label class="menuedit_label">
+          <button type="button" class="menuedit_check_btn"> 정상</button>
         </label>
       </div>
-      <div class="category_right">
+      <div class="menuedit_right">
         <input type="search"
                name="categoriSearch"
                placeholder="search"
                class="menu_search"
         >
-        <button class="cate_menu_btn02" type="button" data-bs-toggle="offcanvas" data-bs-target="#categoryadd"
-                aria-controls="categoryadd">+메뉴추가
-        </button>
+        <router-link to="/menumanagement/MenuAdd">
+        <button class="menuedit_menu_btn02" type="button">+메뉴추가</button>
+        </router-link>
 
-        <select class="hidden_select">
-          <option class="hidden_btn">전체/정상/숨김/품절</option>
-          <option class="hidden_btn" value="삭제">정상</option>
-          <option class="hidden_btn" value="숨김">숨김</option>
-          <option class="hidden_btn" value="정상">품절</option>
+        <select class="menu_hidden_select">
+          <option class="menu_hidden_btn">전체/정상/숨김/품절</option>
+          <option class="menu_hidden_btn" value="삭제">정상</option>
+          <option class="menu_hidden_btn" value="숨김">숨김</option>
+          <option class="menu_hidden_btn" value="정상">품절</option>
         </select>
       </div>
 
     </form>
-    <div class="category_list_wrap">
-      <table class="cate_table">
-        <thead class="category_thead">
-        <tr class="cate_title">
+    <div class="menuedit_list_wrap">
+      <table class="edit_table">
+        <thead class="edit_thead">
+        <tr class="edit_title">
           <th scope="col"></th>
-          <th scope="col" class="cate_col">메뉴명</th>
-          <th scope="col" class="cate_col">가격</th>
-          <th scope="col" class="cate_col">카테고리</th>
-          <th scope="col" class="cate_col">연결옵션</th>
-          <th scope="col" class="cate_col">숨김/품절</th>
+          <th scope="col" class="edit_col">메뉴명</th>
+          <th scope="col" class="edit_col">가격</th>
+          <th scope="col" class="edit_col">카테고리</th>
+          <th scope="col" class="edit_col">연결옵션</th>
+          <th scope="col" class="edit_col">숨김/품절</th>
         </tr>
         </thead>
         <tbody>
@@ -68,15 +68,15 @@
             >
           </td>
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
-          <td class="cate_data"><img :src="menuname.coffee" />{{ $store.state.menueditData[i].menuname }}</td>
-          <td class="cate_data" title="마우스">{{  $store.state.menueditData[i].price }}</td>
-          <td class="cate_data">{{ $store.state.menueditData[i].category }}</td>
-          <td class="cate_data">{{ $store.state.menueditData[i].connectoption }}</td>
-          <td class="cate_data">
-            <select class="cate_condition">
-              <option class="cate_condition_text">상태설정</option>
-              <option class="cate_condition_text">숨김</option>
-              <option class="cate_condition_text">정상상태</option>
+          <td class="edit_data"><img src="../../assets/coffee.jpeg" class="coffee_img">{{ $store.state.menueditData[i].menuname }}</td>
+          <td class="edit_data" title="마우스">{{  $store.state.menueditData[i].price }}</td>
+          <td class="edit_data">{{ $store.state.menueditData[i].category }}</td>
+          <td class="edit_data">{{ $store.state.menueditData[i].connectoption }}</td>
+          <td class="edit_data">
+            <select class="edit_condition">
+              <option class="edit_condition_text">상태설정</option>
+              <option class="edit_condition_text">숨김</option>
+              <option class="edit_condition_text">정상상태</option>
             </select>
             <!-- <button type="button" class="cate_connect_btn">숨김(OFF)
               </button> -->
@@ -84,8 +84,8 @@
         </tr>
         </tbody>
       </table>
-      <div class="cate_add_wrap">
-        <button type="button" class="cate_add_btn">저장</button>
+      <div class="edit_add_wrap">
+        <button type="button" class="edit_add_btn">저장</button>
       </div>
       <!-- <div class="btn-cover">
         <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
@@ -208,5 +208,5 @@ export default {
 </script>
 
 <style>
-@import '../../assets/css/MenuManagement/MenuEdit.css';
+@import '../../assets/css/MenuManagement/MenuManageMenus.css';
 </style>
