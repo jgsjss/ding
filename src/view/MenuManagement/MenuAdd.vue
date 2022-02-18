@@ -45,6 +45,9 @@
                     {{ $store.state.CategoryOptionData[i].catename }}
                     <p>{{ $store.state.CategoryOptionData[i].menuname }}</p>
                   </button>
+                  <div class="category_option_add_btn_wrap">
+                    <button type="button" class="category_option_add_btn02">저장</button>
+                  </div>
 
                 </div>
                 <div class="category_option_add_right">
@@ -55,6 +58,9 @@
                     {{ $store.state.CategoryOptionData[i].catename }}
                     <p>{{ $store.state.CategoryOptionData[i].menuname }}</p>
                   </button>
+                    <div class="category_option_add_btn_wrap">
+                      <button type="button" class="category_option_add_btn02">(2개선택){{}}연결</button>
+                    </div>                  
                 </div>
               </div>
             </div>
