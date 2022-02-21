@@ -23,7 +23,10 @@
         </label>
       </div>
       <div class="menuoption_right">
-        <input type="search"
+        <input type="text"
+              v-model="search"
+              @input="handleSearchInput"
+              @keydown.tab="KeydownTab"
                name="categoriSearch"
                placeholder="search"
                class="menuoption_search"
@@ -185,6 +188,8 @@ export default {
       conditionKey:0,
       pageNum: 0,
       active: false,
+      searchList:'',
+      search:'', 
       menuname:[
         {
           coffee: require('../../assets/coffee.jpeg')
@@ -253,7 +258,25 @@ export default {
     },
     editCondition(event) {
       console.log(event.target.value)
-    }
+    },
+handleSearchInput(e) { 
+  this.search = e.target.value; 
+  if(this.search.length !== 0) { 
+    clearTimeout(this.debounce); 
+    this.debounce = setTimeout(() => { 
+      const filteredList = this.stageInfoList.filter(item => item.title.includes(this.search
+      )); 
+      this.searchList = filteredList; 
+      }, 500); 
+      }else{ clearTimeout(this.debounce); 
+      this.debounce = setTimeout(() => { 
+        this.searchList = []; 
+        }, 500);
+          console.log('')
+         } 
+         },
+
+
   },
 
   // mounted() {
