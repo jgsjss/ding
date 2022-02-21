@@ -15,6 +15,8 @@ export const loginStore = {
     shopPhNum: '',
     mgName: '',
     checked: null,
+    userrole: '',
+    shopCode: '',
   },
   getters: {
     getId(state){
@@ -34,6 +36,12 @@ export const loginStore = {
     },
     getMgName(state){
       return state.mgName
+    },
+    getUserrole(state){
+      return state.userrole
+    },
+    getShopcode(state){
+      return state.shopCode
     },
     //로그인 여부 확인 메소드
     isLogin (state) {
@@ -86,6 +94,12 @@ export const loginStore = {
     setChecked(state, ck){
       state.checked = ck
     },
+    setUserrole(state, role){
+      state.userrole = role
+    },
+    setShopcode(state, code){
+      state.shopCode = code
+    },
     // 로컬스토리지 삭제 메소드
     // reset (state) {
     //   state.userid = '';
@@ -110,6 +124,8 @@ export const loginStore = {
       state.shopName ='';
       state.shopPhNum ='';
       state.mgName ='';
+      state.shopCode='';
+      state.userrole = '';
 
       // cookies.remove('login.userid');
       // cookies.remove('login.accessToken');
@@ -215,6 +231,12 @@ export const loginStore = {
         if(storage.mgName != null){
           state.mgName = storage.mgName;
         }
+        if(storage.userrole != null){
+          state.userrole = storage.userrole;
+        }
+        if(storage.shopcode != null){
+          state.shopCode = storage.shopcode
+        }
       }
 
     },
@@ -233,6 +255,8 @@ export const loginStore = {
           commit('setShopPhNum', res.data.shopphnum);
           commit('setMgName', res.data.mgname);
           commit('setChecked', userInfo.checked);
+          commit('setUserrole', res.data.userrole);
+          commit('setShopcode', res.data.shopcode);
           commit('saveStateToStorage');
           axios.defaults.headers.common['Access-Token'] = res.data.accessToken;
           result = true;

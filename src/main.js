@@ -7,6 +7,7 @@ import mitt from "mitt";
 import mixins from "./mixins";
 import vuesweetalert2 from "vue-sweetalert2";
 import "./assets/sweetalert2.min.css";
+// import InfiniteLoading from "v3-infinite-loading";
 /*-----vue3-date-time-picker-----*/
 import Datepicker from "vue3-date-time-picker";
 import "vue3-date-time-picker/dist/main.css";
@@ -19,6 +20,7 @@ app.component("Datepicker", Datepicker);
 
 app.mixin(mixins);
 app.use(vuesweetalert2);
+// app.component("infinite-loading", InfiniteLoading);
 // app.use(VueCookies);
 
 const sweet = require("sweetalert2");

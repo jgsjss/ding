@@ -32,7 +32,7 @@
                 aria-controls="categoryadd">+카테고리추가
         </button>
         <!--카테고리 추가,상세 오프캔버스-->
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="categoryadd" aria-labelledby="categoryaddLabel">
+        <div class="offcanvas offcanvas-start" v-if="isUserRole" @click="roleCheck"  tabindex="-1" id="categoryadd" aria-labelledby="categoryaddLabel">
           <h4 class="category_add_title" id="categoryaddLabel">카테고리 추가</h4>
           <!--카테고리 추가-->
           <div class="offcanvas-body category_add_body01">
@@ -145,18 +145,19 @@
         </tr>
         </tbody>
       </table>
+<!--      <Observer @triggerIntersected="loadMore" />-->
       <div class="cate_add_wrap">
         <button type="button" class="cate_add_btn">저장</button>
       </div>
-      <!-- <div class="btn-cover">
-        <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
-          <i class="xi-angle-left"></i>
-        </button>
-        <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} </span>
-        <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
-          <i class="xi-angle-right"></i>
-        </button>
-      </div> -->
+<!--       <div class="btn-cover">-->
+<!--        <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">-->
+<!--          <i class="xi-angle-left"></i>-->
+<!--        </button>-->
+<!--        <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} </span>-->
+<!--        <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">-->
+<!--          <i class="xi-angle-right"></i>-->
+<!--        </button>-->
+<!--      </div>-->
     </div>
 
 
@@ -164,24 +165,39 @@
 </template>
 
 <script>
-// import { ref, computed } from 'vue';
-// import axios from 'axios';
+import InfiniteLoading from 'v3-infinite-loading'
 import _ from 'lodash'
 import axios from 'axios'
+// import Observer from './Observer'
 
 export default {
   data () {
     return {
-      pageNum: 0,
       active: false,
-
       cgData: [],
       allChecked: false,
+      isUserRole: false,
 
+      totalPage: '',
+      dataPerPage : '',
+      pageCount : 10,
+      currentPage : 1,
 
     }
   },
+  components:{
+    // Observer,
+  },
+
   methods: {
+    //권한체크
+    roleCheck(){
+        if(this.getUserrole != 0){
+          this.isUserRole = false;
+        } else{
+          this.isUserRole = true;
+        }
+    },
     print () {
       console.log(this.selected)
     },
@@ -217,6 +233,7 @@ export default {
       axios.post('/apimenu/categories').then(res => {
         // console.log(res)
         this.cgData = res.data
+        this.totalPage = this.cgData.length
         console.log('cgData: ', this.cgData)
       }).catch((err) => {
         console.log(err)
@@ -251,18 +268,17 @@ export default {
       let myctnumgroup = _.partition(obj, function (value, index, copy) {   return value.ctnum == ctnum  })
       console.log(myctnumgroup)
     },
-
-    setup () {
-
-    }
+    // loadMore(){
+    //   const fetchData = getAllDataApi
+    // }
   },
   // mounted() {
   //   this.getList();
   // },
   computed: {
-    // pageCount () {
-    //   return Math.ceil(this.$store.state.CategoryData.length / 10)
-    // },
+    getUserrole(){
+      return this.$store.getters['loginStore/getUserrole']
+    }
   },
   beforeMount () {
     this.getCategories()

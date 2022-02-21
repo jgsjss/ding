@@ -12,7 +12,7 @@
       </div>
 
       <div class="wrap2">
-        <div class="info_right">수정 필요{{getShopNum}}</div>
+        <div class="info_right">{{getShopcode}}</div>
         <div class="info_right">{{getShopName}}</div>
         <div class="info_right">{{getShopPhNum}}</div>
         <div class="info_right">{{getUserId}}</div>
@@ -39,21 +39,21 @@
 <script>
 import store from '../store/index.js'
   export default {
-    data(){
+    data () {
       return {
-        shopCode : '',
-        shopName : '',
-        shopPhNum : '',
-        manager : '',
+        shopCode: '',
+        shopName: '',
+        shopPhNum: '',
+        manager: '',
       }
     },
-    props : {
-       //운영관리 데이터 프롭스 ---
-    shopData : Object,
-    //영업중인 가게 수
-    openShopNum : Number,
+    props: {
+      //운영관리 데이터 프롭스 ---
+      shopData: Object,
+      //영업중인 가게 수
+      openShopNum: Number,
     },
-    methods:{
+    methods: {
       doLogOut () {
         store.dispatch('loginStore/doLogout').then(() => {
           // alert('로그아웃 되었습니다.')
@@ -67,14 +67,14 @@ import store from '../store/index.js'
       // console.log(store.getters['loginStore/getShopPhNum'])
       // console.log(store.getters['loginStore/getMgName'])
     },
-    computed :{
-      getShopName(){
+    computed: {
+      getShopName () {
         return store.getters['loginStore/getShopName'];
       },
-      getShopPhNum(){
+      getShopPhNum () {
         return store.getters['loginStore/getShopPhNum'];
       },
-      getMgName(){
+      getMgName () {
         return store.getters['loginStore/getMgName'];
       },
       getUserId: function () {
@@ -83,20 +83,22 @@ import store from '../store/index.js'
       getShopNum: function () {
         return this.$store.state.loginStore.shopNum
       },
+      getShopcode: function(){
+        return this.$store.state.loginStore.shopCode
+      }
 
-
-    },
-    // watch: {
-    //   getShopName(a){
-    //     if(a != null) this.shopName = a;
-    //   },
-    //   getShopPhNum(a){
-    //     if(a != null) this.shopPhNum = a;
-    //   },
-    //   getMgname(a){
-    //     if(a != null) this.manager = a;
-    //   }
-    // }
+      // watch: {
+      //   getShopName(a){
+      //     if(a != null) this.shopName = a;
+      //   },
+      //   getShopPhNum(a){
+      //     if(a != null) this.shopPhNum = a;
+      //   },
+      //   getMgname(a){
+      //     if(a != null) this.manager = a;
+      //   }
+      // }
+    }
   }
 </script>
 <style>
