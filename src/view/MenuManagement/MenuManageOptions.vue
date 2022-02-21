@@ -60,7 +60,7 @@
                     <input type="radio" class="menuoption_input">필수(옵션을 선택해야 주문가능)<br/>
                     <input type="radio" class="menuoption_input">선택(옵션을 선택하지 않아도 주문가능)
                   </div>
-                  <button type="button" class="menuoption_add_btn">옵션 추가 완료</button>
+                  <button type="submit" class="menuoption_add_btn">옵션 추가 완료</button>
                 </form>
               </div>
             </div>
@@ -105,7 +105,11 @@
           <td class="menuoption_data" title="마우스">{{  $store.state.OptionData[i].condition }}</td>
           <td class="menuoption_data">{{ $store.state.OptionData[i].optionlist }}</td>
           <td class="menuoption_data">{{ $store.state.OptionData[i].menulist }}</td>
-          <td class="menuoption_data"><button type="button">메뉴연결</button></td>
+          <td class="menuoption_data">
+            <router-link to="/menumanagement/MenuConnecttwo">
+            <button type="button" class="menuoption_connect_btn">메뉴연결</button>
+            </router-link>
+            </td>
           <td class="menuoption_data">
             <select class="menuoption_condition" @change="editCondition($event)" v-model="conditionKey">
               <option class="menuoption_condition_text" value="상태설정">상태설정</option>
@@ -123,9 +127,6 @@
         </tr>
         </tbody>
       </table>
-      <div class="menuoption_add_wrap">
-        <button type="button" class="menuoption_add_btn">저장</button>
-      </div>
       <!--옵션수정 오프캔버스 시작-->
       <div class="offcanvas offcanvas-start" tabindex="-1" id="menuoption_" aria-labelledby="menuoption_Label">
   <div class="offcanvas-header">
@@ -147,7 +148,8 @@ correction" aria-label="Close"></button>
             <label class="menuoption_form_label">* 선택가능 옵션 수</label>
             <input type="number" min="0" max="5" class="m-2" >옵션은 최대 까지 선택 가능합니다.
             <p class="option_subtitle">- 등록한 옵션목록 개수만큼 설정 가능합니다.</p>
-          </div>              
+          </div> 
+          <button type="submit" class="menuoption_add_btn">옵션정보 수정</button>             
       </form>
     </div>
   </div>
@@ -163,7 +165,9 @@ correction" aria-label="Close"></button>
         </button>
       </div> -->
     </div>
-
+      <div class="menuoptions_add_wrap">
+        <button type="submit" class="menuoptions_add_btn">저장</button>
+      </div>
 
   </div>
 

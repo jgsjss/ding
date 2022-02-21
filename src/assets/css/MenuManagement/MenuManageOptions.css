@@ -106,6 +106,13 @@
 tbody {
         color:#997fb5;
 }
+.menuoption_connect_btn {
+    border:none;
+    background:#c2b4cd;
+    color:#997fb5;
+    border-radius: 10px;
+    padding:5px 10px;
+}
 .menuoption_condition {
     width:90px;
     border:1px solid #997fb5;
@@ -158,4 +165,15 @@ tbody {
 }
 #menuoption_Label {
     color:#997fb5;
+}
+.menuoptions_add_wrap {
+    text-align: right;
+    padding:15px;
+}
+.menuoptions_add_btn {
+    border:none;
+    border-radius: 5px;
+    padding:5px 10px;
+    background:#997fb5;
+    color:white;
 }
