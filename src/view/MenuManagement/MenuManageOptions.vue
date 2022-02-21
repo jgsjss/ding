@@ -50,14 +50,13 @@
                     <input type="text" class="form-control mb-2" placeholder="예)순한맛">
                     <input type="text" class="form-control" placeholder="예)500원">
                   </div>
-
                   <div class="mb-3"> 
-                    <label class="menuoption_label">* 선택가능 옵션 수</label>
+                    <label class="menuoption_form_label">* 선택가능 옵션 수</label>
                     <input type="number" min="0" max="5" class="m-2" >옵션은 최대 까지 선택 가능합니다.
                     <p class="option_subtitle">- 등록한 옵션목록 개수만큼 설정 가능합니다.</p>
                   </div>
                   <div class="mb-3">
-                    <label class="menuoption_label">* 필수여부</label>
+                    <label class="menuoption_form_label">* 필수여부</label>
                     <input type="radio" class="menuoption_input">필수(옵션을 선택해야 주문가능)<br/>
                     <input type="radio" class="menuoption_input">선택(옵션을 선택하지 않아도 주문가능)
                   </div>
@@ -86,6 +85,7 @@
           <th scope="col" class="menuoption_col">연결된 메뉴</th>
           <th scope="col" class="menuoption_col">메뉴연결</th>
           <th scope="col" class="menuoption_col">숨김</th>
+          <th scope="col" class="menuoption_col"></th>
         </tr>
         </thead>
         <tbody>
@@ -99,11 +99,9 @@
             >
           </td>
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
-           <router-link to="/menumanagement/MenuAddTwo">
             <td class="menuoption_data">
               {{ $store.state.OptionData[i].optionname }}
             </td>
-           </router-link>
           <td class="menuoption_data" title="마우스">{{  $store.state.OptionData[i].condition }}</td>
           <td class="menuoption_data">{{ $store.state.OptionData[i].optionlist }}</td>
           <td class="menuoption_data">{{ $store.state.OptionData[i].menulist }}</td>
@@ -118,12 +116,43 @@
             <!-- <button type="button" class="cate_connect_btn">숨김(OFF)
               </button> -->
           </td>
+          <td class="menuoption_data_box">
+            <button type="button" class="menuoption_icon"><i class="xi-close"></i></button><!--삭제-->
+            <button type="button" class="menuoption_icon"  data-bs-toggle="offcanvas" data-bs-target="#menuoption_" aria-controls="menuoption_"><i class="xi-pen"></i></button><!--수정-->
+          </td>          
         </tr>
         </tbody>
       </table>
       <div class="menuoption_add_wrap">
         <button type="button" class="menuoption_add_btn">저장</button>
       </div>
+      <!--옵션수정 오프캔버스 시작-->
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="menuoption_" aria-labelledby="menuoption_Label">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="menuoption_Label">옵션정보 수정</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="menuoption_
+correction" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      <form>
+        <label for="" class="form-label menuoption_form_label">* 옵션명</label>
+        <input type="text" class="menuoption_input form-control">
+          <div class="mb-3">
+            <label class="menuoption_form_label">* 필수여부</label>
+            <input type="radio" class="menuoption_input">필수(옵션을 선택해야 주문가능)<br/>
+            <input type="radio" class="menuoption_input">선택(옵션을 선택하지 않아도 주문가능)
+          </div>   
+          <div class="mb-3"> 
+            <label class="menuoption_form_label">* 선택가능 옵션 수</label>
+            <input type="number" min="0" max="5" class="m-2" >옵션은 최대 까지 선택 가능합니다.
+            <p class="option_subtitle">- 등록한 옵션목록 개수만큼 설정 가능합니다.</p>
+          </div>              
+      </form>
+    </div>
+  </div>
+</div>
+      <!--옵션수정 오프캔버스 끝-->
       <!-- <div class="btn-cover">
         <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
           <i class="xi-angle-left"></i>

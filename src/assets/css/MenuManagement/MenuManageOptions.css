@@ -113,6 +113,18 @@ tbody {
     border-radius:5px;
     padding: 0 5px;
 }
+.menuoption_data_box {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+.menuoption_icon {
+    width: 30px;
+    border:none;
+    background:none;
+    color:#997fb5;
+}
 .menuoption_add_wrap {
     text-align: right;
     padding:20px;
@@ -138,9 +150,12 @@ tbody {
     background:#c2b4cd;
     color:white;
 }
-.menuoption_label {
+.menuoption_form_label {
     display: block;
 }
 .menuoption_input {
     margin-right:5px;
+}
+#menuoption_Label {
+    color:#997fb5;
 }
