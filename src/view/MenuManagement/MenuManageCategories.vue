@@ -145,7 +145,6 @@
         </tr>
         </tbody>
       </table>
-<!--      <Observer @triggerIntersected="loadMore" />-->
       <div class="cate_add_wrap">
         <button type="button" class="cate_add_btn">저장</button>
       </div>
@@ -168,7 +167,6 @@
 // import InfiniteLoading from 'v3-infinite-loading'
 import _ from 'lodash'
 import axios from 'axios'
-// import Observer from './Observer'
 
 export default {
   data () {
@@ -185,9 +183,7 @@ export default {
     }
   },
   components:{
-    // Observer,
   },
-
   methods: {
     //권한체크
     roleCheck(){
@@ -252,14 +248,12 @@ export default {
         //   // console.log("i",i)
         //   let connectedMenuCnt=0
         // },0)
-
         _.find(v, function (obj) {
           // console.log("v",v)
           // console.log("k",k)
           // console.log("copy",copy)
           let cnt = (obj.pdname)
           console.log('cnt', cnt)
-
         })
       })
     },
@@ -267,13 +261,13 @@ export default {
       let myctnumgroup = _.partition(obj, function (value, index, copy) {   return value.ctnum == ctnum  })
       console.log(myctnumgroup)
     },
-    // loadMore(){
-    //   const fetchData = getAllDataApi
-    // }
+    loadMore(){
+
+    }
   },
-  // mounted() {
-  //   this.getList();
-  // },
+  mounted() {
+    // this.getList();
+  },
   computed: {
     getUserrole(){
       return this.$store.getters['loginStore/getUserrole']
