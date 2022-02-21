@@ -32,7 +32,7 @@
                 aria-controls="categoryadd">+카테고리추가
         </button>
         <!--카테고리 추가,상세 오프캔버스-->
-        <div class="offcanvas offcanvas-start" v-if="isUserRole" @click="roleCheck"  tabindex="-1" id="categoryadd" aria-labelledby="categoryaddLabel">
+        <div class="offcanvas offcanvas-start" v-if="isUserRole" @click="roleCheck" tabindex="-1" id="categoryadd" aria-labelledby="categoryaddLabel">
           <h4 class="category_add_title" id="categoryaddLabel">카테고리 추가</h4>
           <!--카테고리 추가-->
           <div class="offcanvas-body category_add_body01">
@@ -165,7 +165,7 @@
 </template>
 
 <script>
-import InfiniteLoading from 'v3-infinite-loading'
+// import InfiniteLoading from 'v3-infinite-loading'
 import _ from 'lodash'
 import axios from 'axios'
 // import Observer from './Observer'
@@ -177,7 +177,6 @@ export default {
       cgData: [],
       allChecked: false,
       isUserRole: false,
-
       totalPage: '',
       dataPerPage : '',
       pageCount : 10,

@@ -190,11 +190,6 @@ export default {
       active: false,
       searchList:'',
       search:'', 
-      menuname:[
-        {
-          coffee: require('../../assets/coffee.jpeg')
-        }
-      ],
       allChecked: false,
 
     }
@@ -259,6 +254,7 @@ export default {
     editCondition(event) {
       console.log(event.target.value)
     },
+    //검색 고장난거같음 일단 보류
 handleSearchInput(e) { 
   this.search = e.target.value; 
   if(this.search.length !== 0) { 
@@ -272,7 +268,6 @@ handleSearchInput(e) {
       this.debounce = setTimeout(() => { 
         this.searchList = []; 
         }, 500);
-          console.log('')
          } 
          },
 
