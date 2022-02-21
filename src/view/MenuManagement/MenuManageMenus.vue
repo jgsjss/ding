@@ -68,15 +68,21 @@
             >
           </td>
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
-          <td class="edit_data"><img src="../../assets/coffee.jpeg" class="coffee_img">{{ $store.state.menueditData[i].menuname }}</td>
+           <router-link to="/menumanagement/MenuAddTwo">
+            <td class="edit_data">
+              <img src="../../assets/coffee.jpeg" class="coffee_img">
+              {{ $store.state.menueditData[i].menuname }}
+            </td>
+           </router-link>
           <td class="edit_data" title="마우스">{{  $store.state.menueditData[i].price }}</td>
           <td class="edit_data">{{ $store.state.menueditData[i].category }}</td>
           <td class="edit_data">{{ $store.state.menueditData[i].connectoption }}</td>
           <td class="edit_data">
-            <select class="edit_condition">
-              <option class="edit_condition_text">상태설정</option>
-              <option class="edit_condition_text">숨김</option>
-              <option class="edit_condition_text">정상상태</option>
+            <select class="edit_condition" @change="editCondition($event)" v-model="conditionKey">
+              <option class="edit_condition_text" value="상태설정">상태설정</option>
+              <option class="edit_condition_text" value="숨김">숨김</option>
+              <option class="edit_condition_text" value="품절">품절</option>
+              <option class="edit_condition_text" value="정상상태">정상상태</option>
             </select>
             <!-- <button type="button" class="cate_connect_btn">숨김(OFF)
               </button> -->
@@ -112,6 +118,7 @@ import axios from 'axios'
 export default {
   data () {
     return {
+      conditionKey:0,
       pageNum: 0,
       active: false,
       menuname:[
@@ -180,8 +187,8 @@ export default {
         },3)
       })
     },
-    setup () {
-
+    editCondition(event) {
+      console.log(event.target.value)
     }
   },
 

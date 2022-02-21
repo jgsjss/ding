@@ -12,6 +12,7 @@ import SalesData from '../assets/SalesData.js'
 import CategoryData from '../assets/CategoryData.js'
 import menueditData from '../assets/menueditData.js'
 import CategoryOptionData from '../assets/CategoryOptionData.js'
+import OptionData from '../assets/OptionData.js'
 import timeData from '../assets/timeData.js'
 
 //스토어 모듈 임포트
@@ -90,6 +91,8 @@ export default createStore({
     menueditData,
     //메뉴옵션편집-카테고리설정 데이터
     CategoryOptionData,
+    //메뉴옵션편집-옵션 데이터
+    OptionData,
     //영업시간 데이터
     // timeData,
     //스테이트 변환, $store.commit('mutation 함수명') 으로 이벤트 핸들링

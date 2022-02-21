@@ -42,6 +42,7 @@ import MenuManagement from '../view/MenuManagement/MenuManagement.vue'
 import MenuManageCategories from '../view/MenuManagement/MenuManageCategories.vue'
 import MenuManageMenus from '../view/MenuManagement/MenuManageMenus.vue'
 import MenuAdd from '../view/MenuManagement/MenuAdd.vue'
+import MenuAddTwo from '../view/MenuManagement/MenuAddTwo.vue'
 import MenuManageOptions from '../view/MenuManagement/MenuManageOptions.vue'
 import MenuConnect from '../view/MenuManagement/MenuConnect.vue'
 import MenuConnecttwo from '../view/MenuManagement/MenuConnecttwo.vue'
@@ -180,6 +181,10 @@ const routes = [
       {
         path: "/menumanagement/MenuAdd",
         component: MenuAdd,
+      },
+      {
+        path: "/menumanagement/MenuAddTwo",
+        component: MenuAddTwo,
       },
       {
         path: "/menumanagement/options",
