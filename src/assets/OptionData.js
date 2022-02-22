@@ -18,7 +18,7 @@ export default [
         menulist:'디카페인 돌체 라떼, 디카페인 카라멜 마끼야또',
     },
     {
-        optionname:'시럽추가선택',
+        optionname:'과일 또는 토핑추가',
         condition:'선택',
         optionlist:'HOT, ICED',
         menulist:'디카페인 돌체 라떼, 디카페인 카라멜 마끼야또',

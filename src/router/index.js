@@ -47,6 +47,7 @@ import MenuManageOptions from '../view/MenuManagement/MenuManageOptions.vue'
 import MenuConnect from '../view/MenuManagement/MenuConnect.vue'
 import MenuConnecttwo from '../view/MenuManagement/MenuConnecttwo.vue'
 import MenuConnectthree from '../view/MenuManagement/MenuConnectthree.vue'
+import MenuToping from '../view/MenuManagement/MenuToping.vue'
 
 /*------etc------ */
 import test1 from "../view/test1";
@@ -201,6 +202,10 @@ const routes = [
       {
         path: '/menumanagement/MenuConnectthree',
         component: MenuConnectthree,
+      },
+      {
+        path: '/menumanagement/MenuToping',
+        component: MenuToping,
       },
     ],
   },
