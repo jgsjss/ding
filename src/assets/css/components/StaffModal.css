@@ -12,6 +12,7 @@
     padding-top:0;
     padding: 0 10px 0 0;
     text-align: center;
+    margin-top:0;
 }
 /* td btn */
 .btn-check:focus+.btn, .btn:focus {

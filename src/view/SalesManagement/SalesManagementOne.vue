@@ -23,7 +23,7 @@
         <div class="sales_sort_btn_wrap">
           <select class="sales_sort_btn" v-model="selected" v-on="sortSales">
             품절해제
-            <option class="log_check_box" value="선택하세요">선택</option>
+            <option class="log_check_box" value="null">필터선택</option>
             <option class="log_check_Box" value="date-asc">최신순</option>
             <option class="log_check_Box" value="date-desc">과거순</option>
           </select>
@@ -76,6 +76,7 @@ export default {
   components: {},
   data () {
     return {
+      selected:null,
       pageNum: 0,
       totalPrice: 0,
       totalOrder: 0,

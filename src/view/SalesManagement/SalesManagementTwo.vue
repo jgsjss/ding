@@ -21,10 +21,11 @@
     </div>
 <div class="month_right">
   <div class="sales_sort_btn_wrap">
-  <select class="sales_sort_btn">
+  <select class="sales_sort_btn" v-model="selected" v-on="sortSales">
     품절해제
-    <option class="log_check_Box" >최신순</option>
-    <option class="log_check_Box" >과거순</option>
+            <option class="log_check_box" value="null">필터선택</option>
+            <option class="log_check_Box" value="date-asc">최신순</option>
+            <option class="log_check_Box" value="date-desc">과거순</option>
   </select>
   </div>
         <table class="table">
@@ -75,6 +76,7 @@ import { ref, onMounted } from 'vue';
       show:false,
       step: 0,
       pageNum: 0,
+      selected:null,
     }
   },
   methods: {
