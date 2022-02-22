@@ -20,6 +20,7 @@
     "mitt": "^3.0.0",
     "print-js": "^1.6.0",
     "v3-infinite-loading": "^1.0.5",
+    "vanilla-lazyload": "^17.6.1",
     "vue": "^3.0.0",
     "vue-cookie": "^1.1.4",
     "vue-draggable-next": "^2.1.1",
