@@ -32,9 +32,8 @@
                class="menu_search"
         >
         <router-link to="/menumanagement/MenuAdd">
-        <button class="menuedit_menu_btn02" type="button">+메뉴추가</button>
+        <button class="menuedit_menu_btn02" type="button" @click="moveNext" >+메뉴추가</button>
         </router-link>
-
         <select class="menu_hidden_select">
           <option class="menu_hidden_btn">전체/정상/숨김/품절</option>
           <option class="menu_hidden_btn" value="삭제">정상</option>
@@ -114,6 +113,7 @@
 // import axios from 'axios';
 import _ from 'lodash'
 import axios from 'axios'
+import router from '../../router'
 
 export default {
   data () {
@@ -131,6 +131,15 @@ export default {
     }
   },
   methods: {
+    moveNext(){
+        console.log('유저권한', this.getUserrole)
+        if (this.getUserrole != 0) {
+          alert('기능에 대한 권한이 없습니다.')
+          return
+        } else if(this.getUserrole == 0) {
+          return
+        }
+    },
     print () {
       console.log(this.selected)
     },
@@ -199,6 +208,9 @@ export default {
     // pageCount () {
     //   return Math.ceil(this.$store.state.CategoryData.length / 10)
     // },
+    getUserrole(){
+      return this.$store.getters['loginStore/getUserrole']
+    }
   },
   beforeMount () {
     this.getCategories()
