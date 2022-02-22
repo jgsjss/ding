@@ -1,6 +1,6 @@
 <template>
   <!-- 메뉴관리 페이지의 카테고리편집 게시판 페이지 -->
-  <div class="cate_container" >
+  <div class="cate_container">
     <form class="category_wrap">
       <div class="category_left">
         <label class="cate_label">
@@ -32,10 +32,11 @@
                 aria-controls="categoryadd" @click="roleCheck">+카테고리추가
         </button>
         <!--카테고리 추가,상세 오프캔버스-->
-        <div class="offcanvas offcanvas-start" v-if="isUserRole" tabindex="-1" id="categoryadd" aria-labelledby="categoryaddLabel">
-          <h4 class="category_add_title"  id="categoryaddLabel">카테고리 추가</h4>
+        <div class="offcanvas offcanvas-start" v-if="isUserRole" tabindex="-1" id="categoryadd"
+             aria-labelledby="categoryaddLabel">
+          <h4 class="category_add_title" id="categoryaddLabel">카테고리 추가</h4>
           <!--카테고리 추가-->
-          <div class="offcanvas-body category_add_body01" >
+          <div class="offcanvas-body category_add_body01">
             <div>
               <form class="row">
                 <label for="category_add_label" class="category_add_label">* 카테고리명
@@ -148,15 +149,15 @@
       <div class="cate_add_wrap">
         <button type="button" class="cate_add_btn">저장</button>
       </div>
-<!--       <div class="btn-cover">-->
-<!--        <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">-->
-<!--          <i class="xi-angle-left"></i>-->
-<!--        </button>-->
-<!--        <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} </span>-->
-<!--        <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">-->
-<!--          <i class="xi-angle-right"></i>-->
-<!--        </button>-->
-<!--      </div>-->
+      <!--       <div class="btn-cover">-->
+      <!--        <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">-->
+      <!--          <i class="xi-angle-left"></i>-->
+      <!--        </button>-->
+      <!--        <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} </span>-->
+      <!--        <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">-->
+      <!--          <i class="xi-angle-right"></i>-->
+      <!--        </button>-->
+      <!--      </div>-->
     </div>
 
 
@@ -176,24 +177,23 @@ export default {
       allChecked: false,
       isUserRole: false,
       totalPage: '',
-      dataPerPage : '',
-      pageCount : 10,
-      currentPage : 1,
+      dataPerPage: '',
+      pageCount: 10,
+      currentPage: 1,
 
     }
   },
-  components:{
-  },
+  components: {},
   methods: {
     //권한체크
-    roleCheck(){
-      console.log('유저권한',this.getUserrole)
-        if(this.getUserrole != 0){
-          this.isUserRole = false;
-          alert('해당기능의 권한이 없습니다.')
-        } else{
-          this.isUserRole = true;
-        }
+    roleCheck () {
+      console.log('유저권한', this.getUserrole)
+      if (this.getUserrole != 0) {
+        this.isUserRole = false
+        alert('해당기능의 권한이 없습니다.')
+      } else {
+        this.isUserRole = true
+      }
     },
     print () {
       console.log(this.selected)
@@ -226,12 +226,17 @@ export default {
         }
       }
     },
-    getCategories () {
-      axios.post('/apimenu/categories').then(res => {
+    getCategories (curpage) {
+      axios.post('/apimenu/categories', {
+        data: {
+          curpage: curpage
+        }
+      }).then(res => {
         // console.log(res)
         this.cgData = res.data
         this.totalPage = this.cgData.length
         console.log('cgData: ', this.cgData)
+        return res.data
       }).catch((err) => {
         console.log(err)
       })
@@ -260,23 +265,25 @@ export default {
       })
     },
     cntPdname (obj, ctnum) {
-      let myctnumgroup = _.partition(obj, function (value, index, copy) {   return value.ctnum == ctnum  })
+      let myctnumgroup = _.partition(obj, function (value, index, copy) {
+        return value.ctnum == ctnum
+      })
       console.log(myctnumgroup)
     },
-    loadMore(){
+    loadMore () {
 
     }
   },
-  mounted() {
+  mounted () {
     // this.getList();
   },
   computed: {
-    getUserrole(){
+    getUserrole () {
       return this.$store.getters['loginStore/getUserrole']
     }
   },
   beforeMount () {
-    this.getCategories()
+    this.getCategories(1)
 
     // console.log(this.cgData)
   },
