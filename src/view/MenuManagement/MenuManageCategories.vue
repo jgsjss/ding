@@ -153,7 +153,7 @@
              <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
                <i class="xi-angle-left"></i>
              </button>
-             <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} </span>
+             <span class="page-count">{{ pageNum }} / {{ pageCount }} </span>
              <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
                <i class="xi-angle-right"></i>
              </button>
@@ -180,7 +180,7 @@ export default {
       dataPerPage: '',
       pageCount: 10,
       currentPage: 1,
-      pageNum: 0,
+      pageNum: 1,
 
     }
   },
@@ -201,9 +201,12 @@ export default {
     },
     nextPage () {
       this.pageNum += 1
+      this.getCategories(this.pageNum)
     },
     prevPage () {
       this.pageNum -= 1
+      console.log(this.pageNum)
+      this.getCategories(this.pageNum)
     },
     checkedAll (checked) {
       this.allChecked = checked
@@ -284,6 +287,7 @@ export default {
     }
   },
   beforeMount () {
+
     this.getCategories(1)
 
     // console.log(this.cgData)
@@ -293,7 +297,7 @@ export default {
   },
   updated () {
     // this.menuCnt(this.cgData)
-    this.cntPdname(this.cgData, 1)
+    this.cntPdname(this.cgData, 2)
   }
 }
 </script>
