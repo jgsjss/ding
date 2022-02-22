@@ -126,7 +126,7 @@
             </td>
             <td class="menuoption_data">
               <select class="menuoption_condition" @change="editCondition($event)" v-model="conditionKey">
-                <option class="menuoption_condition_text" value="상태설정">상태설정</option>
+                <option class="menuoption_condition_text" value="null">상태설정</option>
                 <option class="menuoption_condition_text" value="숨김">숨김</option>
                 <option class="menuoption_condition_text" value="품절">품절</option>
                 <option class="menuoption_condition_text" value="정상상태">정상상태</option>
@@ -208,7 +208,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      conditionKey: 0,
+      conditionKey: null,
       pageNum: 0,
       active: false,
       searchList: "",

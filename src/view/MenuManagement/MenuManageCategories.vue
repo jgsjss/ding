@@ -149,15 +149,15 @@
       <div class="cate_add_wrap">
         <button type="button" class="cate_add_btn">저장</button>
       </div>
-      <!--       <div class="btn-cover">-->
-      <!--        <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">-->
-      <!--          <i class="xi-angle-left"></i>-->
-      <!--        </button>-->
-      <!--        <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} </span>-->
-      <!--        <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">-->
-      <!--          <i class="xi-angle-right"></i>-->
-      <!--        </button>-->
-      <!--      </div>-->
+            <div class="btn-cover">
+             <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
+               <i class="xi-angle-left"></i>
+             </button>
+             <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} </span>
+             <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
+               <i class="xi-angle-right"></i>
+             </button>
+          </div>
     </div>
 
 
@@ -180,6 +180,7 @@ export default {
       dataPerPage: '',
       pageCount: 10,
       currentPage: 1,
+      pageNum: 0,
 
     }
   },

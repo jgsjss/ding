@@ -78,7 +78,7 @@
           <td class="edit_data">{{ $store.state.menueditData[i].connectoption }}</td>
           <td class="edit_data">
             <select class="edit_condition" @change="editCondition($event)" v-model="conditionKey">
-              <option class="edit_condition_text" value="상태설정">상태설정</option>
+              <option class="edit_condition_text" value="null">상태설정</option>
               <option class="edit_condition_text" value="숨김">숨김</option>
               <option class="edit_condition_text" value="품절">품절</option>
               <option class="edit_condition_text" value="정상상태">정상상태</option>
@@ -118,7 +118,7 @@ import router from '../../router'
 export default {
   data () {
     return {
-      conditionKey:0,
+      conditionKey:null,
       pageNum: 0,
       active: false,
       menuname:[
