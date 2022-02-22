@@ -130,7 +130,7 @@
           <span className="box int_mobile">
                         <input type="text" id="address2" ref="address" className="int" maxLength="20"
                                v-model.trim="address"
-                               placeholder="매장 주소" @focus="checkFlag = false" @change="errorSh1">
+                               placeholder="매장 주소" @focus="checkFlag = false">
                         <button type="submit" className="addr_btn" @click="execDaumPostcode()"
                                 value="우편번호 찾기">주소검색</button>
                         </span>
@@ -255,18 +255,7 @@ export default {
        
        },
 
-      errorSh1() {
-        let shadd = document.getElementById('address2').value 
-
-        if ( shadd  == "") {
-            document.getElementById("shaddress").style.display = 'block';
-            return false
-        }else if( shadd != ""){
-          document.getElementById("shaddress").style.display = 'none';
-          return false
-        }
-
-      },
+      
 
      errorSh2 () {
         let ofnum = document.getElementById('mobile2').value 
@@ -451,6 +440,13 @@ export default {
           }
           // 우편번호를 입력한다.
           this.postcode = data.zonecode
+          if ( this.address2  == "") 
+           
+            document.getElementById("shaddress").style.display = 'block';
+        else if( this.address2 != "")
+          document.getElementById("shaddress").style.display = 'none';
+          return false
+
         },
       }).open()
     },
@@ -473,6 +469,7 @@ export default {
      passwordValid () {
        return /^[A-Za-z0-9]+$/.test(this.signupStore.password)
      },
+    
   }
   ,
   watch: {
