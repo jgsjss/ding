@@ -39,7 +39,7 @@
         <button
           class="toping_menu_btn02"
           type="button"
-          @click="open = !open">
+          @click="roleCheck">
           +옵션목록추가
         </button>
 
@@ -54,7 +54,7 @@
     </form>
     <hr />
             <div class="toping_option_add_wrap"
-            v-show="open"
+            v-if="isUserRole"
         >
         <h4 class="toping_option_add_title">
             옵션목록 추가
@@ -167,7 +167,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-        open:false,
+      isUserRole:false,
         hidden:false,
         conditionKey: 0,
         pageNum: 0,
@@ -178,6 +178,14 @@ export default {
     };
   },
   methods: {
+    roleCheck() {
+      console.log('유저권한', this.getUserrole)
+      if (this.getUserrole != 0) {
+        this.isUserRole = false;
+      } else {
+        this.isUserRole = true;
+      }
+    },
     print() {
       console.log(this.selected);
     },
@@ -268,6 +276,9 @@ export default {
     // pageCount () {
     //   return Math.ceil(this.$store.state.CategoryData.length / 10)
     // },
+    getUserrole(){
+      return this.$store.getters['loginStore/getUserrole']
+    }
   },
   beforeMount() {
     this.getCategories();

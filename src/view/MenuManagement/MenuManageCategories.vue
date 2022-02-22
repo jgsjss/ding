@@ -29,13 +29,13 @@
           <button class="cate_menu_btn">순서변경</button>
         </router-link>
         <button class="cate_menu_btn02" type="button" data-bs-toggle="offcanvas" data-bs-target="#categoryadd"
-                aria-controls="categoryadd">+카테고리추가
+                aria-controls="categoryadd" @click="roleCheck">+카테고리추가
         </button>
         <!--카테고리 추가,상세 오프캔버스-->
-        <div class="offcanvas offcanvas-start" v-if="isUserRole" @click="roleCheck" tabindex="-1" id="categoryadd" aria-labelledby="categoryaddLabel">
-          <h4 class="category_add_title" id="categoryaddLabel">카테고리 추가</h4>
+        <div class="offcanvas offcanvas-start" v-if="isUserRole" tabindex="-1" id="categoryadd" aria-labelledby="categoryaddLabel">
+          <h4 class="category_add_title"  id="categoryaddLabel">카테고리 추가</h4>
           <!--카테고리 추가-->
-          <div class="offcanvas-body category_add_body01">
+          <div class="offcanvas-body category_add_body01" >
             <div>
               <form class="row">
                 <label for="category_add_label" class="category_add_label">* 카테고리명
@@ -187,8 +187,10 @@ export default {
   methods: {
     //권한체크
     roleCheck(){
+      console.log('유저권한',this.getUserrole)
         if(this.getUserrole != 0){
           this.isUserRole = false;
+          alert('해당기능의 권한이 없습니다.')
         } else{
           this.isUserRole = true;
         }
