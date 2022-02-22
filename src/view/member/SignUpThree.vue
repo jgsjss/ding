@@ -173,6 +173,7 @@
               <button type="button" id="btnJoin" @click="fire">
                 <span>사진보내기</span>
               </button>
+              <span class="error_next_box" id="ptcheck" style aria-live="assertive" >필수 정보 입니다.</span>               
             </div>
 
             <div class="btn_area">
@@ -343,13 +344,20 @@ export default {
         console.log(err)
       })
     },
-
+ 
     //sweetalert2 메소드드
     fire () {
       var fileCheck = document.getElementById('input').value
       let fileVal = this.$refs['image'].value
       fileVal = fileVal.slice(fileVal.indexOf(".") + 1).toLowerCase();
       console.log(fileVal)
+      if ( fileCheck == "") {
+            document.getElementById("ptcheck").style.display = 'block';
+            return false
+        }else if( fileCheck != ""){
+          document.getElementById("ptcheck").style.display = 'none';
+          return false
+        }  
       if (!fileCheck) {
         alert('파일첨부해주세요')
         return false
@@ -436,6 +444,9 @@ export default {
     console.log('사인업3에서 마운티드 : ', store.state.signupStore.bizZip)
     console.log('사인업3에서 마운티드 : ', store.state.signupStore.etc)
   }
+
+
+
 }
 </script>
 

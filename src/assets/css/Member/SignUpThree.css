@@ -122,9 +122,11 @@
   /* 에러메세지 */
   .error_next_box {
     margin-top: 9px;
+    margin-left: 0px;
     font-size: 12px;
     color: red;
   }
+  
   /* 사업자 번호 */
   #shopnum_wrap {
     display: table;

@@ -440,8 +440,8 @@ export default {
           }
           // 우편번호를 입력한다.
           this.postcode = data.zonecode
+          
           if ( this.address2  == "") 
-           
             document.getElementById("shaddress").style.display = 'block';
         else if( this.address2 != "")
           document.getElementById("shaddress").style.display = 'none';
