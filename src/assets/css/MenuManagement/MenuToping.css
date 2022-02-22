@@ -200,8 +200,22 @@ tbody {
     color:#333;
 }
 .toping_option_add_label {
-    
+    display: block;
 }
 .toping_option_add_input {
-
+    margin-top:10px;
+    margin-right:10px;
+}
+.toping_option_add_btn_wrap {
+    padding:15px 0;
+}
+.toping_option_add_btn {
+    border: none;
+    background: #997fb5;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    width: 360px;
+    display: block;
+    margin: 10px 0;
 }

@@ -42,22 +42,7 @@
           @click="open = !open">
           +옵션목록추가
         </button>
-        <div class="toping_option_add_wrap"
-            v-show="open"
-        >
-        <h4 class="toping_option_add_title">
-            옵션목록 추가
-        </h4>
-        <p class="toping_option_add_subtitle">
-            - 메뉴와 연결되는 카테고리를 설정할 수 있습니다.
-        </p>
-        <form>
-            <label class="toping_option_add_label">옵션목록 및 추가가격
-                <input type="text" class="toping_option_add_input" placeholder="예)순한맛">
-                <input type="text" class="toping_option_add_input" placeholder="예)500원">
-            </label>
-        </form>
-        </div>
+
 
         <select class="toping_hidden_select">
           <option class="toping_hidden_btn">전체/정상/숨김</option>
@@ -67,6 +52,23 @@
         </select>
       </div>
     </form>
+    <hr />
+            <div class="toping_option_add_wrap"
+            v-show="open"
+        >
+        <h4 class="toping_option_add_title">
+            옵션목록 추가
+        </h4>
+        <p class="toping_option_add_subtitle">
+            - 메뉴와 연결되는 카테고리를 설정할 수 있습니다.
+        </p>
+        <form>
+            <label class="toping_option_add_label">옵션목록 및 추가가격</label>
+                <input type="text" class="toping_option_add_input" placeholder="예)순한맛">
+                <input type="text" class="toping_option_add_input" placeholder="예)500원">
+            <button type="submit" class="toping_option_add_btn">저장</button>
+        </form>        
+        </div>
     <div class="toping_list_wrap">
       <table class="toping_table">
         <thead class="toping_thead">
@@ -88,9 +90,13 @@
             <td class="toping_data">{{ $store.state.TopingData[i].price }}원</td>
             <td class="toping_data col-2">
                 <div class="toping_data_btn_wrap">
-                <button type="submit" class="toping_data_btn01">수정</button>
+                <button type="submit" class="toping_data_btn01" @click="hidden = !hidden">수정</button>
                 <button type="submit" class="toping_data_btn02">삭제</button>
                 </div>
+                <!-- <div class="toping_option_correction" v-show="hidden">
+                    <h4 class="toping_option_add_title">옵션목록 수정</h4>
+                    <input type="text" class="toping_option_add_input"> 
+                </div>                 -->
             </td>
             <td class="toping_data">
               <select class="toping_condition" @change="editCondition($event)" v-model="conditionKey">
@@ -162,6 +168,7 @@ export default {
   data() {
     return {
         open:false,
+        hidden:false,
         conditionKey: 0,
         pageNum: 0,
         active: false,
