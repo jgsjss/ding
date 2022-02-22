@@ -1,7 +1,10 @@
 <template>
   <!-- 메뉴관리 페이지의 과일 또는 토핑추가 게시판 페이지 -->
   <div class="toping_container">
-      <div class="toping_title_wrap"></div>
+      <div class="toping_title_wrap">
+          <h4 class="toping_maintitle">과일 또는 토핑추가</h4>
+          <span class="toping_sub_title">(필수, 최대선택갯수 3개, 연결메뉴 120개)</span>
+      </div>
     <form class="toping_wrap">
       <div class="toping_left">
         <label class="toping_label">
@@ -94,13 +97,15 @@
                 <button type="submit" class="toping_data_btn02">삭제</button>
                 </div>
                 <!-- <div class="toping_option_correction" v-show="hidden">
+                    <div class="sdgsg">
                     <h4 class="toping_option_add_title">옵션목록 수정</h4>
                     <input type="text" class="toping_option_add_input"> 
+                    </div>
                 </div>                 -->
             </td>
             <td class="toping_data">
               <select class="toping_condition" @change="editCondition($event)" v-model="conditionKey">
-                <option class="toping_condition_text" value="상태설정">상태설정</option>
+                <option class="toping_condition_text" value="null">상태설정</option>
                 <option class="toping_condition_text" value="숨김">숨김</option>
                 <option class="toping_condition_text" value="품절">품절</option>
               </select>
@@ -110,37 +115,7 @@
           </tr>
         </tbody>
       </table>
-      <!--옵션수정 오프캔버스 시작-->
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="toping_" aria-labelledby="menuoption_Label">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="toping_Label">옵션정보 수정</h5>
-          <button
-            type="button"
-            class="btn-close text-reset"
-            data-bs-dismiss="toping_correction"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="offcanvas-body">
-          <div>
-            <form>
-              <label for="" class="form-label toping_form_label">* 옵션명</label>
-              <input type="text" class="toping_input form-control" />
-              <div class="mb-3">
-                <label class="toping_form_label">* 필수여부</label>
-                <input type="radio" class="toping_input" />필수(옵션을 선택해야 주문가능)<br />
-                <input type="radio" class="toping_input" />선택(옵션을 선택하지 않아도 주문가능)
-              </div>
-              <div class="mb-3">
-                <label class="toping_form_label">* 선택가능 옵션 수</label>
-                <input type="number" min="0" max="5" class="m-2" />옵션은 최대 까지 선택 가능합니다.
-                <p class="toping_subtitle">- 등록한 옵션목록 개수만큼 설정 가능합니다.</p>
-              </div>
-              <button type="submit" class="toping_add_btn">옵션정보 수정</button>
-            </form>
-          </div>
-        </div>
-      </div>
+
       <!--옵션수정 오프캔버스 끝-->
       <!-- <div class="btn-cover">
         <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
@@ -153,7 +128,7 @@
       </div> -->
     </div>
     <div class="toping_add_wrap">
-      <button type="submit" class="toping_add_btn">저장</button>
+      <button type="submit" class="toping_add_last_btn">저장</button>
     </div>
   </div>
 </template>
@@ -167,9 +142,9 @@ import axios from "axios";
 export default {
   data() {
     return {
-      isUserRole:false,
+        isUserRole:false,
         hidden:false,
-        conditionKey: 0,
+        conditionKey: null,
         pageNum: 0,
         active: false,
         searchList: "",

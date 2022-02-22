@@ -12,11 +12,11 @@
       </div>
 
       <div class="wrap2">
-        <div class="info_right">{{getShopcode}}</div>
-        <div class="info_right">{{getShopName}}</div>
-        <div class="info_right">{{getShopPhNum}}</div>
-        <div class="info_right">{{getUserId}}</div>
-        <div class="info_right">{{getMgName}}</div>
+        <div class="info_right">{{ getShopCode }}</div>
+        <div class="info_right">{{ getShopName }}</div>
+        <div class="info_right">{{ getShopPhNum }}</div>
+        <div class="info_right">{{ getUserId }}</div>
+        <div class="info_right">{{ getMgName }}</div>
       </div>
     </div>
     <div class="info_order">
@@ -38,68 +38,66 @@
 
 <script>
 import store from '../store/index.js'
-  export default {
-    data () {
-      return {
-        shopCode: '',
-        shopName: '',
-        shopPhNum: '',
-        manager: '',
-      }
-    },
-    props: {
-      //운영관리 데이터 프롭스 ---
-      shopData: Object,
-      //영업중인 가게 수
-      openShopNum: Number,
-    },
-    methods: {
-      doLogOut () {
-        store.dispatch('loginStore/doLogout').then(() => {
-          // alert('로그아웃 되었습니다.')
-          location.reload();
-          console.log('로그아웃 성공')
-        })
-      },
-    },
-    mounted () {
-      // console.log(store.getters['loginStore/getShopName'])
-      // console.log(store.getters['loginStore/getShopPhNum'])
-      // console.log(store.getters['loginStore/getMgName'])
-    },
-    computed: {
-      getShopName () {
-        return store.getters['loginStore/getShopName'];
-      },
-      getShopPhNum () {
-        return store.getters['loginStore/getShopPhNum'];
-      },
-      getMgName () {
-        return store.getters['loginStore/getMgName'];
-      },
-      getUserId: function () {
-        return this.$store.state.loginStore.userid
-      },
-      getShopNum: function () {
-        return this.$store.state.loginStore.shopNum
-      },
-      getShopcode: function(){
-        return this.$store.state.loginStore.shopCode
-      }
 
-      // watch: {
-      //   getShopName(a){
-      //     if(a != null) this.shopName = a;
-      //   },
-      //   getShopPhNum(a){
-      //     if(a != null) this.shopPhNum = a;
-      //   },
-      //   getMgname(a){
-      //     if(a != null) this.manager = a;
-      //   }
-      // }
+export default {
+  data () {
+    return {
+      shopCode: '',
+      shopName: '',
+      shopPhNum: '',
+      manager: '',
     }
+  },
+  props: {
+    //운영관리 데이터 프롭스 ---
+    shopData: Object,
+    //영업중인 가게 수
+    openShopNum: Number,
+  },
+  methods: {
+    doLogOut () {
+      store.dispatch('loginStore/doLogout').then(() => {
+        // alert('로그아웃 되었습니다.')
+        location.reload()
+        console.log('로그아웃 성공')
+      })
+    },
+  },
+  mounted () {
+    // console.log(store.getters['loginStore/getShopName'])
+    // console.log(store.getters['loginStore/getShopPhNum'])
+    // console.log(store.getters['loginStore/getMgName'])
+  },
+  computed: {
+    getShopName () {
+      return store.getters['loginStore/getShopName']
+    },
+    getShopPhNum () {
+      return store.getters['loginStore/getShopPhNum']
+    },
+    getMgName () {
+      return store.getters['loginStore/getMgName']
+    },
+    getShopCode () {
+      return store.getters['loginStore/getShopcode']
+    },
+    getUserId () {
+        return store.getters['loginStore/getId']
+    }
+
+    // watch: {
+    //   getShopName(a){
+    //     if(a != null) this.shopName = a;
+    //   },
+    //   getShopPhNum(a){
+    //     if(a != null) this.shopPhNum = a;
+    //   },
+    //   getMgname(a){
+    //     if(a != null) this.manager = a;
+    //   }
+    // }
   }
+}
 </script>
 <style>
 @import '../assets/css/components/MyInfo.css';

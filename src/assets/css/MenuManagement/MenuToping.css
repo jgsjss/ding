@@ -1,6 +1,18 @@
 .toping_container {
     width: 100%;
 }
+.toping_title_wrap {
+    display: flex;
+    align-items: flex-start;
+}
+.toping_maintitle {
+    color:#997fb5;
+}
+.toping_sub_title {
+    font-size:14px;
+    color:#c7c7c7;
+    padding:0 10px;
+}
 .toping_wrap {
     display: flex;
     align-items: center;
@@ -161,7 +173,7 @@ tbody {
     text-align: right;
     padding:15px;
 }
-.toping_add_btn {
+.toping_add_last_btn {
     border:none;
     border-radius: 5px;
     padding:5px 10px;
@@ -218,4 +230,14 @@ tbody {
     width: 360px;
     display: block;
     margin: 10px 0;
+}
+.toping_option_correction {
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.5);
+    position:fixed; padding:20px;
+}
+.toping_option_correction_wrap {
+    width:100%; background:white;
+    border-radius:8px;
+    padding:20px;
 }
