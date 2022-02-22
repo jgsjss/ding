@@ -165,24 +165,24 @@
         <div class="temporary_reason">
             <p class="temporary_reason_text">사유</p>
                 <div class="temporary_form_box">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" value="개인사정으로 인해 쉬어갑니다!" name="flexRadioDefault" id="flexRadioDefault1" v-model="picked">
                     <label class="form-check-label temporary_form_lebel" for="flexRadioDefault1">
                         개인사정으로 인해 쉬어갑니다!
                     </label>
                 </div>
                 <div class="temporary_form_box">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" value="매장 내 주문만 가능합니다! 카운터에서 주문해주세요!" name="flexRadioDefault" id="flexRadioDefault1" v-model="picked">
                     <label class="form-check-label temporary_form_lebel" for="flexRadioDefault1">
                         매장 내 주문만 가능합니다! 카운터에서 주문해주세요!
                     </label>
                 </div>
                 <div class="temporary_form_box">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" value="직접입력" name="flexRadioDefault" id="flexRadioDefault1" v-model="picked">
                     <label class="form-check-label temporary_form_lebel" for="flexRadioDefault1">
                         직접입력
                     </label>
                 </div>
-                <input type="text" class="temporary_form_text" placeholder="입력한대로 어플에 노출됩니다.">
+                <input type="text" class="temporary_form_text" placeholder="입력한대로 어플에 노출됩니다." v-model="picked">
         </div>
         </div>
         <div class="temporary_wrap">
@@ -258,6 +258,7 @@ import { ref } from 'vue';
 export default {
     data() {
         return {
+            picked:'',
             rdaySelect:null,
             selected: [],
             name: 'day',
