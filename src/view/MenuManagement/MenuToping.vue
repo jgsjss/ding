@@ -183,8 +183,12 @@ export default {
       if (this.getUserrole != 0) {
         this.isUserRole = false;
         alert('기능 권한이 없습니다.')
-      } else {
-        this.isUserRole = true;
+      } else if(this.getUserrole == 0){
+        if(this.isUserRole == false){
+          this.isUserRole = true;
+        }else{
+          this.isUserRole = false;
+        }
       }
     },
     print() {
