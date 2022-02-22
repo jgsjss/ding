@@ -182,6 +182,7 @@ export default {
       console.log('유저권한', this.getUserrole)
       if (this.getUserrole != 0) {
         this.isUserRole = false;
+        alert('기능 권한이 없습니다.')
       } else {
         this.isUserRole = true;
       }
