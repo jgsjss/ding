@@ -27,7 +27,7 @@
                 <div class="oper_switch">
                     <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                    <label class="form-check-label" for="flexSwitchCheckChecked">24시간</label>
+                    <label class="form-check-label regular_label" for="flexSwitchCheckChecked">24시간</label>
                     </div>                  
                 </div>
             <div class="oper_modal_oper_box">
@@ -79,7 +79,7 @@
                 <div class="break_switch">
                     <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                    <label class="form-check-label" for="flexSwitchCheckChecked">준비시간 설정</label>
+                    <label class="form-check-label regular_label" for="flexSwitchCheckChecked">준비시간 설정</label>
                     </div>                  
                 </div>
                 <div class="break_box">
@@ -112,7 +112,7 @@
                 <div class="regular_switch">
                     <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                    <label class="form-check-label" for="flexSwitchCheckChecked">공휴일 휴무</label>
+                    <label class="form-check-label regular_label" for="flexSwitchCheckChecked">공휴일 휴무</label>
                     </div>                  
                 </div>
                 <!--//////휴무1//////-->
@@ -124,11 +124,11 @@
                             <option value="셋째">매월 셋째주</option>
                             <option value="넷째">매월 넷째주</option>
                             <option value="다섯째">매월 다섯째주</option>
-
-                                    </select>           
-                        <select id="time" className="Rday" @change="regular">
+                            </select>           
+                        <select id="time" className="Rday" @change="regular" v-model="rdaySelect">
+                            <option value="null">요일선택</option>
                             <option :key="i" :value="d.v" v-for="(d, i) in options">{{d.t}}</option>
-                                    </select>  
+                        </select>  
                 </div>                    
                 <!--//////휴무2//////-->  
                 <div class="regular_box">
@@ -138,11 +138,11 @@
                             <option value="셋째">매월 셋째주</option>
                             <option value="넷째">매월 넷째주</option>
                             <option value="다섯째">매월 다섯째주</option>
-
-                                    </select>           
-                        <select id="time" className="Rday" @change="temporary">
+                        </select>           
+                        <select id="time" className="Rday" @change="temporary" v-model="rdaySelect">
+                            <option value="null">요일선택</option>
                             <option :key="i" :value="d.v" v-for="(d, i) in options">{{d.t}}</option>
-                                    </select>  
+                        </select>  
                 </div>   
                 </div>                                                                          
             </form>
@@ -190,8 +190,9 @@
             <form>
                 <div class="temporary_switch">
                     <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                    <label class="form-check-label" for="flexSwitchCheckChecked">하루종일</label>
+                        <label class="form-check-label" for="flexSwitchCheckChecked"> 하루종일
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                   </label>
                     </div>                  
                 </div>
                 <div class="temporary_day_box">
@@ -257,6 +258,7 @@ import { ref } from 'vue';
 export default {
     data() {
         return {
+            rdaySelect:null,
             selected: [],
             name: 'day',
             type: 'select',

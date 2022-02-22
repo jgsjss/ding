@@ -352,7 +352,6 @@
     width:120px;
     border:1px solid #997fb5;
     margin-left:5px;
-    padding:5px;
     color:#997fb5;
 }
 .regular_wrap {
@@ -413,6 +412,7 @@
 }
 .temporary_form_lebel {
     padding:0 5px;
+    margin-top:0;
 }
 .temporary_form_text {
     width:320px;
@@ -437,6 +437,9 @@
 }
 .form-check-label {
     text-align:left;
+}
+.regular_label {
+    margin-top:0;
 }
 .temporary_day_box {
     padding:30px 0;
@@ -487,7 +490,7 @@
 
 .temporary_btn_wrap {
     text-align: center;
-    padding:15px 0;
+    padding:20px 0;
 }
 .temporary_add_btn {
     width:100%;
