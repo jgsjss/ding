@@ -99,6 +99,8 @@
             <th scope="col" class="menuoption_col">옵션명</th>
             <th scope="col" class="menuoption_col">필수여부</th>
             <th scope="col" class="menuoption_col">옵션목록</th>
+            <th scope="col" class="menuoption_col">연결된 메뉴</th>
+            <th scope="col" class="menuoption_col">메뉴연결</th>            
             <th scope="col" class="menuoption_col">숨김</th>
             <th scope="col" class="menuoption_col"></th>
           </tr>
@@ -110,12 +112,18 @@
             </td>
             <!-- <td>인덱스 {{a}}--{{i}}</td> -->
             <td class="menuoption_data">
-              <!-- <router-link to="/menumanagement/menutoping"> -->
+              <router-link to="/menumanagement/menutoping">
               {{ $store.state.OptionData[i].optionname }}
-              <!-- </router-link> -->
+              </router-link>
             </td>
             <td class="menuoption_data" title="마우스">{{ $store.state.OptionData[i].condition }}</td>
             <td class="menuoption_data">{{ $store.state.OptionData[i].optionlist }}</td>
+            <td class="menuoption_data">{{ $store.state.OptionData[i].menulist }}</td>
+            <td class="menuoption_data">
+              <router-link to="/menumanagement/MenuConnecttwo">
+                <button type="button" class="menuoption_connect_btn">메뉴연결</button>
+              </router-link>
+            </td>
             <td class="menuoption_data">
               <select class="menuoption_condition" @change="editCondition($event)" v-model="conditionKey">
                 <option class="menuoption_condition_text" value="null">상태설정</option>
