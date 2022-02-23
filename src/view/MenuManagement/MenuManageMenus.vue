@@ -171,16 +171,16 @@ export default {
         }
       }
     },
-    getCategories () {
-      axios.post('/apimenu/categories').then(res => {
-        // console.log(res)
-
-        this.cgData = res.data
-        // console.log('cgData: ', this.cgData)
-      }).catch((err) => {
-        console.log(err)
-      })
-    },
+    // getCategories () {
+    //   axios.post('/apimenu/categories').then(res => {
+    //     // console.log(res)
+    //
+    //     this.cgData = res.data
+    //     // console.log('cgData: ', this.cgData)
+    //   }).catch((err) => {
+    //     console.log(err)
+    //   })
+    // },
     menuCnt (obj) {
       _.forEach(obj,function (v,k,copy) {
         // console.log("Asd",V)
@@ -212,11 +212,11 @@ export default {
       return this.$store.getters['loginStore/getUserrole']
     }
   },
-  beforeMount () {
-    this.getCategories()
-
-    // console.log(this.cgData)
-  },
+  // beforeMount () {
+  //   this.getCategories()
+  //
+  //   // console.log(this.cgData)
+  // },
   setup () {
 
   },

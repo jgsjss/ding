@@ -247,19 +247,19 @@ export default {
         }
       }
     },
-    getCategories() {
-      axios
-        .post("/apimenu/categories")
-        .then((res) => {
-          // console.log(res)
-
-          this.cgData = res.data;
-          // console.log('cgData: ', this.cgData)
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
+    // getCategories() {
+    //   axios
+    //     .post("/apimenu/categories")
+    //     .then((res) => {
+    //       // console.log(res)
+    //
+    //       this.cgData = res.data;
+    //       // console.log('cgData: ', this.cgData)
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // },
     menuCnt(obj) {
       _.forEach(obj, function (v, k, copy) {
         // console.log("Asd",V)
@@ -308,11 +308,11 @@ export default {
     //   return Math.ceil(this.$store.state.CategoryData.length / 10)
     // },
   },
-  beforeMount() {
-    this.getCategories();
-
-    // console.log(this.cgData)
-  },
+  // beforeMount() {
+  //   this.getCategories();
+  //
+  //   // console.log(this.cgData)
+  // },
   setup() {},
   updated() {
     this.menuCnt(this.cgData);

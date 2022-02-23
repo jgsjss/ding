@@ -32,7 +32,7 @@
                 aria-controls="categoryadd" @click="roleCheck">+카테고리추가
         </button>
         <!--카테고리 추가,상세 오프캔버스-->
-        <div class="offcanvas offcanvas-start" v-if="isUserRole" tabindex="-1" id="categoryadd"
+        <div class="offcanvas offcanvas-start" v-show="isUserRole" tabindex="-1" id="categoryadd"
              aria-labelledby="categoryaddLabel">
           <h4 class="category_add_title" id="categoryaddLabel">카테고리 추가</h4>
           <!--카테고리 추가-->
@@ -150,7 +150,7 @@
         <button type="button" class="cate_add_btn">저장</button>
       </div>
             <div class="btn-cover">
-             <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
+             <button :disabled="pageNum === 1" @click="prevPage" class="page-btn">
                <i class="xi-angle-left"></i>
              </button>
              <span class="page-count">{{ pageNum }} / {{ pageCount }} </span>
@@ -190,8 +190,8 @@ export default {
     roleCheck () {
       console.log('유저권한', this.getUserrole)
       if (this.getUserrole != 0) {
+        alert('해당 기능은 권한이 없습니다.')
         this.isUserRole = false
-        alert('해당기능의 권한이 없습니다.')
       } else {
         this.isUserRole = true
       }
