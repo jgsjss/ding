@@ -23,7 +23,47 @@
     border-radius: 2px;
     margin:0 5px;
 }
-.proceeding_modal_wrap {
+/*--------할인코드 추가 모달창---------*/
+.proceeding_modal_container {
+    padding:15px 30px;
+    display: flex;
+    justify-content: space-around;
+}
+.proceeding_modal_container01 {
+    padding:15px 30px;
+}
+.proceeding_modal_title {
+    color:#997fb5;
+    font-size:24px;
+}
+.proceeding_modal_sub_title {
+    font-size:14px;
+    color:#333;
+    line-height:0.5;
+}
+.proceeding_modal_input_wrap {
+    padding:15px 0;
+}
+.proceeding_modal_container02 {
+    padding:15px 30px;
+}
+.proceeding_modal_btn {
+    width: 100%;;
+    border:none;
+    background:#997fb5;
+    color:white;
+    padding:10px 0;
+    border-radius: 10px;
+}
+.proceeding_modal_label {
+    display: block;
+}
+.proceeding_modal_input {
+    
+}
+
+/*--------할인코드 추가 모달창---------*/
+/* .proceeding_modal_wrap {
     position: fixed;   
     position:absolute; padding:20px;
     top:0; left:40%;
@@ -51,7 +91,7 @@
     font-size:24px;
     color:#997fb5;
     padding:5px 0 15px 0;
-}
+} */
 /* table */
 .proceeding_list_wrap {
     width: 100%;
