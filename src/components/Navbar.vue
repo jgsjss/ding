@@ -78,6 +78,11 @@
 import store from '../store'
 
 export default {
+  data(){
+    return{
+      isUserRole : false,
+    }
+  },
   methods:{
     doLogOut () {
       store.dispatch('loginStore/doLogout').then(() => {
@@ -85,7 +90,24 @@ export default {
         location.reload();
         console.log('로그아웃 성공')
       })
+    },
+    roleCheck () {
+      console.log('유저권한', this.getUserrole)
+      if (this.getUserrole != 0) {
+        this.isUserRole = false
+      } else {
+        this.isUserRole = true
+      }
     }
+  },
+  computed:{
+    getUserrole () {
+      return this.$store.getters['loginStore/getUserrole']
+    }
+  },
+  beforeMount () {
+    this.roleCheck()
+    console.log('유저권한', this.getUserrole)
   }
 }
 </script>

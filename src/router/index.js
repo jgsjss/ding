@@ -62,6 +62,9 @@ import dbshow from "../view/dbshow";
 
 // db
 import modifyuser from "../view/modifyUser";
+
+const sweet = require("sweetalert2");
+
 //인증메소드
 // const Authentication = () => (to, from, next) => {
 //   const isLogin = store.getters['loginStore/isLogin'];
@@ -169,6 +172,13 @@ const routes = [
     path: "/menumanagement",
     component: MenuManagement,
     meta: { requireLogin: true },
+    beforeEnter: ()=>{
+      const roleCheck = store.getters["loginStore/getUserrole"]
+      if(roleCheck != 0){
+        sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
+        return '/'
+      }
+    },
     //중첩되는 자식 라우트 경로
     children: [
       {
@@ -213,6 +223,13 @@ const routes = [
     path: "/salesmanagement",
     component: SalesManagement,
     meta: { requireLogin: true },
+    beforeEnter: ()=>{
+      const roleCheck = store.getters["loginStore/getUserrole"]
+      if(roleCheck != 0){
+        sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
+        return '/'
+      }
+    },
     children: [
       {
         path: "/salesmanagement/salesmanagementone",
@@ -230,6 +247,13 @@ const routes = [
     path: "/ordermanagement",
     component: OrderManagement,
     meta: { requireLogin: true },
+    beforeEnter: ()=>{
+      const roleCheck = store.getters["loginStore/getUserrole"]
+      if(roleCheck != 0){
+        sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
+        return '/'
+      }
+    },
     //중첩되는 자식 라우트 경로
     children: [
       {
@@ -273,17 +297,38 @@ const routes = [
     path: "/staffmanagementone",
     component: StaffManagementOne,
     meta: { requireLogin: true },
+    beforeEnter: ()=>{
+      const roleCheck = store.getters["loginStore/getUserrole"]
+      if(roleCheck != 0){
+        sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
+        return '/'
+      }
+    },
   },
   {
     path: "/staffmanagementtwo",
     component: StaffManagementTwo,
     meta: { requireLogin: true },
+    beforeEnter: ()=>{
+      const roleCheck = store.getters["loginStore/getUserrole"]
+      if(roleCheck != 0){
+        sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
+        return '/'
+      }
+    },
   },
   //---------운영관리-------------
   {
     path: "/operationmanagement",
     component: OperationManagement,
     meta: { requireLogin: true },
+    beforeEnter: ()=>{
+      const roleCheck = store.getters["loginStore/getUserrole"]
+      if(roleCheck != 0){
+        sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
+        return '/'
+      }
+    },
     //중첩되는 자식 라우트 경로
     children: [
       //-----------가게설정-------------
@@ -304,6 +349,13 @@ const routes = [
     path: "/discountcode",
     component: DiscountCode,
     meta: { requireLogin: true },
+    beforeEnter: ()=>{
+      const roleCheck = store.getters["loginStore/getUserrole"]
+      if(roleCheck != 0){
+        sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
+        return '/'
+      }
+    },
     children: [
       {
         path: "/discountcode/discountcodeone",
