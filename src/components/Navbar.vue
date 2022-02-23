@@ -50,7 +50,7 @@
         </router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/discountcode" class="nav-link">
+        <router-link to="/discountcode/discountcodeone" class="nav-link">
           <div class="nav-wrap">
             <i class="xi-cloud-o"></i>
             <p class="nav-link">할인코드</p>
