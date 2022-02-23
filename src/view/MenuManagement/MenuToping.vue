@@ -38,6 +38,9 @@
           class="toping_search"
           autofocus
         />
+        <button type="button" class="toping_connect_btn" @click="connectOpen=!connectOpen">순서변경</button>
+    
+
         <!--옵션추가 오프캔버스 시작-->
         <button
           class="toping_menu_btn02"
@@ -45,7 +48,6 @@
           @click="roleCheck">
           +옵션목록추가
         </button>
-
 
         <select class="toping_hidden_select">
           <option class="toping_hidden_btn">전체/정상/숨김</option>
@@ -56,6 +58,26 @@
       </div>
     </form>
     <hr />
+            <!--옵션 순서변경 시작-->
+        <div class="toping_connect_wrap" v-show="connectOpen">
+          <h5 class="toping_connect_title">옵션목록 순서 변경</h5>
+          <div>
+            <p class="toping_connect_sub_text">- 옵션의 순서는 메뉴편집 탭에서 변경할 수 있습니다.</p>
+            <p class="toping_connect_sub_text">- 왼쪽의 아이콘을 잡고 드래그하여 순서변경이 가능합니다.</p>
+            <p class="toping_connect_sub_text">- 오른쪽의 버튼으로 맨위, 맨아래 이동이 가능합니다.</p>
+          </div>
+        <draggable class="dragArea list-group w-full" :list="list" @change="log">
+          <div
+            class="list-group-item bg-gray-300 m-1 p-3 rounded-md text-center connect_drag_text"
+            v-for="element in list"
+            :key="element.name"
+          >
+            {{ element.name }}
+          </div>
+        </draggable>            
+
+        </div>
+        <!--옵션 순서변경 끝--> 
             <div class="toping_option_add_wrap"
             v-if="isUserRole"
         >
@@ -138,8 +160,13 @@
 // import axios from 'axios';
 import _ from "lodash";
 import axios from "axios";
+import { defineComponent } from 'vue'
+import { VueDraggableNext } from 'vue-draggable-next'
 
 export default {
+  components: {
+    draggable:VueDraggableNext,
+  },
   data() {
     return {
         isUserRole:false,
@@ -150,6 +177,16 @@ export default {
         searchList: "",
         search: "",
         allChecked: false,
+        connectOpen:false,
+        list: [
+          { name: '과일모둠', id: 1 },
+          { name: '멜론추가', id: 2 },
+          { name: '치즈추가', id: 3 },
+          { name: '프라푸치노', id: 4 },
+          { name: '병음료', id: 5 },
+          { name: '디저트(케이크/빵)', id: 6 },
+        ],
+        dragging: false,        
     };
   },
   methods: {
