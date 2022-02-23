@@ -91,24 +91,25 @@ export default {
         console.log('로그아웃 성공')
       })
     },
-    roleCheck () {
-      console.log('유저권한', this.getUserrole)
-      if (this.getUserrole != 0) {
-        this.isUserRole = false
-      } else {
-        this.isUserRole = true
-      }
-    }
+    // roleCheck () {
+    //   console.log('유저권한', this.getUserrole)
+    //   if (this.getUserrole != 0) {
+    //     this.isUserRole = false
+    //   } else {
+    //     this.isUserRole = true
+    //   }
+    // }
   },
   computed:{
-    getUserrole () {
-      return this.$store.getters['loginStore/getUserrole']
-    }
+    // getUserrole () {
+    //   return this.$store.getters['loginStore/getUserrole']
+    // }
   },
   beforeMount () {
-    this.roleCheck()
-    console.log('유저권한', this.getUserrole)
-  }
+  //   this.roleCheck()
+  //   console.log('유저권한', this.getUserrole)
+  // }
+}
 }
 </script>
 

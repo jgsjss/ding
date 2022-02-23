@@ -14,16 +14,18 @@ import "vue3-date-time-picker/dist/main.css";
 
 const emitter = mitt();
 const app = createApp(App);
+const sweet = require("sweetalert2");
+
 app.config.globalProperties.emitter = emitter;
 app.config.globalProperties.axios = axios;
 app.component("Datepicker", Datepicker);
 
 app.mixin(mixins);
 app.use(vuesweetalert2);
+
 // app.component("infinite-loading", InfiniteLoading);
 // app.use(VueCookies);
 
-const sweet = require("sweetalert2");
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requireLogin)) {
