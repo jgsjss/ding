@@ -1,5 +1,6 @@
 .proceeding_container {
     margin:0 auto;
+    position:relative
 }
 .proceeding_btn_wrap {
     display:flex;
@@ -22,8 +23,34 @@
     border-radius: 2px;
     margin:0 5px;
 }
-.proceeding_header_right_btn:first-child {
-    background:#ddd;
+.proceeding_modal_wrap {
+    position: fixed;   
+    position:absolute; padding:20px;
+    top:0; left:40%;
+    z-index: 111;
+    border:1px solid #997fb5;
+    background:white;
+    border-radius: 5px;
+}
+.proceeding_modal_sub_wrap {
+    width: 100%; background: white;
+    border-radius: 8px;
+}
+.proceeding_modal_btn {
+    background: none;
+    border: 1px solid #997fb5;
+    font-size: 14px;
+    color: #997fb5;
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    border-radius: 15px;
+    margin:0 5px
+}
+.proceeding_modal_title {
+    font-size:24px;
+    color:#997fb5;
+    padding:5px 0 15px 0;
 }
 /* table */
 .proceeding_list_wrap {
@@ -72,4 +99,11 @@
 }
 tbody {
         color:#997fb5;
+}
+.proceeding_end_btn {
+    border:none;
+    background:#ddd;
+    color:rgb(100, 100, 100);
+    padding:5px 15px;
+    border-radius: 5px;
 }

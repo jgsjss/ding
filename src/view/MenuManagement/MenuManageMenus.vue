@@ -51,7 +51,6 @@
           <th scope="col" class="edit_col">메뉴명</th>
           <th scope="col" class="edit_col">가격</th>
           <th scope="col" class="edit_col">카테고리</th>
-          <th scope="col" class="edit_col">연결옵션</th>
           <th scope="col" class="edit_col">숨김/품절</th>
         </tr>
         </thead>
@@ -75,7 +74,6 @@
            </router-link>
           <td class="edit_data" title="마우스">{{  $store.state.menueditData[i].price }}</td>
           <td class="edit_data">{{ $store.state.menueditData[i].category }}</td>
-          <td class="edit_data">{{ $store.state.menueditData[i].connectoption }}</td>
           <td class="edit_data">
             <select class="edit_condition" @change="editCondition($event)" v-model="conditionKey">
               <option class="edit_condition_text" value="null">상태설정</option>

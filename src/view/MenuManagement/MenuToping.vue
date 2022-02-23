@@ -232,21 +232,21 @@ export default {
       console.log(event.target.value);
     },
     //검색 고장난거같음 일단 보류
-    handleSearchInput(e) {
-      this.search = e.target.value;
-      if (this.search.length !== 0) {
-        clearTimeout(this.debounce);
-        this.debounce = setTimeout(() => {
-          const filteredList = this.stageInfoList.filter((item) => item.title.includes(this.search));
-          this.searchList = filteredList;
-        }, 500);
-      } else {
-        clearTimeout(this.debounce);
-        this.debounce = setTimeout(() => {
-          this.searchList = [];
-        }, 500);
-      }
-    },
+    // handleSearchInput(e) {
+    //   this.search = e.target.value;
+    //   if (this.search.length !== 0) {
+    //     clearTimeout(this.debounce);
+    //     this.debounce = setTimeout(() => {
+    //       const filteredList = this.stageInfoList.filter((item) => item.title.includes(this.search));
+    //       this.searchList = filteredList;
+    //     }, 500);
+    //   } else {
+    //     clearTimeout(this.debounce);
+    //     this.debounce = setTimeout(() => {
+    //       this.searchList = [];
+    //     }, 500);
+    //   }
+    // },
   },
 
   // mounted() {
