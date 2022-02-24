@@ -40,10 +40,10 @@
             <div>
               <form class="row">
                 <label for="category_add_label" class="category_add_label">* 카테고리명
-                  <input type="text" class="category_add_input form-control" placeholder="예) 딩동아메리카노">
+                  <input type="text" v-model="ctname" class="category_add_input form-control" placeholder="예) 딩동아메리카노">
                 </label>
                 <label for="category_add_label" class="category_add_label">설명
-                  <input type="text" class="category_add_input form-control"
+                  <input type="text" v-model="description" class="category_add_input form-control"
                          placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">
                 </label>
                 <div class="category_add_label_wrap">
@@ -83,8 +83,24 @@
               </form>
             </div>
           </div> -->
+<!--          <h4 class="category_add_title">카테고리 상세</h4>-->
+<!--          <div class="offcanvas-body category_add_body01">-->
+<!--            <div>-->
+<!--              <form class="row">-->
+<!--                <label for="category_add_label" class="category_add_label">* 카테고리명-->
+<!--                  <input type="text" class="category_add_input form-control" placeholder="예) 딩동아메리카노">-->
+<!--                </label>-->
+<!--                <label for="category_add_label" class="category_add_label">설명-->
+<!--                  <input type="text" class="category_add_input form-control"-->
+<!--                         placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">-->
+<!--                </label>-->
+
+
+<!--              </form>-->
+<!--            </div>-->
+<!--          </div>-->
           <div class="category_add_btn_wrap">
-            <button type="button" class="category_add_btn">저장</button>
+            <button type="button" @click="addCategory" class="category_add_btn">저장</button>
           </div>
         </div>
         <select class="hidden_select">
@@ -167,6 +183,7 @@
 // import InfiniteLoading from 'v3-infinite-loading'
 import _ from 'lodash'
 import axios from 'axios'
+const sweet = require("sweetalert2");
 
 export default {
   data () {
@@ -180,10 +197,14 @@ export default {
       pageCount: 10,
       currentPage: 1,
       pageNum: 1,
+      ctname: '',
+      description: '',
 
     }
   },
-  components: {},
+  components: {
+
+  },
   methods: {
     //권한체크
     roleCheck () {
@@ -273,9 +294,20 @@ export default {
       })
       console.log(myctnumgroup)
     },
-    loadMore () {
+    addCategory(){
+      axios.post('/apimenu/addcategory',{
+          ctname: this.ctname,
+          description: this.description,
+      } )
+      .then(res=>{
+        console.log(res.data)
+        sweet.fire("카테고리 추가 완료")
+      }).catch(err =>{
 
+        console.log(err)
+      })
     }
+
   },
   mounted () {
     // this.getList();
