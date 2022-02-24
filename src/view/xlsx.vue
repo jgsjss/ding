@@ -38,7 +38,7 @@ export default {
       const workBook = Xlsx.utils.book_new()
       const workSheet = Xlsx.utils.json_to_sheet([...this.data1])
       Xlsx.utils.book_append_sheet(workBook, workSheet, 'discountCode')
-      // Xlsx.writeFile(workBook, "./discountcode.xlsb");
+      // Xlsx.writeFile(workBook, "./discountcode.xlsx");
       console.log(this.data1)
     },
 

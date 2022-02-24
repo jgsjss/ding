@@ -47,26 +47,22 @@
                          placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">
                 </label>
                 <div class="category_add_label_wrap">
+                        카테고리공개
                   <label class="category_add_label">
-                    카테고리공개&nbsp
-                  </label>  
                     <input type="radio" 
-                            name="category_radio" 
-                            @click="statusCheck" 
-                            checked="checked" 
-                            class="category_add_radio"
-                           value="open"
-                    />
-                    &nbsp공개&nbsp
+                    name="category_radio" 
+                    @click="statusCheck" 
+                    value="open"
+                    class="category_add_radio"/>&nbsp공개&nbsp
+                    </label>
+                    <label class="category_add_label">
                     <input type="radio" 
-                            name="category_radio" 
-                            @click="statusCheck" 
-                            class="category_add_radio"
-                           value="hidden"
-                    />
-                    &nbsp숨김(노출 안됨)
-                  
-                  <div class="category_add_connect_box">
+                    name="category_radio" 
+                    @click="statusCheck"
+                    value="hidden" 
+                    class="category_add_radio"/>&nbsp숨김(노출 안됨)
+                    </label>
+                <div class="category_add_connect_box">
                 <label class="category_add_label">
                   연결메뉴(총 33개)
                 </label>
