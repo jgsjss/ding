@@ -49,8 +49,8 @@
                 <div class="category_add_label_wrap">
                   <label class="category_add_label">
                     카테고리공개
-                    <input type="radio" name="category_add_radio" class="category_add_radio" value="open"/>공개
-                    <input type="radio" name="category_add_radio" class="category_add_radio" value="hidden"/>숨김(딩동오더에 노출 안됨)
+                    <input type="radio" name="category_add_radio" @click="statusCheck" checked="checked" class="category_add_radio" value="open"/>공개
+                    <input type="radio" name="category_add_radio" @click="statusCheck" class="category_add_radio" value="hidden"/>숨김(딩동오더에 노출 안됨)
                   </label>
                   <div class="category_add_connect_box">
                 <label class="category_add_label">
@@ -199,6 +199,7 @@ export default {
       pageNum: 1,
       ctname: '',
       description: '',
+      status: '',
 
     }
   },
@@ -206,6 +207,10 @@ export default {
 
   },
   methods: {
+    statusCheck(){
+      let selected = document.querySelector("input[name='category_add_radio']:checked").value
+      this.status = selected
+    },
     //권한체크
     roleCheck () {
       console.log('유저권한', this.getUserrole)
@@ -298,6 +303,7 @@ export default {
       axios.post('/apimenu/addcategory',{
           ctname: this.ctname,
           description: this.description,
+          status: this.status,
       } )
       .then(res=>{
         console.log(res.data)
