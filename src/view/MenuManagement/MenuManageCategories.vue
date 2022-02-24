@@ -55,12 +55,14 @@
                             @click="statusCheck" 
                             checked="checked" 
                             class="category_add_radio"
+                           value="open"
                     />
                     &nbsp공개&nbsp
                     <input type="radio" 
                             name="category_radio" 
                             @click="statusCheck" 
                             class="category_add_radio"
+                           value="hidden"
                     />
                     &nbsp숨김(노출 안됨)
                   
@@ -220,7 +222,7 @@ export default {
   methods: {
     //카테고리추가 숨김, 해제 체크
     statusCheck(){
-      let selected = document.querySelector("input[name='category_add_radio']:checked").value
+      let selected = document.querySelector("input[name='category_radio']:checked").value
       this.status = selected
       console.log(this.status)
     },
