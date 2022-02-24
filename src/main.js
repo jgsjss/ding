@@ -11,7 +11,7 @@ import "./assets/sweetalert2.min.css";
 /*-----vue3-date-time-picker-----*/
 import Datepicker from "vue3-date-time-picker";
 import "vue3-date-time-picker/dist/main.css";
-
+import Xlsx from 'xlsx'
 const emitter = mitt();
 const app = createApp(App);
 const sweet = require("sweetalert2");
@@ -22,7 +22,7 @@ app.component("Datepicker", Datepicker);
 
 app.mixin(mixins);
 app.use(vuesweetalert2);
-
+app.use(Xlsx);
 // app.component("infinite-loading", InfiniteLoading);
 // app.use(VueCookies);
 
