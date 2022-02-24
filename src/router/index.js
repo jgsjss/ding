@@ -154,6 +154,12 @@ const routes = [
     component: SignUpFour,
     name: "signup4",
     props: true,
+    beforeEnter: ()=>{
+      const nullCheck = store.state.signupStore.isNull
+      if(!nullCheck){
+        return "/signupthree"
+      }
+    },
   },
   {
 

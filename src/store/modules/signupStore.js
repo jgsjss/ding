@@ -42,6 +42,8 @@ export const signupStore = {
     userType: '',
     //가입 승인 여부
     inProcess: '',
+    //사인업3 널체크
+    isNull: false,
   }),
   getters: {
     selected: (state)=>{

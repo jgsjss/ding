@@ -26,7 +26,7 @@
                   class="int"
                   maxlength="20"
                   placeholder="관리자 이름"
-                  @change="errorCh"
+                  @change="errorCh, nullCheck"
               />
               <span class="error_next_box1" id="manMsg" style aria-live="assertive">필수 정보 입니다.</span>
             </span>
@@ -53,15 +53,17 @@
               <div id="num_second">
                 <span class="box">
                   <input type="text" id="second" class="int" maxlength="4" v-model.trim="secondNum"
-                  oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
+                         @change="nullCheck"
+                         oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                   />
                 </span>
               </div>
               <!-- BIRTH_DD -->
               <div id="num_dd">
                 <span class="box">
-                  <input type="text" @change="phoneNumConcat()" id="dd" class="int" maxlength="4"
+                  <input type="text" @change="phoneNumConcat(), nullCheck" id="dd" class="int" maxlength="4"
                          v-model.trim="thirdNum"
+
                          oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                          />
                 </span>
@@ -84,7 +86,7 @@
                         maxlength="20"
                         placeholder="이메일을 입력해주세요"
                         v-model="mgEmail1"
-                        @change="errorCh1"
+                        @change="errorCh1, nullCheck"
                     />
                     <span class="error_next_box1" id="manEmMsg" style aria-live="assertive">필수 정보 입니다.</span>
                   </span>
@@ -109,6 +111,7 @@
                   <input
                       type="text"
                       id="shop_one"
+                      @change="nullCheck"
                       class="int"
                       maxlength="3"
                       title="사업자처음3자리"
@@ -124,6 +127,7 @@
                   <input
                       type="text"
                       id="shop_two"
+                      @change="nullCheck"
                       class="int"
                       maxlength="2"
                       title="사업자중간2자리"
@@ -137,7 +141,7 @@
                 <span class="box">
                   <input
                       type="text"
-                      @change="bizNumConcat"
+                      @change="bizNumConcat, nullCheck"
                       id="shop_three"
                       class="int"
                       maxlength="5"
@@ -251,6 +255,30 @@ export default {
     //     alert('확장자 png 파일만 첨부 가능합니다.')
     //   }
     // },
+    //null 체크함수
+    isEmpty(data) {
+      if(data=="" || data == null || data == undefined) {
+        return true;
+      }else {
+        return false;
+      }
+    },
+
+    nullCheck(){
+      if(!this.isEmpty(this.manageName)&&
+          !this.isEmpty(this.secondNum)&&
+          !this.isEmpty(this.thirdNum)&&
+          !this.isEmpty(this.mgEmail1)&&
+          !this.isEmpty(this.bizNum1)&&
+          !this.isEmpty(this.bizNum2)&&
+          !this.isEmpty(this.bizNum3))
+      {
+        return this.$store.state.signupStore.isNull = true
+
+      }else{
+        return this.$store.state.signupStore.isNull = false
+      }
+    },
 
     //이미지 업로드
     uploadImage: function () {
@@ -299,50 +327,69 @@ export default {
     },
 
     signup () {
-      axios({
-        method: 'post',
-        url: '/api/signup',
-        data: {
-          userId: store.state.signupStore.userId,
-          userPw: store.state.signupStore.userPw,
-          userName: store.state.signupStore.userName,
-          biznum: this.bizNum,
-          phNum: store.state.signupStore.phNum,
-          bizAddr1: store.state.signupStore.bizAddr1,
-          bizAddr2: store.state.signupStore.bizAddr2,
-          bizZip: store.state.signupStore.bizZip,
-          managename: this.manageName,
-          mgphnum: this.mgPhNum,
-          mgMail : this.mgEmail,
-          selected: store.state.signupStore.selected.length,
-          shopName: store.state.signupStore.shopName,
-          shopPhNum: store.state.signupStore.shopPhNum,
-          etc: store.state.signupStore.etc
-        },
-      }).then(res => {
-        console.log(res)
-        if (res.data == 1) {
-          this.$swal.fire({
-            icon: 'success',
-            title: '회원가입 신청이 완료되었습니다.',
-            text: '가입심사 완료 후 로그인 됩니다.',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        } else {
-          this.$swal.fire({
-            icon: 'warning',
-            title: '회원 가입 신청 오류!',
-            text: '입력하신 회원정보를 확인하세요.',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: '확인',
-          })
-          router.back()
-        }
+      this.nullCheck()
+      let nullCk = this.$store.state.signupStore.isNull
+      console.log("널체크",nullCk)
+      console.log("매니저네임",this.manageName)
+      console.log("세컨넘",this.secondNum)
+      console.log("서드넘",this.thirdNum)
+      console.log("이메일1",this.mgEmail1)
+      console.log("비즈넘1",this.bizNum1)
+      console.log("비즈넘2",this.bizNum2)
+      console.log("비즈넘3",this.bizNum3)
 
-      }).catch((err) => {
-        console.log(err)
-      })
+
+      if(!nullCk){
+        this.$swal("필수 정보들을 입력하세요.")
+        return false;
+      }
+      else{
+        axios({
+          method: 'post',
+          url: '/api/signup',
+          data: {
+            userId: store.state.signupStore.userId,
+            userPw: store.state.signupStore.userPw,
+            userName: store.state.signupStore.userName,
+            biznum: this.bizNum,
+            phNum: store.state.signupStore.phNum,
+            bizAddr1: store.state.signupStore.bizAddr1,
+            bizAddr2: store.state.signupStore.bizAddr2,
+            bizZip: store.state.signupStore.bizZip,
+            managename: this.manageName,
+            mgphnum: this.mgPhNum,
+            mgMail : this.mgEmail,
+            selected: store.state.signupStore.selected.length,
+            shopName: store.state.signupStore.shopName,
+            shopPhNum: store.state.signupStore.shopPhNum,
+            etc: store.state.signupStore.etc
+          },
+        }).then(res => {
+          console.log(res)
+          if (res.data == 1) {
+            this.$swal.fire({
+              icon: 'success',
+              title: '회원가입 신청이 완료되었습니다.',
+              text: '가입심사 완료 후 로그인 됩니다.',
+              showConfirmButton: false,
+              timer: 2000
+            })
+          } else {
+            this.$swal.fire({
+              icon: 'warning',
+              title: '회원 가입 신청 오류!',
+              text: '입력하신 회원정보를 확인하세요.',
+              confirmButtonColor: '#3085d6',
+              confirmButtonText: '확인',
+            })
+            router.back()
+          }
+
+        }).catch((err) => {
+          console.log(err)
+        })
+      }
+
     },
  
     //sweetalert2 메소드드

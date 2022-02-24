@@ -31,7 +31,6 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requireLogin)) {
     const isLogin = store.getters["loginStore/isLogin"];
     if (!isLogin) {
-      //
       // const myswal = new Object()
       // myswal.set(vuesweetalert2())
       // var my = new vuesweetalert2();
