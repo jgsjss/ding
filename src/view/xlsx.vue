@@ -10,7 +10,6 @@
 import Xlsx from 'xlsx'
 
 export default {
-  name: 'App',
   data () {
     return {
       dataex: [

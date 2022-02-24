@@ -68,7 +68,7 @@
           </div>
           <hr/>
           <!--카테고리 상세-->
-          <!-- <h4 class="category_add_title">카테고리 상세</h4>
+          <h4 class="category_add_title">카테고리 상세</h4>
           <div class="offcanvas-body category_add_body01">
             <div>
               <form class="row">
@@ -80,13 +80,13 @@
                          placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">
                 </label>
 
-                <div class="category_add_btn_wrap">
-                  <button type="button" class="category_del_btn">삭제</button>
-                  <button type="button" class="category_add_btn">저장</button>
-                </div>
+
               </form>
             </div>
-          </div> -->
+          </div>
+          <div class="category_add_btn_wrap">
+            <button type="button" class="category_add_btn">저장</button>
+          </div>
         </div>
         <select class="hidden_select">
           <option class="hidden_btn">전체/숨김/정상</option>
