@@ -49,9 +49,21 @@
                 <div class="category_add_label_wrap">
                   <label class="category_add_label">
                     카테고리공개
-                    <input type="radio" name="category_add_radio" @click="statusCheck" checked="checked" class="category_add_radio" value="open"/>공개
-                    <input type="radio" name="category_add_radio" @click="statusCheck" class="category_add_radio" value="hidden"/>숨김(딩동오더에 노출 안됨)
-                  </label>
+                  </label>  
+                    <input type="radio" 
+                            name="category_radio" 
+                            @click="statusCheck" 
+                            checked="checked" 
+                            class="category_add_radio"
+                    />
+                    &nbsp공개&nbsp
+                    <input type="radio" 
+                            name="category_radio" 
+                            @click="statusCheck" 
+                            class="category_add_radio"
+                    />
+                    &nbsp숨김(노출 안됨)
+                  
                   <div class="category_add_connect_box">
                 <label class="category_add_label">
                   연결메뉴(총 33개)

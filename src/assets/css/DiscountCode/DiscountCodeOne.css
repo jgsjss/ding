@@ -1,6 +1,5 @@
 .proceeding_container {
     margin:0 auto;
-    position:relative
 }
 .proceeding_btn_wrap {
     display:flex;
@@ -74,8 +73,8 @@
     border:1px solid #997fb5;
     margin:10px 0;
 }
-/*--------할인코드 추가 모달창---------*/
-/* .proceeding_modal_wrap {
+/*--------할인코드 정보 모달창---------*/
+.discountinfo_wrap {
     position: fixed;   
     position:absolute; padding:20px;
     top:0; left:40%;
@@ -84,31 +83,31 @@
     background:white;
     border-radius: 5px;
 }
-.proceeding_modal_sub_wrap {
+.discountinfo_main_wrap {
+    display: flex;
+}
+.discountinfo_sub_wrap {
     width: 100%; background: white;
     border-radius: 8px;
 }
-.proceeding_modal_btn {
+.discountinfo_main_title {
     background: none;
-    border: 1px solid #997fb5;
-    font-size: 14px;
+    font-size: 20px;
     color: #997fb5;
     width: 200px;
     height: 100px;
-    text-align: center;
+    text-align: left;
     border-radius: 15px;
     margin:0 5px
 }
-.proceeding_modal_title {
-    font-size:24px;
-    color:#997fb5;
-    padding:5px 0 15px 0;
-} */
+.discountinfo_text {
+    line-height:0.4
+}
 /* table */
 .proceeding_list_wrap {
     width: 100%;
     padding:10px 0;
-    
+    position:relative
 }
 .proceeding_table {
     width: 88%;
@@ -150,7 +149,7 @@
     border-bottom:1px solid #ddd;
 }
 tbody {
-        color:#997fb5;
+    color:#997fb5;
 }
 .proceeding_end_btn {
     border:none;

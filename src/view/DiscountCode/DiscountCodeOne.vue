@@ -9,22 +9,8 @@
           <div class="proceeding_btn_wrap02">
               <button type="submit" class="proceeding_header_right_btn" @click="discountOpen=!discountOpen">+코드추가</button>
           </div>
-          <!--할인추가 모달-->
-          <!-- <div class="proceeding_modal_wrap" v-if=" discountOpen == true">
-            <div class="proceeding_modal_sub_wrap">
-              <h4 class="proceeding_modal_title">할인코드 추가</h4>
-              <div class="discount_box_wrap">
-                <input type="file" 
-                        class="proceeding_modal_btn" 
-                        id="excelUpload" @change="importExcel" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" placeholder="업로드">할인코드<br>일괄등록<br>(엑셀파일)
-                <input type="file" 
-                        class="proceeding_modal_btn" 
-                        id="excelUpload" @change="importExcel" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">할인코드<br>개별등록<br>&nbsp
-              </div>  
-            </div>
-          </div> -->
       </div>
-      
+      <!--할인추가 콜랩스 시작-->
       <div class="proceeding_modal_container" v-show="discountOpen">
         <div class="proceeding_modal_container01">
           <h5 class="proceeding_modal_title">할인코드 추가(대량등록)</h5>
@@ -73,7 +59,7 @@
           </form>
         </div>
       </div>
-
+      <!--할인추가 콜랩스 끝-->
     <div class="proceeding_list_wrap">
       <table class="proceeding_table">
         <thead class="proceeding_head">
@@ -105,7 +91,8 @@
             >
           </td>
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
-          <td class="proceeding_data">{{ $store.state.DiscountCodeData[i].codenum }}</td>
+          <td class="proceeding_data" @click="DiscountCodeInfo=!DiscountCodeInfo">
+            {{ $store.state.DiscountCodeData[i].codenum }}</td>
           <td class="proceeding_data ">{{ $store.state.DiscountCodeData[i].date  }}</td>
           <td class="proceeding_data">{{ $store.state.DiscountCodeData[i].codename  }}</td>
           <td class="proceeding_data">{{ $store.state.DiscountCodeData[i].discount  }}</td>
@@ -115,6 +102,20 @@
         </tr>
         </tbody>
       </table>
+      <div class="discountinfo_wrap" v-show="DiscountCodeInfo">
+        <div class="discountinfo_main_wrap">
+          <h5 class="discountinfo_main_title">할인코드 정보</h5>
+          <i class="xi-close" @click.self="$emit('close')"></i>
+        </div>
+        <div class="discountinfo_sub_wrap">
+          <p class="discountinfo_text">발급일자 :{{}}2022.02.22</p>
+          <p class="discountinfo_text">할인코드:{{}}3252353252</p>
+          <p class="discountinfo_text">할인코드명 :{{}} </p>
+          <p class="discountinfo_text">할인항목 :{{}}  </p>
+          <p class="discountinfo_text">사용가능횟수 :{{}} </p> 
+          <p class="discountinfo_text">유효기간 :{{}}  </p>
+        </div>
+      </div>
           </div>      
   </div>
   <router-view></router-view>
@@ -129,6 +130,7 @@ export default {
   data(){
     return {
       discountOpen:false,
+      DiscountCodeInfo:false,
     }
   },
   methods: {
