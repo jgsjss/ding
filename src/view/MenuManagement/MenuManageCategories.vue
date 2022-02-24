@@ -48,7 +48,7 @@
                 </label>
                 <div class="category_add_label_wrap">
                   <label class="category_add_label">
-                    카테고리공개
+                    카테고리공개&nbsp
                   </label>  
                     <input type="radio" 
                             name="category_radio" 
