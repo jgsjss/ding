@@ -41,8 +41,11 @@
     color:#333;
     line-height:0.5;
 }
+.xlsx_btn {
+    border:none;
+}
 .proceeding_modal_input_wrap {
-    padding:15px 0;
+    padding:40px 0;
 }
 .proceeding_modal_container02 {
     padding:15px 30px;

@@ -66,9 +66,8 @@
               </form>
             </div>
           </div>
-          <hr/>
           <!--카테고리 상세-->
-          <h4 class="category_add_title">카테고리 상세</h4>
+          <!-- <h4 class="category_add_title">카테고리 상세</h4>
           <div class="offcanvas-body category_add_body01">
             <div>
               <form class="row">
@@ -83,7 +82,7 @@
 
               </form>
             </div>
-          </div>
+          </div> -->
           <div class="category_add_btn_wrap">
             <button type="button" class="category_add_btn">저장</button>
           </div>

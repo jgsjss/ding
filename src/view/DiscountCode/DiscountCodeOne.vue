@@ -32,7 +32,7 @@
           <p class="proceeding_modal_sub_title">- 사용 또는 기간 만료 시 자동으로 만료됩니다.</p>
           <p class="proceeding_modal_sub_title">- 등록해야하는 쿠폰이 많은 경우 엑셀파일을 사용하여 일괄등록이 가능합니다.</p>
           <p class="proceeding_modal_sub_title">- 아래 양식을 다운로드하여 작성하신후 파일을 업로드 해주세요.</p>  
-          <Xlsx />
+          <xlsx />
           <div class="proceeding_modal_input_wrap">   
           <input type="file" class="proceeding_modal_input" placeholder="파일추가">
           </div>   

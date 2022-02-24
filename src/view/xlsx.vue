@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div>
-      <button @click="ExcelFileDown">다운</button>
+      <button @click="ExcelFileDown" class="xlsx_btn">엑셀파일 다운로드</button>
     </div>
   </div>
 </template>
@@ -12,7 +12,7 @@ import Xlsx from 'xlsx'
 export default {
   data () {
     return {
-      dataex: [
+      data1: [
         {
           a: 1,
           b: '325',
@@ -35,9 +35,10 @@ export default {
   methods: {
      ExcelFileDown() {
       const workBook = Xlsx.utils.book_new();
-      const workSheet = Xlsx.utils.json_to_sheet(this.dataex);
-      Xlsx.utils.book_append_sheet(workBook, workSheet, "안녕");
+      const workSheet = Xlsx.utils.json_to_sheet(this.data1);
+      Xlsx.utils.book_append_sheet(workBook, workSheet, "discountCode");
       Xlsx.writeFile(workBook, "안녕.xlsx");
+            console.log(this.data1)
     },
 
   }
@@ -45,4 +46,11 @@ export default {
 </script>
 
 <style>
+.xlsx_btn {
+    border:none;
+    background:none;
+    text-decoration: underline;
+    color:#997fb5;
+    
+}
 </style>
