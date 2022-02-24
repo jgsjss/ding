@@ -57,6 +57,7 @@ import page404 from "../view/page404";
 import store from "../store";
 import chat from "../view/1";
 import dbshow from "../view/dbshow";
+import xlsx from "../view/xlsx.vue";
 // import 'sweetalert2/dist/sweetalert2.min.css';
 // import VueSweetalert2 from 'vue-sweetalert2';
 
@@ -407,6 +408,10 @@ const routes = [
   {
     path: "/chat",
     component: chat,
+  },
+  {
+    path: "/xlsx",
+    component: xlsx,
   },
   {
     path: "/dbshow",

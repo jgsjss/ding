@@ -32,11 +32,12 @@
           <p class="proceeding_modal_sub_title">- 사용 또는 기간 만료 시 자동으로 만료됩니다.</p>
           <p class="proceeding_modal_sub_title">- 등록해야하는 쿠폰이 많은 경우 엑셀파일을 사용하여 일괄등록이 가능합니다.</p>
           <p class="proceeding_modal_sub_title">- 아래 양식을 다운로드하여 작성하신후 파일을 업로드 해주세요.</p>  
+          <Xlsx />
           <div class="proceeding_modal_input_wrap">   
           <input type="file" class="proceeding_modal_input" placeholder="파일추가">
           </div>   
           <div>
-          <p class="proceeding_modal_sub_title">* 지원하는 파일 형식:</p>
+          <p class="proceeding_modal_sub_title">* 지원하는 파일 형식: xlsx</p>
           <p class="proceeding_modal_sub_title">* 파일이 양식과 맞지 않을 경우 추가되지 않습니다.</p>
           </div>
           <div class="proceeding_modal_btn_wrap">
@@ -55,17 +56,20 @@
               <input type="text" placeholder="ex) 1주년 기념 스페셜 할인" class="proceeding_modal_input">
             </label>
             <label for="" class="proceeding_modal_label">할인항목
-              <input type="radio">&nbsp결제금액&nbsp<input type="text" placeholder="ex) 1주년 기념 스페셜 할인">&nbsp%할인
+              <input type="radio" name="proceeding_modal_radio">&nbsp결제금액&nbsp<input type="text" class="proceeding_modal_small_input" placeholder="퍼센트할인">&nbsp%할인
             </label>
             <label for="" class="proceeding_modal_label">
-              <input type="radio">&nbsp결제금액&nbsp<input type="text" placeholder="ex) 1주년 기념 스페셜 할인">&nbsp%할인
+              <input type="radio" name="proceeding_modal_radio">&nbsp결제금액&nbsp<input type="text" class="proceeding_modal_small_input" placeholder="금액할인">&nbsp%할인
             </label>
             <label for="" class="proceeding_modal_label">사용가능횟수
-              <input type="radio">&nbsp다회(제한없음)
-              <input type="radio">&nbsp1회 (코드당 1번)
+              <input type="radio" name="proceeding_modal_radio">&nbsp다회(제한없음)
+              <input type="radio" name="proceeding_modal_radio">&nbsp1회 (코드당 1번)
             </label>
-            <Datepicker v-model="date" range datePicker modeHeight="120" locale="ko" weekStart="0" :enableTimePicker="false" value="2022-02-08"/>
-
+            <label for="" class="proceeding_modal_label">유효기간
+              <input type="radio" name="proceeding_modal_radio">&nbsp기간없음(무제한)
+              <input type="radio" name="proceeding_modal_radio">&nbsp기간설정
+            <Datepicker class="proceeding_modal_date" v-model="date" range datePicker modeHeight="120" locale="ko" weekStart="0" :enableTimePicker="false" value="2022-02-24"/>
+            </label>
           </form>
         </div>
       </div>
@@ -113,15 +117,18 @@
       </table>
           </div>      
   </div>
+  <router-view></router-view>
 </template>
 
 <script>
-import XLSX from 'xlsx';
+import xlsx from '../xlsx.vue'
 export default {
+  components: {
+    xlsx,
+  },
   data(){
     return {
       discountOpen:false,
-      XLSX:'',
     }
   },
   methods: {

@@ -57,11 +57,20 @@
 }
 .proceeding_modal_label {
     display: block;
+    text-align: right;
+    font-size:14px
 }
 .proceeding_modal_input {
-    
+    width:250px;
 }
-
+.proceeding_modal_small_input {
+    width: 130px;
+    text-align: center;
+}
+.proceeding_modal_date {
+    border:1px solid #997fb5;
+    margin:10px 0;
+}
 /*--------할인코드 추가 모달창---------*/
 /* .proceeding_modal_wrap {
     position: fixed;   

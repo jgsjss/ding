@@ -153,6 +153,9 @@ tbody {
     font-size:14px;
     margin:0 auto;
 }
+.category_add_connect_box {
+    padding:15px 0;
+}
 .category_add_label_wrap {
     padding:10px 0;
 }
