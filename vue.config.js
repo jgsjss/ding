@@ -1,4 +1,4 @@
-const target = "http://192.168.0.110:5000";
+const target = "http://192.168.0.100:5000";
 
 module.exports = {
   devServer: {

@@ -98,7 +98,7 @@
           <td class="proceeding_data">{{ $store.state.DiscountCodeData[i].discount  }}</td>
           <td class="proceeding_data">{{ $store.state.DiscountCodeData[i].count  }}</td>
           <td class="proceeding_data">{{ $store.state.DiscountCodeData[i].validity  }}</td>
-          <td class="proceeding_data"><button type="submit" class="proceeding_end_btn">종료</button></td>
+          <td class="proceeding_data"><button type="submit" class="proceeding_end_btn" value="hidden">종료</button></td>
         </tr>
         </tbody>
       </table>
