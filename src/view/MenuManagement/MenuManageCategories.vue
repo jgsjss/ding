@@ -199,17 +199,18 @@ export default {
       pageNum: 1,
       ctname: '',
       description: '',
-      status: '',
-
+      status: 'open',
     }
   },
   components: {
 
   },
   methods: {
+    //카테고리추가 숨김, 해제 체크
     statusCheck(){
       let selected = document.querySelector("input[name='category_add_radio']:checked").value
       this.status = selected
+      console.log(this.status)
     },
     //권한체크
     roleCheck () {
