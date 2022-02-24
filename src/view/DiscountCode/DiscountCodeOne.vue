@@ -17,11 +17,11 @@
           <p class="proceeding_modal_sub_title">- 할인코드는 발급 후 수정이 불가합니다.</p>
           <p class="proceeding_modal_sub_title">- 사용 또는 기간 만료 시 자동으로 만료됩니다.</p>
           <p class="proceeding_modal_sub_title">- 등록해야하는 쿠폰이 많은 경우 엑셀파일을 사용하여 일괄등록이 가능합니다.</p>
-          <p class="proceeding_modal_sub_title">- 아래 양식을 다운로드하여 작성하신후 파일을 업로드 해주세요.</p>  
+          <p class="proceeding_modal_sub_title">- 아래 양식을 다운로드하여 작성하신후 파일을 업로드 해주세요.</p>
           <xlsx />
-          <div class="proceeding_modal_input_wrap">   
+          <div class="proceeding_modal_input_wrap">
           <input type="file" class="proceeding_modal_input" placeholder="파일추가">
-          </div>   
+          </div>
           <div>
           <p class="proceeding_modal_sub_title">* 지원하는 파일 형식: xlsx</p>
           <p class="proceeding_modal_sub_title">* 파일이 양식과 맞지 않을 경우 추가되지 않습니다.</p>
@@ -112,11 +112,11 @@
           <p class="discountinfo_text">할인코드:{{}}3252353252</p>
           <p class="discountinfo_text">할인코드명 :{{}} </p>
           <p class="discountinfo_text">할인항목 :{{}}  </p>
-          <p class="discountinfo_text">사용가능횟수 :{{}} </p> 
+          <p class="discountinfo_text">사용가능횟수 :{{}} </p>
           <p class="discountinfo_text">유효기간 :{{}}  </p>
         </div>
       </div>
-          </div>      
+          </div>
   </div>
   <router-view></router-view>
 </template>
@@ -131,6 +131,9 @@ export default {
     return {
       discountOpen:false,
       DiscountCodeInfo:false,
+      selected: [],
+      date: '',
+      allChecked: false,
     }
   },
   methods: {
