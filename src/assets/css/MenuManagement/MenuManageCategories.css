@@ -149,6 +149,9 @@ tbody {
     border:1px solid #997fb5;
     width: 350px;
 }
+.category_add_label {
+    font-size:14px;
+}
 .category_add_connect_box {
     padding:30px 0;
 }
