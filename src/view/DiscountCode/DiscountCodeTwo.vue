@@ -9,11 +9,11 @@
           <div class="accomplished_btn_wrap02">
               <button type="submit" class="accomplished_header_right_btn">전체삭제</button>
               <button type="submit" class="accomplished_header_right_btn">저장</button>
-              <selection class="">
-                <option class="" value="null">선택</option>
-                <option class="" value="최신순">최신순</option>
-                <option class="" value="과거순">과거순</option>
-              </selection>
+              <select class="accomplished_select">
+                <option class="accomplished_option" value="null">선택</option>
+                <option class="accomplished_option" value="최신순">최신순</option>
+                <option class="accomplished_option" value="과거순">과거순</option>
+              </select>
           </div>
       </div>
 
@@ -29,11 +29,12 @@
             />
           </th>
           <th scope="col" class="accomplished_col">할인코드</th>
-          <th scope="col" class="accomplished_col">발급일자</th>
+          <th scope="col" class="accomplished_col">종료일자</th>
           <th scope="col" class="accomplished_col">코드이름</th>
           <th scope="col" class="accomplished_col">할인항목</th>
           <th scope="col" class="accomplished_col">사용가능횟수</th>
           <th scope="col" class="accomplished_col">유효기간</th>
+          <th scope="col" class="accomplished_col">종료구분</th>
           <th scope="col" class="accomplished_col">설정</th>
         </tr>
         </thead>
@@ -55,7 +56,8 @@
           <td class="accomplished_data">{{ $store.state.DiscountCodeData[i].discount  }}</td>
           <td class="accomplished_data">{{ $store.state.DiscountCodeData[i].count  }}</td>
           <td class="accomplished_data">{{ $store.state.DiscountCodeData[i].validity  }}</td>
-          <td class="accomplished_data"><button type="submit" class="accomplished_end_btn" value="hidden">종료</button></td>
+          <td class="accomplished_data">{{ $store.state.DiscountCodeData[i].accomplished }}</td>
+          <td class="accomplished_data"><button type="submit" class="accomplished_end_btn" value="hidden">삭제</button></td>
         </tr>
         </tbody>
       </table>
