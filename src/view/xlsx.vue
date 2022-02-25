@@ -2,9 +2,9 @@
   <vue-excel-xlsx
         :data="data"
         :columns="columns"
-        :file-name="'filename'"
+        :file-name="'discountCodefile'"
         :file-type="'xlsx'"
-        :sheet-name="'sheetname'"
+        :sheet-name="'codename'"
         class="xlsx_btn"
         >
         엑셀파일 다운로드
@@ -81,9 +81,16 @@ export default {
             }
         },
         methods: {
-            priceFormat(value){
-                return '$ ' + value;
-            }
+            // priceFormat(value){
+            //     return '₩ ' + value;
+            // }
         }
 };
 </script>
+<style>
+  .xlsx_btn {
+    background:none;
+    color:#997fb5;
+    text-decoration: underline;
+  }
+</style>

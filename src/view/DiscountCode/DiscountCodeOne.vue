@@ -20,7 +20,7 @@
           <p class="proceeding_modal_sub_title">- 아래 양식을 다운로드하여 작성하신후 파일을 업로드 해주세요.</p>
           <xlsx />
           <div class="proceeding_modal_input_wrap">
-          <input type="file" class="proceeding_modal_input" placeholder="파일추가">
+          <input type="file" accept=".xlsx" class="proceeding_modal_input" placeholder="파일추가">
           </div>
           <div>
           <p class="proceeding_modal_sub_title">* 지원하는 파일 형식: xlsx</p>
@@ -137,20 +137,20 @@ export default {
     }
   },
   methods: {
-// importExcel(event) {
-//     const file = event.target.files[0];
-//     let reader = new FileReader();
-//     reader.onload = (e) => {
-//         let data = reader.result;
-//         // let data = e.target.result;
-//         let workbook = XLSX.read(data, {type: 'binary'});
-//         workbook.SheetNames.forEach(sheetName => {
-//             const roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
-//             this.items.push(roa);
-//         });
-//     };
-//     reader.readAsBinaryString(file);
-// },
+importExcel(event) {
+    const file = event.target.files[0];
+    let reader = new FileReader();
+    reader.onload = (e) => {
+        let data = reader.result;
+        // let data = e.target.result;
+        let workbook = XLSX.read(data, {type: 'binary'});
+        workbook.SheetNames.forEach(sheetName => {
+            const roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+            this.items.push(roa);
+        });
+    };
+    reader.readAsBinaryString(file);
+},
 
   }
 }
