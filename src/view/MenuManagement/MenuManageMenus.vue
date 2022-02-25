@@ -1,5 +1,5 @@
 <template>
-  <!-- 메뉴관리 페이지의 카테고리편집 게시판 페이지 -->
+  <!-- 메뉴관리 페이지의 메뉴편집 게시판 페이지 -->
   <div class="menuedit_container">
     <form class="menuedit_wrap">
       <div class="menuedit_left">

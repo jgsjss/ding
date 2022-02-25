@@ -8,7 +8,7 @@
       <div class="menuadd_wrap">
         <form>
         <label class="menuadd_label form-label">* 메뉴명
-          <input type="text" class="menuadd_input form-label" placeholder="예) 딩동아메리카노">
+          <input type="text" class="menuadd_input form-control" placeholder="예) 딩동아메리카노">
         </label>
         <label class="menuadd_label form-label">* 가격
           <input type="text" class="menuadd_input form-control">
@@ -23,14 +23,16 @@
             @change="upload"
             multiple accept="image/*"
             id="file"
-            >이미지추가
+            >
         </label>
         <div class="menuadd_img_input form-label">
-        <img :src="image" alt="" style="width:200px; text-align:center;" >
+        <img :src="image" alt="메뉴이미지" class="popupImageItem" style="width:200px; text-align:center;" >
         </div>
-        <label class="menuadd_label form-label">메뉴공개
-          <input type="radio" class="menuadd_radio">공개
-          <input type="radio" class="menuadd_radio">숨김 (딩동오더에 노출 안됨)
+        <label class="form-label">메뉴공개&nbsp
+          <input type="radio" name="menu_add_radio" class="menuadd_radio">&nbsp공개
+        </label>
+        <label class="form-label">&nbsp
+          <input type="radio" name="menu_add_radio" class="menuadd_radio">&nbsp숨김 (딩동오더에 노출 안됨)
         </label>
         </form>
       </div>
