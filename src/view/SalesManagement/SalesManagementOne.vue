@@ -106,7 +106,7 @@ export default {
       TotalMenuOrder (object) {
         let sum = 0
         _.forEach(_.map(object, 'watingnum'), function(val, key) {
-          sum += val
+          sum += + 1
         })
         this.totalOrder = sum
         console.log(sum)
