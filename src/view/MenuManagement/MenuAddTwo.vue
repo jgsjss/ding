@@ -9,22 +9,22 @@
       <div class="menuaddtwo_wrap">
         <form>
         <label class="menuaddtwo_label form-label">* 메뉴명
-          <input type="text" class="menuaddtwo_inpu form-label" placeholder="예) 딩동아메리카노">
+          <input type="text" class="menuaddtwo_input form-control" placeholder="예) 딩동아메리카노">
         </label>
         <label class="menuaddtwo_label form-label">* 가격
-          <input type="text" class="menuaddtwo_input form-label">
+          <input type="text" class="menuaddtwo_input form-control">
         </label>
         <label class="menuaddtwo_label form-label">* 설명
-          <textarea type="text" class="menuaddtwo_input form-label" placeholder="예) 딩동커피만의 로스팅방식으로 만들어낸 아메리카노"></textarea>
+          <textarea type="text" class="menuaddtwo_input form-control" placeholder="예) 딩동커피만의 로스팅방식으로 만들어낸 아메리카노"></textarea>
         </label>
         <label class="menuaddtwo_label form-label"> 이미지
           <input 
             type="file" 
-            class="menuaddtwo_img_btn" 
+            class="menuaddtwo_img_btn form-control" 
             @change="upload"
             multiple accept="image/*"
             id="file"
-            >이미지수정
+            >
         </label>
         <div class="menuaddtwo_img_input">
         <img :src="image" alt="" style="width:200px; text-align:center;" >

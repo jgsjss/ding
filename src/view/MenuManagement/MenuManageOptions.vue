@@ -75,8 +75,8 @@
                 </div>
                 <div class="mb-3">
                   <label class="menuoption_form_label">* 필수여부</label>
-                  <input type="radio" class="menuoption_input" />필수(옵션을 선택해야 주문가능)<br />
-                  <input type="radio" class="menuoption_input" />선택(옵션을 선택하지 않아도 주문가능)
+                  <input type="radio" name="menuoption_input" class="menuoption_input" />필수(옵션을 선택해야 주문가능)<br />
+                  <input type="radio" name="menuoption_input" class="menuoption_input" />선택(옵션을 선택하지 않아도 주문가능)
                 </div>
                 <button type="submit" class="menuoption_add_btn">옵션 추가 완료</button>
               </form>
@@ -169,8 +169,8 @@ correction"
               <input type="text" class="menuoption_input form-control" />
               <div class="mb-3">
                 <label class="menuoption_form_label">* 필수여부</label>
-                <input type="radio" class="menuoption_input" />필수(옵션을 선택해야 주문가능)<br />
-                <input type="radio" class="menuoption_input" />선택(옵션을 선택하지 않아도 주문가능)
+                <input type="radio" name="menuoption_input" class="menuoption_input" />필수(옵션을 선택해야 주문가능)<br />
+                <input type="radio" name="menuoption_input" class="menuoption_input" />선택(옵션을 선택하지 않아도 주문가능)
               </div>
               <div class="mb-3">
                 <label class="menuoption_form_label">* 선택가능 옵션 수</label>

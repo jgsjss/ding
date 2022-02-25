@@ -1,57 +1,89 @@
 <template>
-  <div id="app">
-    <div>
-      <button @click="ExcelFileDown" class="xlsx_btn">엑셀파일 다운로드</button>
-    </div>
-  </div>
+  <vue-excel-xlsx
+        :data="data"
+        :columns="columns"
+        :file-name="'filename'"
+        :file-type="'xlsx'"
+        :sheet-name="'sheetname'"
+        class="xlsx_btn"
+        >
+        엑셀파일 다운로드
+    </vue-excel-xlsx>
 </template>
 
 <script>
-// import {read,writeFileXLSX} from 'xlsx'
-import Xlsx from './xlsx'
 
 export default {
-  data () {
-    return {
-      data1: [
-        {
-          a: 1,
-          b: '325',
-          c: 'abc',
-          d: 'xcv',
-          e: '1131',
-          f: '1241241'
-        },
-        {
-          a: 2,
-          b: '325',
-          c: 'abc',
-          d: 'xcv',
-          e: '1131',
-          f: '1241241'
-        }
-      ]
-    }
+  components: {
   },
-  methods: {
-    ExcelFileDown () {
-      const workBook = Xlsx.utils.book_new()
-      const workSheet = Xlsx.utils.json_to_sheet([...this.data1])
-      Xlsx.utils.book_append_sheet(workBook, workSheet, 'discountCode')
-      // Xlsx.writeFile(workBook, "./discountcode.xlsx");
-      console.log(this.data1)
-    },
-
-  }
-}
+     data() {
+            return {
+                columns : [
+                    {
+                        label: "할인코드",
+                        field: "할인코드",
+                    },
+                    {
+                        label: "발급일자",
+                        field: "발급일자",
+                    },
+                    {
+                        label: "코드이름",
+                        field: "코드이름",
+                    },
+                    {
+                        label: "할인항목",
+                        field: "할인항목",
+                    },
+                    {
+                        label: "사용가능횟수",
+                        field: "사용가능횟수",
+                    },
+                    {
+                        label: "유효기간",
+                        field: "유효기간",
+                    }
+                ],
+                data : [
+                    {
+                        할인코드: 9238523525,
+                        발급일자: '2022.02.24',
+                        코드이름: '1주년 기념 스페셜 할인',
+                        할인항목: '10%',
+                        사용가능횟수: '1회',
+                        유효기간: "20220224"
+                    },
+                    {
+                        할인코드: 9238523525,
+                        발급일자: '2022.02.24',
+                        코드이름: '1주년 기념 스페셜 할인',
+                        할인항목: '10%',
+                        사용가능횟수: '1회',
+                        유효기간: "20220224"
+                    },
+                    {
+                        할인코드: 9238523525,
+                        발급일자: '2022.02.24',
+                        코드이름: '1주년 기념 스페셜 할인',
+                        할인항목: '10%',
+                        사용가능횟수: '1회',
+                        유효기간: "20220224"
+                    },
+                    {
+                        할인코드: 9238523525,
+                        발급일자: '2022.02.24',
+                        코드이름: '1주년 기념 스페셜 할인',
+                        할인항목: '10%',
+                        사용가능횟수: '1회',
+                        유효기간: "20220224"
+                    },
+                ],
+            }
+        },
+        methods: {
+            priceFormat(value){
+                return '$ ' + value;
+            }
+        }
+};
 </script>
-
-<style>
-.xlsx_btn {
-  border: none;
-  background: none;
-  text-decoration: underline;
-  color: #997fb5;
-
-}
-</style>
