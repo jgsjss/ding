@@ -8,8 +8,8 @@
             type="checkbox"
             class="menuoption_check"
             id="all-check"
-            v-model="allChecked"
-            @click="checkedAll($event.target.checked)"
+            v-model="optionAllChecked"
+            @click="optionCheckedAll($event.target.checked)"
           />
           전체선택
         </label>
@@ -108,7 +108,12 @@
         <tbody>
           <tr v-for="(a, i) in $store.state.OptionData" :key="i">
             <td scope="row" class="cate_check_box">
-              <input type="checkbox" :id="'check_' + i.boardId" :value="i" v-model="selected" @click="print" />
+              <input 
+                type="checkbox" 
+                :id="'optionCheck_' + i.boardId" 
+                :value="i" 
+                v-model="optionSelected" 
+                @click="optionPrint" />
             </td>
             <!-- <td>인덱스 {{a}}--{{i}}</td> -->
             <td class="menuoption_data">
@@ -213,7 +218,7 @@ export default {
       active: false,
       searchList: "",
       search: "",
-      allChecked: false,
+      optionAllChecked: false,
     };
   },
   methods: {
@@ -226,23 +231,23 @@ export default {
     prevPage() {
       this.pageNum -= 1;
     },
-    checkedAll(checked) {
-      this.allChecked = checked;
+    optionCheckedAll(checked) {
+      this.optionSelected = checked;
     },
     selected() {
       for (let i in this.boardList) {
-        if (!this.boardList[i].selected) {
-          this.allChecked = false;
+        if (!this.boardList[i].optionSelected) {
+          this.optionCheckedAll = false;
           return;
         } else {
-          this.allChecked = true;
+          this.optionCheckedAll = true;
         }
       }
     },
     getSelected() {
       let boardIds = [];
       for (let i in this.cgData) {
-        if (this.cgData[i].selected) {
+        if (this.cgData[i].optionSelected) {
           boardIds.push(this.cgData[i].boardId);
         }
       }

@@ -7,8 +7,8 @@
           <input type="checkbox"
                  class="menuedit_check"
                    id="all-check"
-                   v-model="allChecked"
-                   @click="checkedAll($event.target.checked)"                 
+                   v-model="allCheckedMenus"
+                   @click="checkedAllMenu($event.target.checked)"                 
           >
           전체선택
         </label>
@@ -60,10 +60,10 @@
           <td v-for="menuname in coffees" :key="menuname"></td>
           <td scope="row" class="cate_check_box">
             <input type="checkbox"
-                   :id="'check_' + i.boardId"
+                   :id="'menuCheck_' + i.menuId"
                    :value="i"
-                   v-model="selected"
-                   @click="print"
+                   v-model="menuSelected"
+                   @click="menuPrint"
             >
           </td>
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
@@ -126,7 +126,7 @@ export default {
           coffee: require('../../assets/coffee.jpeg')
         }
       ],
-      allChecked: false,
+      allCheckedMenus: false,
 
     }
   },
@@ -149,13 +149,13 @@ export default {
     prevPage () {
       this.pageNum -= 1
     },
-    checkedAll (checked) {
-      this.allChecked = checked
+    checkedAllMenu (checked) {
+      this.menuSelected = checked
 
     },
-    selected () {
+    menuSelected () {
       for (let i in this.boardList) {
-        if (!this.boardList[i].selected) {
+        if (!this.boardList[i].menuSelected) {
           this.allChecked = false
           return
         } else {
@@ -166,7 +166,7 @@ export default {
     getSelected () {
       let boardIds = []
       for (let i in this.cgData) {
-        if (this.cgData[i].selected) {
+        if (this.cgData[i].menuSelected) {
           boardIds.push(this.cgData[i].boardId)
         }
       }

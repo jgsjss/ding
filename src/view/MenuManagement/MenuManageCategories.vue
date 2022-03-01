@@ -4,9 +4,11 @@
     <form class="category_wrap">
       <div class="category_left">
         <label class="cate_label">
-          <input type="checkbox"
-                 class="cate_check"
-          >
+            <input type="checkbox"
+                   id="all-check"
+                   v-model="allChecked"
+                   @click="checkedAll($event.target.checked)"
+            />
           전체선택
         </label>
         <label class="cate_label">
@@ -88,8 +90,6 @@
                   <input type="text" class="category_add_input form-control"
                          placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">
                 </label>
-
-
               </form>
             </div>
           </div> -->
@@ -104,8 +104,6 @@
 <!--                  <input type="text" class="category_add_input form-control"-->
 <!--                         placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">-->
 <!--                </label>-->
-
-
 <!--              </form>-->
 <!--            </div>-->
 <!--          </div>-->
@@ -127,11 +125,7 @@
         <thead class="category_thead">
         <tr class="cate_title">
           <th scope="col">
-            <input type="checkbox"
-                   id="all-check"
-                   v-model="allChecked"
-                   @click="checkedAll($event.target.checked)"
-            />
+
           </th>
           <th scope="col" class="cate_col">카테고리명</th>
           <th scope="col" class="cate_col">연결 된 메뉴</th>
@@ -245,7 +239,7 @@ export default {
       this.getCategories(this.pageNum)
     },
     checkedAll (checked) {
-      this.allChecked = checked
+      this.selected = checked
 
     },
     selected () {

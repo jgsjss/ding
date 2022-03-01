@@ -39,9 +39,9 @@
       <!--카테고리설정 및 옵션설정 창-->
       <div class="menuadd_btn_wrap">
         <label class="menuadd_label">카테고리
-          <button type="button" class="menuadd_edit_btn" data-bs-toggle="collapse" data-bs-target="#category_option" aria-expanded="false" aria-controls="category_option">카테고리설정</button>
+          <button type="button" class="menuadd_edit_btn" @click="categoryAdd=!categoryAdd">카테고리설정</button>
           <div class="category_option_bind">{{}}전체(기본카테고리)</div>
-          <div class="collapse category_option_wrap" id="category_option">
+          <div class="category_option_wrap" id="category_option" v-show="categoryAdd">
             <div class="card card-body">
               <div class="category_option_add_wrap">
                 <div class="category_option_add_left">
@@ -151,6 +151,7 @@ export default {
           { name: '추가 옵션', id: 4 },
         ],
         dragging: false,
+        categoryAdd:false,
       }
     },
     methods: {
