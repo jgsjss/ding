@@ -111,14 +111,13 @@
                   <input
                       type="text"
                       id="shop_one"
-                      @change="nullCheck"
+
                       class="int"
                       maxlength="3"
                       title="사업자처음3자리"
                       v-model="bizNum1"
                       oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                   />
-                  <span class="error_next_box1" id="manNumMsg" style aria-live="assertive">필수 정보 입니다.</span>
                 </span>
               </div>
               <!-- shop_num two-->
@@ -127,7 +126,7 @@
                   <input
                       type="text"
                       id="shop_two"
-                      @change="nullCheck"
+
                       class="int"
                       maxlength="2"
                       title="사업자중간2자리"
@@ -141,7 +140,7 @@
                 <span class="box">
                   <input
                       type="text"
-                      @change="bizNumConcat, nullCheck"
+                      @change="bizNumConcat"
                       id="shop_three"
                       class="int"
                       maxlength="5"
@@ -163,7 +162,7 @@
                 </label>
                 <input
                     ref="image"
-                    id="input"
+                    id="inputs"
                     type="file"
                     name="image"
                     accept=".png"
@@ -177,7 +176,7 @@
               <button type="button" id="btnJoin" @click="fire">
                 <span>사진보내기</span>
               </button>
-              <span class="error_next_box" id="ptcheck" style aria-live="assertive" >필수 정보 입니다.</span>               
+              <span class="error_next_box" id="ptcheck" style aria-live="assertive" >사업자등록증을 첨부하세요.</span>
             </div>
 
             <div class="btn_area">
@@ -211,6 +210,7 @@
 import router from '../../router'
 import axios from 'axios'
 import store from '../../store/index.js'
+const sweet = require("sweetalert2");
 
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
@@ -263,15 +263,12 @@ export default {
         return false;
       }
     },
-
     nullCheck(){
       if(!this.isEmpty(this.manageName)&&
           !this.isEmpty(this.secondNum)&&
           !this.isEmpty(this.thirdNum)&&
-          !this.isEmpty(this.mgEmail1)&&
-          !this.isEmpty(this.bizNum1)&&
-          !this.isEmpty(this.bizNum2)&&
-          !this.isEmpty(this.bizNum3))
+          !this.isEmpty(this.mgEmail1)
+          )
       {
         return this.$store.state.signupStore.isNull = true
 
@@ -286,10 +283,8 @@ export default {
       let form = new FormData()
       let image = this.$refs['image'].files[0]
 
-
       form.append('image', image)
       // form.append('biznum',this.bizNum)
-
       axios
           .post('/api/upload', form, {
             headers: {
@@ -304,7 +299,7 @@ export default {
           .catch((err) => console.log(err))
     },
     errorCh() {
-      let manId = document.getElementById('name3').value 
+      let manId = document.getElementById('name3').value
       if ( manId == "") {
             document.getElementById("manMsg").style.display = 'block';
             return false
@@ -315,7 +310,7 @@ export default {
     },
 
     errorCh1() {
-        let manEm = document.getElementById('sub_email').value 
+        let manEm = document.getElementById('sub_email').value
 
          if ( manEm == "") {
             document.getElementById("manEmMsg").style.display = 'block';
@@ -323,7 +318,7 @@ export default {
         }else if( manEm != ""){
           document.getElementById("manEmMsg").style.display = 'none';
           return false
-        }  
+        }
     },
 
     signup () {
@@ -384,7 +379,6 @@ export default {
             })
             router.back()
           }
-
         }).catch((err) => {
           console.log(err)
         })
@@ -394,23 +388,19 @@ export default {
  
     //sweetalert2 메소드드
     fire () {
-      var fileCheck = document.getElementById('input').value
+      var fileCheck = document.getElementById('inputs').value
       let fileVal = this.$refs['image'].value
       fileVal = fileVal.slice(fileVal.indexOf(".") + 1).toLowerCase();
       console.log(fileVal)
-      if ( fileCheck == "") {
+      console.log(fileCheck)
+      if ( fileCheck == "" || fileCheck == null) {
             document.getElementById("ptcheck").style.display = 'block';
-            return false
         }else if( fileCheck != ""){
           document.getElementById("ptcheck").style.display = 'none';
-          return false
-        }  
-      if (!fileCheck) {
-        alert('파일첨부해주세요')
-        return false
-      }else if(fileVal != 'png'){
+        }
+       if(fileVal != 'png' || fileVal == null){
         alert('확장자 png 파일만 첨부 가능합니다.')
-        return false
+         return false
       }
       this.bizNumConcat()
       this.$swal.fire({
@@ -442,15 +432,15 @@ export default {
       this.mgPhNum = phoneNum.concat(this.firstNum, this.secondNum, this.thirdNum)
       console.log(this.mgPhNum)
 
-      let manPh = document.getElementById('dd').value 
-
-       if ( manPh == "") {
-            document.getElementById("manPhMsg").style.display = 'block';
-            return false
-        }else if( manPh != ""){
-          document.getElementById("manPhMsg").style.display = 'none';
-          return false
-        }
+      // let manPh = document.getElementById('dd').value
+      //
+      //  if ( manPh == "") {
+      //       document.getElementById("manPhMsg").style.display = 'block';
+      //       return false
+      //   }else if( manPh != ""){
+      //     document.getElementById("manPhMsg").style.display = 'none';
+      //     return false
+      //   }
 
     },
     bizNumConcat () {
@@ -458,14 +448,14 @@ export default {
       this.bizNum = sumBizNum.concat(this.bizNum1, this.bizNum2, this.bizNum3)
       console.log(this.bizNum)
 
-      let manNum = document.getElementById('shop_three').value 
-       if ( manNum == "") {
-            document.getElementById("manNumMsg").style.display = 'block';
-            return false
-        }else if( manNum != ""){
-          document.getElementById("manNumMsg").style.display = 'none';
-          return false
-        }
+      // let manNum = document.getElementById('shop_three').value
+      //  if ( manNum == "") {
+      //       document.getElementById("manNumMsg").style.display = 'block';
+      //       return false
+      //   }else if( manNum != ""){
+      //     document.getElementById("manNumMsg").style.display = 'none';
+      //     return false
+      //   }
     },
     emailConcat(){
       let email = ''
