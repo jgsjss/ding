@@ -361,7 +361,6 @@ export default {
           },
         }).then(res => {
           console.log(res)
-          if (res.data == 1) {
             this.$swal.fire({
               icon: 'success',
               title: '회원가입 신청이 완료되었습니다.',
@@ -369,18 +368,16 @@ export default {
               showConfirmButton: false,
               timer: 2000
             })
-          } else {
-            this.$swal.fire({
-              icon: 'warning',
-              title: '회원 가입 신청 오류!',
-              text: '입력하신 회원정보를 확인하세요.',
-              confirmButtonColor: '#3085d6',
-              confirmButtonText: '확인',
-            })
-            router.back()
-          }
+
         }).catch((err) => {
           console.log(err)
+          this.$swal.fire({
+            icon: 'warning',
+            title: '회원 가입 신청 오류!',
+            text: '입력하신 회원정보를 확인하세요.',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: '확인',
+          })
         })
       }
 
