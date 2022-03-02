@@ -65,7 +65,7 @@
                          v-model.trim="thirdNum"
 
                          oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
-                         />
+                  />
                 </span>
               </div>
               <span class="error_next_box"></span>
@@ -176,7 +176,7 @@
               <button type="button" id="btnJoin" @click="fire">
                 <span>사진보내기</span>
               </button>
-              <span class="error_next_box" id="ptcheck" style aria-live="assertive" >사업자등록증을 첨부하세요.</span>
+              <span class="error_next_box" id="ptcheck" style aria-live="assertive">사업자등록증을 첨부하세요.</span>
             </div>
 
             <div class="btn_area">
@@ -210,11 +210,11 @@
 import router from '../../router'
 import axios from 'axios'
 import store from '../../store/index.js'
-const sweet = require("sweetalert2");
 
-import VueSweetalert2 from 'vue-sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
+const sweet = require('sweetalert2')
 
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 export default {
   data () {
@@ -233,7 +233,7 @@ export default {
       //관리자메일앞자리
       mgEmail1: '',
       //관리자메일 뒷자리
-      mgEmail2:'선택',
+      mgEmail2: '선택',
       //메일 합 주소
       mgEmail: '',
       //사업자번호
@@ -256,23 +256,22 @@ export default {
     //   }
     // },
     //null 체크함수
-    isEmpty(data) {
-      if(data=="" || data == null || data == undefined) {
-        return true;
-      }else {
-        return false;
+    isEmpty (data) {
+      if (data == '' || data == null || data == undefined) {
+        return true
+      } else {
+        return false
       }
     },
-    nullCheck(){
-      if(!this.isEmpty(this.manageName)&&
-          !this.isEmpty(this.secondNum)&&
-          !this.isEmpty(this.thirdNum)&&
+    nullCheck () {
+      if (!this.isEmpty(this.manageName) &&
+          !this.isEmpty(this.secondNum) &&
+          !this.isEmpty(this.thirdNum) &&
           !this.isEmpty(this.mgEmail1)
-          )
-      {
+      ) {
         return this.$store.state.signupStore.isNull = true
 
-      }else{
+      } else {
         return this.$store.state.signupStore.isNull = false
       }
     },
@@ -298,47 +297,45 @@ export default {
           })
           .catch((err) => console.log(err))
     },
-    errorCh() {
+    errorCh () {
       let manId = document.getElementById('name3').value
-      if ( manId == "") {
-            document.getElementById("manMsg").style.display = 'block';
-            return false
-        }else if( manId != ""){
-          document.getElementById("manMsg").style.display = 'none';
-          return false
-        }
+      if (manId == '') {
+        document.getElementById('manMsg').style.display = 'block'
+        return false
+      } else if (manId != '') {
+        document.getElementById('manMsg').style.display = 'none'
+        return false
+      }
     },
 
-    errorCh1() {
-        let manEm = document.getElementById('sub_email').value
+    errorCh1 () {
+      let manEm = document.getElementById('sub_email').value
 
-         if ( manEm == "") {
-            document.getElementById("manEmMsg").style.display = 'block';
-            return false
-        }else if( manEm != ""){
-          document.getElementById("manEmMsg").style.display = 'none';
-          return false
-        }
+      if (manEm == '') {
+        document.getElementById('manEmMsg').style.display = 'block'
+        return false
+      } else if (manEm != '') {
+        document.getElementById('manEmMsg').style.display = 'none'
+        return false
+      }
     },
 
     signup () {
       this.nullCheck()
       let nullCk = this.$store.state.signupStore.isNull
-      console.log("널체크",nullCk)
-      console.log("매니저네임",this.manageName)
-      console.log("세컨넘",this.secondNum)
-      console.log("서드넘",this.thirdNum)
-      console.log("이메일1",this.mgEmail1)
-      console.log("비즈넘1",this.bizNum1)
-      console.log("비즈넘2",this.bizNum2)
-      console.log("비즈넘3",this.bizNum3)
+      console.log('널체크', nullCk)
+      console.log('매니저네임', this.manageName)
+      console.log('세컨넘', this.secondNum)
+      console.log('서드넘', this.thirdNum)
+      console.log('이메일1', this.mgEmail1)
+      console.log('비즈넘1', this.bizNum1)
+      console.log('비즈넘2', this.bizNum2)
+      console.log('비즈넘3', this.bizNum3)
 
-
-      if(!nullCk){
-        this.$swal("필수 정보들을 입력하세요.")
-        return false;
-      }
-      else{
+      if (!nullCk) {
+        this.$swal('필수 정보들을 입력하세요.')
+        return false
+      } else {
         axios({
           method: 'post',
           url: '/api/signup',
@@ -353,14 +350,15 @@ export default {
             bizZip: store.state.signupStore.bizZip,
             managename: this.manageName,
             mgphnum: this.mgPhNum,
-            mgMail : this.mgEmail,
+            mgMail: this.mgEmail,
             selected: store.state.signupStore.selected.length,
             shopName: store.state.signupStore.shopName,
             shopPhNum: store.state.signupStore.shopPhNum,
             etc: store.state.signupStore.etc
           },
         }).then(res => {
-          console.log(res)
+          console.log('res.result : ', res.data.result)
+          if (res.data.result == 1) {
             this.$swal.fire({
               icon: 'success',
               title: '회원가입 신청이 완료되었습니다.',
@@ -368,7 +366,7 @@ export default {
               showConfirmButton: false,
               timer: 2000
             })
-
+          }
         }).catch((err) => {
           console.log(err)
           this.$swal.fire({
@@ -382,22 +380,22 @@ export default {
       }
 
     },
- 
+
     //sweetalert2 메소드드
     fire () {
       var fileCheck = document.getElementById('inputs').value
       let fileVal = this.$refs['image'].value
-      fileVal = fileVal.slice(fileVal.indexOf(".") + 1).toLowerCase();
+      fileVal = fileVal.slice(fileVal.indexOf('.') + 1).toLowerCase()
       console.log(fileVal)
       console.log(fileCheck)
-      if ( fileCheck == "" || fileCheck == null) {
-            document.getElementById("ptcheck").style.display = 'block';
-        }else if( fileCheck != ""){
-          document.getElementById("ptcheck").style.display = 'none';
-        }
-       if(fileVal != 'png' || fileVal == null){
+      if (fileCheck == '' || fileCheck == null) {
+        document.getElementById('ptcheck').style.display = 'block'
+      } else if (fileCheck != '') {
+        document.getElementById('ptcheck').style.display = 'none'
+      }
+      if (fileVal != 'png' || fileVal == null) {
         alert('확장자 png 파일만 첨부 가능합니다.')
-         return false
+        return false
       }
       this.bizNumConcat()
       this.$swal.fire({
@@ -454,7 +452,7 @@ export default {
       //     return false
       //   }
     },
-    emailConcat(){
+    emailConcat () {
       let email = ''
       this.mgEmail = email.concat(this.mgEmail1 + '@' + this.mgEmail2)
       console.log(this.mgEmail)
@@ -478,8 +476,6 @@ export default {
     console.log('사인업3에서 마운티드 : ', store.state.signupStore.bizZip)
     console.log('사인업3에서 마운티드 : ', store.state.signupStore.etc)
   }
-
-
 
 }
 </script>
