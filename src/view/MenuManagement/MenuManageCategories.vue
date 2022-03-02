@@ -4,11 +4,11 @@
     <form class="category_wrap">
       <div class="category_left">
         <label class="cate_label">
-            <input type="checkbox"
-                   id="all-check"
-                   v-model="allChecked"
-                   @click="checkedAll($event.target.checked)"
-            />
+          <input type="checkbox"
+                 id="all-check"
+                 v-model="allChecked"
+                 @click="checkedAll($event.target.checked)"
+          />
           전체선택
         </label>
         <label class="cate_label">
@@ -49,31 +49,31 @@
                          placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">
                 </label>
                 <div class="category_add_label_wrap">
-                        카테고리공개
+                  카테고리공개
                   <label class="category_add_label">
-                    <input type="radio" 
-                    name="category_radio" 
-                    @click="statusCheck" 
-                    value="open"
-                    class="category_add_radio"/>&nbsp공개&nbsp
-                    </label>
+                    <input type="radio"
+                           name="category_radio"
+                           @click="statusCheck"
+                           value="open"
+                           class="category_add_radio"/>&nbsp공개&nbsp
+                  </label>
+                  <label class="category_add_label">
+                    <input type="radio"
+                           name="category_radio"
+                           @click="statusCheck"
+                           value="hidden"
+                           class="category_add_radio"/>&nbsp숨김(노출 안됨)
+                  </label>
+                  <div class="category_add_connect_box">
                     <label class="category_add_label">
-                    <input type="radio" 
-                    name="category_radio" 
-                    @click="statusCheck"
-                    value="hidden" 
-                    class="category_add_radio"/>&nbsp숨김(노출 안됨)
+                      연결메뉴(총 33개)
                     </label>
-                <div class="category_add_connect_box">
-                <label class="category_add_label">
-                  연결메뉴(총 33개)
-                </label>
-                <p class="category_menu_name">
-                  토피넛 프라푸치노,더블 에스프레소 칩 프라푸치노, 에스프레소 프라푸치노, 말차 프라푸치노
-                  토피넛 프라푸치노,더블 에스프레소 칩 프라푸치노, 에스프레소 프라푸치노, 말차 프라푸치노
-                  토피넛 프라푸치노,더블 에스프레소 칩 프라푸치노, 에스프레소 프라푸치노, 말차 프라푸치노
-                </p>   
-                </div>               
+                    <p class="category_menu_name">
+                      토피넛 프라푸치노,더블 에스프레소 칩 프라푸치노, 에스프레소 프라푸치노, 말차 프라푸치노
+                      토피넛 프라푸치노,더블 에스프레소 칩 프라푸치노, 에스프레소 프라푸치노, 말차 프라푸치노
+                      토피넛 프라푸치노,더블 에스프레소 칩 프라푸치노, 에스프레소 프라푸치노, 말차 프라푸치노
+                    </p>
+                  </div>
                 </div>
               </form>
             </div>
@@ -93,20 +93,20 @@
               </form>
             </div>
           </div> -->
-<!--          <h4 class="category_add_title">카테고리 상세</h4>-->
-<!--          <div class="offcanvas-body category_add_body01">-->
-<!--            <div>-->
-<!--              <form class="row">-->
-<!--                <label for="category_add_label" class="category_add_label">* 카테고리명-->
-<!--                  <input type="text" class="category_add_input form-control" placeholder="예) 딩동아메리카노">-->
-<!--                </label>-->
-<!--                <label for="category_add_label" class="category_add_label">설명-->
-<!--                  <input type="text" class="category_add_input form-control"-->
-<!--                         placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">-->
-<!--                </label>-->
-<!--              </form>-->
-<!--            </div>-->
-<!--          </div>-->
+          <!--          <h4 class="category_add_title">카테고리 상세</h4>-->
+          <!--          <div class="offcanvas-body category_add_body01">-->
+          <!--            <div>-->
+          <!--              <form class="row">-->
+          <!--                <label for="category_add_label" class="category_add_label">* 카테고리명-->
+          <!--                  <input type="text" class="category_add_input form-control" placeholder="예) 딩동아메리카노">-->
+          <!--                </label>-->
+          <!--                <label for="category_add_label" class="category_add_label">설명-->
+          <!--                  <input type="text" class="category_add_input form-control"-->
+          <!--                         placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">-->
+          <!--                </label>-->
+          <!--              </form>-->
+          <!--            </div>-->
+          <!--          </div>-->
           <div class="category_add_btn_wrap">
             <button type="button" @click="addCategory" class="category_add_btn">저장</button>
           </div>
@@ -168,15 +168,15 @@
       <div class="cate_add_wrap">
         <button type="button" class="cate_add_btn">저장</button>
       </div>
-            <div class="btn-cover">
-             <button :disabled="pageNum === 1" @click="prevPage" class="page-btn">
-               <i class="xi-angle-left"></i>
-             </button>
-             <span class="page-count">{{ pageNum }} / {{ pageCount }} </span>
-             <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
-               <i class="xi-angle-right"></i>
-             </button>
-          </div>
+      <div class="btn-cover">
+        <button :disabled="pageNum === 1" @click="prevPage" class="page-btn">
+          <i class="xi-angle-left"></i>
+        </button>
+        <span class="page-count">{{ pageNum }} / {{ pageCount }} </span>
+        <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
+          <i class="xi-angle-right"></i>
+        </button>
+      </div>
     </div>
 
 
@@ -187,7 +187,8 @@
 // import InfiniteLoading from 'v3-infinite-loading'
 import _ from 'lodash'
 import axios from 'axios'
-const sweet = require("sweetalert2");
+
+const sweet = require('sweetalert2')
 
 export default {
   data () {
@@ -196,7 +197,7 @@ export default {
       cgData: [],
       allChecked: false,
       isUserRole: false,
-      totalPage: '',
+      totalPage: Number,
       dataPerPage: '',
       pageCount: 10,
       currentPage: 1,
@@ -206,13 +207,11 @@ export default {
       status: 'open',
     }
   },
-  components: {
-
-  },
+  components: {},
   methods: {
     //카테고리추가 숨김, 해제 체크
-    statusCheck(){
-      let selected = document.querySelector("input[name='category_radio']:checked").value
+    statusCheck () {
+      let selected = document.querySelector('input[name=\'category_radio\']:checked').value
       this.status = selected
       console.log(this.status)
     },
@@ -266,8 +265,13 @@ export default {
           curpage: curpage
         }
       }).then(res => {
-        // console.log(res)
-        this.cgData = res.data
+        console.log('res.data.articles : ', res.data)
+        // 백엔드에서 날라오는 값 res.data=>articles[rows, ActualArticleLength]
+
+        //게시물 총 갯수
+        this.totalPage = res.data[1]
+        //게시물 정보들
+        this.cgData = res.data[0]
         this.totalPage = this.cgData.length
         console.log('cgData: ', this.cgData)
         return res.data
@@ -304,16 +308,16 @@ export default {
       })
       console.log(myctnumgroup)
     },
-    addCategory(){
-      axios.post('/apimenu/addcategory',{
-          ctname: this.ctname,
-          description: this.description,
-          status: this.status,
-      } )
-      .then(res=>{
-        console.log(res.data)
-        sweet.fire("카테고리 추가 완료")
-      }).catch(err =>{
+    addCategory () {
+      axios.post('/apimenu/addcategory', {
+        ctname: this.ctname,
+        description: this.description,
+        status: this.status,
+      })
+          .then(res => {
+            console.log(res.data)
+            sweet.fire('카테고리 추가 완료')
+          }).catch(err => {
 
         console.log(err)
       })
