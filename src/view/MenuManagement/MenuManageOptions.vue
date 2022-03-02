@@ -162,8 +162,7 @@
           <button
             type="button"
             class="btn-close text-reset"
-            data-bs-dismiss="menuoption_
-correction"
+            data-bs-dismiss="menuoption_correction"
             aria-label="Close"
           ></button>
         </div>

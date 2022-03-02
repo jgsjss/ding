@@ -13,9 +13,9 @@
       </div>
 
       <div class="m_list_wrap2">
-        <div class="month_text_right">{{}}3,005,000원</div>
-        <div class="month_text_right">{{}}832건</div>
-        <div class="month_text_right"> {{}}1452개</div>
+        <div class="month_text_right">{{ SalesPrice }}원</div>
+        <div class="month_text_right">{{ SalesOrder }}건</div>
+        <div class="month_text_right"> {{ SalesNumber }}개</div>
       </div>
     </div>
     </div>
@@ -45,7 +45,7 @@
             <td>{{ $store.state.SalesData[i].watingnum }}</td>
             <td>{{ $store.state.SalesData[i].division }} </td>
             <td>{{ $store.state.SalesData[i].content }}</td>
-            <td>{{ $store.state.SalesData[i].price }}</td>
+            <td>{{ $store.state.SalesData[i].price }}원</td>
             <td>{{ $store.state.SalesData[i].etc }}</td>
           </tr>
           </tbody>
@@ -67,6 +67,8 @@
 </template>
 <script>
 import { ref, onMounted } from 'vue';
+import { forEach } from 'lodash'
+import _ from 'lodash'
 
   export default {
   components:{
@@ -77,6 +79,9 @@ import { ref, onMounted } from 'vue';
       step: 0,
       pageNum: 0,
       selected:null,
+      SalesPrice:0,
+      SalesOrder:0,
+      SalesNumber:0,
     }
   },
   methods: {
@@ -85,6 +90,29 @@ import { ref, onMounted } from 'vue';
       },
       prevPage() {
         this.pageNum -= 1;
+      },
+      //총주문건수
+      calcSalesPrice(object) {
+        let sum = 0
+        _.forEach(_.map(object, 'price'), function (val, key) {
+          sum += val
+        })
+        this.SalesPrice = sum
+      },
+      calcTotalOrder (object) {
+        let sum = 0
+        _.forEach(_.map(object, 'watingnum'), function(val, key) {
+          sum += + 1
+        })
+        this.SalesOrder = sum
+        // console.log(sum)
+      },
+      TotalOrderNum (object) {
+        let sum = 0
+        _.forEach(_.map(object, 'content'), function(val, key) {
+          sum += + 1
+        })
+        this.SalesNumber = sum
       },
     },
     setup() {
@@ -100,7 +128,12 @@ import { ref, onMounted } from 'vue';
         return {
             date,
         }
-    }  
+    },
+    created () {
+      this.calcSalesPrice(this.$store.state.SalesData)
+      this.calcTotalOrder(this.$store.state.SalesData)
+      this.TotalOrderNum(this.$store.state.SalesData)
+  }
 }
 
 

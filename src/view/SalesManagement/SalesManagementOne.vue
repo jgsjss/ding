@@ -15,7 +15,7 @@
           <div class="m_list_wrap2">
             <div class="month_text_right">{{ totalPrice }}원</div>
             <div class="month_text_right">{{ totalOrder }}건</div>
-            <div class="month_text_right"> {{}}1452개</div>
+            <div class="month_text_right">{{ totalMenu }}건</div>
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
             <td class="sales_data">{{ $store.state.SalesData[i].watingnum }}</td>
             <td class="sales_data">{{ $store.state.SalesData[i].division }}</td>
             <td class="sales_data">{{ $store.state.SalesData[i].content }}</td>
-            <td class="sales_data">{{ $store.state.SalesData[i].price }}</td>
+            <td class="sales_data">{{ $store.state.SalesData[i].price }}원</td>
             <td class="sales_data">{{ $store.state.SalesData[i].etc }}</td>
           </tr>
           </tbody>
@@ -80,7 +80,7 @@ export default {
       pageNum: 0,
       totalPrice: 0,
       totalOrder: 0,
-      // selected:'date-asc'
+      totalMenu:0,
     }
   },
   methods: {
@@ -109,26 +109,22 @@ export default {
           sum += + 1
         })
         this.totalOrder = sum
-        console.log(sum)
-            
-      }
-      //----------테스트-----------
-        // TotalMenuOrder(object) {
-        //   const arr = [];
-
-        //   const result = arr.reduce(function add(sum, currValue) {
-        //     return sum + currValue;
-        //   }, 0);
-        //   console.log(result)
-        //   this.totalOrder = result
-
-        // //   const arr = [object]
-        // //   let count = arr .reduce((cnt, element) => cnt + ('a' === element), 0)          
-        // //   console.log(arr)
-        // // this.totalOrder = count
-        // // console.log(count)
-
-        // }
+        // console.log(sum)
+      },
+      TotalMenuNum (object) {
+        let sum = 0
+        _.forEach(_.map(object, 'content'), function(val, key) {
+          
+          sum += +1
+        })
+        this.totalMenu = sum
+      }, 
+      onlyNumber: function (str) {
+        let answer;
+        str = str.replace(/[^0-9]/g, '');
+        answer = parseInt(str);
+        return answer;
+      },
   },
   setup () {
     const month = ref({
@@ -147,6 +143,7 @@ export default {
   created () {
     this.calcTotalPrice(this.$store.state.SalesData)
     this.TotalMenuOrder(this.$store.state.SalesData)
+    this.TotalMenuNum(this.$store.state.SalesData)
   }
 
 }
