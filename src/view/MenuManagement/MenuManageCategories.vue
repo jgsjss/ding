@@ -173,7 +173,7 @@
           <i class="xi-angle-left"></i>
         </button>
         <span class="page-count">{{ pageNum }} / {{ totalPage }} </span>
-        <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
+        <button :disabled="pageNum >= totalPage" @click="nextPage" class="page-btn">
           <i class="xi-angle-right"></i>
         </button>
       </div>
