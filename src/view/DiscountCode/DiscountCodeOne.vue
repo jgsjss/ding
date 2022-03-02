@@ -67,8 +67,8 @@
           <th scope="col">
             <input type="checkbox"
                    id="all-check"
-                   v-model="allChecked"
-                   @click="checkedAll($event.target.checked)"
+                   v-model="proceedingAllChecked"
+                   @click="proceedingCheckedAll($event.target.checked)"
             />
           </th>
           <th scope="col" class="proceeding_col">할인코드</th>
@@ -84,14 +84,16 @@
         <tr v-for="(a, i) in $store.state.DiscountCodeData" :key="i">
           <td scope="row" class="proceeding_check_box">
             <input type="checkbox"
-                   :id="'check_' + i.boardId"
+                   :id="'proceedCheck_' + i.proceedId"
                    :value="i"
-                   v-model="selected"
-                   @click="print"
+                   v-model="proceedSelected"
+                   @click="proceedPrint"
             >
           </td>
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
-          <td class="proceeding_data" @click="DiscountCodeInfo=!DiscountCodeInfo">
+          <td class="proceeding_data" 
+          @click="DiscountCodeInfo=!DiscountCodeInfo"
+          >
             {{ $store.state.DiscountCodeData[i].codenum }}</td>
           <td class="proceeding_data ">{{ $store.state.DiscountCodeData[i].date  }}</td>
           <td class="proceeding_data">{{ $store.state.DiscountCodeData[i].codename  }}</td>
@@ -131,9 +133,9 @@ export default {
     return {
       discountOpen:false,
       DiscountCodeInfo:false,
-      selected: [],
+      proceedSelected: [],
       date: '',
-      allChecked: false,
+      proceedingAllChecked: false,
     }
   },
   methods: {
@@ -151,7 +153,27 @@ importExcel(event) {
     };
     reader.readAsBinaryString(file);
 },
-
+    proceedingCheckedAll (checked) {
+      this.proceedSelected = checked
+    },
+    proceedSelected () {
+      for (let i in this.boardList) {
+        if (!this.boardList[i].proceedSelected) {
+          this.proceedingAllChecked = false
+          return
+        } else {
+          this.proceedingAllChecked = true
+        }
+      }
+    },
+    // getSoldSelected () {
+    //   let proceedIds = []
+    //   for (let i in this.DiscountCodeData) {
+    //     if (this.DiscountCodeData[i].soldSelected) {
+    //       proceedIds.push(this.DiscountCodeData[i].proceedId)
+    //     }
+    //   }
+    // },
   }
 }
 </script>
