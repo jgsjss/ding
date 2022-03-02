@@ -172,7 +172,7 @@
         <button :disabled="pageNum === 1" @click="prevPage" class="page-btn">
           <i class="xi-angle-left"></i>
         </button>
-        <span class="page-count">{{ pageNum }} / {{ pageCount }} </span>
+        <span class="page-count">{{ pageNum }} / {{ totalPage }} </span>
         <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
           <i class="xi-angle-right"></i>
         </button>
@@ -272,7 +272,7 @@ export default {
         this.totalPage = res.data[1]
         //게시물 정보들
         this.cgData = res.data[0]
-        this.totalPage = this.cgData.length
+        // this.totalPage = this.cgData.length
         console.log('cgData: ', this.cgData)
         return res.data
       }).catch((err) => {
