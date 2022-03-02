@@ -34,22 +34,26 @@
   <!--  <router-link to="/modifyuser">-->
   <!--    <button type="button">정보변경</button>-->
   <!--  </router-link>-->
-<!--  <modifyuser v-bind="$props"></modifyuser>-->
-    <router-view
-        :test="test"
-    ></router-view>
+  <!--  <modifyuser v-bind="$props"></modifyuser>-->
+  <router-view
+      :test="test"
+  ></router-view>
+<!--  <modify-user v-bind="$props"></modify-user>-->
 </template>
 
 <script>
 import axios from 'axios'
 import modifyuser from './modifyUser'
+import ModifyUser from './modifyUser'
 
 export default {
   name: 'dbshow',
-  components: { modifyuser },
+  components: {
+    ModifyUser
+  },
   data () {
     return {
-      test:"asd",
+      test: 'asd',
       resultset: []
     }
   },
