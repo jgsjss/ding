@@ -68,7 +68,7 @@
             <!-- BIRTH_MM -->
             <div id="num_first">
                                 <span className="box">
-                                    <select id="number" className="sel" @change="errorCh" v-model.trim="firstNum" ref="firstNum">
+                                    <select id="number" className="sel" @change="errorSl" v-model.trim="firstNum" ref="firstNum">
                                         <option>선택</option>
                                         <option value="010">010</option>
                                         <option value="011">011</option>
@@ -254,8 +254,18 @@ export default {
 
        
        },
+  /*  errorSl(){
+    let Nsel = document.getElementsById('number').value
 
-      
+    if( Nsel.value === "") {
+      document.getElementsById('phNum').style.display = 'block';
+      return false
+    }else if(Nsel.value !== ""){
+      document.getElementById('phNum').style.display = 'none';
+      return false
+    } 
+  },
+   */    
 
      errorSh2 () {
         let ofnum = document.getElementById('mobile2').value 
@@ -354,11 +364,10 @@ export default {
            !this.isEmpty(this.address) &&
            !this.isEmpty(this.extraAddress) &&
            !this.isEmpty(this.postcode)) {
-             return false
+             return this.$store.state.signupStore.isNull = true
       } else {
          this.$swal("필수 정보들을 입력하세요");
-         router.back();
-         return false
+         return this.$store.state.signupStore.isNull = false
       }
     },
     insertDTO () {
@@ -380,11 +389,12 @@ export default {
       console.log(this.userPhNum)
       //번호 null 체크 화면 보여주기
        let secnum = document.getElementById('second2').value
+        let nsel = document.getElementsByClassName('sel').value
         let dd = document.getElementById('dd2').value 
-        if ( secnum  == "") {
+        if ( secnum  == "" && dd == "" && nsel =="") {
             document.getElementById("phNum").style.display = 'block';
             return false
-        }else if( secnum != ""){
+        }else if( secnum != "" && dd != "" && nsel !=""){
           document.getElementById("phNum").style.display = 'none';
           return false
         }

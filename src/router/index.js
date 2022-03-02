@@ -141,6 +141,12 @@ const routes = [
     component: SignUpThree,
     name: "signup3",
     props: true,
+    beforeEnter: ()=>{
+      const nullCheck = store.state.signupStore.isNull
+      if(!nullCheck){
+        return "/signuptwo"
+      }
+    },
     // beforeEnter: ()=>{
     //   let check = false
     //   if(!nullCheckSignUp2()){

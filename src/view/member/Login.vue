@@ -55,6 +55,10 @@
   </div>
 </template>
 <script>
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css'
+
+
 export default {
   name: 'Login',
   data(){
@@ -68,11 +72,11 @@ export default {
   methods: {
     doLogin(){
       if(this.userId == ""){
-        alert('아이디를 입력하세요.');
+        this.$swal.fire('아이디를 입력하세요.')
         this.$refs.memberIdInput.focus();
         return;
       } else if(this.userPw == ""){
-        alert('비밀번호를 입력하세요.');
+        this.$swal.fire('비밀번호를 입력하세요.')
         this.$refs.memberPasswordInput.focus();
         return;
       }
