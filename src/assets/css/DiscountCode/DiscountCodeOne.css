@@ -107,7 +107,8 @@
 .proceeding_list_wrap {
     width: 100%;
     padding:10px 0;
-    position:relative
+    position:relative;
+    z-index:-1;
 }
 .proceeding_table {
     width: 88%;
