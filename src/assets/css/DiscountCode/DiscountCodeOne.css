@@ -105,13 +105,12 @@
 }
 /* table */
 .proceeding_list_wrap {
-    width: 100%;
     padding:10px 0;
     position:relative;
-    z-index:-1;
+    overflow: hidden;
 }
 .proceeding_table {
-    width: 88%;
+    width: 100%;
     margin:0 auto;
 }
 .proceeding_head {
