@@ -265,13 +265,14 @@ export default {
           curpage: curpage
         }
       }).then(res => {
-        console.log('res.data.articles : ', res.data)
+        console.log('res.data: ', res.data)
         // 백엔드에서 날라오는 값 res.data=>articles[rows, ActualArticleLength]
 
+
         //게시물 총 갯수
-        this.totalPage = res.data[1]
+        this.totalPage = res.data.length
         //게시물 정보들
-        this.cgData = res.data[0]
+        this.cgData = res.data.rows
         // this.totalPage = this.cgData.length
         console.log('cgData: ', this.cgData)
         return res.data
