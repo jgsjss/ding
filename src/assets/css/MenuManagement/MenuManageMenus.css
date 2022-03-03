@@ -101,7 +101,6 @@
     text-decoration: none;
     color:#997fb5;
     padding:5px 0;
-    border-bottom:1px solid #ddd;
 }
 .coffee_img {
     padding:0 10px;
@@ -109,6 +108,10 @@
 }
 tbody {
         color:#997fb5;
+        text-align: left;
+}
+tr {
+    border-bottom:1px solid #ddd
 }
 .cate_connect_btn {
     background:#e5d4f1;
