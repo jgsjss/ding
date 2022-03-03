@@ -21,8 +21,8 @@
         <input 
             type="checkbox"
             id="all-check" 
-            v-model="allChecked" 
-            @click="checkedAll($event.target.checked)"        
+            v-model="menuconAllChecked" 
+            @click="menuconCheckedAll($event.target.checked)"        
         >
         <label for="menucon_label" class="menucon_label">전체선택</label>
         <button type="button" class="menu_search_btn">연결</button>
@@ -48,10 +48,10 @@
                 <td scope="row">
                     <input 
                         type="checkbox"
-                        :id="'check_' + i.boardId"
+                        :id="'menuconCheck_' + i.boardId"
                         :value="i"
-                        v-model="selected"
-                        @click="print"
+                        v-model="menuconSelected"
+                        @click="menuconPrint"
                     >
                 </td>
                 <td>{{ $store.state.CategoryData[i].catename }}</td>
@@ -76,27 +76,27 @@ export default {
       data() {
       return {
           CategoryData:[],
-          allChecked:false,
+          menuconAllChecked:false,
       }
     },
     methods: {
-        checkedAll(checked) {
-        this.allChecked = checked
+        menuconCheckedAll(checked) {
+        this.menuconSelected = checked
     },
-        selected () {
+        menuconSelected () {
       for (let i in this.boardList) {
-        if(! this.boardList[i].selected) {
-          this.allChecked = false;
+        if(! this.boardList[i].menuconSelected) {
+          this.menuconAllChecked = false;
             return;
               } else {
-                this.allChecked = true;
+                this.menuconAllChecked = true;
               }
             }
         },    
         getSelected() {
         let boardIds = [];
         for (let i in this.CategoryData) {
-            if(this.CategoryData[i].selected) {
+            if(this.CategoryData[i].menuconSelected) {
             boardIds.push(this.CategoryData[i].boardId);
             }
         }

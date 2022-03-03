@@ -1,5 +1,6 @@
 <template>
 <div class="connect_container">
+
     <div class="connect_wrap">
   <div class="connect_left">
       <button type="button" class="connect_title" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -16,7 +17,14 @@
       <p class="connect_text">- 오른쪽의 버튼으로 맨위, 맨아래 이동이 가능합니다.</p>
   </div>
 </div>
-    <draggable class="dragArea list-group w-full" :list="list" @change="log">
+    <draggable 
+      class="dragArea list-group w-full" 
+      :list="list" 
+      @change="log" 
+      animation="200" group="description" 
+      :disabled="false" 
+      v-model="dataList"
+    >
       <div
         class="list-group-item bg-gray-300 m-1 p-3 rounded-md text-center connect_drag_text"
         v-for="element in list"
