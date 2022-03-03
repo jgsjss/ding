@@ -66,7 +66,8 @@
                 <div class="mb-3">
                   <label for="" class="">* 옵션목록 및 추가가격</label>
                   <input type="text" class="form-control mb-2" placeholder="예)순한맛" />
-                  <input type="text" class="form-control" placeholder="예)500원" />
+                  <input type="text" class="form-control" placeholder="예)500원" 
+                  @input="optionPrice" :value="opNumber" maxlength="10"/>
                 </div>
                 <div class="mb-3">
                   <label class="menuoption_form_label">* 선택가능 옵션 수</label>
@@ -218,6 +219,7 @@ export default {
       searchList: "",
       search: "",
       optionAllChecked: false,
+      opNumber: '',
     };
   },
   methods: {
@@ -251,7 +253,10 @@ export default {
         }
       }
     },
-    // getCategories() {
+    optionPrice(event) {
+      this.opNumber = event.target.value;
+    },
+     // getCategories() {
     //   axios
     //     .post("/apimenu/categories")
     //     .then((res) => {
@@ -302,6 +307,20 @@ export default {
     //     }, 500);
     //   }
     // },
+  },
+  watch: {
+    //옵션추가 금액
+    opNumber(val) {
+      const price = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
+
+      //한글, 영문 체크
+      if(price.exec(val)!==null)
+      this.opNumber = val.replace(/[^0-9]/g,'');
+
+      //...만 입력하게 될 경우 체크
+      if(isNaN(parseFloat(val)))
+      this.opNumber = '';
+    },
   },
 
   // mounted() {
