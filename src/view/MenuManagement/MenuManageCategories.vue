@@ -108,7 +108,7 @@
           <!--            </div>-->
           <!--          </div>-->
           <div class="category_add_btn_wrap">
-            <button type="button" @click="addCategory" class="category_add_btn">저장</button>
+            <button type="button" @click="addCategory" class="category_add_btn" :disabled="disabled == 1">저장</button>
           </div>
         </div>
         <select class="hidden_select">
@@ -205,6 +205,7 @@ export default {
       ctname: '',
       description: '',
       status: 'open',
+      disabled:0,
     }
   },
   components: {},
