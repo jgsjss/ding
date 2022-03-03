@@ -54,11 +54,11 @@
                   <div class="category_option_add_btn_wrap">
                     <button type="button" @click="cateConnCheck" class="category_option_add_btn">+카테고리 연결</button>
                   </div>
-                  <button type="button" v-for="(a, i) in $store.state.CategoryOptionData" :key="i"
+                  <div  v-for="(a, i) in $store.state.CategoryOptionData" :key="i"
                           class="category_option_name">
                     {{ $store.state.CategoryOptionData[i].catename }}
                     <p>{{ $store.state.CategoryOptionData[i].menuname }}</p>
-                  </button>
+                  </div>
                   <div class="category_option_add_btn_wrap">
                     <button type="button" class="category_option_add_btn02">저장</button>
                   </div>
@@ -68,11 +68,13 @@
                   <div class="category_option_add_title_wrap">
                     <h4 class="category_option_add_title">카테고리 연결</h4>
                   </div>
-                  <button type="button" v-for="(a, i) in cgData" :key="i"
+                  <div class="category_option_wrapper">
+                  <div  v-for="(a, i) in cgData" :key="i"
                           class="category_option_name">
                     {{ cgData[i].pdcategory }}
                     <p>{{ cgData[i].description }}</p>
-                  </button>
+                  </div>
+                  </div>
                   <div class="category_option_add_btn_wrap">
                     <button type="button" class="category_option_add_btn02">{{}}연결</button>
                   </div>

@@ -199,3 +199,7 @@
     font-size:14px;
     color:#997fb5
 }
+.category_option_wrapper {
+    overflow: scroll;
+    height:400px
+}

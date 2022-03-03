@@ -86,7 +86,6 @@
         
         <select class="hidden_select">
           <option class="hidden_btn">전체/숨김/정상</option>
-          <option class="hidden_btn" value="삭제">삭제</option>
           <option class="hidden_btn" value="숨김">숨김</option>
           <option class="hidden_btn" value="정상">정상</option>
         </select>

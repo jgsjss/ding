@@ -20,6 +20,7 @@
 }
 .menuconnect_drag_text {
     font-size:14px;
+    overflow: scroll;
 }
 .menuconnect_drag_text:before {
     position:absolute;
