@@ -1,6 +1,6 @@
 
 // const target = "http://192.168.0.110:5000";
-const target = "http://localhost:5000";
+const target = "http://192.168.0.110:5000";
 
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
     proxy: {
       "^/api/": {
         target,
-        changeOrigin: true,ㅡㅡ
+        changeOrigin: true,
       },
       "^/member/": {
         target,

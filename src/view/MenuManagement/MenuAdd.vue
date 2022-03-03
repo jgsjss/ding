@@ -52,7 +52,7 @@
                     <p class="category_option_add_text">- 삭제를 누르시면 메뉴와의 연결이 끊어집니다.</p>
                   </div>
                   <div class="category_option_add_btn_wrap">
-                    <button type="button" class="category_option_add_btn">+카테고리 연결</button>
+                    <button type="button" @click="cateConnCheck" class="category_option_add_btn">+카테고리 연결</button>
                   </div>
                   <button type="button" v-for="(a, i) in $store.state.CategoryOptionData" :key="i"
                           class="category_option_name">
@@ -64,17 +64,17 @@
                   </div>
 
                 </div>
-                <div class="category_option_add_right">
+                <div class="category_option_add_right" v-show="cateConnect" >
                   <div class="category_option_add_title_wrap">
                     <h4 class="category_option_add_title">카테고리 연결</h4>
                   </div>
                   <button type="button" v-for="(a, i) in cgData" :key="i"
                           class="category_option_name">
-                    {{ a[i].pdcategory }}
-                    <p>{{ a[i].description }}</p>
+                    {{ cgData[i].pdcategory }}
+                    <p>{{ cgData[i].description }}</p>
                   </button>
                   <div class="category_option_add_btn_wrap">
-                    <button type="button" class="category_option_add_btn02">(2개선택){{}}연결</button>
+                    <button type="button" class="category_option_add_btn02">{{}}연결</button>
                   </div>
                 </div>
                 
@@ -152,6 +152,7 @@ export default {
   },
   data () {
     return {
+      cateConnect: false,
       enabled: true,
       list: [
         {
@@ -178,6 +179,13 @@ export default {
     }
   },
   methods: {
+    cateConnCheck(){
+      if(!this.cateConnect){
+        this.cateConnect = true;
+      }else{
+        this.cateConnect = false;
+      }
+    },
     log (event) {
       console.log(event)
     },
