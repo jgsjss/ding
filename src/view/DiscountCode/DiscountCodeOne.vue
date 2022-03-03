@@ -34,18 +34,21 @@
           <h5 class="proceeding_modal_title">할인코드 추가(개별등록)</h5>
           <p class="proceeding_modal_sub_title">- 할인코드는 발급 후 수정이 불가합니다.</p>
           <p class="proceeding_modal_sub_title">- 기간이 지나거나 사용하면 자동으로 종료처리 됩니다.</p>
-          <form>
-            <label for="" class="proceeding_modal_label form-label"> 할인코드
-              <input type="text" placeholder="9-숫자를 입력해주세요(최대10자리)" class="proceeding_modal_input">
+
+          <form @submit="checkForm" action="/something" method="post" novalidate="true">
+            <label for="codeName" class="proceeding_modal_label form-label"> 할인코드
+              <input type="text" placeholder="9-숫자를 입력해주세요(최대10자리)" maxlength="10" class="proceeding_modal_input" @input="bindNumber" :value="number" >
             </label>
             <label for="" class="proceeding_modal_label">할인코드명
               <input type="text" placeholder="ex) 1주년 기념 스페셜 할인" class="proceeding_modal_input">
             </label>
             <label for="" class="proceeding_modal_label">할인항목
-              <input type="radio" name="proceeding_modal_radio">&nbsp결제금액&nbsp<input type="text" class="proceeding_modal_small_input" placeholder="퍼센트할인">&nbsp%할인
+              <input type="radio" name="proceeding_modal_radio">&nbsp결제금액&nbsp
+              <input type="text" class="proceeding_modal_small_input" placeholder="퍼센트할인" @input="countNumber" :value="cNumber">&nbsp%할인
             </label>
             <label for="" class="proceeding_modal_label">
-              <input type="radio" name="proceeding_modal_radio">&nbsp결제금액&nbsp<input type="text" class="proceeding_modal_small_input" placeholder="금액할인">&nbsp%할인
+              <input type="radio" name="proceeding_modal_radio">&nbsp결제금액&nbsp
+              <input type="text" class="proceeding_modal_small_input" placeholder="금액할인" @input="priceNumber" :value="pNumber">&nbsp%할인
             </label>
             <label for="" class="proceeding_modal_label">사용가능횟수
               <input type="radio" name="proceeding_modal_radio">&nbsp다회(제한없음)
@@ -136,23 +139,28 @@ export default {
       proceedSelected: [],
       date: '',
       proceedingAllChecked: false,
+      number:'',
+      cNumber:'',
+      pNumber:'',
+      error:[],
+      codeName:null,
     }
   },
   methods: {
-importExcel(event) {
-    const file = event.target.files[0];
-    let reader = new FileReader();
-    reader.onload = (e) => {
-        let data = reader.result;
-        // let data = e.target.result;
-        let workbook = XLSX.read(data, {type: 'binary'});
-        workbook.SheetNames.forEach(sheetName => {
-            const roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
-            this.items.push(roa);
-        });
+    importExcel(event) {
+        const file = event.target.files[0];
+        let reader = new FileReader();
+        reader.onload = (e) => {
+            let data = reader.result;
+            // let data = e.target.result;
+            let workbook = XLSX.read(data, {type: 'binary'});
+            workbook.SheetNames.forEach(sheetName => {
+                const roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+                this.items.push(roa);
+            });
     };
     reader.readAsBinaryString(file);
-},
+    },
     proceedingCheckedAll (checked) {
       this.proceedSelected = checked
     },
@@ -166,6 +174,30 @@ importExcel(event) {
         }
       }
     },
+    bindNumber(event) {
+      this.number = event.target.value;
+    },
+    countNumber(event) {
+      this.cNumber = event.target.value;
+    },
+    priceNumber(event) {
+      this.pNumber = event.target.value;
+    },
+    // checkForm(e) {
+    //   e.preventDefault()
+    //   this.errors = [];
+    //   if (!this.codeName) {
+    //     this.errors.push("코드입력은 필수입니다.");
+    //   }
+    //   // if (!this.email) {
+    //   //   this.errors.push("이메일은 필수입니다.");
+    //   // } else if (!this.validEmail(this.email)) {
+    //   //   this.errors.push("이메일 형식을 확인하세요.");
+    //   // }
+    //   if (!this.errors.length) return true;
+    // },
+      
+    },
     // getSoldSelected () {
     //   let proceedIds = []
     //   for (let i in this.DiscountCodeData) {
@@ -174,6 +206,38 @@ importExcel(event) {
     //     }
     //   }
     // },
+
+  watch: {
+    //할인코드 코드추가 input only number
+    number(val) {
+      const reg = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
+
+      //한글, 영문 체크
+      if(reg.exec(val)!==null) this.number = val.replace(/[^0-9]/g,'');
+
+      //...만 입력하게 될 경우 체크
+      if(isNaN(parseFloat(val)))this.number = '';
+    },
+    //할인코드 할인항목 input only number
+    cNumber(val) {
+      const count = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
+
+      //한글, 영문 체크
+      if(count.exec(val)!==null) this.cNumber = val.replace(/[^0-9]/g,'');
+
+      //...만 입력하게 될 경우 체크
+      if(isNaN(parseFloat(val)))this.cNumber = '';
+    },
+    //할인코드 할인금액 input only number
+    pNumber(val) {
+      const price = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
+
+      //한글, 영문 체크
+      if(price.exec(val)!==null) this.pNumber = val.replace(/[^0-9]/g,'');
+
+      //...만 입력하게 될 경우 체크
+      if(isNaN(parseFloat(val)))this.pNumber = '';
+    },
   }
 }
 </script>
