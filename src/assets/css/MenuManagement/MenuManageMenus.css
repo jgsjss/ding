@@ -107,11 +107,13 @@
     width:150px;
 }
 tbody {
-        color:#997fb5;
-        text-align: left;
+    color:#997fb5;
 }
 tr {
     border-bottom:1px solid #ddd
+}
+.asdf {
+    display:block;
 }
 .cate_connect_btn {
     background:#e5d4f1;

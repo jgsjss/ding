@@ -67,10 +67,10 @@
             >
           </td>
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
-           <router-link to="/menumanagement/MenuAddTwo">
+           <router-link to="/menumanagement/MenuAddTwo" class="asdf">
             <td class="edit_data">
               <img src="../../assets/coffee.jpeg" class="coffee_img">
-              {{ $store.state.menueditData[i].menuname }}
+                {{ $store.state.menueditData[i].menuname }}
             </td>
            </router-link>
           <td class="edit_data" title="마우스">{{  $store.state.menueditData[i].price }}</td>
