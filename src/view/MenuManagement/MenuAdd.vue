@@ -11,7 +11,7 @@
             <input type="text" class="menuadd_input form-control" placeholder="예) 딩동아메리카노">
           </label>
           <label class="menuadd_label form-label">* 가격
-            <input type="text" class="menuadd_input form-control">
+            <input type="text" class="menuadd_input form-control" @input="menuaddNumber" :value="menuNumber">
           </label>
           <label class="menuadd_label form-label">* 설명
             <textarea type="text" class="menuadd_input form-control"
@@ -180,6 +180,7 @@ export default {
       dragging: false,
       categoryAdd: false,
       cgData: [],
+      menuNumber:'',
 
     }
   },
@@ -228,11 +229,25 @@ export default {
           .then(res => {
             this.cgData = res.data.rows
           })
+    },
+    menuaddNumber(event) {
+      this.menuNumber = event.target.value;
     }
   },
   beforeMount () {
     this.getCategory()
     console.log(this.cgData)
+  },
+  watch: {
+    menuNumber(val) {
+      const menuadd = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
+
+      //한글, 영문 체크
+      if(menuadd.exec(val)!==null) this.menuNumber = val.replace(/[^0-9]/g,'');
+
+      //...만 입력하게 될 경우 체크
+      if(isNaN(parseFloat(val)))this.menuNumber = '';
+    },
   }
 }
 </script>
