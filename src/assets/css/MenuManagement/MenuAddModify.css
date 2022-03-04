@@ -1,41 +1,41 @@
-.menuaddtwo_container {
+.MenuAddmodify_container {
     width: 100%;
 }
-.menuaddtwo_title_wrap {
+.MenuAddmodify_title_wrap {
     display:flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 30px;
 }
-.menuaddtwo_title {
+.MenuAddmodify_title {
     font-size:24px;
     color:#997fb5;
 }
-.menuaddtwo_close {
+.MenuAddmodify_close {
     font-size:24px;
 }
-.menuaddtwo_box_wrap {
+.MenuAddmodify_box_wrap {
     display:flex;
 }
-.menuaddtwo_wrap {
+.MenuAddmodify_wrap {
     display: block;
     margin:0 auto;
 }
-.menuaddtwo_label {
+.MenuAddmodify_label {
     display: block;
 }
-.menuaddtwo_input {
+.MenuAddmodify_input {
     width:300px;
     margin:0 15px;
 }
-.menuaddtwo_radio {
+.MenuAddmodify_radio {
     padding:0 15px;
 }
-.menuaddtwo_img_input {
+.MenuAddmodify_img_input {
     text-align: center;
     padding:15px 0;
 }
-.menuaddtwo_img_btn {
+.MenuAddmodify_img_btn {
     border: 1px solid #997fb5;
     color: #997fb5;
     border-radius: 10px;
@@ -44,19 +44,19 @@
     margin: 0 15px;
     width: 300px;
 }
-.menuaddtwo_menucondition {
+.MenuAddmodify_menucondition {
     font-size:14px;
     color:#333;
 }
-.menuaddtwo_btn_wrap {
+.MenuAddmodify_btn_wrap {
     margin:0 auto;
 }
-.menuaddtwo_btn_con {
+.MenuAddmodify_btn_con {
     text-align: center;
     margin:0 auto;
     padding:30px 0;
 }
-.menuaddtwo_btn {
+.MenuAddmodify_btn {
     border:1px solid #997fb5;
     color:white;
     border-radius: 5px;
@@ -126,7 +126,7 @@
     display: block;
     text-align: left;
 }
-.menuaddtwo_edit_btn {
+.MenuAddmodify_edit_btn {
     background:none;
     border:1px solid #997fb5;
     border-radius: 10px;

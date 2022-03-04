@@ -67,7 +67,7 @@
             >
           </td>
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
-           <router-link to="/menumanagement/MenuAddTwo" class="asdf">
+           <router-link to="/menumanagement/MenuAddModify" class="asdf">
             <td class="edit_data">
               <img src="../../assets/coffee.jpeg" class="coffee_img">
                 {{ $store.state.menueditData[i].menuname }}

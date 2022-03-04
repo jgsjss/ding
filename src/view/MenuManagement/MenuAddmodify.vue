@@ -1,43 +1,43 @@
 <template>
 <!--데이터가 있을 경우에만 상세정보창을 수정할수가있음-->
-  <div class="menuaddtwo_container">
-    <div class="menuaddtwo_title_wrap">
-      <h4 class="menuaddtwo_title">메뉴상세정보</h4>
-      <i class="xi-close menuaddtwo_close" @click="$router.go(-1)"></i>
+  <div class="MenuAddmodify_container">
+    <div class="MenuAddmodify_title_wrap">
+      <h4 class="MenuAddmodify_title">메뉴상세정보</h4>
+      <i class="xi-close MenuAddmodify_close" @click="$router.go(-1)"></i>
     </div>
-    <div class="menuaddtwo_box_wrap">
-      <div class="menuaddtwo_wrap">
+    <div class="MenuAddmodify_box_wrap">
+      <div class="MenuAddmodify_wrap">
         <form>
-        <label class="menuaddtwo_label form-label">* 메뉴명
-          <input type="text" class="menuaddtwo_input form-control" placeholder="예) 딩동아메리카노">
+        <label class="MenuAddmodify_label form-label">* 메뉴명
+          <input type="text" class="MenuAddmodify_input form-control" placeholder="예) 딩동아메리카노">
         </label>
-        <label class="menuaddtwo_label form-label">* 가격
-          <input type="text" class="menuaddtwo_input form-control" @input="menuaddtwoNumber" :value="tNumber">
+        <label class="MenuAddmodify_label form-label">* 가격
+          <input type="text" class="MenuAddmodify_input form-control" @input="MenuAddmodifyNumber" :value="tNumber">
         </label>
-        <label class="menuaddtwo_label form-label">* 설명
-          <textarea type="text" class="menuaddtwo_input form-control" placeholder="예) 딩동커피만의 로스팅방식으로 만들어낸 아메리카노"></textarea>
+        <label class="MenuAddmodify_label form-label">* 설명
+          <textarea type="text" class="MenuAddmodify_input form-control" placeholder="예) 딩동커피만의 로스팅방식으로 만들어낸 아메리카노"></textarea>
         </label>
-        <label class="menuaddtwo_label form-label"> 이미지
+        <label class="MenuAddmodify_label form-label"> 이미지
           <input 
             type="file" 
-            class="menuaddtwo_img_btn form-control" 
+            class="MenuAddmodify_img_btn form-control" 
             @change="upload"
             multiple accept="image/*"
             id="file"
             >
         </label>
-        <div class="menuaddtwo_img_input">
+        <div class="MenuAddmodify_img_input">
         <img :src="image" alt="" style="width:200px; text-align:center;" >
         </div>
-        <label class="menuaddtwo_label form-label">메뉴상태
-            <span class="menuaddtwo_menucondition">정상판매</span>
+        <label class="MenuAddmodify_label form-label">메뉴상태
+            <span class="MenuAddmodify_menucondition">정상판매</span>
         </label>
         </form>
       </div>
       <!--카테고리설정 및 옵션설정 창-->
-      <div class="menuaddtwo_btn_wrap">
-        <label class="menuaddtwo_label">카테고리
-          <button type="button" class="menuaddtwo_edit_btn" data-bs-toggle="collapse" data-bs-target="#category_option" aria-expanded="false" aria-controls="category_option">카테고리수정</button>
+      <div class="MenuAddmodify_btn_wrap">
+        <label class="MenuAddmodify_label">카테고리
+          <button type="button" class="MenuAddmodify_edit_btn" data-bs-toggle="collapse" data-bs-target="#category_option" aria-expanded="false" aria-controls="category_option">카테고리수정</button>
           <div class="category_option_bind">{{}}전체메뉴, 오늘의 커피, 딩동 시그니처</div>
           <div class="collapse category_option_wrap" id="category_option">
             <div class="card card-body">
@@ -125,8 +125,8 @@
         </label>
       </div>
     </div>
-    <div class="menuaddtwo_btn_con">
-      <button type="button" class="menuaddtwo_btn">메뉴수정</button>
+    <div class="MenuAddmodify_btn_con">
+      <button type="button" class="MenuAddmodify_btn">메뉴수정</button>
     </div>  
   </div>
 
@@ -181,7 +181,7 @@ export default {
       let url = URL.createObjectURL(file[0]);
       this.image = url;
     },
-    menuaddtwoNumber(event) {
+    MenuAddmodifyNumber(event) {
       this.tNumber = event.target.value;
     }
 },
@@ -200,5 +200,5 @@ watch: {
 </script>
 
 <style>
-@import '../../assets/css/MenuManagement/MenuAddTwo.css';
+@import '../../assets/css/MenuManagement/MenuAddModify.css';
 </style>
