@@ -54,10 +54,10 @@
                   <div class="category_option_add_btn_wrap">
                     <button type="button" @click="cateConnCheck" class="category_option_add_btn">+카테고리 연결</button>
                   </div>
-                  <div  v-for="(a, i) in $store.state.CategoryOptionData" :key="i"
+                  <div
                           class="category_option_name">
-                    {{ $store.state.CategoryOptionData[i].catename }}
-                    <p>{{ $store.state.CategoryOptionData[i].menuname }}</p>
+                    {{ pdcategory }}
+                    <p>{{ description }}</p>
                   </div>
                   <div class="category_option_add_btn_wrap">
                     <button type="button" class="category_option_add_btn02">저장</button>
@@ -70,13 +70,13 @@
                   </div>
                   <div class="category_option_wrapper">
                   <div  v-for="(a, i) in cgData" :key="i"
-                          class="category_option_name">
+                          class="category_option_name" @click="selectCategory(i)">
                     {{ cgData[i].pdcategory }}
                     <p>{{ cgData[i].description }}</p>
                   </div>
                   </div>
                   <div class="category_option_add_btn_wrap">
-                    <button type="button" class="category_option_add_btn02">{{}}연결</button>
+                    <button type="button" class="category_option_add_btn02">연결</button>
                   </div>
                 </div>
                 
@@ -154,6 +154,9 @@ export default {
   },
   data () {
     return {
+      pdcategory: '',
+      description: '',
+
       cateConnect: false,
       enabled: true,
       list: [
@@ -181,6 +184,10 @@ export default {
     }
   },
   methods: {
+    selectCategory(i){
+      this.pdcategory = this.cgData[i].pdcategory
+      this.description = this.cgData[i].description
+    },
     cateConnCheck(){
       if(!this.cateConnect){
         this.cateConnect = true;
