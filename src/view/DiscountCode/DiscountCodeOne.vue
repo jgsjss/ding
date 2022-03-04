@@ -164,11 +164,11 @@ export default {
     proceedingCheckedAll (checked) {
       this.proceedSelected = checked
     },
-    proceedSelected () {
+    proceedSelected() {
       for (let i in this.boardList) {
         if (!this.boardList[i].proceedSelected) {
           this.proceedingAllChecked = false
-          return
+          return;
         } else {
           this.proceedingAllChecked = true
         }

@@ -12,8 +12,8 @@
             type="checkbox"
             class="toping_check"
             id="all-check"
-            v-model="allChecked"
-            @click="checkedAll($event.target.checked)"
+            v-model="topingAllChecked"
+            @click="topingCheckedAll($event.target.checked)"
           />
           전체선택
         </label>
@@ -108,7 +108,12 @@
         <tbody>
           <tr v-for="(a, i) in $store.state.TopingData" :key="i">
             <td scope="row" class="toping_check_box">
-              <input type="checkbox" :id="'check_' + i.boardId" :value="i" v-model="selected" @click="print" />
+              <input type="checkbox" 
+              :id="'topingCheck_' + i.boardId" 
+              :value="i" 
+              v-model="topingSelected" 
+              @click="topingPrint" 
+              />
             </td>
             <!-- <td>인덱스 {{a}}--{{i}}</td> -->
             <td class="toping_data" title="마우스">{{ $store.state.TopingData[i].listname }}</td>
@@ -176,7 +181,8 @@ export default {
         active: false,
         searchList: "",
         search: "",
-        allChecked: false,
+        topingSelected:[],
+        topingAllChecked: false,
         connectOpen:false,
         list: [
           { name: '과일모둠', id: 1 },
@@ -213,23 +219,23 @@ export default {
     prevPage() {
       this.pageNum -= 1;
     },
-    checkedAll(checked) {
-      this.allChecked = checked;
+    topingCheckedAll(checked) {
+      this.topingSelected = checked;
     },
-    selected() {
+    topingSelected() {
       for (let i in this.boardList) {
-        if (!this.boardList[i].selected) {
-          this.allChecked = false;
+        if (!this.boardList[i].topingSelected) {
+          this.topingAllChecked = false;
           return;
         } else {
-          this.allChecked = true;
+          this.topingAllChecked = true;
         }
       }
     },
     getSelected() {
       let boardIds = [];
       for (let i in this.cgData) {
-        if (this.cgData[i].selected) {
+        if (this.cgData[i].topingSelected) {
           boardIds.push(this.cgData[i].boardId);
         }
       }
