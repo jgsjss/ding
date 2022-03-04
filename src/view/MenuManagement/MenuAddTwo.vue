@@ -12,7 +12,7 @@
           <input type="text" class="menuaddtwo_input form-control" placeholder="예) 딩동아메리카노">
         </label>
         <label class="menuaddtwo_label form-label">* 가격
-          <input type="text" class="menuaddtwo_input form-control">
+          <input type="text" class="menuaddtwo_input form-control" @input="menuaddtwoNumber" :value="tNumber">
         </label>
         <label class="menuaddtwo_label form-label">* 설명
           <textarea type="text" class="menuaddtwo_input form-control" placeholder="예) 딩동커피만의 로스팅방식으로 만들어낸 아메리카노"></textarea>
@@ -149,6 +149,7 @@ export default {
           { name: '추가 옵션', id: 4 },
         ],
         dragging: false,
+        tNumber:'',
       }
     },
     methods: {
@@ -180,6 +181,20 @@ export default {
       let url = URL.createObjectURL(file[0]);
       this.image = url;
     },
+    menuaddtwoNumber(event) {
+      this.tNumber = event.target.value;
+    }
+},
+watch: {
+  tNumber(val) {
+      const menutwo = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
+
+      //한글, 영문 체크
+      if(menutwo.exec(val)!==null) this.tNumber = val.replace(/[^0-9]/g,'');
+
+      //...만 입력하게 될 경우 체크
+      if(isNaN(parseFloat(val)))this.tNumber = '';    
+  }
 }
 }
 </script>

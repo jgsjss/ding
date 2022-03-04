@@ -183,7 +183,9 @@
               </div>
               <div class="mb-3">
                 <label class="menuoption_form_label">* 선택가능 옵션 수</label>
-                <input type="number" min="0" max="5" class="m-2" />옵션은 최대 까지 선택 가능합니다.
+                <span>옵션은 최대</span>
+                <input type="number" min="0" max="5" maxlength="2" class="m-2" />
+                <span>까지 선택 가능합니다.</span>
                 <p class="option_subtitle">- 등록한 옵션목록 개수만큼 설정 가능합니다.</p>
               </div>
               <button type="submit" class="menuoption_add_btn">옵션정보 수정</button>
@@ -298,7 +300,8 @@ export default {
     },
     menuoptionNumber(event) {
       this.mNumber = event.target.value;
-    }
+    },
+
     //검색 고장난거같음 일단 보류
     // handleSearchInput(e) {
     //   this.search = e.target.value;
