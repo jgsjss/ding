@@ -55,6 +55,7 @@
                            name="category_radio"
                            @click="statusCheck"
                            value="open"
+                           checked="checked"
                            class="category_add_radio"/>&nbsp공개&nbsp
                   </label>
                   <label class="category_add_label">

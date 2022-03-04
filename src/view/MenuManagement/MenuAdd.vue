@@ -62,7 +62,6 @@
                   <div class="category_option_add_btn_wrap">
                     <button type="button" class="category_option_add_btn02">저장</button>
                   </div>
-
                 </div>
                 <div class="category_option_add_right" v-show="cateConnect" >
                   <div class="category_option_add_title_wrap">
@@ -75,9 +74,9 @@
                     <p>{{ cgData[i].description }}</p>
                   </button>
                   </div>
-                  <div class="category_option_add_btn_wrap">
-                    <button type="button" class="category_option_add_btn02">연결</button>
-                  </div>
+<!--                  <div class="category_option_add_btn_wrap">-->
+<!--                    <button type="button" class="category_option_add_btn02">연결</button>-->
+<!--                  </div>-->
                 </div>
                 
               </div>
@@ -154,8 +153,10 @@ export default {
   },
   data () {
     return {
-      pdcategory: '',
+
+      pdcategory: '선택된 카테고리 없음',
       description: '',
+      catenum: Number,
 
       cateConnect: false,
       enabled: true,
@@ -188,6 +189,8 @@ export default {
     selectCategory(i){
       this.pdcategory = this.cgData[i].pdcategory
       this.description = this.cgData[i].description
+      this.catenum = i
+      console.log("i : " , i)
     },
     cateConnCheck(){
       if(!this.cateConnect){
