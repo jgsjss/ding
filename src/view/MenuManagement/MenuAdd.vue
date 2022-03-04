@@ -69,11 +69,11 @@
                     <h4 class="category_option_add_title">카테고리 연결</h4>
                   </div>
                   <div class="category_option_wrapper">
-                  <div  v-for="(a, i) in cgData" :key="i"
+                  <button type="button"  v-for="(a, i) in cgData" :key="i"
                           class="category_option_name" @click="selectCategory(i)">
                     {{ cgData[i].pdcategory }}
                     <p>{{ cgData[i].description }}</p>
-                  </div>
+                  </button>
                   </div>
                   <div class="category_option_add_btn_wrap">
                     <button type="button" class="category_option_add_btn02">연결</button>
