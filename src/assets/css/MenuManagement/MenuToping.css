@@ -245,9 +245,7 @@ tbody {
 }
 .toping_option_add_input {
     margin-top:10px;
-}
-.toping_option_add_input:last-child {
-    margin-left:8px;
+    margin-right:5px
 }
 .toping_option_add_btn_wrap {
     padding:15px 0;

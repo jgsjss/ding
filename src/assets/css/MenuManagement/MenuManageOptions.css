@@ -150,6 +150,7 @@ tbody {
 .option_subtitle {
     font-size:14px;
     color:#997fb5;
+    text-align: left;
 }
 .menuoption_add_btn {
     width: 100%;

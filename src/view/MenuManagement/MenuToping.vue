@@ -90,7 +90,7 @@
         <form>
             <label class="toping_option_add_label">옵션목록 및 추가가격</label>
                 <input type="text" class="toping_option_add_input" placeholder="예)순한맛">
-                <input type="text" class="toping_option_add_input" placeholder="예)500원">
+                <input type="text" class="toping_option_add_input" placeholder="예)500원" @input="topingNumber" :value="tNumber">
             <button type="submit" class="toping_option_add_btn">저장</button>
         </form>        
         </div>
@@ -186,7 +186,8 @@ export default {
           { name: '병음료', id: 5 },
           { name: '디저트(케이크/빵)', id: 6 },
         ],
-        dragging: false,        
+        dragging: false,
+        tNumber:'',     
     };
   },
   methods: {
@@ -265,9 +266,12 @@ export default {
         );
       });
     },
-    editCondition(event) {
-      console.log(event.target.value);
-    },
+    // editCondition(event) {
+    //   console.log(event.target.value);
+    // },
+    topingNumber(event) {
+      this.tNumber = event.target.value;
+    }
     //검색 고장난거같음 일단 보류
     // handleSearchInput(e) {
     //   this.search = e.target.value;
@@ -306,6 +310,17 @@ export default {
   updated() {
     this.menuCnt(this.cgData);
   },
+  watch: {
+    tNumber(val) {
+      const toping = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
+
+      //한글, 영문 체크
+      if(toping.exec(val)!==null) this.tNumber = val.replace(/[^0-9]/g,'');
+
+      //...만 입력하게 될 경우 체크
+      if(isNaN(parseFloat(val)))this.tNumber = '';
+    },
+  }
 };
 </script>
 

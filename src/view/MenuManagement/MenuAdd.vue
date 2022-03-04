@@ -11,7 +11,7 @@
             <input type="text" class="menuadd_input form-control" placeholder="예) 딩동아메리카노">
           </label>
           <label class="menuadd_label form-label">* 가격
-            <input type="text" class="menuadd_input form-control">
+            <input type="text" class="menuadd_input form-control" @input="menuaddNumber" :value="menuNumber">
           </label>
           <label class="menuadd_label form-label">* 설명
             <textarea type="text" class="menuadd_input form-control"
@@ -54,30 +54,29 @@
                   <div class="category_option_add_btn_wrap">
                     <button type="button" @click="cateConnCheck" class="category_option_add_btn">+카테고리 연결</button>
                   </div>
-                  <div  v-for="(a, i) in $store.state.CategoryOptionData" :key="i"
+                  <div
                           class="category_option_name">
-                    {{ $store.state.CategoryOptionData[i].catename }}
-                    <p>{{ $store.state.CategoryOptionData[i].menuname }}</p>
+                    {{ pdcategory }}
+                    <p>{{ description }}</p>
                   </div>
                   <div class="category_option_add_btn_wrap">
                     <button type="button" class="category_option_add_btn02">저장</button>
                   </div>
-
                 </div>
                 <div class="category_option_add_right" v-show="cateConnect" >
                   <div class="category_option_add_title_wrap">
                     <h4 class="category_option_add_title">카테고리 연결</h4>
                   </div>
                   <div class="category_option_wrapper">
-                  <div  v-for="(a, i) in cgData" :key="i"
-                          class="category_option_name">
+                  <button type="button"  v-for="(a, i) in cgData" :key="i"
+                          class="category_option_name" @click="selectCategory(i)">
                     {{ cgData[i].pdcategory }}
                     <p>{{ cgData[i].description }}</p>
+                  </button>
                   </div>
-                  </div>
-                  <div class="category_option_add_btn_wrap">
-                    <button type="button" class="category_option_add_btn02">{{}}연결</button>
-                  </div>
+<!--                  <div class="category_option_add_btn_wrap">-->
+<!--                    <button type="button" class="category_option_add_btn02">연결</button>-->
+<!--                  </div>-->
                 </div>
                 
               </div>
@@ -154,6 +153,11 @@ export default {
   },
   data () {
     return {
+
+      pdcategory: '선택된 카테고리 없음',
+      description: '',
+      catenum: Number,
+
       cateConnect: false,
       enabled: true,
       list: [
@@ -177,10 +181,17 @@ export default {
       dragging: false,
       categoryAdd: false,
       cgData: [],
+      menuNumber:'',
 
     }
   },
   methods: {
+    selectCategory(i){
+      this.pdcategory = this.cgData[i].pdcategory
+      this.description = this.cgData[i].description
+      this.catenum = i
+      console.log("i : " , i)
+    },
     cateConnCheck(){
       if(!this.cateConnect){
         this.cateConnect = true;
@@ -221,11 +232,25 @@ export default {
           .then(res => {
             this.cgData = res.data.rows
           })
+    },
+    menuaddNumber(event) {
+      this.menuNumber = event.target.value;
     }
   },
   beforeMount () {
     this.getCategory()
     console.log(this.cgData)
+  },
+  watch: {
+    menuNumber(val) {
+      const menuadd = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
+
+      //한글, 영문 체크
+      if(menuadd.exec(val)!==null) this.menuNumber = val.replace(/[^0-9]/g,'');
+
+      //...만 입력하게 될 경우 체크
+      if(isNaN(parseFloat(val)))this.menuNumber = '';
+    },
   }
 }
 </script>
