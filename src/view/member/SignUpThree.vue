@@ -122,6 +122,7 @@
                       @focus="checkFlag = false"
                       oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                   />
+                   <span class="error_next_box1" id="manStNum" style aria-live="assertive">필수 정보 입니다.</span>
                 </span>
               </div>
               <!-- shop_num two-->
