@@ -12,19 +12,51 @@
   <div class="row mb-3">
     <label for="inputEmail3" class="col-sm-2 col-form-label">이름</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="stName" v-model="stName">
+      <input 
+      type="text" 
+      class="form-control" 
+      id="stName1"
+      maxlength="10"
+      v-model="stName"
+      @input="typing"
+      @change="errorCh"
+      @focus="checkFlag = false"
+      />
+      <span class="error_text_box" id="stName" style aria-live="assertive">필수입력 정보입니다.</span>
     </div>
   </div>
   <div class="row mb-3">
     <label for="inputPassword3" class="col-sm-2 col-form-label">아이디</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="stId" v-model="stId">
+      <input 
+      type="text" 
+      class="form-control" 
+      id="stId2" 
+      v-model="stId"
+      maxlength="20"
+      @change="isStId(stId)"
+      @focus="checkFlag = false"
+      >
+      <span class="step_st" v-show="stCheck1">사용가능한 아이디 입니다.</span>
+      <span class="step_st" v-show="stCheck2">이미 사용중인 아이디 입니다.</span>
+      <span class="error_text_box" id="stIdMsg" style aria-live="assertive">필수입력 정보입니다.</span>
     </div>
   </div>
   <div class="row mb-3">
     <label for="inputPassword3" class="col-sm-2 col-form-label">비밀번호</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="stPw" v-model="stPw">
+      <input 
+      type="password" 
+      class="form-control" 
+      id="stPw2" 
+      v-model="stPw"
+      maxlength="16"
+      placeholder="8~16자의 영문/숫자를 조합"
+      ref=""
+      @change="checkStPw"
+      @focus="checkFlag = false "
+      >
+      <span class="error_text_box" id="stPwMsg" style aria-live="assertive">필수 입력 정보입니다.</span>
     </div>
   </div>
   <!--/////권한설정 체크박스/////-->
@@ -88,7 +120,11 @@
   <div class="row mb-3">
     <label for="inputEmail3" class="col-sm-2 col-form-label">이름</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="sName">
+      <input 
+      type="email" 
+      class="form-control" 
+      id="sName"
+      >
     </div>
   </div>
   <div class="row mb-3">
@@ -183,9 +219,95 @@ export default {
         setListChecked: false,
         setchecked: [],
         NoSetChecked: [],
+        //아이디 및 비밀번호 유효성 체크
+        stCheck1: false,
+        stCheck2: false,
+        stPwCheck: false,
     }
   },
   methods: {
+    typing: function(e) {
+      console.log(e.target.value)
+      let stName = e.target.target.value
+      let pattern = /([가-힣]\x20])/i
+      // this.valid = (stName.length > 1 && pattern.test(stName) === false)
+    },
+    errorCh() {
+      let stName = document.getElementById("stName1").value;
+
+
+      //직원이름
+      if (stName == "") {
+        document.getElementById("stName").style.display = "block";
+        return false;
+      } else if (stName != "") {
+        document.getElementById("stName").style.display = "none";
+        return false;
+      }
+
+      },
+      isStId() {
+        let id = document.getElementById("stId2").value;
+        let idValue = /^[a-zA-z0-9]{4,12}$/;
+
+        console.log(typeof this.stId);
+        console.log(this.stId);
+        if(id == "") {
+          document.getElementById("stIdMsg").style.display = "block;"
+        } else if (id != "") {
+          document.getElementById("stIdMsg").style.display = "none";
+        }
+        if (id.length < 6) {
+          this.$swal("아이디는 최소 6자리 이상입니다.");
+        } else if (id.search(/\s/) !== -1) {
+          this.$swal("아이디에 공백은 불가능합니다.");
+        } else if (id.search(/[~!@#$%^&*()_+|<>?:{}]/) !== -1) {
+          this.$swal("아이디에 특수문자는 불가능합니다.");
+        }
+      else {
+        axios({
+          url: "/api/isStId",
+          method: "post",
+          data: { stId: this.stId },
+        }).then((res) => {
+          if (res.data == 1) {
+            console.log("아이디 존재");
+            this.stCheck1 = false;
+            this.stCheck2 = true;
+          } else {
+            console.log("아이디 없음");
+            this.stCheck1 = true;
+            this.stCheck2 = false;
+          }
+        });
+      }
+
+      },
+      checkStPw() {
+        let pwd = document.getElementById("stPw2").value;
+        console.log(typeof this.stPw);
+        if (pwd == "") {
+          document.getElementById("stPwMsg").style.display = "block";
+        } else if (pwd != "") {
+          document.getElementById("stPwMsg").style.display = "none";
+        }
+
+        if (pwd.length < 8) {
+          this.$swal("비밀번호는 최소 8자리 이상입니다.");
+        } else if(pwd.search(/\/s/) !== -1) {
+          this.$swal("비밀번호에 공백은 불가능합니다.");
+        } else if (pwd.search(/[a-zA-Z]/) || pwd.search(/[0-9]/) == -1 || pwd.search(/[~!@#$%^&*()_+|<>?:{}]/) !== -1) {
+          this.$swal("영문자와 숫자로만 조합이 가능합니다.");
+        }
+      },
+      isEmpty2(data) {
+        if(data =="" || data == null || data == undefined) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+
     // sendCheck() {
     //   router.push({
     //     name:'StaffManagementOne',
@@ -223,23 +345,24 @@ export default {
     //   })
     // }
   },
-  // watch: {
-  //   checked (a) {
-  //     if (a.length ==5) {
-  //       this.enrollBtn =true
-  //     } else if (a.length ==0) {
-  //       for (let i = 0; i < a.length; i++) {
-  //         if (a[i] === this.check[5]) {
-  //           this.enrollBtn = false
-  //         } else {
-  //           this.enrollBtn = true
-  //         }
-  //       }
-  //     }else{
-  //       this.enrollBtn = false;
-  //     }
-  //   }
-  // },
+  watch: {
+    
+    // checked (a) {
+    //   if (a.length ==5) {
+    //     this.enrollBtn =true
+    //   } else if (a.length ==0) {
+    //     for (let i = 0; i < a.length; i++) {
+    //       if (a[i] === this.check[5]) {
+    //         this.enrollBtn = false
+    //       } else {
+    //         this.enrollBtn = true
+    //       }
+    //     }
+    //   }else{
+    //     this.enrollBtn = false;
+    //   }
+    // }
+  },
   mounted() {
 
   },
