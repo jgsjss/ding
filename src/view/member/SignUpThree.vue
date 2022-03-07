@@ -27,6 +27,7 @@
                   maxlength="20"
                   placeholder="관리자 이름"
                   @change="errorCh, nullCheck"
+                  @focus="checkFlag = false"
               />
               <span class="error_next_box1" id="manMsg" style aria-live="assertive">필수 정보 입니다.</span>
             </span>
@@ -54,6 +55,7 @@
                 <span class="box">
                   <input type="text" id="second" class="int" maxlength="4" v-model.trim="secondNum"
                          @change="nullCheck"
+                         @focus="checkFlag = false"
                          oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                   />
                 </span>
@@ -63,7 +65,7 @@
                 <span class="box">
                   <input type="text" @change="phoneNumConcat(), nullCheck" id="dd" class="int" maxlength="4"
                          v-model.trim="thirdNum"
-
+                        @focus="checkFlag = false"
                          oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                   />
                 </span>
@@ -87,6 +89,7 @@
                         placeholder="이메일을 입력해주세요"
                         v-model="mgEmail1"
                         @change="errorCh1, nullCheck"
+                        @focus="checkFlag = false"
                     />
                     <span class="error_next_box1" id="manEmMsg" style aria-live="assertive">필수 정보 입니다.</span>
                   </span>
@@ -116,6 +119,7 @@
                       maxlength="3"
                       title="사업자처음3자리"
                       v-model="bizNum1"
+                      @focus="checkFlag = false"
                       oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                   />
                 </span>
@@ -146,6 +150,7 @@
                       maxlength="5"
                       title="사업자마지막5자리"
                       v-model="bizNum3"
+                      @focus="checkFlag = false"
                       oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                   />
                 </span>
@@ -321,6 +326,7 @@ export default {
     },
 
     signup () {
+      this.checkFlag = true;
       this.nullCheck()
       let nullCk = this.$store.state.signupStore.isNull
       console.log('널체크', nullCk)
