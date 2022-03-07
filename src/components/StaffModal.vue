@@ -346,7 +346,9 @@ export default {
     // }
   },
   watch: {
-    
+    //     stName: function() {
+    //   return this.stName = this.stName.replace/([가-힣]\x20])
+    // }
     // checked (a) {
     //   if (a.length ==5) {
     //     this.enrollBtn =true

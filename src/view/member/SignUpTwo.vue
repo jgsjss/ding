@@ -548,6 +548,7 @@ export default {
     },
   },
   watch: {
+
     //   secondNum (a) {
     //     if (isNaN(a) == true || a == '') {
     //       alert('숫자만 입력 가능합니다.')
