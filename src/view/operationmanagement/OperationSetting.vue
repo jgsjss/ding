@@ -85,9 +85,9 @@
                 <div class="break_box">
                     <form>
                         <label for="input_day" class="input_day">평일 시작 및 종료시간</label>
-                        <Datepicker v-model="time" timePicker range />
+                        <Datepicker n timePicker range :value = "time" @input = "timeUpdate" />
                         <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
-                        <Datepicker v-model="time" timePicker range />    
+                        <Datepicker  timePicker range :value = "time" @input = "titleUpdate" />    
                     </form>
                 </div>
                     <div class="break_time_btn_wrap">
@@ -277,10 +277,16 @@ export default {
     },
     props: {
         step: Number,
+        time: {
+            type: String,
+            required:true
+        }
     },
     methods: {
         changeStat(step){
-
+        },
+        titleUpdate(e) {
+            console.log(e.target.value)
         }
     },
     setup() {
@@ -288,7 +294,7 @@ export default {
         return {
           date,
         }
-    }
+    },
 }
 </script>
 
