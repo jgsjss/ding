@@ -62,7 +62,7 @@
         <div class="oper_btn_box">
         <div class="oper_title" @click=" step = 1">준비시간</div><!--클릭시 자식 데이터가 나옴-->
         </div>
-          <div class="preparation_text">(설정없음)</div>
+          <inputField :time = "time" class="preparation_text"></inputField>
       </div>
       <!--/////정기휴무/////-->
       <div class="oper_box1" v-for="(a, i) in $store.state.OperationData" :key="i">
@@ -126,6 +126,7 @@ import OperationSetting from '../operationmanagement/OperationSetting.vue';
     return {
       show:false,
       step: 0,
+      time:'',
     }
   },
   methods: {
