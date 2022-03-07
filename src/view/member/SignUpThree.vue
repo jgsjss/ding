@@ -26,7 +26,7 @@
                   class="int"
                   maxlength="20"
                   placeholder="관리자 이름"
-                  @change="errorCh, nullCheck"
+                  @change="errorCh"
                   @focus="checkFlag = false"
               />
               <span class="error_next_box1" id="manMsg" style aria-live="assertive">필수 정보 입니다.</span>
@@ -63,7 +63,7 @@
               <!-- BIRTH_DD -->
               <div id="num_dd">
                 <span class="box">
-                  <input type="text" @change="phoneNumConcat(), nullCheck" id="dd" class="int" maxlength="4"
+                  <input type="text" @change="phoneNumConcat()" id="dd" class="int" maxlength="4"
                          v-model.trim="thirdNum"
                         @focus="checkFlag = false"
                          oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
@@ -88,7 +88,7 @@
                         maxlength="20"
                         placeholder="이메일을 입력해주세요"
                         v-model="mgEmail1"
-                        @change="errorCh1, nullCheck"
+                        @change="errorCh1"
                         @focus="checkFlag = false"
                     />
                     <span class="error_next_box1" id="manEmMsg" style aria-live="assertive">필수 정보 입니다.</span>
