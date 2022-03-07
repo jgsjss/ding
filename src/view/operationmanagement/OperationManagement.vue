@@ -62,7 +62,10 @@
         <div class="oper_btn_box">
         <div class="oper_title" @click=" step = 1">준비시간</div><!--클릭시 자식 데이터가 나옴-->
         </div>
-          <inputField :time = "time" class="preparation_text"></inputField>
+          <div class="preparation_text" @setInput="setInput" name="About">
+            {{datepicker}}
+          </div>
+          
       </div>
       <!--/////정기휴무/////-->
       <div class="oper_box1" v-for="(a, i) in $store.state.OperationData" :key="i">
@@ -126,13 +129,17 @@ import OperationSetting from '../operationmanagement/OperationSetting.vue';
     return {
       show:false,
       step: 0,
-      time:'',
+      datepicker:'',
     }
   },
   methods: {
     notice: function(evt) {
       alert('상태를 변경하시겠습니까?')
     },
+    setInput(value) {
+      this.value = value;
+      console.log("자식 컴포넌트에게 값을 받았어요 :)", value);
+    }
     }
 }
 

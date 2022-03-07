@@ -33,9 +33,9 @@
             <div class="oper_modal_oper_box">
                 <form>
                     <label for="input_day" class="input_day">평일 시작 및 종료시간</label>
-                    <Datepicker v-model="time" timePicker range />
+                    <Datepicker v-model="time" id="datepicker" timePicker range />
                     <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
-                    <Datepicker v-model="time" timePicker range />    
+                    <Datepicker v-model="time" id="datepicker" timePicker range />    
                 </form>
             </div>
                 <!--//////시작시간//////-->
@@ -85,13 +85,13 @@
                 <div class="break_box">
                     <form>
                         <label for="input_day" class="input_day">평일 시작 및 종료시간</label>
-                        <Datepicker n timePicker range :value = "time" @input = "timeUpdate" />
+                        <Datepicker  timePicker range v-model="time" />
                         <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
-                        <Datepicker  timePicker range :value = "time" @input = "titleUpdate" />    
+                        <Datepicker  timePicker range v-model="time" />    
                     </form>
                 </div>
                     <div class="break_time_btn_wrap">
-                    <button type="button" class="break_add_btn">저장</button>
+                    <button type="button" class="break_add_btn" @click="onEmit">저장</button>
                     <button type="button" class="break_close_btn">닫기</button>
                     </div>
         </div>
@@ -263,6 +263,7 @@ export default {
             selected: [],
             name: 'day',
             type: 'select',
+            time:'',
             options: [
                 { v: "월", t: "월요일" },
                 { v: "화", t: "화요일" },
@@ -277,24 +278,27 @@ export default {
     },
     props: {
         step: Number,
-        time: {
-            type: String,
-            required:true
-        }
     },
     methods: {
         changeStat(step){
         },
         titleUpdate(e) {
             console.log(e.target.value)
-        }
+        },
+        // onEmit() {
+        //     this.$emit("setInput", this.value);
+        // }
     },
     setup() {
-        const date = ref(new Date());
-        return {
-          date,
-        }
-    },
+        // const time = ref({ 
+        //     hours: new Date().getHours(),
+        //     minutes: new Date().getMinutes()
+        // });
+        
+        // return {
+        //     time,
+        // }
+    }
 }
 </script>
 
