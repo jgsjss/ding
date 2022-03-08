@@ -18,7 +18,6 @@
       id="stName1"
       maxlength="10"
       v-model="stName"
-      @input="typing"
       @change="errorCh"
       @focus="checkFlag = false"
       />
@@ -227,12 +226,12 @@ export default {
     }
   },
   methods: {
-    typing: function(e) {
-      console.log(e.target.value)
-      let stName = e.target.target.value
-      let pattern = /([가-힣]\x20])/i
-      // this.valid = (stName.length > 1 && pattern.test(stName) === false)
-    },
+    // typing: function(e) {
+    //   console.log(e.target.value)
+    //   let stName = e.target.target.value
+    //   let pattern = /([가-힣]\x20])/i
+    //   this.valid = (stName.length > 1 && pattern.test(stName) === false)
+    // },
     errorCh() {
       let stName = document.getElementById("stName1").value;
 
