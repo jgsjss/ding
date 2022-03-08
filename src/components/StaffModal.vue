@@ -266,21 +266,21 @@ export default {
         } else if (id.search(/[가-힣]/) !== -1) {
           this.$swal("아이디에 한글은 불가능합니다.")
 
-        axios({
-          url: "/api/isStId",
-          method: "post",
-          data: { stId: this.stId },
-        }).then((res) => {
-          if (res.data == 1) {
-            console.log("아이디 존재");
-            this.stCheck1 = false;
-            this.stCheck2 = true;
-          } else {
-            console.log("아이디 없음");
-            this.stCheck1 = true;
-            this.stCheck2 = false;
-          }
-        });
+        // axios({
+        //   url: "/api/isStId",
+        //   method: "post",
+        //   data: { stId: this.stId },
+        // }).then((res) => {
+        //   if (res.data == 1) {
+        //     console.log("아이디 존재");
+        //     this.stCheck1 = false;
+        //     this.stCheck2 = true;
+        //   } else {
+        //     console.log("아이디 없음");
+        //     this.stCheck1 = true;
+        //     this.stCheck2 = false;
+        //   }
+        // });
       }
 
       },
