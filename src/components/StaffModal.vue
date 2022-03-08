@@ -108,6 +108,7 @@
 <!--직원추가모달 끝-->
 
 <!--직원설정 모달 시작-->
+<!--일치하는 정보가 있는지 찾아야함-->
 <div class="modal fade" id="staffsetting" tabindex="-1" aria-labelledby="staffsetting" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -263,8 +264,9 @@ export default {
           this.$swal("아이디에 공백은 불가능합니다.");
         } else if (id.search(/[~!@#$%^&*()_+|<>?:{}]/) !== -1) {
           this.$swal("아이디에 특수문자는 불가능합니다.");
-        }
-      else {
+        } else if (id.search(/[가-힣]/) !== -1) {
+          this.$swal("아이디에 한글은 불가능합니다.")
+
         axios({
           url: "/api/isStId",
           method: "post",

@@ -27,22 +27,22 @@ app.use(VueExcelXlsx)
 // app.use(VueCookies);
 
 
-router.beforeEach((to, from, next) => {
-  if (to.matched.some((record) => record.meta.requireLogin)) {
-    const isLogin = store.getters["loginStore/isLogin"];
-    if (!isLogin) {
-      // const myswal = new Object()
-      // myswal.set(vuesweetalert2())
-      // var my = new vuesweetalert2();
-      sweet.fire("로그인 후 이용가능");
-      // vuesweetalert2("로그인 후 이용 가능합니다.");
-      // next('/login?returnUrl=' + to.fullPath);
-      next("/login");
-    } else {
-      next();
-    }
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some((record) => record.meta.requireLogin)) {
+//     const isLogin = store.getters["loginStore/isLogin"];
+//     if (!isLogin) {
+//       // const myswal = new Object()
+//       // myswal.set(vuesweetalert2())
+//       // var my = new vuesweetalert2();
+//       sweet.fire("로그인 후 이용가능");
+//       // vuesweetalert2("로그인 후 이용 가능합니다.");
+//       // next('/login?returnUrl=' + to.fullPath);
+//       next("/login");
+//     } else {
+//       next();
+//     }
+//   } else {
+//     next();
+//   }
+// });
 app.use(store).use(router).mount("#app");
