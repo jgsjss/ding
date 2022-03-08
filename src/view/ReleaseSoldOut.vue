@@ -5,7 +5,7 @@
       <span class="main_text">품절해제</span>
       <!--x버튼 클릭시 main으로 이동-->
       <router-link to="/main">
-        <span class="xi-close"></span>
+        <i class="xi-close"></i>
       </router-link>
     </div>
     <div class="sub_text_wrap">
