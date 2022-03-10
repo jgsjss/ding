@@ -115,7 +115,7 @@
   </div>
 </div>
 
-<OperationSetting :step = "step" />
+<OperationSetting :step = "step" :datepicker ="datepicker" />
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue'

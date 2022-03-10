@@ -56,7 +56,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(a, i) in $store.state.menueditData" :key="i">
+        <tr v-for="(a, i) in menuData" :key="i">
           <td v-for="menuname in coffees" :key="menuname"></td>
           <td scope="row" class="cate_check_box">
             <input type="checkbox"
@@ -70,12 +70,12 @@
            <router-link to="/menumanagement/MenuAddModify" class="asdf">
             <td class="edit_data">
               <img src="../../assets/coffee.jpeg" class="coffee_img">
-                {{ $store.state.menueditData[i].menuname }}
+                {{ menuData[i].pdname }}
             </td>
            </router-link>
-          <td class="edit_data" title="마우스">{{  $store.state.menueditData[i].price }}</td>
-          <td class="edit_data">{{ $store.state.menueditData[i].category }}</td>
-          <td class="edit_data">{{ $store.state.menueditData[i].connectoption }}</td>
+          <td class="edit_data" title="마우스">{{  menuData[i].price }}</td>
+          <td class="edit_data">{{ menuData[i].pdcategory }}</td>
+          <td class="edit_data">{{ "옵션은 보류" }}</td>
           <td class="edit_data">
             <select class="edit_condition" @change="editCondition($event)" v-model="conditionKey">
               <option class="edit_condition_text" value="null">상태설정</option>
@@ -91,6 +91,15 @@
       </table>
       <div class="edit_add_wrap">
         <button type="button" class="edit_add_btn">저장</button>
+      </div>
+      <div class="btn-cover">
+        <button :disabled="pageNum === 1" @click="prevPage" class="page-btn">
+          <i class="xi-angle-left"></i>
+        </button>
+        <span class="page-count">{{ pageNum }} / {{ totalPage }} </span>
+        <button :disabled="pageNum >= totalPage" @click="nextPage" class="page-btn">
+          <i class="xi-angle-right"></i>
+        </button>
       </div>
       <!-- <div class="btn-cover">
         <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
@@ -119,7 +128,6 @@ export default {
   data () {
     return {
       conditionKey:null,
-      pageNum: 0,
       active: false,
       menuname:[
         {
@@ -127,10 +135,33 @@ export default {
         }
       ],
       allCheckedMenus: false,
-
+      menuData: '',
+      pageCount: 10,
+      currentPage: 1,
+      pageNum: 1,
     }
   },
   methods: {
+    getMenu (curpage) {
+      axios.post('/apimenu/menus', {
+        data: {
+          curpage: curpage
+        }
+      }).then(res => {
+        console.log('res.data: ', res.data)
+        // 백엔드에서 날라오는 값 res.data=>articles[rows, ActualArticleLength]
+
+        //게시물 총 갯수
+        this.totalPage = res.data.length
+        //게시물 정보들
+        this.menuData = res.data.rows
+        // this.totalPage = this.cgData.length
+        console.log('menuData: ', this.menuData)
+        return res.data
+      }).catch((err) => {
+        console.log(err)
+      })
+    },
     moveNext(){
         console.log('유저권한', this.getUserrole)
         if (this.getUserrole != 0) {
@@ -145,9 +176,12 @@ export default {
     },
     nextPage () {
       this.pageNum += 1
+      this.getMenu(this.pageNum)
     },
     prevPage () {
       this.pageNum -= 1
+      console.log(this.pageNum)
+      this.getMenu(this.pageNum)
     },
     checkedAllMenu (checked) {
       this.menuSelected = checked
@@ -171,16 +205,7 @@ export default {
         }
       }
     },
-    // getCategories () {
-    //   axios.post('/apimenu/categories').then(res => {
-    //     // console.log(res)
-    //
-    //     this.cgData = res.data
-    //     // console.log('cgData: ', this.cgData)
-    //   }).catch((err) => {
-    //     console.log(err)
-    //   })
-    // },
+
     menuCnt (obj) {
       _.forEach(obj,function (v,k,copy) {
         // console.log("Asd",V)
@@ -222,6 +247,9 @@ export default {
   },
   updated () {
     this.menuCnt(this.cgData)
+  },
+  beforeMount () {
+    this.getMenu(1)
   }
 }
 </script>

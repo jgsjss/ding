@@ -279,6 +279,7 @@ export default {
     props: {
         step: Number,
         name:String,
+      datepicker: Number,
     },
     methods: {
         changeStat(step){
