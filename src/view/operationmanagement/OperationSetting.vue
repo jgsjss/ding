@@ -261,9 +261,9 @@ export default {
             picked:'',
             rdaySelect:null,
             selected: [],
-            name: 'day',
             type: 'select',
             time:'',
+            value:'',
             options: [
                 { v: "월", t: "월요일" },
                 { v: "화", t: "화요일" },
@@ -278,6 +278,7 @@ export default {
     },
     props: {
         step: Number,
+        name:String,
     },
     methods: {
         changeStat(step){
@@ -285,9 +286,10 @@ export default {
         titleUpdate(e) {
             console.log(e.target.value)
         },
-        // onEmit() {
-        //     this.$emit("setInput", this.value);
-        // }
+        onEmit() {
+            this.$emit("setInput", this.value);
+            console.log(this.$emit)
+        }
     },
     setup() {
         // const time = ref({ 
