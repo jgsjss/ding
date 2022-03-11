@@ -39,7 +39,7 @@
               <!-- BIRTH_MM -->
               <div id="num_first">
                 <span class="box">
-                  <select id="number" class="sel" v-model.trim="firstNum">
+                  <select id="number" @change="phoneNumConcat()" class="sel" v-model.trim="firstNum">
                     <option>선택</option>
                     <option value="010">010</option>
                     <option value="011">011</option>
@@ -88,7 +88,7 @@
                         maxlength="20"
                         placeholder="이메일을 입력해주세요"
                         v-model="mgEmail1"
-                        @change="errorCh1"
+                        @change="emailConcat()"
                         @focus="checkFlag = false"
                     />
                     <span class="error_next_box1" id="manEmMsg" style aria-live="assertive">필수 정보 입니다.</span>
@@ -96,7 +96,7 @@
                 </div>
                 <span class="middle_mail">@</span>
                 <span class="box">
-                  <select id="email" class="sel" v-model="mgEmail2" @change="emailConcat">
+                  <select id="email" class="sel" v-model="mgEmail2" @change="emailConcat()">
                     <option>선택</option>
                     <option value="naver.com">naver.com</option>
                     <option value="hanmail.net">hanmail.net</option>
@@ -120,6 +120,7 @@
                       title="사업자처음3자리"
                       v-model="bizNum1"
                       @focus="checkFlag = false"
+                      @change="bizNumConcat()"
                       oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '');"
                   />
                    <span class="error_next_box1" id="manStNum" style aria-live="assertive">필수 정보 입니다.</span>
@@ -145,7 +146,7 @@
                 <span class="box">
                   <input
                       type="text"
-                      @change="bizNumConcat"
+                      @change="bizNumConcat()"
                       id="shop_three"
                       class="int"
                       maxlength="5"
@@ -229,7 +230,7 @@ export default {
       //관리자 이름
       manageName: '',
       //관리자 번호 첫번째
-      firstNum: '선택',
+      firstNum: null,
       //관리자 번호 두번째
       secondNum: '',
       //관리자 번호 세번째
@@ -239,7 +240,7 @@ export default {
       //관리자메일앞자리
       mgEmail1: '',
       //관리자메일 뒷자리
-      mgEmail2: '선택',
+      mgEmail2: null,
       //메일 합 주소
       mgEmail: '',
       //사업자번호
@@ -314,18 +315,7 @@ export default {
       }
     },
 
-    errorCh1 () {
-      let manEm = document.getElementById('sub_email').value
-
-      if (manEm == '') {
-        document.getElementById('manEmMsg').style.display = 'block'
-        return false
-      } else if (manEm != '') {
-        document.getElementById('manEmMsg').style.display = 'none'
-        return false
-      }
-    },
-
+    
     signup () {
       this.checkFlag = true;
       this.nullCheck()
@@ -433,7 +423,11 @@ export default {
       let phoneNum = ''
       this.mgPhNum = phoneNum.concat(this.firstNum, this.secondNum, this.thirdNum)
       console.log(this.mgPhNum)
-
+      if(this.firstNum == null && this.secondNum == "" && this.thirdNum == "") {
+        document.getElementById("manPhMsg").style.display = "block";
+      }else if (this.firstNum != null && this.secondNum != "" && this.thirdNum != "") {
+        document.getElementById("manPhMsg").style.display = "none";
+      }
       // let manPh = document.getElementById('dd').value
       //
       //  if ( manPh == "") {
@@ -449,6 +443,11 @@ export default {
       let sumBizNum = ''
       this.bizNum = sumBizNum.concat(this.bizNum1, this.bizNum2, this.bizNum3)
       console.log(this.bizNum)
+       if (this.bizNum1 == "" && this.bizNum2 == "" && this.bizNum3 == null) {
+        document.getElementById('manStNum').style.display = 'block'
+      } else if (this.bizNum1 != "" && this.bizNum2 != "" && this.bizNum3 != null) {
+        document.getElementById('manStNum').style.display = 'none'
+      }
 
       // let manNum = document.getElementById('shop_three').value
       //  if ( manNum == "") {
@@ -461,6 +460,11 @@ export default {
     },
     emailConcat () {
       let email = ''
+      if(this.mgEmail1 == "" && this.mgEmail2 == null){
+        document.getElementById("manEmMsg").style.display = "block";
+      }else if(this.mgEmail1 != "" && this.mgEmail2 != null ){
+        document.getElementById("manEmMsg").style.display = "none";
+      }
       this.mgEmail = email.concat(this.mgEmail1 + '@' + this.mgEmail2)
       console.log(this.mgEmail)
     },
