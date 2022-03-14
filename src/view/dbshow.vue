@@ -21,7 +21,7 @@
       >
         <td>{{ user.userid }}</td>
       </router-link>
-      <td>{{ user.pw }}</td>
+      <td>{{ user.userpw }}</td>
       <td>{{ user.username }}</td>
       <td>{{ user.bizaddr1 }}</td>
       <td>{{ user.bizaddr2 }}</td>
