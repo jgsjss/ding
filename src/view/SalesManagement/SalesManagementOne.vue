@@ -20,14 +20,14 @@
         </div>
       </div>
       <div class="month_right">
-        <div class="sales_sort_btn_wrap">
-          <select class="sales_sort_btn" v-model="selected" v-on="sortSales">
+        <SalesSort v-on:sortItem="sortAllItem" />
+        <!-- <div class="sales_sort_btn_wrap">
+          <select class="sales_sort_btn" name="sales" id="sales" v-model="selected" v-on:change="sortAllItem">
             품절해제
-            <option class="log_check_box" value="null">필터선택</option>
             <option class="log_check_Box" value="date-asc">최신순</option>
             <option class="log_check_Box" value="date-desc">과거순</option>
           </select>
-        </div>
+        </div> -->
         <table class="table">
           <thead class="sales_head">
           <tr class="sales_title">
@@ -71,12 +71,15 @@
 import { ref } from 'vue'
 import { forEach } from 'lodash'
 import _ from 'lodash'
+import SalesSort from './SalesSort.vue'
 
 export default {
-  components: {},
+  components: {
+    SalesSort,
+  },
   data () {
     return {
-      selected:null,
+      selected:"date-asc",
       pageNum: 0,
       totalPrice: 0,
       totalOrder: 0,
@@ -125,6 +128,27 @@ export default {
         answer = parseInt(str);
         return answer;
       },
+
+      sortSalesLatest() {
+        this.$SalesData.sort(function(a, b) {
+          return b.time - a.time;
+        });
+      },
+      sortSalesOldest() {
+        this.$SalesData.sort(function(a, b) {
+          return a.time - b.time;
+        });
+      },
+      sortAllItem(selectedSort) {
+        if (selectedSort.value === "date-desc") {
+          this.sortSalesLatest();
+        } else if (selectedSort.value === "date-asc") {
+          this.sortSalesOldest();
+        }
+      }
+      // sortSales() {
+      //   this.
+      // }
   },
   setup () {
     const month = ref({
@@ -144,7 +168,11 @@ export default {
     this.calcTotalPrice(this.$store.state.SalesData)
     this.TotalMenuOrder(this.$store.state.SalesData)
     this.TotalMenuNum(this.$store.state.SalesData)
-  }
+  },
+  //돔 로드시 자동 최신순정렬//
+    mounted() {
+    this.sortSalesLatest();
+  },
 
 }
 

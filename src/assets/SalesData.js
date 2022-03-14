@@ -16,7 +16,7 @@ export default [
     etc: '',
   },
   {
-    orderdata: '02.07 14:27',
+    orderdata: '02.09 11:07',
     watingnum: 125,
     division: '매장',
     content: '아메리카노 외 2개',
@@ -24,7 +24,7 @@ export default [
     etc: '',
   },
   {
-    orderdata: '02.07 14:27',
+    orderdata: '02.10 14:27',
     watingnum: 224,
     division: '매장',
     content: '아메리카노 외 2개',
@@ -32,7 +32,7 @@ export default [
     etc: '취소',
   },
   {
-    orderdata: '02.07 14:27',
+    orderdata: '02.17 15:47',
     watingnum: 232,
     division: '매장',
     content: '아메리카노 외 2개',
@@ -40,7 +40,7 @@ export default [
     etc: '',
   },
   {
-    orderdata: '02.07 14:27',
+    orderdata: '02.19 14:27',
     watingnum: 532,
     division: '매장',
     content: '아메리카노 외 2개',
@@ -48,7 +48,7 @@ export default [
     etc: '',
   },
   {
-    orderdata: '02.07 14:27',
+    orderdata: '02.20 14:27',
     watingnum: 664,
     division: '매장',
     content: '아메리카노 외 2개',
@@ -56,7 +56,7 @@ export default [
     etc: '',
   },
   {
-    orderdata: '02.07 14:27',
+    orderdata: '02.30 14:27',
     watingnum: 453,
     division: '매장',
     content: '아메리카노 외 2개',

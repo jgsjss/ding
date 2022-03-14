@@ -87,7 +87,7 @@
                         <label for="input_day" class="input_day">평일 시작 및 종료시간</label>
                         <Datepicker  timePicker range v-model="time" />
                         <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
-                        <Datepicker  timePicker range v-model="time" />    
+                        <Datepicker  timePicker range v-model="date" />    
                     </form>
                 </div>
                     <div class="break_time_btn_wrap">
@@ -118,14 +118,14 @@
                 <!--//////휴무1//////-->
                 <div class="regular_wrap">
                 <div class="regular_box">
-                        <select id="time" className="Rday" @change="regular">
+                        <select id="time" className="Rday" @change="weekRegular($event)">
                             <option value="첫째">매월 첫째주</option>
                             <option value="둘째">매월 둘째주</option>
                             <option value="셋째">매월 셋째주</option>
                             <option value="넷째">매월 넷째주</option>
                             <option value="다섯째">매월 다섯째주</option>
                             </select>           
-                        <select id="time" className="Rday" @change="regular" v-model="rdaySelect">
+                        <select id="time" className="Rday" @change="regular" v-model="rWeekSelect">
                             <option value="null">요일선택</option>
                             <option :key="i" :value="d.v" v-for="(d, i) in options">{{d.t}}</option>
                         </select>  
@@ -260,9 +260,11 @@ export default {
         return {
             picked:'',
             rdaySelect:null,
+            rWeekSelect:null,
             selected: [],
             type: 'select',
             time:'',
+            date:'',
             value:'',
             options: [
                 { v: "월", t: "월요일" },
@@ -290,6 +292,9 @@ export default {
         onEmit() {
             this.$emit("setInput", this.value);
             console.log(this.$emit)
+        },
+        weekRegular(event){
+            console.log(event.target.value);
         }
     },
     setup() {
