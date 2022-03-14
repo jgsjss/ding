@@ -8,29 +8,30 @@
       <div class="menuadd_wrap">
         <form>
           <label class="menuadd_label form-label">* 메뉴명
-            <input type="text" class="menuadd_input form-control" placeholder="예) 딩동아메리카노">
+            <input type="text" v-model="pdname" class="menuadd_input form-control" placeholder="예) 딩동아메리카노">
           </label>
           <label class="menuadd_label form-label">* 가격
-            <input type="text" class="menuadd_input form-control" @input="menuaddNumber" :value="menuNumber">
+            <input type="text" v-model="price" class="menuadd_input form-control" @input="menuaddNumber" >
           </label>
           <label class="menuadd_label form-label">* 설명
-            <textarea type="text" class="menuadd_input form-control"
+            <textarea type="text" v-model="pddescription" class="menuadd_input form-control"
                       placeholder="예) 딩동커피만의 로스팅방식으로 만들어낸 아메리카노"></textarea>
           </label>
           <label class="menuadd_label form-label"> 이미지
             <input
                 type="file"
+                ref="image"
                 class="menuadd_img_btn form-control"
-                @change="upload"
-                multiple accept="image/*"
+                accept=".png"
                 id="file"
             >
           </label>
           <div class="menuadd_img_input form-label">
             <img :src="image" alt="메뉴이미지" class="popupImageItem" style="width:200px; text-align:center;">
+            <button @click="pdimageUpload">이미지 저장</button>
           </div>
           <label class="form-label">메뉴공개&nbsp
-            <input type="radio" name="menu_add_radio" class="menuadd_radio">&nbsp공개
+            <input type="radio" name="menu_add_radio"  class="menuadd_radio">&nbsp공개
           </label>
           <label class="form-label">&nbsp
             <input type="radio" name="menu_add_radio" class="menuadd_radio">&nbsp숨김 (딩동오더에 노출 안됨)
@@ -136,7 +137,7 @@
       </div>
     </div>
     <div class="menuadd_btn_con">
-      <button type="button" class="menuadd_btn">메뉴추가</button>
+      <button type="button" class="menuadd_btn" @click="addMenu">메뉴추가</button>
     </div>
   </div>
 
@@ -153,11 +154,13 @@ export default {
   },
   data () {
     return {
-
+      pdname: "",
+      price: "",
+      pddescription:"",
+      ctnum:"",
       pdcategory: '선택된 카테고리 없음',
       description: '',
       catenum: Number,
-
       cateConnect: false,
       enabled: true,
       list: [
@@ -186,9 +189,38 @@ export default {
     }
   },
   methods: {
+    pdimageUpload(){
+      let form = new FormData()
+      let image = this.$refs['image'].files[0]
+
+      form.append('image', image)
+      axios.post("/apimenu/pdupload", form, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+
+    },
+    addMenu(){
+      axios.post("/apimenu/addMenu", {
+        data:{
+          pdname: this.pdname,
+          ctnum: this.ctnum,
+          price: this.price,
+          pddescription: this.pddescription
+        }
+      }).then( res => {
+          console.log(res.data)
+          console.log("전송완료")
+      })
+      .catch((err) =>{
+        console.log(err)
+      })
+    },
     selectCategory(i){
       this.pdcategory = this.cgData[i].pdcategory
       this.description = this.cgData[i].description
+      this.ctnum = this.cgData[i].ctnum
       this.catenum = i
       console.log("i : " , i)
     },
