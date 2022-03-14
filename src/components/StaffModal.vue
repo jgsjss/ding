@@ -14,13 +14,15 @@
     <div class="col-sm-10">
       <input 
       type="text" 
-      class="form-control" 
+      class="form-control textField" 
       id="stName1"
       maxlength="10"
       v-model="stName"
       @change="errorCh"
       @focus="checkFlag = false"
+      :class="{'textError': nameError}"
       />
+      <!-- <p v-if="nameError" class="subError">이름을 입력해 주세요</p> -->
       <span class="error_text_box" id="stName" style aria-live="assertive">필수입력 정보입니다.</span>
     </div>
   </div>
@@ -29,13 +31,15 @@
     <div class="col-sm-10">
       <input 
       type="text" 
-      class="form-control" 
+      class="form-control textField" 
       id="stId2" 
       v-model="stId"
       maxlength="20"
       @change="isStId(stId)"
       @focus="checkFlag = false"
+      :class="{'textError': idError}"
       >
+      <!-- <p v-if="idError" class="subError">아이디를 입력해 주세요</p> -->
       <span class="step_st" v-show="stCheck1">사용가능한 아이디 입니다.</span>
       <span class="step_st" v-show="stCheck2">이미 사용중인 아이디 입니다.</span>
       <span class="error_text_box" id="stIdMsg" style aria-live="assertive">필수입력 정보입니다.</span>
@@ -46,7 +50,7 @@
     <div class="col-sm-10">
       <input 
       type="password" 
-      class="form-control" 
+      class="form-control textField" 
       id="stPw2" 
       v-model="stPw"
       maxlength="16"
@@ -54,7 +58,9 @@
       ref=""
       @change="checkStPw"
       @focus="checkFlag = false "
+      :class="{'textError': pwError}"
       >
+      <!-- <p v-if="pwError" class="subError">비밀번호를 입력해주세요.</p> -->
       <span class="error_text_box" id="stPwMsg" style aria-live="assertive">필수 입력 정보입니다.</span>
     </div>
   </div>
@@ -98,8 +104,8 @@
       </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-            <button type="button" class="btn btn-primary" @click="sendCheck">등록</button>
+            <button type="button" class="btn btn-secondary">취소</button>
+            <button type="submit" class="btn btn-primary"  @click="login">등록</button>
           </div>
     </div>
   </div>
@@ -224,6 +230,10 @@ export default {
         stCheck1: false,
         stCheck2: false,
         stPwCheck: false,
+        //정보 공백 확인
+        nameError:false,
+        idError:false,
+        pwError:false,
     }
   },
   methods: {
@@ -283,7 +293,6 @@ export default {
         //   }
         // });
       }
-
       },
       checkStPw() {
         let pwd = document.getElementById("stPw2").value;
@@ -334,6 +343,24 @@ export default {
         this.setListChecked = false
       }
     },
+    //직원추가 input 공백체크
+    login() {
+      if(this.isBlank(this.name)) {
+        this.nameError = true
+      }
+      if(this.isBlank(this.id)) {
+        this.idError = true
+      }
+      if(this.isBlank(this.pw)){
+        this.pwError = true
+      }
+    },
+    isBlank(val){
+      if(val === undefined) return true
+      else if(val === null) return true
+      else if(val === '') return true
+      else return false
+    }
     //이름 테스트//
     //   sendCheck: function() {
     //     axios.post('//jsonplaceholder.typicode.com/posts', {
@@ -348,6 +375,22 @@ export default {
     // }
   },
   watch: {
+      name(val) {
+        if(val.length> 0) {
+          this.nameError = false
+      }
+    },
+      id(val) {
+        if(val.length> 0) {
+          this.idError = false
+      }
+    },
+      pw(val) {
+        if(val.length> 0) {
+          this.pwError = false
+      }
+    },  
+
     //     stName: function() {
     //   return this.stName = this.stName.replace/([가-힣]\x20])
     // }
