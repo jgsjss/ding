@@ -22,6 +22,7 @@ import DiscountCode from "../view/DiscountCode/DiscountCode.vue";
 import DiscountCodeOne from "../view/DiscountCode/DiscountCodeOne.vue";
 import DiscountCodeTwo from "../view/DiscountCode/DiscountCodeTwo.vue";
 /*SalesManagement */
+import SalesSort from "../view/SalesManagement/SalesSort.vue";
 import SalesManagement from "../view/SalesManagement/SalesManagement.vue";
 import SalesManagementOne from "../view/SalesManagement/SalesManagementOne.vue";
 import SalesManagementTwo from "../view/SalesManagement/SalesManagementTwo.vue";
@@ -252,6 +253,11 @@ const routes = [
       {
         path: "/salesmanagement/salesmanagementtwo",
         component: SalesManagementTwo,
+        meta: { requireLogin: true },
+      },
+      {
+        path: "/salesmanagement/SalesSort",
+        component: SalesSort,
         meta: { requireLogin: true },
       },
     ],
