@@ -44,10 +44,12 @@
                 <label for="category_add_label" class="category_add_label">* 카테고리명
                   <input type="text" v-model="ctname" class="category_add_input form-control" placeholder="예) 딩동아메리카노">
                 </label>
+                <span class="error_next_box1" id="caAddName" style aria-live="assertive">필수 정보 입니다.</span>
                 <label for="category_add_label" class="category_add_label">설명
                   <input type="text" v-model="description" class="category_add_input form-control"
                          placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">
                 </label>
+                <span class="error_next_box1" id="caAddDe" style aria-live="assertive">필수 정보 입니다.</span>
                 <div class="category_add_label_wrap">
                   카테고리공개
                   <label class="category_add_label">
