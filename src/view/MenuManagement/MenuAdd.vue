@@ -28,7 +28,14 @@
           </label>
           <div class="menuadd_img_input form-label">
             <img :src="image" alt="메뉴이미지" class="popupImageItem" style="width:200px; text-align:center;">
-            <button @click="pdimageUpload">이미지 저장</button>
+            <div class="menuadd_img_add_btn_wrap">
+            <button 
+            class="menuadd_img_add_btn"
+            @click="pdimageUpload"
+            >
+            이미지 저장
+            </button>
+            </div>
           </div>
           <label class="form-label">메뉴공개&nbsp
             <input type="radio" name="menu_add_radio"  class="menuadd_radio">&nbsp공개
