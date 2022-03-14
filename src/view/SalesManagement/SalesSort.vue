@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         sortSales() {
-            this.$emit("sortItem", { value: this.selected});
+            this.value("sortItem", { value: this.selected});
         }
     }
 }

@@ -130,12 +130,12 @@ export default {
       },
 
       sortSalesLatest() {
-        this.SalesData.sort(function(a, b) {
+        this.$SalesData.sort(function(a, b) {
           return b.time - a.time;
         });
       },
       sortSalesOldest() {
-        this.SalesData.sort(function(a, b) {
+        this.$SalesData.sort(function(a, b) {
           return a.time - b.time;
         });
       },
