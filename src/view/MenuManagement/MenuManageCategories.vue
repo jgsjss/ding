@@ -243,6 +243,8 @@ export default {
       }).then(res => {
         console.log('res.data: ', res.data)
         // 백엔드에서 날라오는 값 res.data=>articles[rows, ActualArticleLength]
+
+
         //게시물 총 갯수
         this.totalPage = res.data.length
         //게시물 정보들
@@ -299,6 +301,22 @@ export default {
     }
 
   },
+   errorCaAdd() {
+      if (this.ctname == "") {
+        document.getElementById("caAddName").style.display = "block";
+        return false;
+      } else if (this.ctname != "") {
+        document.getElementById("caAddName").style.display = "none";
+        return false;
+      }
+      if (this.description == "") {
+        document.getElementById("caAddDe").style.display = "block";
+        return false;
+      } else if (this.description != "") {
+        document.getElementById("caAddDe").style.display = "none";
+        return false;
+      }
+    },
   mounted () {
     // this.getList();
   },
