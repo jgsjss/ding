@@ -27,7 +27,11 @@
           <p class="proceeding_modal_sub_title">* 파일이 양식과 맞지 않을 경우 추가되지 않습니다.</p>
           </div>
           <div class="proceeding_modal_btn_wrap">
-          <button type="button" class="proceeding_modal_btn">할인코드 추가</button>
+          <button 
+            type="button" 
+            class="proceeding_modal_btn"
+            @click="discount"
+            >할인코드 추가</button>
           </div>
         </div>
         <div class="proceeding_modal_container02">
@@ -37,26 +41,77 @@
 
           <form @submit="checkForm" action="/something" method="post" novalidate="true">
             <label for="codeName" class="proceeding_modal_label form-label"> 할인코드
-              <input type="text" placeholder="9-숫자를 입력해주세요(최대10자리)" maxlength="10" class="proceeding_modal_input" @input="bindNumber" :value="number" >
+              <input type="text" 
+                placeholder="9-숫자를 입력해주세요(최대10자리)" 
+                maxlength="10" 
+                class="proceeding_modal_input" 
+                @input="bindNumber"
+                id="dcNumber"
+                v-model="dcNumber"
+                @change="errorDc"
+                :class="{'textError02' : numberError}"
+                >
             </label>
+              <p v-if="numberError" class="subError02">할인코드 정보를 입력해주세요.</p>
             <label for="" class="proceeding_modal_label">할인코드명
-              <input type="text" placeholder="ex) 1주년 기념 스페셜 할인" class="proceeding_modal_input">
+              <input 
+                type="text" 
+                placeholder="ex) 1주년 기념 스페셜 할인" 
+                class="proceeding_modal_input"
+                id="dcName"
+                v-model="dcName"
+                @change="errorDc"
+                :class="{'textError02': dcNameError}"
+                >
             </label>
+              <p v-if="dcNameError" class="subError02">할인코드 명을 입력해주세요.</p>            
             <label for="" class="proceeding_modal_label">할인항목
-              <input type="radio" name="proceeding_modal_radio">&nbsp결제금액&nbsp
-              <input type="text" class="proceeding_modal_small_input" placeholder="퍼센트할인" @input="countNumber" :value="cNumber">&nbsp%할인
+              <input 
+                type="radio" 
+                name="proceeding_modal_radio"
+                >
+                &nbsp결제금액&nbsp
+              <input 
+                type="text" 
+                class="proceeding_modal_small_input" 
+                placeholder="퍼센트할인"
+                @input="countNumber" 
+                v-model="cNumber"
+                id="cNumber"
+                :class="{'textError02': dpError}"
+                >
+                &nbsp%할인
             </label>
+              <p v-if="dpError" class="subError02">할인 %를 입력해주세요.</p>              
             <label for="" class="proceeding_modal_label">
-              <input type="radio" name="proceeding_modal_radio">&nbsp결제금액&nbsp
-              <input type="text" class="proceeding_modal_small_input" placeholder="금액할인" @input="priceNumber" :value="pNumber">&nbsp%할인
+              <input 
+                type="radio" 
+                name="proceeding_modal_radio">&nbsp결제금액&nbsp
+              <input 
+                type="text" 
+                class="proceeding_modal_small_input" 
+                placeholder="금액할인" 
+                @input="priceNumber" 
+                v-model="pNumber"
+                :class="{'textError02': dcError}"
+                >&nbsp%할인
             </label>
+              <p v-if="dcError" class="subError02">할인 금액을 입력해주세요.</p>            
             <label for="" class="proceeding_modal_label">사용가능횟수
-              <input type="radio" name="proceeding_modal_radio">&nbsp다회(제한없음)
-              <input type="radio" name="proceeding_modal_radio">&nbsp1회 (코드당 1번)
+              <input 
+                type="radio" 
+                name="proceeding_modal_radio">&nbsp다회(제한없음)
+              <input 
+                type="radio" 
+                name="proceeding_modal_radio">&nbsp1회 (코드당 1번)
             </label>
             <label for="" class="proceeding_modal_label">유효기간
-              <input type="radio" name="proceeding_modal_radio">&nbsp기간없음(무제한)
-              <input type="radio" name="proceeding_modal_radio">&nbsp기간설정
+              <input 
+                type="radio" 
+                name="proceeding_modal_radio">&nbsp기간없음(무제한)
+              <input 
+                type="radio" 
+                name="proceeding_modal_radio">&nbsp기간설정
             <Datepicker class="proceeding_modal_date" v-model="date" range datePicker modeHeight="120" locale="ko" weekStart="0" :enableTimePicker="false" value="2022-02-24"/>
             </label>
           </form>
@@ -139,11 +194,16 @@ export default {
       proceedSelected: [],
       date: '',
       proceedingAllChecked: false,
-      number:'',
+      dcNumber:'',
       cNumber:'',
       pNumber:'',
       error:[],
       codeName:null,
+      //항목 공백 체크
+      numberError:false,
+      dcNameError:false,
+      dpError:false,
+      dcError:false,
     }
   },
   methods: {
@@ -175,7 +235,7 @@ export default {
       }
     },
     bindNumber(event) {
-      this.number = event.target.value;
+      this.dcNumber = event.target.value;
     },
     countNumber(event) {
       this.cNumber = event.target.value;
@@ -196,7 +256,49 @@ export default {
     //   // }
     //   if (!this.errors.length) return true;
     // },
-      
+      //할인코드 항목추가 input 공백 체크
+      discount() {
+        if(this.isCount(this.code)) {
+          this.numberError = true
+        }
+        if(this.isCount(this.dcName)) {
+          this.dcNameError = true
+        }
+        if(this.isCount(this.dpName)) {
+          this.dpError = true
+        }
+        if(this.isCount(this.dcPrice)) {
+          this.dcError = true
+        }
+      },
+      isCount(val) {
+        if(val === undefined) return true
+        else if(val === null) return true
+        else if(val === '') return true
+        else return false
+      }
+    },
+    watch: {
+      code(val) {
+        if(val.length > 0) {
+          this.numberError = false
+        }
+      },
+      dcName(val) {
+        if(val.length > 0) {
+          this.dcNameError = false
+        }
+      },
+      dpName(val) {
+        if(val.length > 0) {
+          this.dpError = false
+        }
+      },
+      dcPrice(val) {
+        if(val.length > 0) {
+          this.dcError = false
+        }
+      },
     },
     // getSoldSelected () {
     //   let proceedIds = []
@@ -209,14 +311,14 @@ export default {
 
   watch: {
     //할인코드 코드추가 input only number
-    number(val) {
+    dcNumber(val) {
       const reg = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
 
       //한글, 영문 체크
-      if(reg.exec(val)!==null) this.number = val.replace(/[^0-9]/g,'');
+      if(reg.exec(val)!==null) this.dcNumber = val.replace(/[^0-9]/g,'');
 
       //...만 입력하게 될 경우 체크
-      if(isNaN(parseFloat(val)))this.number = '';
+      if(isNaN(parseFloat(val)))this.dcNumber = '';
     },
     //할인코드 할인항목 input only number
     cNumber(val) {
