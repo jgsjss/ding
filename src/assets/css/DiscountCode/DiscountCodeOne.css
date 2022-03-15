@@ -158,3 +158,25 @@ tbody {
     padding:5px 15px;
     border-radius: 5px;
 }
+.subError02{
+    height: 15px;
+    color: red;
+    display:inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;    
+    font-size:12px;
+}
+.discount{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 50px;
+    background-color: #3b5998;
+    color: white;
+}
+
+.discount:hover{
+    opacity: 0.9;
+}
