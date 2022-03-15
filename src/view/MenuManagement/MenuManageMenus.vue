@@ -6,9 +6,9 @@
         <label class="menuedit_label">
           <input type="checkbox"
                  class="menuedit_check"
-                   id="all-check"
-                   v-model="allCheckedMenus"
-                   @click="checkedAllMenu($event.target.checked)"                 
+                 id="all-check"
+                 v-model="allCheckedMenus"
+                 @click="checkedAllMenu($event.target.checked)"
           >
           전체선택
         </label>
@@ -32,7 +32,7 @@
                class="menu_search"
         >
         <router-link to="/menumanagement/MenuAdd">
-        <button class="menuedit_menu_btn02" type="button" @click="moveNext" >+메뉴추가</button>
+          <button class="menuedit_menu_btn02" type="button" @click="moveNext">+메뉴추가</button>
         </router-link>
         <select class="menu_hidden_select">
           <option class="menu_hidden_btn">전체/정상/숨김/품절</option>
@@ -67,15 +67,15 @@
             >
           </td>
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
-           <router-link to="/menumanagement/MenuAddModify" class="asdf">
+          <router-link to="/menumanagement/MenuAddModify" class="asdf">
             <td class="edit_data">
               <img src="../../assets/coffee.jpeg" class="coffee_img">
-                {{ menuData[i].pdname }}
+              {{ menuData[i].pdname }}
             </td>
-           </router-link>
-          <td class="edit_data" title="마우스">{{  menuData[i].price }}</td>
+          </router-link>
+          <td class="edit_data" title="마우스">{{ menuData[i].price }}</td>
           <td class="edit_data">{{ menuData[i].pdcategory }}</td>
-          <td class="edit_data">{{ "옵션은 보류" }}</td>
+          <td class="edit_data">{{ '옵션은 보류' }}</td>
           <td class="edit_data">
             <select class="edit_condition" @change="editCondition($event)" v-model="conditionKey">
               <option class="edit_condition_text" value="null">상태설정</option>
@@ -127,9 +127,9 @@ import router from '../../router'
 export default {
   data () {
     return {
-      conditionKey:null,
+      conditionKey: null,
       active: false,
-      menuname:[
+      menuname: [
         {
           coffee: require('../../assets/coffee.jpeg')
         }
@@ -162,14 +162,14 @@ export default {
         console.log(err)
       })
     },
-    moveNext(){
-        console.log('유저권한', this.getUserrole)
-        if (this.getUserrole != 0) {
-          alert('기능에 대한 권한이 없습니다.')
-          return
-        } else if(this.getUserrole == 0) {
-          return
-        }
+    moveNext () {
+      console.log('유저권한', this.getUserrole)
+      if (this.getUserrole != 0) {
+        alert('기능에 대한 권한이 없습니다.')
+        return
+      } else if (this.getUserrole == 0) {
+        return
+      }
     },
     print () {
       console.log(this.selected)
@@ -207,23 +207,34 @@ export default {
     },
 
     menuCnt (obj) {
-      _.forEach(obj,function (v,k,copy) {
+      _.forEach(obj, function (v, k, copy) {
         // console.log("Asd",V)
         // console.log(K)
         // console.log("v",v)
         // console.log("k",k)
         // console.log("copy",copy)
-        _.reduce(v,function (accum,v) {
-          console.log("v",v)
-          console.log("accum",accum)
+        _.reduce(v, function (accum, v) {
+          console.log('v', v)
+          console.log('accum', accum)
           // console.log("k",k)
           // console.log("i",i)
-        },3)
+        }, 3)
       })
     },
-    editCondition(event) {
+    editCondition (event) {
       console.log(event.target.value)
+    },
+
+    getImage: async () => {
+      const res = await axios.get('/apimenu/getimg', {
+        data: {
+          storeNumber: Number,
+          productNumber: Number
+        }
+      })
+      // locate=res.data
     }
+
   },
 
   // mounted() {
@@ -233,7 +244,7 @@ export default {
     // pageCount () {
     //   return Math.ceil(this.$store.state.CategoryData.length / 10)
     // },
-    getUserrole(){
+    getUserrole () {
       return this.$store.getters['loginStore/getUserrole']
     }
   },
