@@ -225,6 +225,7 @@ export default {
       console.log(event.target.value)
     },
 
+    // 이미지 호출을 위한 매장번호,물품번호를 어떻게 할것인가
     getImage: async () => {
       const res = await axios.get('/apimenu/getimg', {
         data: {
