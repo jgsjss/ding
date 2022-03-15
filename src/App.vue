@@ -1,5 +1,5 @@
 <template>
-  
+
   <h1>
     <router-link to="/signupone">회원가입 페이지</router-link>
   </h1>
@@ -11,6 +11,8 @@
   </h1>
   <h1><a href="/main">메인 페이지</a></h1>
   <button @click="getCategories">카테고리 테스트</button>
+  <br>
+  <span>서버상태 : {{ servStat }}</span>
   <!--  <span v-if="logCheck" @click="doLogOut"><button class="btn btn-warning">로그아웃</button></span>-->
   <!--  <h1>로그인 아이디 : {{ idCheck }} </h1>-->
   <!--  <h1>로그인 엑세스토큰 : {{ acTokenCk }} </h1>-->
@@ -22,6 +24,7 @@
 // import MenuModal from './components/MenuModal.vue'
 import axios from 'axios'
 import store from './store'
+
 import { mapState } from 'vuex'
 import xeicon from './assets/XEIcon-2.2.0/xeicon.min.css'
 import bootstrap from 'bootstrap/dist/css/bootstrap.css'
@@ -34,6 +37,7 @@ import animate from 'animate.css'
 export default {
   data () {
     return {
+      servStat: 'offline'
       // logCheck : false,
 
     }
@@ -79,6 +83,21 @@ export default {
       }).then(res => {
         console.log(res.data)
       })
+    },
+
+    servCheck: async function () {
+      console.log("체크기 실행")
+      try {
+        const res = await axios.get('/status/check')
+        if (res.status == 200) {
+          this.servStat = 'online'
+        } else {
+          this.servStat = 'offline'
+        }
+      } catch (e) {
+        console.log(e)
+      }
+
     }
   },
   created () {
@@ -92,6 +111,9 @@ export default {
     //   console.log(a)
     // })
     store.dispatch('loginStore/doReadStateFromStorage')
+
+    // setInterval(this.servCheck, 3000)
+    this.servCheck()
   },
   watch: {
     // reTokenCk(a){
