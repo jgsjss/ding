@@ -205,6 +205,11 @@ export default {
         headers: {
           "Content-Type": "multipart/form-data",
         },
+      }).then(res=>{
+        console.log("전송완료")
+        this.$swal("사진 전송 완료")
+      }).catch((err)=>{
+        console.log(err)
       })
 
     },
