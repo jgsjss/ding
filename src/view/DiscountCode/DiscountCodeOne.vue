@@ -64,11 +64,11 @@
                 :class="{'textError02': dcNameError}"
                 >
             </label>
-              <p v-if="dcNameError" class="subError02">할인코드 명을 입력해주세요.</p>            
+              <p v-if="dcNameError" id="dcNumberMsg" class="subError02">할인코드 명을 입력해주세요.</p>            
             <label for="" class="proceeding_modal_label">할인항목
               <input 
                 type="radio" 
-                name="proceeding_modal_radio"
+                name="proceeding_modal_radio_discount"
                 >
                 &nbsp결제금액&nbsp
               <input 
@@ -86,7 +86,7 @@
             <label for="" class="proceeding_modal_label">
               <input 
                 type="radio" 
-                name="proceeding_modal_radio">&nbsp결제금액&nbsp
+                name="proceeding_modal_radio_discount">&nbsp결제금액&nbsp
               <input 
                 type="text" 
                 class="proceeding_modal_small_input" 
@@ -256,6 +256,15 @@ export default {
     //   // }
     //   if (!this.errors.length) return true;
     // },
+    //input 공백 메세지
+      isDcMsg() {
+        let dcName = document.getElementById("").value;
+        if(dcName == "") {
+          document.getElementById("dcNumberMsg").style.display = "block";
+        } else if (dcName != "") {
+          document.getElementById("dcNumberMsg").style.display = "none";
+        }
+      },
       //할인코드 항목추가 input 공백 체크
       discount() {
         if(this.isCount(this.code)) {
@@ -299,7 +308,7 @@ export default {
           this.dcError = false
         }
       },
-    },
+  
     // getSoldSelected () {
     //   let proceedIds = []
     //   for (let i in this.DiscountCodeData) {
@@ -309,7 +318,6 @@ export default {
     //   }
     // },
 
-  watch: {
     //할인코드 코드추가 input only number
     dcNumber(val) {
       const reg = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;

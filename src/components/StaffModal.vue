@@ -264,7 +264,7 @@ export default {
         console.log(typeof this.stId);
         console.log(this.stId);
         if(id == "") {
-          document.getElementById("stIdMsg").style.display = "block;"
+          document.getElementById("stIdMsg").style.display = "block";
         } else if (id != "") {
           document.getElementById("stIdMsg").style.display = "none";
         }
