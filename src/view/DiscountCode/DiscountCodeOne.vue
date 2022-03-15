@@ -108,10 +108,10 @@
             <label for="" class="proceeding_modal_label">유효기간
               <input 
                 type="radio" 
-                name="proceeding_modal_radio">&nbsp기간없음(무제한)
+                name="proceeding_modal_radio_one">&nbsp기간없음(무제한)
               <input 
                 type="radio" 
-                name="proceeding_modal_radio">&nbsp기간설정
+                name="proceeding_modal_radio_one">&nbsp기간설정
             <Datepicker class="proceeding_modal_date" v-model="date" range datePicker modeHeight="120" locale="ko" weekStart="0" :enableTimePicker="false" value="2022-02-24"/>
             </label>
           </form>
