@@ -27,6 +27,9 @@ module.exports = {
       "^/apimenu/": {
         target,
         changeOrigin: true,
+      }, "^/status/": {
+        target,
+        changeOrigin: true,
       },
 
       // '^/login': {

@@ -245,7 +245,6 @@ export default {
         console.log('res.data: ', res.data)
         // 백엔드에서 날라오는 값 res.data=>articles[rows, ActualArticleLength]
 
-
         //게시물 총 갯수
         this.totalPage = res.data.length
         //게시물 정보들
