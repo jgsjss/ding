@@ -8,7 +8,7 @@
           </div>
           <div class="accomplished_btn_wrap02">
               <button type="submit" class="accomplished_header_right_btn">전체삭제</button>
-              <button type="submit" class="accomplished_header_right_btn">저장</button>
+              <button type="submit" class="accomplished_header_right_btn" data-bs-toggle="modal" data-bs-target="#saveModal">저장</button>
               <select class="accomplished_select">
                 <option class="accomplished_option" value="null">선택</option>
                 <option class="accomplished_option" value="최신순">최신순</option>
@@ -64,7 +64,7 @@
       <div class="accomplishedcode_wrap" v-show="accomplishedcode">
         <div class="discountinfo_main_wrap">
           <h5 class="discountinfo_main_title">할인코드 정보</h5>
-          <i class="xi-close" @click.self="$emit('close')"></i>
+          <i class="xi-close" @click="accomplishedcode=!accomplishedcode"></i>
         </div>
         <div class="discountinfo_sub_wrap">
           <p class="discountinfo_text">발급일자 :{{}}2022.02.22</p>
@@ -78,6 +78,21 @@
       </div>
           </div>
   </div>
+  <!--저장 모달창 시작-->
+  <div class="modal" tabindex="-1" id="saveModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body savemodal_text">
+        저장하시겠습니까?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button type="button" class="btn btn-primary">저장</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--저장 모달창 끝-->
   <router-view></router-view>
 </template>
 
@@ -94,6 +109,8 @@ export default {
       accomplishedSelected: [],
       date: '',
       accomplishedAllChecked: false,
+      codeCompletion:'',
+      
     }
   },
   methods: {

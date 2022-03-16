@@ -165,7 +165,7 @@
       <div class="discountinfo_wrap" v-show="DiscountCodeInfo">
         <div class="discountinfo_main_wrap">
           <h5 class="discountinfo_main_title">할인코드 정보</h5>
-          <i class="xi-close" @click.self="$emit('close')"></i>
+          <i class="xi-close" @click="DiscountCodeInfo=!DiscountCodeInfo"></i>
         </div>
         <div class="discountinfo_sub_wrap">
           <p class="discountinfo_text">발급일자 :{{}}2022.02.22</p>
