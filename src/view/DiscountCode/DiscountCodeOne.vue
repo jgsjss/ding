@@ -291,21 +291,29 @@ export default {
       code(val) {
         if(val.length > 0) {
           this.numberError = false
+        } else if (val.length < 10) {
+          this.numberError = true;
         }
       },
       dcName(val) {
         if(val.length > 0) {
           this.dcNameError = false
+        } else if(val.length < 20) {
+          this.dcNameError = true;
         }
       },
       dpName(val) {
         if(val.length > 0) {
           this.dpError = false
+        } else if(val.length < 10) {
+          this.dpError = true;
         }
       },
       dcPrice(val) {
         if(val.length > 0) {
           this.dcError = false
+        } else if (val.length < 10) {
+          this.dcError = true;
         }
       },
   
