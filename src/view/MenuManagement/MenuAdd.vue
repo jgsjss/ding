@@ -29,12 +29,12 @@
           <div class="menuadd_img_input form-label">
             <img :src="image" alt="메뉴이미지" class="popupImageItem" style="width:200px; text-align:center;">
             <div class="menuadd_img_add_btn_wrap">
-            <button 
-            class="menuadd_img_add_btn"
-            @click="pdimageUpload"
-            >
-            이미지 저장
-            </button>
+<!--            <button-->
+<!--            class="menuadd_img_add_btn"-->
+<!--            @click="pdimageUpload"-->
+<!--            >-->
+<!--            이미지 저장-->
+<!--            </button>-->
             </div>
           </div>
           <label class="form-label">메뉴공개&nbsp
@@ -86,7 +86,7 @@
 <!--                    <button type="button" class="category_option_add_btn02">연결</button>-->
 <!--                  </div>-->
                 </div>
-                
+
               </div>
             </div>
           </div>
@@ -154,6 +154,7 @@
 import { defineComponent } from 'vue'
 import { VueDraggableNext } from 'vue-draggable-next'
 import axios from 'axios'
+import router from '@/router'
 
 export default {
   components: {
@@ -214,6 +215,8 @@ export default {
 
     },
     addMenu(){
+      this.pdimageUpload();
+
       axios.post("/apimenu/addMenu", {
         data:{
           pdname: this.pdname,
@@ -224,6 +227,9 @@ export default {
       }).then( res => {
           console.log(res.data)
           console.log("전송완료")
+
+        // push해서 라우팅 경로 이동 redirect 필요
+        router.push('/menumanagement/menus')
       })
       .catch((err) =>{
         console.log(err)
