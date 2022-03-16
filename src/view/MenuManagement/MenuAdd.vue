@@ -11,7 +11,7 @@
             <input type="text" v-model="pdname" class="menuadd_input form-control" placeholder="예) 딩동아메리카노">
           </label>
           <label class="menuadd_label form-label">* 가격
-            <input type="text" v-model="price" class="menuadd_input form-control" @input="menuaddNumber" >
+            <input type="text" v-model="price" class="menuadd_input form-control" @input="menuaddNumber">
           </label>
           <label class="menuadd_label form-label">* 설명
             <textarea type="text" v-model="pddescription" class="menuadd_input form-control"
@@ -29,16 +29,16 @@
           <div class="menuadd_img_input form-label">
             <img :src="image" alt="메뉴이미지" class="popupImageItem" style="width:200px; text-align:center;">
             <div class="menuadd_img_add_btn_wrap">
-<!--            <button-->
-<!--            class="menuadd_img_add_btn"-->
-<!--            @click="pdimageUpload"-->
-<!--            >-->
-<!--            이미지 저장-->
-<!--            </button>-->
+              <!--            <button-->
+              <!--            class="menuadd_img_add_btn"-->
+              <!--            @click="pdimageUpload"-->
+              <!--            >-->
+              <!--            이미지 저장-->
+              <!--            </button>-->
             </div>
           </div>
           <label class="form-label">메뉴공개&nbsp
-            <input type="radio" name="menu_add_radio"  class="menuadd_radio">&nbsp공개
+            <input type="radio" name="menu_add_radio" class="menuadd_radio">&nbsp공개
           </label>
           <label class="form-label">&nbsp
             <input type="radio" name="menu_add_radio" class="menuadd_radio">&nbsp숨김 (딩동오더에 노출 안됨)
@@ -63,7 +63,7 @@
                     <button type="button" @click="cateConnCheck" class="category_option_add_btn">+카테고리 연결</button>
                   </div>
                   <div
-                          class="category_option_name">
+                      class="category_option_name">
                     {{ pdcategory }}
                     <p>{{ description }}</p>
                   </div>
@@ -71,20 +71,20 @@
                     <button type="button" class="category_option_add_btn02">저장</button>
                   </div>
                 </div>
-                <div class="category_option_add_right" v-show="cateConnect" >
+                <div class="category_option_add_right" v-show="cateConnect">
                   <div class="category_option_add_title_wrap">
                     <h4 class="category_option_add_title">카테고리 연결</h4>
                   </div>
                   <div class="category_option_wrapper">
-                  <button type="button"  v-for="(a, i) in cgData" :key="i"
-                          class="category_option_name" @click="selectCategory(i)">
-                    {{ cgData[i].pdcategory }}
-                    <p>{{ cgData[i].description }}</p>
-                  </button>
+                    <button type="button" v-for="(a, i) in cgData" :key="i"
+                            class="category_option_name" @click="selectCategory(i)">
+                      {{ cgData[i].pdcategory }}
+                      <p>{{ cgData[i].description }}</p>
+                    </button>
                   </div>
-<!--                  <div class="category_option_add_btn_wrap">-->
-<!--                    <button type="button" class="category_option_add_btn02">연결</button>-->
-<!--                  </div>-->
+                  <!--                  <div class="category_option_add_btn_wrap">-->
+                  <!--                    <button type="button" class="category_option_add_btn02">연결</button>-->
+                  <!--                  </div>-->
                 </div>
 
               </div>
@@ -155,17 +155,20 @@ import { defineComponent } from 'vue'
 import { VueDraggableNext } from 'vue-draggable-next'
 import axios from 'axios'
 import router from '@/router'
+import sweet from 'sweetalert2'
+
 
 export default {
   components: {
     draggable: VueDraggableNext,
   },
+
   data () {
     return {
-      pdname: "",
-      price: "",
-      pddescription:"",
-      ctnum:"",
+      pdname: '',
+      price: '',
+      pddescription: '',
+      ctnum: '',
       pdcategory: '선택된 카테고리 없음',
       description: '',
       catenum: Number,
@@ -192,61 +195,89 @@ export default {
       dragging: false,
       categoryAdd: false,
       cgData: [],
-      menuNumber:'',
+      menuNumber: '',
+      isNull: false,
 
     }
   },
   methods: {
-    pdimageUpload(){
+    isEmpty (data) {
+      if (data == '' || data == null || data == undefined) {
+        return true
+      } else {
+        return false
+      }
+    },
+    nullCheck () {
+      if (!this.isEmpty(this.pdname) &&
+          !this.isEmpty(this.price) &&
+          !this.isEmpty(this.pddescription) &&
+          !this.isEmpty(this.ctnum)
+      ) {
+        return this.isNull = true
+
+      } else {
+        return this.isNull = false
+      }
+    },
+    pdimageUpload () {
       let form = new FormData()
       let image = this.$refs['image'].files[0]
 
       form.append('image', image)
-      axios.post("/apimenu/pdupload", form, {
+      axios.post('/apimenu/pdupload', form, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
-      }).then(res=>{
-        console.log("전송완료")
-        this.$swal("사진 전송 완료")
-      }).catch((err)=>{
+      }).then(res => {
+        console.log('전송완료')
+      }).catch((err) => {
         console.log(err)
       })
-
     },
-    addMenu(){
-      this.pdimageUpload();
+    addMenu () {
 
-      axios.post("/apimenu/addMenu", {
-        data:{
-          pdname: this.pdname,
-          ctnum: this.ctnum,
-          price: this.price,
-          pddescription: this.pddescription
-        }
-      }).then( res => {
+      this.nullCheck()
+      let nullCk = this.isNull
+
+      if (!nullCk) {
+        sweet.fire('메뉴 정보들을 모두 입력하세요.')
+        return false
+      } else {
+        this.pdimageUpload()
+
+        axios.post('/apimenu/addMenu', {
+          data: {
+            pdname: this.pdname,
+            ctnum: this.ctnum,
+            price: this.price,
+            pddescription: this.pddescription
+          }
+        }).then(res => {
           console.log(res.data)
-          console.log("전송완료")
+          console.log('전송완료')
+          sweet.fire('메뉴 등록 완료')
+          // push해서 라우팅 경로 이동 redirect 필요
+          router.push('/menumanagement/menus')
+        })
+            .catch((err) => {
+              console.log(err)
+            })
+      }
 
-        // push해서 라우팅 경로 이동 redirect 필요
-        router.push('/menumanagement/menus')
-      })
-      .catch((err) =>{
-        console.log(err)
-      })
     },
-    selectCategory(i){
+    selectCategory (i) {
       this.pdcategory = this.cgData[i].pdcategory
       this.description = this.cgData[i].description
       this.ctnum = this.cgData[i].ctnum
       this.catenum = i
-      console.log("i : " , i)
+      console.log('i : ', i)
     },
-    cateConnCheck(){
-      if(!this.cateConnect){
-        this.cateConnect = true;
-      }else{
-        this.cateConnect = false;
+    cateConnCheck () {
+      if (!this.cateConnect) {
+        this.cateConnect = true
+      } else {
+        this.cateConnect = false
       }
     },
     log (event) {
@@ -283,8 +314,8 @@ export default {
             this.cgData = res.data.rows
           })
     },
-    menuaddNumber(event) {
-      this.menuNumber = event.target.value;
+    menuaddNumber (event) {
+      this.menuNumber = event.target.value
     }
   },
   beforeMount () {
@@ -292,14 +323,14 @@ export default {
     console.log(this.cgData)
   },
   watch: {
-    menuNumber(val) {
-      const menuadd = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
+    menuNumber (val) {
+      const menuadd = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/
 
       //한글, 영문 체크
-      if(menuadd.exec(val)!==null) this.menuNumber = val.replace(/[^0-9]/g,'');
+      if (menuadd.exec(val) !== null) this.menuNumber = val.replace(/[^0-9]/g, '')
 
       //...만 입력하게 될 경우 체크
-      if(isNaN(parseFloat(val)))this.menuNumber = '';
+      if (isNaN(parseFloat(val))) this.menuNumber = ''
     },
   }
 }

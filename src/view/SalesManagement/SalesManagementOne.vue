@@ -171,7 +171,7 @@ export default {
   },
   //돔 로드시 자동 최신순정렬//
     mounted() {
-    this.sortSalesLatest();
+    // this.sortSalesLatest();
   },
 
 }
