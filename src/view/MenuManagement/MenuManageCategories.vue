@@ -301,7 +301,7 @@ export default {
     }
 
   },
-   errorCaAdd() {
+   errorMenuAdd() {
       if (this.ctname == undefined) {
         document.getElementById("caAddName").style.display = "block";
         return false;

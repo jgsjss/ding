@@ -9,13 +9,16 @@
         <form>
           <label class="menuadd_label form-label">* 메뉴명
             <input type="text" v-model="pdname" class="menuadd_input form-control" placeholder="예) 딩동아메리카노">
+            <span class="error_next_box1" id="menuNa" style aria-live="assertive">필수 정보 입니다.</span>
           </label>
           <label class="menuadd_label form-label">* 가격
             <input type="text" v-model="price" class="menuadd_input form-control" @input="menuaddNumber">
+            <span class="error_next_box1" id="menuPr" style aria-live="assertive">필수 정보 입니다.</span>
           </label>
           <label class="menuadd_label form-label">* 설명
             <textarea type="text" v-model="pddescription" class="menuadd_input form-control"
                       placeholder="예) 딩동커피만의 로스팅방식으로 만들어낸 아메리카노"></textarea>
+            <span class="error_next_box1" id="menuDe" style aria-live="assertive">필수 정보 입니다.</span>          
           </label>
           <label class="menuadd_label form-label"> 이미지
             <input
@@ -245,6 +248,29 @@ export default {
       }).catch((err) => {
         console.log(err)
       })
+    },
+    errorCaAdd() {
+      if (this.pdname == undefined) {
+        document.getElementById("menuNa").style.display = "block";
+        return false;
+      } else if (this.pdname != undefined) {
+        document.getElementById("menuNa").style.display = "none";
+        return false;
+      }
+      if (this.price == undefined) {
+        document.getElementById("menuPr").style.display = "block";
+        return false;
+      } else if (this.price != undefined) {
+        document.getElementById("menuPr").style.display = "none";
+        return false;
+      }
+      if (this.pddescription == "") {
+        document.getElementById("menuDe").style.display = "block";
+        return false;
+      } else if (this.pddescription != "") {
+        document.getElementById("menuDe").style.display = "none";
+        return false;
+      }
     },
     addMenu () {
 

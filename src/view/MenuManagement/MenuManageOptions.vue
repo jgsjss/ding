@@ -62,12 +62,14 @@
                 <div class="mb-3">
                   <label for="" class="">* 옵션명</label>
                   <input type="text" class="form-control" placeholder="예)맵기" />
+                 <span class="error_next_box1" id="optionNa" style aria-live="assertive">필수 정보 입니다.</span>
                 </div>
                 <div class="mb-3">
                   <label for="" class="">* 옵션목록 및 추가가격</label>
                   <input type="text" class="form-control mb-2" placeholder="예)순한맛" />
                   <input type="text" class="form-control" placeholder="예)500원" 
                   @input="optionPrice" :value="opNumber" maxlength="10"/>
+                   <span class="error_next_box1" id="optionPr" style aria-live="assertive">필수 정보 입니다.</span>
                 </div>
                 <div class="mb-3">
                   <label class="menuoption_form_label">* 선택가능 옵션 수</label>
@@ -258,6 +260,22 @@ export default {
         if (this.cgData[i].optionSelected) {
           boardIds.push(this.cgData[i].boardId);
         }
+      }
+    },
+     errorOptionAdd() {
+      if (this.optionName == undefined) {
+        document.getElementById("optionNa").style.display = "block";
+        return false;
+      } else if (this.optionName != undefined) {
+        document.getElementById("optionNa").style.display = "none";
+        return false;
+      }
+      if (this.optionPrice == undefined) {
+        document.getElementById("optionPr").style.display = "block";
+        return false;
+      } else if (this.optionPrice != undefined) {
+        document.getElementById("optionPr").style.display = "none";
+        return false;
       }
     },
     optionPrice(event) {
