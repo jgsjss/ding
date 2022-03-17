@@ -305,14 +305,14 @@ export default {
       dpName(val) {
         if(val.length > 0) {
           this.dpError = false
-        } else if(val.length < 10) {
+        } else if(val.length < 5) {
           this.dpError = true;
         }
       },
       dcPrice(val) {
         if(val.length > 0) {
           this.dcError = false
-        } else if (val.length < 10) {
+        } else if (val.length < 5) {
           this.dcError = true;
         }
       },
