@@ -58,6 +58,7 @@
                 type="text" 
                 placeholder="ex) 1주년 기념 스페셜 할인" 
                 class="proceeding_modal_input"
+                maxlength="20"
                 id="dcName"
                 v-model="dcName"
                 @change="errorDc"
@@ -75,6 +76,7 @@
                 type="text" 
                 class="proceeding_modal_small_input" 
                 placeholder="퍼센트할인"
+                maxlength="5"
                 @input="countNumber" 
                 v-model="cNumber"
                 id="cNumber"
@@ -91,6 +93,7 @@
                 type="text" 
                 class="proceeding_modal_small_input" 
                 placeholder="금액할인" 
+                maxlength="5"
                 @input="priceNumber" 
                 v-model="pNumber"
                 :class="{'textError02': dcError}"
@@ -298,23 +301,17 @@ export default {
       dcName(val) {
         if(val.length > 0) {
           this.dcNameError = false
-        } else if(val.length < 20) {
-          this.dcNameError = true;
         }
       },
       dpName(val) {
         if(val.length > 0) {
           this.dpError = false
-        } else if(val.length < 5) {
-          this.dpError = true;
         }
       },
       dcPrice(val) {
         if(val.length > 0) {
           this.dcError = false
-        } else if (val.length < 5) {
-          this.dcError = true;
-        }
+        } 
       },
   
     // getSoldSelected () {
