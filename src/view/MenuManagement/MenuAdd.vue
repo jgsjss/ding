@@ -156,6 +156,8 @@ import { VueDraggableNext } from 'vue-draggable-next'
 import axios from 'axios'
 import router from '@/router'
 import sweet from 'sweetalert2'
+import store from '../../store/index.js'
+
 
 
 export default {
@@ -251,7 +253,8 @@ export default {
             pdname: this.pdname,
             ctnum: this.ctnum,
             price: this.price,
-            pddescription: this.pddescription
+            pddescription: this.pddescription,
+            shopcode: this.shopcode
           }
         }).then(res => {
           console.log(res.data)
@@ -332,6 +335,11 @@ export default {
       //...만 입력하게 될 경우 체크
       if (isNaN(parseFloat(val))) this.menuNumber = ''
     },
+  },
+  computed:{
+    shopcode(){
+      return store.getters["loginStore/getShopcode"]
+    }
   }
 }
 </script>
