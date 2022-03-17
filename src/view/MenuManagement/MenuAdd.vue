@@ -29,12 +29,12 @@
           <div class="menuadd_img_input form-label">
             <img :src="image" alt="메뉴이미지" class="popupImageItem" style="width:200px; text-align:center;">
             <div class="menuadd_img_add_btn_wrap">
-              <!--            <button-->
-              <!--            class="menuadd_img_add_btn"-->
-              <!--            @click="pdimageUpload"-->
-              <!--            >-->
-              <!--            이미지 저장-->
-              <!--            </button>-->
+                          <button
+                          class="menuadd_img_add_btn"
+                          @click="pdimageUpload"
+                          >
+                          이미지 저장
+                          </button>
             </div>
           </div>
           <label class="form-label">메뉴공개&nbsp
@@ -157,6 +157,9 @@ import axios from 'axios'
 import router from '@/router'
 import sweet from 'sweetalert2'
 import store from '../../store/index.js'
+import { useCookies } from "vue3-cookies";
+
+const { cookies } = useCookies();
 
 
 
@@ -227,6 +230,12 @@ export default {
       let image = this.$refs['image'].files[0]
 
       form.append('image', image)
+
+
+      console.log("shopcode : ",cookies.get('login'))
+      console.log("shopcode : ",cookies.get('login').shopcode)
+
+
       axios.post('/apimenu/pdupload', form, {
         headers: {
           'Content-Type': 'multipart/form-data',
