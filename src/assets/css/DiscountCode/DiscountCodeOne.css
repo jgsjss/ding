@@ -180,3 +180,9 @@ tbody {
 .discount:hover{
     opacity: 0.9;
 }
+.error_xlsx_box {
+    margin-top: 9px;
+    margin-left: 0px;
+    font-size: 12px;
+    color: red;
+  }

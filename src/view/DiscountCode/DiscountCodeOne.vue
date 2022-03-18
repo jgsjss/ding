@@ -20,15 +20,27 @@
           <p class="proceeding_modal_sub_title">- 아래 양식을 다운로드하여 작성하신후 파일을 업로드 해주세요.</p>
           <xlsx />
           <div class="proceeding_modal_input_wrap">
-          <input type="file" accept=".xlsx, .xls" class="proceeding_modal_input" placeholder="파일추가">
+          <input 
+            type="file" 
+            accept=".xlsx, .xls" 
+            class="proceeding_modal_input" 
+            placeholder="파일추가"
+            name="xlsx"
+            id="fileXlsx"
+            ref="xlsx"
+            @focus="xlsxCheck=false"
+            >
+          <span class="error_xlsx_box" id="xsCheck" style-aria-live="assertive">파일을 첨부해주세요.</span>
+          <button type="button" @Click="fileAdd">파일보내기</button>            
           </div>
+
           <div>
           <p class="proceeding_modal_sub_title">* 지원하는 파일 형식: xlsx</p>
           <p class="proceeding_modal_sub_title">* 파일이 양식과 맞지 않을 경우 추가되지 않습니다.</p>
           </div>
           <div class="proceeding_modal_btn_wrap">
           <button 
-            type="button" 
+            type="submit" 
             class="proceeding_modal_btn"
             @click="discount"
             >할인코드 추가</button>
@@ -50,6 +62,7 @@
                 v-model="dcNumber"
                 @change="errorDc"
                 :class="{'textError02' : numberError}"
+                required
                 >
             </label>
               <p v-if="numberError" class="subError02">할인코드 정보를 입력해주세요.</p>
@@ -70,6 +83,7 @@
               <input 
                 type="radio" 
                 name="proceeding_modal_radio_discount"
+                required
                 >
                 &nbsp결제금액&nbsp
               <input 
@@ -88,7 +102,7 @@
             <label for="" class="proceeding_modal_label">
               <input 
                 type="radio" 
-                name="proceeding_modal_radio_discount">&nbsp결제금액&nbsp
+                name="proceeding_modal_radio_discount" required>&nbsp결제금액&nbsp
               <input 
                 type="text" 
                 class="proceeding_modal_small_input" 
@@ -288,6 +302,23 @@ export default {
         else if(val === null) return true
         else if(val === '') return true
         else return false
+      },
+      //엑셀파일
+      fileAdd() {
+        var xlsxCheck = document.getElementById('fileXlsx').value
+        let xlsxVal = this.$ref['xlsx'].value
+        // xlsxVal = xlsxVal.slice(xlsxVal.indexOf('.') +1).toLowercase()
+        // console.log(xlsxVal)
+        // console.log(xlsxCheck)
+        if (xlsxCheck == '' || xlsxCheck == null) {
+          document.getElementById('xsCheck').style.display = 'block'
+        } else if (xlsxCheck != '') {
+          document.getElementById('xsCheck').style.display = 'none'
+        }
+        if (xlsxVal != 'xlsx' || xlsxVal == null) {
+          alert('확장자 xlsx 파일만 첨부 가능합니다.')
+          return false
+        }
       }
     },
     watch: {
