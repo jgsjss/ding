@@ -240,6 +240,9 @@ export default {
 
 
       axios.post('/apimenu/pdupload', form, {
+        data:{
+          shopcode: this.shopcode
+        },
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -289,7 +292,6 @@ export default {
             ctnum: this.ctnum,
             price: this.price,
             pddescription: this.pddescription,
-            shopcode: this.shopcode
           }
         }).then(res => {
           console.log(res.data)
