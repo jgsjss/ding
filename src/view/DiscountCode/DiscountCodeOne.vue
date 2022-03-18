@@ -28,6 +28,7 @@
             name="xlsx"
             id="fileXlsx"
             ref="xlsx"
+            @change="isXlsx(xlsx)"
             @focus="xlsxCheck=false"
             >
           <span class="error_xlsx_box" id="xsCheck" style-aria-live="assertive">파일을 첨부해주세요.</span>
@@ -60,12 +61,12 @@
                 @input="bindNumber"
                 id="dcNumber"
                 v-model="dcNumber"
-                @change="errorDc"
+                @change="isDcNumber(dcNumber)"
                 :class="{'textError02' : numberError}"
                 required
                 >
             </label>
-              <p v-if="numberError" class="subError02">할인코드 정보를 입력해주세요.</p>
+              <p id="dcNumberMsg" style aria-live="assertive"  class="subError02">할인코드 정보를 입력해주세요.</p>
             <label for="" class="proceeding_modal_label">할인코드명
               <input 
                 type="text" 
@@ -74,11 +75,11 @@
                 maxlength="20"
                 id="dcName"
                 v-model="dcName"
-                @change="errorDc"
+                @change="isDcMsg(dcName)"
                 :class="{'textError02': dcNameError}"
                 >
             </label>
-              <p v-if="dcNameError" id="dcNumberMsg" class="subError02">할인코드 명을 입력해주세요.</p>            
+              <p id="dcNameMsg" style aria-live="assertive" class="subError02">할인코드 명을 입력해주세요.</p>            
             <label for="" class="proceeding_modal_label">할인항목
               <input 
                 type="radio" 
@@ -94,11 +95,12 @@
                 @input="countNumber" 
                 v-model="cNumber"
                 id="cNumber"
+                @change="iscNumber(cNumber)"                
                 :class="{'textError02': dpError}"
                 >
                 &nbsp%할인
             </label>
-              <p v-if="dpError" class="subError02">할인 %를 입력해주세요.</p>              
+              <p id="cNumberMsg" style aria-live="assertive" class="subError02">할인 %를 입력해주세요.</p>              
             <label for="" class="proceeding_modal_label">
               <input 
                 type="radio" 
@@ -110,10 +112,11 @@
                 maxlength="5"
                 @input="priceNumber" 
                 v-model="pNumber"
+                @change="ispNumber(pNumber)"
                 :class="{'textError02': dcError}"
                 >&nbsp%할인
             </label>
-              <p v-if="dcError" class="subError02">할인 금액을 입력해주세요.</p>            
+              <p id="pNumberMsg" style aria-live="assertive" class="subError02">할인 금액을 입력해주세요.</p>            
             <label for="" class="proceeding_modal_label">사용가능횟수
               <input 
                 type="radio" 
@@ -275,11 +278,48 @@ export default {
     // },
     //input 공백 메세지
       isDcMsg() {
-        let dcName = document.getElementById("").value;
-        if(dcName == "") {
+        let dc = document.getElementById("dcName").value;
+        console.log(dc)
+        if(dc == "") {
+          document.getElementById("dcNameMsg").style.display = "block";
+        } else if (dc != "") {
+          document.getElementById("dcNameMsg").style.display = "none";
+        }
+      },
+      isDcNumber() {
+        let dc = document.getElementById("dcNumber").value;
+        console.log(dc)
+        if(dc == "") {
           document.getElementById("dcNumberMsg").style.display = "block";
-        } else if (dcName != "") {
+        } else if (dc != "") {
           document.getElementById("dcNumberMsg").style.display = "none";
+        }
+      },
+      iscNumber() {
+        let dc = document.getElementById("cNumber").value;
+        console.log(dc)
+        if(dc == "") {
+          document.getElementById("cNumberMsg").style.display = "block";
+        } else if (dc != "") {
+          document.getElementById("cNumberMsg").style.display = "none";
+        }
+      },
+      ispNumber() {
+        let dc = document.getElementById("pNumber").value;
+        console.log(dc)
+        if(dc == "") {
+          document.getElementById("pNumberMsg").style.display = "block";
+        } else if (dc != "") {
+          document.getElementById("pNumberMsg").style.display = "none";
+        }
+      },
+      isXlsx() {
+        let dc = document.getElementById("flieXlsx").value;
+        console.log(dc)
+        if(dc == "") {
+          document.getElementById("xsCheck").style.display = "block";
+        } else if (dc != "") {
+          document.getElementById("xsCheck").style.display = "none";
         }
       },
       //할인코드 항목추가 input 공백 체크
@@ -325,7 +365,7 @@ export default {
       code(val) {
         if(val.length > 0) {
           this.numberError = false
-        } else if (val.length < 10) {
+        } else if (val.length < 0) {
           this.numberError = true;
         }
       },
