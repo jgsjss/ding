@@ -287,38 +287,38 @@ export default {
         }
       },
       isDcNumber() {
-        let dc = document.getElementById("dcNumber").value;
-        console.log(dc)
-        if(dc == "") {
+        let dcN = document.getElementById("dcNumber").value;
+        console.log(dcN)
+        if(dcN == "") {
           document.getElementById("dcNumberMsg").style.display = "block";
-        } else if (dc != "") {
+        } else if (dcN != "") {
           document.getElementById("dcNumberMsg").style.display = "none";
         }
       },
       iscNumber() {
-        let dc = document.getElementById("cNumber").value;
-        console.log(dc)
-        if(dc == "") {
+        let cN = document.getElementById("cNumber").value;
+        console.log(cN)
+        if(cN == "") {
           document.getElementById("cNumberMsg").style.display = "block";
-        } else if (dc != "") {
+        } else if (cN != "") {
           document.getElementById("cNumberMsg").style.display = "none";
         }
       },
       ispNumber() {
-        let dc = document.getElementById("pNumber").value;
-        console.log(dc)
-        if(dc == "") {
+        let dcP = document.getElementById("pNumber").value;
+        console.log(dcP)
+        if(dcP == "") {
           document.getElementById("pNumberMsg").style.display = "block";
-        } else if (dc != "") {
+        } else if (dcP != "") {
           document.getElementById("pNumberMsg").style.display = "none";
         }
       },
       isXlsx() {
-        let dc = document.getElementById("flieXlsx").value;
-        console.log(dc)
-        if(dc == "") {
+        let xlsx = document.getElementById("xlsx").value;
+        console.log(xlsx)
+        if(xlsx == "") {
           document.getElementById("xsCheck").style.display = "block";
-        } else if (dc != "") {
+        } else if (xlsx != "") {
           document.getElementById("xsCheck").style.display = "none";
         }
       },
