@@ -10,7 +10,6 @@
               <button type="submit" class="accomplished_header_right_btn">전체삭제</button>
               <button type="submit" class="accomplished_header_right_btn" data-bs-toggle="modal" data-bs-target="#saveModal">저장</button>
               <select class="accomplished_select">
-                <option class="accomplished_option" value="null">선택</option>
                 <option class="accomplished_option" value="최신순">최신순</option>
                 <option class="accomplished_option" value="과거순">과거순</option>
               </select>
@@ -57,7 +56,16 @@
           <td class="accomplished_data">{{ $store.state.DiscountCodeData[i].count  }}</td>
           <td class="accomplished_data">{{ $store.state.DiscountCodeData[i].validity  }}</td>
           <td class="accomplished_data">{{ $store.state.DiscountCodeData[i].accomplished }}</td>
-          <td class="accomplished_data"><button type="submit" class="accomplished_end_btn" value="hidden">삭제</button></td>
+          <td class="accomplished_data">
+            <button 
+              type="button" 
+              class="accomplished_end_btn" 
+              value="hidden"
+              @click="buttonDelete"
+              >
+              삭제
+              </button>
+              </td>
         </tr>
         </tbody>
       </table>
@@ -114,6 +122,11 @@ export default {
     }
   },
   methods: {
+    buttonDelete:function(event) {
+      if(!window.confirm("정말 삭제하시겠습니까?")) {
+        event.preventDefault();
+      }
+    },
     accomplishedCheckedAll (checked) {
       this.accomplishedSelected = checked;
     },
