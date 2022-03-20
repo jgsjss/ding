@@ -11,6 +11,7 @@
       <th scope="col">e-mail</th>
       <th scope="col">연락처</th>
       <th scope="col">가게이름</th>
+      <th scope="col">가게번호</th>
     </tr>
     </thead>
     <tbody>
@@ -28,6 +29,7 @@
       <td>{{ user.mgemail }}</td>
       <td>{{ user.phnum }}</td>
       <td>{{ user.shopname }}</td>
+      <td>{{ user.shopcode }}</td>
     </tr>
     </tbody>
   </table>
