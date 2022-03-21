@@ -3,7 +3,16 @@
     <div class="month_wrap">
       <div class="month_left">
         <div class="month_left_wrap">
-          <Datepicker v-model="month" monthPicker modeHeight="120" locale="ko"/>
+          <!-- <Datepicker v-model="month" monthPicker modeHeight="120" locale="ko"/> -->
+          <input 
+            type="month" 
+            min="2022-03" 
+            max="2025-12" 
+            class="month_date"
+            name = "bdaymonth"
+            value="2022-03"
+            autofocus
+            >
         </div>
         <div class="month_list_wrap">
           <div class="m_list_wrap1">
@@ -75,7 +84,6 @@ import SalesSort from './SalesSort.vue'
 
 export default {
   components: {
-    SalesSort,
   },
   data () {
     return {
