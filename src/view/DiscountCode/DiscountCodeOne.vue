@@ -102,7 +102,11 @@
           </label>
           <p id="cNumberMsg" style aria-live="assertive" class="subError02">할인 %를 입력해주세요.</p>
           <label for="" class="proceeding_modal_label">
-            <input type="radio" name="proceeding_modal_radio_discount"/>&nbsp결제금액&nbsp
+            <input 
+              type="radio" 
+              name="proceeding_modal_radio_discount" 
+              />
+              &nbsp결제금액&nbsp
             <input
               type="text"
               class="proceeding_modal_small_input"
@@ -117,7 +121,8 @@
           </label>
           <p id="pNumberMsg" style aria-live="assertive" class="subError02">할인 금액을 입력해주세요.</p>
           <label for="" class="proceeding_modal_label"
-            >사용가능횟수 <input type="radio" name="proceeding_modal_radio" />&nbsp다회(제한없음)
+            >사용가능횟수 
+            <input type="radio" name="proceeding_modal_radio" />&nbsp다회(제한없음)
             <input type="radio" name="proceeding_modal_radio" />&nbsp1회 (코드당 1번)
           </label>
           <label for="" class="proceeding_modal_label"
