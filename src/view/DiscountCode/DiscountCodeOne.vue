@@ -36,7 +36,7 @@
             @focus="xlsxCheck = false"
           />
           <span class="error_xlsx_box" id="xsCheck" style-aria-live="assertive">파일을 첨부해주세요.</span>
-          <button type="button" @Click="fileAdd">파일보내기</button>
+          <button type="button" class="file_add_btn" @Click="fileAdd">파일보내기</button>
         </div>
 
         <div>
@@ -85,7 +85,7 @@
           <p id="dcNameMsg" style aria-live="assertive" class="subError02">할인코드 명을 입력해주세요.</p>
           <label for="" class="proceeding_modal_label"
             >할인항목
-            <input type="radio" name="proceeding_modal_radio_discount" required />
+            <input type="radio" name="proceeding_modal_radio_discount"/>
             &nbsp결제금액&nbsp
             <input
               type="text"
@@ -102,7 +102,7 @@
           </label>
           <p id="cNumberMsg" style aria-live="assertive" class="subError02">할인 %를 입력해주세요.</p>
           <label for="" class="proceeding_modal_label">
-            <input type="radio" name="proceeding_modal_radio_discount" required />&nbsp결제금액&nbsp
+            <input type="radio" name="proceeding_modal_radio_discount"/>&nbsp결제금액&nbsp
             <input
               type="text"
               class="proceeding_modal_small_input"
