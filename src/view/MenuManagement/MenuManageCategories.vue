@@ -42,7 +42,7 @@
             <div>
               <form class="row">
                 <label for="category_add_label" class="category_add_label">* 카테고리명
-                  <input type="text" v-model="ctname" class="category_add_input form-control" @change="errorCaAdd" placeholder="예) 딩동아메리카노">
+                  <input type="text" id="cana" v-model="ctname" class="category_add_input form-control" @change="errorCaAdd" placeholder="예) 딩동아메리카노">
                 <span class="error_next_box1" id="caAddName" style aria-live="assertive">필수 정보 입니다.</span>
                 </label>
                 <label for="category_add_label" class="category_add_label">설명
@@ -301,18 +301,21 @@ export default {
     }
 
   },
-   errorMenuAdd() {
-      if (this.ctname == undefined) {
+   errorCaAdd() {
+     let can = document.getElementById("cana");
+     console.log(can);
+     console.log(this.description);
+      if (this.ctname.length == 0) {
         document.getElementById("caAddName").style.display = "block";
         return false;
-      } else if (this.ctname != undefined) {
+      } else if (this.ctname.length != 0) {
         document.getElementById("caAddName").style.display = "none";
         return false;
       }
-      if (this.description == "") {
+      if (this.description.length == 0) {
         document.getElementById("caAddDe").style.display = "block";
         return false;
-      } else if (this.description != "") {
+      } else if (this.description.length != 0) {
         document.getElementById("caAddDe").style.display = "none";
         return false;
       }
