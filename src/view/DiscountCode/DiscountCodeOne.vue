@@ -110,6 +110,7 @@
               maxlength="5"
               @input="priceNumber"
               v-model="pNumber"
+              id="pNumber"
               @change="ispNumber(pNumber)"
               :class="{ textError02: dcError }"
             />&nbsp%할인
@@ -221,12 +222,12 @@ export default {
     return {
       discountOpen: false,
       DiscountCodeInfo: false,
-      proceedSelected: [],
       date: "",
       proceedingAllChecked: false,
       dcNumber: "",
       cNumber: "",
       pNumber: "",
+      dcName:"",
       error: [],
       codeName: null,
       //항목 공백 체크
@@ -237,6 +238,7 @@ export default {
     };
   },
   methods: {
+    //코드 종료 클릭시 경고창
     buttonEnd:function(event) {
       if(!window.confirm("정말 종료하시겠습니까?")) {
         event.preventDefault();
@@ -258,15 +260,15 @@ export default {
       reader.readAsBinaryString(file);
     },
     proceedingCheckedAll(checked) {
-      this.proceedSelected = checked;
+      this.proceedSelected = checked
     },
     proceedSelected() {
       for (let i in this.boardList) {
         if (!this.boardList[i].proceedSelected) {
-          this.proceedingAllChecked = false;
-          return;
+          this.proceedingAllChecked = false
+          return
         } else {
-          this.proceedingAllChecked = true;
+          this.proceedingAllChecked = true
         }
       }
     },
@@ -330,7 +332,7 @@ export default {
       }
     },
     isXlsx() {
-      let xlsx = document.getElementById("xlsx").value;
+      let xlsx = document.getElementById("fileXlsx").value;
       console.log(xlsx);
       if (xlsx == "") {
         document.getElementById("xsCheck").style.display = "block";
@@ -363,9 +365,9 @@ export default {
     fileAdd() {
       var xlsxCheck = document.getElementById("fileXlsx").value;
       let xlsxVal = this.$ref["xlsx"].value;
-      // xlsxVal = xlsxVal.slice(xlsxVal.indexOf('.') +1).toLowercase()
-      // console.log(xlsxVal)
-      // console.log(xlsxCheck)
+      xlsxVal = xlsxVal.slice(xlsxVal.indexOf('.') +1).toLowercase()
+      console.log(xlsxVal)
+      console.log(xlsxCheck)
       if (xlsxCheck == "" || xlsxCheck == null) {
         document.getElementById("xsCheck").style.display = "block";
       } else if (xlsxCheck != "") {

@@ -2,7 +2,7 @@
   <vue-excel-xlsx
         :data="data"
         :columns="columns"
-        :file-name="'discountCodefile'"
+        :file-name="'discountCodeFile'"
         :file-type="'xlsx'"
         :sheet-name="'codename'"
         class="xlsx_btn"

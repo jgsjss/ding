@@ -23,7 +23,6 @@
   <div class="sales_sort_btn_wrap">
   <select class="sales_sort_btn" v-model="selected" v-on="sortSales">
     품절해제
-            <option class="log_check_box" value="null">필터선택</option>
             <option class="log_check_Box" value="date-asc">최신순</option>
             <option class="log_check_Box" value="date-desc">과거순</option>
   </select>
@@ -78,7 +77,6 @@ import _ from 'lodash'
       show:false,
       step: 0,
       pageNum: 0,
-      selected:null,
       SalesPrice:0,
       SalesOrder:0,
       SalesNumber:0,

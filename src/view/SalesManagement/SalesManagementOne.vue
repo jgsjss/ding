@@ -20,14 +20,14 @@
         </div>
       </div>
       <div class="month_right">
-        <SalesSort v-on:sortItem="sortAllItem" />
-        <!-- <div class="sales_sort_btn_wrap">
+        <!-- <SalesSort v-on:sortItem="sortAllItem" /> -->
+        <div class="sales_sort_btn_wrap">
           <select class="sales_sort_btn" name="sales" id="sales" v-model="selected" v-on:change="sortAllItem">
             품절해제
             <option class="log_check_Box" value="date-asc">최신순</option>
             <option class="log_check_Box" value="date-desc">과거순</option>
           </select>
-        </div> -->
+        </div>
         <table class="table">
           <thead class="sales_head">
           <tr class="sales_title">

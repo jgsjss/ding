@@ -190,10 +190,10 @@ export default {
     menuSelected () {
       for (let i in this.boardList) {
         if (!this.boardList[i].menuSelected) {
-          this.allChecked = false
+          this.allCheckedMenus = false
           return
         } else {
-          this.allChecked = true
+          this.allCheckedMenus = true
         }
       }
     },
