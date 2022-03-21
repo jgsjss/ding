@@ -12,8 +12,12 @@
       </div>   
       </div> 
       <div class="discount_router_wrap">
-      <router-link to="/DiscountCode/DiscountCodeOne" exact-active-class="exact-active"><span class="discount_router_name">진행중코드</span></router-link> 
-    <router-link to="/DiscountCode/DiscountCodeTwo"><span class="discount_router_name">종료된코드</span> </router-link> 
+      <router-link to="/DiscountCode/DiscountCodeOne">
+        <span class="discount_router_name">진행중코드</span>
+      </router-link> 
+      <router-link to="/DiscountCode/DiscountCodeTwo">
+        <span class="discount_router_name">종료된코드</span>
+      </router-link> 
     </div>
     </div>
     <hr />

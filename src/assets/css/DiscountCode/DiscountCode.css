@@ -22,9 +22,9 @@
   color:#997fb5;
   position:relative;
 }
-.discount_router_name:first-child {
+/* .discount_router_name:first-child {
   margin-left:15px;
-}
-router-link-exact-active {
-  font-size: 24px;
+} */
+.router-link-exact-active {
+  border-bottom:10px solid #997fb5;
 }
