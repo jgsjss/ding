@@ -89,8 +89,25 @@
         </p>
         <form>
             <label class="toping_option_add_label">옵션목록 및 추가가격</label>
-                <input type="text" class="toping_option_add_input" placeholder="예)순한맛">
-                <input type="text" class="toping_option_add_input" placeholder="예)500원" @input="topingNumber" :value="tNumber">
+                <input 
+                  type="text" 
+                  class="toping_option_add_input" 
+                  placeholder="예)순한맛"
+                  id="tpNumber"
+                  v-model="tpNumber"
+                  @change="isTpNumber(tpNumber)"
+                  >
+                  <p id="tpMsg" style-aria-live="assertive" class="subError03">옵션목록을 입력해 주세요.</p>
+                <input 
+                  type="text" 
+                  class="toping_option_add_input" 
+                  placeholder="예)500원" 
+                  @input="topingNumber" 
+                  id="opPrice"
+                  v-model="opPrice"
+                  @change="isPrice(opPrice)"
+                  >
+                  <p id="opMsg" style-aria-live="assertive" class="subError03">가격을 입력해 주세요.</p>
             <button type="submit" class="toping_option_add_btn">저장</button>
         </form>        
         </div>
@@ -181,7 +198,6 @@ export default {
         active: false,
         searchList: "",
         search: "",
-        topingSelected:[],
         topingAllChecked: false,
         connectOpen:false,
         list: [
@@ -277,7 +293,26 @@ export default {
     // },
     topingNumber(event) {
       this.tNumber = event.target.value;
-    }
+    },
+    isTpNumber() {
+      let tp = document.getElementById("tpNumber").value;
+      console.log(tp);
+      if ( tp == "") {
+        document.getElementById("tpMsg").style.display = "block"
+      } else if (tp != "") {
+        document.getElementById("tpMsg").style.display = "none"
+      }
+    },
+    isPrice() {
+      let op = document.getElementById("opPrice").value;
+      console.log(op);
+      if ( op == "") {
+        document.getElementById("opMsg").style.display = "block"
+      } else if (op != "") {
+        document.getElementById("opMsg").style.display = "none"
+      }
+    },
+
     //검색 고장난거같음 일단 보류
     // handleSearchInput(e) {
     //   this.search = e.target.value;
