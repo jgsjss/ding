@@ -48,14 +48,8 @@
             <img :src="image" alt="메뉴이미지" class="popupImageItem" style="width: 200px; text-align: center" />
             <div class="menuadd_img_add_btn_wrap"></div>
           </div>
-<<<<<<< Updated upstream
-          <label class="form-label"
-            >메뉴공개&nbsp
-            <input type="radio" name="menu_add_radio" class="menuadd_radio" checked />&nbsp공개
-=======
           <label class="form-label">메뉴공개&nbsp
             <input type="radio" name="menu_add_radio" class="menuadd_radio" checked >&nbsp공개
->>>>>>> Stashed changes
           </label>
           <label class="form-label"
             >&nbsp <input type="radio" name="menu_add_radio" class="menuadd_radio" />&nbsp숨김 (딩동오더에 노출 안됨)
