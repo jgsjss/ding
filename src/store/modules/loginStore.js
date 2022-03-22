@@ -234,8 +234,8 @@ export const loginStore = {
         if(storage.userrole != null){
           state.userrole = storage.userrole;
         }
-        if(storage.shopcode != null){
-          state.shopCode = storage.shopcode
+        if(storage.shopCode != null){
+          state.shopCode = storage.shopCode;
         }
       }
 

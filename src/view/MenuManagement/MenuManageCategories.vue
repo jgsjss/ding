@@ -173,7 +173,7 @@ export default {
       cgData: [],
       allChecked: false,
       isUserRole: false,
-      totalPage: Number,
+      totalPage: '',
       dataPerPage: '',
       pageCount: 10,
       currentPage: 1,
@@ -324,9 +324,7 @@ export default {
     // this.getList();
   },
   computed: {
-    getUserrole () {
-      return this.$store.getters['loginStore/getUserrole']
-    }
+
   },
   beforeMount () {
 

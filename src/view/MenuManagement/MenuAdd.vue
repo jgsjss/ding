@@ -32,16 +32,11 @@
           <div class="menuadd_img_input form-label">
             <img :src="image" alt="메뉴이미지" class="popupImageItem" style="width:200px; text-align:center;">
             <div class="menuadd_img_add_btn_wrap">
-                          <button
-                          class="menuadd_img_add_btn"
-                          @click="pdimageUpload"
-                          >
-                          이미지 저장
-                          </button>
+
             </div>
           </div>
           <label class="form-label">메뉴공개&nbsp
-            <input type="radio" name="menu_add_radio" class="menuadd_radio">&nbsp공개
+            <input type="radio" name="menu_add_radio" class="menuadd_radio" aria-selected="true">&nbsp공개
           </label>
           <label class="form-label">&nbsp
             <input type="radio" name="menu_add_radio" class="menuadd_radio">&nbsp숨김 (딩동오더에 노출 안됨)
@@ -180,6 +175,7 @@ export default {
       pdcategory: '선택된 카테고리 없음',
       description: '',
       catenum: Number,
+      // shopcode: '',
       cateConnect: false,
       enabled: true,
       list: [
@@ -230,21 +226,25 @@ export default {
     },
     pdimageUpload () {
       let form = new FormData()
+      let shopCode = this.shopcode
+      console.log("폼데이터 샵코드",shopCode)
       let image = this.$refs['image'].files[0]
 
       form.append('image', image)
+      // form.append('shopcode', shopCode)
 
+      console.log("form.get : ",form.get('shopcode'))
 
       console.log("shopcode : ",cookies.get('login'))
-      console.log("shopcode : ",cookies.get('login').shopcode)
-
+      console.log("shopcode : ",cookies.get('login').shopCode)
 
       axios.post('/apimenu/pdupload', form, {
-        data:{
-          shopcode: this.shopcode
-        },
+        // data:{
+        //   shopcode: this.shopcode
+        // },
         headers: {
           'Content-Type': 'multipart/form-data',
+          shopcode : shopCode,
         },
       }).then(res => {
         console.log('전송완료')
@@ -279,7 +279,7 @@ export default {
         return false;
       }
     },
-    addMenu () {
+    async addMenu () {
 
       this.nullCheck()
       let nullCk = this.isNull
@@ -288,9 +288,9 @@ export default {
         sweet.fire('메뉴 정보들을 모두 입력하세요.')
         return false
       } else {
-        this.pdimageUpload()
+       await this.pdimageUpload()
 
-        axios.post('/apimenu/addMenu', {
+       await axios.post('/apimenu/addMenu', {
           data: {
             pdname: this.pdname,
             ctnum: this.ctnum,
@@ -364,7 +364,7 @@ export default {
   },
   beforeMount () {
     this.getCategory()
-    console.log(this.cgData)
+
   },
   watch: {
     menuNumber (val) {
@@ -381,7 +381,12 @@ export default {
     shopcode(){
       return store.getters["loginStore/getShopcode"]
     }
+  },
+  updated () {
+    console.log("=======샵코드: ",this.shopcode)
+
   }
+
 }
 </script>
 
