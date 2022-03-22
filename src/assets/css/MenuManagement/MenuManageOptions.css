@@ -178,3 +178,10 @@ tbody {
     background:#997fb5;
     color:white;
 }
+.error_next_box2{
+    display: block;
+    margin: 10px 2px 20px;
+    font-size: 12px;
+    line-height: 14px;
+    color: red;
+}
