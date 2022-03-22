@@ -212,6 +212,10 @@
 .accordion-button::after {
     display:none;
 }
+.order_radio_btn {
+  padding:0 5px;
+}
+
   @media print { 
     html, body {
         margin:0;
