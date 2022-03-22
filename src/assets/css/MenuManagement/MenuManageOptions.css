@@ -178,10 +178,10 @@ tbody {
     background:#997fb5;
     color:white;
 }
-.error_next_box2{
-    display: block;
-    margin: 10px 2px 20px;
-    font-size: 12px;
-    line-height: 14px;
+.subError04{
+    height: 15px;
     color: red;
+    margin-top: 5px;
+    margin-bottom: 10px;    
+    font-size:12px;
 }

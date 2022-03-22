@@ -29,7 +29,7 @@
           v-model="search"
           @input="handleSearchInput"
           @keydown.tab="KeydownTab"
-          name="categoriSearch"
+          name="categorySearch"
           placeholder="search"
           class="menuoption_search"
           autofocus
@@ -61,24 +61,43 @@
               <form>
                 <div class="mb-3">
                   <label for="" class="">* 옵션명</label>
-                  <input type="text" id="optNa" @change="errorOptionAdd" class="form-control" placeholder="예)맵기" />
+                  <input 
+                    type="text" 
+                    id="optNa" 
+                    @change="errorOptionAdd" 
+                    class="form-control" 
+                    placeholder="예)맵기" />
                  <span class="error_next_box2" id="optionNa" style aria-live="assertive">필수 정보 입니다.</span>
                 </div>
                 <div class="mb-3">
                   <label for="" class="">* 옵션목록 및 추가가격</label>
-                  <input type="text" id="optDe" class="form-control mb-2" placeholder="예)순한맛" />
-                  <input type="text" id="optPr" @change="errorOptionDeAdd" class="form-control" placeholder="예)500원" 
-                  @input="optionPrice" :value="opNumber" maxlength="10"/>
+                  <input 
+                    type="text" 
+                    id="optDe" 
+                    class="form-control mb-2" 
+                    placeholder="예)순한맛" />
+                  <input 
+                    type="text" 
+                    id="optPr" 
+                    @change="errorOptionDeAdd" 
+                    class="form-control" 
+                    placeholder="예)500원" 
+                    @input="optionPrice" 
+                    :value="opNumber" 
+                    maxlength="10"/>
                    <span class="error_next_box2" id="optionPr"  style aria-live="assertive">필수 정보 입니다.</span>
                 </div>
                 <div class="mb-3">
                   <label class="menuoption_form_label">* 선택가능 옵션 수</label>
                   <span>옵션은 최대</span> 
-                  <input type="number" min="0" max="5" class="m-2" @input="menuoptionNumber" :value="mNumber" />
+                  <input 
+                    type="number"
+                    min="0" max="5" 
+                    class="m-2" 
+                    @input="menuoptionNumber" 
+                    :value="mNumber" />
                   <span>까지 선택 가능합니다.</span>
-                  <p class="option_subtitle">- 등록한 옵션목록 개수만큼 설정 가능합니다.</p>                  
-
-
+                  <p class="option_subtitle">- 등록한 옵션목록 개수만큼 설정 가능합니다.</p>         
                 </div>
                 <div class="mb-3">
                   <label class="menuoption_form_label">* 필수여부</label>
@@ -177,17 +196,46 @@
           <div>
             <form>
               <label for="" class="form-label menuoption_form_label">* 옵션명</label>
-              <input type="text" class="menuoption_input form-control" />
+              <input 
+                type="text" 
+                class="menuoption_input form-control" 
+                id="optionName"
+                v-model="optionName"
+                @change="isOpName(optionName)"
+                :class="{textError03 : onError}"
+                />
+                <p id="opErMsg" class="subError04" style aria-live="assertive"> 입력해주세요.</p>
               <div class="mb-3">
                 <label class="menuoption_form_label">* 필수여부</label>
-                <input type="radio" name="menuoption_input" class="menuoption_input" />필수(옵션을 선택해야 주문가능)<br />
-                <input type="radio" name="menuoption_input" class="menuoption_input" />선택(옵션을 선택하지 않아도 주문가능)
+                <input 
+                  type="radio" 
+                  name="menuoption_input" 
+                  class="menuoption_input" 
+                  checked
+                  />
+                  필수(옵션을 선택해야 주문가능)<br />
+                <input 
+                  type="radio" 
+                  name="menuoption_input" 
+                  class="menuoption_input" />
+                  선택(옵션을 선택하지 않아도 주문가능)
               </div>
               <div class="mb-3">
                 <label class="menuoption_form_label">* 선택가능 옵션 수</label>
                 <span>옵션은 최대</span>
-                <input type="number" min="0" max="5" maxlength="2" class="m-2" />
+                <input 
+                  type="number" 
+                  min="0" 
+                  max="5" 
+                  maxlength="2" 
+                  class="m-2" 
+                  id="optionNumber"
+                  v-model="optionNumber"
+                  @change="isOpNumber(optionNumber)"
+                  :class="{textError03 : opnError}"
+                  />
                 <span>까지 선택 가능합니다.</span>
+                <p id="opNMsg" class="subError04" style aria-live="assertive">선택해주세요.</p>
                 <p class="option_subtitle">- 등록한 옵션목록 개수만큼 설정 가능합니다.</p>
               </div>
               <button type="submit" class="menuoption_add_btn">옵션정보 수정</button>
@@ -226,9 +274,16 @@ export default {
       active: false,
       searchList: "",
       search: "",
-      optionAllChecked: false,
       opNumber: '',
+      opName: '',
       mNumber:'',
+      optionName:'',
+      optionNumber:'',
+      //체크박스
+      optionAllChecked: false,
+      //항목 공백체크
+      onError: false,
+      opnError: false,
     };
   },
   methods: {
@@ -244,7 +299,7 @@ export default {
     optionCheckedAll(checked) {
       this.optionSelected = checked;
     },
-    selected() {
+    optionSelected() {
       for (let i in this.boardList) {
         if (!this.boardList[i].optionSelected) {
           this.optionCheckedAll = false;
@@ -261,6 +316,20 @@ export default {
           boardIds.push(this.cgData[i].boardId);
         }
       }
+    },
+    option() {
+      if (this.isNumber(this.onName)) {
+        this.onError = true;
+      }
+      if (this.isNumber(this.opnName)) {
+        this.opnError = true;
+      }
+    },
+    isNumber(val) {
+      if (val === undefined) return true;
+      else if (val === null) return true;
+      else if (val === "") return true;
+      else return false;
     },
      errorOptionAdd() {
       if (this.optNa == "") {
@@ -340,6 +409,24 @@ export default {
     //     }, 500);
     //   }
     // },
+    isOpName () {
+      let on = document.getElementById("optionName").value;
+      console.log(on)
+      if (on == "") {
+        document.getElementById("opErMsg").style.display = "block"
+      } else if (on != "") {
+        document.getElementById("opErMsg").style.display = "none"
+      }
+    },
+    isOpNumber () {
+      let opn = document.getElementById("optionNumber").value;
+      console.log(opn)
+      if (opn == "") {
+        document.getElementById("opNMsg").style.display = "block"
+      } else if (opn != "") {
+        document.getElementById("opNMsg").style.display = "none"
+      }
+    },
   },
   watch: {
     //옵션추가 금액
@@ -365,6 +452,20 @@ export default {
       if(isNaN(parseFloat(val)))
       this.mNumber = '';
     },   
+    optionName(val) {
+      if (val.length > 0) {
+        this.onError = false
+      } else if (val.length < 0) {
+        this.onError = true;
+      }
+    },
+    optionNumber(val) {
+      if (val.length > 0) {
+        this.opnError = false
+      } else if (val.length < 0) {
+        this.opnError = true;
+      }
+    },
   },
 
   // mounted() {
