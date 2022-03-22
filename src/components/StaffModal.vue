@@ -23,7 +23,7 @@
       :class="{'textError': nameError}"
       />
       <!-- <p v-if="nameError" class="subError">이름을 입력해 주세요</p> -->
-      <span class="error_text_box" id="stName" style aria-live="assertive">필수입력 정보입니다.</span>
+      <span class="error_text_box" id="stNameErr" style aria-live="assertive">필수입력 정보입니다.</span>
     </div>
   </div>
   <div class="row mb-3">
@@ -130,19 +130,23 @@
       type="email" 
       class="form-control" 
       id="sName"
+      @change="errorCh1"
       >
+      <span class="error_text_box" id="stName" style aria-live="assertive">필수입력 정보입니다.</span>
     </div>
   </div>
   <div class="row mb-3">
     <label for="inputPassword3" class="col-sm-2 col-form-label">아이디</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="sId">
+      <span class="error_text_box" id="stIdMsg" style aria-live="assertive">필수입력 정보입니다.</span>
     </div>
   </div>
   <div class="row mb-3">
     <label for="inputPassword3" class="col-sm-2 col-form-label">비밀번호</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="sPw">
+      <span class="error_text_box" id="stPwMsg" style aria-live="assertive">필수입력 정보입니다.</span>
     </div>
   </div>
   <fieldset class="row mb-3">
@@ -244,19 +248,25 @@ export default {
     //   this.valid = (stName.length > 1 && pattern.test(stName) === false)
     // },
     errorCh() {
-      let stName = document.getElementById("stName1").value;
-
-
       //직원이름
-      if (stName == "") {
-        document.getElementById("stName").style.display = "block";
+      if (this.stName1 == "" ) {
+        document.getElementById("stNameErr").style.display = "block";
         return false;
-      } else if (stName != "") {
-        document.getElementById("stName").style.display = "none";
+      } else if (this.stName1 != "" ) {
+        document.getElementById("stNameErr").style.display = "none";
         return false;
       }
-
       },
+
+    errorCh1() {
+       if ( this.sName != "") {
+        document.getElementById("stNameErr").style.display = "block";
+        return false;
+      } else if ( this.sName != "") {
+        document.getElementById("stNameErr").style.display = "none";
+        return false;
+      }
+    }, 
       isStId() {
         let id = document.getElementById("stId2").value;
         let idValue = /^[a-zA-z0-9]{4,12}$/;
