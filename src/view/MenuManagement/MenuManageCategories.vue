@@ -43,12 +43,12 @@
               <form class="row">
                 <label for="category_add_label" class="category_add_label">* 카테고리명
                   <input type="text" id="cana" v-model="ctname" class="category_add_input form-control" @change="errorCaAdd" placeholder="예) 딩동아메리카노">
-                <span class="error_next_box1" id="caAddName" style aria-live="assertive">필수 정보 입니다.</span>
+               <span class="error_next_box2" id="caAddName" style aria-live="assertive">필수 정보 입니다.</span>
                 </label>
                 <label for="category_add_label" class="category_add_label">설명
-                  <input type="text" v-model="description" class="category_add_input form-control" @change="errorCaAdd"
+                  <input type="text" v-model="description" class="category_add_input form-control" @change="errorCaDeAdd"
                          placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">
-                         <span class="error_next_box1" id="caAddDe" style aria-live="assertive">필수 정보 입니다.</span>
+                         <span class="error_next_box2" id="caAddDe" style aria-live="assertive">필수 정보 입니다.</span>
                 </label>
                 
                 <div class="category_add_label_wrap">
@@ -301,21 +301,20 @@ export default {
     }
 
   },
-   errorCaAdd() {
-     let can = document.getElementById("cana");
-     console.log(can);
-     console.log(this.description);
-      if (this.ctname.length == 0) {
+    errorCaAdd() {
+      if (this.ctname == "") {
         document.getElementById("caAddName").style.display = "block";
         return false;
-      } else if (this.ctname.length != 0) {
+      } else if (this.ctname != "") {
         document.getElementById("caAddName").style.display = "none";
         return false;
       }
-      if (this.description.length == 0) {
+   },
+      errorCaDeAdd() {
+      if (this.description == "") {
         document.getElementById("caAddDe").style.display = "block";
         return false;
-      } else if (this.description.length != 0) {
+      } else if (this.description != "") {
         document.getElementById("caAddDe").style.display = "none";
         return false;
       }

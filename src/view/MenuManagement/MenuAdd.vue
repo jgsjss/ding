@@ -16,7 +16,7 @@
               class="menuadd_input form-control"
               placeholder="예) 딩동아메리카노"
             />
-            <span class="error_next_box1" id="menuNa" style aria-live="assertive">필수 정보 입니다.</span>
+            <span class="error_next_box2" id="menuNa" style aria-live="assertive">필수 정보 입니다.</span>
           </label>
           <label class="menuadd_label form-label"
             >* 가격
@@ -27,7 +27,7 @@
               class="menuadd_input form-control"
               @input="menuaddNumber"
             />
-            <span class="error_next_box1" id="menuPr" style aria-live="assertive">필수 정보 입니다.</span>
+            <span class="error_next_box2" id="menuPr" style aria-live="assertive">필수 정보 입니다.</span>
           </label>
           <label class="menuadd_label form-label"
             >* 설명
@@ -38,7 +38,7 @@
               class="menuadd_input form-control"
               placeholder="예) 딩동커피만의 로스팅방식으로 만들어낸 아메리카노"
             ></textarea>
-            <span class="error_next_box1" id="menuDe" style aria-live="assertive">필수 정보 입니다.</span>
+            <span class="error_next_box2" id="menuDe" style aria-live="assertive">필수 정보 입니다.</span>
           </label>
           <label class="menuadd_label form-label">
             이미지
