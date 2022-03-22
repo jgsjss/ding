@@ -6,7 +6,7 @@
       <span class="log_main_text">로그확인</span>
       <!--x버튼 클릭시 OperationManagement 운영관리로 이동-->
       <router-link to="/OperationManagement">
-        <span class="xi-close-thin"></span>
+        <i class="xi-close-thin"></i>
       </router-link>
     </div>
     <div class="log_btn_wrap">

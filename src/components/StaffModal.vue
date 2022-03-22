@@ -105,7 +105,7 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary">취소</button>
-            <button type="submit" class="btn btn-primary"  @click="login">등록</button>
+            <button type="submit" class="btn btn-primary" @click="login()">등록</button>
           </div>
     </div>
   </div>

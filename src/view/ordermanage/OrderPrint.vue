@@ -5,7 +5,7 @@
           상세주문내역
       </h4>
         
-            <span class="xi-close" @click="$router.go(-1)"></span>  
+            <i class="xi-close" @click="$router.go(-1)"></i>  
         
         </div>
     <div>
@@ -61,20 +61,20 @@
                 <div class="accordion-body">
                     <!--가게사정 라디오 박스-->
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <label class="form-check-label order_radio_btn" for="flexRadioDefault1">                  
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                         재료소진
                     </label>
                     </div>
                     <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <label class="form-check-label order_radio_btn" for="flexRadioDefault2">                      
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
                         시즌메뉴
                     </label>
                     </div>
                     <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <label class="form-check-label order_radio_btn" for="flexRadioDefault2">                      
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                         브레이크타임
                     </label>
                     </div>
