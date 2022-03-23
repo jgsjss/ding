@@ -72,8 +72,9 @@
         <div class="oper_title"  @click=" step = 2">정기휴무</div>
           <div class="oper_wrapper">
             <div class="oper_wrap2">
-              <div class="oper_left">매월 첫째주</div>
-              <div class="oper_left">매월 셋째주</div>
+              <operation-setting v-model="week"></operation-setting>
+              <div class="oper_left">{{week.week}}</div>
+              <div class="oper_left">{{week.day}}</div>
             </div>
           <div class="oper_wrap2">
             <div class="oper_right">{{ $store.state.OperationData[i].day }}</div>
@@ -130,6 +131,10 @@ import OperationSetting from '../operationmanagement/OperationSetting.vue';
       show:false,
       step: 0,
       datepicker:'',
+      week: {
+        week:'',
+        day:'',
+      }
     }
   },
   methods: {
