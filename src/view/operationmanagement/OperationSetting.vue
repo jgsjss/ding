@@ -114,20 +114,21 @@
                 <!--//////휴무1//////-->
                 <div class="regular_wrap">
                   <div class="regular_box">
-                    <select id="week" className="Rday" name="week" :value="week" @input="myChange($event)" @change="weekRegular($event)">
+                      <!--:value="week"-->
+                    <select id="week" className="Rday" name="week" @input="myChange($event)" @change="weekRegular($event)" v-model="week">
                       <option value="첫째주">매월 첫째주</option>
                       <option value="둘째주">매월 둘째주</option>
                       <option value="셋째주">매월 셋째주</option>
                       <option value="넷째주">매월 넷째주</option>
                       <option value="다섯째주">매월 다섯째주</option>
                     </select>
-                    <select id="day" className="Rday" name="day" :value="day" @input="myChange" @change="regular" v-model="rWeekSelect">
+                    <select id="day" className="Rday" name="day" @input="myChange" @change="regular" v-model="rWeekSelect">
                       <option :key="i" :value="d.v" v-for="(d, i) in options">{{ d.t }}</option>
                     </select>
                   </div>
                   <!--//////휴무2//////-->
                   <div class="regular_box">
-                    <select id="time" className="Rday" @change="temporary($event)">
+                    <select class="Rday" @change="temporary($event)">
                       <option value="첫째주">매월 첫째주</option>
                       <option value="둘째주">매월 둘째주</option>
                       <option value="셋째주">매월 셋째주</option>
@@ -289,6 +290,7 @@ export default {
       rWeekSelect: null,
       selected: [],
       type: "select",
+      week:'',
       time: "",
       date: "",
       pvalue: this.value,
@@ -335,7 +337,7 @@ export default {
         } else if ($event.target.name === 'day') {
             this.day = $event.target.value;
         }
-        this.$emit('select', this.value);
+        this.$emit('week', this.value);
     },
   },
   setup() {
@@ -347,6 +349,7 @@ export default {
     //     time,
     // }
   },
+
 };
 </script>
 

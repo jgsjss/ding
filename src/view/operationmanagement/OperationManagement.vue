@@ -63,7 +63,7 @@
         <div class="oper_title" @click=" step = 1">준비시간</div><!--클릭시 자식 데이터가 나옴-->
         </div>
           <div class="preparation_text" @setInput="setInput" name="About">
-            {{datepicker}}
+            {{}}
           </div>
           
       </div>
@@ -116,7 +116,8 @@
   </div>
 </div>
 
-<OperationSetting :step = "step" :datepicker ="datepicker" />
+<OperationSetting :step = "step"  />
+<!-- <OperationSetting :step = "step" :datepicker ="datepicker" /> -->
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue'
@@ -130,7 +131,6 @@ import OperationSetting from '../operationmanagement/OperationSetting.vue';
     return {
       show:false,
       step: 0,
-      datepicker:'',
       week: {
         week:'',
         day:'',
@@ -146,6 +146,7 @@ import OperationSetting from '../operationmanagement/OperationSetting.vue';
       console.log("자식 컴포넌트에게 값을 받았어요 :)", week);
     }
     }
+    
 }
 
 
