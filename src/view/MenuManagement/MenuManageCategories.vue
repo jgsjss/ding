@@ -163,6 +163,7 @@
 // import InfiniteLoading from 'v3-infinite-loading'
 import _ from 'lodash'
 import axios from 'axios'
+import store from '../../store/index.js'
 
 const sweet = require('sweetalert2')
 
@@ -194,8 +195,8 @@ export default {
     },
     //권한체크
     roleCheck () {
-      console.log('유저권한', this.getUserrole)
-      if (this.getUserrole != 0) {
+      console.log('유저권한', this.userrole)
+      if (this.userrole != 0) {
         alert('해당 기능은 권한이 없습니다.')
         this.isUserRole = false
       } else {
@@ -220,12 +221,7 @@ export default {
     },
     selected () {
       for (let i in this.boardList) {
-        if (!this.boardList[i].selected) {
-          this.allChecked = false
-          return
-        } else {
-          this.allChecked = true
-        }
+        this.allChecked = this.boardList[i].selected;
       }
     },
     getSelected () {
@@ -239,6 +235,7 @@ export default {
     getCategories (curpage) {
       axios.post('/apimenu/categories', {
         data: {
+          shopcode: this.shopcode,
           curpage: curpage
         }
       }).then(res => {
@@ -290,6 +287,7 @@ export default {
         ctname: this.ctname,
         description: this.description,
         status: this.status,
+        shopCode : this.shopcode
       })
           .then(res => {
             console.log(res.data)
@@ -299,7 +297,6 @@ export default {
         console.log(err)
       })
     }
-
   },
     errorCaAdd() {
       if (this.ctname == "") {
@@ -323,7 +320,12 @@ export default {
     // this.getList();
   },
   computed: {
-
+    shopcode (){
+      return store.getters['loginStore/getShopcode']
+    },
+    userrole(){
+      return store.getters["loginStore/getUserrole"]
+    }
   },
   beforeMount () {
 

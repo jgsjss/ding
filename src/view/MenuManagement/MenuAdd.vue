@@ -323,6 +323,8 @@ export default {
               ctnum: this.ctnum,
               price: this.price,
               pddescription: this.pddescription,
+              shopcode :  this.shopcode,
+              userid : this.userid
             },
           })
           .then((res) => {
@@ -406,6 +408,9 @@ export default {
     shopcode() {
       return store.getters["loginStore/getShopcode"];
     },
+    userid(){
+      return store.getters["loginStore/getId"]
+    }
   },
   updated() {
     console.log("=======샵코드: ", this.shopcode);
