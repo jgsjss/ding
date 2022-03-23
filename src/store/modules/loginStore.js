@@ -70,7 +70,6 @@ export const loginStore = {
   },
   mutations: {
     //userId 설정
-
     setUserId (state, id) {
       state.userid = id;
     },
