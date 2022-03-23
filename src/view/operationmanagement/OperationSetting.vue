@@ -115,27 +115,52 @@
                 <div class="regular_wrap">
                   <div class="regular_box">
                       <!--:value="week"-->
-                    <select id="week" className="Rday" name="week" @input="myChange($event)" @change="weekRegular($event)" v-model="week">
+                    <select 
+                        id="week" 
+                        className="Rday" 
+                        name="week" 
+                        @input="myChange($event)" 
+                        @change="weekRegular($event)" 
+                        v-model="week"
+                        >
                       <option value="첫째주">매월 첫째주</option>
                       <option value="둘째주">매월 둘째주</option>
                       <option value="셋째주">매월 셋째주</option>
                       <option value="넷째주">매월 넷째주</option>
                       <option value="다섯째주">매월 다섯째주</option>
                     </select>
-                    <select id="day" className="Rday" name="day" @input="myChange" @change="regular" v-model="rWeekSelect">
+                    <select 
+                        id="day" 
+                        className="Rday" 
+                        name="day" 
+                        @input="myChange" 
+                        @change="regular" 
+                        v-model="rWeekSelect"
+                    >
                       <option :key="i" :value="d.v" v-for="(d, i) in options">{{ d.t }}</option>
                     </select>
                   </div>
                   <!--//////휴무2//////-->
                   <div class="regular_box">
-                    <select class="Rday" @change="temporary($event)">
+                    <select 
+                        class="Rday" 
+                        name="day"
+                        @change="temporary($event)"
+                        @input="myChange($event)"
+                        v-model="day"
+                    >
                       <option value="첫째주">매월 첫째주</option>
                       <option value="둘째주">매월 둘째주</option>
                       <option value="셋째주">매월 셋째주</option>
                       <option value="넷째주">매월 넷째주</option>
                       <option value="다섯째주">매월 다섯째주</option>
                     </select>
-                    <select id="time" className="Rday" @change="temporary" v-model="rdaySelect">
+                    <select 
+                        id="time" 
+                        className="Rday" 
+                        @change="temporary" 
+                        v-model="rdaySelect"
+                        >
                       <option :key="i" :value="d.v" v-for="(d, i) in options">{{ d.t }}</option>
                     </select>
                   </div>
@@ -143,7 +168,7 @@
               </form>
               <div class="regular_btn_wrap">
                 <button type="button" class="regular_add_btn" @click="onEmit">저장</button>
-                <button type="button" class="regular_close_btn">닫기</button>
+                <button type="button" class="regular_close_btn">저장안함</button>
               </div>
             </div>
           </div>
@@ -291,6 +316,7 @@ export default {
       selected: [],
       type: "select",
       week:'',
+      day:'',
       time: "",
       date: "",
       pvalue: this.value,
