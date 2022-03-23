@@ -68,11 +68,11 @@
           
       </div>
       <!--/////정기휴무/////-->
-      <div class="oper_box1" v-for="(a, i) in $store.state.OperationData" :key="i">
-        <div class="oper_title"  @click=" step = 2">정기휴무</div>
+      <div class="oper_box1">
+        <div class="oper_title"  @click=" step = 2" name="week">정기휴무</div>
           <div class="oper_wrapper">
             <div class="oper_wrap2">
-              <operation-setting v-model="week"></operation-setting>
+              <operationSetting v-model="week" @setInput="setInput"></operationSetting>
               <div class="oper_left">{{week.week}}</div>
               <div class="oper_left">{{week.day}}</div>
             </div>
@@ -141,9 +141,9 @@ import OperationSetting from '../operationmanagement/OperationSetting.vue';
     notice: function(evt) {
       alert('상태를 변경하시겠습니까?')
     },
-    setInput(value) {
-      this.value = value;
-      console.log("자식 컴포넌트에게 값을 받았어요 :)", value);
+    setInput(week) {
+      this.value = week;
+      console.log("자식 컴포넌트에게 값을 받았어요 :)", week);
     }
     }
 }

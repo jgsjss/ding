@@ -141,7 +141,7 @@
                 </div>
               </form>
               <div class="regular_btn_wrap">
-                <button type="button" class="regular_add_btn">저장</button>
+                <button type="button" class="regular_add_btn" @click="onEmit">저장</button>
                 <button type="button" class="regular_close_btn">닫기</button>
               </div>
             </div>
@@ -328,6 +328,7 @@ export default {
     regular(event) {
       console.log(event.target.value);
     },
+    //정기휴무
     myChange($event) {
         if ($event.target.name === 'week') {
             this.week = $event.target.value;
@@ -335,7 +336,7 @@ export default {
             this.day = $event.target.value;
         }
         this.$emit('select', this.value);
-    }
+    },
   },
   setup() {
     // const time = ref({
