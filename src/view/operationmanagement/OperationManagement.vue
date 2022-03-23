@@ -76,10 +76,10 @@
               <div class="oper_left">{{week.week}}</div>
               <div class="oper_left">{{week.day}}</div>
             </div>
-          <div class="oper_wrap2">
+          <!-- <div class="oper_wrap2">
             <div class="oper_right">{{ $store.state.OperationData[i].day }}</div>
             <div class="oper_right">{{ $store.state.OperationData[i].day }}</div>
-          </div>
+          </div> -->
         </div>
       </div>      
       <!--/////임시휴무/////-->
