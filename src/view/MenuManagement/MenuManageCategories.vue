@@ -31,7 +31,7 @@
           <button class="cate_menu_btn">순서변경</button>
         </router-link>
         <button class="cate_menu_btn02" type="button" data-bs-toggle="offcanvas" data-bs-target="#categoryadd"
-                aria-controls="categoryadd">+카테고리추가
+                aria-controls="categoryadd" @click="roleCheck">+카테고리추가
         </button>
         <!--카테고리 추가,상세 오프캔버스-->
         <div class="offcanvas offcanvas-start" v-show="isUserRole" tabindex="-1" id="categoryadd"
@@ -194,15 +194,15 @@ export default {
       console.log(this.status)
     },
     //권한체크
-    // roleCheck () {
-    //   console.log('유저권한', this.getUserrole)
-    //   if (this.getUserrole != 0) {
-    //     alert('해당 기능은 권한이 없습니다.')
-    //     this.isUserRole = false
-    //   } else {
-    //     this.isUserRole = true
-    //   }
-    // },
+    roleCheck () {
+      console.log('유저권한', this.userrole)
+      if (this.userrole != 0) {
+        alert('해당 기능은 권한이 없습니다.')
+        this.isUserRole = false
+      } else {
+        this.isUserRole = true
+      }
+    },
     print () {
       console.log(this.selected)
     },
@@ -322,6 +322,9 @@ export default {
   computed: {
     shopcode (){
       return store.getters['loginStore/getShopcode']
+    },
+    userrole(){
+      return store.getters["loginStore/getUserrole"]
     }
   },
   beforeMount () {
