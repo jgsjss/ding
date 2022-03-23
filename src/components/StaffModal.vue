@@ -130,23 +130,23 @@
       type="email" 
       class="form-control" 
       id="sName"
-      @change="errorCh1"
+      @change="errorChSetStaffN"
       >
-      <span class="error_text_box" id="stName" style aria-live="assertive">필수입력 정보입니다.</span>
+      <span class="error_text_box" id="sNameE" style aria-live="assertive">필수입력 정보입니다.</span>
     </div>
   </div>
   <div class="row mb-3">
     <label for="inputPassword3" class="col-sm-2 col-form-label">아이디</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="sId">
-      <span class="error_text_box" id="stIdMsg" style aria-live="assertive">필수입력 정보입니다.</span>
+      <input type="text" class="form-control" id="sId"  @change="errorChSetStaffI">
+      <span class="error_text_box" id="stIdMsgE" style aria-live="assertive">필수입력 정보입니다.</span>
     </div>
   </div>
   <div class="row mb-3">
     <label for="inputPassword3" class="col-sm-2 col-form-label">비밀번호</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="sPw">
-      <span class="error_text_box" id="stPwMsg" style aria-live="assertive">필수입력 정보입니다.</span>
+      <input type="password" class="form-control" id="sPw" @change="errorChSetStaffP">
+      <span class="error_text_box" id="stPwMsgE" style aria-live="assertive">필수입력 정보입니다.</span>
     </div>
   </div>
   <fieldset class="row mb-3">
@@ -247,6 +247,36 @@ export default {
     //   let pattern = /([가-힣]\x20])/i
     //   this.valid = (stName.length > 1 && pattern.test(stName) === false)
     // },
+     errorChSetStaffN() {
+       let sN = document.getElementById("sName").value;
+       if ( sN == "") {
+        document.getElementById("sNameE").style.display = "block";
+        return false;
+      } else if ( sN != "") {
+        document.getElementById("sNameE").style.display = "none";
+        return false;
+      }
+    }, 
+    errorChSetStaffI() {
+      let sI = document.getElementById("sId").value;
+       if ( sI == "") {
+        document.getElementById("stIdMsgE").style.display = "block";
+        return false;
+      } else if ( sI != "") {
+        document.getElementById("stIdMsgE").style.display = "none";
+        return false;
+      }
+    }, 
+     errorChSetStaffP() {
+      let sP = document.getElementById("sPw").value;
+       if ( sP == "") {
+        document.getElementById("stPwMsgE").style.display = "block";
+        return false;
+      } else if ( sP != "") {
+        document.getElementById("stPwMsgE").style.display = "none";
+        return false;
+      }
+    }, 
     errorCh() {
       //직원이름
       if (this.stName1 == "" ) {
@@ -258,15 +288,7 @@ export default {
       }
       },
 
-    errorCh1() {
-       if ( this.sName != "") {
-        document.getElementById("stNameErr").style.display = "block";
-        return false;
-      } else if ( this.sName != "") {
-        document.getElementById("stNameErr").style.display = "none";
-        return false;
-      }
-    }, 
+   
       isStId() {
         let id = document.getElementById("stId2").value;
         let idValue = /^[a-zA-z0-9]{4,12}$/;
