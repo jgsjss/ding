@@ -69,15 +69,12 @@
       </div>
       <!--/////정기휴무/////-->
       <div class="oper_box1">
-        <div class="oper_title"  @click=" step = 2" name="form">정기휴무</div>
+        <div class="oper_title"  @click=" step = 2">정기휴무</div>
           <div class="oper_wrapper">
             <div class="oper_wrap2">
-              <OperationSetting
-                v-model:salutation="form.salutation"
-                v-model:weekDay="form.weekDay"
-                @setInput="setInput" 
-                />
-                <pre> {{ form }}</pre>
+
+                <pre> {{ form.salutation }}</pre>
+                <pre> {{ form.weekDay }}</pre>
               <!-- <div class="oper_left">{{week.week}}</div>
               <div class="oper_left">{{week.day}}</div> -->
             </div>
@@ -121,7 +118,9 @@
   </div>
 </div>
 
-<OperationSetting :step = "step"  />
+<OperationSetting :step = "step"                  v-model:salutation="form.salutation"
+                v-model:weekDay="form.weekDay"
+                @sandParam="sandParam" />
 <!-- <OperationSetting :step = "step" :datepicker ="datepicker" /> -->
 </template>
 <script>
@@ -145,23 +144,24 @@ import { reactive } from 'vue'
       salutation: '',
       weekDay:'',
     })
-    function setInput(_value){
-      // object.assign(form,_value)
+    function sandParam(_value){
+      Object.assign(form,_value)
+      console.log(form) 
     }
     
     return {
       form,
-      setInput
+      sandParam
     }
   },
   methods: {
     notice: function(evt) {
       alert('상태를 변경하시겠습니까?')
     },
-    setInputd(weekday) {
-      this.value = weekday;
-      console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);
-    }
+    // setInput(weekday) {
+    //   this.value = weekday;
+    //   console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);
+    // }
     }
     
 }

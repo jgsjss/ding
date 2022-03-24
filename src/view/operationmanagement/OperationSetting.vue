@@ -118,26 +118,26 @@
                     <select 
                         class="Rday" 
                         name="salutation"
-                        @change="$emit('setInput',{ salutation: $event.target.value })"
+                        @change="$emit('sandParam',{ salutation:$event.target.value })"
                         >
                             <option 
                                 v-for="item of salutations"
                                 :value="item"
                                 :key="item"
-                                :selected="salutation === item"
+                                :selected="salutation == item"
                             > {{ item }}
                             </option>
                     </select>
                     <select 
                         class="Rday" 
                         name="weekDay"
-                        @change="$emit('setInput',{ weekDay: $event.target.value })" 
+                        @change="$emit('sandParam',{ weekDay: $event.target.value })" 
                     >
                       <option 
                         v-for="day of weekDays"
                         :value="day"
                         :key="day"
-                        :selected="weekDay === day">
+                        :selected="weekDay == day">
                         {{ day }}
                         </option>
                     </select>
@@ -359,10 +359,11 @@ export default {
     titleUpdate(e) {
       console.log(e.target.value);
     },
-    onEmit() {
-      this.$emit("setInput", this.value);
-      console.log(this.$emit);
-    },
+    // onEmit() {
+    //   this.$emit("setInput", this.value);
+    //   console.log(this.value)
+    //   console.log(this.$emit);
+    // },
     weekRegular(event) {
       console.log(event.target.value);
     },
