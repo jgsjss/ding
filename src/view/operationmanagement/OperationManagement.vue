@@ -145,15 +145,20 @@ import { reactive } from 'vue'
       salutation: '',
       weekDay:'',
     })
+    function setInput(_value){
+      // object.assign(form,_value)
+    }
+    
     return {
-      form
+      form,
+      setInput
     }
   },
   methods: {
     notice: function(evt) {
       alert('상태를 변경하시겠습니까?')
     },
-    setInput(weekday) {
+    setInputd(weekday) {
       this.value = weekday;
       console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);
     }

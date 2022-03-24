@@ -116,9 +116,9 @@
                   <div class="regular_box">
                       <!--:value="week"-->
                     <select 
-                        className="Rday" 
+                        class="Rday" 
                         name="salutation"
-                        @change="$emit('update:salutation', $event.target.value)"
+                        @change="$emit('setInput',{ salutation: $event.target.value })"
                         >
                             <option 
                                 v-for="item of salutations"
@@ -131,7 +131,7 @@
                     <select 
                         class="Rday" 
                         name="weekDay"
-                        @change="$emit('update:weekDay', $event.target.value)" 
+                        @change="$emit('setInput',{ weekDay: $event.target.value })" 
                     >
                       <option 
                         v-for="day of weekDays"
@@ -372,6 +372,10 @@ export default {
     regular(event) {
       console.log(event.target.value);
     },
+    setInput(weekday) {
+      this.value = weekday;
+      console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);
+    }
     //정기휴무
     // myChange($event) {
     //     if ($event.target.name === 'week') {
@@ -383,10 +387,16 @@ export default {
     // },
   },
   setup() {
+    //   $emit('setInput', {salutation:$event.target.value})
+    // // setInput(weekday) {
+    // //   this.value = weekday;
+    // //   console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);
+    // // }
       return {
           salutations,
-          weekDays
+          weekDays,
       }
+
     // const time = ref({
     //     hours: new Date().getHours(),
     //     minutes: new Date().getMinutes()
@@ -394,7 +404,7 @@ export default {
     // return {
     //     time,
     // }
-  },
+  }
 
 };
 </script>
