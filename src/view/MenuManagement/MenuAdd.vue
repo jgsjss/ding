@@ -382,7 +382,11 @@ export default {
       this.image = url;
     },
     getCategory() {
-      axios.post("/apimenu/menucategory").then((res) => {
+      axios.post("/apimenu/menucategory", {
+        data: {
+          shopcode : this.shopcode
+        }
+      }).then((res) => {
         this.cgData = res.data.rows;
       });
     },
