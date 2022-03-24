@@ -73,15 +73,14 @@
           <div class="oper_wrapper">
             <div class="oper_wrap2">
 
-                <pre> {{ form.salutation }}</pre>
-                <pre> {{ form.weekDay }}</pre>
+                <span class="oper_left"> {{ form.salutation }}</span>
+
               <!-- <div class="oper_left">{{week.week}}</div>
               <div class="oper_left">{{week.day}}</div> -->
             </div>
-          <!-- <div class="oper_wrap2">
-            <div class="oper_right">{{ $store.state.OperationData[i].day }}</div>
-            <div class="oper_right">{{ $store.state.OperationData[i].day }}</div>
-          </div> -->
+          <div class="oper_wrap2">
+                <span class="oper_right"> {{ form.weekDay }}</span>
+          </div>
         </div>
       </div>      
       <!--/////임시휴무/////-->
@@ -118,9 +117,11 @@
   </div>
 </div>
 
-<OperationSetting :step = "step"                  v-model:salutation="form.salutation"
+<OperationSetting :step = "step"                  
+                v-model:salutation="form.salutation"
                 v-model:weekDay="form.weekDay"
-                @sandParam="sandParam" />
+                @sandParam="sandParam" 
+/>
 <!-- <OperationSetting :step = "step" :datepicker ="datepicker" /> -->
 </template>
 <script>
