@@ -145,6 +145,7 @@ export default {
     getMenu (curpage) {
       axios.post('/apimenu/menus', {
         data: {
+          shopcode: this.shopcode,
           curpage: curpage
         }
       }).then(res => {
@@ -247,6 +248,9 @@ export default {
     // },
     getUserrole () {
       return this.$store.getters['loginStore/getUserrole']
+    },
+    shopcode(){
+      return this.$store.getters['loginStore/getShopcode']
     }
   },
   // beforeMount () {
