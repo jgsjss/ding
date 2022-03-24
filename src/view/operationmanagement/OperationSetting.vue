@@ -116,32 +116,34 @@
                   <div class="regular_box">
                       <!--:value="week"-->
                     <select 
-                        id="week" 
                         className="Rday" 
-                        name="week" 
-                        @input="myChange($event)" 
-                        @change="weekRegular($event)" 
-                        v-model="week"
+                        name="salutation"
+                        @change="$emit('update:salutation', $event.target.value)"
                         >
-                      <option value="첫째주">매월 첫째주</option>
-                      <option value="둘째주">매월 둘째주</option>
-                      <option value="셋째주">매월 셋째주</option>
-                      <option value="넷째주">매월 넷째주</option>
-                      <option value="다섯째주">매월 다섯째주</option>
+                            <option 
+                                v-for="item of salutations"
+                                :value="item"
+                                :key="item"
+                                :selected="salutation === item"
+                            > {{ item }}
+                            </option>
                     </select>
                     <select 
-                        id="day" 
-                        className="Rday" 
-                        name="day" 
-                        @input="myChange" 
-                        @change="regular" 
-                        v-model="rWeekSelect"
+                        class="Rday" 
+                        name="weekDay"
+                        @change="$emit('update:weekDay', $event.target.value)" 
                     >
-                      <option :key="i" :value="d.v" v-for="(d, i) in options">{{ d.t }}</option>
+                      <option 
+                        v-for="day of weekDays"
+                        :value="day"
+                        :key="day"
+                        :selected="weekDay === day">
+                        {{ day }}
+                        </option>
                     </select>
                   </div>
                   <!--//////휴무2//////-->
-                  <div class="regular_box">
+                  <!-- <div class="regular_box">
                     <select 
                         class="Rday" 
                         name="day"
@@ -163,7 +165,7 @@
                         >
                       <option :key="i" :value="d.v" v-for="(d, i) in options">{{ d.t }}</option>
                     </select>
-                  </div>
+                  </div> -->
                 </div>
               </form>
               <div class="regular_btn_wrap">
@@ -307,6 +309,23 @@
 <script>
 import { ref } from "vue";
 
+const salutations = [
+    '매월 첫째주',
+    '매월 둘째주',
+    '매월 셋째주',
+    '매월 넷째주',
+    '매월 다섯째주',
+]
+const  weekDays = [
+    '월요일',
+    '화요일',
+    '수요일',
+    '목요일',
+    '금요일',
+    '토요일',
+    '일요일',
+]
+
 export default {
   data() {
     return {
@@ -315,20 +334,9 @@ export default {
       rWeekSelect: null,
       selected: [],
       type: "select",
-      week:'',
-      day:'',
       time: "",
       date: "",
       pvalue: this.value,
-      options: [
-        { v: "월요일", t: "월요일" },
-        { v: "화요일", t: "화요일" },
-        { v: "수요일", t: "수요일" },
-        { v: "목요일", t: "목요일" },
-        { v: "금요일", t: "금요일" },
-        { v: "토요일", t: "토요일" },
-        { v: "일요일", t: "일요일" },
-      ],
       isShow: false,
     };
   },
@@ -336,7 +344,15 @@ export default {
     step: Number,
     name: String,
     datepicker: Number,
-    value:{},
+    salutation: {
+        type: String,
+        default:'',
+    },
+    weekDay: {
+        type: String,
+        default:'',        
+    }
+
   },
   methods: {
     changeStat(step) {},
@@ -357,16 +373,20 @@ export default {
       console.log(event.target.value);
     },
     //정기휴무
-    myChange($event) {
-        if ($event.target.name === 'week') {
-            this.week = $event.target.value;
-        } else if ($event.target.name === 'day') {
-            this.day = $event.target.value;
-        }
-        this.$emit('week', this.value);
-    },
+    // myChange($event) {
+    //     if ($event.target.name === 'week') {
+    //         this.week = $event.target.value;
+    //     } else if ($event.target.name === 'day') {
+    //         this.day = $event.target.value;
+    //     }
+    //     this.$emit('week', this.value);
+    // },
   },
   setup() {
+      return {
+          salutations,
+          weekDays
+      }
     // const time = ref({
     //     hours: new Date().getHours(),
     //     minutes: new Date().getMinutes()
