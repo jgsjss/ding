@@ -81,9 +81,28 @@
               <div class="break_box">
                 <form>
                   <label for="input_day" class="input_day">평일 시작 및 종료시간</label>
-                  <Datepicker timePicker range v-model="time" />
+                  
+                  <input 
+                    type="time"
+                    class="time_input"
+                    @change="$emit('sandParam', { breakTime : $event.target.value})"
+                    />
+                  <input 
+                    type="time"
+                    class="time_inputTwo"
+                    @change="$emit('sandParam', { breakTimeT : $event.target.value})"
+                    />
                   <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
-                  <Datepicker timePicker range v-model="date" />
+                  <input 
+                    type="time"
+                    class="date_input"
+                    @change="$emit('sandParam', { holyTime : $event.target.value})"
+                    />
+                  <input 
+                    type="time"
+                    class="date_inputTwo"
+                    @change="$emit('sandParam', { holyTimeT : $event.target.value})"
+                    />
                 </form>
               </div>
               <div class="break_time_btn_wrap">
@@ -351,7 +370,24 @@ export default {
     weekDay: {
         type: String,
         default:'',        
-    }
+    },
+    breakTime: {
+        type: String,
+        default:'',
+    },
+    breakTimeT: {
+        type: String,
+        default:'',
+    },
+    holyTime: {
+        type: String,
+        default:'',
+    },
+    holyTimeT: {
+        type: String,
+        default:'',
+    },
+
 
   },
   methods: {
@@ -396,7 +432,7 @@ export default {
       return {
           salutations,
           weekDays,
-      }
+    }
 
     // const time = ref({
     //     hours: new Date().getHours(),

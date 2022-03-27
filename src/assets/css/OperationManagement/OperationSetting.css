@@ -274,6 +274,24 @@
 .form-check-label {
     text-align:left;
 }
+.time_input {
+    display: block;
+    width:150px;
+}
+.time_inputTwo {
+    display: block;
+    margin: 15px 0 15px 0 ;
+    width: 150px;
+}
+.date_input {
+    display: block;
+    width:150px;
+}
+.date_inputTwo {
+    display: block;
+    margin: 15px 0 15px 0 ;
+    width: 150px;
+}
 .breaktime {
     padding-right:30px;
 }
@@ -309,6 +327,7 @@
     color:#333;
     margin:0 10px;
 }
+
 /*/////-------
                 정기휴무
 -------/////*/

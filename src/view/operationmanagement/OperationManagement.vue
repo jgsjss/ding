@@ -63,7 +63,12 @@
         <div class="oper_title" @click=" step = 1">준비시간</div><!--클릭시 자식 데이터가 나옴-->
         </div>
           <div class="preparation_text" @setInput="setInput" name="About">
-            {{}}
+            <p class="preparation_text_inner">평일 시작 및 종료</p>
+            {{ form.breakTime }}~{{ form.breakTimeT}}
+          </div>
+          <div class="preparation_textTwo" @setInput="setInput" name="About">
+            <p class="preparation_text_inner_two">주말 시작 및 종료</p>
+            {{ form.holyTime }}~{{ form.holyTimeT}}
           </div>
           
       </div>
@@ -118,9 +123,13 @@
 </div>
 
 <OperationSetting :step = "step"                  
-                v-model:salutation="form.salutation"
-                v-model:weekDay="form.weekDay"
-                @sandParam="sandParam" 
+  v-model:salutation="form.salutation"
+  v-model:weekDay="form.weekDay"
+  v-model:breakTime="form.breakTime"
+  v-model:breakTimeT="form.breakTimeT"
+  v-model:holyTime="form.holyTime"
+  v-model:holyTimeT="form.holyTimeT"
+  @sandParam="sandParam" 
 />
 <!-- <OperationSetting :step = "step" :datepicker ="datepicker" /> -->
 </template>
@@ -144,6 +153,10 @@ import { reactive } from 'vue'
     const form = reactive({
       salutation: '',
       weekDay:'',
+      breakTime:'',
+      breakTimeT:'',
+      date:'',
+      dateT:'',
     })
     function sandParam(_value){
       Object.assign(form,_value)
