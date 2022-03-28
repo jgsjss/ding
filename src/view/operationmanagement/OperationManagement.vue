@@ -64,13 +64,12 @@
         </div>
           <div class="preparation_text" @setInput="setInput" name="About">
             <p class="preparation_text_inner">평일 시작 및 종료</p>
-            {{ form.breakTime }}~{{ form.breakTimeT}}
+            {{ form.breakTime }} ~ {{ form.breakTimeT}}
           </div>
           <div class="preparation_textTwo" @setInput="setInput" name="About">
             <p class="preparation_text_inner_two">주말 시작 및 종료</p>
-            {{ form.holyTime }}~{{ form.holyTimeT}}
-          </div>
-          
+            {{ form.holyTime }} ~ {{ form.holyTimeT}}
+          </div>     
       </div>
       <!--/////정기휴무/////-->
       <div class="oper_box1">
@@ -147,6 +146,7 @@ import { reactive } from 'vue'
     return {
       show:false,
       step: 0,
+      textShow:false,
     }
   },
   setup() {
