@@ -1,4 +1,5 @@
 <template>
+<!--운영관리 가게설정 자식컴포넌트-->
   <div class="oper_set_container">
     <h2 class="operset_text">◆가게설정</h2>
     <div class="oper_set_wrap">
@@ -23,8 +24,8 @@
                 <button type="checkbox" class="day_btn">일</button>
                 <div class="oper_switch">
                   <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked />
-                    <label class="form-check-label regular_label" for="flexSwitchCheckChecked">24시간</label>
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked/>
+                    <label class="form-check-label regular_label" for="flexSwitchCheckChecked" >24시간</label>
                   </div>
                 </div>
                 <div class="oper_modal_oper_box">
@@ -74,12 +75,13 @@
             <div class="break_one">
               <div class="break_switch">
                 <div class="form-check form-switch">
-                    <div class="wrapper" v-show="switchBtn=!switchBtn">준비시간
-                        <input type="checkbox" id="switch" @click="switchBtn">
-                        <label for="switch" class="switch_label">
-                            <span class="onf_btn"></span>
-                        </label>
-                    </div>
+                  <div class="wrapper">
+                    준비시간
+                    <input type="checkbox" id="switch" checked :disabled="!disabled"/>
+                    <label for="switch" class="switch_label">
+                      <span class="onf_btn"></span>
+                    </label>
+                  </div>
                   <!-- <input 
                     class="form-check-input" 
                     type="checkbox" 
@@ -90,33 +92,33 @@
                     /> -->
                 </div>
               </div>
-              <div class="break_box" :v-bind="regularBtn">
+              <div class="break_box">
                 <form>
                   <label for="input_day" class="input_day">평일 시작 및 종료시간</label>
-                  <input 
+                  <input
                     type="time"
                     class="time_input"
-                    @change="$emit('sandParam', { breakTime : $event.target.value})"
-                    />
-                  <input 
+                    @change="$emit('sandParam', { breakTime: $event.target.value })"
+                  />
+                  <input
                     type="time"
                     class="time_inputTwo"
-                    @change="$emit('sandParam', { breakTimeT : $event.target.value})"
-                    />
-                    
+                    @change="$emit('sandParam', { breakTimeT: $event.target.value })"
+                  />
+
                   <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
-                  <div style="display:block">
-                  <input 
-                    type="time"
-                    class="date_input"
-                    @change="$emit('sandParam', { holyTime : $event.target.value})"
+                  <div style="display: block">
+                    <input
+                      type="time"
+                      class="date_input"
+                      @change="$emit('sandParam', { holyTime: $event.target.value })"
                     />
-                  <input 
-                    type="time"
-                    class="date_inputTwo"
-                    @change="$emit('sandParam', { holyTimeT : $event.target.value})"
+                    <input
+                      type="time"
+                      class="date_inputTwo"
+                      @change="$emit('sandParam', { holyTimeT: $event.target.value })"
                     />
-                    </div>
+                  </div>
                 </form>
               </div>
               <div class="break_time_btn_wrap">
@@ -147,32 +149,20 @@
                 <!--//////휴무1//////-->
                 <div class="regular_wrap">
                   <div class="regular_box">
-                      <!--:value="week"-->
-                    <select 
-                        class="Rday" 
-                        name="salutation"
-                        @change="$emit('sandParam',{ salutation:$event.target.value })"
-                        >
-                            <option 
-                                v-for="item of salutations"
-                                :value="item"
-                                :key="item"
-                                :selected="salutation == item"
-                            > {{ item }}
-                            </option>
-                    </select>
-                    <select 
-                        class="Rday" 
-                        name="weekDay"
-                        @change="$emit('sandParam',{ weekDay: $event.target.value })" 
+                    <!--:value="week"-->
+                    <select
+                      class="Rday"
+                      name="salutation"
+                      @change="$emit('sandParam', { salutation: $event.target.value })"
                     >
-                      <option 
-                        v-for="day of weekDays"
-                        :value="day"
-                        :key="day"
-                        :selected="weekDay == day">
+                      <option v-for="item of salutations" :value="item" :key="item" :selected="salutation == item">
+                        {{ item }}
+                      </option>
+                    </select>
+                    <select class="Rday" name="weekDay" @change="$emit('sandParam', { weekDay: $event.target.value })">
+                      <option v-for="day of weekDays" :value="day" :key="day" :selected="weekDay == day">
                         {{ day }}
-                        </option>
+                      </option>
                     </select>
                   </div>
                   <!--//////휴무2//////-->
@@ -342,22 +332,8 @@
 <script>
 import { ref } from "vue";
 
-const salutations = [
-    '매월 첫째주',
-    '매월 둘째주',
-    '매월 셋째주',
-    '매월 넷째주',
-    '매월 다섯째주',
-]
-const  weekDays = [
-    '월요일',
-    '화요일',
-    '수요일',
-    '목요일',
-    '금요일',
-    '토요일',
-    '일요일',
-]
+const salutations = ["매월 첫째주", "매월 둘째주", "매월 셋째주", "매월 넷째주", "매월 다섯째주"];
+const weekDays = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"];
 
 export default {
   data() {
@@ -371,8 +347,7 @@ export default {
       date: "",
       pvalue: this.value,
       isShow: false,
-      regularBtn:false,
-      switchBtn:true,
+      regularBtn: false,
     };
   },
   props: {
@@ -380,31 +355,29 @@ export default {
     name: String,
     datepicker: Number,
     salutation: {
-        type: String,
-        default:'',
+      type: String,
+      default: "",
     },
     weekDay: {
-        type: String,
-        default:'',        
+      type: String,
+      default: "",
     },
     breakTime: {
-        type: String,
-        default:'',
+      type: String,
+      default: "",
     },
     breakTimeT: {
-        type: String,
-        default:'',
+      type: String,
+      default: "",
     },
     holyTime: {
-        type: String,
-        default:'',
+      type: String,
+      default: "",
     },
     holyTimeT: {
-        type: String,
-        default:'',
+      type: String,
+      default: "",
     },
-
-
   },
   methods: {
     changeStat(step) {},
@@ -428,7 +401,7 @@ export default {
     setInput(weekday) {
       this.value = weekday;
       console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);
-    }
+    },
     //정기휴무
     // myChange($event) {
     //     if ($event.target.name === 'week') {
@@ -445,10 +418,10 @@ export default {
     // //   this.value = weekday;
     // //   console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);
     // // }
-      return {
-          salutations,
-          weekDays,
-    }
+    return {
+      salutations,
+      weekDays,
+    };
 
     // const time = ref({
     //     hours: new Date().getHours(),
@@ -457,8 +430,7 @@ export default {
     // return {
     //     time,
     // }
-  }
-
+  },
 };
 </script>
 

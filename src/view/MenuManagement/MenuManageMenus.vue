@@ -57,7 +57,7 @@
         </thead>
         <tbody>
         <tr v-for="(a, i) in menuData" :key="i">
-          <td v-for="menuname in a"></td>
+          <!-- <td v-for="menuname in coffees" :key="menuname"></td> -->
           <td scope="row" class="cate_check_box">
             <input type="checkbox"
                    :id="'menuCheck_' + i.menuId"
