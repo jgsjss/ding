@@ -69,8 +69,12 @@
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
           <router-link to="/menumanagement/MenuAddModify" class="asdf">
             <td class="edit_data">
-              <img src="../../assets/coffee.jpeg" class="coffee_img">
+
+<!--              <img v-for="pd in 'http://static/pdimage/'" :key="pd" src="/static/pdimage/{{pd}}" class="coffee_img">-->
+              <img :src="`${menuData[i].pdimage}`" class="coffee_img">
               {{ menuData[i].pdname }}
+<!--              {{ menuData[i].pdimage }}-->
+<!--              {{ menuData[i].pdimage }}-->
             </td>
           </router-link>
           <td class="edit_data" title="마우스">{{ menuData[i].price }}</td>
@@ -157,7 +161,17 @@ export default {
         //게시물 정보들
         this.menuData = res.data.rows
         // this.totalPage = this.cgData.length
+
+        // 백엔드의 사진의 주소를 interpolation 하기 위해선 FE에서 Data 자체에 전체 주소값을 포함하여야 함.
+        // 아니면 interpolation 으로 다이내믹으로 require해서 url 주소 편집 필요 , FE Asset으로 사용도 가능
+        // 결과적으로 주소값을 전체적으로 가지고 다니는것이 가장 효율적
+        // src="/static/pdimage/{{menuData[i].pdimage}}" 와 같은 방법은 vue 한계상 쉽진 않음
         console.log('menuData: ', this.menuData)
+        for (let i = 0; i < this.menuData.length; i++) {
+          this.menuData[i].pdimage = ''.concat('/static/pdimage/', this.menuData[i].pdimage)
+          console.log("pdimage : ", this.menuData[i].pdimage)
+        }
+        // console.log(this.menuData.pdimage)
         return res.data
       }).catch((err) => {
         console.log(err)
