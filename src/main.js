@@ -19,13 +19,12 @@ const sweet = require("sweetalert2");
 app.config.globalProperties.emitter = emitter;
 app.config.globalProperties.axios = axios;
 app.component("Datepicker", Datepicker);
-
+app.config.globalProperties.imgbaseurl = "/static/pdimage/";
 app.mixin(mixins);
 app.use(vuesweetalert2);
-app.use(VueExcelXlsx)
+app.use(VueExcelXlsx);
 // app.component("infinite-loading", InfiniteLoading);
 // app.use(VueCookies);
-
 
 // router.beforeEach((to, from, next) => {
 //  if (to.matched.some((record) => record.meta.requireLogin)) {

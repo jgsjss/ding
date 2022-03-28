@@ -57,7 +57,7 @@
         </thead>
         <tbody>
         <tr v-for="(a, i) in menuData" :key="i">
-          <td v-for="menuname in coffees" :key="menuname"></td>
+          <td v-for="menuname in a" :key="menuname"></td>
           <td scope="row" class="cate_check_box">
             <input type="checkbox"
                    :id="'menuCheck_' + i.menuId"
@@ -70,11 +70,11 @@
           <router-link to="/menumanagement/MenuAddModify" class="asdf">
             <td class="edit_data">
 
-<!--              <img v-for="pd in 'http://static/pdimage/'" :key="pd" src="/static/pdimage/{{pd}}" class="coffee_img">-->
+              <!--              <img v-for="pd in 'http://static/pdimage/'" :key="pd" src="/static/pdimage/{{pd}}" class="coffee_img">-->
               <img :src="`${menuData[i].pdimage}`" class="coffee_img">
               {{ menuData[i].pdname }}
-<!--              {{ menuData[i].pdimage }}-->
-<!--              {{ menuData[i].pdimage }}-->
+              <!--              {{ menuData[i].pdimage }}-->
+              <!--              {{ menuData[i].pdimage }}-->
             </td>
           </router-link>
           <td class="edit_data" title="마우스">{{ menuData[i].price }}</td>
@@ -133,16 +133,17 @@ export default {
     return {
       conditionKey: null,
       active: false,
-      menuname: [
-        {
-          coffee: require('../../assets/coffee.jpeg')
-        }
-      ],
+      // menuname: [
+      //   {
+      //     coffee: require('../../assets/coffee.jpeg')
+      //   }
+      // ],
       allCheckedMenus: false,
       menuData: '',
       pageCount: 10,
       currentPage: 1,
       pageNum: 1,
+      totalPage:Number
     }
   },
   methods: {
@@ -166,10 +167,14 @@ export default {
         // 아니면 interpolation 으로 다이내믹으로 require해서 url 주소 편집 필요 , FE Asset으로 사용도 가능
         // 결과적으로 주소값을 전체적으로 가지고 다니는것이 가장 효율적
         // src="/static/pdimage/{{menuData[i].pdimage}}" 와 같은 방법은 vue 한계상 쉽진 않음
+
         console.log('menuData: ', this.menuData)
         for (let i = 0; i < this.menuData.length; i++) {
-          this.menuData[i].pdimage = ''.concat('/static/pdimage/', this.menuData[i].pdimage)
-          console.log("pdimage : ", this.menuData[i].pdimage)
+
+          // this.menuData[i].pdimage = ''.concat('/static/pdimage/', this.menuData[i].pdimage)
+          this.menuData[i].pdimage = this.imgbaseurl.concat(this.menuData[i].pdimage)
+
+          console.log('pdimage : ', this.menuData[i].pdimage)
         }
         // console.log(this.menuData.pdimage)
         return res.data
@@ -263,7 +268,7 @@ export default {
     getUserrole () {
       return this.$store.getters['loginStore/getUserrole']
     },
-    shopcode(){
+    shopcode () {
       return this.$store.getters['loginStore/getShopcode']
     }
   },
