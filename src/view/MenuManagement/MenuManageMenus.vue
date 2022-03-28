@@ -72,13 +72,13 @@
 
               <!--              <img v-for="pd in 'http://static/pdimage/'" :key="pd" src="/static/pdimage/{{pd}}" class="coffee_img">-->
               <img :src="`${menuData[i].pdimage}`" class="coffee_img">
-              {{ menuData[i].pdname }}
+              {{ 메뉴이름 }}
               <!--              {{ menuData[i].pdimage }}-->
               <!--              {{ menuData[i].pdimage }}-->
             </td>
           </router-link>
-          <td class="edit_data" title="마우스">{{ menuData[i].price }}</td>
-          <td class="edit_data">{{ menuData[i].pdcategory }}</td>
+          <td class="edit_data" title="마우스">{{ 가격 }}</td>
+          <td class="edit_data">{{ 카테고리 }}</td>
           <td class="edit_data">{{ '옵션은 보류' }}</td>
           <td class="edit_data">
             <select class="edit_condition" @change="editCondition($event)" v-model="conditionKey">
