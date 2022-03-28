@@ -74,14 +74,25 @@
             <div class="break_one">
               <div class="break_switch">
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked />
-                  <label class="form-check-label regular_label" for="flexSwitchCheckChecked">준비시간 설정</label>
+                    <div class="wrapper" v-show="switchBtn=!switchBtn">준비시간
+                        <input type="checkbox" id="switch" @click="switchBtn">
+                        <label for="switch" class="switch_label">
+                            <span class="onf_btn"></span>
+                        </label>
+                    </div>
+                  <!-- <input 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    id="flexSwitchCheckChecked" 
+                    checked 
+                    @click="regularBtn=!regularBtn"
+                    v-model="regularBtn"
+                    /> -->
                 </div>
               </div>
-              <div class="break_box">
+              <div class="break_box" :v-bind="regularBtn">
                 <form>
                   <label for="input_day" class="input_day">평일 시작 및 종료시간</label>
-                  
                   <input 
                     type="time"
                     class="time_input"
@@ -360,6 +371,8 @@ export default {
       date: "",
       pvalue: this.value,
       isShow: false,
+      regularBtn:false,
+      switchBtn:true,
     };
   },
   props: {

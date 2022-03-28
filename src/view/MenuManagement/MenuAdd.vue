@@ -1,4 +1,5 @@
 <template>
+<!--메뉴편집 메뉴추가 페이지-->
   <div class="menuadd_container">
     <div class="menuadd_title_wrap">
       <h4 class="menuadd_title">메뉴추가</h4>
