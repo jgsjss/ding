@@ -168,4 +168,7 @@
       text-align: center;
       padding-top:30px;
   }
+  .preparation_text_inner,  .preparation_text_inner_two {
+    margin:0 auto;
+  }
   
