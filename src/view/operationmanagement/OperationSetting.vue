@@ -92,7 +92,9 @@
                     class="time_inputTwo"
                     @change="$emit('sandParam', { breakTimeT : $event.target.value})"
                     />
+                    
                   <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
+                  <div style="display:block">
                   <input 
                     type="time"
                     class="date_input"
@@ -103,6 +105,7 @@
                     class="date_inputTwo"
                     @change="$emit('sandParam', { holyTimeT : $event.target.value})"
                     />
+                    </div>
                 </form>
               </div>
               <div class="break_time_btn_wrap">

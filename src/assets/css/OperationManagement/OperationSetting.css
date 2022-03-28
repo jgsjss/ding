@@ -276,22 +276,22 @@
 }
 .time_input {
     display: block;
-    width:150px;
+    float: left;
+    margin: 0 10px 0 0;
+    width: 130px;
 }
 .time_inputTwo {
     display: block;
-    margin: 15px 0 15px 0 ;
-    width: 150px;
+    width: 130px;
 }
 .date_input {
-    display: block;
-    width:150px;
+    margin: 0 10px 0 0;
+    width: 130px;
 }
 .date_inputTwo {
-    display: block;
-    margin: 15px 0 15px 0 ;
-    width: 150px;
+    width: 130px;
 }
+
 .breaktime {
     padding-right:30px;
 }
