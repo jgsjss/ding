@@ -1,4 +1,5 @@
 <template>
+<!--메뉴편집-메뉴상세정보 페이지-->
 <!--데이터가 있을 경우에만 상세정보창을 수정할수가있음-->
   <div class="MenuAddmodify_container">
     <div class="MenuAddmodify_title_wrap">
