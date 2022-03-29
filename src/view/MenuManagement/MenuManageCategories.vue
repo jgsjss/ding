@@ -50,7 +50,7 @@
                          placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">
                          <span class="error_next_box2" id="caAddDe" style aria-live="assertive">필수 정보 입니다.</span>
                 </label>
-                
+
                 <div class="category_add_label_wrap">
                   카테고리공개
                   <label class="category_add_label">
@@ -87,7 +87,7 @@
           </div>
         </div>
         <!--------------카테고리 추가 오프캔버스 끝-------------->
-        
+
         <select class="hidden_select">
           <option class="hidden_btn">전체/숨김/정상</option>
           <option class="hidden_btn" value="숨김">숨김</option>
@@ -232,8 +232,8 @@ export default {
         }
       }
     },
-    getCategories (curpage) {
-      axios.post('/apimenu/categories', {
+   async getCategories (curpage) {
+     await axios.post('/apimenu/categories', {
         data: {
           shopcode: this.shopcode,
           curpage: curpage

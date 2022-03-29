@@ -143,44 +143,51 @@ export default {
       pageCount: 10,
       currentPage: 1,
       pageNum: 1,
-      totalPage:Number
+      totalPage: Number
     }
   },
   methods: {
-    getMenu (curpage) {
-      axios.post('/apimenu/menus', {
-        data: {
-          shopcode: this.shopcode,
-          curpage: curpage
-        }
-      }).then(res => {
-        console.log('res.data: ', res.data)
-        // 백엔드에서 날라오는 값 res.data=>articles[rows, ActualArticleLength]
+    async getMenu (curpage) {
 
-        //게시물 총 갯수
-        this.totalPage = res.data.length
-        //게시물 정보들
-        this.menuData = res.data.rows
-        // this.totalPage = this.cgData.length
+      try {
 
-        // 백엔드의 사진의 주소를 interpolation 하기 위해선 FE에서 Data 자체에 전체 주소값을 포함하여야 함.
-        // 아니면 interpolation 으로 다이내믹으로 require해서 url 주소 편집 필요 , FE Asset으로 사용도 가능
-        // 결과적으로 주소값을 전체적으로 가지고 다니는것이 가장 효율적
-        // src="/static/pdimage/{{menuData[i].pdimage}}" 와 같은 방법은 vue 한계상 쉽진 않음
+        const res = await axios.post('/apimenu/menus', {
+          data: {
+            shopcode: this.shopcode,
+            curpage: curpage
+          }
+        })
 
-        console.log('menuData: ', this.menuData)
-        for (let i = 0; i < this.menuData.length; i++) {
 
-          // this.menuData[i].pdimage = ''.concat('/static/pdimage/', this.menuData[i].pdimage)
-          this.menuData[i].pdimage = this.imgbaseurl.concat(this.menuData[i].pdimage)
+          console.log('res.data: ', res.data)
+          // 백엔드에서 날라오는 값 res.data=>articles[rows, ActualArticleLength]
 
-          console.log('pdimage : ', this.menuData[i].pdimage)
-        }
-        // console.log(this.menuData.pdimage)
-        return res.data
-      }).catch((err) => {
-        console.log(err)
-      })
+          //게시물 총 갯수
+          this.totalPage = res.data.length
+          //게시물 정보들
+          this.menuData = res.data.rows
+          // this.totalPage = this.cgData.length
+
+          // 백엔드의 사진의 주소를 interpolation 하기 위해선 FE에서 Data 자체에 전체 주소값을 포함하여야 함.
+          // 아니면 interpolation 으로 다이내믹으로 require해서 url 주소 편집 필요 , FE Asset으로 사용도 가능
+          // 결과적으로 주소값을 전체적으로 가지고 다니는것이 가장 효율적
+          // src="/static/pdimage/{{menuData[i].pdimage}}" 와 같은 방법은 vue 한계상 쉽진 않음
+
+          console.log('menuData: ', this.menuData)
+          for (let i = 0; i < this.menuData.length; i++) {
+
+            // this.menuData[i].pdimage = ''.concat('/static/pdimage/', this.menuData[i].pdimage)
+            this.menuData[i].pdimage = this.imgbaseurl.concat(this.menuData[i].pdimage)
+
+            console.log('pdimage : ', this.menuData[i].pdimage)
+          }
+          // console.log(this.menuData.pdimage)
+          return res.data
+
+      } catch (e) {
+        console.log('err: ', e)
+      }
+
     },
     moveNext () {
       console.log('유저권한', this.getUserrole)
