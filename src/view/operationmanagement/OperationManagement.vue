@@ -91,6 +91,7 @@
       <div class="oper_box1">
         <div class="oper_title" @click=" step = 3">임시휴무</div>
           <div class="holiday">{{ form.reasonDate }} {{ form.reasonTime }}~ </div>
+          <!-- <div class="holiday">(설정없음)</div> -->
           <div class="holidayTwo">{{ form.reasonDateT }} {{ form.reasonTimeT }}</div>
           <div class="holiday_text">{{form.reasonCheck}}</div>
       </div>      
@@ -180,6 +181,14 @@ import { reactive } from 'vue'
     notice: function(evt) {
       alert('상태를 변경하시겠습니까?')
     },
+    // isDate:function(value) {
+    //   if (value == "" || value == null || undefined || ( value != null && typeof value == "object" && !Object.keys(value).length)){
+    //     console.log(this.value)
+    //     return true
+    //   } else {
+    //     return false
+    //   }
+    // }
     // setInput(weekday) {
     //   this.value = weekday;
     //   console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);

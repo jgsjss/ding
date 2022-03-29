@@ -427,11 +427,11 @@ export default {
     },
   },
   methods: {
-      isDate() {
-          let today = new Date().toISOString().substr(0,10);
-          document.querySelector(".temporary_date").value = today
-          console.log(this.date)
-      },
+    isDate() {
+      let today = new Date().toISOString().substr(0,10);
+      document.querySelector(".temporary_date").value = today
+      console.log(this.date)
+    },
     changeStat(step) {},
     titleUpdate(e) {
       console.log(e.target.value);
