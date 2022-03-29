@@ -282,8 +282,8 @@ export default {
       })
       console.log(myctnumgroup)
     },
-    addCategory () {
-      axios.post('/apimenu/addcategory', {
+    async addCategory () {
+      await axios.post('/apimenu/addcategory', {
         ctname: this.ctname,
         description: this.description,
         status: this.status,
