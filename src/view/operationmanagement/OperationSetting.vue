@@ -77,7 +77,7 @@
                 <div class="form-check form-switch">
                   <div class="wrapper">
                     준비시간
-                    <input type="checkbox" id="switch" checked :disabled="!disabled"/>
+                    <input type="checkbox" id="switch" checked />
                     <label for="switch" class="switch_label">
                       <span class="onf_btn"></span>
                     </label>
@@ -216,6 +216,7 @@
                   name="flexRadioDefault"
                   id="flexRadioDefault1"
                   v-model="picked"
+                  @change="$emit('sandParam', { reasonCheck : $event.target.value })"
                 />
                 <label class="form-check-label temporary_form_lebel" for="flexRadioDefault1">
                   개인사정으로 인해 쉬어갑니다!
@@ -229,6 +230,7 @@
                   name="flexRadioDefault"
                   id="flexRadioDefault1"
                   v-model="picked"
+                  @change="$emit('sandParam', { reasonCheck : $event.target.value })"
                 />
                 <label class="form-check-label temporary_form_lebel" for="flexRadioDefault1">
                   매장 내 주문만 가능합니다! 카운터에서 주문해주세요!
@@ -242,6 +244,7 @@
                   name="flexRadioDefault"
                   id="flexRadioDefault1"
                   v-model="picked"
+                  @change="$emit('sandParam', { reasonCheck : $event.target.value })"
                 />
                 <label class="form-check-label temporary_form_lebel" for="flexRadioDefault1"> 직접입력 </label>
               </div>
@@ -250,6 +253,7 @@
                 class="temporary_form_text"
                 placeholder="입력한대로 어플에 노출됩니다."
                 v-model="picked"
+                @change="$emit('sandParam', { reasonCheck : $event.target.value })"
               />
             </div>
           </div>
@@ -266,18 +270,37 @@
                 </div>
                 <div class="temporary_day_box">
                   <p>날짜 선택하기</p>
-                  <Datepicker
-                    v-model="date"
-                    locale="ko"
-                    range
-                    multiCalendars
-                    autoApply
-                    weekStart="0"
-                    :enableTimePicker="false"
-                    :yearRange="[2022, 2040]"
+                  <input
+                    type="date"
+                    class="temporary_date"
+                    min="2022-01-01"
+                    max="2042-01-01"                  
+                    @change="$emit('sandParam', { reasonDate : $event.target.value })"
+                  />
+                   ~ 
+                  <input
+                    type="date"
+                    class="temporary_date"
+                    min="2022-01-01"
+                    max="2042-01-01"
+                    @change="$emit('sandParam', { reasonDateT : $event.target.value })"
                   />
                   <p class="temporary_time_text">시작 및 종료시간</p>
-                  <Datepicker v-model="time" timePicker range />
+                  <input
+                    type="time" 
+                    class="temporary_time"
+                    min="08:00"
+                    max="24:00"
+                    @change="$emit('sandParam', { reasonTime : $event.target.value })"
+                    />
+                    ~
+                  <input
+                    type="time" 
+                    class="temporary_time"
+                    min="08:00"
+                    max="24:00"
+                    @change="$emit('sandParam', { reasonTimeT : $event.target.value })"
+                    />
                 </div>
                 <!-- <div class="temporary_timebtn_box">
                 <lebel class="tbtn_inner_text">시작</lebel>
@@ -327,6 +350,7 @@
       </div>
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -353,7 +377,10 @@ export default {
   props: {
     step: Number,
     name: String,
-    datepicker: Number,
+    datepicker: {
+        type:String,
+        default:'',
+    },
     salutation: {
       type: String,
       default: "",
@@ -378,8 +405,33 @@ export default {
       type: String,
       default: "",
     },
+    reasonCheck: {
+      type: String,
+      default: "",
+    },
+    reasonDate: {
+      type: String,
+      default: "",
+    },
+    reasonDateT: {
+      type: String,
+      default: "",
+    },
+    reasonTime: {
+      type: String,
+      default: "",
+    },
+    reasonTimeT: {
+      type: String,
+      default: "",
+    },
   },
   methods: {
+      isDate() {
+          let today = new Date().toISOString().substr(0,10);
+          document.querySelector(".temporary_date").value = today
+          console.log(this.date)
+      },
     changeStat(step) {},
     titleUpdate(e) {
       console.log(e.target.value);

@@ -88,10 +88,11 @@
         </div>
       </div>      
       <!--/////임시휴무/////-->
-      <div class="oper_box1" v-for="(a, i) in $store.state.OperationData" :key="i">
+      <div class="oper_box1">
         <div class="oper_title" @click=" step = 3">임시휴무</div>
-          <div class="holiday">{{ $store.state.OperationData[i].date }}</div>
-          <div class="holiday_text">개인사정으로 인해 쉽니다.</div>
+          <div class="holiday">{{ form.reasonDate }} {{ form.reasonTime }}~ </div>
+          <div class="holidayTwo">{{ form.reasonDateT }} {{ form.reasonTimeT }}</div>
+          <div class="holiday_text">{{form.reasonCheck}}</div>
       </div>      
       <!--/////매장상태/////-->
       <div class="oper_box1" v-for="(a, i) in $store.state.OperationData" :key="i">
@@ -120,7 +121,6 @@
     </div>
   </div>
 </div>
-
 <OperationSetting :step = "step"                  
   v-model:salutation="form.salutation"
   v-model:weekDay="form.weekDay"
@@ -128,6 +128,10 @@
   v-model:breakTimeT="form.breakTimeT"
   v-model:holyTime="form.holyTime"
   v-model:holyTimeT="form.holyTimeT"
+  v-model:reasonCheck="form.reasonCheck"
+  v-model:reasonDate="form.reasonDate"
+  v-model:reasonDateT="form.reasonDateT"
+  v-model:reasonTime="form.reasonTime"
   @sandParam="sandParam" 
 />
 <!-- <OperationSetting :step = "step" :datepicker ="datepicker" /> -->
@@ -157,6 +161,10 @@ import { reactive } from 'vue'
       breakTimeT:'',
       date:'',
       dateT:'',
+      reasonCheck:'',
+      reasonDate:'',
+      reasonDateT:'',
+      reasonTime:'',
     })
     function sandParam(_value){
       Object.assign(form,_value)

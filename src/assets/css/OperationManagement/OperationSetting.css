@@ -442,6 +442,15 @@
     padding:5px;
     font-size:14px;
 }
+.temporary_date {
+    font-size:14px;
+    width: 150px;
+}
+.temporary_time {
+    width: 150px;
+    padding:0 3px;
+    font-size:14px;
+}
 /*  요일체크1 */
 .temporary_wrap {
     display:block;
