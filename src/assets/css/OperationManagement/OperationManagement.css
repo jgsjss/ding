@@ -168,6 +168,7 @@
   .holiday_text {
     padding:30px;
     text-align: center;
+    word-break: keep-all;
   }
   .oper_condition {
       text-align: center;

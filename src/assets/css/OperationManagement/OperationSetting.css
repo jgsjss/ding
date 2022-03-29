@@ -369,7 +369,7 @@
     text-align:left;
 }
 .Rday {
-    width:120px;
+    width:100px;
     border:1px solid #997fb5;
     margin-left:5px;
     color:#997fb5;
@@ -381,6 +381,10 @@
 .regular_box {
     padding:10px 0;
     text-align: center;
+}
+.regular_circle {
+    font-size:20px;
+    cursor: pointer;
 }
 .regular_btn_wrap {
     text-align: center;
@@ -545,9 +549,9 @@
     cursor: pointer;
     display:inline-block;
     width: 40px;
-    height: 17px;
+    height: 18px;
     background:white;
-    border:2px solid #997fb5;
+    border:2px solid #ddd;
     border-radius:20px;
     transition: .2s;
 }
@@ -562,7 +566,7 @@
     width: 12px;
     height: 12px;
     border-radius: 20px;
-    background: #997fb5;
+    background: #ddd;
     transition: .2s;
 }
 #switch:checked+.switch_label {

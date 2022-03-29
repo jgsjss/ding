@@ -164,6 +164,7 @@
                         {{ day }}
                       </option>
                     </select>
+                  <i class="xi-minus-circle-o regular_circle" @click="selectDelete(event)"></i>                    
                   </div>
                   <!--//////휴무2//////-->
                   <!-- <div class="regular_box">
@@ -274,7 +275,7 @@
                     type="date"
                     class="temporary_date"
                     min="2022-01-01"
-                    max="2042-01-01"                  
+                    max="2042-01-01"       
                     @change="$emit('sandParam', { reasonDate : $event.target.value })"
                   />
                    ~ 
@@ -290,7 +291,7 @@
                     type="time" 
                     class="temporary_time"
                     min="08:00"
-                    max="24:00"
+                    max="24:00"                    
                     @change="$emit('sandParam', { reasonTime : $event.target.value })"
                     />
                     ~
@@ -436,11 +437,6 @@ export default {
     titleUpdate(e) {
       console.log(e.target.value);
     },
-    // onEmit() {
-    //   this.$emit("setInput", this.value);
-    //   console.log(this.value)
-    //   console.log(this.$emit);
-    // },
     weekRegular(event) {
       console.log(event.target.value);
     },
@@ -465,11 +461,6 @@ export default {
     // },
   },
   setup() {
-    //   $emit('setInput', {salutation:$event.target.value})
-    // // setInput(weekday) {
-    // //   this.value = weekday;
-    // //   console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);
-    // // }
     return {
       salutations,
       weekDays,
