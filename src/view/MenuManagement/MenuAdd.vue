@@ -46,7 +46,7 @@
             <input type="file" ref="image" class="menuadd_img_btn form-control" accept=".png" id="file" />
           </label>
           <div class="menuadd_img_input form-label">
-            <img :src="image" alt="메뉴이미지" class="popupImageItem" style="width: 200px; text-align: center" />
+<!--            <img :src="image" alt="메뉴이미지" class="popupImageItem" style="width: 200px; text-align: center" />-->
             <div class="menuadd_img_add_btn_wrap"></div>
           </div>
           <label class="form-label">메뉴공개&nbsp
@@ -255,22 +255,25 @@ export default {
       console.log("폼데이터 샵코드", shopCode);
       let image = this.$refs["image"].files[0];
 
-      form.append("image", image);
-      // form.append('shopcode', shopCode)
+      let codedata = { "shopcode" : shopCode}
 
-      console.log("form.get : ", form.get("shopcode"));
+      form.append("image", image);
+      // form.append("shopcode", shopCode)
+
+      console.log("form.keys : ", form.keys("shopcode"));
 
       console.log("shopcode : ", cookies.get("login"));
       console.log("shopcode : ", cookies.get("login").shopCode);
 
       axios
         .post("/apimenu/pdupload", form, {
+          data: JSON.stringify(codedata),
           // data:{
           //   shopcode: this.shopcode
           // },
           headers: {
             "Content-Type": "multipart/form-data",
-            shopcode: shopCode,
+             shopcode: shopCode,
           },
         })
         .then((res) => {
