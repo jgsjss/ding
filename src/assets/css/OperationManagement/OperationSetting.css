@@ -94,18 +94,63 @@
     padding:30px;
     border-radius: 3px;
 }
-.day_btn {
-    width: 35px;
-    margin: 0 3px;
-    background: #997fb5;
-    color: white;
-    border: 1px solid #997fb5;
+/* 요일 체크 버튼 시작 */
+.day_btn1,.day_btn2,.day_btn3,.day_btn4,.day_btn5,.day_btn6,.day_btn7 {
+    display:none;
 }
-.day_btn:active {
-    background:white;
-    color:#997fb5;
-    border:1px solid #997fb5;
+.day_btn1+.day_label1,
+.day_btn2+.day_label2,
+.day_btn3+.day_label3,
+.day_btn4+.day_label4,
+.day_btn5+.day_label5,
+.day_btn6+.day_label6,
+.day_btn7+.day_label7 {
+    margin:0 7px;
+    width: 30px;
+    height: 30px;
+    border:1px solid #dcd4e3;
+    background:url('../../img/day1_off.jpg') no-repeat 0 0px / contain;
 }
+.day_btn1:checked+.day_label1 {
+    background:url('../../img/day1_on.jpg') no-repeat 0 0px / contain;
+}
+.day_btn2+.day_label2 {
+    background:url('../../img/day2_off.jpg') no-repeat 0 0px / contain;
+}
+.day_btn2:checked+.day_label2 {
+    background:url('../../img/day2_on.jpg') no-repeat 0 0px / contain;
+}
+.day_btn3+.day_label3 {
+    background:url('../../img/day3_off.jpg') no-repeat 0 0px / contain;
+}
+.day_btn3:checked+.day_label3 {
+    background:url('../../img/day3_on.jpg') no-repeat 0 0px / contain;
+}
+.day_btn4+.day_label4 {
+    background:url('../../img/day4_off.jpg') no-repeat 0 0px / contain;
+}
+.day_btn4:checked+.day_label4 {
+    background:url('../../img/day4_on.jpg') no-repeat 0 0px / contain;
+}
+.day_btn5+.day_label5 {
+    background:url('../../img/day5_off.jpg') no-repeat 0 0px / contain;
+}
+.day_btn5:checked+.day_label5 {
+    background:url('../../img/day5_on.jpg') no-repeat 0 0px / contain;
+}
+.day_btn6+.day_label6 {
+    background:url('../../img/day6_off.jpg') no-repeat 0 0px / contain;
+}
+.day_btn6:checked+.day_label6 {
+    background:url('../../img/day6_on.jpg') no-repeat 0 0px / contain;
+}
+.day_btn7+.day_label7 {
+    background:url('../../img/day7_off.jpg') no-repeat 0 0px / contain;
+}
+.day_btn7:checked+.day_label7 {
+    background:url('../../img/day7_on.jpg') no-repeat 0 0px / contain;
+}
+/* 요일 체크 버튼 끝*/
 .form-check {
     float:right;
 }

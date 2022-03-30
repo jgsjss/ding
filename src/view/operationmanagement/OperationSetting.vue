@@ -15,13 +15,20 @@
           <div class="oper_sub_modal_wrap">
             <div class="oper_modal_two">
               <form>
-                <button type="checkbox" class="day_btn">월</button>
-                <button type="checkbox" class="day_btn">화</button>
-                <button type="checkbox" class="day_btn">수</button>
-                <button type="checkbox" class="day_btn">목</button>
-                <button type="checkbox" class="day_btn">금</button>
-                <button type="checkbox" class="day_btn">토</button>
-                <button type="checkbox" class="day_btn">일</button>
+                <input type="checkbox" class="day_btn1" id="dayBtn1">
+                <label for="dayBtn1" class="day_label1"></label>
+                <input type="checkbox" class="day_btn2" id="dayBtn2">
+                <label for="dayBtn2" class="day_label2"></label>
+                <input type="checkbox" class="day_btn3" id="dayBtn3">
+                <label for="dayBtn3" class="day_label3"></label>
+                <input type="checkbox" class="day_btn4" id="dayBtn4">
+                <label for="dayBtn4" class="day_label4"></label>
+                <input type="checkbox" class="day_btn5" id="dayBtn5">
+                <label for="dayBtn5" class="day_label5"></label>
+                <input type="checkbox" class="day_btn6" id="dayBtn6">
+                <label for="dayBtn6" class="day_label6"></label>
+                <input type="checkbox" class="day_btn7" id="dayBtn7">
+                <label for="dayBtn7" class="day_label7"></label>
                 <div class="oper_switch">
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked/>
@@ -60,8 +67,8 @@
                 </div>                                                                           -->
               </form>
               <div class="time_btn_wrap">
-                <button type="button" class="time_btn">저장</button>
-                <button type="button" class="time_btntwo">닫기</button>
+                <button class="time_btn">저장</button>
+                <button class="time_btntwo">닫기</button>
               </div>
             </div>
           </div>
@@ -193,8 +200,8 @@
                 </div>
               </form>
               <div class="regular_btn_wrap">
-                <button type="button" class="regular_add_btn" @click="onEmit">저장</button>
-                <button type="button" class="regular_close_btn">저장안함</button>
+                <button class="regular_add_btn" @click="onEmit">저장</button>
+                <button class="regular_close_btn">저장안함</button>
               </div>
             </div>
           </div>
@@ -343,7 +350,7 @@
                 </div>                                                                           -->
               </form>
               <div class="temporary_btn_wrap">
-                <button type="button" class="temporary_add_btn">저장</button>
+                <button class="temporary_add_btn">저장</button>
               </div>
             </div>
           </div>
