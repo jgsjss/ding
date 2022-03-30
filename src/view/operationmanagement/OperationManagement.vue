@@ -36,24 +36,24 @@
       </div>
       </div>
       <div class="oper_all_wrap">
-      <div class="oper_box1" v-for="(a, i) in $store.state.OperationData" :key="i">
+      <div class="oper_box1">
         <div class="oper_btn_box">
         </div>
-        <!--/////영업시간/////-->
+        <!--/////영업시간///// 화면에 최대 7개 추가가능 -->
         <div class="oper_title" @click=" step = 0">영업시간</div>
           <div class="oper_wrapper">
             <div class="oper_wrap1">
               
-              <div class="oper_left">평일</div>
+              <div class="oper_left">{{ form.dayCheck1 }}{{ form.dayCheck2 }}</div>
               <div class="oper_left">주말</div>
               <div class="oper_left">토</div>
               <div class="oper_left">일</div>
             </div>
           <div class="oper_wrap2">
-            <div class="oper_right">{{ $store.state.OperationData[i].time1 }}</div>
-            <div class="oper_right">{{ $store.state.OperationData[i].time2 }}</div>
-            <div class="oper_right">{{ $store.state.OperationData[i].time3 }}</div>
-            <div class="oper_right">{{ $store.state.OperationData[i].time4 }}</div>
+            <div class="oper_right">{{ form.operTime }} ~ {{ form.operTimeT}}</div>
+            <div class="oper_right">{{ "d" }}</div>
+            <div class="oper_right">{{  }}</div>
+            <div class="oper_right">{{  }}</div>
           </div>
         </div>
       </div>
@@ -132,7 +132,9 @@
   v-model:reasonCheck="form.reasonCheck"
   v-model:reasonDate="form.reasonDate"
   v-model:reasonDateT="form.reasonDateT"
-  v-model:reasonTime="form.reasonTime"
+  v-model:operTime="form.operTime"
+  v-model:operTimeT="form.operTimeT"
+  v-model:dayCheck1="form.dayCheck1"
   @sandParam="sandParam" 
 />
 <!-- <OperationSetting :step = "step" :datepicker ="datepicker" /> -->
@@ -166,6 +168,9 @@ import { reactive } from 'vue'
       reasonDate:'',
       reasonDateT:'',
       reasonTime:'',
+      operTime:'',
+      operTimeT:'',
+      dayCheck1:'',
     })
     function sandParam(_value){
       Object.assign(form,_value)
@@ -174,7 +179,7 @@ import { reactive } from 'vue'
     
     return {
       form,
-      sandParam
+      sandParam,
     }
   },
   methods: {

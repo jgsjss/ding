@@ -15,20 +15,57 @@
           <div class="oper_sub_modal_wrap">
             <div class="oper_modal_two">
               <form>
-                <input type="checkbox" class="day_btn1" id="dayBtn1">
+                <!--요일 체크박스 시작-->
+                <input 
+                  type="checkbox" 
+                  class="day_btn1" id="dayBtn1" 
+                  v-model="dayBtnList" value="월"
+                  @change="$emit('sandParam', { dayCheck1: $event.target.value})"
+                >
                 <label for="dayBtn1" class="day_label1"></label>
-                <input type="checkbox" class="day_btn2" id="dayBtn2">
+                <input 
+                  type="checkbox" 
+                  class="day_btn2" id="dayBtn2" 
+                  v-model="dayBtnList" value="화"
+                  @change="$emit('sandParam', { dayCheck2: $event.target.value})"
+                >
                 <label for="dayBtn2" class="day_label2"></label>
-                <input type="checkbox" class="day_btn3" id="dayBtn3">
+                <input 
+                  type="checkbox" 
+                  class="day_btn3" id="dayBtn3" 
+                  v-model="dayBtnList" value="수"
+                  @change="$emit('sandParam', { dayCheck3: $event.target.value})"
+                >
                 <label for="dayBtn3" class="day_label3"></label>
-                <input type="checkbox" class="day_btn4" id="dayBtn4">
+                <input
+                  type="checkbox" 
+                  class="day_btn4" id="dayBtn4" 
+                  v-model="dayBtnList" value="목"
+                  @change="$emit('sandParam', { dayCheck4: $event.target.value})"
+                >
                 <label for="dayBtn4" class="day_label4"></label>
-                <input type="checkbox" class="day_btn5" id="dayBtn5">
+                <input 
+                  type="checkbox" 
+                  class="day_btn5" id="dayBtn5" 
+                  v-model="dayBtnList" value="금"
+                  @change="$emit('sandParam', { dayCheck5: $event.target.value})"
+                >
                 <label for="dayBtn5" class="day_label5"></label>
-                <input type="checkbox" class="day_btn6" id="dayBtn6">
+                <input 
+                  type="checkbox" 
+                  class="day_btn6" id="dayBtn6" 
+                  v-model="dayBtnList" value="토"
+                  @change="$emit('sandParam', { dayCheck6: $event.target.value})"
+                >
                 <label for="dayBtn6" class="day_label6"></label>
-                <input type="checkbox" class="day_btn7" id="dayBtn7">
+                <input 
+                  type="checkbox" 
+                  class="day_btn7" id="dayBtn7" 
+                  v-model="dayBtnList" value="일"
+                  @change="$emit('sandParam', { dayCheck7: $event.target.value})"
+                >
                 <label for="dayBtn7" class="day_label7"></label>
+                <!--요일 체크박스 끝-->
                 <div class="oper_switch">
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked/>
@@ -38,36 +75,36 @@
                 <div class="oper_modal_oper_box">
                   <form>
                     <label for="input_day" class="input_day">평일 시작 및 종료시간</label>
-                    <Datepicker v-model="time" id="datepicker" timePicker range />
+                    <input
+                      type="time"
+                      min="00:00"
+                      class="oper_time"
+                      @change="$emit('sandParam', { operTime: $event.target.value})"
+                    /> ~
+                    <input
+                      type="time"
+                      min="00:00"
+                      class="oper_time"
+                      @change="$emit('sandParam', { operTimeT: $event.target.value})"
+                    />
+                    <i class="xi-minus-circle-o oper_time_icon"></i>
                     <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
-                    <Datepicker v-model="time" id="datepicker" timePicker range />
+                    <input 
+                      type="time"
+                      min="00:00"
+                      class="oper_time"
+                    /> ~
+                    <input 
+                      type="time"
+                      min="00:00"
+                      class="oper_time"
+                    />
+                    <i class="xi-minus-circle-o oper_time_icon"></i>
                   </form>
                 </div>
-                <!--//////시작시간//////-->
-                <!-- <div class="startime_wrap">
-                <div class="starttime_box">
-                    <label for="starttime" class="starttime">시작시간</label>  
-                        <select id="time" className="Stime" @change="starttime">
-                            <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
-                        </select>           
-                        <select id="time" className="Stime" @change="starttime">
-                            <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
-                        </select>  
-                </div>                -->
-                <!--//////종료시간//////-->
-                <!-- <div class="starttime_box">
-                    <label for="starttime" class="starttime">종료시간</label>  
-                        <select id="time" className="Stime" @change="starttime">
-                            <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
-                                    </select>           
-                        <select id="time" className="Stime" @change="starttime">
-                            <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
-                                    </select>  
-                </div>   
-                </div>                                                                           -->
               </form>
               <div class="time_btn_wrap">
-                <button class="time_btn">저장</button>
+                <button class="time_btn" @click="isDayBtn">저장</button>
                 <button class="time_btntwo">닫기</button>
               </div>
             </div>
@@ -380,6 +417,7 @@ export default {
       pvalue: this.value,
       isShow: false,
       regularBtn: false,
+      dayBtnList: [],
     };
   },
   props: {
@@ -433,12 +471,31 @@ export default {
       type: String,
       default: "",
     },
+    operTime: {
+      type: String,
+      default: "",
+    },
+    operTimeT: {
+      type: String,
+      default: "",
+    },
+    dayCheck1: {
+      type:String,
+      default:'',
+    },
+    dayCheck2: {
+      type:String,
+      default:'',
+    },
   },
   methods: {
     isDate() {
       let today = new Date().toISOString().substr(0,10);
       document.querySelector(".temporary_date").value = today
       console.log(this.date)
+    },
+    isDayBtn: function() {
+      console.log(this.dayBtnList)
     },
     changeStat(step) {},
     titleUpdate(e) {
