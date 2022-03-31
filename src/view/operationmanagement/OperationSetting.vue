@@ -79,15 +79,19 @@
                       type="time"
                       min="00:00"
                       class="oper_time"
+                      id="inputDele"
                       @change="$emit('sandParam', { operTime: $event.target.value})"
                     /> ~
                     <input
                       type="time"
                       min="00:00"
                       class="oper_time"
+                      id="inputDele"
                       @change="$emit('sandParam', { operTimeT: $event.target.value})"
                     />
-                    <i class="xi-minus-circle-o oper_time_icon"></i>
+                    <i class="xi-minus-circle-o oper_time_icon" 
+                      @click="deleteBtn()"
+                    ></i>
                     <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
                     <input 
                       type="time"
@@ -417,13 +421,6 @@ export default {
       type:Array,
     }
   },
-  // emits: [
-  //   'dayCheck'
-  // ],
-  // created() {
-  // this.$emit('dayCheck')
-  // console.log(this.dayCheck)
-  // },
   methods: {
     isDate() {
       let today = new Date().toISOString().substr(0,10);
@@ -436,6 +433,13 @@ export default {
       // console.log(this.$emit.dayCheck)
       // console.log(this.dayCheck)
     },
+    //영업시간 input 내용지우기 앞에꺼만 지워짐 뒤에꺼도 해야됨
+    deleteBtn:function () {
+      var input = document.getElementById("inputDele");
+        input.value = null;
+        console.log(this.inputDele)
+      },
+    
     changeStat(step) {},
     titleUpdate(e) {
       console.log(e.target.value);
