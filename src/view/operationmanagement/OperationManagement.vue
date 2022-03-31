@@ -43,14 +43,13 @@
         <div class="oper_title" @click=" step = 0">영업시간</div>
           <div class="oper_wrapper">
             <div class="oper_wrap1">
-              
-              <div class="oper_left">{{ form.dayCheck1 }}{{ form.dayCheck2 }}</div>
+              <div class="oper_left">{{ form.dayCheck[0] }}{{ form.dayCheck[1] }}{{ form.dayCheck[2] }}</div>
               <div class="oper_left">주말</div>
               <div class="oper_left">토</div>
               <div class="oper_left">일</div>
             </div>
           <div class="oper_wrap2">
-            <div class="oper_right">{{ form.operTime }} ~ {{ form.operTimeT}}</div>
+            <div class="oper_right">{{ form.operTime }} ~ {{ form.operTimeT }}</div>
             <div class="oper_right">{{ "d" }}</div>
             <div class="oper_right">{{  }}</div>
             <div class="oper_right">{{  }}</div>
@@ -62,11 +61,11 @@
         <div class="oper_btn_box">
         <div class="oper_title" @click=" step = 1">준비시간</div><!--클릭시 자식 데이터가 나옴-->
         </div>
-          <div class="preparation_text" @setInput="setInput" name="About">
+          <div class="preparation_text" >
             <p class="preparation_text_inner">평일 시작 및 종료</p>
             {{ form.breakTime }} ~ {{ form.breakTimeT}}
           </div>
-          <div class="preparation_textTwo" @setInput="setInput" name="About">
+          <div class="preparation_textTwo" >
             <p class="preparation_text_inner_two">주말 시작 및 종료</p>
             {{ form.holyTime }} ~ {{ form.holyTimeT}}
           </div>     
@@ -134,8 +133,8 @@
   v-model:reasonDateT="form.reasonDateT"
   v-model:operTime="form.operTime"
   v-model:operTimeT="form.operTimeT"
-  v-model:dayCheck1="form.dayCheck1"
-  @sandParam="sandParam" 
+  v-model:dayCheck="form.dayCheck"
+  @sandParam="sandParam"
 />
 <!-- <OperationSetting :step = "step" :datepicker ="datepicker" /> -->
 </template>
@@ -170,7 +169,8 @@ import { reactive } from 'vue'
       reasonTime:'',
       operTime:'',
       operTimeT:'',
-      dayCheck1:'',
+      dayCheck:[],
+
     })
     function sandParam(_value){
       Object.assign(form,_value)
@@ -186,6 +186,13 @@ import { reactive } from 'vue'
     notice: function(evt) {
       alert('상태를 변경하시겠습니까?')
     },
+    // beforeUpdate() {
+    //   this.form.dayCheck = 
+    // },
+    //     setInput(dayCheck) {
+    //   this.value = dayCheck;
+    //   console.log("자식 컴포넌트에게 값을 받았어요 :)", dayCheck);
+    // },
     // isDate:function(value) {
     //   if (value == "" || value == null || undefined || ( value != null && typeof value == "object" && !Object.keys(value).length)){
     //     console.log(this.value)

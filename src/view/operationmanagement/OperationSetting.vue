@@ -19,50 +19,50 @@
                 <input 
                   type="checkbox" 
                   class="day_btn1" id="dayBtn1" 
-                  v-model="dayBtnList" value="월"
-                  @change="$emit('sandParam', { dayCheck1: $event.target.value})"
+                  value="월"
+                  v-model="dayCheck"
                 >
                 <label for="dayBtn1" class="day_label1"></label>
                 <input 
                   type="checkbox" 
                   class="day_btn2" id="dayBtn2" 
-                  v-model="dayBtnList" value="화"
-                  @change="$emit('sandParam', { dayCheck2: $event.target.value})"
+                  value="화"
+                  v-model="dayCheck"
                 >
                 <label for="dayBtn2" class="day_label2"></label>
                 <input 
                   type="checkbox" 
                   class="day_btn3" id="dayBtn3" 
-                  v-model="dayBtnList" value="수"
-                  @change="$emit('sandParam', { dayCheck3: $event.target.value})"
+                  value="수"
+                  v-model="dayCheck"
                 >
                 <label for="dayBtn3" class="day_label3"></label>
                 <input
                   type="checkbox" 
                   class="day_btn4" id="dayBtn4" 
-                  v-model="dayBtnList" value="목"
-                  @change="$emit('sandParam', { dayCheck4: $event.target.value})"
+                  value="목"
+                  v-model="dayCheck"
                 >
                 <label for="dayBtn4" class="day_label4"></label>
                 <input 
                   type="checkbox" 
                   class="day_btn5" id="dayBtn5" 
-                  v-model="dayBtnList" value="금"
-                  @change="$emit('sandParam', { dayCheck5: $event.target.value})"
+                  value="금"
+                  v-model="dayCheck"
                 >
                 <label for="dayBtn5" class="day_label5"></label>
                 <input 
                   type="checkbox" 
                   class="day_btn6" id="dayBtn6" 
-                  v-model="dayBtnList" value="토"
-                  @change="$emit('sandParam', { dayCheck6: $event.target.value})"
+                  value="토"
+                  v-model="dayCheck"
                 >
                 <label for="dayBtn6" class="day_label6"></label>
                 <input 
                   type="checkbox" 
                   class="day_btn7" id="dayBtn7" 
-                  v-model="dayBtnList" value="일"
-                  @change="$emit('sandParam', { dayCheck7: $event.target.value})"
+                  value="일"
+                  v-model="dayCheck"
                 >
                 <label for="dayBtn7" class="day_label7"></label>
                 <!--요일 체크박스 끝-->
@@ -104,7 +104,10 @@
                 </div>
               </form>
               <div class="time_btn_wrap">
-                <button class="time_btn" @click="isDayBtn">저장</button>
+                <button 
+                  class="time_btn" 
+                  @click="isDayBtn(event)"
+                  >저장</button>
                 <button class="time_btntwo">닫기</button>
               </div>
             </div>
@@ -126,14 +129,6 @@
                       <span class="onf_btn"></span>
                     </label>
                   </div>
-                  <!-- <input 
-                    class="form-check-input" 
-                    type="checkbox" 
-                    id="flexSwitchCheckChecked" 
-                    checked 
-                    @click="regularBtn=!regularBtn"
-                    v-model="regularBtn"
-                    /> -->
                 </div>
               </div>
               <div class="break_box">
@@ -210,30 +205,6 @@
                     </select>
                   <i class="xi-minus-circle-o regular_circle" @click="selectDelete(event)"></i>                    
                   </div>
-                  <!--//////휴무2//////-->
-                  <!-- <div class="regular_box">
-                    <select 
-                        class="Rday" 
-                        name="day"
-                        @change="temporary($event)"
-                        @input="myChange($event)"
-                        v-model="day"
-                    >
-                      <option value="첫째주">매월 첫째주</option>
-                      <option value="둘째주">매월 둘째주</option>
-                      <option value="셋째주">매월 셋째주</option>
-                      <option value="넷째주">매월 넷째주</option>
-                      <option value="다섯째주">매월 다섯째주</option>
-                    </select>
-                    <select 
-                        id="time" 
-                        className="Rday" 
-                        @change="temporary" 
-                        v-model="rdaySelect"
-                        >
-                      <option :key="i" :value="d.v" v-for="(d, i) in options">{{ d.t }}</option>
-                    </select>
-                  </div> -->
                 </div>
               </form>
               <div class="regular_btn_wrap">
@@ -346,45 +317,7 @@
                     max="24:00"
                     @change="$emit('sandParam', { reasonTimeT : $event.target.value })"
                     />
-                </div>
-                <!-- <div class="temporary_timebtn_box">
-                <lebel class="tbtn_inner_text">시작</lebel>
-                <button type="button" class="temporary_timebtn">
-                    <i class="xi-minus-circle-o"></i>                    
-                    2022년 01월 26일 (수)
-                </button>
-                </div>
-                <div class="temporary_timebtn_box">
-                <lebel class="tbtn_inner_text">종료</lebel>                
-                <button type="button" class="temporary_timebtn">
-                    <i class="xi-minus-circle-o"></i>
-                    2022년 01월 27일 (목)                    
-                </button>
-                </div> -->
-                <!--//////시작시간//////-->
-                <!-- <div class="temporary_wrap">
-                <div class="temporary_box">
-                    <label for="temporarytime" class="temporarytime">시작</label>  
-                        <select id="time" className="Ttime" @change="temporarytime">
-                            <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
-
-                                    </select>           
-                        <select id="time" className="Ttime" @change="temporarytime">
-                            <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
-                                    </select>  
-                </div>                     -->
-                <!--//////종료시간//////-->
-                <!-- <div class="temporary_box">
-                    <label for="temporarytime" class="temporarytime">종료</label>  
-                        <select id="time" className="Ttime" @change="temporarytime">
-                            <option value="24" v-for="(n, i) in 24" :key="n">{{i}}시</option>
-
-                                    </select>           
-                        <select id="time" className="Ttime" @change="temporarytime">
-                            <option value="59" v-for="(n, i) in 59" :key="n">{{i}}분</option>
-                                    </select>  
-                </div>   
-                </div>                                                                           -->
+                </div>                                                                      -->
               </form>
               <div class="temporary_btn_wrap">
                 <button class="temporary_add_btn">저장</button>
@@ -399,10 +332,11 @@
 </template>
 
 <script>
-import { ref } from "vue";
+// import { ref } from "vue";
 
 const salutations = ["매월 첫째주", "매월 둘째주", "매월 셋째주", "매월 넷째주", "매월 다섯째주"];
 const weekDays = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"];
+// const dayCheck = ["월","화","수","목","금","토","일",]
 
 export default {
   data() {
@@ -417,15 +351,14 @@ export default {
       pvalue: this.value,
       isShow: false,
       regularBtn: false,
-      dayBtnList: [],
     };
   },
   props: {
     step: Number,
     name: String,
     datepicker: {
-        type:String,
-        default:'',
+      type:String,
+      default:'',
     },
     salutation: {
       type: String,
@@ -479,23 +412,28 @@ export default {
       type: String,
       default: "",
     },
-    dayCheck1: {
-      type:String,
-      default:'',
-    },
-    dayCheck2: {
-      type:String,
-      default:'',
-    },
+    dayCheck: {
+      type:Array,
+      required:true
+    }
   },
+  // emits: [
+  //   'dayCheck'
+  // ],
+  // created() {
+  // this.$emit('dayCheck')
+  // console.log(this.dayCheck)
+  // },
   methods: {
     isDate() {
       let today = new Date().toISOString().substr(0,10);
       document.querySelector(".temporary_date").value = today
       console.log(this.date)
     },
-    isDayBtn: function() {
-      console.log(this.dayBtnList)
+    isDayBtn:function() {
+      this.$emit('sandParam',{ dayCheck:this.dayCheck})
+      console.log(this.$emit.dayCheck)
+      // console.log(this.dayCheck)
     },
     changeStat(step) {},
     titleUpdate(e) {
@@ -510,10 +448,10 @@ export default {
     regular(event) {
       console.log(event.target.value);
     },
-    setInput(weekday) {
-      this.value = weekday;
-      console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);
-    },
+    // setInput(weekday) {
+    //   this.value = weekday;
+    //   console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);
+    // },
     //정기휴무
     // myChange($event) {
     //     if ($event.target.name === 'week') {
