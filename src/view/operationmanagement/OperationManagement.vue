@@ -43,14 +43,19 @@
         <div class="oper_title" @click=" step = 0">영업시간</div>
           <div class="oper_wrapper">
             <div class="oper_wrap1">
-              <div class="oper_left">{{ form.dayCheck[0] }}{{ form.dayCheck[1] }}{{ form.dayCheck[2] }}</div>
-              <div class="oper_left">주말</div>
-              <div class="oper_left">토</div>
-              <div class="oper_left">일</div>
+              <div class="oper_left">
+                {{ form.dayCheck[0] }}
+                {{ form.dayCheck[1] }}
+                {{ form.dayCheck[2] }}
+                {{ form.dayCheck[3] }}
+                {{ form.dayCheck[4] }}
+                {{ form.dayCheck[5] }}
+                {{ form.dayCheck[6] }}
+                </div>
             </div>
           <div class="oper_wrap2">
-            <div class="oper_right">{{ form.operTime }} ~ {{ form.operTimeT }}</div>
-            <div class="oper_right">{{ "d" }}</div>
+            <div class="oper_right">{{ form.operTime }} {{ form.operTimeT }}</div>
+            <div class="oper_right">{{  }}</div>
             <div class="oper_right">{{  }}</div>
             <div class="oper_right">{{  }}</div>
           </div>
@@ -153,6 +158,7 @@ import { reactive } from 'vue'
       show:false,
       step: 0,
       textShow:false,
+      leftShow:false,
     }
   },
   setup() {
@@ -186,9 +192,6 @@ import { reactive } from 'vue'
     notice: function(evt) {
       alert('상태를 변경하시겠습니까?')
     },
-    // beforeUpdate() {
-    //   this.form.dayCheck = 
-    // },
     //     setInput(dayCheck) {
     //   this.value = dayCheck;
     //   console.log("자식 컴포넌트에게 값을 받았어요 :)", dayCheck);

@@ -115,6 +115,7 @@
     text-align: center;
     padding: 15px 15px;
     color:#997fb5;
+    cursor: pointer;
   }
   .oper_btn_box {
       text-align: center;
@@ -139,7 +140,7 @@
   }
   .oper_left {
     text-align: left;
-    color: #333;
+    color: #747474;
     line-height: 2;
   }
   .oper_right {

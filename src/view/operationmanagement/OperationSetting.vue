@@ -353,6 +353,7 @@ export default {
       regularBtn: false,
     };
   },
+  //부모컴포넌트에 전달할 데이터들
   props: {
     step: Number,
     name: String,
@@ -414,7 +415,6 @@ export default {
     },
     dayCheck: {
       type:Array,
-      required:true
     }
   },
   // emits: [
@@ -430,9 +430,10 @@ export default {
       document.querySelector(".temporary_date").value = today
       console.log(this.date)
     },
+    //영업시간 배열 emit
     isDayBtn:function() {
       this.$emit('sandParam',{ dayCheck:this.dayCheck})
-      console.log(this.$emit.dayCheck)
+      // console.log(this.$emit.dayCheck)
       // console.log(this.dayCheck)
     },
     changeStat(step) {},
