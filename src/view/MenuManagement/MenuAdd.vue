@@ -262,7 +262,7 @@ export default {
         let image = this.$refs['image'].files[0]
         // let imageName = this.$refs['image'].files[0].name;
         // console.log("imageName", imageName)
-        let codedata = { 'shopcode': shopCode,'pdname':this.pdname }
+        // let codedata = { 'shopcode': shopCode,'pdname':this.pdname }
         form.append('image', image)
         // form.append("shopcode", shopCode)
         // console.log('form.keys : ', form.keys('shopcode'))
@@ -270,14 +270,17 @@ export default {
         // console.log('shopcode : ', cookies.get('login').shopCode)
         await axios
             .post('/apimenu/pdupload', form, {
-              data: JSON.stringify(codedata),
+              params: {
+                "pdname" : this.pdname
+              },
+              // data: JSON.stringify(codedata),
               // data:{
               //   shopcode: this.shopcode
               // },
               headers: {
                 'Content-Type': 'multipart/form-data',
                 //헤더값에 한글 들어가면 터짐
-                // shopcode : shopCode,
+                "shopcode" : shopCode,
                 // pdname :this.pdname
               },
             })
@@ -332,7 +335,7 @@ export default {
                 pddescription: this.pddescription,
                 shopcode: this.shopcode,
                 userid: this.userid,
-                pdimage: this.shopcode + "_" + pdname,
+                pdimage: this.shopcode + "_" + pdname + ".png",
               },
             })
             .then((res) => {
