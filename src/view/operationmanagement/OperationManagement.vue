@@ -54,10 +54,14 @@
                 </div>
             </div>
           <div class="oper_wrap2">
-            <div class="oper_right">{{ form.operTime }} {{ form.operTimeT }}</div>
-            <div class="oper_right">{{  }}</div>
-            <div class="oper_right">{{  }}</div>
-            <div class="oper_right">{{  }}</div>
+            <div class="oper_right">
+              {{ form.operTime }} ~
+              {{ form.operTimeT }}
+            </div>
+            <div class="oper_right">
+              {{ form.operHoly }} ~
+              {{ form.operHolyT }}
+            </div>
           </div>
         </div>
       </div>
@@ -139,6 +143,8 @@
   v-model:operTime="form.operTime"
   v-model:operTimeT="form.operTimeT"
   v-model:dayCheck="form.dayCheck"
+  v-model:operHoly="form.operHoly"
+  v-model:operHolyT="form.operHolyT"
   @sandParam="sandParam"
 />
 <!-- <OperationSetting :step = "step" :datepicker ="datepicker" /> -->
@@ -175,6 +181,8 @@ import { reactive } from 'vue'
       reasonTime:'',
       operTime:'',
       operTimeT:'',
+      operHoly:'',
+      operHolyT:'',
       dayCheck:[],
 
     })

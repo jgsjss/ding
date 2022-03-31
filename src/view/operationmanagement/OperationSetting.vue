@@ -15,6 +15,24 @@
           <div class="oper_sub_modal_wrap">
             <div class="oper_modal_two">
               <form>
+                <div>
+                <!--평일 주말 체크박스 시작-->
+                <input
+                  type="checkbox"
+                  class="day_Five1" id="dayFive1"
+                  value="평일"
+                  @change="$emit('sandParam', {dayFive: $event.target.value})"
+                />
+                <label for="dayFive1" class="dayFive_Label1"></label>
+                <input
+                  type="checkbox"
+                  class="day_Five2" id="dayFive2"
+                  value="주말"
+                  @change="$emit('sandParam', {holyFive: $event.target.value})"
+                />
+                <label for="dayFive2" class="dayFive_Label2"></label>
+                </div>
+                <!--평일 주말 체크박스 끝-->
                 <!--요일 체크박스 시작-->
                 <input 
                   type="checkbox" 
@@ -86,7 +104,7 @@
                       type="time"
                       min="00:00"
                       class="oper_time"
-                      id="inputDele"
+                      id="inputDeleTwo"
                       @change="$emit('sandParam', { operTimeT: $event.target.value})"
                     />
                     <i class="xi-minus-circle-o oper_time_icon" 
@@ -97,11 +115,13 @@
                       type="time"
                       min="00:00"
                       class="oper_time"
+                      @change="$emit('sandParam', { operHoly: $event.target.value})"
                     /> ~
                     <input 
                       type="time"
                       min="00:00"
                       class="oper_time"
+                      @change="$emit('sandParam', { operHolyT: $event.target.value})"
                     />
                     <i class="xi-minus-circle-o oper_time_icon"></i>
                   </form>
@@ -355,6 +375,8 @@ export default {
       pvalue: this.value,
       isShow: false,
       regularBtn: false,
+      inputDele:'',
+      inputDeleTwo:''
     };
   },
   //부모컴포넌트에 전달할 데이터들
@@ -417,9 +439,17 @@ export default {
       type: String,
       default: "",
     },
+    operHoly: {
+      type: String,
+      default: "",
+    },
+    operHolyT: {
+      type: String,
+      default: "",
+    },
     dayCheck: {
       type:Array,
-    }
+    },
   },
   methods: {
     isDate() {
@@ -436,7 +466,9 @@ export default {
     //영업시간 input 내용지우기 앞에꺼만 지워짐 뒤에꺼도 해야됨
     deleteBtn:function () {
       var input = document.getElementById("inputDele");
+      var inputTwo = document.getElementById("inputDeleTwo");
         input.value = null;
+        inputTwo.value = null;
         console.log(this.inputDele)
       },
     

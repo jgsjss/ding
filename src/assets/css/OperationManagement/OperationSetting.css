@@ -104,6 +104,31 @@
     padding:30px;
     border-radius: 3px;
 }
+/* 평일 주말 버튼 시작 */
+.dayFiveBtn {
+    
+}
+.day_Five1, .day_Five2 {
+    display: none;
+}
+.day_Five1+.dayFive_Label1,
+.day_Five2+.dayFive_Label2 {
+    margin: 0 7px;
+    padding:15px;
+    border:1px solid #dcd4e3;
+    background:url('../../img/dayfive_off.jpg') no-repeat 0 0px / contain;
+}
+.day_Five1:checked+.dayFive_Label1 {
+    background:url('../../img/dayfive_on.jpg') no-repeat 0 0px / contain;
+}
+.day_Five2+.dayFive_Label2 {
+    background:url('../../img/holyday_off.jpg') no-repeat 0 0px / contain;
+}
+.day_Five2:checked+.dayFive_Label2 {
+    background:url('../../img/holyday_on.jpg') no-repeat 0 0px / contain;
+}
+
+/* 평일 주말 버튼 끝 */
 /* 요일 체크 버튼 시작 */
 .day_btn1,.day_btn2,.day_btn3,.day_btn4,.day_btn5,.day_btn6,.day_btn7 {
     display:none;
