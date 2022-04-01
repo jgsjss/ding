@@ -275,6 +275,9 @@ export default {
         // console.log('shopcode : ', cookies.get('login').shopCode)
         await axios
             .post('/apimenu/pdupload', form, {
+              data: {
+                test : "test"
+              },
               params: {
                 "pdname" : this.pdname
               },
