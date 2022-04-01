@@ -1,5 +1,5 @@
 <template>
-  <!--메뉴편집 메뉴추가 페이지-->
+  <!--메뉴편집 메뉴추가 페q이지-->
   <div class="menuadd_container">
     <div class="menuadd_title_wrap">
       <h4 class="menuadd_title">메뉴추가</h4>
@@ -79,9 +79,9 @@
                     {{ pdcategory }}
                     <p>{{ description }}</p>
                   </div>
-                  <div class="category_option_add_btn_wrap">
+                  <!-- <div class="category_option_add_btn_wrap">
                     <button type="button" class="category_option_add_btn02">저장</button>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="category_option_add_right" v-show="cateConnect">
                   <div class="category_option_add_title_wrap">

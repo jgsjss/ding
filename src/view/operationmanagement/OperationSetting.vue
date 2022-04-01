@@ -445,7 +445,7 @@ export default {
     },
     //영업시간 개별 요일 및 평일,주말  
       dayCheck: {
-      type:[Array,String]
+      type:Array,
     },
     //영업시간 평일
       dayTime: {

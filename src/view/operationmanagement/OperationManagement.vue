@@ -44,16 +44,18 @@
         <div class="oper_title" @click=" step = 0">영업시간</div>
           <div class="oper_wrapper">
             <div class="oper_wrap1">
-              <div class="oper_left" id="dayCheck">
-                {{ form.dayCheck[0] }}
-                {{ form.dayCheck[1] }}
+              <div class="oper_left" id="dayCheck" >
+                <span v-for="(day,index) in form.dayCheck" :key="index">
+                  {{day}}
+                </span>
+                <!-- {{ form.dayCheck[1] }}
                 {{ form.dayCheck[2] }}
                 {{ form.dayCheck[3] }}
                 {{ form.dayCheck[4] }}
                 {{ form.dayCheck[5] }}
                 {{ form.dayCheck[6] }}
                 {{ form.dayCheck[7] }}
-                {{ form.dayCheck[8] }}
+                {{ form.dayCheck[8] }} -->
                 </div>
               <div class="oper_left" id="dayCheck">
                 <!-- {{ form.dayCheck[0] }}
@@ -64,8 +66,8 @@
                 {{ form.dayCheck[5] }}
                 {{ form.dayCheck[6] }} -->
                 <div class="oper_left">
-                {{ form.dayCheck[7] }}
-                {{ form.dayCheck[8] }}
+                <!-- {{ form.dayCheck[7] }}
+                {{ form.dayCheck[8] }} -->
                 </div>
                 </div>
             </div>
