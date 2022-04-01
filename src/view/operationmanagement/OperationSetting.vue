@@ -364,7 +364,7 @@
 
 const salutations = ["매월 첫째주", "매월 둘째주", "매월 셋째주", "매월 넷째주", "매월 다섯째주"];
 const weekDays = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"];
-const dayCheck = ["월","화","수","목","금","토","일",]
+// const dayCheck = ["월","화","수","목","금","토","일",]
 
 export default {
   data() {
@@ -380,7 +380,7 @@ export default {
       isShow: false,
       regularBtn: false,
       inputDele:'',
-      inputDeleTwo:''
+      inputDeleTwo:'',
     };
   },
   //부모컴포넌트에 전달할 데이터들
@@ -445,7 +445,7 @@ export default {
     },
     //영업시간 개별 요일 및 평일,주말  
       dayCheck: {
-      type:Array,
+      type:[Array,String]
     },
     //영업시간 평일
       dayTime: {

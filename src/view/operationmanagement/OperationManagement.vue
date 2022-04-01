@@ -40,6 +40,7 @@
         <div class="oper_btn_box">
         </div>
         <!--/////영업시간///// 화면에 최대 7개 추가가능 -->
+        <!-- json Array로 바꿔서 돌리기-->
         <div class="oper_title" @click=" step = 0">영업시간</div>
           <div class="oper_wrapper">
             <div class="oper_wrap1">
