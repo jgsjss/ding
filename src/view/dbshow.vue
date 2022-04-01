@@ -1,5 +1,5 @@
 <template>
-  <h1>dbshow페이지</h1>
+  <h1>show DB</h1>
   <table class="table table-bordered">
     <thead>
     <tr>
@@ -17,7 +17,7 @@
     <tbody>
     <tr v-for="user in resultset" :key="user">
       <router-link
-          :to="`/modifyuser:${user.userid}`"
+          :to="`/modifyuser/${user.userid}`"
 
       >
         <td>{{ user.userid }}</td>

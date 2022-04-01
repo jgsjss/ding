@@ -19,7 +19,7 @@
     </thead>
     <tbody>
 
-    <tr v-for="user in resultset" :key="user">
+    <tr v-for="user in userinfo" :key="user">
       <td>{{ user.userid }}</td>
       <td>{{ user.pw }}</td>
       <td>{{ user.username }}</td>
@@ -35,7 +35,7 @@
     </tbody>
   </table>
   <span>{{ userid }}</span>
-<!--  <span>{{ resultset }}</span>-->
+  <!--  <span>{{ resultset }}</span>-->
   <span>{{ test }}</span>
 </template>
 
@@ -49,15 +49,27 @@ export default {
 
       user: [],
 
-      userid: this.getUser
+      userid: '',
+      userinfo: null
     }
   },
   // props: ['resultset']
   props: ['test'],
-  computed:{
-    getUser(){
-      return this.$route.params;
-    }
+  created() {
+    this.userid = this.$route.params.userid;
+
+  },
+  methods () {
+    this.axios.post('/member/modifyUser', {
+      userid: this.userid
+    })
+        .then(response => {
+          this.userinfo = response.data
+          console.log(this.user)
+        })
+        .catch(error => {
+          console.log(error)
+        })
   }
 
 }

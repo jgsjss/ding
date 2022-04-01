@@ -28,27 +28,26 @@ import SalesManagementOne from "../view/SalesManagement/SalesManagementOne.vue";
 import SalesManagementTwo from "../view/SalesManagement/SalesManagementTwo.vue";
 /*------member------ */
 
-import Login from '../view/member/Login.vue'
-import SignUpOne from '../view/member/SignUpOne.vue'
-import SignUpTwo from '../view/member/SignUpTwo'
-import SignUpThree from '../view/member/SignUpThree.vue'
-import SignUpFour from '../view/member/SignUpFour.vue'
-import SignUpCancel from '../view/member/SignUpCancel'
-
+import Login from "../view/member/Login.vue";
+import SignUpOne from "../view/member/SignUpOne.vue";
+import SignUpTwo from "../view/member/SignUpTwo";
+import SignUpThree from "../view/member/SignUpThree.vue";
+import SignUpFour from "../view/member/SignUpFour.vue";
+import SignUpCancel from "../view/member/SignUpCancel";
 
 import ReleaseSoldOut from "../view/ReleaseSoldOut.vue";
 /*------MenuManagement------ */
 
-import MenuManagement from '../view/MenuManagement/MenuManagement.vue'
-import MenuManageCategories from '../view/MenuManagement/MenuManageCategories.vue'
-import MenuManageMenus from '../view/MenuManagement/MenuManageMenus.vue'
-import MenuAdd from '../view/MenuManagement/MenuAdd.vue'
-import MenuAddModify from '../view/MenuManagement/MenuAddmodify.vue'
-import MenuManageOptions from '../view/MenuManagement/MenuManageOptions.vue'
-import MenuConnect from '../view/MenuManagement/MenuConnect.vue'
-import MenuConnecttwo from '../view/MenuManagement/MenuConnecttwo.vue'
-import MenuConnectthree from '../view/MenuManagement/MenuConnectthree.vue'
-import MenuToping from '../view/MenuManagement/MenuToping.vue'
+import MenuManagement from "../view/MenuManagement/MenuManagement.vue";
+import MenuManageCategories from "../view/MenuManagement/MenuManageCategories.vue";
+import MenuManageMenus from "../view/MenuManagement/MenuManageMenus.vue";
+import MenuAdd from "../view/MenuManagement/MenuAdd.vue";
+import MenuAddModify from "../view/MenuManagement/MenuAddmodify.vue";
+import MenuManageOptions from "../view/MenuManagement/MenuManageOptions.vue";
+import MenuConnect from "../view/MenuManagement/MenuConnect.vue";
+import MenuConnecttwo from "../view/MenuManagement/MenuConnecttwo.vue";
+import MenuConnectthree from "../view/MenuManagement/MenuConnectthree.vue";
+import MenuToping from "../view/MenuManagement/MenuToping.vue";
 
 /*------etc------ */
 import test1 from "../view/test1";
@@ -142,10 +141,10 @@ const routes = [
     component: SignUpThree,
     name: "signup3",
     props: true,
-    beforeEnter: ()=>{
-      const nullCheck = store.state.signupStore.isNull
-      if(!nullCheck){
-        return "/signuptwo"
+    beforeEnter: () => {
+      const nullCheck = store.state.signupStore.isNull;
+      if (!nullCheck) {
+        return "/signuptwo";
       }
     },
     // beforeEnter: ()=>{
@@ -161,18 +160,17 @@ const routes = [
     component: SignUpFour,
     name: "signup4",
     props: true,
-    beforeEnter: ()=>{
-      const nullCheck = store.state.signupStore.isNull
-      if(!nullCheck){
-        return "/signupthree"
+    beforeEnter: () => {
+      const nullCheck = store.state.signupStore.isNull;
+      if (!nullCheck) {
+        return "/signupthree";
       }
     },
   },
   {
-
-    path: '/signupcancel',
+    path: "/signupcancel",
     component: SignUpCancel,
-    name:'SignUpCancel',
+    name: "SignUpCancel",
 
     props: true,
   },
@@ -186,11 +184,11 @@ const routes = [
     path: "/menumanagement",
     component: MenuManagement,
     meta: { requireLogin: true },
-    beforeEnter: ()=>{
-      const roleCheck = store.getters["loginStore/getUserrole"]
-      if(roleCheck != 0){
+    beforeEnter: () => {
+      const roleCheck = store.getters["loginStore/getUserrole"];
+      if (roleCheck != 0) {
         sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
-        return '/'
+        return "/";
       }
     },
     //중첩되는 자식 라우트 경로
@@ -216,19 +214,19 @@ const routes = [
         component: MenuManageOptions,
       },
       {
-        path: '/menumanagement/MenuConnect',
+        path: "/menumanagement/MenuConnect",
         component: MenuConnect,
       },
       {
-        path: '/menumanagement/MenuConnecttwo',
+        path: "/menumanagement/MenuConnecttwo",
         component: MenuConnecttwo,
       },
       {
-        path: '/menumanagement/MenuConnectthree',
+        path: "/menumanagement/MenuConnectthree",
         component: MenuConnectthree,
       },
       {
-        path: '/menumanagement/MenuToping',
+        path: "/menumanagement/MenuToping",
         component: MenuToping,
       },
     ],
@@ -237,11 +235,11 @@ const routes = [
     path: "/salesmanagement",
     component: SalesManagement,
     meta: { requireLogin: true },
-    beforeEnter: ()=>{
-      const roleCheck = store.getters["loginStore/getUserrole"]
-      if(roleCheck != 0){
+    beforeEnter: () => {
+      const roleCheck = store.getters["loginStore/getUserrole"];
+      if (roleCheck != 0) {
         sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
-        return '/'
+        return "/";
       }
     },
     children: [
@@ -266,11 +264,11 @@ const routes = [
     path: "/ordermanagement",
     component: OrderManagement,
     meta: { requireLogin: true },
-    beforeEnter: ()=>{
-      const roleCheck = store.getters["loginStore/getUserrole"]
-      if(roleCheck != 0){
+    beforeEnter: () => {
+      const roleCheck = store.getters["loginStore/getUserrole"];
+      if (roleCheck != 0) {
         sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
-        return '/'
+        return "/";
       }
     },
     //중첩되는 자식 라우트 경로
@@ -316,11 +314,11 @@ const routes = [
     path: "/staffmanagementone",
     component: StaffManagementOne,
     meta: { requireLogin: true },
-    beforeEnter: ()=>{
-      const roleCheck = store.getters["loginStore/getUserrole"]
-      if(roleCheck != 0){
+    beforeEnter: () => {
+      const roleCheck = store.getters["loginStore/getUserrole"];
+      if (roleCheck != 0) {
         sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
-        return '/'
+        return "/";
       }
     },
   },
@@ -328,11 +326,11 @@ const routes = [
     path: "/staffmanagementtwo",
     component: StaffManagementTwo,
     meta: { requireLogin: true },
-    beforeEnter: ()=>{
-      const roleCheck = store.getters["loginStore/getUserrole"]
-      if(roleCheck != 0){
+    beforeEnter: () => {
+      const roleCheck = store.getters["loginStore/getUserrole"];
+      if (roleCheck != 0) {
         sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
-        return '/'
+        return "/";
       }
     },
   },
@@ -341,11 +339,11 @@ const routes = [
     path: "/operationmanagement",
     component: OperationManagement,
     meta: { requireLogin: true },
-    beforeEnter: ()=>{
-      const roleCheck = store.getters["loginStore/getUserrole"]
-      if(roleCheck != 0){
+    beforeEnter: () => {
+      const roleCheck = store.getters["loginStore/getUserrole"];
+      if (roleCheck != 0) {
         sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
-        return '/'
+        return "/";
       }
     },
     //중첩되는 자식 라우트 경로
@@ -368,11 +366,11 @@ const routes = [
     path: "/discountcode",
     component: DiscountCode,
     meta: { requireLogin: true },
-    beforeEnter: ()=>{
-      const roleCheck = store.getters["loginStore/getUserrole"]
-      if(roleCheck != 0){
+    beforeEnter: () => {
+      const roleCheck = store.getters["loginStore/getUserrole"];
+      if (roleCheck != 0) {
         sweet.fire("해당 페이지 이용에 대한 권한이 없습니다.");
-        return '/'
+        return "/";
       }
     },
     children: [
@@ -435,14 +433,14 @@ const routes = [
     path: "/dbshow",
     component: dbshow,
     props: true,
-    children: [
-      {
-        path: "/modifyuser:alias",
-        component: modifyuser,
-        props: true,
-      },
-    ],
   },
+  {
+    path: "/modifyuser/:userid",
+    component: modifyuser,
+    props: true,
+  },
+
+  // { path: "" },
 ];
 
 // routes.beforeEach(function (to, from, next) {
