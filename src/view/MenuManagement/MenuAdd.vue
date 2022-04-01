@@ -252,9 +252,14 @@ export default {
      async MenuAdd () {
       this.nullCheck()
       let nullCk = this.isNull
+      let fileVal = this.$refs['image'].value
+      fileVal = fileVal.slice(fileVal.indexOf('.') + 1).toLowerCase()
       if (!nullCk) {
         sweet.fire('메뉴 정보들을 모두 입력하세요.')
         return false
+      }else if (fileVal != 'png' || fileVal == null) {
+         alert('확장자 png 파일만 첨부 가능합니다.')
+         return false
       }else{
         let form = new FormData()
         let shopCode = this.shopcode
