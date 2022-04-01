@@ -21,14 +21,14 @@
                   type="checkbox"
                   class="day_Five1" id="dayFive1"
                   value="평일"
-                  @change="$emit('sandParam', {dayFive: $event.target.value})"
+                  v-model="dayCheck"
                 />
                 <label for="dayFive1" class="dayFive_Label1"></label>
                 <input
                   type="checkbox"
                   class="day_Five2" id="dayFive2"
                   value="주말"
-                  @change="$emit('sandParam', {holyFive: $event.target.value})"
+                  v-model="dayCheck"
                 />
                 <label for="dayFive2" class="dayFive_Label2"></label>
                 </div>
@@ -98,14 +98,14 @@
                       min="00:00"
                       class="oper_time"
                       id="inputDele"
-                      @change="$emit('sandParam', { operTime: $event.target.value})"
+                      v-model="dayTime"
                     /> ~
                     <input
                       type="time"
                       min="00:00"
                       class="oper_time"
                       id="inputDeleTwo"
-                      @change="$emit('sandParam', { operTimeT: $event.target.value})"
+                      v-model="dayTimeT"
                     />
                     <i class="xi-minus-circle-o oper_time_icon" 
                       @click="deleteBtn()"
@@ -115,15 +115,19 @@
                       type="time"
                       min="00:00"
                       class="oper_time"
-                      @change="$emit('sandParam', { operHoly: $event.target.value})"
+                      id="timeHoly"
+                      v-model="timeHoly"
                     /> ~
                     <input 
                       type="time"
                       min="00:00"
                       class="oper_time"
-                      @change="$emit('sandParam', { operHolyT: $event.target.value})"
+                      id="timeHolyT"
+                      v-model="timeHolyT"                      
                     />
-                    <i class="xi-minus-circle-o oper_time_icon"></i>
+                    <i class="xi-minus-circle-o oper_time_icon"
+                        @click="deleteBtnTwo()"
+                        ></i>
                   </form>
                 </div>
               </form>
@@ -360,7 +364,7 @@
 
 const salutations = ["매월 첫째주", "매월 둘째주", "매월 셋째주", "매월 넷째주", "매월 다섯째주"];
 const weekDays = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"];
-// const dayCheck = ["월","화","수","목","금","토","일",]
+const dayCheck = ["월","화","수","목","금","토","일",]
 
 export default {
   data() {
@@ -439,17 +443,30 @@ export default {
       type: String,
       default: "",
     },
-    operHoly: {
-      type: String,
-      default: "",
-    },
-    operHolyT: {
-      type: String,
-      default: "",
-    },
-    dayCheck: {
+    //영업시간 개별 요일 및 평일,주말  
+      dayCheck: {
       type:Array,
     },
+    //영업시간 평일
+      dayTime: {
+      type:String,
+      default:'',
+    },
+      dayTimeT: {
+      type:String,
+      default:'',
+    },
+    //영업시간 주말 
+    timeHoly: {
+      type: String,
+      default:'',      
+    },
+    timeHolyT: {
+      type: String,
+      default:'', 
+    },
+
+
   },
   methods: {
     isDate() {
@@ -457,9 +474,13 @@ export default {
       document.querySelector(".temporary_date").value = today
       console.log(this.date)
     },
-    //영업시간 배열 emit
+    //영업시간 개별 요일 배열 emit
     isDayBtn:function() {
       this.$emit('sandParam',{ dayCheck:this.dayCheck})
+      this.$emit('sandParam',{ dayTime:this.dayTime})
+      this.$emit('sandParam',{ dayTimeT:this.dayTimeT})
+      this.$emit('sandParam',{ timeHoly:this.timeHoly})
+      this.$emit('sandParam',{ timeHolyT:this.timeHolyT})
       // console.log(this.$emit.dayCheck)
       // console.log(this.dayCheck)
     },
@@ -469,6 +490,13 @@ export default {
       var inputTwo = document.getElementById("inputDeleTwo");
         input.value = null;
         inputTwo.value = null;
+        console.log(this.inputDele)
+      },
+    deleteBtnTwo:function () {
+      var inputThree = document.getElementById("timeHoly");
+      var inputFour = document.getElementById("timeHolyT");
+        inputThree.value = null;
+        inputFour.value = null;
         console.log(this.inputDele)
       },
     

@@ -43,7 +43,7 @@
         <div class="oper_title" @click=" step = 0">영업시간</div>
           <div class="oper_wrapper">
             <div class="oper_wrap1">
-              <div class="oper_left">
+              <div class="oper_left" id="dayCheck">
                 {{ form.dayCheck[0] }}
                 {{ form.dayCheck[1] }}
                 {{ form.dayCheck[2] }}
@@ -51,16 +51,31 @@
                 {{ form.dayCheck[4] }}
                 {{ form.dayCheck[5] }}
                 {{ form.dayCheck[6] }}
+                {{ form.dayCheck[7] }}
+                {{ form.dayCheck[8] }}
+                </div>
+              <div class="oper_left" id="dayCheck">
+                <!-- {{ form.dayCheck[0] }}
+                {{ form.dayCheck[1] }}
+                {{ form.dayCheck[2] }}
+                {{ form.dayCheck[3] }}
+                {{ form.dayCheck[4] }}
+                {{ form.dayCheck[5] }}
+                {{ form.dayCheck[6] }} -->
+                <div class="oper_left">
+                {{ form.dayCheck[7] }}
+                {{ form.dayCheck[8] }}
+                </div>
                 </div>
             </div>
           <div class="oper_wrap2">
             <div class="oper_right">
-              {{ form.operTime }} ~
-              {{ form.operTimeT }}
+              {{ form.dayTime }} ~
+              {{ form.dayTimeT }}
             </div>
             <div class="oper_right">
-              {{ form.operHoly }} ~
-              {{ form.operHolyT }}
+              {{ form.timeHoly }} ~
+              {{ form.timeHolyT }}
             </div>
           </div>
         </div>
@@ -145,6 +160,9 @@
   v-model:dayCheck="form.dayCheck"
   v-model:operHoly="form.operHoly"
   v-model:operHolyT="form.operHolyT"
+  v-model:dayTime="form.dayTime"
+  v-model:dayTimeT="form.dayTimeT"
+  v-model:timeHoly="form.timeHoly"
   @sandParam="sandParam"
 />
 <!-- <OperationSetting :step = "step" :datepicker ="datepicker" /> -->
@@ -169,21 +187,27 @@ import { reactive } from 'vue'
   },
   setup() {
     const form = reactive({
+      //정기휴무 날짜 및 시간
       salutation: '',
       weekDay:'',
+      //준비시간 날짜 및 시간
       breakTime:'',
       breakTimeT:'',
       date:'',
       dateT:'',
+      //임시휴무 날짜 및 시간
       reasonCheck:'',
       reasonDate:'',
       reasonDateT:'',
       reasonTime:'',
+      //영업시간 요일 날짜 시간
       operTime:'',
       operTimeT:'',
       operHoly:'',
       operHolyT:'',
       dayCheck:[],
+      dayTime:'',
+      timeHoly:''
 
     })
     function sandParam(_value){
@@ -200,6 +224,17 @@ import { reactive } from 'vue'
     notice: function(evt) {
       alert('상태를 변경하시겠습니까?')
     },
+    // isDayCheck () {
+    //   this.value = dayCheck;
+    //   let dayCheck = ['평일','주말','월','화','수','목','금','토','일',];
+    //   for(let i = 0; i <dayCheck.length; i++)
+    //     if(dayCheck[i] === ']')
+    //     if(dayCheck[i] === '"')
+    //     if(dayCheck[i] === '"')
+    //     if(dayCheck[i] === '[') {
+    //   dayCheck.splice(i, 1);
+    // }
+    // }
     //     setInput(dayCheck) {
     //   this.value = dayCheck;
     //   console.log("자식 컴포넌트에게 값을 받았어요 :)", dayCheck);
@@ -216,7 +251,7 @@ import { reactive } from 'vue'
     //   this.value = weekday;
     //   console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);
     // }
-    }
+    },
     
 }
 
