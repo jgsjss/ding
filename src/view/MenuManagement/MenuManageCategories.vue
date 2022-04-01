@@ -164,6 +164,7 @@
 import _ from 'lodash'
 import axios from 'axios'
 import store from '../../store/index.js'
+import router from '@/router'
 
 const sweet = require('sweetalert2')
 
@@ -292,6 +293,7 @@ export default {
           .then(res => {
             console.log(res.data)
             sweet.fire('카테고리 추가 완료')
+            router.push('/menumanagement/categories')
           }).catch(err => {
 
         console.log(err)

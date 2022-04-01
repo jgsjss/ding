@@ -132,7 +132,6 @@
                   <input
                       type="text"
                       id="shop_two"
-
                       class="int"
                       maxlength="2"
                       title="사업자중간2자리"
