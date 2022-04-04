@@ -42,13 +42,15 @@
             <div>
               <form class="row">
                 <label for="category_add_label" class="category_add_label">* 카테고리명
-                  <input type="text" id="cana" v-model="ctname" class="category_add_input form-control" @change="errorCaAdd" placeholder="예) 딩동아메리카노">
-               <span class="error_next_box2" id="caAddName" style aria-live="assertive">필수 정보 입니다.</span>
+                  <input type="text" id="cana" v-model="ctname" class="category_add_input form-control"
+                         @change="errorCaAdd" placeholder="예) 딩동아메리카노">
+                  <span class="error_next_box2" id="caAddName" style aria-live="assertive">필수 정보 입니다.</span>
                 </label>
                 <label for="category_add_label" class="category_add_label">설명
-                  <input type="text" v-model="description" class="category_add_input form-control" @change="errorCaDeAdd"
+                  <input type="text" v-model="description" class="category_add_input form-control"
+                         @change="errorCaDeAdd"
                          placeholder="예) 딩동커피만의 로스팅 방식으로 만들어 낸 아메리카노">
-                         <span class="error_next_box2" id="caAddDe" style aria-live="assertive">필수 정보 입니다.</span>
+                  <span class="error_next_box2" id="caAddDe" style aria-live="assertive">필수 정보 입니다.</span>
                 </label>
 
                 <div class="category_add_label_wrap">
@@ -89,7 +91,7 @@
         <!--------------카테고리 추가 오프캔버스 끝-------------->
 
         <select class="hidden_select">
-          <option class="hidden_btn">전체/숨김/정상</option>
+          <option class="hidden_btn">전체</option>
           <option class="hidden_btn" value="숨김">숨김</option>
           <option class="hidden_btn" value="정상">정상</option>
         </select>
@@ -115,7 +117,8 @@
           <td scope="row" class="cate_check_box">
             <input type="checkbox"
                    :id="'check_' + i.boardId"
-                   :value="i"
+                   ref="cateCheck"
+                   value={{cgData[i].pdnum}}
                    v-model="selected"
                    @click="print"
             >
@@ -169,7 +172,7 @@ import router from '@/router'
 const sweet = require('sweetalert2')
 
 export default {
-  data () {
+  data() {
     return {
       active: false,
       cgData: [],
@@ -183,19 +186,23 @@ export default {
       ctname: '',
       description: '',
       status: 'open',
-      disabled:0,
+      disabled: 0,
+      allSelectPdnum: [],
+      noneSelected: [],
+      // selected: [],
+      pdnums : [],
     }
   },
   components: {},
   methods: {
     //카테고리추가 숨김, 해제 체크
-    statusCheck () {
+    statusCheck() {
       let selected = document.querySelector('input[name=\'category_radio\']:checked').value
       this.status = selected
       console.log(this.status)
     },
     //권한체크
-    roleCheck () {
+    roleCheck() {
       console.log('유저권한', this.userrole)
       if (this.userrole != 0) {
         alert('해당 기능은 권한이 없습니다.')
@@ -204,28 +211,35 @@ export default {
         this.isUserRole = true
       }
     },
-    print () {
+    print() {
       console.log(this.selected)
     },
-    nextPage () {
+    nextPage() {
       this.pageNum += 1
       this.getCategories(this.pageNum)
     },
-    prevPage () {
+    prevPage() {
       this.pageNum -= 1
       console.log(this.pageNum)
       this.getCategories(this.pageNum)
     },
-    checkedAll (checked) {
-      this.selected = checked
+    checkedAll(checked) {
+      console.log("cgData", this.cgData)
 
+      // if (this.allChecked == false) {
+      //   this.allChecked = true;
+      //   this.selected = checked
+      //   for(let i in this.cgData){
+      //     this.allSelectPdnum = this.cgData[i]
+      //   }
+      // } else {
+      //   this.allChecked = false;
+      //   this.selected = checked
+      //   this.checkSelected = this.noneSelected
+      // }
+      // console.log("셀렉티드 피디넘: " , this.checkSelected)
     },
-    selected () {
-      for (let i in this.boardList) {
-        this.allChecked = this.boardList[i].selected;
-      }
-    },
-    getSelected () {
+    getSelected() {
       let boardIds = []
       for (let i in this.cgData) {
         if (this.cgData[i].selected) {
@@ -233,8 +247,8 @@ export default {
         }
       }
     },
-   async getCategories (curpage) {
-     await axios.post('/apimenu/categories', {
+    async getCategories(curpage) {
+      await axios.post('/apimenu/categories', {
         data: {
           shopcode: this.shopcode,
           curpage: curpage
@@ -242,19 +256,23 @@ export default {
       }).then(res => {
         console.log('res.data: ', res.data)
         // 백엔드에서 날라오는 값 res.data=>articles[rows, ActualArticleLength]
-
         //게시물 총 갯수
         this.totalPage = res.data.length
         //게시물 정보들
         this.cgData = res.data.rows
         // this.totalPage = this.cgData.length
+
+
+        console.log("checkSelected : " , this.checkSelected)
+
         console.log('cgData: ', this.cgData)
+
         return res.data
       }).catch((err) => {
         console.log(err)
       })
     },
-    menuCnt (obj) {
+    menuCnt(obj) {
       _.forEach(obj, function (v, k, copy) {
         // console.log("Asd",V)
         // console.log(K)
@@ -277,18 +295,18 @@ export default {
         })
       })
     },
-    cntPdname (obj, ctnum) {
+    cntPdname(obj, ctnum) {
       let myctnumgroup = _.partition(obj, function (value, index, copy) {
         return value.ctnum == ctnum
       })
       console.log(myctnumgroup)
     },
-    async addCategory () {
+    async addCategory() {
       await axios.post('/apimenu/addcategory', {
         ctname: this.ctname,
         description: this.description,
         status: this.status,
-        shopCode : this.shopcode
+        shopCode: this.shopcode
       })
           .then(res => {
             console.log(res.data)
@@ -296,49 +314,54 @@ export default {
             router.push('/menumanagement/categories')
           }).catch(err => {
 
-        console.log(err)
-      })
+            console.log(err)
+          })
     }
   },
-    errorCaAdd() {
-      if (this.ctname == "") {
-        document.getElementById("caAddName").style.display = "block";
-        return false;
-      } else if (this.ctname != "") {
-        document.getElementById("caAddName").style.display = "none";
-        return false;
-      }
-   },
-      errorCaDeAdd() {
-      if (this.description == "") {
-        document.getElementById("caAddDe").style.display = "block";
-        return false;
-      } else if (this.description != "") {
-        document.getElementById("caAddDe").style.display = "none";
-        return false;
-      }
-    },
-  mounted () {
+  errorCaAdd() {
+    if (this.ctname == "") {
+      document.getElementById("caAddName").style.display = "block";
+      return false;
+    } else if (this.ctname != "") {
+      document.getElementById("caAddName").style.display = "none";
+      return false;
+    }
+  },
+  errorCaDeAdd() {
+    if (this.description == "") {
+      document.getElementById("caAddDe").style.display = "block";
+      return false;
+    } else if (this.description != "") {
+      document.getElementById("caAddDe").style.display = "none";
+      return false;
+    }
+  },
+  mounted() {
     // this.getList();
   },
   computed: {
-    shopcode (){
+    shopcode() {
       return store.getters['loginStore/getShopcode']
     },
-    userrole(){
+    userrole() {
       return store.getters["loginStore/getUserrole"]
-    }
+    },
+
   },
-  beforeMount () {
+  beforeMount() {
 
     this.getCategories(1)
 
+    this.allSelectPdnum.push(this.cgData)
+
+    console.log("allSelectPdnum : ",this.allSelectPdnum)
+
     // console.log(this.cgData)
   },
-  setup () {
+  setup() {
 
   },
-  updated () {
+  updated() {
     // this.menuCnt(this.cgData)
     this.cntPdname(this.cgData, 2)
   }
