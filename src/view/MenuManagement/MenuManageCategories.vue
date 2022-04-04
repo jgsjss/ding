@@ -116,9 +116,11 @@
         <tr v-for="(a, i) in cgData" :key="i">
           <td scope="row" class="cate_check_box">
             <input type="checkbox"
-                   :id="'check_' + i.boardId"
+                   id="chkbox"
                    value="a.pdnum"
+                   v-model="selectedBox"
                    @click="print(a.pdnum)"
+
             >
 <!--            <span>pd 넘버{{a.pdnum}}</span>-->
           </td>
@@ -156,11 +158,9 @@
         </button>
       </div>
     </div>
-
-
+    <button @click="logPdnum">테스트</button>
   </div>
 </template>
-
 <script>
 // import InfiniteLoading from 'v3-infinite-loading'
 import _ from 'lodash'
@@ -188,12 +188,16 @@ export default {
       disabled: 0,
       allSelectPdnum: [],
       noneSelected: [],
-      selected: new Array(),
-      pdnums : [],
+      selected: new Set(),
     }
   },
   components: {},
   methods: {
+    logPdnum(){
+      console.log("this.selected 테스트버튼 : ",this.selected)
+      console.log("cgData", this.cgData)
+      console.log("cgData.pdnum", this.cgData[0].pdnum)
+    },
     //카테고리추가 숨김, 해제 체크
     statusCheck() {
       let selected = document.querySelector('input[name=\'category_radio\']:checked').value
@@ -212,12 +216,12 @@ export default {
     },
     print(pdnum) {
       console.log("this.selected 프린트 : ",this.selected,"/// pdnum : ",pdnum)
-      this.selected.push(pdnum)
-      console.log("after : ",this.selected.sort(function (a,b) {
-        if(a > b) return 1;
-        if(a === b) return 0;
-        if(a < b) return -1;
-      }))
+      this.selected.add(pdnum)
+      // console.log("after : ",this.selected.sort(function (a,b) {
+      //   if(a > b) return 1;
+      //   if(a === b) return 0;
+      //   if(a < b) return -1;
+      // }))
     },
     nextPage() {
       this.pageNum += 1
@@ -229,20 +233,20 @@ export default {
       this.getCategories(this.pageNum)
     },
     checkedAll(checked) {
-      console.log("cgData", this.cgData)
+      if (this.allChecked == false) {
+        this.allChecked = true;
+        this.selectedBox = checked
+        let length = new Array()
+        for(let i = 0; i<10; i++){
+          length.push(this.cgData[i].pdnum)
+        }
+        this.selected.add(length)
+      } else {
+        this.allChecked = false;
+        this.selectedBox = checked
+        this.checkSelected = [...this.noneSelected]
+      }
 
-      // if (this.allChecked == false) {
-      //   this.allChecked = true;
-      //   this.selected = checked
-      //   for(let i in this.cgData){
-      //     this.allSelectPdnum = this.cgData[i]
-      //   }
-      // } else {
-      //   this.allChecked = false;
-      //   this.selected = checked
-      //   this.checkSelected = this.noneSelected
-      // }
-      // console.log("셀렉티드 피디넘: " , this.checkSelected)
     },
     getSelected() {
       let boardIds = []
@@ -304,7 +308,7 @@ export default {
       let myctnumgroup = _.partition(obj, function (value, index, copy) {
         return value.ctnum == ctnum
       })
-      console.log(myctnumgroup)
+      // console.log(myctnumgroup)
     },
     async addCategory() {
       await axios.post('/apimenu/addcategory', {
