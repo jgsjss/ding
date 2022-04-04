@@ -165,26 +165,36 @@
                   <input
                     type="time"
                     class="time_input"
+                    id="time_input"
                     @change="$emit('sandParam', { breakTime: $event.target.value })"
                   />
                   <input
                     type="time"
                     class="time_inputTwo"
+                    id="time_inputTwo"
                     @change="$emit('sandParam', { breakTimeT: $event.target.value })"
                   />
+                  <i class="xi-minus-circle-o break_time_icon" 
+                      @click="breakBtn()"
+                  ></i>
 
                   <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
                   <div style="display: block">
                     <input
                       type="time"
                       class="date_input"
+                      id="date_input"
                       @change="$emit('sandParam', { holyTime: $event.target.value })"
                     />
                     <input
                       type="time"
                       class="date_inputTwo"
+                      id="date_inputTwo"
                       @change="$emit('sandParam', { holyTimeT: $event.target.value })"
                     />
+                  <i class="xi-minus-circle-o break_time_icon" 
+                      @click="breakBtnTwo()"
+                  ></i>                    
                   </div>
                 </form>
               </div>
@@ -220,13 +230,18 @@
                     <select
                       class="Rday"
                       name="salutation"
+                      id="selectDay"
                       @change="$emit('sandParam', { salutation: $event.target.value })"
                     >
                       <option v-for="item of salutations" :value="item" :key="item" :selected="salutation == item">
                         {{ item }}
                       </option>
                     </select>
-                    <select class="Rday" name="weekDay" @change="$emit('sandParam', { weekDay: $event.target.value })">
+                    <select 
+                      class="Rday" 
+                      name="weekDay" 
+                      id="selectDayTwo"
+                      @change="$emit('sandParam', { weekDay: $event.target.value })">
                       <option v-for="day of weekDays" :value="day" :key="day" :selected="weekDay == day">
                         {{ day }}
                       </option>
@@ -318,23 +333,27 @@
                     type="date"
                     class="temporary_date"
                     min="2022-01-01"
-                    max="2042-01-01"       
+                    max="2042-01-01"  
+                    id="temporary_input"     
                     @change="$emit('sandParam', { reasonDate : $event.target.value })"
-                  />
+                  />                  
                    ~ 
                   <input
                     type="date"
                     class="temporary_date"
                     min="2022-01-01"
                     max="2042-01-01"
+                    id="temporary_inputTwo"
                     @change="$emit('sandParam', { reasonDateT : $event.target.value })"
                   />
+                  <i class="xi-minus-circle-o regular_circle" @click="temporaryDele(event)"></i>
                   <p class="temporary_time_text">시작 및 종료시간</p>
                   <input
                     type="time" 
                     class="temporary_time"
                     min="08:00"
-                    max="24:00"                    
+                    max="24:00"
+                    id="temporary_date"                    
                     @change="$emit('sandParam', { reasonTime : $event.target.value })"
                     />
                     ~
@@ -343,8 +362,10 @@
                     class="temporary_time"
                     min="08:00"
                     max="24:00"
+                    id="temporary_dateTwo"
                     @change="$emit('sandParam', { reasonTimeT : $event.target.value })"
                     />
+                    <i class="xi-minus-circle-o regular_circle" @click="temporaryDeleTwo(event)"></i>
                 </div>                                                                      -->
               </form>
               <div class="temporary_btn_wrap">
@@ -445,7 +466,7 @@ export default {
     },
     //영업시간 개별 요일 및 평일,주말  
       dayCheck: {
-      type:[Array,String]
+      type:Array,
     },
     //영업시간 평일
       dayTime: {
@@ -497,6 +518,45 @@ export default {
       var inputFour = document.getElementById("timeHolyT");
         inputThree.value = null;
         inputFour.value = null;
+        console.log(this.inputDele)
+      },
+    breakBtn:function () {
+      var time = document.getElementById("time_input");
+      var timeTwo = document.getElementById("time_inputTwo");
+      var timethree = document.getElementById("date_input");
+      var timefour = document.getElementById("date_inputTwo");
+        time.value = null;
+        timeTwo.value = null;
+        timethree.value = null;
+        timefour.value = null;
+        console.log(this.inputDele)
+      },
+    breakBtnTwo:function () {
+      var timeThree = document.getElementById("date_input");
+      var timefour = document.getElementById("date_inputTwo");
+        timeThree.value = null;
+        timefour.value = null;
+        console.log(this.inputDele)
+      },
+    selectDelete:function () {
+      var select = document.getElementById("selectDay");
+      var selectTwo = document.getElementById("selectDayTwo");
+        select.value = null;
+        selectTwo.value = null;
+        console.log(this.inputDele)
+      },
+    temporaryDele:function () {
+      var temporaryInput = document.getElementById("temporary_input");
+      var temporaryInputTwo = document.getElementById("temporary_inputTwo");
+        temporaryInput.value = null;
+        temporaryInputTwo.value = null;
+        console.log(this.inputDele)
+      },
+    temporaryDeleTwo:function () {
+      var temporaryDate = document.getElementById("temporary_date");
+      var temporaryDateTwo = document.getElementById("temporary_dateTwo");
+        temporaryDate.value = null;
+        temporaryDateTwo.value = null;
         console.log(this.inputDele)
       },
     
