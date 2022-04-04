@@ -117,11 +117,10 @@
           <td scope="row" class="cate_check_box">
             <input type="checkbox"
                    :id="'check_' + i.boardId"
-                   ref="cateCheck"
-                   value={{cgData[i].pdnum}}
-                   v-model="selected"
-                   @click="print"
+                   value="a.pdnum"
+                   @click="print(a.pdnum)"
             >
+<!--            <span>pd 넘버{{a.pdnum}}</span>-->
           </td>
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
           <td class="cate_data">{{ cgData[i].pdcategory }}</td>
@@ -189,7 +188,7 @@ export default {
       disabled: 0,
       allSelectPdnum: [],
       noneSelected: [],
-      // selected: [],
+      selected: new Array(),
       pdnums : [],
     }
   },
@@ -211,8 +210,14 @@ export default {
         this.isUserRole = true
       }
     },
-    print() {
-      console.log(this.selected)
+    print(pdnum) {
+      console.log("this.selected 프린트 : ",this.selected,"/// pdnum : ",pdnum)
+      this.selected.push(pdnum)
+      console.log("after : ",this.selected.sort(function (a,b) {
+        if(a > b) return 1;
+        if(a === b) return 0;
+        if(a < b) return -1;
+      }))
     },
     nextPage() {
       this.pageNum += 1
