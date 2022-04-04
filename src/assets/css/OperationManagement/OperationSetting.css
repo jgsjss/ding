@@ -359,19 +359,24 @@
     display: block;
     float: left;
     margin: 0 10px 0 0;
-    width: 130px;
+    width: 120px;
 }
 .time_inputTwo {
-    display: block;
-    width: 130px;
+    width: 120px;
 }
 .date_input {
     margin: 0 10px 0 0;
-    width: 130px;
+    width: 120px;
 }
 .date_inputTwo {
     margin: 0 10px 0 0;
-    width: 130px;
+    width: 120px;
+}
+.break_time_icon {
+    float: right;
+    line-height: 1.3;
+    color: #997fb5;
+    font-size: 20px;
 }
 
 .breaktime {

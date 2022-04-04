@@ -165,26 +165,36 @@
                   <input
                     type="time"
                     class="time_input"
+                    id="time_input"
                     @change="$emit('sandParam', { breakTime: $event.target.value })"
                   />
                   <input
                     type="time"
                     class="time_inputTwo"
+                    id="time_inputTwo"
                     @change="$emit('sandParam', { breakTimeT: $event.target.value })"
                   />
+                  <i class="xi-minus-circle-o break_time_icon" 
+                      @click="breakBtn()"
+                  ></i>
 
                   <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
                   <div style="display: block">
                     <input
                       type="time"
                       class="date_input"
+                      id="date_input"
                       @change="$emit('sandParam', { holyTime: $event.target.value })"
                     />
                     <input
                       type="time"
                       class="date_inputTwo"
+                      id="date_inputTwo"
                       @change="$emit('sandParam', { holyTimeT: $event.target.value })"
                     />
+                  <i class="xi-minus-circle-o break_time_icon" 
+                      @click="breakBtnTwo()"
+                  ></i>                    
                   </div>
                 </form>
               </div>
@@ -497,6 +507,24 @@ export default {
       var inputFour = document.getElementById("timeHolyT");
         inputThree.value = null;
         inputFour.value = null;
+        console.log(this.inputDele)
+      },
+    breakBtn:function () {
+      var time = document.getElementById("time_input");
+      var timeTwo = document.getElementById("time_inputTwo");
+      var timethree = document.getElementById("date_input");
+      var timefour = document.getElementById("date_inputTwo");
+        time.value = null;
+        timeTwo.value = null;
+        timethree.value = null;
+        timefour.value = null;
+        console.log(this.inputDele)
+      },
+    breakBtnTwo:function () {
+      var timeThree = document.getElementById("date_input");
+      var timefour = document.getElementById("date_inputTwo");
+        timeThree.value = null;
+        timefour.value = null;
         console.log(this.inputDele)
       },
     
