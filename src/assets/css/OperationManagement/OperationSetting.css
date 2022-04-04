@@ -471,6 +471,7 @@
 .regular_circle {
     font-size:20px;
     cursor: pointer;
+    margin:0 5px;
 }
 .regular_btn_wrap {
     text-align: center;
