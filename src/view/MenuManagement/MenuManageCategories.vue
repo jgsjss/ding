@@ -244,9 +244,18 @@ export default {
       } else {
         this.allChecked = false;
         this.selectedBox = checked
-        this.checkSelected = [...this.noneSelected]
+        this.selected.delete()
       }
-
+    },
+    selectedBox(){
+      for (let i in this.boardList) {
+        if (!this.boardList[i].getSelected) {
+          this.allCheckedMenus = false
+          return
+        } else {
+          this.allCheckedMenus = true
+        }
+      }
     },
     getSelected() {
       let boardIds = []
