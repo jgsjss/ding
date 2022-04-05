@@ -207,7 +207,7 @@ export default {
         }
       })
       console.log("delete List : ", deleteList)
-    axios.delete("/deleteProducts", {
+    axios.delete("/apimenu/deleteProducts", {
         data:{
           "deletelist" : deleteList
         }
