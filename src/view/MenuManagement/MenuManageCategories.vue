@@ -12,7 +12,7 @@
           전체선택
         </label>
         <label class="cate_label">
-          <button type="button" class="cate_check_btn"> 삭제</button>
+          <button type="button" class="cate_check_btn" @click="deleteProducts"> 삭제</button>
         </label>
         <label class="cate_label">
           <button type="button" class="cate_check_btn"> 정상</button>
@@ -117,7 +117,7 @@
         <tr v-for="(a, i) in cgData" :key="i">
           <td scope="row" class="cate_check_box">
             <input type="checkbox"
-
+                   @click="selectChk"
                    id="a.pdnum"
                    v-model="selectedChkBox[i]"
 
@@ -198,6 +198,25 @@ export default {
   },
   components: {},
   methods: {
+    deleteProducts() {
+      let deleteList = [];
+      _.filter(this.selectedChkBox, (val, i) => {
+        if (val) {
+          let pdnum = this.cgData[i].pdnum
+          deleteList.push(pdnum)
+        }
+      })
+      console.log("delete List : ", deleteList)
+    axios.delete("/deleteProducts", {
+        data:{
+          "deletelist" : deleteList
+        }
+    }).then(res=>{
+        console.log(res)
+    }).catch(err=>{
+      console.log(err)
+    })
+    },
     toggleAll() {
       if (this.toggle) {
         for (let i = 0; i < 10; i++) {
@@ -237,35 +256,35 @@ export default {
         this.isUserRole = true
       }
     },
-    print(pdnum) {
-      let eachSelected = false;
-      for (let i in this.selected) {
-        if (this.selected[i] === pdnum) eachSelected = true;
-      }
-      if (this.allChecked || eachSelected) {
-        this.selected.splice(pdnum)
-      } else {
-        this.selected.push(pdnum)
-      }
-      this.selected.sort(function (a, b) {
-        if (a > b) return 1;
-        if (a === b) return 0;
-        if (a < b) return -1;
-      })
+    // print(pdnum) {
+    //   let eachSelected = false;
+    //   for (let i in this.selected) {
+    //     if (this.selected[i] === pdnum) eachSelected = true;
+    //   }
+    //   if (this.allChecked || eachSelected) {
+    //     this.selected.splice(pdnum)
+    //   } else {
+    //     this.selected.push(pdnum)
+    //   }
+    //   this.selected.sort(function (a, b) {
+    //     if (a > b) return 1;
+    //     if (a === b) return 0;
+    //     if (a < b) return -1;
+    //   })
 
-      console.log("this.selected 프린트 : ", this.selected, "/// pdnum : ", pdnum)
+    // console.log("this.selected 프린트 : ", this.selected, "/// pdnum : ", pdnum)
 
-      // if(this.selected.has(pdnum)){
-      //   this.selected.delete(pdnum)
-      // }else{
-      //   this.selected.add(pdnum)
-      // }
-      // console.log("after : ",this.selected.sort(function (a,b) {
-      //   if(a > b) return 1;
-      //   if(a === b) return 0;
-      //   if(a < b) return -1;
-      // }))
-    },
+    // if(this.selected.has(pdnum)){
+    //   this.selected.delete(pdnum)
+    // }else{
+    //   this.selected.add(pdnum)
+    // }
+    // console.log("after : ",this.selected.sort(function (a,b) {
+    //   if(a > b) return 1;
+    //   if(a === b) return 0;
+    //   if(a < b) return -1;
+    // }))
+    // },
     nextPage() {
       this.pageNum += 1
       this.getCategories(this.pageNum)
@@ -378,9 +397,11 @@ export default {
     shopcode() {
       return store.getters['loginStore/getShopcode']
     },
-    userrole() {
-      return store.getters["loginStore/getUserrole"]
-    },
+    selectChk: function () {
+      if (this.toggle) {
+
+      }
+    }
 
   },
   beforeMount() {
