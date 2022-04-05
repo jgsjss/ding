@@ -19,11 +19,18 @@
       <div class="shop_condition">
       <p class="operation_text">◆가게상태</p>
       <div>
-        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">정상설정</button>
-        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">영업중</button>
-        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">준비중</button>
-        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">노출정지</button>
-        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">딩동오더 정지</button>
+        <label for="oper_shop_btn1" class="oper_shop_label1"></label>
+        <input 
+          type="checkbox" 
+          class="oper_shop_btn1" 
+          id="oper_shop_btn1" 
+          data-bs-toggle="modal" 
+          data-bs-target="#NoticeModal" 
+          />정상설정
+        <input type="checkbox" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal" />영업중
+        <input type="checkbox" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal" />준비중
+        <input type="checkbox" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal" />노출정지
+        <input type="checkbox" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal" />딩동오더 정지
         <i class="xi-help-o" @click="show=!show"></i>
           <div class="shop_help" v-show="show">
             <span>- 매장상태를 임의로 변경 가능합니다.</span>
@@ -44,7 +51,7 @@
         <div class="oper_title" @click=" step = 0">영업시간</div>
           <div class="oper_wrapper">
             <div class="oper_wrap1">
-              <div class="oper_left" id="dayCheck" >
+              <div class="oper_left" id="dayCheck">
                 <span v-for="(day,index) in form.dayCheck" :key="index">
                   {{day}}
                 </span>
@@ -187,9 +194,10 @@ import { reactive } from 'vue'
       operTimeT:'',
       operHoly:'',
       operHolyT:'',
-      dayCheck:[],
       dayTime:'',
-      timeHoly:''
+      timeHoly:'',
+      //영업시간 요일체크  
+      dayCheck:[],
 
     })
     function sandParam(_value){

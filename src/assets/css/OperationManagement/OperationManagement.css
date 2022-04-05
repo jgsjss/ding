@@ -29,7 +29,20 @@
 .operation_text {
     font-size:20px;
 }
-
+.oper_shop_btn1 {
+  display:none;
+}
+.oper_shop_btn1+.oper_shop_label1 {
+  background:url('../../img/btn1_off.jpg') no-repeat 0 0px / contain;
+  margin:0 7px;
+  padding:15px;
+  width: 30px;
+  height: 30px;
+  border:1px solid #dcd4e3;
+}
+.oper_shop_btn1:checked+.oper_shop_label1 {
+  background:url('../../img/btn1_on.jpg') no-repeat 0 0px / contain;
+}
 /* 가게상태 */
 .shop_condition {
   display:flex;

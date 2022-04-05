@@ -120,7 +120,6 @@
                    value="a.pdnum"
                    v-model="selectedBox"
                    @click="print(a.pdnum)"
-
             >
 <!--            <span>pd 넘버{{a.pdnum}}</span>-->
           </td>
@@ -148,7 +147,7 @@
       <div class="cate_add_wrap">
         <button type="button" class="cate_add_btn">저장</button>
       </div>
-      <div class="btn-cover">
+      <div class="btn-cover_categories">
         <button :disabled="pageNum === 1" @click="prevPage" class="page-btn">
           <i class="xi-angle-left"></i>
         </button>
