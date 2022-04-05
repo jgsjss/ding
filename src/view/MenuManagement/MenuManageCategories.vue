@@ -202,17 +202,21 @@ export default {
       let deleteList = [];
       _.filter(this.selectedChkBox, (val, i) => {
         if (val) {
-          let pdnum = this.cgData[i].pdnum
-          deleteList.push(pdnum)
+          let pdnums = this.cgData[i].pdnum
+          deleteList.push(pdnums)
+          console.log("pdnums",pdnums)
         }
       })
       console.log("delete List : ", deleteList)
-    axios.delete("/apimenu/deleteProducts", {
+    axios.post("/apimenu/deleteProducts", {
         data:{
-          "deletelist" : deleteList
+          deletelist : deleteList
         }
     }).then(res=>{
         console.log(res)
+      if(res.data == 1){
+        this.$swal("메뉴 삭제 완료!")
+      }
     }).catch(err=>{
       console.log(err)
     })
