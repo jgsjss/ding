@@ -62,7 +62,7 @@
       <workItem from="1649034163759" duration="450000" />
       <workItem from="1649034632673" duration="20218000" />
       <workItem from="1649112387127" duration="2333000" />
-      <workItem from="1649114997954" duration="637000" />
+      <workItem from="1649114997954" duration="5845000" />
     </task>
     <servers />
   </component>
@@ -79,16 +79,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue</url>
-          <line>216</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -158,7 +158,7 @@
         </button>
       </div>
     </div>
-    <button @click="logPdnum">테스트</button>
+<!--    <button @click="logPdnum">테스트</button>-->
   </div>
 </template>
 <script>
@@ -188,15 +188,15 @@ export default {
       disabled: 0,
       allSelectPdnum: [],
       noneSelected: [],
-      selected: new Set(),
+      selected: new Array()
     }
   },
   components: {},
   methods: {
     logPdnum(){
       console.log("this.selected 테스트버튼 : ",this.selected)
-      console.log("cgData", this.cgData)
-      console.log("cgData.pdnum", this.cgData[0].pdnum)
+      // console.log("cgData", this.cgData)
+      // console.log("cgData.pdnum", this.cgData[0].pdnum)
     },
     //카테고리추가 숨김, 해제 체크
     statusCheck() {
@@ -215,8 +215,28 @@ export default {
       }
     },
     print(pdnum) {
+      let eachSelected = false;
+      for(let i in this.selected){
+        if(this.selected[i] === pdnum) eachSelected = true;
+      }
+      if(this.allChecked || eachSelected ){
+          this.selected.splice(pdnum)
+      }else{
+        this.selected.push(pdnum)
+      }
+      this.selected.sort(function (a,b){
+        if(a>b) return 1;
+        if(a===b) return 0;
+        if(a<b) return -1;
+      })
+
       console.log("this.selected 프린트 : ",this.selected,"/// pdnum : ",pdnum)
-      this.selected.add(pdnum)
+
+      // if(this.selected.has(pdnum)){
+      //   this.selected.delete(pdnum)
+      // }else{
+      //   this.selected.add(pdnum)
+      // }
       // console.log("after : ",this.selected.sort(function (a,b) {
       //   if(a > b) return 1;
       //   if(a === b) return 0;
@@ -236,26 +256,28 @@ export default {
       if (this.allChecked == false) {
         this.allChecked = true;
         this.selectedBox = checked
-        let length = new Array()
+        let length = new Set()
         for(let i = 0; i<10; i++){
-          length.push(this.cgData[i].pdnum)
+          this.selected.push(this.cgData[i].pdnum)
         }
-        this.selected.add(length)
+        console.log("전체선택시 selected : ",this.selected)
       } else {
         this.allChecked = false;
         this.selectedBox = checked
-        this.selected.delete()
+        this.selected=[];
       }
+      console.log("this.selected 프린트 : ",this.selected)
+
     },
     selectedBox(){
-      for (let i in this.boardList) {
-        if (!this.boardList[i].getSelected) {
-          this.allCheckedMenus = false
-          return
-        } else {
-          this.allCheckedMenus = true
-        }
-      }
+      // for (let i in this.boardList) {
+      //   if (!this.boardList[i].getSelected) {
+      //     this.allCheckedMenus = false
+      //     return
+      //   } else {
+      //     this.allCheckedMenus = true
+      //   }
+      // }
     },
     getSelected() {
       let boardIds = []
@@ -279,9 +301,6 @@ export default {
         //게시물 정보들
         this.cgData = res.data.rows
         // this.totalPage = this.cgData.length
-
-
-        console.log("checkSelected : " , this.checkSelected)
 
         console.log('cgData: ', this.cgData)
 
@@ -370,9 +389,7 @@ export default {
 
     this.getCategories(1)
 
-    this.allSelectPdnum.push(this.cgData)
 
-    console.log("allSelectPdnum : ",this.allSelectPdnum)
 
     // console.log(this.cgData)
   },
