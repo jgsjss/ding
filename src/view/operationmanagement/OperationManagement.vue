@@ -55,7 +55,6 @@
           @change="clickFunc"
           />
           <label for="oper_shopBtn5" class="oper_shop_label5"></label>
-        </form>
         <i class="xi-help-o" @click="show=!show"></i>
           <div class="shop_help" v-show="show">
             <span>- 매장상태를 임의로 변경 가능합니다.</span>
@@ -64,7 +63,7 @@
             <span>- 딩동오더 정지: 카운터 주문만 가능합니다.</span>
             <span>- 정상상태: 설정된 데이터에 맞게 운영되는 상태</span>
           </div>
-
+        </form>
       </div>
       </div>
       <div class="oper_all_wrap">
