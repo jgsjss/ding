@@ -96,7 +96,7 @@
       <div class="edit_add_wrap">
         <button type="button" class="edit_add_btn">저장</button>
       </div>
-      <div class="btn-cover">
+      <div class="btn-cover_menus">
         <button :disabled="pageNum === 1" @click="prevPage" class="page-btn">
           <i class="xi-angle-left"></i>
         </button>

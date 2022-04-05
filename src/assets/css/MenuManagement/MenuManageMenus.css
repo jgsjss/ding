@@ -143,5 +143,9 @@ tr {
     border-radius: 3px;
     padding:8px 10px
 }
-
+.btn-cover_menus {
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px 0;
+}
 
