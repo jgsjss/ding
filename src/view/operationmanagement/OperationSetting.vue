@@ -505,6 +505,12 @@ export default {
       // console.log(this.$emit.dayCheck)
       // console.log(this.dayCheck)
     },
+    // dayCheck = > join(',')
+    // isDayCheck:function() {
+    //   var arr= new Array(7);
+    //   var dayCheck = arr.join(',');
+    //   document.getElementsByName('')
+    // },
     //영업시간 input 내용지우기 앞에꺼만 지워짐 뒤에꺼도 해야됨
     deleteBtn:function () {
       var input = document.getElementById("inputDele");

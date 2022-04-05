@@ -10,7 +10,7 @@
       <div class="oper_right">
         <button class="main-btn" type="submit">
           <span class="condition">매장상태</span>
-          <span class="condition" >: {{}}</span>
+          <span class="condition" >:영업중 {{}}</span>
         </button>
         <i class="xi-bell"></i>
       </div>   
@@ -19,39 +19,39 @@
       <div class="shop_condition">
       <p class="operation_text">◆가게상태</p>
       <div>
-        <form>
+        <form value="">
         <input 
           type="checkbox" 
           class="oper_shop_btn1" id="oper_shopBtn1"
-          v-model='checkedValues' value="1"
+          v-model='checkedValues' value="정상설정"
           @change="clickFunc"
           />
           <label for="oper_shopBtn1" class="oper_shop_label1"></label>
         <input 
           type="checkbox" 
           class="oper_shop_btn2" id="oper_shopBtn2"
-          v-model='checkedValues' value="2"
+          v-model='checkedValues' value="영업중"
           @change="clickFunc" 
           />
           <label for="oper_shopBtn2" class="oper_shop_label2"></label>
         <input 
           type="checkbox" 
           class="oper_shop_btn3" id="oper_shopBtn3" 
-          v-model='checkedValues' value="3"
+          v-model='checkedValues' value="준비중"
           @change="clickFunc"
           />
           <label for="oper_shopBtn3" class="oper_shop_label3"></label>
         <input 
           type="checkbox" 
           class="oper_shop_btn4" id="oper_shopBtn4"
-          v-model='checkedValues' value="4"
+          v-model='checkedValues' value="노출정지"
           @change="clickFunc"
           />
           <label for="oper_shopBtn4" class="oper_shop_label4"></label>
         <input 
           type="checkbox" 
           class="oper_shop_btn5" id="oper_shopBtn5"
-          v-model='checkedValues' value="5"
+          v-model='checkedValues' value="딩동오더 정지"
           @change="clickFunc"
           />
           <label for="oper_shopBtn5" class="oper_shop_label5"></label>
@@ -132,9 +132,10 @@
           <div class="holiday_text">{{form.reasonCheck}}</div>
       </div>      
       <!--/////매장상태/////-->
-      <div class="oper_box1" v-for="(a, i) in $store.state.OperationData" :key="i">
+      <div class="oper_box1">
         <div class="oper_title">매장상태</div>
-          <div class="oper_condition">{{ $store.state.OperationData[i].condition }}</div>
+          <div class="oper_condition" v-for="(check,index) in checkedValues" :key="index">
+            {{ check }}</div>
       </div>  
       </div>    
   </div>
@@ -196,7 +197,7 @@ import { reactive } from 'vue'
       step: 0,
       textShow:false,
       leftShow:false,
-      checkedValues:[],
+      checkedValues:[]
     }
   },
   setup() {
@@ -243,10 +244,11 @@ import { reactive } from 'vue'
       for(let i=0; i<this.checkedValues.length;i++){
         if(this.checkedValues[i] !== event.target.value){
         console.log(this.checkedValues[i])
-        this.checkedValues.splice(i,1);    
+        this.checkedValues.splice(i,1); 
+        confirm('상태를 변경하시겠습니까?')   
     }
-      }
-      }
+    }
+    },
 
     // isDayCheck () {
     //   this.value = dayCheck;
