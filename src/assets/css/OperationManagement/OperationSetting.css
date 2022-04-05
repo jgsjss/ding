@@ -127,8 +127,8 @@
 .day_Five2:checked+.dayFive_Label2 {
     background:url('../../img/holyday_on.jpg') no-repeat 0 0px / contain;
 }
-
 /* 평일 주말 버튼 끝 */
+
 /* 요일 체크 버튼 시작 */
 .day_btn1,.day_btn2,.day_btn3,.day_btn4,.day_btn5,.day_btn6,.day_btn7 {
     display:none;
@@ -455,7 +455,7 @@
     text-align:left;
 }
 .Rday {
-    width:100px;
+    width:125px;
     border:1px solid #997fb5;
     margin-left:5px;
     color:#997fb5;

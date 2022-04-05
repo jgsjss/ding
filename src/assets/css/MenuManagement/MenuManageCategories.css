@@ -180,5 +180,9 @@ tbody {
     font-size:12px;
     word-break: keep-all;
 }
-
+.btn-cover_categories {
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px 0;
+}
 

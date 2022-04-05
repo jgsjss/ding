@@ -95,7 +95,7 @@
                     <label for="input_day" class="input_day">평일 시작 및 종료시간</label>
                     <input
                       type="time"
-                      min="00:00"
+                      min="08:00"
                       class="oper_time"
                       id="inputDele"
                       v-model="dayTime"
@@ -113,7 +113,7 @@
                     <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
                     <input 
                       type="time"
-                      min="00:00"
+                      min="08:00"
                       class="oper_time"
                       id="timeHoly"
                       v-model="timeHoly"
@@ -337,7 +337,7 @@
                     id="temporary_input"     
                     @change="$emit('sandParam', { reasonDate : $event.target.value })"
                   />                  
-                   ~ 
+                  ~ 
                   <input
                     type="date"
                     class="temporary_date"

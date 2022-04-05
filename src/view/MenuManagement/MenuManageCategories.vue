@@ -117,8 +117,10 @@
         <tr v-for="(a, i) in cgData" :key="i">
           <td scope="row" class="cate_check_box">
             <input type="checkbox"
+
                    id="a.pdnum"
                    v-model="selectedChkBox[i]"
+
             >
             <!--            value="a.pdnum"-->
             <!--            <span>pd 넘버{{a.pdnum}}</span>-->
@@ -148,7 +150,7 @@
       <div class="cate_add_wrap">
         <button type="button" class="cate_add_btn">저장</button>
       </div>
-      <div class="btn-cover">
+      <div class="btn-cover_categories">
         <button :disabled="pageNum === 1" @click="prevPage" class="page-btn">
           <i class="xi-angle-left"></i>
         </button>

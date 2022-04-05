@@ -10,7 +10,7 @@
       <div class="oper_right">
         <button class="main-btn" type="submit">
           <span class="condition">매장상태</span>
-          <span class="condition">: 영업중{{}}</span>
+          <span class="condition" >: {{}}</span>
         </button>
         <i class="xi-bell"></i>
       </div>   
@@ -19,11 +19,43 @@
       <div class="shop_condition">
       <p class="operation_text">◆가게상태</p>
       <div>
-        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">정상설정</button>
-        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">영업중</button>
-        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">준비중</button>
-        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">노출정지</button>
-        <button type="button" class="oper_shop_btn" data-bs-toggle="modal" data-bs-target="#NoticeModal">딩동오더 정지</button>
+        <form>
+        <input 
+          type="checkbox" 
+          class="oper_shop_btn1" id="oper_shopBtn1"
+          v-model='checkedValues' value="1"
+          @change="clickFunc"
+          />
+          <label for="oper_shopBtn1" class="oper_shop_label1"></label>
+        <input 
+          type="checkbox" 
+          class="oper_shop_btn2" id="oper_shopBtn2"
+          v-model='checkedValues' value="2"
+          @change="clickFunc" 
+          />
+          <label for="oper_shopBtn2" class="oper_shop_label2"></label>
+        <input 
+          type="checkbox" 
+          class="oper_shop_btn3" id="oper_shopBtn3" 
+          v-model='checkedValues' value="3"
+          @change="clickFunc"
+          />
+          <label for="oper_shopBtn3" class="oper_shop_label3"></label>
+        <input 
+          type="checkbox" 
+          class="oper_shop_btn4" id="oper_shopBtn4"
+          v-model='checkedValues' value="4"
+          @change="clickFunc"
+          />
+          <label for="oper_shopBtn4" class="oper_shop_label4"></label>
+        <input 
+          type="checkbox" 
+          class="oper_shop_btn5" id="oper_shopBtn5"
+          v-model='checkedValues' value="5"
+          @change="clickFunc"
+          />
+          <label for="oper_shopBtn5" class="oper_shop_label5"></label>
+        </form>
         <i class="xi-help-o" @click="show=!show"></i>
           <div class="shop_help" v-show="show">
             <span>- 매장상태를 임의로 변경 가능합니다.</span>
@@ -44,7 +76,7 @@
         <div class="oper_title" @click=" step = 0">영업시간</div>
           <div class="oper_wrapper">
             <div class="oper_wrap1">
-              <div class="oper_left" id="dayCheck" >
+              <div class="oper_left" id="dayCheck">
                 <span v-for="(day,index) in form.dayCheck" :key="index">
                   {{day}}
                 </span>
@@ -165,6 +197,7 @@ import { reactive } from 'vue'
       step: 0,
       textShow:false,
       leftShow:false,
+      checkedValues:[],
     }
   },
   setup() {
@@ -187,9 +220,10 @@ import { reactive } from 'vue'
       operTimeT:'',
       operHoly:'',
       operHolyT:'',
-      dayCheck:[],
       dayTime:'',
-      timeHoly:''
+      timeHoly:'',
+      //영업시간 요일체크  
+      dayCheck:[],
 
     })
     function sandParam(_value){
@@ -206,6 +240,15 @@ import { reactive } from 'vue'
     notice: function(evt) {
       alert('상태를 변경하시겠습니까?')
     },
+    clickFunc(event) {
+      for(let i=0; i<this.checkedValues.length;i++){
+        if(this.checkedValues[i] !== event.target.value){
+        console.log(this.checkedValues[i])
+        this.checkedValues.splice(i,1);    
+    }
+      }
+      }
+
     // isDayCheck () {
     //   this.value = dayCheck;
     //   let dayCheck = ['평일','주말','월','화','수','목','금','토','일',];
@@ -233,7 +276,7 @@ import { reactive } from 'vue'
     //   this.value = weekday;
     //   console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);
     // }
-    },
+      }
     
 }
 
