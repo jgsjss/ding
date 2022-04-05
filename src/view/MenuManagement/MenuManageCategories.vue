@@ -6,8 +6,8 @@
         <label class="cate_label">
           <input type="checkbox"
                  id="all-check"
-                 v-model="allChecked"
-                 @click="checkedAll($event.target.checked)"
+                 v-model="toggle"
+                 @click="toggleAll"
           />
           전체선택
         </label>
@@ -98,6 +98,7 @@
       </div>
 
     </form>
+    <button type="button" @click="test">체크박스 출력</button>
     <div class="category_list_wrap">
       <table class="cate_table">
         <thead class="category_thead">
@@ -116,14 +117,13 @@
         <tr v-for="(a, i) in cgData" :key="i">
           <td scope="row" class="cate_check_box">
             <input type="checkbox"
-                   id="chkbox"
-                   value="a.pdnum"
-                   v-model="selectedBox"
-                   @click="print(a.pdnum)"
-
+                   id="a.pdnum"
+                   v-model="selectedChkBox[i]"
             >
-<!--            <span>pd 넘버{{a.pdnum}}</span>-->
+            <!--            value="a.pdnum"-->
+            <!--            <span>pd 넘버{{a.pdnum}}</span>-->
           </td>
+
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
           <td class="cate_data">{{ cgData[i].pdcategory }}</td>
           <td class="cate_data col-7" title="마우스">{{ cgData[i].pdname }}</td>
@@ -158,7 +158,7 @@
         </button>
       </div>
     </div>
-<!--    <button @click="logPdnum">테스트</button>-->
+    <!--    <button @click="logPdnum">테스트</button>-->
   </div>
 </template>
 <script>
@@ -188,13 +188,34 @@ export default {
       disabled: 0,
       allSelectPdnum: [],
       noneSelected: [],
-      selected: new Array()
+      selected: [],
+      selectedChkBox: [],
+      toggle: false,
+      computeSelectedChkBox: null
     }
   },
   components: {},
   methods: {
-    logPdnum(){
-      console.log("this.selected 테스트버튼 : ",this.selected)
+    toggleAll() {
+      if (this.toggle) {
+        for (let i = 0; i < 10; i++) {
+          this.selectedChkBox[i] = false;
+        }
+      } else {
+        for (let i = 0; i < 10; i++) {
+          this.selectedChkBox[i] = true;
+        }
+      }
+
+      this.toggle = !this.toggle
+      console.log(this.toggle)
+    },
+    test() {
+      console.log("this.selectedChkBox : ", this.selectedChkBox)
+      console.log("")
+    },
+    logPdnum() {
+      console.log("this.selected 테스트버튼 : ", this.selected)
       // console.log("cgData", this.cgData)
       // console.log("cgData.pdnum", this.cgData[0].pdnum)
     },
@@ -216,21 +237,21 @@ export default {
     },
     print(pdnum) {
       let eachSelected = false;
-      for(let i in this.selected){
-        if(this.selected[i] === pdnum) eachSelected = true;
+      for (let i in this.selected) {
+        if (this.selected[i] === pdnum) eachSelected = true;
       }
-      if(this.allChecked || eachSelected ){
-          this.selected.splice(pdnum)
-      }else{
+      if (this.allChecked || eachSelected) {
+        this.selected.splice(pdnum)
+      } else {
         this.selected.push(pdnum)
       }
-      this.selected.sort(function (a,b){
-        if(a>b) return 1;
-        if(a===b) return 0;
-        if(a<b) return -1;
+      this.selected.sort(function (a, b) {
+        if (a > b) return 1;
+        if (a === b) return 0;
+        if (a < b) return -1;
       })
 
-      console.log("this.selected 프린트 : ",this.selected,"/// pdnum : ",pdnum)
+      console.log("this.selected 프린트 : ", this.selected, "/// pdnum : ", pdnum)
 
       // if(this.selected.has(pdnum)){
       //   this.selected.delete(pdnum)
@@ -252,33 +273,8 @@ export default {
       console.log(this.pageNum)
       this.getCategories(this.pageNum)
     },
-    checkedAll(checked) {
-      if (this.allChecked == false) {
-        this.allChecked = true;
-        this.selectedBox = checked
-        let length = new Set()
-        for(let i = 0; i<10; i++){
-          this.selected.push(this.cgData[i].pdnum)
-        }
-        console.log("전체선택시 selected : ",this.selected)
-      } else {
-        this.allChecked = false;
-        this.selectedBox = checked
-        this.selected=[];
-      }
-      console.log("this.selected 프린트 : ",this.selected)
 
-    },
-    selectedBox(){
-      // for (let i in this.boardList) {
-      //   if (!this.boardList[i].getSelected) {
-      //     this.allCheckedMenus = false
-      //     return
-      //   } else {
-      //     this.allCheckedMenus = true
-      //   }
-      // }
-    },
+
     getSelected() {
       let boardIds = []
       for (let i in this.cgData) {
@@ -388,7 +384,6 @@ export default {
   beforeMount() {
 
     this.getCategories(1)
-
 
 
     // console.log(this.cgData)
