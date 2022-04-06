@@ -122,10 +122,11 @@
                    v-model="selectedChkBox[i]"
 
             >
+
             <!--            value="a.pdnum"-->
             <!--            <span>pd 넘버{{a.pdnum}}</span>-->
           </td>
-
+          cglength: {{cgData.length}}
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
           <td class="cate_data">{{ cgData[i].pdcategory }}</td>
           <td class="cate_data col-7" title="마우스">{{ cgData[i].pdname }}</td>
@@ -229,12 +230,13 @@ export default {
     })
     },
     toggleAll() {
+      this.selectedChkBox=[];
       if (this.toggle) {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < this.cgData.length; i++) {
           this.selectedChkBox[i] = false;
         }
       } else {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < this.cgData.length; i++) {
           this.selectedChkBox[i] = true;
         }
       }
