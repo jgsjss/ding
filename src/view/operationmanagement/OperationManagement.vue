@@ -19,7 +19,7 @@
       <div class="shop_condition">
       <p class="operation_text">◆가게상태</p>
       <div>
-        <form value="">
+        <form value="0">
         <input 
           type="checkbox" 
           class="oper_shop_btn1" id="oper_shopBtn1"
@@ -197,7 +197,7 @@ import { reactive } from 'vue'
       step: 0,
       textShow:false,
       leftShow:false,
-      checkedValues:[]
+      checkedValues:[],
     }
   },
   setup() {
@@ -224,6 +224,7 @@ import { reactive } from 'vue'
       timeHoly:'',
       //영업시간 요일체크  
       dayCheck:[],
+      
 
     })
     function sandParam(_value){
@@ -249,7 +250,6 @@ import { reactive } from 'vue'
     }
     }
     },
-
     // isDayCheck () {
     //   this.value = dayCheck;
     //   let dayCheck = ['평일','주말','월','화','수','목','금','토','일',];
@@ -277,6 +277,9 @@ import { reactive } from 'vue'
     //   this.value = weekday;
     //   console.log("자식 컴포넌트에게 값을 받았어요 :)", weekday);
     // }
+      },
+    computed: {
+
       }
     
 }

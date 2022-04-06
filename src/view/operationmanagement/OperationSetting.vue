@@ -504,9 +504,9 @@ export default {
       this.$emit('sandParam',{ timeHolyT:this.timeHolyT})
       // console.log(this.$emit.dayCheck)
       // console.log(this.dayCheck)
-    },
-    // dayCheck = > join(',')
+    },    
     // isDayCheck:function() {
+    //    dayCheck.join(',')
     //   var arr= new Array(7);
     //   var dayCheck = arr.join(',');
     //   document.getElementsByName('')
@@ -598,15 +598,10 @@ export default {
       salutations,
       weekDays,
     };
-
-    // const time = ref({
-    //     hours: new Date().getHours(),
-    //     minutes: new Date().getMinutes()
-    // });
-    // return {
-    //     time,
-    // }
   },
+  computed: {
+
+  }
 };
 </script>
 
