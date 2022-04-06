@@ -1,6 +1,7 @@
 <template>
   <!-- 메뉴관리 페이지의 카테고리편집 게시판 페이지 -->
   <div class="cate_container">
+
     <form class="category_wrap">
       <div class="category_left">
         <label class="cate_label">

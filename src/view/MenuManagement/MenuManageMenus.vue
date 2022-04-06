@@ -1,6 +1,7 @@
 <template>
   <!-- 메뉴관리 페이지의 메뉴편집 게시판 페이지 -->
   <div class="menuedit_container">
+    <button type="button" @click="dummy10" class="btn btn-primary">더미 10개</button>
     <form class="menuedit_wrap">
       <div class="menuedit_left">
         <label class="menuedit_label">
@@ -147,6 +148,15 @@ export default {
     }
   },
   methods: {
+    dummy10(){
+      axios.get("/apimenu/dummy10")
+        .then(res => {
+          console.log(res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
     async getMenu (curpage) {
       try {
         const res = await axios.post('/apimenu/menus', {

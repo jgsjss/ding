@@ -7,6 +7,7 @@
     <list default="true" id="d988c27a-6dac-40b8-a36c-e54f7928ea6a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/MenuManagement/MenuManageMenus.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MenuManagement/MenuManageMenus.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,29 +92,27 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue</url>
-          <line>7</line>
+          <line>8</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue</url>
-          <line>118</line>
+          <line>119</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue</url>
-          <line>412</line>
+          <line>413</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue</url>
-          <line>201</line>
-          <properties lambdaOrdinal="-1" />
+          <line>202</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue</url>
-          <line>231</line>
-          <properties lambdaOrdinal="-1" />
+          <line>232</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
