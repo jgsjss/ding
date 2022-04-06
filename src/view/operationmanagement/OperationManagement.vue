@@ -7,13 +7,14 @@
       <h2 class="oper_text">운영관리</h2>
         <router-link to="/LogCheck"><span class="logcheck_btn">로그확인</span></router-link>
       </div>
-      <div class="oper_right">
+      <ShopCondition class="oper_right"></ShopCondition>
+      <!-- <div class="oper_right">
         <button class="main-btn" type="submit">
           <span class="condition">매장상태</span>
           <span class="condition" >:영업중 {{}}</span>
         </button>
         <i class="xi-bell"></i>
-      </div>   
+      </div>    -->
       </div>  
       <!--/////가게상태/////-->
       <div class="shop_condition">
@@ -183,13 +184,14 @@
 </template>
 <script>
 import Navbar from '@/components/Navbar.vue'
-import OperationSetting from '../operationmanagement/OperationSetting.vue';
+import OperationSetting from '../operationmanagement/OperationSetting.vue'
+import ShopCondition from '../ShopCondition.vue'
 import { reactive } from 'vue'
-
   export default {
   components:{
     Navbar,
     OperationSetting,
+    ShopCondition
   },
   data() {
     return {

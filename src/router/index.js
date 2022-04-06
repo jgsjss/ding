@@ -58,6 +58,7 @@ import store from "../store";
 import chat from "../view/1";
 import dbshow from "../view/dbshow";
 import xlsx from "../view/xlsx.vue";
+import ShopCondition from "../view/ShopCondition.vue";
 // import 'sweetalert2/dist/sweetalert2.min.css';
 // import VueSweetalert2 from 'vue-sweetalert2';
 
@@ -428,6 +429,10 @@ const routes = [
   {
     path: "/xlsx",
     component: xlsx,
+  },
+  {
+    path: "/ShopCondition",
+    component: ShopCondition,
   },
   {
     path: "/dbshow",
