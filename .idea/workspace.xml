@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d988c27a-6dac-40b8-a36c-e54f7928ea6a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/MenuManagement/MenuManageMenus.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MenuManagement/MenuManageMenus.vue" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue.config.js" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +44,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.google.cloudcode.ide_session_index" value="20220406_0001" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../paycoqServer" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -68,8 +73,13 @@
       <workItem from="1649034632673" duration="20218000" />
       <workItem from="1649112387127" duration="2333000" />
       <workItem from="1649114997954" duration="5845000" />
+<<<<<<< Updated upstream
       <workItem from="1649138375412" duration="6229000" />
       <workItem from="1649199175972" duration="5431000" />
+=======
+      <workItem from="1649138375412" duration="3513000" />
+      <workItem from="1649199959283" duration="1246000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
