@@ -67,7 +67,8 @@
       <workItem from="1649034632673" duration="20218000" />
       <workItem from="1649112387127" duration="2333000" />
       <workItem from="1649114997954" duration="5845000" />
-      <workItem from="1649138375412" duration="453000" />
+      <workItem from="1649138375412" duration="6229000" />
+      <workItem from="1649199175972" duration="3171000" />
     </task>
     <servers />
   </component>
@@ -100,13 +101,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue</url>
-          <line>231</line>
+          <line>236</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue</url>
-          <line>399</line>
+          <line>404</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue</url>
+          <line>200</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
