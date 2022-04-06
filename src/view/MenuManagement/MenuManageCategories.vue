@@ -216,6 +216,7 @@ export default {
         console.log(res)
       if(res.data == 1){
         this.$swal("메뉴 삭제 완료!")
+        location.reload()
       }
     }).catch(err=>{
       console.log(err)

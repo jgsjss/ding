@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d988c27a-6dac-40b8-a36c-e54f7928ea6a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mixins.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +68,7 @@
       <workItem from="1649112387127" duration="2333000" />
       <workItem from="1649114997954" duration="5845000" />
       <workItem from="1649138375412" duration="6229000" />
-      <workItem from="1649199175972" duration="2578000" />
+      <workItem from="1649199175972" duration="3171000" />
     </task>
     <servers />
   </component>
@@ -102,12 +101,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue</url>
-          <line>235</line>
+          <line>236</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/view/MenuManagement/MenuManageCategories.vue</url>
-          <line>403</line>
+          <line>404</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
