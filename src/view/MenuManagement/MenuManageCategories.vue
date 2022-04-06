@@ -34,7 +34,7 @@
                 aria-controls="categoryadd" @click="roleCheck">+카테고리추가
         </button>
         <!--카테고리 추가,상세 오프캔버스-->
-        <div class="offcanvas offcanvas-start" v-show="isUserRole" tabindex="-1" id="categoryadd"
+        <div class="offcanvas offcanvas-start"  tabindex="-1" id="categoryadd"
              aria-labelledby="categoryaddLabel">
           <h4 class="category_add_title" id="categoryaddLabel">카테고리 추가</h4>
           <!--카테고리 추가-->
@@ -215,7 +215,13 @@ export default {
     }).then(res=>{
         console.log(res)
       if(res.data == 1){
-        this.$swal("메뉴 삭제 완료!")
+        this.$swal.fire({
+          icon: 'success',
+          title: '삭제 완료!',
+          text: '선택하신 메뉴가 삭제되었습니다.',
+          showConfirmButton: false,
+          timer: 2000
+        })
         location.reload()
       }
     }).catch(err=>{
@@ -252,15 +258,15 @@ export default {
       console.log(this.status)
     },
     //권한체크
-    roleCheck() {
-      console.log('유저권한', this.userrole)
-      if (this.userrole != 0) {
-        alert('해당 기능은 권한이 없습니다.')
-        this.isUserRole = false
-      } else {
-        this.isUserRole = true
-      }
-    },
+    // roleCheck() {
+    //   console.log('유저권한', this.userrole)
+    //   if (this.userrole != 0) {
+    //     alert('해당 기능은 권한이 없습니다.')
+    //     this.isUserRole = false
+    //   } else {
+    //     this.isUserRole = true
+    //   }
+    // },
     // print(pdnum) {
     //   let eachSelected = false;
     //   for (let i in this.selected) {
