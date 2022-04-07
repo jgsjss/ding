@@ -437,12 +437,12 @@ const routes = [
   {
     path: "/dbshow",
     component: dbshow,
-    props: true,
+
   },
   {
     path: "/modifyuser/:userid",
     component: modifyuser,
-    props: true,
+
   },
 
   // { path: "" },

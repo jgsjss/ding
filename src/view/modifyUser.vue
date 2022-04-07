@@ -57,6 +57,8 @@ export default {
   props: ['test'],
   created() {
     this.userid = this.$route.params.userid;
+console.log("userid 넘어온것 : ",this.userid);
+
 
   },
   methods () {
