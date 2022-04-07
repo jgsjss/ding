@@ -61,9 +61,9 @@
       <div class="menuadd_btn_wrap">
         <label class="menuadd_label"
         >카테고리
-          <button type="button" class="menuadd_edit_btn" @click="categoryAdd = !categoryAdd">카테고리설정</button>
+          <button type="button" class="menuadd_edit_btn"  @click="TabChange = 1">카테고리설정</button>
           <div class="category_option_bind">{{}}전체(기본카테고리)</div>
-          <div class="category_option_wrap" id="category_option" v-show="categoryAdd">
+          <div  v-if="TabChange == 1"  class="category_option_wrap" id="category_option" >
             <div class="card card-body">
               <div class="category_option_add_wrap">
                 <div class="category_option_add_left">
@@ -117,11 +117,12 @@
               data-bs-target="#option_edit"
               aria-expanded="false"
               aria-controls="option_edit"
+               @click="TabChange = 2"
           >
             옵션설정
           </button>
           <div class="option_edit_bind">{{}}연결된 옵션 없음</div>
-          <div class="collapse option_edit_wrap" id="option_edit">
+          <div v-if="TabChange == 2" class="collapse option_edit_wrap" id="option_edit">
             <div class="card card-body">
               <div class="option_edit_add_wrap">
                 <div class="option_edit_add_left">
@@ -204,6 +205,7 @@ export default {
       // shopcode: '',
       cateConnect: false,
       enabled: true,
+      TabChange:0,
       list: [
         {
           name: 'HOT/ICED',
@@ -223,7 +225,7 @@ export default {
         },
       ],
       dragging: false,
-      categoryAdd: false,
+     
       cgData: [],
       menuNumber: '',
       isNull: false,
@@ -305,6 +307,9 @@ export default {
               console.log(err)
             })
       }
+    },
+    TabChage () {
+      
     },
     errorMenuAdd () {
       if (this.pdname == '') {
