@@ -515,55 +515,55 @@ export default {
     deleteBtn:function () {
       var input = document.getElementById("inputDele");
       var inputTwo = document.getElementById("inputDeleTwo");
-        input.value = null;
-        inputTwo.value = null;
-        console.log(this.inputDele)
+          input.value = null;
+          inputTwo.value = null;
+          console.log(this.inputDele)
       },
     deleteBtnTwo:function () {
       var inputThree = document.getElementById("timeHoly");
       var inputFour = document.getElementById("timeHolyT");
-        inputThree.value = null;
-        inputFour.value = null;
-        console.log(this.inputDele)
+          inputThree.value = null;
+          inputFour.value = null;
+          console.log(this.inputDele)
       },
     breakBtn:function () {
       var time = document.getElementById("time_input");
       var timeTwo = document.getElementById("time_inputTwo");
-      var timethree = document.getElementById("date_input");
-      var timefour = document.getElementById("date_inputTwo");
-        time.value = null;
-        timeTwo.value = null;
-        timethree.value = null;
-        timefour.value = null;
-        console.log(this.inputDele)
+      var timeThree = document.getElementById("date_input");
+      var timeFour = document.getElementById("date_inputTwo");
+          time.value = null;
+          timeTwo.value = null;
+          timeThree.value = null;
+          timeFour.value = null;
+          console.log(this.inputDele)
       },
     breakBtnTwo:function () {
       var timeThree = document.getElementById("date_input");
-      var timefour = document.getElementById("date_inputTwo");
-        timeThree.value = null;
-        timefour.value = null;
-        console.log(this.inputDele)
+      var timeFour = document.getElementById("date_inputTwo");
+          timeThree.value = null;
+          timeFour.value = null;
+          console.log(this.inputDele)
       },
     selectDelete:function () {
       var select = document.getElementById("selectDay");
       var selectTwo = document.getElementById("selectDayTwo");
-        select.value = null;
-        selectTwo.value = null;
-        console.log(this.inputDele)
+          select.value = null;
+          selectTwo.value = null;
+          console.log(this.inputDele)
       },
     temporaryDele:function () {
       var temporaryInput = document.getElementById("temporary_input");
       var temporaryInputTwo = document.getElementById("temporary_inputTwo");
-        temporaryInput.value = null;
-        temporaryInputTwo.value = null;
-        console.log(this.inputDele)
+          temporaryInput.value = null;
+          temporaryInputTwo.value = null;
+          console.log(this.inputDele)
       },
     temporaryDeleTwo:function () {
       var temporaryDate = document.getElementById("temporary_date");
       var temporaryDateTwo = document.getElementById("temporary_dateTwo");
-        temporaryDate.value = null;
-        temporaryDateTwo.value = null;
-        console.log(this.inputDele)
+          temporaryDate.value = null;
+          temporaryDateTwo.value = null;
+          console.log(this.inputDele)
       },
     
     changeStat(step) {},

@@ -20,7 +20,7 @@
       <div class="shop_condition">
       <p class="operation_text">◆가게상태</p>
       <div>
-        <form value="0">
+        <form>
         <input 
           type="checkbox" 
           class="oper_shop_btn1" id="oper_shopBtn1"
@@ -135,13 +135,17 @@
       <!--/////매장상태/////-->
       <div class="oper_box1">
         <div class="oper_title">매장상태</div>
-          <div class="oper_condition" v-for="(check,index) in checkedValues" :key="index">
+          <div 
+            class="oper_condition" 
+            v-for="(check,index) in checkedValues" 
+            :key="index"
+            >
             {{ check }}</div>
       </div>  
       </div>    
   </div>
 
-  <!--/////매장상태 모달창/////-->
+<!--/////매장상태 모달창/////-->
 <!-- Modal -->
 <div class="modal fade" id="NoticeModal" tabindex="-1" aria-labelledby="NoticeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -200,6 +204,7 @@ import { reactive } from 'vue'
       textShow:false,
       leftShow:false,
       checkedValues:[],
+      CheckCondition:''
     }
   },
   setup() {
@@ -239,19 +244,27 @@ import { reactive } from 'vue'
       sandParam,
     }
   },
+  props: {
+  },
+
   methods: {
     notice: function(evt) {
       alert('상태를 변경하시겠습니까?')
     },
+    //매장상태 체크박스 클릭시 상태변경
     clickFunc(event) {
       for(let i=0; i<this.checkedValues.length;i++){
         if(this.checkedValues[i] !== event.target.value){
         console.log(this.checkedValues[i])
         this.checkedValues.splice(i,1); 
         confirm('상태를 변경하시겠습니까?')   
-    }
-    }
+    }}
     },
+    conditionEvent(){
+      this.emitter.emit('shopCondition', this.CheckCondition)
+      this.CheckCondition = '';
+      console.log(this.CheckCondition)
+    }
     // isDayCheck () {
     //   this.value = dayCheck;
     //   let dayCheck = ['평일','주말','월','화','수','목','금','토','일',];
