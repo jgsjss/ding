@@ -75,7 +75,7 @@
                     v-model="checked"
                     :value="check[0]"
                     @change="NewCheck()"
-                    id="checkListBox"
+                    id="checkListBox1"
                   />
                   <label class="col-form-label" for="checkbox"> 메뉴편집 </label>
                 </div>
@@ -86,7 +86,7 @@
                     v-model="checked"
                     :value="check[1]"
                     @change="NewCheck()"
-                    id="checkListBox"
+                    id="checkListBox2"
                   />
                   <label class="col-form-label" for="checkbox"> 매출관리 </label>
                 </div>
@@ -97,7 +97,7 @@
                     v-model="checked"
                     :value="check[2]"
                     @change="NewCheck()"
-                    id="checkListBox"
+                    id="checkListBox3"
                   />
                   <label class="col-form-label" for="checkbox"> 직원관리 </label>
                 </div>
@@ -108,7 +108,7 @@
                     v-model="checked"
                     :value="check[3]"
                     @change="NewCheck()"
-                    id="checkListBox"
+                    id="checkListBox4"
                   />
                   <label class="col-form-label" for="checkbox"> 로그확인 </label>
                 </div>
@@ -119,7 +119,7 @@
                     v-model="checked"
                     :value="check[4]"
                     @change="NewCheck()"
-                    id="checkListBox"
+                    id="checkListBox5"
                   />
                   <label class="col-form-label" for="checkbox"> 할인코드 </label>
                 </div>
@@ -178,6 +178,7 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
+                    id="setCheckedBox1"
                     checked
                     v-model="setchecked"
                     :value="setcheck[0]"
@@ -189,6 +190,7 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
+                    id="setCheckedBox2"
                     v-model="setchecked"
                     :value="setcheck[1]"
                     @change="SetCheck()"
@@ -199,6 +201,7 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
+                    id="setCheckedBox3"
                     v-model="setchecked"
                     :value="setcheck[2]"
                     @change="SetCheck()"
@@ -209,6 +212,7 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
+                    id="setCheckedBox4"
                     v-model="setchecked"
                     :value="setcheck[3]"
                     @change="SetCheck()"
@@ -219,6 +223,7 @@
                   <input
                     class="form-check-input"
                     type="checkbox"
+                    id="setCheckedBox5"
                     v-model="setchecked"
                     :value="setcheck[4]"
                     @change="SetCheck()"
@@ -226,9 +231,12 @@
                   <label class="col-form-label" for="gridRadios2"> 할인코드 </label>
                 </div>
               </div>
+             <div style="width:307px; text-align:center">
+              <span class="error_text_box" id="ckbMsg" style aria-live="assertive">필수 입력 정보입니다.</span>
+              </div>              
             </fieldset>
             <div class="staff_clear d-grid">
-              <button type="button" class="btn btn-lg clear_btn">직원삭제</button>
+              <button @click="staffDele()" class="btn btn-lg clear_btn">직원삭제</button>
             </div>
           </form>
         </div>
@@ -323,6 +331,10 @@ export default {
         return false;
       }
     },
+    //직원설정 직원삭제 클릭
+    staffDele(){
+      confirm('삭제하시겠습니까?')
+    },
     //직원추가 이름 유효성
     errorCh() {
       //직원이름
@@ -413,13 +425,15 @@ export default {
       } else {
         this.ListChecked = false;
       }
-        let chb = document.getElementById('checkListBox').value;
-        console.log(this.ListChecked)
-        if (chb == '') {
+      //직원추가 권한설정 체크박스 유효성
+        let chb = document.getElementById('checkListBox1','checkListBox2','checkListBox3','checkListBox4','checkListBox5').value;
+        console.log(this.checked)
+        if (!chb) {
           document.getElementById('chbMsg').style.display = "block";
+          console.log(this.chbMsg)
         } else if (chb != '') {
           document.getElementById('chbMsg').style.display = "none"
-        } else if (chb != null) {
+        } else if (chb != '') {
           document.getElementById('chbMsg').style.display = "block"
         }
     },
@@ -431,7 +445,17 @@ export default {
       } else {
         this.setListChecked = false;
       }
-
+      //직원설정 권한설정 체크박스 유효성
+        let ckb = document.getElementById('setCheckedBox1','setCheckedBox2','setCheckedBox3','setCheckedBox4','setCheckedBox5').value;
+        console.log(this.setchecked)
+        if (!ckb) {
+          document.getElementById('ckbMsg').style.display = "block";
+          console.log(this.ckbMsg)
+        } else if (ckb != '') {
+          document.getElementById('ckbMsg').style.display = "none"
+        } else if (!ckb) {
+          document.getElementById('ckbMsg').style.display = "block"
+        }
     },
     //직원추가 input 공백체크
     login() {
