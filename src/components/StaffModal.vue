@@ -468,6 +468,7 @@ export default {
       if (this.isBlank(this.pw)) {
         this.pwError = true;
       }
+      confirm('직원을 추가하시겠습니까?')
     },
     isBlank(val) {
       if (val === undefined) return true;
