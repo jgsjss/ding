@@ -259,29 +259,29 @@ export default {
   methods: {
     //결제금액 퍼센트할인 라디오 클릭
     radioClick(){
-      let input = document.querySelector(".proceeding_percentCount_radioTwo");
-      let button = document.querySelector(".proceeding_percentCount_inputTwo");
-      button.disabled = true;
-      input.addEventListener("change", stateHandle);
+      let radio = document.querySelector(".proceeding_percentCount_radioTwo");
+      let input = document.querySelector(".proceeding_percentCount_inputTwo");
+      input.disabled = true;
+      radio.addEventListener("change", stateHandle);
       function stateHandle() {
         if (document.querySelector(".proceeding_percentCount_radioTwo").value === "") {
-          button.disabled = true; 
+          input.disabled = true; 
         } else if (document.querySelector(".proceeding_percentCount_inputTwo").value === "") {
-          button.disabled = false;
+          input.disabled = false;
         }
       }
     },
     //결제금액 금액할인 라디오 클릭
     radioClickTwo(){
-      let inputTwo = document.querySelector(".proceeding_percentCount_radio");
-      let buttonTwo = document.querySelector(".proceeding_percentCount_input");
-      buttonTwo.disabled = true;
-      inputTwo.addEventListener("change", stateHandleTwo);
+      let radioTwo = document.querySelector(".proceeding_percentCount_radio");
+      let inputTwo = document.querySelector(".proceeding_percentCount_input");
+      inputTwo.disabled = true;
+      radioTwo.addEventListener("change", stateHandleTwo);
       function stateHandleTwo() {
         if (document.querySelector(".proceeding_percentCount_radioTwo").value === "") {
-          buttonTwo.disabled = true; 
+          inputTwo.disabled = true; 
         } else if (document.querySelector(".proceeding_percentCount_inputTwo").value === "") {
-          buttonTwo.disabled = false;
+          inputTwo.disabled = false;
         }
       }
     },
@@ -358,7 +358,7 @@ export default {
       console.log(dc);
       if (dc == "") {
         document.getElementById("dcNameMsg").style.display = "block";
-      } else if (dc != "") {
+      } else if (dc != '') {
         document.getElementById("dcNameMsg").style.display = "none";
       }
     },
@@ -378,7 +378,7 @@ export default {
       console.log(cN);
       if (cN == "") {
         document.getElementById("cNumberMsg").style.display = "block";
-      } else if (cN != "") {
+      } else if (cN != 'disabled') {
         document.getElementById("cNumberMsg").style.display = "none";
       }
     },
