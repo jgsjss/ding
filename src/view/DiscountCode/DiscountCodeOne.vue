@@ -338,20 +338,6 @@ export default {
     priceNumber(event) {
       this.pNumber = event.target.value;
     },
-    // checkForm(e) {
-    //   e.preventDefault()
-    //   this.errors = [];
-    //   if (!this.codeName) {
-    //     this.errors.push("코드입력은 필수입니다.");
-    //   }
-    //   // if (!this.email) {
-    //   //   this.errors.push("이메일은 필수입니다.");
-    //   // } else if (!this.validEmail(this.email)) {
-    //   //   this.errors.push("이메일 형식을 확인하세요.");
-    //   // }
-    //   if (!this.errors.length) return true;
-    // },
-
     //input 공백 메세지
     isDcMsg() {
       let dc = document.getElementById("dcName").value;
