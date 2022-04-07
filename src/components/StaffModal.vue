@@ -472,7 +472,7 @@ export default {
     },
     isBlank(val) {
       if (val === undefined) return true;
-      else if (val === null) return true;
+      else if (val === null) return true; 
       else if (val === "") return true;
       else return false;
     },

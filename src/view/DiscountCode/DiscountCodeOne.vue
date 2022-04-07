@@ -32,7 +32,7 @@
             name="xlsx"
             id="fileXlsx"
             ref="xlsx"
-            @change="isXlsx(xlsx)"
+            @change="isXlsx(Xlsx)"
             @focus="xlsxCheck = false"
           />
           <span class="error_xlsx_box" id="xsCheck" style-aria-live="assertive">파일을 첨부해주세요.</span>
@@ -85,11 +85,16 @@
           <p id="dcNameMsg" style aria-live="assertive" class="subError02">할인코드 명을 입력해주세요.</p>
           <label for="" class="proceeding_modal_label"
             >할인항목
-            <input type="radio" name="proceeding_modal_radio_discount"/>
+            <input 
+              type="radio" 
+              name="proceeding_modal_radio_discount"
+              class=" proceeding_percentCount_radio"
+              @click="radioClick()"
+              />
             &nbsp결제금액&nbsp
             <input
               type="text"
-              class="proceeding_modal_small_input"
+              class="proceeding_modal_small_input proceeding_percentCount_input"
               placeholder="퍼센트할인"
               maxlength="5"
               @input="countNumber"
@@ -104,12 +109,14 @@
           <label for="" class="proceeding_modal_label">
             <input 
               type="radio" 
-              name="proceeding_modal_radio_discount" 
+              name="proceeding_modal_radio_discount"
+              class="proceeding_percentCount_radioTwo"
+              @click="radioClickTwo()"
               />
               &nbsp결제금액&nbsp
             <input
               type="text"
-              class="proceeding_modal_small_input"
+              class="proceeding_modal_small_input proceeding_percentCount_inputTwo"
               placeholder="금액할인"
               maxlength="5"
               @input="priceNumber"
@@ -225,13 +232,20 @@ export default {
   },
   data() {
     return {
+      //할인코드 추가 열림/닫힘
       discountOpen: false,
+      //할인코드 정보
       DiscountCodeInfo: false,
       date: "",
+      //체크박스
       proceedingAllChecked: false,
+      //할인코드
       dcNumber: "",
+      //할인항목 퍼센트할인
       cNumber: "",
+      //할인항목 금액할인
       pNumber: "",
+      //할인코드명
       dcName:"",
       error: [],
       codeName: null,
@@ -243,27 +257,60 @@ export default {
     };
   },
   methods: {
+    //결제금액 퍼센트할인 라디오 클릭
+    radioClick(){
+      let input = document.querySelector(".proceeding_percentCount_radioTwo");
+      let button = document.querySelector(".proceeding_percentCount_inputTwo");
+      button.disabled = true;
+      input.addEventListener("change", stateHandle);
+      function stateHandle() {
+        if (document.querySelector(".proceeding_percentCount_radioTwo").value === "") {
+          button.disabled = true; 
+        } else if (document.querySelector(".proceeding_percentCount_inputTwo").value === "") {
+          button.disabled = false;
+        }
+      }
+    },
+    //결제금액 금액할인 라디오 클릭
+    radioClickTwo(){
+      let inputTwo = document.querySelector(".proceeding_percentCount_radio");
+      let buttonTwo = document.querySelector(".proceeding_percentCount_input");
+      buttonTwo.disabled = true;
+      inputTwo.addEventListener("change", stateHandleTwo);
+      function stateHandleTwo() {
+        if (document.querySelector(".proceeding_percentCount_radioTwo").value === "") {
+          buttonTwo.disabled = true; 
+        } else if (document.querySelector(".proceeding_percentCount_inputTwo").value === "") {
+          buttonTwo.disabled = false;
+        }
+      }
+    },
     //코드 종료 클릭시 경고창
     buttonEnd:function(event) {
       if(!window.confirm("정말 종료하시겠습니까?")) {
         event.preventDefault();
-        
       }
     },
+    //엑셀파일
     importExcel(event) {
       const file = event.target.files[0];
       let reader = new FileReader();
+      let tmpResult = {};
       reader.onload = (e) => {
         let data = reader.result;
         // let data = e.target.result;
         let workbook = XLSX.read(data, { type: "binary" });
         workbook.SheetNames.forEach((sheetName) => {
+          console.log(workbook.Sheets[sheetName])
           const roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
           this.items.push(roa);
         });
+        console.log(tmpResult)
+        this.excelJsonData=tmpResult;
       };
       reader.readAsBinaryString(file);
     },
+    //체크박스
     proceedingCheckedAll(checked) {
       this.proceedSelected = checked
     },
@@ -277,12 +324,17 @@ export default {
         }
       }
     },
+    //체크박스 끝
+
+    //할인코드 값
     bindNumber(event) {
       this.dcNumber = event.target.value;
     },
+    //할인항목 퍼센트할인
     countNumber(event) {
       this.cNumber = event.target.value;
     },
+    //할인항목 금액할인
     priceNumber(event) {
       this.pNumber = event.target.value;
     },
@@ -299,6 +351,7 @@ export default {
     //   // }
     //   if (!this.errors.length) return true;
     // },
+
     //input 공백 메세지
     isDcMsg() {
       let dc = document.getElementById("dcName").value;
@@ -309,6 +362,7 @@ export default {
         document.getElementById("dcNameMsg").style.display = "none";
       }
     },
+    //할인코드 유효성검사
     isDcNumber() {
       let dcN = document.getElementById("dcNumber").value;
       console.log(dcN);
@@ -318,6 +372,7 @@ export default {
         document.getElementById("dcNumberMsg").style.display = "none";
       }
     },
+    //할인항목 퍼센트할인 유효성검사
     iscNumber() {
       let cN = document.getElementById("cNumber").value;
       console.log(cN);
@@ -327,6 +382,7 @@ export default {
         document.getElementById("cNumberMsg").style.display = "none";
       }
     },
+    //할인항목 금액할인 유효성검사
     ispNumber() {
       let dcP = document.getElementById("pNumber").value;
       console.log(dcP);
@@ -336,6 +392,7 @@ export default {
         document.getElementById("pNumberMsg").style.display = "none";
       }
     },
+    //엑셀파일 유효성검사
     isXlsx() {
       let xlsx = document.getElementById("fileXlsx").value;
       console.log(xlsx);
@@ -366,7 +423,7 @@ export default {
       else if (val === "") return true;
       else return false;
     },
-    //엑셀파일
+    //엑셀파일 지원파일형식 및 유효성검사
     fileAdd() {
       var xlsxCheck = document.getElementById("fileXlsx").value;
       let xlsxVal = this.$ref["xlsx"].value;
@@ -383,6 +440,15 @@ export default {
         return false;
       }
     },
+    //     radioClick() {
+    //   let rc = document.getElementById("cNumber").value;
+    //   console.log(rc);
+    //   if (dc == disa) {
+    //     document.getElementById("dcNameMsg").style.display = "block";
+    //   } else if (dc != "") {
+    //     document.getElementById("dcNameMsg").style.display = "none";
+    //   }
+    // },
   },
   watch: {
     code(val) {
