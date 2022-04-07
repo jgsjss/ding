@@ -75,6 +75,7 @@
                     v-model="checked"
                     :value="check[0]"
                     @change="NewCheck()"
+                    id="checkListBox"
                   />
                   <label class="col-form-label" for="checkbox"> 메뉴편집 </label>
                 </div>
@@ -85,6 +86,7 @@
                     v-model="checked"
                     :value="check[1]"
                     @change="NewCheck()"
+                    id="checkListBox"
                   />
                   <label class="col-form-label" for="checkbox"> 매출관리 </label>
                 </div>
@@ -95,6 +97,7 @@
                     v-model="checked"
                     :value="check[2]"
                     @change="NewCheck()"
+                    id="checkListBox"
                   />
                   <label class="col-form-label" for="checkbox"> 직원관리 </label>
                 </div>
@@ -105,6 +108,7 @@
                     v-model="checked"
                     :value="check[3]"
                     @change="NewCheck()"
+                    id="checkListBox"
                   />
                   <label class="col-form-label" for="checkbox"> 로그확인 </label>
                 </div>
@@ -115,15 +119,18 @@
                     v-model="checked"
                     :value="check[4]"
                     @change="NewCheck()"
+                    id="checkListBox"
                   />
                   <label class="col-form-label" for="checkbox"> 할인코드 </label>
                 </div>
               </div>
+              <div style="width:307px; text-align:center">
+              <span class="error_text_box" id="chbMsg" style aria-live="assertive">필수 입력 정보입니다.</span>
+              </div>
             </fieldset>
           </form>
         </div>
-
-        <div class="modal-footer">
+<div class="modal-footer">
           <button type="button" class="btn btn-secondary">취소</button>
           <button type="submit" class="btn btn-primary" @click="login()">등록</button>
         </div>
@@ -406,8 +413,15 @@ export default {
       } else {
         this.ListChecked = false;
       }
-            let chb = document.getElementById('').value;
-      console.log(this.ListChecked)
+        let chb = document.getElementById('checkListBox').value;
+        console.log(this.ListChecked)
+        if (chb == '') {
+          document.getElementById('chbMsg').style.display = "block";
+        } else if (chb != '') {
+          document.getElementById('chbMsg').style.display = "none"
+        } else if (chb != null) {
+          document.getElementById('chbMsg').style.display = "block"
+        }
     },
     //직원설정 권한설정 @change
     SetCheck: function () {
