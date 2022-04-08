@@ -85,12 +85,12 @@
           <p id="dcNameMsg" style aria-live="assertive" class="subError02">할인코드 명을 입력해주세요.</p>
           <label for="" class="proceeding_modal_label"
             >할인항목
-            <input 
-              type="radio" 
+            <input
+              type="radio"
               name="proceeding_modal_radio_discount"
-              class=" proceeding_percentCount_radio"
+              class="proceeding_percentCount_radio"
               @click="radioClick()"
-              />
+            />
             &nbsp결제금액&nbsp
             <input
               type="text"
@@ -107,13 +107,13 @@
           </label>
           <p id="cNumberMsg" style aria-live="assertive" class="subError02">할인 %를 입력해주세요.</p>
           <label for="" class="proceeding_modal_label">
-            <input 
-              type="radio" 
+            <input
+              type="radio"
               name="proceeding_modal_radio_discount"
               class="proceeding_percentCount_radioTwo"
               @click="radioClickTwo()"
-              />
-              &nbsp결제금액&nbsp
+            />
+            &nbsp결제금액&nbsp
             <input
               type="text"
               class="proceeding_modal_small_input proceeding_percentCount_inputTwo"
@@ -128,8 +128,7 @@
           </label>
           <p id="pNumberMsg" style aria-live="assertive" class="subError02">할인 금액을 입력해주세요.</p>
           <label for="" class="proceeding_modal_label"
-            >사용가능횟수 
-            <input type="radio" name="proceeding_modal_radio" />&nbsp다회(제한없음)
+            >사용가능횟수 <input type="radio" name="proceeding_modal_radio" />&nbsp다회(제한없음)
             <input type="radio" name="proceeding_modal_radio" />&nbsp1회 (코드당 1번)
           </label>
           <label for="" class="proceeding_modal_label"
@@ -193,14 +192,7 @@
             <td class="proceeding_data">{{ $store.state.DiscountCodeData[i].count }}</td>
             <td class="proceeding_data">{{ $store.state.DiscountCodeData[i].validity }}</td>
             <td class="proceeding_data">
-              <button 
-                type="button" 
-                class="proceeding_end_btn" 
-                value="hidden"
-                @click="buttonEnd"
-                >
-                종료
-                </button>
+              <button type="button" class="proceeding_end_btn" value="hidden" @click="buttonEnd">종료</button>
             </td>
           </tr>
         </tbody>
@@ -246,7 +238,7 @@ export default {
       //할인항목 금액할인
       pNumber: "",
       //할인코드명
-      dcName:"",
+      dcName: "",
       error: [],
       codeName: null,
       //항목 공백 체크
@@ -258,36 +250,36 @@ export default {
   },
   methods: {
     //결제금액 퍼센트할인 라디오 클릭
-    radioClick(){
-      let radio = document.querySelector(".proceeding_percentCount_radioTwo");
-      let input = document.querySelector(".proceeding_percentCount_inputTwo");
+    radioClickTwo() {
+      let radio = document.querySelector(".proceeding_percentCount_radio");
+      let input = document.querySelector(".proceeding_percentCount_input");
       input.disabled = true;
       radio.addEventListener("change", stateHandle);
       function stateHandle() {
         if (document.querySelector(".proceeding_percentCount_radioTwo").value === "") {
-          input.disabled = true; 
-        } else if (document.querySelector(".proceeding_percentCount_inputTwo").value === "") {
+          input.disabled = true;
+        } else if (document.querySelector(".proceeding_percentCount_input").value === "") {
           input.disabled = false;
         }
       }
     },
     //결제금액 금액할인 라디오 클릭
-    radioClickTwo(){
-      let radioTwo = document.querySelector(".proceeding_percentCount_radio");
-      let inputTwo = document.querySelector(".proceeding_percentCount_input");
+    radioClick() {
+      let radioTwo = document.querySelector(".proceeding_percentCount_radioTwo");
+      let inputTwo = document.querySelector(".proceeding_percentCount_inputTwo");
       inputTwo.disabled = true;
       radioTwo.addEventListener("change", stateHandleTwo);
       function stateHandleTwo() {
-        if (document.querySelector(".proceeding_percentCount_radioTwo").value === "") {
-          inputTwo.disabled = true; 
-        } else if (document.querySelector(".proceeding_percentCount_inputTwo").value === "") {
+        if (document.querySelector(".proceeding_percentCount_radio").value === "") {
+          inputTwo.disabled = true;
+        } else if (document.querySelector(".proceeding_percentCount_inputTwo").value ===  "") {
           inputTwo.disabled = false;
         }
       }
     },
     //코드 종료 클릭시 경고창
-    buttonEnd:function(event) {
-      if(!window.confirm("정말 종료하시겠습니까?")) {
+    buttonEnd: function (event) {
+      if (!window.confirm("정말 종료하시겠습니까?")) {
         event.preventDefault();
       }
     },
@@ -301,26 +293,26 @@ export default {
         // let data = e.target.result;
         let workbook = XLSX.read(data, { type: "binary" });
         workbook.SheetNames.forEach((sheetName) => {
-          console.log(workbook.Sheets[sheetName])
+          console.log(workbook.Sheets[sheetName]);
           const roa = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
           this.items.push(roa);
         });
-        console.log(tmpResult)
-        this.excelJsonData=tmpResult;
+        console.log(tmpResult);
+        this.excelJsonData = tmpResult;
       };
       reader.readAsBinaryString(file);
     },
     //체크박스
     proceedingCheckedAll(checked) {
-      this.proceedSelected = checked
+      this.proceedSelected = checked;
     },
     proceedSelected() {
       for (let i in this.boardList) {
         if (!this.boardList[i].proceedSelected) {
-          this.proceedingAllChecked = false
-          return
+          this.proceedingAllChecked = false;
+          return;
         } else {
-          this.proceedingAllChecked = true
+          this.proceedingAllChecked = true;
         }
       }
     },
@@ -344,7 +336,7 @@ export default {
       console.log(dc);
       if (dc == "") {
         document.getElementById("dcNameMsg").style.display = "block";
-      } else if (dc != '') {
+      } else if (dc != "") {
         document.getElementById("dcNameMsg").style.display = "none";
       }
     },
@@ -361,10 +353,12 @@ export default {
     //할인항목 퍼센트할인 유효성검사
     iscNumber() {
       let cN = document.getElementById("cNumber").value;
+      let cNr = document.querySelector(".proceeding_percentCount_radio").value;
       console.log(cN);
+      console.log(cNr);
       if (cN == "") {
         document.getElementById("cNumberMsg").style.display = "block";
-      } else if (cN != 'disabled') {
+      } else if (cN != "disabled") {
         document.getElementById("cNumberMsg").style.display = "none";
       }
     },
@@ -413,9 +407,9 @@ export default {
     fileAdd() {
       var xlsxCheck = document.getElementById("fileXlsx").value;
       let xlsxVal = this.$ref["xlsx"].value;
-      xlsxVal = xlsxVal.slice(xlsxVal.indexOf('.') +1).toLowercase()
-      console.log(xlsxVal)
-      console.log(xlsxCheck)
+      xlsxVal = xlsxVal.slice(xlsxVal.indexOf(".") + 1).toLowercase();
+      console.log(xlsxVal);
+      console.log(xlsxCheck);
       if (xlsxCheck == "" || xlsxCheck == null) {
         document.getElementById("xsCheck").style.display = "block";
       } else if (xlsxCheck != "") {
