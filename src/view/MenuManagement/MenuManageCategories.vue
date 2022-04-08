@@ -350,12 +350,14 @@ export default {
       this.pageNum += 1
       this.getCategories(this.pageNum)
       this.selectedChkBox = []
-      this.toggle = !this.toggle
+      this.toggle = false;
     },
     prevPage() {
       this.pageNum -= 1
       console.log(this.pageNum)
       this.getCategories(this.pageNum)
+      this.selectedChkBox = []
+      this.toggle = false;
     },
     getSelected() {
       let boardIds = []
