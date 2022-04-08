@@ -349,6 +349,8 @@ export default {
     nextPage() {
       this.pageNum += 1
       this.getCategories(this.pageNum)
+      this.selectedChkBox = []
+      this.toggle = !this.toggle
     },
     prevPage() {
       this.pageNum -= 1
