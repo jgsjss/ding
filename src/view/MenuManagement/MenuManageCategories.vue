@@ -1,4 +1,4 @@
-<template>시그니처
+<template>
   <!-- 메뉴관리 페이지의 카테고리편집 게시판 페이지 -->
   <div class="cate_container">
 
