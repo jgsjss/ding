@@ -11,7 +11,6 @@
             class="month_date"
             name = "bdaymonth"
             value="2022-03"
-            autofocus
             >
         </div>
         <div class="month_list_wrap">
@@ -94,6 +93,17 @@ export default {
       totalMenu:0,
     }
   },
+    beforeCreate() {
+    console.log("beforeCreate")
+  },
+    created () {
+    this.calcTotalPrice(this.$store.state.SalesData)
+    this.TotalMenuOrder(this.$store.state.SalesData)
+    this.TotalMenuNum(this.$store.state.SalesData)
+    console.log("created")
+
+				
+  },
   methods: {
     nextPage () {
       this.pageNum += 1
@@ -122,41 +132,52 @@ export default {
         this.totalOrder = sum
         // console.log(sum)
       },
-      TotalMenuNum (object) {
-        let sum = 0
-        _.forEach(_.map(object, 'content'), function(val, key) {
-          
-          sum += +1
-        })
+      TotalMenuNum (string) {
+        const sum = sum => +(sum.replace(/[^0-9]/gi,''))
+        return sum
+        console.log('sum')
+        // let sum = 0
+        // _.forEach(_.map(object, 'content'), function(val, key) {
+        //   const sum = val => +(val.replace(/[^0-9]/gi,''));
+        //   return sum         
+        // })
         this.totalMenu = sum
+        console.log(sum)
       }, 
-      onlyNumber: function (str) {
-        let answer;
-        str = str.replace(/[^0-9]/g, '');
-        answer = parseInt(str);
-        return answer;
-      },
+      //  onlyNumber (str) {
+      //    let sum;
+      //    _.forEach(_.map(str, 'content'), function(val, key) {
+      //    str = str.replace(/[^0-9]/g, '');
+      //    sum = parseInt(str);
+      //    return sum;
+      //    })
+      //  },
 
-      sortSalesLatest() {
-        this.$SalesData.sort(function(a, b) {
-          return b.time - a.time;
-        });
-      },
-      sortSalesOldest() {
-        this.$SalesData.sort(function(a, b) {
-          return a.time - b.time;
-        });
-      },
-      sortAllItem(selectedSort) {
-        if (selectedSort.value === "date-desc") {
-          this.sortSalesLatest();
-        } else if (selectedSort.value === "date-asc") {
-          this.sortSalesOldest();
-        }
-      }
+      // sortSalesLatest() {
+      //   this.$SalesData.sort(function(a, b) {
+      //     return b.time - a.time;
+      //   });
+      // },
+      // sortSalesOldest() {
+      //   this.$SalesData.sort(function(a, b) {
+      //     return a.time - b.time;
+      //   });
+      // },
+      // sortAllItem(selectedSort) {
+      //   if (selectedSort.value === "date-desc") {
+      //     this.sortSalesLatest();
+      //   } else if (selectedSort.value === "date-asc") {
+      //     this.sortSalesOldest();
+      //   }
+      // }
       // sortSales() {
       //   this.
       // }
+  },
+  watch:{
+  TotalMenuNum(){
+    return this.totalMenu = this.totalMenu.replace(/[^0-9]/gi,'');
+  }
   },
   setup () {
     const month = ref({
@@ -172,13 +193,10 @@ export default {
       return Math.ceil(this.$store.state.SalesData.length / 10)
     },
   },
-  created () {
-    this.calcTotalPrice(this.$store.state.SalesData)
-    this.TotalMenuOrder(this.$store.state.SalesData)
-    this.TotalMenuNum(this.$store.state.SalesData)
-  },
+
   //돔 로드시 자동 최신순정렬//
     mounted() {
+      console.log("mounted")
     // this.sortSalesLatest();
   },
 
