@@ -1,4 +1,4 @@
-<template>
+<template>시그니처
   <!-- 메뉴관리 페이지의 카테고리편집 게시판 페이지 -->
   <div class="cate_container">
 
@@ -16,10 +16,10 @@
           <button type="button" class="cate_check_btn" @click="deleteProducts"> 삭제</button>
         </label>
         <label class="cate_label">
-          <button type="button" class="cate_check_btn"> 정상</button>
+          <button type="button" class="cate_check_btn" @click="chooseStatus(1)"> 정상</button>
         </label>
         <label class="cate_label">
-          <button type="button" class="cate_check_btn"> 숨김</button>
+          <button type="button" class="cate_check_btn" @click="chooseStatus(2)"> 숨김</button>
         </label>
       </div>
       <div class="category_right">
@@ -35,7 +35,7 @@
                 aria-controls="categoryadd" @click="roleCheck">+카테고리추가
         </button>
         <!--카테고리 추가,상세 오프캔버스-->
-        <div class="offcanvas offcanvas-start"  tabindex="-1" id="categoryadd"
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="categoryadd"
              aria-labelledby="categoryaddLabel">
           <h4 class="category_add_title" id="categoryaddLabel">카테고리 추가</h4>
           <!--카테고리 추가-->
@@ -119,6 +119,7 @@
           <td scope="row" class="cate_check_box">
             <input type="checkbox"
                    @click="selectChk"
+                   @change="notcheckedall"
                    id="a.pdnum"
                    v-model="selectedChkBox[i]"
 
@@ -127,7 +128,7 @@
             <!--            value="a.pdnum"-->
             <!--            <span>pd 넘버{{a.pdnum}}</span>-->
           </td>
-          cglength: {{cgData.length}}
+          <!--          cglength: {{cgData.length}}-->
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
           <td class="cate_data">{{ cgData[i].pdcategory }}</td>
           <td class="cate_data col-7" title="마우스">{{ cgData[i].pdname }}</td>
@@ -138,10 +139,10 @@
             </td>
           </router-link>
           <td class="cate_data">
-            <select class="cate_condition">
+            <select class="cate_condition" v-model="conditionkey[i]">
               <option class="cate_condition_text">상태설정</option>
               <option class="cate_condition_text">숨김</option>
-              <option class="cate_condition_text">정상상태</option>
+              <option class="cate_condition_text">정상</option>
             </select>
             <!-- <button type="button" class="cate_connect_btn">숨김(OFF)
               </button> -->
@@ -195,43 +196,83 @@ export default {
       selected: [],
       selectedChkBox: [],
       toggle: false,
-      computeSelectedChkBox: null
+      computeSelectedChkBox: null,
+      conditionkey: [],
     }
   },
   components: {},
   methods: {
+    chooseStatus(choose) {
+      let statList = [];
+      _.filter(this.selectedChkBox, (val, i) => {
+        if (val) {
+          let pdnums = this.cgData[i].pdnum
+          statList.push(pdnums)
+          console.log("pdnums", pdnums)
+        }
+      })
+      console.log("status list : ", statList)
+      axios.post("/apimenu/choosestatus", {
+        data: {
+          choose: choose,
+          statuslist: statList
+        }
+      }).then(res => {
+        if (res.data == 1) {
+          this.$swal.fire({
+            icon: "success",
+            title: "상태 정상화",
+            text: "선택하신 메뉴가 정상화 되었습니다.",
+            showConfirmButton: false,
+            timer: 3000
+          })
+          this.$router.go()
+        } else if (res.data == 2) {
+          this.$swal.fire({
+            icon: "success",
+            title: "상태 숨김",
+            text: "선택하신 메뉴가 숨김처리 되었습니다.",
+            showConfirmButton: false,
+            timer: 3000
+          })
+          this.$router.go()
+        }
+      }).catch(err => {
+        if (err) console.log(err)
+      })
+    },
+
     deleteProducts() {
       let deleteList = [];
       _.filter(this.selectedChkBox, (val, i) => {
         if (val) {
           let pdnums = this.cgData[i].pdnum
           deleteList.push(pdnums)
-          console.log("pdnums",pdnums)
+          console.log("pdnums", pdnums)
         }
       })
       console.log("delete List : ", deleteList)
-    axios.post("/apimenu/deleteProducts", {
-        data:{
-          deletelist : deleteList
+      axios.post("/apimenu/deleteProducts", {
+        data: {
+          deletelist: deleteList
         }
-    }).then(res=>{
+      }).then(res => {
         console.log(res)
-      if(res.data == 1){
-        this.$swal.fire({
-          icon: 'success',
-          title: '삭제 완료!',
-          text: '선택하신 메뉴가 삭제되었습니다.',
-          showConfirmButton: false,
-          timer: 2000
-        })
-        location.reload()
-      }
-    }).catch(err=>{
-      console.log(err)
-    })
+        if (res.data == 1) {
+          this.$swal.fire({
+            icon: 'success',
+            title: '삭제 완료!',
+            text: '선택하신 메뉴가 삭제되었습니다.',
+            showConfirmButton: false,
+            timer: 3000
+          })
+          this.$router.go()
+        }
+      }).catch(err => {
+        console.log(err)
+      })
     },
     toggleAll() {
-      this.selectedChkBox=[];
       if (this.toggle) {
         for (let i = 0; i < this.cgData.length; i++) {
           this.selectedChkBox[i] = false;
@@ -241,9 +282,11 @@ export default {
           this.selectedChkBox[i] = true;
         }
       }
-
       this.toggle = !this.toggle
       console.log(this.toggle)
+    },
+    notToggleAll(){
+
     },
     test() {
       console.log("this.selectedChkBox : ", this.selectedChkBox)
@@ -256,9 +299,13 @@ export default {
     },
     //카테고리추가 숨김, 해제 체크
     statusCheck() {
-      let selected = document.querySelector('input[name=\'category_radio\']:checked').value
-      this.status = selected
-      console.log(this.status)
+      for (let i = 0; i < this.cgData.length; i++) {
+        if (this.cgData[i].status == "0") {
+          this.conditionkey[i] = "정상"
+        } else {
+          this.conditionkey[i] = "숨김"
+        }
+      }
     },
     //권한체크
     // roleCheck() {
@@ -302,14 +349,14 @@ export default {
     nextPage() {
       this.pageNum += 1
       this.getCategories(this.pageNum)
+      this.selectedChkBox = []
+      this.toggle = !this.toggle
     },
     prevPage() {
       this.pageNum -= 1
       console.log(this.pageNum)
       this.getCategories(this.pageNum)
     },
-
-
     getSelected() {
       let boardIds = []
       for (let i in this.cgData) {
@@ -332,7 +379,7 @@ export default {
         //게시물 정보들
         this.cgData = res.data.rows
         // this.totalPage = this.cgData.length
-
+        this.statusCheck()
         console.log('cgData: ', this.cgData)
 
         return res.data
@@ -411,22 +458,41 @@ export default {
     shopcode() {
       return store.getters['loginStore/getShopcode']
     },
-    selectChk: function () {
-      if (this.toggle) {
-
+    notcheckedall() {
+      let sechbox = this.selectedChkBox
+      let length = this.selectedChkBox.length
+      for (let i = 0; i < length; i++) {
+        if (sechbox[i] == false) {
+          this.toggle = false;
+          console.log("toggle : ", this.toggle)
+          return;
+        }else if(sechbox[i] == true){
+          for(let j = 0; j < length; j++){
+            if(!sechbox[i]){
+              this.toggle = false;
+              return;
+            }else {
+              this.toggle = true;
+            }
+          }
+        }
       }
-    }
+      return;
 
+      // if (sechbox[i] == false) {
+      //   this.toggle = false;
+      //   console.log("toggle : ", this.toggle)
+      //   return;
+      // }else if(sechbox[length-1] == true){
+      //   console.log("toggle : ", this.toggle)
+      //   this.toggle = true;
+      // }
+    },
   },
   beforeMount() {
-
     this.getCategories(1)
 
-
     // console.log(this.cgData)
-  },
-  setup() {
-
   },
   updated() {
     // this.menuCnt(this.cgData)

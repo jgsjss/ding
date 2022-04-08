@@ -144,12 +144,18 @@ export default {
       pageCount: 10,
       currentPage: 1,
       pageNum: 1,
-      totalPage: Number
+      totalPage: Number,
     }
   },
   methods: {
     dummy10(){
-      axios.get("/apimenu/dummy10")
+      axios.get("/apimenu/dummy10",
+          //{
+      //   data:{
+      //     "shopCode" : this.shopcode
+      //   }
+      // }
+            )
         .then(res => {
           console.log(res.data)
         })
@@ -293,6 +299,7 @@ export default {
   },
   beforeMount () {
     this.getMenu(1)
+    // console.log("shopcode:  ",this.shopcode)
   }
 }
 </script>

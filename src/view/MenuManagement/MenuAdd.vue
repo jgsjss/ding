@@ -50,10 +50,10 @@
             <div class="menuadd_img_add_btn_wrap"></div>
           </div>
           <label class="form-label">메뉴공개&nbsp
-            <input type="radio" name="menu_add_radio" class="menuadd_radio" checked>&nbsp공개
+            <input type="radio" name="menu_add_radio" class="menuadd_radio" value="0" v-model="checked"  checked>&nbsp공개
           </label>
           <label class="form-label"
-          >&nbsp <input type="radio" name="menu_add_radio" class="menuadd_radio"/>&nbsp숨김 (딩동오더에 노출 안됨)
+          >&nbsp <input type="radio" name="menu_add_radio" v-model="checked" value="1" class="menuadd_radio"/>&nbsp숨김 (딩동오더에 노출 안됨)
           </label>
         </form>
       </div>
@@ -229,9 +229,14 @@ export default {
       cgData: [],
       menuNumber: '',
       isNull: false,
+      conditions : "",
+      checked : ""
     }
   },
   methods: {
+    statuschk(){
+
+    },
     isEmpty (data) {
       if (data == '' || data == null || data == undefined) {
         return true
@@ -349,6 +354,7 @@ export default {
                 shopcode: this.shopcode,
                 userid: this.userid,
                 pdimage: this.shopcode + "_" + pdname + ".png",
+                status : this.checked
               },
             })
             .then((res) => {
@@ -430,6 +436,9 @@ export default {
       //...만 입력하게 될 경우 체크
       if (isNaN(parseFloat(val))) this.menuNumber = ''
     },
+    checked(){
+      console.log(this.checked)
+    }
   },
   computed: {
     shopcode () {
