@@ -136,11 +136,11 @@ export default {
         const sum = sum => +(sum.replace(/[^0-9]/gi,''))
         return sum
         console.log('sum')
-        // let sum = 0
-        // _.forEach(_.map(object, 'content'), function(val, key) {
-        //   const sum = val => +(val.replace(/[^0-9]/gi,''));
-        //   return sum         
-        // })
+        let sum = 0
+        _.forEach(_.map(object, 'content'), function(val, key) {
+          const sum = val => +(val.replace(/[^0-9]/gi,''));
+          return sum         
+        })
         this.totalMenu = sum
         console.log(sum)
       }, 
