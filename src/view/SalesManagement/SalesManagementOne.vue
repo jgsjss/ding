@@ -132,17 +132,17 @@ export default {
         this.totalOrder = sum
         // console.log(sum)
       },
-      TotalMenuNum (string) {
-        const sum = sum => +(sum.replace(/[^0-9]/gi,''))
-        return sum
-        console.log('sum')
+      TotalMenuNum (object) {
         let sum = 0
-        _.forEach(_.map(object, 'content'), function(val, key) {
-          const sum = val => +(val.replace(/[^0-9]/gi,''));
-          return sum         
-        })
+        this.totalMenu = _.sumBy(object, 'content'), function(val, key) {
+          const sum = val => +(val.replace(/[^0-9]/gi,""));
+          return sum       
+        }
         this.totalMenu = sum
         console.log(sum)
+        // this.totalmenu = _.sumBy(_.map(object, 'content'), function(val, key) {
+        //   return +((key.replace(/[^0-9]/gi,""))
+        // })        
       }, 
       //  onlyNumber (str) {
       //    let sum;
@@ -174,10 +174,7 @@ export default {
       //   this.
       // }
   },
-  watch:{
-  TotalMenuNum(){
-    return this.totalMenu = this.totalMenu.replace(/[^0-9]/gi,'');
-  }
+  watch (){
   },
   setup () {
     const month = ref({

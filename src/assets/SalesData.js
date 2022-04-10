@@ -67,7 +67,7 @@ export default [
     orderdata: '02.07 14:27',
     watingnum: 643,
     division: '매장',
-    content: '아메리카노 외 2개',
+    content: '바나나 외 2개',
     price: 8500,
     etc: '',
   },

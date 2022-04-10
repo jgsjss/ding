@@ -182,14 +182,15 @@
         </tbody>
       </table>
       <!--옵션수정 오프캔버스 시작-->
-      <div class="offcanvas offcanvas-start" tabindex="-1" id="menuoption_" aria-labelledby="menuoption_Label">
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="menuoption_" aria-labelledby="menuoption_Label" aria-controls="offcanvasMenuOption">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="menuoption_Label">옵션정보 수정</h5>
           <button
-            type="button"
             class="btn-close text-reset"
-            data-bs-dismiss="menuoption_correction"
+            data-bs-toggle="offcanvas"
+            data-bs-dismiss="offcanvas menuoption_correction"
             aria-label="Close"
+            data-bs-target="#offcanvasMenuOption"
           ></button>
         </div>
         <div class="offcanvas-body">
