@@ -134,10 +134,9 @@ export default {
       },
       TotalMenuNum (object) {
         let sum = 0
-        this.totalMenu = _.sumBy(object, 'content'), function(val, key) {
-          const sum = val => +(val.replace(/[^0-9]/gi,""));
-          return sum       
-        }
+        _.forEach (_.sumBy(object, 'content'), function(val, key) {
+          sum = key
+        })
         this.totalMenu = sum
         console.log(sum)
         // this.totalmenu = _.sumBy(_.map(object, 'content'), function(val, key) {

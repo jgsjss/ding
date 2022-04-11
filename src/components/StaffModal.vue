@@ -433,9 +433,7 @@ export default {
           console.log(this.chbMsg)
         } else if (chb != '') {
           document.getElementById('chbMsg').style.display = "none"
-        } else if (chb != '') {
-          document.getElementById('chbMsg').style.display = "block"
-        }
+        } 
     },
     //직원설정 권한설정 @change
     SetCheck: function () {
