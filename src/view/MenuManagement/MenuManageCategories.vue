@@ -11,10 +11,13 @@
           <button type="button" class="cate_check_btn" @click="deleteProducts">삭제</button>
         </label>
         <label class="cate_label">
-          <button type="button" class="cate_check_btn" @click="chooseStatus(1)">정상</button>
+          <button type="button" class="cate_check_btn" @click="chooseStatus(0)">정상</button>
         </label>
         <label class="cate_label">
-          <button type="button" class="cate_check_btn" @click="chooseStatus(2)">숨김</button>
+          <button type="button" class="cate_check_btn" @click="chooseStatus(1)">숨김</button>
+        </label>
+        <label class="cate_label">
+          <button type="button" class="cate_check_btn" @click="chooseStatus(2)">품절</button>
         </label>
       </div>
       <div class="category_right">
@@ -180,9 +183,7 @@ import _ from "lodash";
 import axios from "axios";
 import store from "../../store/index.js";
 import router from "@/router";
-
 const sweet = require("sweetalert2");
-
 export default {
   data() {
     return {
@@ -228,7 +229,7 @@ export default {
           },
         })
         .then((res) => {
-          if (res.data == 1) {
+          if (res.data == 0) {
             this.$swal.fire({
               icon: "success",
               title: "상태 정상화",
@@ -237,7 +238,16 @@ export default {
               timer: 3000,
             });
             this.$router.go();
-          } else if (res.data == 2) {
+          } else if (res.data == 1) {
+            this.$swal.fire({
+              icon: "success",
+              title: "상태 숨김",
+              text: "선택하신 메뉴가 숨김처리 되었습니다.",
+              showConfirmButton: false,
+              timer: 3000,
+            });
+            this.$router.go();
+          }else if (res.data == 2) {
             this.$swal.fire({
               icon: "success",
               title: "상태 숨김",
@@ -252,7 +262,6 @@ export default {
           if (err) console.log(err);
         });
     },
-
     deleteProducts() {
       let deleteList = [];
       _.filter(this.selectedChkBox, (val, i) => {
@@ -314,8 +323,10 @@ export default {
       for (let i = 0; i < this.cgData.length; i++) {
         if (this.cgData[i].status == "0") {
           this.conditionkey[i] = "정상";
-        } else {
+        } else if(this.cgData[i].status == "1"){
           this.conditionkey[i] = "숨김";
+        }else{
+          this.conditionkey[i] = "품절";
         }
       }
     },
@@ -476,7 +487,7 @@ export default {
     shopcode() {
       return store.getters["loginStore/getShopcode"];
     },
-    checkedall() {
+    notcheckedall() {
       let sechbox = this.selectedChkBox;
       let length = this.selectedChkBox.length;
       for (let i = 0; i < length; i++) {
@@ -486,7 +497,7 @@ export default {
           return;
         } else if (sechbox[i] == true) {
           for (let j = 0; j < length; j++) {
-            if (!sechbox[i]) {
+            if (!sechbox[j]) {
               this.toggle = false;
               return;
             } else {
@@ -502,7 +513,7 @@ export default {
   },
   beforeMount() {
     this.getCategories(1);
-
+    this.selectedChkBox.length = 10;
     // console.log(this.cgData)
   },
   updated() {
