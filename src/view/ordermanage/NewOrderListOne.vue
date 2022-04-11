@@ -27,7 +27,7 @@
       <router-link to="/OrderPrint" class="order_right_inner"><span>준비중</span></router-link>
     </div>
   </div>
-      <div class="new-btn-cover">
+      <!-- <div class="new-btn-cover">
       <button :disabled="pageNum === 0" @click="prevPage" class="new-page-btn">
         <i class="xi-angle-left"></i>
       </button>
@@ -39,7 +39,7 @@
       >
         <i class="xi-angle-right"></i>
       </button>
-    </div>
+    </div> -->
 
 
 </template>

@@ -91,6 +91,7 @@ export default {
       totalPrice: 0,
       totalOrder: 0,
       totalMenu:0,
+      SalesData:[]
     }
   },
     beforeCreate() {
@@ -134,14 +135,21 @@ export default {
       },
       TotalMenuNum (object) {
         let sum = 0
-        _.forEach (_.sumBy(object, 'content'), function(val, key) {
-          sum = key
-        })
-        this.totalMenu = sum
-        console.log(sum)
-        // this.totalmenu = _.sumBy(_.map(object, 'content'), function(val, key) {
-        //   return +((key.replace(/[^0-9]/gi,""))
-        // })        
+        this.totalMenu = _.sumBy(object, 'content'), function(val, key) {
+          return +((key.replace(/[^0-9]/gi,'')) + sum
+        )}
+        this.totalMenu += sum
+        console.log(sum)        
+        // _.forEach (_.sumBy(Object, 'content'), function(val, key) {
+        //   return +((sum.replace(/[^0-9]/gi,''))
+        //   )})
+        // this.totalMenu = sum
+        // console.log(sum)
+        // this.totalMenu = sum
+        // console.log(sum)
+        // _.forEach(_.map(object,number,string, 'content'), function(val, key) {
+        //   sum += key
+        // })
       }, 
       //  onlyNumber (str) {
       //    let sum;
