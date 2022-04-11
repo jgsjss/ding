@@ -485,7 +485,7 @@ export default {
           return;
         }else if(sechbox[i] == true){
           for(let j = 0; j < length; j++){
-            if(!sechbox[i]){
+            if(!sechbox[j]){
               this.toggle = false;
               return;
             }else {
@@ -496,18 +496,12 @@ export default {
       }
       return;
 
-      // if (sechbox[i] == false) {
-      //   this.toggle = false;
-      //   console.log("toggle : ", this.toggle)
-      //   return;
-      // }else if(sechbox[length-1] == true){
-      //   console.log("toggle : ", this.toggle)
-      //   this.toggle = true;
-      // }
     },
   },
   beforeMount() {
     this.getCategories(1)
+    //체크박스의 배열객체, length를 지정해놔야 체크할때 에러 안생김
+    this.selectedChkBox.length = 10;
 
     // console.log(this.cgData)
   },
