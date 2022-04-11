@@ -497,14 +497,6 @@ export default {
       }
       return;
 
-      // if (sechbox[i] == false) {
-      //   this.toggle = false;
-      //   console.log("toggle : ", this.toggle)
-      //   return;
-      // }else if(sechbox[length-1] == true){
-      //   console.log("toggle : ", this.toggle)
-      //   this.toggle = true;
-      // }
     },
 
   },
@@ -520,7 +512,6 @@ export default {
   
 };
 </script>
-
 <style>
 @import "../../assets/css/MenuManagement/MenuManageCategories.css";
 </style>
