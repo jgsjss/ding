@@ -21,6 +21,9 @@
         <label class="cate_label">
           <button type="button" class="cate_check_btn" @click="chooseStatus(2)"> 숨김</button>
         </label>
+        <label class="cate_label">
+          <button type="button" class="cate_check_btn" @click="chooseStatus(3)"> 품절</button>
+        </label>
       </div>
       <div class="category_right">
         <input type="search"
@@ -95,6 +98,7 @@
           <option class="hidden_btn">전체</option>
           <option class="hidden_btn" value="숨김">숨김</option>
           <option class="hidden_btn" value="정상">정상</option>
+          <option class="hidden_btn" value="정상">품절</option>
         </select>
       </div>
 
@@ -111,7 +115,7 @@
           <th scope="col" class="cate_col">연결 된 메뉴</th>
           <th scope="col" class="cate_col">연결메뉴 갯수</th>
           <th scope="col" class="cate_col">메뉴연결</th>
-          <th scope="col" class="cate_col">숨김</th>
+          <th scope="col" class="cate_col">상태</th>
         </tr>
         </thead>
         <tbody>
@@ -142,6 +146,7 @@
             <select class="cate_condition" v-model="conditionkey[i]">
               <option class="cate_condition_text">상태설정</option>
               <option class="cate_condition_text">숨김</option>
+              <option class="cate_condition_text">품절</option>
               <option class="cate_condition_text">정상</option>
             </select>
             <!-- <button type="button" class="cate_connect_btn">숨김(OFF)
@@ -236,12 +241,20 @@ export default {
             timer: 3000
           })
           this.$router.go()
+        } else if (res.data == 3) {
+          this.$swal.fire({
+            icon: "success",
+            title: "상태 품절",
+            text: "선택하신 메뉴가 품절처리 되었습니다.",
+            showConfirmButton: false,
+            timer: 3000
+          })
+          this.$router.go()
         }
       }).catch(err => {
         if (err) console.log(err)
       })
     },
-
     deleteProducts() {
       let deleteList = [];
       _.filter(this.selectedChkBox, (val, i) => {
@@ -268,7 +281,7 @@ export default {
           })
           this.$router.go()
         }
-      }).catch(err => {
+        }).catch(err => {
         console.log(err)
       })
     },
@@ -302,8 +315,10 @@ export default {
       for (let i = 0; i < this.cgData.length; i++) {
         if (this.cgData[i].status == "0") {
           this.conditionkey[i] = "정상"
-        } else {
+        } else if(this.cgData[i].status == "1"){
           this.conditionkey[i] = "숨김"
+        } else {
+          this.conditionkey[i] = "품절"
         }
       }
     },
