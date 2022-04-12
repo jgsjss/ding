@@ -70,16 +70,21 @@
           <router-link to="/menumanagement/MenuAddModify" class="asdf">
             <td class="edit_data">
 
-              <!--              <img v-for="pd in 'http://static/pdimage/'" :key="pd" src="/static/pdimage/{{pd}}" class="coffee_img">-->
+              <!--<img v-for="pd in 'http://static/pdimage/'" :key="pd" src="/static/pdimage/{{pd}}" class="coffee_img">-->
               <img :src="`${menuData[i].pdimage}`" class="coffee_img">
+              <!--메뉴명-->
               {{ menuData[i].pdname }}
               <!--              {{ menuData[i].pdimage }}-->
               <!--              {{ menuData[i].pdimage }}-->
             </td>
           </router-link>
+          <!--가격-->
           <td class="edit_data" title="마우스">{{ menuData[i].price }}</td>
+          <!--카테고리-->
           <td class="edit_data">{{ menuData[i].pdcategory }}</td>
+          <!--연결옵션-->
           <td class="edit_data">{{ '옵션은 보류' }}</td>
+          <!--숨김/품절-->
           <td class="edit_data">
             <select class="edit_condition" v-model="conditionkey[i]">
               <option class="edit_condition_text">상태설정</option>

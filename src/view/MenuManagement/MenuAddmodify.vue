@@ -7,6 +7,7 @@
       <i class="xi-close MenuAddmodify_close" @click="$router.go(-1)"></i>
     </div>
     <div class="MenuAddmodify_box_wrap">
+      <!--메뉴편지에서 메뉴 클릭했을때 메뉴 상세정보 창 뜨는데 거기 메뉴정보가 불러와져야함-->
       <div class="MenuAddmodify_wrap">
         <form>
           <label class="MenuAddmodify_label form-label"
@@ -46,7 +47,8 @@
             />
           </label>
           <div class="MenuAddmodify_img_input">
-            <img :src="image" alt="" style="width: 200px; text-align: center" />
+            <!-- <img :src="`${menuData[i].pdimage}`" class="coffee_img" style="width: 200px; text-align: center" > -->
+            <!-- <img :src="image" alt="" style="width: 200px; text-align: center" /> -->
           </div>
           <label class="MenuAddmodify_label form-label"
             >메뉴상태
@@ -83,7 +85,6 @@
                     <button type="button" class="category_option_add_btn">+카테고리 연결</button>
                   </div>
                   <button
-                    type="button"
                     v-for="(a, i) in $store.state.CategoryOptionData"
                     :key="i"
                     class="category_option_name"
@@ -91,16 +92,15 @@
                     {{ $store.state.CategoryOptionData[i].catename }}
                     <p>{{ $store.state.CategoryOptionData[i].menuname }}</p>
                   </button>
-                  <div class="category_option_add_btn_wrap">
+                  <!-- <div class="category_option_add_btn_wrap">
                     <button type="button" class="category_option_add_btn02">저장</button>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="category_option_add_right">
                   <div class="category_option_add_title_wrap">
                     <h4 class="category_option_add_title">카테고리 연결</h4>
                   </div>
                   <button
-                    type="button"
                     v-for="(a, i) in $store.state.CategoryOptionData"
                     :key="i"
                     class="category_option_name"
@@ -109,7 +109,7 @@
                     <p>{{ $store.state.CategoryOptionData[i].menuname }}</p>
                   </button>
                   <div class="category_option_add_btn_wrap">
-                    <button type="button" class="category_option_add_btn02">(2개선택){{}}연결</button>
+                    <button  class="category_option_add_btn02">(2개선택){{}}연결</button>
                   </div>
                 </div>
               </div>
@@ -181,14 +181,18 @@
       </div>
     </div>
     <div class="MenuAddmodify_btn_con">
-      <button type="button" class="MenuAddmodify_btn">메뉴수정</button>
+      <button class="MenuAddmodify_btn" @click="menuAddBtn()">메뉴수정</button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import router from '@/router'
+import store from "../../store/index.js"
 import { defineComponent } from "vue";
 import { VueDraggableNext } from "vue-draggable-next";
+
 export default {
   components: {
     draggable: VueDraggableNext,
@@ -239,18 +243,34 @@ export default {
     MenuAddmodifyNumber(event) {
       this.tNumber = event.target.value;
     },
+    // 메뉴수정 버튼
+    menuAddBtn() {
+      confirm("메뉴를 수정하시겠습니까?")
+      console.log(this.menuAddBtn)
+    }
   },
   watch: {
     tNumber(val) {
-      const menutwo = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
+      const menuTwo = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z]/;
 
       //한글, 영문 체크
-      if (menutwo.exec(val) !== null) this.tNumber = val.replace(/[^0-9]/g, "");
+      if (menuTwo.exec(val) !== null) this.tNumber = val.replace(/[^0-9]/g, "");
 
       //...만 입력하게 될 경우 체크
       if (isNaN(parseFloat(val))) this.tNumber = "";
     },
   },
+  created(){
+    // var vm = this;
+    // axios.get('api URL')
+    // .then(function(response){
+    //   console.log(response);
+    //   vm.users = response.data;
+    // })
+    // .catch(function(err){
+    //   console.log(err);
+    // })
+  } 
 };
 </script>
 
