@@ -23,7 +23,7 @@
           <div class="m_list_wrap2">
             <div class="month_text_right">{{ totalPrice }}원</div>
             <div class="month_text_right">{{ totalOrder }}건</div>
-            <div class="month_text_right">{{ totalMenu }}건</div>
+            <div class="month_text_right">{{ totalMenu.replace(/[^0-9]/gi,'').slice(0, -1) }}개</div>
           </div>
         </div>
       </div>
@@ -116,7 +116,7 @@ export default {
     //   this.$emit('sales_data', {value :this.selected});
     //   console.log('')
     // },
-
+    //총 매출금액
     calcTotalPrice (object) {
       let sum = 0
       _.forEach(_.map(object, 'price'), function (val, key) {
@@ -124,7 +124,7 @@ export default {
       })
       this.totalPrice = sum
     },
-      
+      //총 주문메뉴 건수
       TotalMenuOrder (object) {
         let sum = 0
         _.forEach(_.map(object, 'watingnum'), function(val, key) {
@@ -133,23 +133,14 @@ export default {
         this.totalOrder = sum
         // console.log(sum)
       },
+      //총 주문메뉴 갯수
       TotalMenuNum (object) {
         let sum = 0
         this.totalMenu = _.sumBy(object, 'content'), function(val, key) {
-          return +((key.replace(/[^0-9]/gi,'')) + sum
-        )}
+          sum += key
+        }
         this.totalMenu += sum
-        console.log(sum)        
-        // _.forEach (_.sumBy(Object, 'content'), function(val, key) {
-        //   return +((sum.replace(/[^0-9]/gi,''))
-        //   )})
-        // this.totalMenu = sum
-        // console.log(sum)
-        // this.totalMenu = sum
-        // console.log(sum)
-        // _.forEach(_.map(object,number,string, 'content'), function(val, key) {
-        //   sum += key
-        // })
+        console.log(this.totalMenu)
       }, 
       //  onlyNumber (str) {
       //    let sum;

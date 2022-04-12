@@ -64,9 +64,9 @@
   width: 100px;
   text-align: center;
   margin: 15px 0;
-  background: #997fb5;
-  border-radius: 5px;
-  color: #fff;
+  border:1px solid #997fb5;
+  border-radius:5px;
+  color:#997fb5
 }
 
 .sales_head {
