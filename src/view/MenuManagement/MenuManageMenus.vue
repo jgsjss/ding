@@ -14,10 +14,10 @@
           전체선택
         </label>
         <label class="menuedit_label">
-          <button type="button" class="menuedit_check_btn" @click="deleteProducts">삭제> 삭제</button>
+          <button type="button" class="menuedit_check_btn" @click="deleteProducts"> 삭제</button>
         </label>
         <label class="menuedit_label">
-          <button type="button" class="menuedit_check_btn"  @click="chooseStatus(0)"> 정상</button>
+          <button type="button" class="menuedit_check_btn" @click="chooseStatus(0)"> 정상</button>
         </label>
         <label class="menuedit_label">
           <button type="button" class="menuedit_check_btn" @click="chooseStatus(1)"> 숨김</button>
@@ -81,11 +81,11 @@
           <td class="edit_data">{{ menuData[i].pdcategory }}</td>
           <td class="edit_data">{{ '옵션은 보류' }}</td>
           <td class="edit_data">
-            <select class="edit_condition"  v-model="conditionKey[i]">
-              <option class="edit_condition_text" >상태설정</option>
-              <option class="edit_condition_text" >숨김</option>
+            <select class="edit_condition" v-model="conditionkey[i]">
+              <option class="edit_condition_text">상태설정</option>
+              <option class="edit_condition_text">숨김</option>
               <option class="cate_condition_text">정상</option>
-              <option class="edit_condition_text" >품절</option>
+              <option class="edit_condition_text">품절</option>
             </select>
             <!-- <button type="button" class="cate_connect_btn">숨김(OFF)
               </button> -->
@@ -131,7 +131,7 @@ import store from "../../store/index.js"
 
 
 export default {
-  data () {
+  data() {
     return {
       conditionKey: [],
       active: false,
@@ -148,17 +148,7 @@ export default {
     }
   },
   methods: {
-    statusCheck() {
-      for (let i = 0; i < this.menuData.length; i++) {
-        if (this.menuData[i].status == "0") {
-          this.conditionkey[i] = "정상";
-        } else if(this.menuData[i].status == "1"){
-          this.conditionkey[i] = "숨김";
-        }else{
-          this.conditionkey[i] = "품절";
-        }
-      }
-    },
+
     toggleAll() {
       if (this.toggle) {
         for (let i = 0; i < this.menuData.length; i++) {
@@ -176,7 +166,7 @@ export default {
       let deleteList = [];
       _.filter(this.selectedChkBox, (val, i) => {
         if (val) {
-          let pdnums = this.cgData[i].pdnum;
+          let pdnums = this.menuData[i].pdnum;
           deleteList.push(pdnums);
           console.log("pdnums", pdnums);
         }
@@ -209,7 +199,7 @@ export default {
       let statList = [];
       _.filter(this.selectedChkBox, (val, i) => {
         if (val) {
-          let pdnums = this.cgData[i].pdnum;
+          let pdnums = this.menuData[i].pdnum;
           statList.push(pdnums);
           console.log("pdnums", pdnums);
         }
@@ -241,7 +231,7 @@ export default {
                 timer: 3000,
               });
               this.$router.go();
-            }else if (res.data == 2) {
+            } else if (res.data == 2) {
               this.$swal.fire({
                 icon: "success",
                 title: "상태 숨김",
@@ -256,24 +246,34 @@ export default {
             if (err) console.log(err);
           });
     },
+    statusCheck() {
+      for (let i = 0; i < this.menuData.length; i++) {
+        if (this.menuData[i].status == "0") {
+          this.conditionkey[i] = "정상";
+        } else if (this.menuData[i].status == "1") {
+          this.conditionkey[i] = "숨김";
+        } else {
+          this.conditionkey[i] = "품절";
+        }
+      }
+    },
 
-
-    dummy10(){
+    dummy10() {
       axios.get("/apimenu/dummy10",
           //{
-      //   data:{
-      //     "shopCode" : this.shopcode
-      //   }
-      // }
-            )
-        .then(res => {
-          console.log(res.data)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+          //   data:{
+          //     "shopCode" : this.shopcode
+          //   }
+          // }
+      )
+          .then(res => {
+            console.log(res.data)
+          })
+          .catch(err => {
+            console.log(err)
+          })
     },
-    async getMenu (curpage) {
+    async getMenu(curpage) {
       try {
         const res = await axios.post('/apimenu/menus', {
           data: {
@@ -281,45 +281,46 @@ export default {
             curpage: curpage
           }
         })
-          console.log('res.data: ', res.data)
-          // 백엔드에서 날라오는 값 res.data=>articles[rows, ActualArticleLength]
-          //게시물 총 갯수
-          this.totalPage = res.data.length
-          //게시물 정보들
-          this.menuData = res.data.rows
-          // this.totalPage = this.cgData.length
-          // 백엔드의 사진의 주소를 interpolation 하기 위해선 FE에서 Data 자체에 전체 주소값을 포함하여야 함.
-          // 아니면 interpolation 으로 다이내믹으로 require해서 url 주소 편집 필요 , FE Asset으로 사용도 가능
-          // 결과적으로 주소값을 전체적으로 가지고 다니는것이 가장 효율적
-          // src="/static/pdimage/{{menuData[i].pdimage}}" 와 같은 방법은 vue 한계상 쉽진 않음
-          this.statusCheck();
-          console.log('menuData: ', this.menuData)
-          for (let i = 0; i < this.menuData.length; i++) {
-            // this.menuData[i].pdimage = ''.concat('/static/pdimage/', this.menuData[i].pdimage)
-            this.menuData[i].pdimage = this.imgbaseurl.concat(this.menuData[i].pdimage)
-            console.log('pdimage : ', this.menuData[i].pdimage)
-          }
-          // console.log(this.menuData.pdimage)
-          return res.data
+        console.log('res.data: ', res.data)
+        // 백엔드에서 날라오는 값 res.data=>articles[rows, ActualArticleLength]
+        //게시물 총 갯수
+        this.totalPage = res.data.length
+        //게시물 정보들
+        this.menuData = res.data.rows
+        // this.totalPage = this.cgData.length
+        // 백엔드의 사진의 주소를 interpolation 하기 위해선 FE에서 Data 자체에 전체 주소값을 포함하여야 함.
+        // 아니면 interpolation 으로 다이내믹으로 require해서 url 주소 편집 필요 , FE Asset으로 사용도 가능
+        // 결과적으로 주소값을 전체적으로 가지고 다니는것이 가장 효율적
+        // src="/static/pdimage/{{menuData[i].pdimage}}" 와 같은 방법은 vue 한계상 쉽진 않음
+
+        console.log('menuData: ', this.menuData)
+        for (let i = 0; i < this.menuData.length; i++) {
+          // this.menuData[i].pdimage = ''.concat('/static/pdimage/', this.menuData[i].pdimage)
+          this.menuData[i].pdimage = this.imgbaseurl.concat(this.menuData[i].pdimage)
+          console.log('pdimage : ', this.menuData[i].pdimage)
+        }
+        this.statusCheck();
+        // console.log(this.menuData.pdimage)
+        return res.data
 
       } catch (e) {
         console.log('err: ', e)
       }
 
     },
-    nextPage () {
+    nextPage() {
       this.pageNum += 1;
       this.getCategories(this.pageNum);
       this.selectedChkBox = [];
       this.toggle = false;
     },
-    prevPage () {
+    prevPage() {
       this.pageNum -= 1;
       this.getCategories(this.pageNum);
       this.selectedChkBox = [];
       this.toggle = false;
     },
-    menuSelected () {
+    menuSelected() {
       for (let i in this.boardList) {
         if (!this.boardList[i].menuSelected) {
           this.allCheckedMenus = false
@@ -329,7 +330,7 @@ export default {
         }
       }
     },
-    menuCnt (obj) {
+    menuCnt(obj) {
       _.forEach(obj, function (v, k, copy) {
         // console.log("Asd",V)
         // console.log(K)
@@ -344,7 +345,7 @@ export default {
         }, 3)
       })
     },
-    editCondition (event) {
+    editCondition(event) {
       console.log(event.target.value)
     },
 
@@ -386,7 +387,7 @@ export default {
       }
       return;
     },
-    shopcode () {
+    shopcode() {
       return this.$store.getters['loginStore/getShopcode']
     }
   },
@@ -395,7 +396,7 @@ export default {
   //
   //   // console.log(this.cgData)
   // },
-  beforeMount () {
+  beforeMount() {
     this.getMenu(1)
     this.selectedChkBox.length = 5;
     // console.log("shopcode:  ",this.shopcode)

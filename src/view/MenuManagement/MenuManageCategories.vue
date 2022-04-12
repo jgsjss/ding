@@ -141,6 +141,7 @@
             <!--          cglength: {{cgData.length}}-->
             <!-- <td>인덱스 {{a}}--{{i}}</td> -->
             <td class="cate_data">{{ cgData[i].pdcategory }}</td>
+
             <td class="cate_data col-7" title="마우스">{{ cgData[i].pdname }}</td>
             <td class="cate_data">{{ "이건...일단보류" }}</td>
             <router-link to="/menumanagement/MenuConnecttwo">
