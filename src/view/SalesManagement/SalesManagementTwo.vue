@@ -21,7 +21,7 @@
     </div>
 <div class="month_right">
   <div class="sales_sort_btn_wrap">
-  <select class="sales_sort_btn" v-model="selected" v-on="sortSales">
+  <select class="sales_sort_btn" v-model="selected">
     품절해제
     <option class="log_check_Box" value="date-asc">최신순</option>
     <option class="log_check_Box" value="date-desc">과거순</option>
@@ -49,7 +49,7 @@
           </tr>
           </tbody>
         </table>
-      <div class="btn-cover">
+      <!-- <div class="btn-cover">
       <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
         <i class="xi-angle-left"></i>
       </button>
@@ -57,7 +57,7 @@
       <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
         <i class="xi-angle-right"></i>
       </button>
-    </div>
+    </div> -->
 
 </div>
 </div>
