@@ -8,22 +8,22 @@
           <input type="checkbox"
                  class="menuedit_check"
                  id="all-check"
-                 v-model="allCheckedMenus"
-                 @click="checkedAllMenu($event.target.checked)"
+                 v-model="toggle"
+                 @click="toggleAll"
           >
           전체선택
         </label>
         <label class="menuedit_label">
-          <button type="button" class="menuedit_check_btn"> 삭제</button>
+          <button type="button" class="menuedit_check_btn" @click="deleteProducts">삭제> 삭제</button>
         </label>
         <label class="menuedit_label">
-          <button type="button" class="menuedit_check_btn"> 품절</button>
+          <button type="button" class="menuedit_check_btn"  @click="chooseStatus(0)"> 정상</button>
         </label>
         <label class="menuedit_label">
-          <button type="button" class="menuedit_check_btn"> 숨김</button>
+          <button type="button" class="menuedit_check_btn" @click="chooseStatus(1)"> 숨김</button>
         </label>
         <label class="menuedit_label">
-          <button type="button" class="menuedit_check_btn"> 정상</button>
+          <button type="button" class="menuedit_check_btn" @click="chooseStatus(2)"> 품절</button>
         </label>
       </div>
       <div class="menuedit_right">
@@ -61,10 +61,9 @@
           <!-- <td v-for="menuname in coffees" :key="menuname"></td> -->
           <td scope="row" class="cate_check_box">
             <input type="checkbox"
-                   :id="'menuCheck_' + i.menuId"
-                   :value="i"
-                   v-model="menuSelected"
-                   @click="menuPrint"
+                   @change="notcheckedall"
+                   id="a.pdnum"
+                   v-model="selectedChkBox[i]"
             >
           </td>
           <!-- <td>인덱스 {{a}}--{{i}}</td> -->
@@ -82,11 +81,11 @@
           <td class="edit_data">{{ menuData[i].pdcategory }}</td>
           <td class="edit_data">{{ '옵션은 보류' }}</td>
           <td class="edit_data">
-            <select class="edit_condition" @change="editCondition($event)" v-model="conditionKey">
-              <option class="edit_condition_text" value="null">상태설정</option>
-              <option class="edit_condition_text" value="숨김">숨김</option>
-              <option class="edit_condition_text" value="품절">품절</option>
-              <option class="edit_condition_text" value="정상상태">정상상태</option>
+            <select class="edit_condition"  v-model="conditionKey[i]">
+              <option class="edit_condition_text" >상태설정</option>
+              <option class="edit_condition_text" >숨김</option>
+              <option class="cate_condition_text">정상</option>
+              <option class="edit_condition_text" >품절</option>
             </select>
             <!-- <button type="button" class="cate_connect_btn">숨김(OFF)
               </button> -->
@@ -127,27 +126,138 @@
 // import axios from 'axios';
 import _ from 'lodash'
 import axios from 'axios'
-import router from '../../router'
+import router from '@/router'
+import store from "../../store/index.js"
+
 
 export default {
   data () {
     return {
-      conditionKey: null,
+      conditionKey: [],
       active: false,
-      // menuname: [
-      //   {
-      //     coffee: require('../../assets/coffee.jpeg')
-      //   }
-      // ],
       allCheckedMenus: false,
-      menuData: '',
+      menuData: [],
       pageCount: 10,
       currentPage: 1,
       pageNum: 1,
-      totalPage: Number,
+      totalPage: "",
+      selectedChkBox: [],
+      toggle: false,
+      conditionkey: [],
+
     }
   },
   methods: {
+    statusCheck() {
+      for (let i = 0; i < this.menuData.length; i++) {
+        if (this.menuData[i].status == "0") {
+          this.conditionkey[i] = "정상";
+        } else if(this.menuData[i].status == "1"){
+          this.conditionkey[i] = "숨김";
+        }else{
+          this.conditionkey[i] = "품절";
+        }
+      }
+    },
+    toggleAll() {
+      if (this.toggle) {
+        for (let i = 0; i < this.menuData.length; i++) {
+          this.selectedChkBox[i] = false;
+        }
+      } else {
+        for (let i = 0; i < this.menuData.length; i++) {
+          this.selectedChkBox[i] = true;
+        }
+      }
+      this.toggle = !this.toggle;
+      console.log(this.toggle);
+    },
+    deleteProducts() {
+      let deleteList = [];
+      _.filter(this.selectedChkBox, (val, i) => {
+        if (val) {
+          let pdnums = this.cgData[i].pdnum;
+          deleteList.push(pdnums);
+          console.log("pdnums", pdnums);
+        }
+      });
+      console.log("delete List : ", deleteList);
+      axios
+          .post("/apimenu/deleteProducts", {
+            data: {
+              deletelist: deleteList,
+            },
+          })
+          .then((res) => {
+            console.log(res);
+            if (res.data == 1) {
+              this.$swal.fire({
+                icon: "success",
+                title: "삭제 완료!",
+                text: "선택하신 메뉴가 삭제되었습니다.",
+                showConfirmButton: false,
+                timer: 3000,
+              });
+              this.$router.go();
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+    },
+    chooseStatus(choose) {
+      let statList = [];
+      _.filter(this.selectedChkBox, (val, i) => {
+        if (val) {
+          let pdnums = this.cgData[i].pdnum;
+          statList.push(pdnums);
+          console.log("pdnums", pdnums);
+        }
+      });
+      console.log("status list : ", statList);
+      axios
+          .post("/apimenu/choosestatus", {
+            data: {
+              choose: choose,
+              statuslist: statList,
+            },
+          })
+          .then((res) => {
+            if (res.data == 0) {
+              this.$swal.fire({
+                icon: "success",
+                title: "상태 정상화",
+                text: "선택하신 메뉴가 정상화 되었습니다.",
+                showConfirmButton: false,
+                timer: 3000,
+              });
+              this.$router.go();
+            } else if (res.data == 1) {
+              this.$swal.fire({
+                icon: "success",
+                title: "상태 숨김",
+                text: "선택하신 메뉴가 숨김처리 되었습니다.",
+                showConfirmButton: false,
+                timer: 3000,
+              });
+              this.$router.go();
+            }else if (res.data == 2) {
+              this.$swal.fire({
+                icon: "success",
+                title: "상태 숨김",
+                text: "선택하신 메뉴가 숨김처리 되었습니다.",
+                showConfirmButton: false,
+                timer: 3000,
+              });
+              this.$router.go();
+            }
+          })
+          .catch((err) => {
+            if (err) console.log(err);
+          });
+    },
+
+
     dummy10(){
       axios.get("/apimenu/dummy10",
           //{
@@ -182,6 +292,7 @@ export default {
           // 아니면 interpolation 으로 다이내믹으로 require해서 url 주소 편집 필요 , FE Asset으로 사용도 가능
           // 결과적으로 주소값을 전체적으로 가지고 다니는것이 가장 효율적
           // src="/static/pdimage/{{menuData[i].pdimage}}" 와 같은 방법은 vue 한계상 쉽진 않음
+          this.statusCheck();
           console.log('menuData: ', this.menuData)
           for (let i = 0; i < this.menuData.length; i++) {
             // this.menuData[i].pdimage = ''.concat('/static/pdimage/', this.menuData[i].pdimage)
@@ -196,30 +307,17 @@ export default {
       }
 
     },
-    moveNext () {
-      console.log('유저권한', this.getUserrole)
-      if (this.getUserrole != 0) {
-        alert('기능에 대한 권한이 없습니다.')
-        return
-      } else if (this.getUserrole == 0) {
-        return
-      }
-    },
-    print () {
-      console.log(this.selected)
-    },
     nextPage () {
-      this.pageNum += 1
-      this.getMenu(this.pageNum)
+      this.pageNum += 1;
+      this.getCategories(this.pageNum);
+      this.selectedChkBox = [];
+      this.toggle = false;
     },
     prevPage () {
-      this.pageNum -= 1
-      console.log(this.pageNum)
-      this.getMenu(this.pageNum)
-    },
-    checkedAllMenu (checked) {
-      this.menuSelected = checked
-
+      this.pageNum -= 1;
+      this.getCategories(this.pageNum);
+      this.selectedChkBox = [];
+      this.toggle = false;
     },
     menuSelected () {
       for (let i in this.boardList) {
@@ -231,15 +329,6 @@ export default {
         }
       }
     },
-    getSelected () {
-      let boardIds = []
-      for (let i in this.cgData) {
-        if (this.cgData[i].menuSelected) {
-          boardIds.push(this.cgData[i].boardId)
-        }
-      }
-    },
-
     menuCnt (obj) {
       _.forEach(obj, function (v, k, copy) {
         // console.log("Asd",V)
@@ -276,11 +365,26 @@ export default {
   //   this.getList();
   // },
   computed: {
-    // pageCount () {
-    //   return Math.ceil(this.$store.state.CategoryData.length / 10)
-    // },
-    getUserrole () {
-      return this.$store.getters['loginStore/getUserrole']
+    notcheckedall() {
+      let sechbox = this.selectedChkBox;
+      let length = this.selectedChkBox.length;
+      for (let i = 0; i < length; i++) {
+        if (sechbox[i] == false) {
+          this.toggle = false;
+          console.log("toggle : ", this.toggle);
+          return;
+        } else if (sechbox[i] == true) {
+          for (let j = 0; j < length; j++) {
+            if (!sechbox[j]) {
+              this.toggle = false;
+              return;
+            } else {
+              this.toggle = true;
+            }
+          }
+        }
+      }
+      return;
     },
     shopcode () {
       return this.$store.getters['loginStore/getShopcode']
@@ -291,14 +395,9 @@ export default {
   //
   //   // console.log(this.cgData)
   // },
-  setup () {
-
-  },
-  updated () {
-    this.menuCnt(this.cgData)
-  },
   beforeMount () {
     this.getMenu(1)
+    this.selectedChkBox.length = 5;
     // console.log("shopcode:  ",this.shopcode)
   }
 }

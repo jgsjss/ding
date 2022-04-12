@@ -122,7 +122,7 @@
             <th scope="col" class="cate_col">연결 된 메뉴</th>
             <th scope="col" class="cate_col">연결메뉴 갯수</th>
             <th scope="col" class="cate_col">메뉴연결</th>
-            <th scope="col" class="cate_col">숨김</th>
+            <th scope="col" class="cate_col">숨김/품절</th>
           </tr>
         </thead>
         <tbody>
@@ -130,7 +130,6 @@
             <td scope="row" class="cate_check_box">
               <input
                 type="checkbox"
-                @click="selectChk"
                 @change="notcheckedall"
                 id="a.pdnum"
                 v-model="selectedChkBox[i]"
@@ -154,6 +153,7 @@
                 <option class="cate_condition_text">상태설정</option>
                 <option class="cate_condition_text">숨김</option>
                 <option class="cate_condition_text">정상</option>
+                <option class="edit_condition_text" >품절</option>
               </select>
               <!-- <button type="button" class="cate_connect_btn">숨김(OFF)
               </button> -->
@@ -381,14 +381,6 @@ export default {
       this.getCategories(this.pageNum);
       this.selectedChkBox = [];
       this.toggle = false;
-    },
-    getSelected() {
-      let boardIds = [];
-      for (let i in this.cgData) {
-        if (this.cgData[i].selected) {
-          boardIds.push(this.cgData[i].boardId);
-        }
-      }
     },
     async getCategories(curpage) {
       await axios
