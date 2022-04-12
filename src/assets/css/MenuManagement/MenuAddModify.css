@@ -46,7 +46,8 @@
 }
 .MenuAddmodify_menucondition {
     font-size:14px;
-    color:#333;
+    color:rgb(4, 83, 255);
+    font-weight: 700;
 }
 .MenuAddmodify_btn_wrap {
     margin:0 auto;
