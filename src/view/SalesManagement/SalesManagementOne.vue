@@ -23,7 +23,7 @@
           <div class="m_list_wrap2">
             <div class="month_text_right">{{ totalPrice }}원</div>
             <div class="month_text_right">{{ totalOrder }}건</div>
-            <div class="month_text_right">{{ totalMenu.replace(/[^0-9]/gi,'').slice(0, -1) }}개</div>
+            <div class="month_text_right">{{ totalMenu.replace(/[^0-9]/gi, '').slice(0, -1) }}개</div>
           </div>
         </div>
       </div>
@@ -131,17 +131,19 @@ export default {
           sum += + 1
         })
         this.totalOrder = sum
-        // console.log(sum)
+        // console.log(sum) 
       },
       //총 주문메뉴 갯수
       TotalMenuNum (object) {
         let sum = 0
         this.totalMenu = _.sumBy(object, 'content'), function(val, key) {
-          sum += key
+          return this.totalMenu += key
         }
         this.totalMenu += sum
         console.log(this.totalMenu)
-      }, 
+
+      },
+
       //  onlyNumber (str) {
       //    let sum;
       //    _.forEach(_.map(str, 'content'), function(val, key) {
@@ -187,6 +189,7 @@ export default {
     pageCount () {
       return Math.ceil(this.$store.state.SalesData.length / 10)
     },
+    
   },
 
   //돔 로드시 자동 최신순정렬//
