@@ -310,13 +310,13 @@ export default {
     },
     nextPage() {
       this.pageNum += 1;
-      this.getCategories(this.pageNum);
+      this.getMenu(this.pageNum);
       this.selectedChkBox = [];
       this.toggle = false;
     },
     prevPage() {
       this.pageNum -= 1;
-      this.getCategories(this.pageNum);
+      this.getMenu(this.pageNum);
       this.selectedChkBox = [];
       this.toggle = false;
     },
