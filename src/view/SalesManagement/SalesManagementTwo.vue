@@ -80,6 +80,7 @@ import _ from 'lodash'
       SalesPrice:0,
       SalesOrder:0,
       SalesNumber:0,
+      selected:[]
     }
   },
   methods: {
@@ -89,7 +90,7 @@ import _ from 'lodash'
       prevPage() {
         this.pageNum -= 1;
       },
-      //총주문건수
+      //총 매출금액
       calcSalesPrice(object) {
         let sum = 0
         _.forEach(_.map(object, 'price'), function (val, key) {
@@ -97,6 +98,7 @@ import _ from 'lodash'
         })
         this.SalesPrice = sum
       },
+      //총 주문건수
       calcTotalOrder (object) {
         let sum = 0
         _.forEach(_.map(object, 'watingnum'), function(val, key) {
@@ -105,12 +107,13 @@ import _ from 'lodash'
         this.SalesOrder = sum
         // console.log(sum)
       },
+      //총 주문메뉴 건수
       TotalOrderNum (object) {
-        let sum = 0
-        _.forEach(_.map(object, 'content'), function(val, key) {
-          sum += + 1
+        let sum = this
+        _.forEach(_.map(object, 'content'), function(val) {
+          sum.SalesNumber += +val.replace(/[^0-9]/gi,'');
         })
-        this.SalesNumber = sum
+        console.log(sum.SalesNumber)
       },
     },
     setup() {
