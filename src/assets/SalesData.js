@@ -10,7 +10,7 @@ export default [
   {
     orderdata: '02.07 15:17',
     watingnum: 124,
-    division: '매장',
+    division: '배달',
     content: '아메리카노 외 2개',
     price: 9300,
     etc: '',

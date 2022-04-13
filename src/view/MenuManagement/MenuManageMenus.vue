@@ -192,13 +192,18 @@ export default {
                 text: "선택하신 메뉴가 삭제되었습니다.",
                 showConfirmButton: false,
                 timer: 3000,
+              }).then((res)=>{
+                this.lazyTimeout()
               });
-              this.$router.go();
+
             }
           })
           .catch((err) => {
             console.log(err);
           });
+    },
+    lazyTimeout(){
+      setTimeout(this.$router.go(),3000)
     },
     chooseStatus(choose) {
       let statList = [];
@@ -223,10 +228,11 @@ export default {
                 icon: "success",
                 title: "상태 정상화",
                 text: "선택하신 메뉴가 정상화 되었습니다.",
-                showConfirmButton: false,
+                showConfirmButton: true,
                 timer: 3000,
+              }).then((res)=>{
+                this.lazyTimeout()
               });
-              this.$router.go();
             } else if (res.data == 1) {
               this.$swal.fire({
                 icon: "success",
@@ -234,17 +240,19 @@ export default {
                 text: "선택하신 메뉴가 숨김처리 되었습니다.",
                 showConfirmButton: false,
                 timer: 3000,
+              }).then((res)=>{
+                this.lazyTimeout()
               });
-              this.$router.go();
             } else if (res.data == 2) {
               this.$swal.fire({
                 icon: "success",
-                title: "상태 숨김",
-                text: "선택하신 메뉴가 숨김처리 되었습니다.",
+                title: "상태 품절",
+                text: "선택하신 메뉴가 품절처리 되었습니다.",
                 showConfirmButton: false,
                 timer: 3000,
+              }).then((res)=>{
+                this.lazyTimeout()
               });
-              this.$router.go();
             }
           })
           .catch((err) => {

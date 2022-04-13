@@ -127,29 +127,35 @@ export default {
       //총 주문메뉴 건수
       TotalMenuOrder (object) {
         let sum = 0
-        _.forEach(_.map(object, 'watingnum'), function(val, key) {
+        _.forEach(_.map(object, 'watingnum'), function(val) {
           sum += + 1
         })
         this.totalOrder = sum
         // console.log(sum) 
       },
       //총 주문메뉴 갯수
-      TotalMenuNum (object) {
-         let sum = 0
-         _.forEach(_.map(object, 'content'), function(val, key) {
-         object = val.replace(/[^0-9]/gi, '');
-         sum = parseInt(key);
-         return sum += key
-         })
-         this.totalMenu += sum
-         console.log(sum)
-        // let sum = 0
-        // this.totalMenu = _.sumBy(object, 'content'), function(val, key) {
-        //   return sum += val
-        // }
-        // this.totalMenu += sum
-        // console.log(this.totalMenu)
-      },
+      TotalMenuNum(object){
+        let vm = this
+        _.forEach( _.map(object,'content'), function(val){
+            vm.totalMenu += +val.replace(/[^0-9]/gi,'');
+        });
+        console.log(this.totalMenu);
+      }
+      // TotalMenuNum (object) {
+      //    let sum = 0
+      //    _.forEach(_.map(object, 'content'), function(val, key) {
+      //    object = val.replace(/[^0-9]/gi, '');
+      //    sum = parseInt(key);
+      //    })
+      //    this.totalMenu = sum
+      //    console.log(sum)
+      //   // let sum = 0
+      //   // this.totalMenu = _.sumBy(object, 'content'), function(val, key) {
+      //   //   return sum += val
+      //   // }
+      //   // this.totalMenu += sum
+      //   // console.log(this.totalMenu)
+      // },
 
       //  onlyNumber (str) {
       //    let sum;
