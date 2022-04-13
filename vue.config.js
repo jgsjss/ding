@@ -1,4 +1,7 @@
-const target = "http://192.168.0.110:5000";
+// 전연구
+// const target = "http://192.168.0.110:5000";
+// 박연구
+const target = "http://192.168.0.120:5000";
 // const target = "http://localhost:5000";
 
 module.exports = {
