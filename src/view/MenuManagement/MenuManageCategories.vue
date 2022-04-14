@@ -23,7 +23,7 @@
       <div class="category_right">
 
 <!--        검색창----------------------------------------------------------->
-        <input type="search" name="categoriSearch" placeholder="search" class="menu_search" v-model="search" v-on:keyup.enter.prevent="searchCategory" />
+        <input type="search" name="categoriSearch" placeholder="search" class="menu_search" v-model="search" v-on:change.prevent="searchCategory" />
 <!--        <input type="search" name="categoriSearch" placeholder="search" class="menu_search" v-model="search" @change="searchCategory" />-->
 
         <router-link  to="/menumanagement/MenuConnect" @keyup.capture.stop >
@@ -220,12 +220,13 @@ export default {
   methods: {
     searchCategory() {
       console.log("searchCategory : ",this.search);
+      this.searchMenu(this.search);
     },
-    searchMenu(){
-      let word = this.searchValue
+    searchMenu(word){
+      // let word = this.searchValue
 
       axios.get("/apimenu/searchkeyword", {
-        data : {
+        params : {
           keyword : word,
         }
       }).then((res) =>{
