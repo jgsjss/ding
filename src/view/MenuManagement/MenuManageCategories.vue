@@ -21,7 +21,11 @@
         </label>
       </div>
       <div class="category_right">
-        <input type="search" name="categoriSearch" placeholder="search" class="menu_search" />
+
+<!--        검색창----------------------------------------------------------->
+<!--        <input type="search" name="categoriSearch" placeholder="search" class="menu_search" v-model="search" v-on:keyup.enter.prevent="searchCategory" />-->
+        <input type="search" name="categoriSearch" placeholder="search" class="menu_search" v-model="search" @change="searchCategory" />
+
         <router-link to="/menumanagement/MenuConnect">
           <button class="cate_menu_btn">순서변경</button>
         </router-link>
@@ -208,10 +212,28 @@ export default {
       toggle: false,
       computeSelectedChkBox: null,
       conditionkey: [],
+      search:"",
+      searchValue: "",
     };
   },
   components: {},
   methods: {
+    searchCategory() {
+      console.log("searchCategory : ",this.search);
+    },
+    searchMenu(){
+      let word = this.searchValue
+
+      axios.get("/apimenu/searchkeyword", {
+        data : {
+          keyword : word,
+        }
+      }).then((res) =>{
+
+      }).catch(err=>{
+        if(err) console.log("searchMenu err: ", err )
+      })
+    },
     chooseStatus(choose) {
       let statList = [];
       _.filter(this.selectedChkBox, (val, i) => {
@@ -513,7 +535,7 @@ export default {
     // this.menuCnt(this.cgData)
     this.cntPdname(this.cgData, 2);
   },
-  
+
 };
 </script>
 <style>
