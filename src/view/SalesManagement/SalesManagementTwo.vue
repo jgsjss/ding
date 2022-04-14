@@ -39,7 +39,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(a, i) in $store.state.menuData" :key="i">
+          <tr v-for="(a, i) in $store.state.SalesData" :key="i">
             <td class="sales_data"><router-link to="../ordermanage/orderprint">{{ $store.state.SalesData[i].orderdata }}</router-link></td>
             <td>{{ $store.state.SalesData[i].watingnum }}</td>
             <td>{{ $store.state.SalesData[i].division }} </td>
