@@ -1,4 +1,5 @@
 <template>
+<!--가게 가입 심사 화면창-->
   <div class="container_fluid">
 <!--    <button type="button" @click="fire">얼러트 테스트</button>-->
     <h4 class="shop_name">(가게이름) 가입 심사중 입니다 :)</h4>

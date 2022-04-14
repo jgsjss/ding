@@ -1,5 +1,5 @@
 <template>
-
+<!--로그인 후 메인화면 내 메뉴현황 컴포넌트-->
   <div class="container">
     <div class="box_wrap">
       <p class="order_text">메뉴현황</p>

@@ -1,4 +1,5 @@
 <template>
+<!--회원가입 창-->
   <div className="container_fluid">
     <h1 className="member_text">회원가입</h1>
     <!-- wrapper -->

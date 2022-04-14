@@ -1,4 +1,5 @@
 <template>
+<!--화면 좌측 네비바 컴포넌트-->
   <div class="nav_container">
     <ul class="nav flex-column">
       <li class="nav-item">

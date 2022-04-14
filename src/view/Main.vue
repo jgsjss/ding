@@ -1,4 +1,5 @@
 <template>
+<!--딩동오더 로그인 후 메인화면-->
   <Navbar/>
   <div class="main_container">
     <div class="main_call">

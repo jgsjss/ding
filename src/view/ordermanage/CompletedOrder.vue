@@ -1,4 +1,5 @@
 <template>
+<!--주문관리 완료주문 화면창-->
   <div class="pay_container">
     <div>
       <div class="complete_box1">

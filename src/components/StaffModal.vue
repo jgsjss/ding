@@ -1,4 +1,5 @@
 <template>
+<!--직원관리 직원추가 컴포넌트-->
   <!--modal 직원추가-->
   <div class="modal fade" id="addition" tabindex="-1" aria-labelledby="additionModalLabel" aria-hidden="true">
     <div class="modal-dialog">

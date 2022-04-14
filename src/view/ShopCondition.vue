@@ -1,4 +1,5 @@
 <template>
+<!--매장상태 전역 컴포넌트-->
         <div class="shopCondition_wrap">
         <button class="main-btn" type="submit">
           <span class="condition">매장상태</span>

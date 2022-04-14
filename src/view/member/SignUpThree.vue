@@ -1,4 +1,5 @@
 <template>
+<!--관리자 정보 입력창-->
   <div class="container_fluid">
     <!-- wrapper -->
     <div id="wrapper">

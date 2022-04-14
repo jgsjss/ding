@@ -1,4 +1,5 @@
 <template>
+<!--로그인 후 메인화면 좌측 주문관리 컴포넌트 -->
   <div class="container">
     <div class="box_wrap">
       <p class="order_text">주문관리</p>

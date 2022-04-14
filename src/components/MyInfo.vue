@@ -1,4 +1,5 @@
 <template>
+<!--로그인 후 오른쪽 첫번째 내정보 컴포넌트-->
   <div class="container">
     <p class="info_img">img</p>
     <p class="info_text">딩동커피 </p>

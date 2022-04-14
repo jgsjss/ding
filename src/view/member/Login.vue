@@ -1,4 +1,5 @@
 <template>
+<!--로그인 화면-->
   <div class="container_fluid">
     <h1 class="member_text">
       DINGDONG ORDER

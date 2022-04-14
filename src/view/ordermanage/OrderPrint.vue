@@ -1,4 +1,5 @@
 <template>
+<!--주문관리 주문내역 인쇄화면-->
   <div class="print_container">
       <div class="print_header_wrap">
       <h4 class="print_text">

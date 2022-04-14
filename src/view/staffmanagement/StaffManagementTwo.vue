@@ -1,4 +1,5 @@
 <template>
+<!--직원관리 박스정렬 화면-->
 <Navbar />
 <StaffModal />
     <div class="stafftwo_container">

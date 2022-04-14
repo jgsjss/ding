@@ -1,4 +1,5 @@
 <template>
+<!--월별매출 기간별매출-->
 <div class="month_container">
   <div class="month_wrap">
     <div class="month_left">
@@ -21,6 +22,7 @@
     </div>
 <div class="month_right">
   <div class="sales_sort_btn_wrap">
+    <!--sorting기능 추가 예정-->
   <select class="sales_sort_btn" v-model="selected">
     품절해제
     <option class="log_check_Box" value="date-asc">최신순</option>
@@ -39,6 +41,7 @@
           </tr>
           </thead>
           <tbody>
+          <!--데이터 내 비고란 '취소' 있을시 해당 열 폰트컬러 RED로 변경해야함-->
           <tr v-for="(a, i) in $store.state.SalesData" :key="i">
             <td class="sales_data"><router-link to="../ordermanage/orderprint">{{ $store.state.SalesData[i].orderdata }}</router-link></td>
             <td>{{ $store.state.SalesData[i].watingnum }}</td>

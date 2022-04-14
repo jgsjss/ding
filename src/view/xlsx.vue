@@ -1,4 +1,5 @@
 <template>
+<!--엑셀 api-->
   <vue-excel-xlsx
         :data="data"
         :columns="columns"

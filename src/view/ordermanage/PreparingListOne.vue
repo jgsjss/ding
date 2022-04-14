@@ -1,4 +1,5 @@
 <template>
+<!--주문관리 준비중 리스트정렬 화면-->
   <div class="list_wrap">
     <router-link to="/ordermanagement/preparinglistone"><i class="xi-list-square list"></i></router-link>
     <router-link to="/ordermanagement/preparinglisttwo"><i class="xi-apps list"></i></router-link>

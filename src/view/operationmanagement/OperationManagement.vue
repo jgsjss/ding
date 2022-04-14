@@ -1,4 +1,5 @@
 <template>
+<!--운영관리 가게상태 화면-->
 <Navbar />
 
   <div class="oper_container">
@@ -133,6 +134,7 @@
           <div class="holiday_text">{{form.reasonCheck}}</div>
       </div>      
       <!--/////매장상태/////-->
+      <!--화면 우측상단 매장상태 변경은 전역컴포넌트 생성후 상태변환 시켜줘야함-->
       <div class="oper_box1">
         <div class="oper_title">매장상태</div>
           <div 

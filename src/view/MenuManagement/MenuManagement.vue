@@ -1,4 +1,5 @@
 <template>
+<!--메뉴관리 첫 화면-->
 <Navbar />
     <div class="menu_container">    
       <div class="menument_wrap">

@@ -3,6 +3,7 @@
   <div class="oper_set_container">
     <h2 class="operset_text">◆가게설정</h2>
     <div class="oper_set_wrap">
+      <!--해당 박스 클릭시 탭메뉴 형태로 내용 바뀜-->
       <!--/////영업시간 고정/////-->
       <div class="oper_modal_container" v-if="step == 0">
         <div class="oper_modal_wrapper">
@@ -92,7 +93,8 @@
                 </div>
                 <div class="oper_modal_oper_box">
                   <form>
-                    <label for="input_day" class="input_day">평일 시작 및 종료시간</label>
+                    <label for="input_day" class="input_day">평일 시작 및 종료시간</label> 
+                    <!--평일 시작 시간-->
                     <input
                       type="time"
                       min="08:00"
@@ -100,6 +102,7 @@
                       id="inputDele"
                       v-model="dayTime"
                     /> ~
+                    <!--평일 종료 시간-->
                     <input
                       type="time"
                       min="00:00"
@@ -111,6 +114,7 @@
                       @click="deleteBtn()"
                     ></i>
                     <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
+                    <!--주말 시작 시간-->
                     <input 
                       type="time"
                       min="08:00"
@@ -118,6 +122,7 @@
                       id="timeHoly"
                       v-model="timeHoly"
                     /> ~
+                    <!--주말 종료 시간-->
                     <input 
                       type="time"
                       min="00:00"
@@ -125,6 +130,7 @@
                       id="timeHolyT"
                       v-model="timeHolyT"                      
                     />
+                    <!--설정값 초기화 버튼-->
                     <i class="xi-minus-circle-o oper_time_icon"
                         @click="deleteBtnTwo()"
                         ></i>
@@ -162,12 +168,14 @@
               <div class="break_box">
                 <form>
                   <label for="input_day" class="input_day">평일 시작 및 종료시간</label>
+                  <!--평일 시작 시간-->
                   <input
                     type="time"
                     class="time_input"
                     id="time_input"
                     @change="$emit('sandParam', { breakTime: $event.target.value })"
                   />
+                  <!--평일 종료 시간-->
                   <input
                     type="time"
                     class="time_inputTwo"
@@ -180,18 +188,21 @@
 
                   <label for="input_day" class="input_day">주말 시작 및 종료시간</label>
                   <div style="display: block">
+                    <!--주말 시작 시간-->
                     <input
                       type="time"
                       class="date_input"
                       id="date_input"
                       @change="$emit('sandParam', { holyTime: $event.target.value })"
                     />
+                    <!--주말 종료 시간-->
                     <input
                       type="time"
                       class="date_inputTwo"
                       id="date_inputTwo"
                       @change="$emit('sandParam', { holyTimeT: $event.target.value })"
                     />
+                    <!--설정값 초기화 버튼-->
                   <i class="xi-minus-circle-o break_time_icon" 
                       @click="breakBtnTwo()"
                   ></i>                    
@@ -199,8 +210,9 @@
                 </form>
               </div>
               <div class="break_time_btn_wrap">
-                <button type="button" class="break_add_btn" @click="onEmit">저장</button>
-                <button type="button" class="break_close_btn">닫기</button>
+                <!--클릭시 가게상태로 상태변경됨-->
+                <button class="break_add_btn" @click="onEmit">저장</button>
+                <button class="break_close_btn">닫기</button>
               </div>
             </div>
           </div>
@@ -259,6 +271,7 @@
         </div>
       </div>
       <!--/////임시휴무 평소에는 hidden/////-->
+      <!--각 입력칸에서 설정시 임시휴무 가게상태로 상태변경 전달됨-->
       <div class="temporary_container" v-if="step == 3">
         <div class="temporary_wrapper">
           <div class="temporary_one">

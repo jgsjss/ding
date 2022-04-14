@@ -1,5 +1,5 @@
 <template>
-<!---->
+<!--메뉴연결 페이지-->
 <div class="connect_container">
 
     <div class="connect_wrap">

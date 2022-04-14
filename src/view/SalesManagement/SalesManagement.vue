@@ -1,4 +1,5 @@
 <template>
+<!--매출관리 첫 화면-->
 <Navbar />
   <div class="sales_container">
     <div class="sales_wrap">

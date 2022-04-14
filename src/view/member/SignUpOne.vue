@@ -1,4 +1,5 @@
 <template>
+<!--회원약관 동의창-->
   <div class="container_fluid">
     <!-- wrapper -->
     <div id="wrapper">

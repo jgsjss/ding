@@ -1,4 +1,5 @@
 <template>
+<!--주문관리 신규주문 리스트정렬 화면-->
   <div class="list_wrap">
     <router-link to="/ordermanagement/neworderlistone"><i class="xi-list-square list"></i></router-link>
     <router-link to="/ordermanagement/neworderlisttwo"><i class="xi-apps list"></i></router-link>

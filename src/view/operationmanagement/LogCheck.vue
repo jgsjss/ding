@@ -1,6 +1,6 @@
 <template>
+ <!-- 로그확인 페이지, 라우팅 path = /Logcheck --> 
   <Navbar />
-  <!-- 로그확인 페이지, 라우팅 path = /Logcheck -->
   <div class="log_container">
     <div class="log_header_wrap">
       <span class="log_main_text">로그확인</span>
@@ -15,6 +15,7 @@
         <button type="text" class="log_menu_btn">1주일</button>
         <button type="text" class="log_menu_btn">1개월</button>
         <button type="text" class="log_menu_btn">3개월</button>
+        <!--해당기간 설정시 해당기간 로그 확인가능 기능 추가 예정-->
         <button type="text" class="log_menu_btn" @click="detail = !detail">상세조회</button>
         <div class="log_hidden_date" v-show="detail">
           <Calendar />
