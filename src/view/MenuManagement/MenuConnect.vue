@@ -6,10 +6,10 @@
   <div class="connect_left">
       <button type="button" class="connect_title" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           카테고리 설정
-    <i class="xi-info-o"></i> 
+    <i class="xi-info-o"></i>
       </button>
 
-    
+
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
       <p class="connect_text">- 메뉴와 연결되는 카테고리를 설정할 수 있습니다.</p>
@@ -18,14 +18,16 @@
       <p class="connect_text">- 오른쪽의 버튼으로 맨위, 맨아래 이동이 가능합니다.</p>
   </div>
 </div>
-    <draggable 
-      class="dragArea list-group w-full" 
-      :list="list" 
-      @change="log" 
-      animation="200" group="description" 
-      :disabled="false" 
-      v-model="dataList"
+    <draggable
+      class="dragArea list-group w-full"
+      :list="list"
+      @change="log"
+      animation="200" group="description"
+      :disabled="false"
+
     >
+<!--      v-model="dataList"-->
+
       <div
         class="list-group-item bg-gray-300 m-1 p-3 rounded-md text-center connect_drag_text"
         v-for="element in list"
@@ -62,7 +64,7 @@
   export default {
     components: {
       draggable: VueDraggableNext,
-      
+
     },
     data() {
       return {

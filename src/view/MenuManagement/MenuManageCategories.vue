@@ -23,10 +23,10 @@
       <div class="category_right">
 
 <!--        검색창----------------------------------------------------------->
-<!--        <input type="search" name="categoriSearch" placeholder="search" class="menu_search" v-model="search" v-on:keyup.enter.prevent="searchCategory" />-->
-        <input type="search" name="categoriSearch" placeholder="search" class="menu_search" v-model="search" @change="searchCategory" />
+        <input type="search" name="categoriSearch" placeholder="search" class="menu_search" v-model="search" v-on:keyup.enter.prevent="searchCategory" />
+<!--        <input type="search" name="categoriSearch" placeholder="search" class="menu_search" v-model="search" @change="searchCategory" />-->
 
-        <router-link to="/menumanagement/MenuConnect">
+        <router-link  to="/menumanagement/MenuConnect" @keyup.capture.stop >
           <button class="cate_menu_btn">순서변경</button>
         </router-link>
         <button
