@@ -141,30 +141,6 @@ export default {
         });
         console.log(this.totalMenu);
       }
-      // TotalMenuNum (object) {
-      //    let sum = 0
-      //    _.forEach(_.map(object, 'content'), function(val, key) {
-      //    object = val.replace(/[^0-9]/gi, '');
-      //    sum = parseInt(key);
-      //    })
-      //    this.totalMenu = sum
-      //    console.log(sum)
-      //   // let sum = 0
-      //   // this.totalMenu = _.sumBy(object, 'content'), function(val, key) {
-      //   //   return sum += val
-      //   // }
-      //   // this.totalMenu += sum
-      //   // console.log(this.totalMenu)
-      // },
-
-      //  onlyNumber (str) {
-      //    let sum;
-      //    _.forEach(_.map(str, 'content'), function(val, key) {
-      //    str = str.replace(/[^0-9]/g, '');
-      //    sum = parseInt(str);
-      //    return sum;
-      //    })
-      //  },
 
       // sortSalesLatest() {
       //   this.$SalesData.sort(function(a, b) {
