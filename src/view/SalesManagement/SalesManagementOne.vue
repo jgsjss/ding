@@ -1,5 +1,5 @@
 <template>
-<!--매출관리 월별매출-->
+<!--매출관리 월별매출 컴포넌트-->
   <div class="month_container">
     <div class="month_wrap">
       <div class="month_left">
@@ -89,11 +89,17 @@ export default {
   },
   data () {
     return {
+      //sorting
       selected:"date-asc",
+      //페이지네이션
       pageNum: 0,
+      //총 매출금액
       totalPrice: 0,
+      //총 주문건수
       totalOrder: 0,
+      //총 주문메뉴 갯수
       totalMenu:0,
+      //더미데이터
       SalesData:[]
     }
   },
@@ -115,10 +121,6 @@ export default {
     prevPage () {
       this.pageNum -= 1
     },
-    // sortSales() {
-    //   this.$emit('sales_data', {value :this.selected});
-    //   console.log('')
-    // },
     //총 매출금액
     calcTotalPrice (object) {
       let sum = 0
@@ -144,7 +146,7 @@ export default {
         });
         console.log(this.totalMenu);
       }
-
+      //sorting기능 추가 예정
       // sortSalesLatest() {
       //   this.$SalesData.sort(function(a, b) {
       //     return b.time - a.time;
