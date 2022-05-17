@@ -28,17 +28,17 @@ app.use(VueExcelXlsx);
 // app.component("infinite-loading", InfiniteLoading);
 // app.use(VueCookies);
 
-// router.beforeEach((to, from, next) => {
-//  if (to.matched.some((record) => record.meta.requireLogin)) {
-//    const isLogin = store.getters["loginStore/isLogin"];
-//    if (!isLogin) {
-//      sweet.fire("로그인 후 이용가능");
-//      next("/login");
-//    } else {
-//      next();
-//    }
-//  } else {
-//    next();
-//  }
-// });
+router.beforeEach((to, from, next) => {
+ if (to.matched.some((record) => record.meta.requireLogin)) {
+   const isLogin = store.getters["loginStore/isLogin"];
+   if (!isLogin) {
+     sweet.fire("로그인 후 이용가능");
+     next("/login");
+   } else {
+     next();
+   }
+ } else {
+   next();
+ }
+});
 app.use(store).use(router).mount("#app");
